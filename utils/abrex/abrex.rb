@@ -588,6 +588,7 @@ ECUC-ENUMERATION-PARAM-DEF:
   - OsViolationHandlingLevel
   - OsTimingProtectionLevel
   - OsMemoryProtectionLevel
+  - OsMemorySectionInitialize
   - OsIsrInterruptSource
   - OsInterCoreInterruptInterruptSource
   - OsSpinlockLockMethod
@@ -642,7 +643,6 @@ ECUC-BOOLEAN-PARAM-DEF:
   - OsMemorySectionShort
   - OsMemorySectionCacheable
   - OsMemorySectionDevice
-  - OsMemorySectionInitialize
   - OsMemorySectionExport
   - OsMemoryModuleExport
   - OsTaskOsInterruptLockMonitor

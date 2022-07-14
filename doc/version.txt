@@ -47,7 +47,26 @@ Copyright (C) 2013-2015 by Witz Corporation
 により直接的または間接的に生じたいかなる損害に関しても，その責任を負
 わない．
 
-$Id: version.txt 1243 2015-03-25 09:12:24Z panasonic-ayane $
+$Id: version.txt 1540 2015-07-07 01:58:08Z fsi-kaitori $
+----------------------------------------------------------------------
+		TOPPERS/A-COMSTACK
+		Release 1.2.0 から 1.2.1 への変更点
+		リリース日 2015-07-10
+
+○変更点のリスト
+
+＜TOPPERS/A-COM＞
+・GET_TX_IPDU_INIBの誤使用を修正
+・DETエラーが発生した場合，無限ループするように修正
+
+＜TOPPERS/A-CANIF＞
+・CanConfigSetの多重度設定を修正
+
+＜TOPPERS/A-CAN＞
+・非依存部の送信処理へのhth通知を追加
+
+・その他細かい修正
+
 ----------------------------------------------------------------------
 		TOPPERS/A-COMSTACK
 		Release 1.1.0 から 1.2.0 への変更点

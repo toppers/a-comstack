@@ -48,7 +48,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Det.h 1241 2015-03-25 07:26:02Z panasonic-ayane $
+ *  $Id: Det.h 1505 2015-07-02 05:58:12Z fsi-kaitori $
  */
 
 #ifndef DET_H
@@ -61,6 +61,7 @@ LOCAL_INLINE Std_ReturnType
 Det_ReportError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
 {
 	syslog(LOG_NOTICE, "## Det_ReportError(0x%x, 0x%x, 0x%x, 0x%x)", ModuleId, InstanceId, ApiId, ErrorId);
+	while(1);
 	return(E_OK);
 }
 

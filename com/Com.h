@@ -48,7 +48,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Com.h 1245 2015-03-25 09:25:18Z panasonic-ayane $
+ *  $Id: Com.h 1475 2015-06-25 04:15:31Z fsi-kaitori $
  */
 
 /* [COM005] Com.h */
@@ -270,16 +270,23 @@
 /*
  *  情報取得マクロ
  */
-#define GET_SIGNAL_NUM()			p_cur_com_config->tnum_signal
-#define GET_VECTOR_NUM()			p_cur_com_config->tnum_vector
-#define GET_IPDU_G_NUM()			p_cur_com_config->tnum_ipdu_g
-#define GET_IPDU_NUM()				p_cur_com_config->tnum_ipdu
-#define GET_RX_IPDU_NUM()			p_cur_com_config->tnum_rx_ipdu
-#define GET_TX_IPDU_NUM()			p_cur_com_config->tnum_tx_ipdu
-#define GET_IPDU_INIB(PduId)		pp_cur_all_ipdu_inib[(PduId)]
-#define GET_RX_IPDU_INIB(Index)		(&p_cur_rx_ipdu_inib[(Index)])
-#define GET_TX_IPDU_INIB(Index)		(&p_cur_tx_ipdu_inib[(Index)])
-#define GET_SIGNAL_INIB(SignalId)	(&p_cur_signal_inib[(SignalId)])
+#define GET_SIGNAL_NUM()			p_cur_com_config->tnum_signal		/* シグナル数取得 */
+#define GET_VECTOR_NUM()			p_cur_com_config->tnum_vector		/* IPDUグループをビットで管理するのに必要なバイト数取得 */
+#define GET_IPDU_G_NUM()			p_cur_com_config->tnum_ipdu_g		/* IPDUグループ数取得 */
+#define GET_IPDU_NUM()				p_cur_com_config->tnum_ipdu			/* IPDU数取得 */
+#define GET_RX_IPDU_NUM()			p_cur_com_config->tnum_rx_ipdu		/* 受信IPDU数取得 */
+#define GET_TX_IPDU_NUM()			p_cur_com_config->tnum_tx_ipdu		/* 送信IPDU数取得 */
+#define GET_SIGNAL_INIB(SignalId)	(&p_cur_signal_inib[(SignalId)])	/* シグナル初期化ブロック取得 */
+
+/*
+ *  IPDU初期化ブロック取得マクロ
+ *  PduIdによりIPDU初期化ブロックを取得できるマクロはGET_IPDU_INIBのみである
+ *  GET_RX_IPDU_INIB/GET_TX_IPDU_INIBの引数(Index)は受信/送信IPDU初期化ブロックリストのインデックスである
+ *   引数(Index)はPduIdとは紐付かない
+ */
+#define GET_IPDU_INIB(PduId)		pp_cur_all_ipdu_inib[(PduId)]		/* PduIdによりIPDU初期化ブロック取得 */
+#define GET_RX_IPDU_INIB(Index)		(&p_cur_rx_ipdu_inib[(Index)])		/* 受信IPDU初期化ブロックリストからのIPDU初期化ブロック取得 */
+#define GET_TX_IPDU_INIB(Index)		(&p_cur_tx_ipdu_inib[(Index)])		/* 送信IPDU初期化ブロックリストからのIPDU初期化ブロック取得 */
 
 /*
  *  [COM442] DETへ通知するサービスID

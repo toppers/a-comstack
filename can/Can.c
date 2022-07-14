@@ -38,7 +38,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Can.c 599 2014-10-17 01:27:58Z shigihara $
+ *  $Id: Can.c 1388 2015-06-04 05:48:42Z fsi-kaitori $
  */
 
 /* [CAN034][CAN036][CAN394][CAN397][CAN390] */
@@ -630,7 +630,7 @@ Can_Write(Can_HwHandleType Hth, const Can_PduType *PduInfo)
 		 * (CAN059) データ配列の0番目の要素から送信し，7番目の要素を最後に送信する
 		 * (CAN427) ハードウェア上のバッファ表現に関わらず，Can_PduType型に含まれるデータ配列を使用する
 		 */
-		ercd = can_target_transmit(ctrl_id, tbox_index, PduInfo);
+		ercd = can_target_transmit(ctrl_id, Hth, tbox_index, PduInfo);
 
 		/* HTHのミューテックス解放 */
 		SET_HTH_MUTEX(ctrl_id, tbox_index, FALSE);

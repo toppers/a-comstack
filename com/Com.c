@@ -48,7 +48,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Com.c 1241 2015-03-25 07:26:02Z panasonic-ayane $
+ *  $Id: Com.c 1475 2015-06-25 04:15:31Z fsi-kaitori $
  */
 
 /* [COM584] Com.c */
@@ -500,7 +500,6 @@ Com_SendSignal(Com_SignalIdType SignalId, const void *SignalDataPtr)
 {
 	const SIGNAL_INIB	*p_signal_inib;
 	const IPDU_INIB		*p_ipdu_inib;
-	const TX_IPDU_INIB	*p_tx_ipdu_inib;
 	TX_SIGNAL_CB		*p_tx_signal_cb;
 	TX_IPDU_CB			*p_tx_ipdu_cb;
 	boolean				changed;
@@ -517,7 +516,6 @@ Com_SendSignal(Com_SignalIdType SignalId, const void *SignalDataPtr)
 	p_signal_inib = GET_SIGNAL_INIB(SignalId);
 	p_ipdu_inib = p_signal_inib->p_ipdu_inib;
 	p_tx_ipdu_cb = (TX_IPDU_CB *) p_ipdu_inib->p_ipdu_cb;
-	p_tx_ipdu_inib = p_ipdu_inib->p_tx_ipdu_inib;
 	p_tx_signal_cb = (TX_SIGNAL_CB *) p_signal_inib->p_signal_cb;
 
 	COM_CHECK_PARAM_ERCD(p_ipdu_inib->ComIPduDirection == COM_SEND, COMServiceId_SendSignal);
@@ -706,7 +704,7 @@ Com_TriggerIPDUSend(PduIdType PduId)
 	COM_CHECK_INITIALIZED(COMServiceId_TriggerIPDUSend);
 	COM_CHECK_PARAM(PduId < GET_IPDU_NUM(), COMServiceId_TriggerIPDUSend);
 
-	p_ipdu_inib = GET_TX_IPDU_INIB(PduId);
+	p_ipdu_inib = GET_IPDU_INIB(PduId);
 	COM_CHECK_PARAM(p_ipdu_inib->ComIPduDirection == COM_SEND, COMServiceId_TriggerIPDUSend);
 
 	/* IPDU停止時は何もしない */
@@ -733,7 +731,7 @@ Com_SwitchIpduTxMode(PduIdType PduId, boolean Mode)
 	COM_CHECK_INITIALIZED(COMServiceId_SwitchIpduTxMode);
 	COM_CHECK_PARAM(PduId < GET_IPDU_NUM(), COMServiceId_SwitchIpduTxMode);
 
-	p_ipdu_inib = GET_TX_IPDU_INIB(PduId);
+	p_ipdu_inib = GET_IPDU_INIB(PduId);
 	COM_CHECK_PARAM(p_ipdu_inib->ComIPduDirection == COM_SEND, COMServiceId_SwitchIpduTxMode);
 
 	/* 次の開始時にフィルタ判定して結果が変わるため，IPDU停止時に実施する必要はない */
@@ -835,7 +833,7 @@ Com_TxConfirmation(PduIdType TxPduId)
 	COM_CHECK_INITIALIZED(COMServiceId_TxConfirmation);
 	COM_CHECK_PARAM(TxPduId < GET_IPDU_NUM(), COMServiceId_TxConfirmation);
 
-	p_ipdu_inib = GET_TX_IPDU_INIB(TxPduId);
+	p_ipdu_inib = GET_IPDU_INIB(TxPduId);
 
 	COM_CHECK_PARAM(p_ipdu_inib->ComIPduDirection == COM_SEND, COMServiceId_TxConfirmation);
 

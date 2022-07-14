@@ -105,7 +105,7 @@
 /AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource,EcuMWakeupSource,,1,*
 /AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource/EcuMWakeupSourceId,EcuMWakeupSourceId,INT,1
 /AUTOSAR/EcucDefs/Can,,,1
-/AUTOSAR/EcucDefs/Can/CanConfigSet,CanConfigSet,,1
+/AUTOSAR/EcucDefs/Can/CanConfigSet,CanConfigSet,,1,*
 /AUTOSAR/EcucDefs/Can/CanConfigSet/CanController,CanController,,1,*
 /AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanControllerId,CanControllerId,INT,1
 /AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanWakeupSourceRef,CanWakeupSourceRef,REF,0,1
