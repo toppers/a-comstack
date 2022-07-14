@@ -1,0 +1,2036 @@
+---
+Com:
+  Com:
+    ComConfig_0:
+      ComIPdu_0:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: NONE
+          ComMinimumDelayTime: 2.0
+          ComTxIPduUnusedAreasDefault: 15
+        ComIPduCallout: ! IPDU_Callout_0
+        ComIPduDirection: SEND
+        ComIPduHandleId: 0
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_0
+        - /Com/Com/ComConfig_0/ComSignal_1
+        - /Com/Com/ComConfig_0/ComSignal_2
+        - /Com/Com/ComConfig_0/ComSignal_3
+        - /Com/Com/ComConfig_0/ComSignal_4
+        - /Com/Com/ComConfig_0/ComSignal_5
+        - /Com/Com/ComConfig_0/ComSignal_6
+        - /Com/Com/ComConfig_0/ComSignal_7
+        - /Com/Com/ComConfig_0/ComSignal_8
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_0
+        DefinitionRef: ComIPdu
+      ComIPdu_1:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+          ComTxIPduUnusedAreasDefault: 10
+        ComIPduCallout: ! IPDU_Callout_1
+        ComIPduDirection: SEND
+        ComIPduHandleId: 1
+        ComIPduSignalProcessing: DEFERRED
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_9
+        - /Com/Com/ComConfig_0/ComSignal_10
+        - /Com/Com/ComConfig_0/ComSignal_11
+        - /Com/Com/ComConfig_0/ComSignal_12
+        - /Com/Com/ComConfig_0/ComSignal_13
+        - /Com/Com/ComConfig_0/ComSignal_14
+        - /Com/Com/ComConfig_0/ComSignal_15
+        - /Com/Com/ComConfig_0/ComSignal_16
+        - /Com/Com/ComConfig_0/ComSignal_17
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_1
+        DefinitionRef: ComIPdu
+      ComIPdu_2:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+          ComMinimumDelayTime: 2.0
+          ComTxIPduUnusedAreasDefault: 5
+        ComIPduCallout: ! IPDU_Callout_2
+        ComIPduDirection: SEND
+        ComIPduHandleId: 2
+        ComIPduSignalProcessing: DEFERRED
+        ComIPduType: TP
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_18
+        - /Com/Com/ComConfig_0/ComSignal_19
+        - /Com/Com/ComConfig_0/ComSignal_20
+        - /Com/Com/ComConfig_0/ComSignal_21
+        - /Com/Com/ComConfig_0/ComSignal_22
+        - /Com/Com/ComConfig_0/ComSignal_23
+        - /Com/Com/ComConfig_0/ComSignal_24
+        - /Com/Com/ComConfig_0/ComSignal_25
+        - /Com/Com/ComConfig_0/ComSignal_26
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_2
+        DefinitionRef: ComIPdu
+      ComIPdu_3:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComMinimumDelayTime: 2.0
+          ComTxIPduUnusedAreasDefault: 3
+        ComIPduCallout: ! IPDU_Callout_3
+        ComIPduDirection: SEND
+        ComIPduHandleId: 3
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: TP
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_27
+        - /Com/Com/ComConfig_0/ComSignal_28
+        - /Com/Com/ComConfig_0/ComSignal_29
+        - /Com/Com/ComConfig_0/ComSignal_30
+        - /Com/Com/ComConfig_0/ComSignal_31
+        - /Com/Com/ComConfig_0/ComSignal_32
+        - /Com/Com/ComConfig_0/ComSignal_33
+        - /Com/Com/ComConfig_0/ComSignal_34
+        - /Com/Com/ComConfig_0/ComSignal_35
+        ComIPduCancellationSupport: true
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_3
+        DefinitionRef: ComIPdu
+      ComIPdu_4:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 2
+              ComTxModeRepetitionPeriod: 3.0
+          ComMinimumDelayTime: 2.0
+          ComTxIPduUnusedAreasDefault: 6
+        ComIPduCallout: ! IPDU_Callout_4
+        ComIPduDirection: SEND
+        ComIPduHandleId: 4
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_36
+        - /Com/Com/ComConfig_0/ComSignal_37
+        - /Com/Com/ComConfig_0/ComSignal_38
+        - /Com/Com/ComConfig_0/ComSignal_39
+        - /Com/Com/ComConfig_0/ComSignal_40
+        - /Com/Com/ComConfig_0/ComSignal_41
+        - /Com/Com/ComConfig_0/ComSignal_42
+        - /Com/Com/ComConfig_0/ComSignal_43
+        - /Com/Com/ComConfig_0/ComSignal_44
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_4
+        DefinitionRef: ComIPdu
+      ComIPdu_5:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+          ComMinimumDelayTime: 2.0
+          ComTxIPduUnusedAreasDefault: 1
+        ComIPduCallout: ! IPDU_Callout_5
+        ComIPduDirection: SEND
+        ComIPduHandleId: 5
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_45
+        - /Com/Com/ComConfig_0/ComSignal_46
+        - /Com/Com/ComConfig_0/ComSignal_47
+        - /Com/Com/ComConfig_0/ComSignal_48
+        - /Com/Com/ComConfig_0/ComSignal_49
+        - /Com/Com/ComConfig_0/ComSignal_50
+        - /Com/Com/ComConfig_0/ComSignal_51
+        - /Com/Com/ComConfig_0/ComSignal_52
+        - /Com/Com/ComConfig_0/ComSignal_53
+        - /Com/Com/ComConfig_0/ComSignal_54
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_5
+        DefinitionRef: ComIPdu
+      ComIPdu_6:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 0
+              ComTxModeRepetitionPeriod: 3.0
+          ComMinimumDelayTime: 2.0
+          ComTxIPduUnusedAreasDefault: 3
+        ComIPduCallout: ! IPDU_Callout_6
+        ComIPduDirection: SEND
+        ComIPduHandleId: 6
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_55
+        - /Com/Com/ComConfig_0/ComSignal_56
+        - /Com/Com/ComConfig_0/ComSignal_57
+        - /Com/Com/ComConfig_0/ComSignal_58
+        - /Com/Com/ComConfig_0/ComSignal_59
+        - /Com/Com/ComConfig_0/ComSignal_60
+        - /Com/Com/ComConfig_0/ComSignal_61
+        - /Com/Com/ComConfig_0/ComSignal_62
+        - /Com/Com/ComConfig_0/ComSignal_63
+        - /Com/Com/ComConfig_0/ComSignal_64
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_6
+        DefinitionRef: ComIPdu
+      ComIPdu_7:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 2
+              ComTxModeRepetitionPeriod: 3.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComMinimumDelayTime: 2.0
+          ComTxIPduUnusedAreasDefault: 12
+        ComIPduCallout: ! IPDU_Callout_7
+        ComIPduDirection: SEND
+        ComIPduHandleId: 7
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_65
+        - /Com/Com/ComConfig_0/ComSignal_66
+        - /Com/Com/ComConfig_0/ComSignal_67
+        - /Com/Com/ComConfig_0/ComSignal_68
+        - /Com/Com/ComConfig_0/ComSignal_69
+        - /Com/Com/ComConfig_0/ComSignal_70
+        - /Com/Com/ComConfig_0/ComSignal_71
+        - /Com/Com/ComConfig_0/ComSignal_72
+        - /Com/Com/ComConfig_0/ComSignal_73
+        - /Com/Com/ComConfig_0/ComSignal_74
+        ComIPduCancellationSupport: true
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_7
+        DefinitionRef: ComIPdu
+      ComIPdu_8:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: MIXED
+              ComTxModeNumberOfRepetitions: 3
+              ComTxModeRepetitionPeriod: 3.0
+              ComTxModeTimeOffset: 2.0
+              ComTxModeTimePeriod: 4.0
+          ComMinimumDelayTime: 1.0
+          ComTxIPduUnusedAreasDefault: 5
+        ComIPduCallout: ! IPDU_Callout_8
+        ComIPduDirection: SEND
+        ComIPduHandleId: 8
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_75
+        - /Com/Com/ComConfig_0/ComSignal_76
+        - /Com/Com/ComConfig_0/ComSignal_77
+        - /Com/Com/ComConfig_0/ComSignal_78
+        - /Com/Com/ComConfig_0/ComSignal_79
+        - /Com/Com/ComConfig_0/ComSignal_80
+        ComIPduCancellationSupport: true
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_8
+        DefinitionRef: ComIPdu
+      ComIPdu_9:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+          ComMinimumDelayTime: 2.0
+          ComTxIPduUnusedAreasDefault: 3
+        ComIPduCallout: ! IPDU_Callout_9
+        ComIPduDirection: SEND
+        ComIPduHandleId: 9
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: TP
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_81
+        ComIPduCancellationSupport: true
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_9
+        DefinitionRef: ComIPdu
+      ComIPdu_10:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: MIXED
+              ComTxModeNumberOfRepetitions: 3
+              ComTxModeRepetitionPeriod: 3.0
+              ComTxModeTimeOffset: 2.0
+              ComTxModeTimePeriod: 4.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComMinimumDelayTime: 1.0
+          ComTxIPduUnusedAreasDefault: 3
+        ComIPduCallout: ! IPDU_Callout_10
+        ComIPduDirection: SEND
+        ComIPduHandleId: 10
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_82
+        ComIPduCancellationSupport: true
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_10
+        DefinitionRef: ComIPdu
+      ComIPdu_11:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+          ComMinimumDelayTime: 2.0
+          ComTxIPduUnusedAreasDefault: 0
+        ComIPduDirection: SEND
+        ComIPduHandleId: 11
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/ComSignal_83
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_11
+        DefinitionRef: ComIPdu
+      ComIPduGroup_0:
+        ComIPduGroupHandleId: 0
+        DefinitionRef: ComIPduGroup
+      ComSignal_0:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 27
+          ComFilterX: 28
+        ComBitPosition: 3
+        ComBitSize: 5
+        ComErrorNotification: ! Rte_COMCbkTErr_sn0
+        ComFirstTimeout: 20.0
+        ComHandleId: 0
+        ComNotification: ! Rte_COMCbkTAck_sn0
+        ComSignalDataInvalidValue: -1
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: SINT8
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn0
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 2
+        DefinitionRef: ComSignal
+      ComSignal_1:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 28
+          ComFilterX: 48
+        ComBitPosition: 8
+        ComBitSize: 7
+        ComErrorNotification: ! Rte_COMCbkTErr_sn1
+        ComFirstTimeout: 20.0
+        ComHandleId: 1
+        ComNotification: ! Rte_COMCbkTAck_sn1
+        ComSignalDataInvalidValue: 42
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: -43
+        ComSignalType: SINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn1
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 15
+        DefinitionRef: ComSignal
+      ComSignal_2:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 1
+          ComFilterX: 0
+        ComBitPosition: 18
+        ComBitSize: 1
+        ComErrorNotification: ! Rte_COMCbkTErr_sn2
+        ComFirstTimeout: 20.0
+        ComHandleId: 2
+        ComNotification: ! Rte_COMCbkTAck_sn2
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: BOOLEAN
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn2
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 16
+        DefinitionRef: ComSignal
+      ComSignal_3:
+        ComBitPosition: 50
+        ComBitSize: 28
+        ComErrorNotification: ! Rte_COMCbkTErr_sn3
+        ComFirstTimeout: 20.0
+        ComHandleId: 3
+        ComNotification: ! Rte_COMCbkTAck_sn3
+        ComSignalDataInvalidValue: 265080016
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 178956976
+        ComSignalType: UINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn3
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 31
+        DefinitionRef: ComSignal
+      ComSignal_4:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 60
+          ComFilterX: 1
+        ComBitPosition: 56
+        ComBitSize: 8
+        ComErrorNotification: ! Rte_COMCbkTErr_sn4
+        ComFirstTimeout: 20.0
+        ComHandleId: 4
+        ComNotification: ! Rte_COMCbkTAck_sn4
+        ComSignalDataInvalidValue: 238
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 255
+        ComSignalType: UINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn4
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 48
+        DefinitionRef: ComSignal
+      ComSignal_5:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 15
+          ComFilterX: 4
+        ComBitPosition: 66
+        ComBitSize: 5
+        ComErrorNotification: ! Rte_COMCbkTErr_sn5
+        ComFirstTimeout: 20.0
+        ComHandleId: 5
+        ComNotification: ! Rte_COMCbkTAck_sn5
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: UINT8
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn5
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 71
+        DefinitionRef: ComSignal
+      ComSignal_6:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 195
+          ComFilterX: 128
+        ComBitPosition: 72
+        ComBitSize: 8
+        ComErrorNotification: ! Rte_COMCbkTErr_sn6
+        ComFirstTimeout: 20.0
+        ComHandleId: 6
+        ComNotification: ! Rte_COMCbkTAck_sn6
+        ComSignalDataInvalidValue: 255
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: UINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn6
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 83
+        DefinitionRef: ComSignal
+      ComSignal_7:
+        ComBitPosition: 85
+        ComBitSize: 11
+        ComErrorNotification: ! Rte_COMCbkTErr_sn7
+        ComFirstTimeout: 20.0
+        ComHandleId: 7
+        ComNotification: ! Rte_COMCbkTAck_sn7
+        ComSignalDataInvalidValue: 1450
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1911
+        ComSignalType: UINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn7
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 96
+        DefinitionRef: ComSignal
+      ComSignal_8:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 209715
+          ComFilterX: 209715
+        ComBitPosition: 98
+        ComBitSize: 20
+        ComErrorNotification: ! Rte_COMCbkTErr_sn8
+        ComFirstTimeout: 20.0
+        ComHandleId: 8
+        ComNotification: ! Rte_COMCbkTAck_sn8
+        ComSignalDataInvalidValue: 209715
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -209716
+        ComSignalType: SINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn8
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 119
+        DefinitionRef: ComSignal
+      ComSignal_9:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+          ComFilterMask: 27
+          ComFilterX: 16
+        ComBitPosition: 3
+        ComBitSize: 5
+        ComErrorNotification: ! Rte_COMCbkTErr_sn9
+        ComFirstTimeout: 20.0
+        ComHandleId: 9
+        ComNotification: ! Rte_COMCbkTAck_sn9
+        ComSignalDataInvalidValue: -1
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: SINT8
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn9
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 2
+        DefinitionRef: ComSignal
+      ComSignal_10:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+          ComFilterMask: 28
+          ComFilterX: 12
+        ComBitPosition: 8
+        ComBitSize: 7
+        ComErrorNotification: ! Rte_COMCbkTErr_sn10
+        ComFirstTimeout: 20.0
+        ComHandleId: 10
+        ComNotification: ! Rte_COMCbkTAck_sn10
+        ComSignalDataInvalidValue: 42
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: -43
+        ComSignalType: SINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn10
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 15
+        DefinitionRef: ComSignal
+      ComSignal_11:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+          ComFilterMask: 1
+          ComFilterX: 1
+        ComBitPosition: 18
+        ComBitSize: 1
+        ComErrorNotification: ! Rte_COMCbkTErr_sn11
+        ComFirstTimeout: 20.0
+        ComHandleId: 11
+        ComNotification: ! Rte_COMCbkTAck_sn11
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: BOOLEAN
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn11
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 16
+        DefinitionRef: ComSignal
+      ComSignal_12:
+        ComBitPosition: 50
+        ComBitSize: 28
+        ComErrorNotification: ! Rte_COMCbkTErr_sn12
+        ComFirstTimeout: 20.0
+        ComHandleId: 12
+        ComNotification: ! Rte_COMCbkTAck_sn12
+        ComSignalDataInvalidValue: 265080016
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 178956976
+        ComSignalType: UINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn12
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 31
+        DefinitionRef: ComSignal
+      ComSignal_13:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+          ComFilterMask: 60
+          ComFilterX: 128
+        ComBitPosition: 56
+        ComBitSize: 8
+        ComErrorNotification: ! Rte_COMCbkTErr_sn13
+        ComFirstTimeout: 20.0
+        ComHandleId: 13
+        ComNotification: ! Rte_COMCbkTAck_sn13
+        ComSignalDataInvalidValue: 238
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 255
+        ComSignalType: UINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn13
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 48
+        DefinitionRef: ComSignal
+      ComSignal_14:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+          ComFilterMask: 15
+          ComFilterX: 3
+        ComBitPosition: 66
+        ComBitSize: 5
+        ComErrorNotification: ! Rte_COMCbkTErr_sn14
+        ComFirstTimeout: 20.0
+        ComHandleId: 14
+        ComNotification: ! Rte_COMCbkTAck_sn14
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: UINT8
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn14
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 71
+        DefinitionRef: ComSignal
+      ComSignal_15:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+          ComFilterMask: 195
+          ComFilterX: 129
+        ComBitPosition: 72
+        ComBitSize: 8
+        ComErrorNotification: ! Rte_COMCbkTErr_sn15
+        ComFirstTimeout: 20.0
+        ComHandleId: 15
+        ComNotification: ! Rte_COMCbkTAck_sn15
+        ComSignalDataInvalidValue: 255
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: UINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn15
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 83
+        DefinitionRef: ComSignal
+      ComSignal_16:
+        ComBitPosition: 85
+        ComBitSize: 11
+        ComErrorNotification: ! Rte_COMCbkTErr_sn16
+        ComFirstTimeout: 20.0
+        ComHandleId: 16
+        ComNotification: ! Rte_COMCbkTAck_sn16
+        ComSignalDataInvalidValue: 1450
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1911
+        ComSignalType: UINT16
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn16
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 96
+        DefinitionRef: ComSignal
+      ComSignal_17:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+          ComFilterMask: 209715
+          ComFilterX: 139810
+        ComBitPosition: 98
+        ComBitSize: 20
+        ComErrorNotification: ! Rte_COMCbkTErr_sn17
+        ComFirstTimeout: 20.0
+        ComHandleId: 17
+        ComNotification: ! Rte_COMCbkTAck_sn17
+        ComSignalDataInvalidValue: 209715
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -209716
+        ComSignalType: SINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn17
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 119
+        DefinitionRef: ComSignal
+      ComSignal_18:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_WITHIN
+          ComFilterMax: 8191
+          ComFilterMin: 4096
+        ComBitPosition: 3
+        ComBitSize: 13
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn18
+        ComFirstTimeout: 20.0
+        ComHandleId: 18
+        ComNotification: ! Rte_COMCbkTAck_sn18
+        ComSignalDataInvalidValue: 8191
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 255
+        ComSignalType: UINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn18
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 1
+        DefinitionRef: ComSignal
+      ComSignal_19:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_WITHIN
+          ComFilterMax: 511
+          ComFilterMin: 256
+        ComBitPosition: 17
+        ComBitSize: 11
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn19
+        ComFirstTimeout: 15.0
+        ComHandleId: 19
+        ComNotification: ! Rte_COMCbkTAck_sn19
+        ComSignalDataInvalidValue: 273
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: SINT16
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn19
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 29
+        DefinitionRef: ComSignal
+      ComSignal_20:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_WITHIN
+          ComFilterMax: 30583
+          ComFilterMin: 4369
+        ComBitPosition: 34
+        ComBitSize: 17
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn20
+        ComFirstTimeout: 20.0
+        ComHandleId: 20
+        ComNotification: ! Rte_COMCbkTAck_sn20
+        ComSignalDataInvalidValue: 78643
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 511
+        ComSignalType: UINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn20
+        ComTransferProperty: PENDING
+        ComUpdateBitPosition: 51
+        DefinitionRef: ComSignal
+      ComSignal_21:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_WITHIN
+          ComFilterMax: 768
+          ComFilterMin: 512
+        ComBitPosition: 53
+        ComBitSize: 11
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn21
+        ComFirstTimeout: 15.0
+        ComHandleId: 21
+        ComNotification: ! Rte_COMCbkTAck_sn21
+        ComSignalDataInvalidValue: -888
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 273
+        ComSignalType: SINT32
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn21
+        ComTransferProperty: PENDING
+        ComUpdateBitPosition: 65
+        DefinitionRef: ComSignal
+      ComSignal_22:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_WITHIN
+          ComFilterMax: 10
+          ComFilterMin: 5
+        ComBitPosition: 68
+        ComBitSize: 4
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn22
+        ComFirstTimeout: 15.0
+        ComHandleId: 22
+        ComNotification: ! Rte_COMCbkTAck_sn22
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 10
+        ComSignalType: UINT8
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn22
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 67
+        DefinitionRef: ComSignal
+      ComSignal_23:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_WITHIN
+          ComFilterMax: 175
+          ComFilterMin: 170
+        ComBitPosition: 72
+        ComBitSize: 8
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn23
+        ComFirstTimeout: 20.0
+        ComHandleId: 23
+        ComNotification: ! Rte_COMCbkTAck_sn23
+        ComSignalDataInvalidValue: -128
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: -52
+        ComSignalType: SINT8
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn23
+        ComTransferProperty: PENDING
+        ComUpdateBitPosition: 87
+        DefinitionRef: ComSignal
+      ComSignal_24:
+        ComBitPosition: 92
+        ComBitSize: 9
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn24
+        ComFirstTimeout: 15.0
+        ComHandleId: 24
+        ComNotification: ! Rte_COMCbkTAck_sn24
+        ComSignalDataInvalidValue: 256
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 5
+        ComSignalType: UINT16
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn24
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 85
+        DefinitionRef: ComSignal
+      ComSignal_25:
+        ComBitPosition: 104
+        ComBitSize: 18
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn25
+        ComFirstTimeout: 20.0
+        ComHandleId: 25
+        ComNotification: ! Rte_COMCbkTAck_sn25
+        ComSignalDataInvalidValue: 61166
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 375
+        ComSignalType: UINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn25
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 90
+        DefinitionRef: ComSignal
+      ComSignal_26:
+        ComBitPosition: 114
+        ComBitSize: 1
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn26
+        ComFirstTimeout: 15.0
+        ComHandleId: 26
+        ComNotification: ! Rte_COMCbkTAck_sn26
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: BOOLEAN
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn26
+        ComTransferProperty: PENDING
+        ComUpdateBitPosition: 116
+        DefinitionRef: ComSignal
+      ComSignal_27:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_OUTSIDE
+          ComFilterMax: 8191
+          ComFilterMin: 4096
+        ComBitPosition: 3
+        ComBitSize: 13
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn27
+        ComFirstTimeout: 20.0
+        ComHandleId: 27
+        ComNotification: ! Rte_COMCbkTAck_sn27
+        ComSignalDataInvalidValue: 8191
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 255
+        ComSignalType: UINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn27
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 1
+        DefinitionRef: ComSignal
+      ComSignal_28:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_OUTSIDE
+          ComFilterMax: 511
+          ComFilterMin: 256
+        ComBitPosition: 17
+        ComBitSize: 11
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn28
+        ComFirstTimeout: 15.0
+        ComHandleId: 28
+        ComNotification: ! Rte_COMCbkTAck_sn28
+        ComSignalDataInvalidValue: 273
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: SINT16
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn28
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 29
+        DefinitionRef: ComSignal
+      ComSignal_29:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_OUTSIDE
+          ComFilterMax: 30583
+          ComFilterMin: 4369
+        ComBitPosition: 34
+        ComBitSize: 17
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn29
+        ComFirstTimeout: 20.0
+        ComHandleId: 29
+        ComNotification: ! Rte_COMCbkTAck_sn29
+        ComSignalDataInvalidValue: 78643
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 511
+        ComSignalType: UINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn29
+        ComTransferProperty: PENDING
+        ComUpdateBitPosition: 51
+        DefinitionRef: ComSignal
+      ComSignal_30:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_OUTSIDE
+          ComFilterMax: 768
+          ComFilterMin: 512
+        ComBitPosition: 53
+        ComBitSize: 11
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn30
+        ComFirstTimeout: 15.0
+        ComHandleId: 30
+        ComNotification: ! Rte_COMCbkTAck_sn30
+        ComSignalDataInvalidValue: -888
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 273
+        ComSignalType: SINT32
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn30
+        ComTransferProperty: PENDING
+        ComUpdateBitPosition: 65
+        DefinitionRef: ComSignal
+      ComSignal_31:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_OUTSIDE
+          ComFilterMax: 10
+          ComFilterMin: 5
+        ComBitPosition: 68
+        ComBitSize: 4
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn31
+        ComFirstTimeout: 20.0
+        ComHandleId: 31
+        ComNotification: ! Rte_COMCbkTAck_sn31
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 10
+        ComSignalType: UINT8
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn31
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 67
+        DefinitionRef: ComSignal
+      ComSignal_32:
+        ComFilter:
+          ComFilterAlgorithm: NEW_IS_OUTSIDE
+          ComFilterMax: 175
+          ComFilterMin: 170
+        ComBitPosition: 72
+        ComBitSize: 8
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn32
+        ComFirstTimeout: 15.0
+        ComHandleId: 32
+        ComNotification: ! Rte_COMCbkTAck_sn32
+        ComSignalDataInvalidValue: -128
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: -52
+        ComSignalType: SINT8
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn32
+        ComTransferProperty: PENDING
+        ComUpdateBitPosition: 87
+        DefinitionRef: ComSignal
+      ComSignal_33:
+        ComBitPosition: 92
+        ComBitSize: 9
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn33
+        ComFirstTimeout: 20.0
+        ComHandleId: 33
+        ComNotification: ! Rte_COMCbkTAck_sn33
+        ComSignalDataInvalidValue: 256
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 5
+        ComSignalType: UINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn33
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 85
+        DefinitionRef: ComSignal
+      ComSignal_34:
+        ComBitPosition: 104
+        ComBitSize: 18
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn34
+        ComFirstTimeout: 15.0
+        ComHandleId: 34
+        ComNotification: ! Rte_COMCbkTAck_sn34
+        ComSignalDataInvalidValue: 61166
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 375
+        ComSignalType: UINT32
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn34
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 90
+        DefinitionRef: ComSignal
+      ComSignal_35:
+        ComBitPosition: 114
+        ComBitSize: 1
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn35
+        ComFirstTimeout: 20.0
+        ComHandleId: 35
+        ComNotification: ! Rte_COMCbkTAck_sn35
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: BOOLEAN
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn35
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        ComUpdateBitPosition: 116
+        DefinitionRef: ComSignal
+      ComSignal_36:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 8191
+        ComBitPosition: 3
+        ComBitSize: 15
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn36
+        ComFirstTimeout: 15.0
+        ComHandleId: 36
+        ComNotification: ! Rte_COMCbkTAck_sn36
+        ComSignalDataInvalidValue: 62
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -16384
+        ComSignalType: SINT32
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn36
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_37:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 3
+        ComBitPosition: 21
+        ComBitSize: 3
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn37
+        ComFirstTimeout: 20.0
+        ComHandleId: 37
+        ComNotification: ! Rte_COMCbkTAck_sn37
+        ComSignalDataInvalidValue: 7
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: UINT8
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn37
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_38:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 240
+        ComBitPosition: 42
+        ComBitSize: 12
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn38
+        ComFirstTimeout: 15.0
+        ComHandleId: 38
+        ComNotification: ! Rte_COMCbkTAck_sn38
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 4095
+        ComSignalType: UINT16
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn38
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_39:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 255
+        ComBitPosition: 48
+        ComBitSize: 15
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn39
+        ComFirstTimeout: 25.0
+        ComHandleId: 39
+        ComNotification: ! Rte_COMCbkTAck_sn39
+        ComSignalDataInvalidValue: 1228
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: UINT16
+        ComTimeout: 200.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn39
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_40:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 1
+        ComBitPosition: 64
+        ComBitSize: 1
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn40
+        ComFirstTimeout: 250.0
+        ComHandleId: 40
+        ComNotification: ! Rte_COMCbkTAck_sn40
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: BOOLEAN
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn40
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_41:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 783
+        ComBitPosition: 68
+        ComBitSize: 11
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn41
+        ComFirstTimeout: 20.0
+        ComHandleId: 41
+        ComNotification: ! Rte_COMCbkTAck_sn41
+        ComSignalDataInvalidValue: 1365
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 682
+        ComSignalType: UINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn41
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_42:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 1024
+        ComBitPosition: 82
+        ComBitSize: 11
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn42
+        ComFirstTimeout: 15.0
+        ComHandleId: 42
+        ComNotification: ! Rte_COMCbkTAck_sn42
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 32
+        ComSignalType: SINT16
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn42
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_43:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 63
+        ComBitPosition: 110
+        ComBitSize: 10
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn43
+        ComFirstTimeout: 20.0
+        ComHandleId: 43
+        ComNotification: ! Rte_COMCbkTAck_sn43
+        ComSignalDataInvalidValue: 42
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 64
+        ComSignalType: UINT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn43
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_44:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 62
+        ComBitPosition: 116
+        ComBitSize: 6
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn44
+        ComFirstTimeout: 15.0
+        ComHandleId: 44
+        ComNotification: ! Rte_COMCbkTAck_sn44
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: SINT8
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn44
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_45:
+        ComFilter:
+          ComFilterAlgorithm: ONE_EVERY_N
+          ComFilterOffset: 4
+          ComFilterPeriod: 5
+        ComBitPosition: 4
+        ComBitSize: 4
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn45
+        ComHandleId: 45
+        ComNotification: ! Rte_COMCbkTAck_sn45
+        ComSignalDataInvalidValue: 10
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 11
+        ComSignalType: UINT8
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn45
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 2
+        DefinitionRef: ComSignal
+      ComSignal_46:
+        ComFilter:
+          ComFilterAlgorithm: ONE_EVERY_N
+          ComFilterOffset: 5
+          ComFilterPeriod: 10
+        ComBitPosition: 18
+        ComBitSize: 13
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn46
+        ComHandleId: 46
+        ComNotification: ! Rte_COMCbkTAck_sn46
+        ComSignalDataInvalidValue: 4369
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 8191
+        ComSignalType: UINT16
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn46
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 15
+        DefinitionRef: ComSignal
+      ComSignal_47:
+        ComFilter:
+          ComFilterAlgorithm: ONE_EVERY_N
+          ComFilterOffset: 6
+          ComFilterPeriod: 7
+        ComBitPosition: 25
+        ComBitSize: 20
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn47
+        ComHandleId: 47
+        ComNotification: ! Rte_COMCbkTAck_sn47
+        ComSignalDataInvalidValue: 489335
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 279620
+        ComSignalType: UINT32
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn47
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 45
+        DefinitionRef: ComSignal
+      ComSignal_48:
+        ComFilter:
+          ComFilterAlgorithm: ONE_EVERY_N
+          ComFilterOffset: 4
+          ComFilterPeriod: 5
+        ComBitPosition: 48
+        ComBitSize: 7
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn48
+        ComHandleId: 48
+        ComNotification: ! Rte_COMCbkTAck_sn48
+        ComSignalDataInvalidValue: -1
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: -64
+        ComSignalType: SINT16
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn48
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 55
+        DefinitionRef: ComSignal
+      ComSignal_49:
+        ComFilter:
+          ComFilterAlgorithm: ONE_EVERY_N
+          ComFilterOffset: 3
+          ComFilterPeriod: 4
+        ComBitPosition: 57
+        ComBitSize: 6
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn49
+        ComHandleId: 49
+        ComNotification: ! Rte_COMCbkTAck_sn49
+        ComSignalDataInvalidValue: 15
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: UINT16
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn49
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 63
+        DefinitionRef: ComSignal
+      ComSignal_50:
+        ComFilter:
+          ComFilterAlgorithm: ONE_EVERY_N
+          ComFilterOffset: 4
+          ComFilterPeriod: 6
+        ComBitPosition: 64
+        ComBitSize: 5
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn50
+        ComHandleId: 50
+        ComNotification: ! Rte_COMCbkTAck_sn50
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: -1
+        ComSignalType: SINT8
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn50
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 69
+        DefinitionRef: ComSignal
+      ComSignal_51:
+        ComFilter:
+          ComFilterAlgorithm: ONE_EVERY_N
+          ComFilterOffset: 5
+          ComFilterPeriod: 8
+        ComBitPosition: 73
+        ComBitSize: 13
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn51
+        ComHandleId: 51
+        ComNotification: ! Rte_COMCbkTAck_sn51
+        ComSignalDataInvalidValue: -256
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: SINT32
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn51
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 86
+        DefinitionRef: ComSignal
+      ComSignal_52:
+        ComFilter:
+          ComFilterAlgorithm: ONE_EVERY_N
+          ComFilterOffset: 4
+          ComFilterPeriod: 8
+        ComBitPosition: 88
+        ComBitSize: 7
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn52
+        ComHandleId: 52
+        ComNotification: ! Rte_COMCbkTAck_sn52
+        ComSignalDataInvalidValue: 119
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 63
+        ComSignalType: UINT32
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn52
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 95
+        DefinitionRef: ComSignal
+      ComSignal_53:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 96
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn53
+        ComHandleId: 53
+        ComSignalDataInvalidValue: 0x41 0x54 0x4B
+        ComSignalEndianness: OPAQUE
+        ComSignalInitValue: 0x41 0x54 0x4B
+        ComSignalLength: 3
+        ComSignalType: UINT8_N
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn53
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 120
+        DefinitionRef: ComSignal
+      ComSignal_54:
+        ComFilter:
+          ComFilterAlgorithm: ONE_EVERY_N
+          ComFilterOffset: 5
+          ComFilterPeriod: 7
+        ComBitPosition: 122
+        ComBitSize: 1
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn54
+        ComHandleId: 54
+        ComNotification: ! Rte_COMCbkTAck_sn54
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: BOOLEAN
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn54
+        ComTransferProperty: TRIGGERED
+        ComUpdateBitPosition: 121
+        DefinitionRef: ComSignal
+      ComSignal_55:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 3
+        ComBitSize: 5
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn55
+        ComFirstTimeout: 20.0
+        ComHandleId: 55
+        ComNotification: ! Rte_COMCbkTAck_sn55
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -1
+        ComSignalType: SINT8
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn55
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_56:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 10
+        ComBitSize: 6
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn56
+        ComFirstTimeout: 15.0
+        ComHandleId: 56
+        ComNotification: ! Rte_COMCbkTAck_sn56
+        ComSignalDataInvalidValue: 47
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 3
+        ComSignalType: UINT8
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn56
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_57:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 26
+        ComBitSize: 6
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn57
+        ComFirstTimeout: 20.0
+        ComHandleId: 57
+        ComNotification: ! Rte_COMCbkTAck_sn57
+        ComSignalDataInvalidValue: -1
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -4
+        ComSignalType: SINT32
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn57
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_58:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 42
+        ComBitSize: 14
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn58
+        ComFirstTimeout: 15.0
+        ComHandleId: 58
+        ComNotification: ! Rte_COMCbkTAck_sn58
+        ComSignalDataInvalidValue: 4369
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 13107
+        ComSignalType: UINT32
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn58
+        ComTransferProperty: PENDING
+        DefinitionRef: ComSignal
+      ComSignal_59:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 48
+        ComBitSize: 12
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn59
+        ComFirstTimeout: 20.0
+        ComHandleId: 59
+        ComNotification: ! Rte_COMCbkTAck_sn59
+        ComSignalDataInvalidValue: 1092
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -1912
+        ComSignalType: SINT16
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn59
+        ComTransferProperty: PENDING
+        DefinitionRef: ComSignal
+      ComSignal_60:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 62
+        ComBitSize: 10
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn60
+        ComFirstTimeout: 15.0
+        ComHandleId: 60
+        ComNotification: ! Rte_COMCbkTAck_sn60
+        ComSignalDataInvalidValue: 1023
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 160
+        ComSignalType: UINT16
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn60
+        ComTransferProperty: PENDING
+        DefinitionRef: ComSignal
+      ComSignal_61:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 90
+        ComBitSize: 14
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn61
+        ComFirstTimeout: 20.0
+        ComHandleId: 61
+        ComNotification: ! Rte_COMCbkTAck_sn61
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 4352
+        ComSignalType: UINT16
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn61
+        ComTransferProperty: PENDING
+        DefinitionRef: ComSignal
+      ComSignal_62:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 112
+        ComBitSize: 17
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn62
+        ComFirstTimeout: 15.0
+        ComHandleId: 62
+        ComNotification: ! Rte_COMCbkTAck_sn62
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 65535
+        ComSignalType: UINT32
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn62
+        ComTransferProperty: PENDING
+        DefinitionRef: ComSignal
+      ComSignal_63:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 97
+        ComBitSize: 1
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn63
+        ComFirstTimeout: 15.0
+        ComHandleId: 63
+        ComNotification: ! Rte_COMCbkTAck_sn63
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: BOOLEAN
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn63
+        ComTransferProperty: PENDING
+        DefinitionRef: ComSignal
+      ComSignal_64:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 120
+        ComDataInvalidAction: NOTIFY
+        ComErrorNotification: ! Rte_COMCbkTErr_sn64
+        ComFirstTimeout: 15.0
+        ComHandleId: 64
+        ComNotification: ! Rte_COMCbkTAck_sn64
+        ComSignalDataInvalidValue: 0x00 0x00 0x00 0x00 0x00 0x41 0x54 0x4B
+        ComSignalEndianness: OPAQUE
+        ComSignalInitValue: 0x00 0x00 0x00 0x00 0x00 0x41 0x54 0x4B
+        ComSignalLength: 8
+        ComSignalType: UINT8_N
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn64
+        ComTransferProperty: PENDING
+        DefinitionRef: ComSignal
+      ComSignal_65:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 3
+        ComBitSize: 5
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn65
+        ComFirstTimeout: 20.0
+        ComHandleId: 74
+        ComNotification: ! Rte_COMCbkTAck_sn65
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -1
+        ComSignalType: SINT8
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn65
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_66:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 10
+        ComBitSize: 6
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn66
+        ComFirstTimeout: 10.0
+        ComHandleId: 66
+        ComNotification: ! Rte_COMCbkTAck_sn66
+        ComSignalDataInvalidValue: 47
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 3
+        ComSignalType: UINT8
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn66
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_67:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 26
+        ComBitSize: 6
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn67
+        ComFirstTimeout: 15.0
+        ComHandleId: 67
+        ComNotification: ! Rte_COMCbkTAck_sn67
+        ComSignalDataInvalidValue: -31
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 30
+        ComSignalType: SINT32
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn67
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_68:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 42
+        ComBitSize: 14
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn68
+        ComFirstTimeout: 15.0
+        ComHandleId: 68
+        ComNotification: ! Rte_COMCbkTAck_sn68
+        ComSignalDataInvalidValue: 4369
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 13107
+        ComSignalType: UINT32
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn68
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_69:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 48
+        ComBitSize: 12
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn69
+        ComFirstTimeout: 20.0
+        ComHandleId: 69
+        ComNotification: ! Rte_COMCbkTAck_sn69
+        ComSignalDataInvalidValue: 1092
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -1912
+        ComSignalType: SINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn69
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_70:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 62
+        ComBitSize: 10
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn70
+        ComFirstTimeout: 15.0
+        ComHandleId: 70
+        ComNotification: ! Rte_COMCbkTAck_sn70
+        ComSignalDataInvalidValue: 1023
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 160
+        ComSignalType: UINT16
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn70
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_71:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 90
+        ComBitSize: 14
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn71
+        ComFirstTimeout: 20.0
+        ComHandleId: 71
+        ComNotification: ! Rte_COMCbkTAck_sn71
+        ComSignalDataInvalidValue: 0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 4352
+        ComSignalType: UINT16
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn71
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_72:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 112
+        ComBitSize: 17
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn72
+        ComFirstTimeout: 15.0
+        ComHandleId: 72
+        ComNotification: ! Rte_COMCbkTAck_sn72
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 65535
+        ComSignalType: UINT32
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn72
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_73:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 97
+        ComBitSize: 1
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn73
+        ComFirstTimeout: 20.0
+        ComHandleId: 73
+        ComNotification: ! Rte_COMCbkTAck_sn73
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: BOOLEAN
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn73
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_74:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 120
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn74
+        ComFirstTimeout: 15.0
+        ComHandleId: 65
+        ComNotification: ! Rte_COMCbkTAck_sn74
+        ComSignalDataInvalidValue: 0x00 0x00 0x00 0x00 0x00 0x41 0x54 0x4B
+        ComSignalEndianness: OPAQUE
+        ComSignalInitValue: 0x00 0x00 0x00 0x00 0x00 0x41 0x54 0x4B
+        ComSignalLength: 8
+        ComSignalType: UINT8_N
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn74
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_75:
+        ComBitPosition: 0
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn75
+        ComFirstTimeout: 15.0
+        ComHandleId: 75
+        ComNotification: ! Rte_COMCbkTAck_sn75
+        ComSignalEndianness: OPAQUE
+        ComSignalInitValue: 0x41
+        ComSignalLength: 1
+        ComSignalType: UINT8_N
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn75
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_76:
+        ComBitPosition: 8
+        ComBitSize: 2
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn76
+        ComFirstTimeout: 15.0
+        ComHandleId: 76
+        ComNotification: ! Rte_COMCbkTAck_sn76
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: UINT8
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn76
+        ComTransferProperty: PENDING
+        DefinitionRef: ComSignal
+      ComSignal_77:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 13
+        ComBitSize: 1
+        ComErrorNotification: ! Rte_COMCbkTErr_sn77
+        ComFirstTimeout: 15.0
+        ComHandleId: 77
+        ComNotification: ! Rte_COMCbkTAck_sn77
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: BOOLEAN
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn77
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_78:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 14
+        ComBitSize: 1
+        ComErrorNotification: ! Rte_COMCbkTErr_sn78
+        ComFirstTimeout: 15.0
+        ComHandleId: 78
+        ComNotification: ! Rte_COMCbkTAck_sn78
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: BOOLEAN
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn78
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_79:
+        ComBitPosition: 40
+        ComBitSize: 32
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn79
+        ComFirstTimeout: 20.0
+        ComHandleId: 79
+        ComNotification: ! Rte_COMCbkTAck_sn79
+        ComSignalDataInvalidValue: 0.0
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 4352.0
+        ComSignalType: FLOAT32
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn79
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_80:
+        ComBitPosition: 128
+        ComBitSize: 64
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn80
+        ComFirstTimeout: 15.0
+        ComHandleId: 80
+        ComNotification: ! Rte_COMCbkTAck_sn80
+        ComSignalDataInvalidValue: 1.0
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 65535.0
+        ComSignalType: FLOAT64
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn80
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_81:
+        ComBitPosition: 1
+        ComBitSize: 1
+        ComDataInvalidAction: REPLACE
+        ComFirstTimeout: 15.0
+        ComHandleId: 81
+        ComSignalDataInvalidValue: 1
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 0
+        ComSignalType: BOOLEAN
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_82:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 0
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn82
+        ComFirstTimeout: 15.0
+        ComHandleId: 82
+        ComNotification: ! Rte_COMCbkTAck_sn82
+        ComSignalEndianness: OPAQUE
+        ComSignalInitValue: 0x41
+        ComSignalLength: 1
+        ComSignalType: UINT8_N
+        ComTimeout: 20.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn82
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+      ComSignal_83:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 3
+        ComBitSize: 5
+        ComDataInvalidAction: REPLACE
+        ComErrorNotification: ! Rte_COMCbkTErr_sn83
+        ComFirstTimeout: 20.0
+        ComHandleId: 83
+        ComNotification: ! Rte_COMCbkTAck_sn83
+        ComSignalDataInvalidValue: 5
+        ComSignalEndianness: BIG_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: UINT8
+        ComTimeout: 25.0
+        ComTimeoutNotification: ! Rte_COMCbkTxTOut_sn35
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        ComUpdateBitPosition: 20
+        DefinitionRef: ComSignal
+      ComTimeBase:
+        ComTxTimeBase: 0.2
+      ComConfigurationId: 0
+      DefinitionRef: ComConfig
+    ComGeneral:
+      ComSupportedIPduGroups: 1
+      ComVersionInfoApi: true
+      ComConfigurationUseDet: true
+EcuC:
+  EcuC:
+    EcucPduCollection:
+      Pdu_0:
+        PduLength: 15
+        DefinitionRef: Pdu
+      Pdu_1:
+        PduLength: 15
+        DefinitionRef: Pdu
+      Pdu_2:
+        PduLength: 16
+        DefinitionRef: Pdu
+      Pdu_3:
+        PduLength: 16
+        DefinitionRef: Pdu
+      Pdu_4:
+        PduLength: 16
+        DefinitionRef: Pdu
+      Pdu_5:
+        PduLength: 16
+        DefinitionRef: Pdu
+      Pdu_6:
+        PduLength: 25
+        DefinitionRef: Pdu
+      Pdu_7:
+        PduLength: 25
+        DefinitionRef: Pdu
+      Pdu_8:
+        PduLength: 18
+        DefinitionRef: Pdu
+      Pdu_9:
+        PduLength: 16
+        DefinitionRef: Pdu
+      Pdu_10:
+        PduLength: 16
+        DefinitionRef: Pdu
+      Pdu_11:
+        PduLength: 10
+        DefinitionRef: Pdu
+PduR:
+  PduR:
+    PduRGeneral:
+      PduRZeroCostOperation: true
+    PduRRoutingTables:
+      PduRConfigurationId: 0
+      PduRRoutingTable:
+        PduRRoutingPath_0:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 0
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_0
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_1:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 1
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_1
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_2:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 2
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_2
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_3:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 3
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_3
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_4:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 4
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_4
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_5:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 5
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_5
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_6:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 6
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_6
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_7:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 7
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_7
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_8:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 8
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_8
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_9:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 9
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_9
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_10:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 10
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_10
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_11:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 11
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_11
+          DefinitionRef: PduRRoutingPath

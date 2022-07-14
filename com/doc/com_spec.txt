@@ -1,0 +1,541 @@
+
+	TOPPERS/A-COM 外部仕様書
+
+本ドキュメントは，AUTOSAR仕様をベースとしたA-COMの外部仕様を説明するも
+のである．
+
+----------------------------------------------------------------------
+TOPPERS/A-COM
+    Automotive COM
+
+Copyright (C) 2013-2014 by Center for Embedded Computing Systems
+            Graduate School of Information Science, Nagoya Univ., JAPAN
+Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
+Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
+Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+
+上記著作権者は，以下の (1)〜(3)の条件を満たす場合に限り，本ドキュメ
+ント（本ドキュメントを改変したものを含む．以下同じ）を使用・複製・改
+変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
+(1) 本ドキュメントを利用する場合には，上記の著作権表示，この利用条件
+    および下記の無保証規定が，そのままの形でドキュメント中に含まれて
+    いること．
+(2) 本ドキュメントを改変する場合には，ドキュメントを改変した旨の記述
+    を，改変後のドキュメント中に含めること．ただし，改変後のドキュメ
+    ントが，TOPPERSプロジェクト指定の開発成果物である場合には，この限
+    りではない．
+(3) 本ドキュメントの利用により直接的または間接的に生じるいかなる損害
+    からも，上記著作権者およびTOPPERSプロジェクトを免責すること．また，
+    本ドキュメントのユーザまたはエンドユーザからのいかなる理由に基づ
+    く請求からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+
+本ドキュメントは，AUTOSAR（AUTomotive Open System ARchitecture）仕様
+に基づいている．上記の許諾は，AUTOSARの知的財産権を許諾するものではな
+い．AUTOSARは，AUTOSAR仕様に基づいたソフトウェアを商用目的で利用する
+者に対して，AUTOSARパートナーになることを求めている．
+
+本ドキュメントは，無保証で提供されているものである．上記著作権者およ
+びTOPPERSプロジェクトは，本ドキュメントに関して，特定の使用目的に対す
+る適合性も含めて，いかなる保証も行わない．また，本ドキュメントの利用
+により直接的または間接的に生じたいかなる損害に関しても，その責任を負
+わない．
+
+$Id: com_spec.txt 425 2014-09-17 00:46:01Z fsi-dankei $
+----------------------------------------------------------------------
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(1) 概要
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A-COMは，AUTOSARの以下の仕様に準拠して開発する．
+Specification of Communication V4.2.0 R4.0 Rev 3
+
+しかし，要求仕様が膨大であるので，対応する要求仕様を限定して開発を行う．
+本ドキュメントでは，AUTOSAR仕様の中で，A-COMがサポートする仕様，サポー
+トしない仕様，曖昧な仕様の解釈を説明する．また，システムサービスとパラ
+メータコンテナに関する詳細な仕様は，com_system_service.txt，および
+com_container.txtに，それぞれ規定する．
+
+これらのドキュメントで言及のない要求仕様に関しては，上記仕様に準拠して
+開発されているものとする．
+
+★★★ 発行済み仕様番号 ★★★
+NCOM041
+COMa005
+
+―――――――――――――――――――――――――――――――――――
+(1.1) 略語一覧
+―――――――――――――――――――――――――――――――――――
+MF  ：Com_MainFunctionTxとCom_MainFunctionRxの総称
+MFTX：Com_MainFunctionTx
+MFRX：Com_MainFunctionRx
+DM  ：デッドラインモニタリング
+MDT ：Minimum Delay Time
+TMS ：Transmission Mode Selector
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(2) サポートする機能
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+―――――――――――――――――――――――――――――――――――
+(2.1) 機能
+―――――――――――――――――――――――――――――――――――
+■送信
+  ・MFTXによるDIRECT送信 [*]
+  ・MFTXによるPERIODIC送信 [*]
+  ・MFTXによるMIXED送信 [*]
+  ・TriggerIPDUSendによるトリガ送信 [*]
+  ・N-times送信 [*]
+  ・送信完了通知 [*]
+  ・パッキング [*]
+  ・エンディアン変換 [*]
+  ・MDT [*]
+  ・TMS [*]
+  ・コールバック [*]
+  ・コールアウト [*]
+  ・送信DM [*]
+■受信
+  ・MFRXによる非同期受信 [*]
+  ・RxIndicationによる即時受信 [*]
+  ・受信シグナル値取得 [*]
+  ・アンパッキング [*]
+  ・エンディアン変換，符号拡張 [*]
+  ・フィルタリング [*]
+  ・コールバック [*]
+  ・コールアウト [*]
+  ・受信DM [*]
+■データ構造
+  ・シグナル [*]
+  ・IPDU [*]
+  ・IPDUグループ [*]
+  ・アップデートビット [*]
+  ・無効値 [*]
+■初期化
+  ・Comの初期化 [*]
+  ・Comの未初期化 [*]
+  ・I-PDUグループ開始・停止 [*]
+  ・ポストビルド
+
+  [*]:ボディ系サブセット対象
+
+―――――――――――――――――――――――――――――――――――
+(2.2) パラメータコンテナ
+―――――――――――――――――――――――――――――――――――
+■ComGeneral
+  ▼ComConfigurationUseDet
+  ▼ComEnableMDTForCyclicTransmission
+  ▼ComRetryFailedTransmitRequests
+  ▼ComSupportedIPduGroups
+  ▼ComVersionInfoApi
+■ComConfig
+  ▼ComConfigurationId
+  ▼ComTimeBase
+    ・ComRxTimeBase
+    ・ComTxTimeBase
+  ▼ComIPdu
+    ・ComIPduCallout
+    ・ComIPduCancellationSupport
+    ・ComIPduDirection
+    ・ComIPduHandleId
+    ・ComIPduSignalProcessing
+    ・ComIPduType
+    ・ComIPduGroupRef
+    ・ComIPduSignalRef
+    ・ComPduIdRef
+    ・ComIPduReplication
+      ・ComIPduReplicationQuorum
+      ・ComIPduReplicaRef
+    ・ComTxIPdu
+      ・ComMinimumDelayTime
+      ・ComTxIPduClearUpdateBit
+      ・ComTxIPduUnusedAreasDefault
+      ・ComTxModeTrue
+        ・ComTxMode
+          ・ComTxModeMode
+          ・ComTxModeNumberOfRepetitions
+          ・ComTxModeRepetitionPeriod
+          ・ComTxModeTimeOffset
+          ・ComTxModeTimePeriod
+      ・ComTxModeFalse
+        ・ComTxMode
+          ・ComTxModeMode
+          ・ComTxModeNumberOfRepetitions
+          ・ComTxModeRepetitionPeriod
+          ・ComTxModeTimeOffset
+          ・ComTxModeTimePeriod
+  ▼ComIPduGroup
+    ・ComIPduGroupHandleId
+  ▼ComSignal
+    ・ComBitPosition
+    ・ComBitSize
+    ・ComDataInvalidAction
+    ・ComErrorNotification
+    ・ComFirstTimeout
+    ・ComHandleId
+    ・ComInvalidNotification
+    ・ComNotification
+    ・ComRxDataTimeoutAction
+    ・ComSignalDataInvalidValue
+    ・ComSignalEndianness
+    ・ComSignalInitValue
+    ・ComSignalLength
+    ・ComSignalType
+    ・ComTimeout
+    ・ComTimeoutNotification
+    ・ComTransferProperty
+    ・ComUpdateBitPosition
+    ・ComFilter
+      ・ComFilterAlgorithm
+      ・ComFilterMask
+      ・ComFilterMax
+      ・ComFilterMin
+      ・ComFilterOffset
+      ・ComFilterPeriod
+      ・ComFilterX
+
+―――――――――――――――――――――――――――――――――――
+(2.3) システムサービス
+―――――――――――――――――――――――――――――――――――
+・Com_Init [*]
+・Com_DeInit [*]
+・Com_ClearIpduGroupVector [*]
+・Com_SetIpduGroup [*]
+・Com_IpduGroupControl [*]
+・Com_ReceptionDMControl [*]
+・Com_SendSignal [*]
+・Com_ReceiveSignal [*]
+・Com_InvalidateSignal [*]
+・Com_TriggerIPDUSend [*]
+・Com_SwitchIpduTxMode [*]
+・Com_RxIndication [*]
+・Com_TxConfirmation [*]
+・Com_MainFunctionRx [*]
+・Com_MainFunctionTx [*]
+・Com_GetStatus [*]
+・Com_GetConfigurationId [*]
+・Com_GetVersionInfo
+
+  [*]:ボディ系サブセット対象
+
+―――――――――――――――――――――――――――――――――――
+(2.4) コールバック，コールアウト
+―――――――――――――――――――――――――――――――――――
+・Com_CbkTxAck [*]
+・Com_CbkTxErr [*]
+・Com_CbkTxTOut [*]
+・Com_CbkRxAck [*]
+・Com_CbkRxTOut [*]
+・Com_CbkInv [*]
+・Com_CbkCounterErr
+・Com_RxIpduCallout [*]
+・Com_TxIpduCallout [*]
+
+  [*]:ボディ系サブセット対象
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(3) サポートしない機能
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+＜機能一覧＞
+●送信
+  ・送信シグナルゲートウェイ
+  ・送信保護
+●受信
+  ・受信シグナルゲートウェイ
+  ・受信保護
+●データ構造
+  ・シグナルグループ
+  ・大型データ
+  ・動的データ
+  ・シャドウバッファ
+
+  [*]:ボディ系サブセット対象
+
+―――――――――――――――――――――――――――――――――――
+(3.1) パラメータコンテナ
+―――――――――――――――――――――――――――――――――――
+■ComConfig
+  ▼ComTimeBase
+    ・ComGwTimeBase
+  ▼ComGwMapping
+    ・ComGwDestination
+      ・ComGwSignal
+        ・ComGwSignalRef
+      ・ComGwDestinationDescription
+        ・ComBitPosition
+        ・ComSignalEndianness
+        ・ComSignalInitValue
+        ・ComTransferProperty
+        ・ComUpdateBitPosition
+        ・ComGwIPduRef
+        ・ComFilter
+          ・ComFilterAlgorithm
+          ・ComFilterMask
+          ・ComFilterMax
+          ・ComFilterMin
+          ・ComFilterOffset
+          ・ComFilterPeriod
+          ・ComFilterX
+    ・ComGwSource
+      ・ComGwSignal
+        ・ComGwSignalRef
+      ・ComGwSourceDescription
+        ・ComBitPosition
+        ・ComBitSize
+        ・ComSignalEndianness
+        ・ComSignalLength
+        ・ComSignalType
+        ・ComUpdateBitPosition
+        ・ComGwIPduRef
+  ▼ComIPdu
+    ・ComIPduTriggerTransmitCallout
+    ・ComIPduSignalGroupRef
+    ・ComIPduCounter
+      ・ComIPduCounterErrorNotification
+      ・ComIPduCounterSize
+      ・ComIPduCounterStartPosition
+      ・ComIPduCounterThreshold
+  ▼ComIPduGroup
+    ・ComIPduGroupGroupRef
+  ▼ComSignal
+    ・ComSystemTemplateSystemSignalRef
+  ▼ComSignalGroup
+    ・ComDataInvalidAction
+    ・ComErrorNotification
+    ・ComFirstTimeout
+    ・ComHandleId
+    ・ComInvalidNotification
+    ・ComNotification
+    ・ComRxDataTimeoutAction
+    ・ComTimeout
+    ・ComTimeoutNotification
+    ・ComTransferProperty
+    ・ComUpdateBitPosition
+    ・ComSystemTemplateSignalGroupRef
+    ・ComGroupSignal
+      ・ComBitPosition
+      ・ComBitSize
+      ・ComHandleId
+      ・ComSignalDataInvalidValue
+      ・ComSignalEndianness
+      ・ComSignalInitValue
+      ・ComSignalLength
+      ・ComSignalType
+      ・ComTransferProperty
+      ・ComSystemTemplateSystemSignalRef
+      ・ComFilter
+        ・ComFilterAlgorithm
+        ・ComFilterMask
+        ・ComFilterMax
+        ・ComFilterMin
+        ・ComFilterOffset
+        ・ComFilterPeriod
+        ・ComFilterX
+
+―――――――――――――――――――――――――――――――――――
+(3.2) システムサービス
+―――――――――――――――――――――――――――――――――――
+・Com_SendDynSignal
+・Com_ReceiveDynSignal
+・Com_UpdateShadowSignal
+・Com_SendSignalGroup
+・Com_ReceiveSignalGroup
+・Com_ReceiveShadowSignal
+・Com_InvalidateShadowSignal
+・Com_InvalidateSignalGroup
+・Com_TriggerTransmit
+・Com_TpRxIndication
+・Com_TpTxConfirmation
+・Com_StartOfReception
+・Com_CopyRxData
+・Com_CopyTxData
+・Com_MainFunctionRouteSignals
+
+  [*]:ボディ系サブセット対象
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(4) 追加，改変仕様
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+―――――――――――――――――――――――――――――――――――
+(4.1) コンフィギュレーションデータの指定方法
+―――――――――――――――――――――――――――――――――――
+ジェネレータで生成するコンフィギュレーションデータ(Com_ConfigType型)は，
+"com_config"という変数名の配列で，ComConfigコンテナ毎に定義する．
+[NCOM024]
+したがって，Com_Initでは以下のように指定する．添字はComConfigurationId
+で指定した値となる．
+
+＜例＞
+Com_Init(&com_config[0]);
+
+―――――――――――――――――――――――――――――――――――
+(4.2) PDUのデータ型定義
+―――――――――――――――――――――――――――――――――――
+AUTOSAR仕様では，PDU-IDやPDUの長さを示すデータ型のサイズを，COMスタック
+ジェネレータで生成し，ComStack_Cfg.hに定義すると規定されている．
+[EcuC041_Conf][EcuC042_Conf][COMTYPE029]
+しかし，ジェネレータで生成するほどの内容で無いため，本仕様では，
+ComStack_Cfg.hは使用せず，ComStack_Types.hにPDU関連のデータ型を直接定義
+する．[NCOM025]
+
+―――――――――――――――――――――――――――――――――――
+(4.3) ComTxIPduClearUpdateBit省略時の補完
+―――――――――――――――――――――――――――――――――――
+AUTOSAR仕様では，シグナルのアップデートビットをクリアするタイミングを
+ComTxIPduClearUpdateBitに指定すると規定されている．
+ComTxIPduClearUpdateBitに指定可能な値は
+・Confirmation   ：Confirmation受信時
+・Transmit       ：送信後すぐ
+・TriggerTransmit：Com_TriggerTransmitが呼び出し後
+の三種類であり，多重度は0..1である．[COM576_Conf]
+多重度が0..1であり，省略が可能だが，アップデートビットを持つシグナルが
+所属しているIPDUには指定が必要であると考えられるため，本仕様では，
+ComTxIPduClearUpdateBitの指定を省略した場合，デフォルト値を"Transmit"と
+し，ジェネレータで補完する．[NCOM030]
+
+―――――――――――――――――――――――――――――――――――
+(4.3) アップデートビットを持つシグナルのDMタイマのリセットタイミング
+―――――――――――――――――――――――――――――――――――
+AUTOSAR仕様では，アップデートビットを持つシグナルのDMタイマをリセットす
+るタイミングが明確に規定されてない.[COM715]
+本仕様では，アップデートビットを持つシグナルは，アップデートビットが立
+っているシグナルを受信した場合に，DMタイマをリセットする．[NCOM031]
+
+―――――――――――――――――――――――――――――――――――
+(4.4) PduR_ComTransmit呼出しタイミング
+―――――――――――――――――――――――――――――――――――
+AUTOSAR仕様では，即時送信対象のシグナルにCom_SendSignalを発行した場合に，
+Com_SendSignalの中で，PduR_ComTransmitを呼び出すか，次回MFTX実行時に呼
+び出すか，実装依存となっている．本仕様では，一律次回MFTX呼出し時に，
+PduR_ComTransmitを呼び出すものとする．[NCOM006]
+
+―――――――――――――――――――――――――――――――――――
+(4.5) MF呼出し回数算出方法
+―――――――――――――――――――――――――――――――――――
+AUTOSAR仕様では，送信周期やDMの時間を秒単位で指定する．これらの時間の計
+測は，一定間隔毎に呼び出されるMFの呼出し回数によって行う．MFの呼出し間
+隔も秒単位で指定する．本仕様では，各パラメータに指定された秒を使用して
+以下の方法でMF呼出し回数の算出を行う．[NCOM005]
+
+＜対象時間がMF呼出し間隔時間で割り切れる場合＞
+  MF呼出し回数 = 対象時間 / MF呼出し間隔時間
+
+  例) ComTxModeTimePeriod: 5.0，ComTxTimeBase: 1.0 の場合，
+      MF呼出し回数は5回
+
+＜対象時間がMF呼出し間隔時間で割り切れない場合＞
+  MF呼出し回数 = (対象時間 / MF呼出し間隔時間) + 1
+
+  例) ComTxModeTimePeriod: 5.0，ComTxTimeBase: 2.0 の場合，
+      MF呼出し回数は3回 (切り上げた(ceil)整数値)
+
+―――――――――――――――――――――――――――――――――――
+(4.6) ComTxModeTimeOffsetの取り扱い
+―――――――――――――――――――――――――――――――――――
+周期送信が開始されるタイミングは，MFTXの呼出しとは関係ない．従って，
+ComTxModeTimeOffsetに指定された時間だけ間隔を確実に空けるには，算出した
+MF呼出し回数に+1したタイミングで送信を行う．[NCOM020]
+
+例) ComTxTimeBase      : 1.0
+    ComTxModeTimeOffset: 2.0 (MF呼出し回数は3(2+1)回)
+    ComTxModeTimePeriod: 4.0 (MF呼出し回数は4回)
+
+      [A]
+     0 !  1    2   [3]   4    5    6   [7]   8    9    10  [11]  12   13
+     |----|----|----|----|----|----|----|----|----|----|----|----|----|
+ MF  ^    ^    ^    ^    ^    ^    ^    ^    ^    ^    ^    ^    ^    ^
+
+  [A]のタイミングでCom_IpduGroupControlによる周期送信が開始された場合，
+  2回目で送信してしまうと，1.x秒で送信されてしまう．そこで，その後の3回
+  目の[3]で最初の送信を行う．以後の周期4.0秒に対しては，算出したMF呼出
+  し回数分のMF実行後に送信を行うことで，指定した周期を実現する．
+
+―――――――――――――――――――――――――――――――――――
+(4.7) ComFirstTimeout，ComTimeoutの取り扱い
+―――――――――――――――――――――――――――――――――――
+受信DMを開始するタイミングは，MFの呼出しとは関係ない．従って，
+ComFirstTimeoutに指定された時間を確実に経過するには，算出したMF呼出し回
+数に+1したタイミングでタイムアウトを検出する．[NCOM033]
+ComTimeoutは，Com_RxIndicationによってリセットされた場合に同様の問題が
+あるため，算出したMF呼出し回数に+1したタイミングでタイムアウトを検出す
+る．[NCOM034]
+Com_RxIndicationが呼び出されない場合に，再度ComTimeoutの時間でタイムア
+ウトを計測する場合は，+1する必要はない．[NCOM035]
+
+例) ComRxTimeBase  : 1.0
+    ComFirstTimeout: 2.0 (MF呼出し回数は3(2+1)回)
+    ComTimeout     : 3.0 (MF呼出し回数は状況により3回 or 4(3+1)回)
+
+      [A]
+     0 !  1    2   [3]   4    5   [6]   7    8    9    10  [11]  12   13
+     |----|----|----|----|----|----|----|----|----|----|----|----|----|
+ MF  ^    ^    ^    ^    ^    ^    ^    ^ !  ^    ^    ^    ^    ^    ^
+                                         [B]
+
+  [A]のタイミングでCom_IpduGroupControlによってDMが開始された場合，2回
+  目でタイムアウトを検出してしまうと，1.x秒でタイムアウト通知してしまう．
+  そこで，その後の3回目の[3]でタイムアウト検出を行う．
+  この後，Com_RxIndicationが呼び出されないままであれば，ComTimeoutの算
+  出したMF呼出し回数の通り，3回目の[6]でタイムアウト検出を行う．
+  この後，[B]のタイミングでCom_RxIndicationによって，受信DMタイマが
+  ComTimeoutにセットされた場合は，次に2.x秒でタイムアウト通知してしまう
+  のを避けるために，その後の4回目の[11]でタイムアウト検出を行う．
+
+※送信DMを開始するタイミングはMF呼出しのタイミングのみであるので，一律
+  算出したMF呼出し回数分でタイムアウト検出を行う．
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+(5) AUTOSAR仕様の補足説明
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+―――――――――――――――――――――――――――――――――――
+(5.1) 初期化なしの周期送信の再開
+―――――――――――――――――――――――――――――――――――
+[COM787]，[COM222]では，Com_IpduGroupControlによって初期化されるパラメ
+ータに関して説明されているが，PERIODICのIPDUが初期化なしで停止→開始さ
+れた場合に，再度offsetから始まることは読み取れない．
+従って，PERIODICのIPDUがCom_IpduGroupControlで停止された場合，周期カウ
+ンタはその時点で止めておき，その後，Com_IpduGroupControlが初期化なしで
+呼び出された場合，カウンタを初期化せずにそのまま周期を再開する．
+[COMa001]
+
+※周期送信のoffsetは送信開始タイミングをIPDU毎に分けて，負荷分散するユ
+  ースケースが考えられるため，本仕様が望ましい
+※MIXEDにおける周期も同様である
+
+―――――――――――――――――――――――――――――――――――
+(5.2) IPDU停止中のRTEへの通知有無
+―――――――――――――――――――――――――――――――――――
+AUTOSAR仕様書のTable 5にIPDU停止時の振る舞いとして，RTEから使用されてい
+ても無視すると記述がある．これはPduRへのIPDU送信後に，Com_TxConfirmation
+が呼び出される前に，IPDUが停止された場合に，その後Com_TxConfirmationを
+受信しても，RTEへの通知を行わないと解釈する．[COMa002]
+
+―――――――――――――――――――――――――――――――――――
+(5.3) シグナル不変時のアップデートビットのセット
+―――――――――――――――――――――――――――――――――――
+AUTOSAR仕様書では，Com_SendSignalによってシグナルが送信された場合，前回
+送信時の値と変化がなくても，アップデートビットをセットするかどうかの規
+定がない．しかし，受信DMにおいてアップデートビットのセット有無で判定を
+行うため，Com_SendSignalではシグナルの値に関わらず一律アップデートビッ
+トをセットする．[COMa003]
+
+―――――――――――――――――――――――――――――――――――
+(5.4) コールアウトがfalseを返した場合の振る舞い
+―――――――――――――――――――――――――――――――――――
+AUTOSAR仕様書の8.6.3.2に，IPDUコールアウトの戻り値がfalseである場合の振
+る舞いが記載されているが仕様タグが割り振られてない．IPDUコールアウトの
+戻り値がfalseである場合，以降のIPDUの処理は実施しないとする．[COMa004]
+
+―――――――――――――――――――――――――――――――――――
+(5.5) Com_RxIndicationにおける受信したIPDUのデータ長による振る舞い
+―――――――――――――――――――――――――――――――――――
+AUTOSAR仕様書の7.4.5.4に，受信したIPDUのデータ長が設定値より小さい場合
+の振る舞いが記載されているが仕様タグが割り振られてない．Com_RxIndication
+では，設定値より受信したIPDUのデータ長が小さい場合は以降の処理を実施し
+ない．[COMa005]
+
+
+以上

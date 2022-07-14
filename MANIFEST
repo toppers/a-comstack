@@ -1,0 +1,26 @@
+PACKAGE a-comstack
+VERSION 1.1.0
+
+MANIFEST
+
+readme.txt
+
+doc/version.txt
+
+general/ComStack_Types.h
+
+stub/CanNm_Cbk.h
+stub/CanSM_Cbk.h
+stub/CanTp_Cbk.h
+stub/J1939Tp_Cbk.h
+stub/XcpOnCan_Cbk.h
+stub/Dem.h
+stub/Det.h
+
+INCLUDE com/MANIFEST
+INCLUDE pdur/MANIFEST
+INCLUDE canif/MANIFEST
+INCLUDE can/MANIFEST
+
+utils/makerelease
+INCLUDE utils/abrex/MANIFEST

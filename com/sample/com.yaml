@@ -1,0 +1,432 @@
+#
+#  TOPPERS/A-COM
+#      AuTomotive COM
+#
+#  Copyright (C) 2013-2014 by Center for Embedded Computing Systems
+#              Graduate School of Information Science, Nagoya Univ., JAPAN
+#  Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+#  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
+#  Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
+#  Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+#
+#  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
+#  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
+#  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
+#  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
+#      権表示，この利用条件および下記の無保証規定が，そのままの形でソー
+#      スコード中に含まれていること．
+#  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
+#      用できる形で再配布する場合には，再配布に伴うドキュメント（利用
+#      者マニュアルなど）に，上記の著作権表示，この利用条件および下記
+#      の無保証規定を掲載すること．
+#  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
+#      用できない形で再配布する場合には，次のいずれかの条件を満たすこ
+#      と．
+#    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
+#        作権表示，この利用条件および下記の無保証規定を掲載すること．
+#    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
+#        報告すること．
+#  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
+#      害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+#      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
+#      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
+#      免責すること．
+#
+#  本ソフトウェアは，AUTOSAR（AUTomotive Open System ARchitecture）仕
+#  様に基づいている．上記の許諾は，AUTOSARの知的財産権を許諾するもので
+#  はない．AUTOSARは，AUTOSAR仕様に基づいたソフトウェアを商用目的で利
+#  用する者に対して，AUTOSARパートナーになることを求めている．
+#
+#  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
+#  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
+#  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
+#  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
+#  の責任を負わない．
+#
+#  $Id: com.yaml 425 2014-09-17 00:46:01Z fsi-dankei $
+#
+
+Com:
+  Com:
+    ComGeneral:
+      ComSupportedIPduGroups: 1
+      ComVersionInfoApi: true
+      ComConfigurationUseDet: true
+      ComRetryFailedTransmitRequests: true
+      ComEnableMDTForCyclicTransmission: true
+    ComConfig_0:
+      DefinitionRef: ComConfig
+      ComConfigurationId: 0
+
+      ComTimeBase:
+        ComTxTimeBase: 0.2
+        ComRxTimeBase: 0.1
+
+      ComIPduGroup_0:
+        ComIPduGroupHandleId: 0
+        DefinitionRef: ComIPduGroup
+      ComIPduGroup_1:
+        ComIPduGroupHandleId: 1
+        DefinitionRef: ComIPduGroup
+      ComIPduGroup_2:
+        ComIPduGroupHandleId: 2
+        DefinitionRef: ComIPduGroup
+      ComIPduGroup_3:
+        ComIPduGroupHandleId: 3
+        DefinitionRef: ComIPduGroup
+
+      IPDU_A:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 0
+              ComTxModeRepetitionPeriod: 0.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 0
+              ComTxModeRepetitionPeriod: 0.0
+          ComMinimumDelayTime: 1.0
+          ComTxIPduUnusedAreasDefault: 1
+        ComIPduDirection: SEND
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 0
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - ComIPduGroup_0
+        - ComIPduGroup_2
+        ComIPduSignalRef:
+        - SIGNAL_A
+        - SIGNAL_B
+        ComIPduCancellationSupport: true
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_a
+        DefinitionRef: ComIPdu
+
+      SIGNAL_A:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 3
+        ComBitSize: 1
+        ComHandleId: 5
+        ComSignalDataInvalidValue: TRUE
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: FALSE
+        ComSignalType: BOOLEAN
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+
+      SIGNAL_B:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 27
+          ComFilterX: 28
+        ComBitPosition: 5
+        ComBitSize: 6
+        ComHandleId: 0
+        ComSignalDataInvalidValue: 31
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -15
+        ComSignalType: SINT8
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+
+      IPDU_B:
+        ComIPduDirection: RECEIVE
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 1
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - ComIPduGroup_0
+        - ComIPduGroup_2
+        ComIPduSignalRef:
+        - SIGNAL_C
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_b
+        DefinitionRef: ComIPdu
+
+      SIGNAL_C:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 0
+        ComBitSize: 8
+        ComFirstTimeout: 20.0
+        ComHandleId: 1
+        ComSignalDataInvalidValue: -15
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -15
+        ComSignalType: SINT16
+        DefinitionRef: ComSignal
+
+      IPDU_C:
+        ComTxIPdu:
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 0
+              ComTxModeRepetitionPeriod: 0.0
+          ComMinimumDelayTime: 1.0
+          ComTxIPduUnusedAreasDefault: 1
+        ComIPduDirection: SEND
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 2
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - ComIPduGroup_0
+        ComIPduSignalRef:
+        - SIGNAL_D
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_c
+        DefinitionRef: ComIPdu
+
+      SIGNAL_D:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 3
+        ComBitSize: 28
+        ComHandleId: 4
+        ComSignalDataInvalidValue: 31
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: -3
+        ComSignalType: SINT32
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+
+      IPDU_D:
+        ComTxIPdu:
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 0
+              ComTxModeRepetitionPeriod: 0.0
+          ComMinimumDelayTime: 1.0
+          ComTxIPduUnusedAreasDefault: 1
+        ComIPduDirection: SEND
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 3
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - ComIPduGroup_0
+        ComIPduSignalRef:
+        - SIGNAL_E
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_d
+        DefinitionRef: ComIPdu
+
+      SIGNAL_E:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 3
+        ComBitSize: 5
+        ComHandleId: 2
+        ComSignalDataInvalidValue: 31U
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 4U
+        ComSignalType: UINT8
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+
+      IPDU_E:
+        ComIPduDirection: RECEIVE
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 4
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - ComIPduGroup_0
+        - ComIPduGroup_3
+        ComIPduSignalRef:
+        - SIGNAL_F
+        - SIGNAL_G
+        - SIGNAL_H
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_e
+        DefinitionRef: ComIPdu
+
+      SIGNAL_F:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 27U
+          ComFilterX: 28U
+        ComBitPosition: 0
+        ComBitSize: 12
+        ComHandleId: 3
+        ComSignalDataInvalidValue: 31U
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 15U
+        ComSignalType: UINT16
+        DefinitionRef: ComSignal
+
+      SIGNAL_G:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_X
+          ComFilterMask: 27U
+          ComFilterX: 28U
+        ComBitPosition: 12
+        ComBitSize: 12
+        ComHandleId: 6
+        ComSignalDataInvalidValue: 31U
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 15U
+        ComSignalType: UINT32
+        DefinitionRef: ComSignal
+
+      SIGNAL_H:
+        ComFilter:
+          ComFilterAlgorithm: ALWAYS
+        ComBitPosition: 24
+        ComHandleId: 7
+        ComSignalDataInvalidValue: '5U 6U 7U 8U 9U'
+        ComSignalEndianness: OPAQUE
+        ComSignalInitValue: '0U 1U 2U 3U 4U'
+        ComSignalType: UINT8_N
+        ComSignalLength: 5
+        DefinitionRef: ComSignal
+
+      IPDU_F:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 0
+              ComTxModeRepetitionPeriod: 0.0
+          ComMinimumDelayTime: 1.0
+          ComTxIPduUnusedAreasDefault: 1
+        ComIPduDirection: SEND
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 5
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - ComIPduGroup_1
+        - ComIPduGroup_3
+        ComIPduSignalRef:
+        - SIGNAL_I
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_f
+        DefinitionRef: ComIPdu
+
+      SIGNAL_I:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 3
+        ComBitSize: 22
+        ComHandleId: 8
+        ComSignalDataInvalidValue: 31
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 4
+        ComSignalType: SINT32
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+
+    ComConfig_1:
+      DefinitionRef: ComConfig
+      ComConfigurationId: 1
+
+      ComTimeBase:
+        ComTxTimeBase: 0.3
+        ComRxTimeBase: 0.4
+
+      ComIPduGroup_4:
+        ComIPduGroupHandleId: 0
+        DefinitionRef: ComIPduGroup
+
+      IPDU_G:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 0
+              ComTxModeRepetitionPeriod: 0.0
+          ComMinimumDelayTime: 1.0
+          ComTxIPduUnusedAreasDefault: 1
+        ComIPduDirection: SEND
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 0
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - ComIPduGroup_4
+        ComIPduSignalRef:
+        - SIGNAL_J
+        ComIPduCancellationSupport: false
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_g
+        DefinitionRef: ComIPdu
+
+      SIGNAL_J:
+        ComFilter:
+          ComFilterAlgorithm: NEVER
+        ComBitPosition: 0
+        ComFirstTimeout: 20.0
+        ComHandleId: 0
+        ComSignalDataInvalidValue: '5U 6U 7U 8U 9U'
+        ComSignalEndianness: OPAQUE
+        ComSignalInitValue: '0U 1U 2U 3U 4U'
+        ComSignalType: UINT8_N
+        ComSignalLength: 5
+        DefinitionRef: ComSignal
+
+EcuC:
+  EcuC:
+    EcucPduCollection:
+      Pdu_a:
+        PduLength: 4
+        DefinitionRef: Pdu
+      Pdu_b:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Pdu_c:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Pdu_d:
+        PduLength: 4
+        DefinitionRef: Pdu
+      Pdu_e:
+        PduLength: 12
+        DefinitionRef: Pdu
+      Pdu_f:
+        PduLength: 4
+        DefinitionRef: Pdu
+      Pdu_g:
+        PduLength: 8
+        DefinitionRef: Pdu
+
+PduR:
+  PduR:
+    PduRGeneral:
+      PduRZeroCostOperation: true
+    PduRRoutingTables:
+      PduRConfigurationId: 0
+      PduRRoutingTable:
+        PduRRoutingPath_0:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 0
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_a
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_1:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 1
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_b
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_2:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 2
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_c
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_3:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 3
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_d
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_4:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 4
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_e
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_5:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 5
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_f
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_6:
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 6
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_g
+          DefinitionRef: PduRRoutingPath

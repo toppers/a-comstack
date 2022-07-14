@@ -1,0 +1,160 @@
+#
+#  TOPPERS/A-PDUR
+#      AuTomotive PDUR
+#
+#  Copyright (C) 2013-2014 by Center for Embedded Computing Systems
+#              Graduate School of Information Science, Nagoya Univ., JAPAN
+#  Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+#  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
+#  Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
+#  Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+#
+#  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
+#  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
+#  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
+#  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
+#      権表示，この利用条件および下記の無保証規定が，そのままの形でソー
+#      スコード中に含まれていること．
+#  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
+#      用できる形で再配布する場合には，再配布に伴うドキュメント（利用
+#      者マニュアルなど）に，上記の著作権表示，この利用条件および下記
+#      の無保証規定を掲載すること．
+#  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
+#      用できない形で再配布する場合には，次のいずれかの条件を満たすこ
+#      と．
+#    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
+#        作権表示，この利用条件および下記の無保証規定を掲載すること．
+#    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
+#        報告すること．
+#  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
+#      害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+#      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
+#      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
+#      免責すること．
+#
+#  本ソフトウェアは，AUTOSAR（AUTomotive Open System ARchitecture）仕
+#  様に基づいている．上記の許諾は，AUTOSARの知的財産権を許諾するもので
+#  はない．AUTOSARは，AUTOSAR仕様に基づいたソフトウェアを商用目的で利
+#  用する者に対して，AUTOSARパートナーになることを求めている．
+#
+#  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
+#  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
+#  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
+#  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
+#  の責任を負わない．
+#
+#  $Id: sample.yaml 425 2014-09-17 00:46:01Z fsi-dankei $
+#
+
+EcuC:
+  EcuC:
+    EcucPduCollection:
+      PduIdTypeEnum: UINT16
+      PduLengthTypeEnum: UINT16
+      Pdu_0:
+        DefinitionRef: Pdu
+        PduLength: 8
+      Pdu_1:
+        DefinitionRef: Pdu
+        PduLength: 6
+      Pdu_2:
+        DefinitionRef: Pdu
+        PduLength: 4
+      Pdu_3:
+        DefinitionRef: Pdu
+        PduLength: 2
+
+Com:
+  Com:
+    ComConfig:
+      ComIPdu_0:
+        DefinitionRef: ComIPdu
+        ComIPduHandleId: 2
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_0
+        ComIPduDirection: RECEIVE
+      ComIPdu_1:
+        DefinitionRef: ComIPdu
+        ComIPduHandleId: 0
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_1
+        ComIPduDirection: SEND
+      ComIPdu_2:
+        DefinitionRef: ComIPdu
+        ComIPduHandleId: 3
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_2
+        ComIPduDirection: RECEIVE
+      ComIPdu_3:
+        DefinitionRef: ComIPdu
+        ComIPduHandleId: 1
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_3
+        ComIPduDirection: SEND
+
+PduR:
+  PduR:
+    PduRGeneral:
+      PduRDevErrorDetect: false
+      PduRVersionInfoApi: false
+      PduRZeroCostOperation: true
+    PduRRoutingTables:
+      PduRConfigurationId: 1
+      PduRRoutingTable:
+        PduRIsMinimumRouting: false
+        PduRRoutingPath_0:
+          DefinitionRef: PduRRoutingPath
+          PduRSrcPdu_0:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 2
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_0
+          PduRDestPdu_0:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_0
+        PduRRoutingPath_1:
+          DefinitionRef: PduRRoutingPath
+          PduRSrcPdu_1:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 1
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_1
+          PduRDestPdu_1:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 0  # for confirmation
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_1
+        PduRRoutingPath_2:
+          DefinitionRef: PduRRoutingPath
+          PduRSrcPdu_2:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 3
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_2
+          PduRDestPdu_2:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_2
+        PduRRoutingPath_3:
+          DefinitionRef: PduRRoutingPath
+          PduRSrcPdu_3:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 3
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_3
+          PduRDestPdu_3:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 1  # for confirmation
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_3
+
+CanIf:
+  CanIf:
+    CanIfInitCfg:
+      CanIfRxPduCfg_0:
+        DefinitionRef: CanIfRxPduCfg
+        CanIfRxPduId: 0  # not use
+        CanIfRxPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_0
+      CanIfTxPduCfg_1:
+        DefinitionRef: CanIfTxPduCfg
+        CanIfTxPduId: 1
+        CanIfTxPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_1
+      CanIfRxPduCfg_2:
+        DefinitionRef: CanIfRxPduCfg
+        CanIfRxPduId: 2  # not use
+        CanIfRxPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_2
+      CanIfTxPduCfg_3:
+        DefinitionRef: CanIfTxPduCfg
+        CanIfTxPduId: 3
+        CanIfTxPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_3

@@ -1,0 +1,10 @@
+MANIFEST
+
+pdur.csv
+pdur.ini
+pdur.tf
+doc/pdur_spec.txt
+sample/Makefile
+sample/readme.txt
+sample/sample.arxml
+sample/sample.yaml

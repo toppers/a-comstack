@@ -1,0 +1,406 @@
+#
+#  TOPPERS/A-CANIF
+#      AuTomotive CANIF
+#
+#  Copyright (C) 2013-2014 by Center for Embedded Computing Systems
+#              Graduate School of Information Science, Nagoya Univ., JAPAN
+#  Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+#  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
+#  Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
+#  Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+#
+#  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
+#  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
+#  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
+#  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
+#      権表示，この利用条件および下記の無保証規定が，そのままの形でソー
+#      スコード中に含まれていること．
+#  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
+#      用できる形で再配布する場合には，再配布に伴うドキュメント（利用
+#      者マニュアルなど）に，上記の著作権表示，この利用条件および下記
+#      の無保証規定を掲載すること．
+#  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
+#      用できない形で再配布する場合には，次のいずれかの条件を満たすこ
+#      と．
+#    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
+#        作権表示，この利用条件および下記の無保証規定を掲載すること．
+#    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
+#        報告すること．
+#  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
+#      害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+#      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
+#      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
+#      免責すること．
+#
+#  本ソフトウェアは，AUTOSAR（AUTomotive Open System ARchitecture）仕
+#  様に基づいている．上記の許諾は，AUTOSARの知的財産権を許諾するもので
+#  はない．AUTOSARは，AUTOSAR仕様に基づいたソフトウェアを商用目的で利
+#  用する者に対して，AUTOSARパートナーになることを求めている．
+#
+#  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
+#  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
+#  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
+#  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
+#  の責任を負わない．
+#
+#  $Id: canif.yaml 425 2014-09-17 00:46:01Z fsi-dankei $
+#
+
+CanIf:
+  CanIf:
+    CanIfPublicCfg:
+      CanIfPublicCancelTransmitSupport: true
+      CanIfPublicChangeBaudrateSupport: true
+      CanIfPublicDevErrorDetect: true
+      CanIfPublicHandleTypeEnum: UINT8
+      CanIfPublicMultipleDrvSupport: false
+      CanIfPublicNumberOfCanHwUnits: 1
+      CanIfPublicPnSupport: false
+      CanIfPublicReadRxPduDataApi: true
+      CanIfPublicReadRxPduNotifyStatusApi: true
+      CanIfPublicReadTxPduNotifyStatusApi: true
+      CanIfPublicSetDynamicTxIdApi: false
+      CanIfPublicTxBuffering: false
+      CanIfPublicTxConfirmPollingSupport: true
+      CanIfPublicVersionInfoApi: true
+      CanIfPublicWakeupCheckValidSupport: true
+    CanIfPrivateCfg:
+      CanIfPrivateDlcCheck: TRUE
+      CanIfSupportTTCAN: FALSE
+    CanIfDispatchCfg:
+      CanIfDispatchUserCtrlBusOffName: CanSM_ControllerBusOff
+      CanIfDispatchUserCtrlBusOffUL: CAN_SM
+      CanIfDispatchUserCtrlModeIndicationName: CanSM_ControllerModeIndication
+      CanIfDispatchUserCtrlModeIndicationUL: CAN_SM
+      CanIfDispatchUserValidateWakeupEventName: EcuM_ValidateWakeupEvent
+      CanIfDispatchUserValidateWakeupEventUL: ECUM
+    CanIfInitCfg_0:
+      CanIfInitCfgSet: main_canif_config
+      CanIfBufferCfg_0:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_0
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_1:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_1
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_2:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_2
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_3:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_3
+        DefinitionRef: CanIfBufferCfg
+      CanIfInitHohCfg_0:
+        CanIfInitRefCfgSet: CanConfigSet
+        CanIfHrhCfg_0:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_0
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_1:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_1
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_2
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_2:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_1
+          DefinitionRef: CanIfHrhCfg
+        CanIfHthCfg_0:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_5
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_1:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_1
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_3
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_2:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_1
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_4
+          DefinitionRef: CanIfHthCfg
+        DefinitionRef: CanIfInitHohCfg
+      CanIfRxPduCfg_0:
+        CanIfRxPduCanId: 1
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 7
+        CanIfRxPduId: 1
+        CanIfRxPduReadData: FALSE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: PduR_CanIfRxIndication
+        CanIfRxPduUserRxIndicationUL: PDUR
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_0
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_B
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_1:
+        CanIfRxPduCanId: 4
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 4
+        CanIfRxPduId: 4
+        CanIfRxPduReadData: true
+        CanIfRxPduReadNotifyStatus: true
+        CanIfRxPduUserRxIndicationName: PduR_CanIfRxIndication
+        CanIfRxPduUserRxIndicationUL: PDUR
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_1
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_E
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_2:
+        CanIfRxPduCanId: 5
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 3
+        CanIfRxPduId: 5
+        CanIfRxPduReadData: TRUE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: PduR_CanIfRxIndication
+        CanIfRxPduUserRxIndicationUL: PDUR
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_2
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_F
+        DefinitionRef: CanIfRxPduCfg
+      CanIfTxPduCfg_0:
+        CanIfTxPduCanId: 0
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 8
+        CanIfTxPduId: 0
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: PduR_CanIfTxConfirmation
+        CanIfTxPduUserTxConfirmationUL: PDUR
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_0
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_A
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_1:
+        CanIfTxPduCanId: 2
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 6
+        CanIfTxPduId: 2
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: PduR_CanIfTxConfirmation
+        CanIfTxPduUserTxConfirmationUL: PDUR
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_1
+        CanIfTxPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_C
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_2:
+        CanIfTxPduCanId: 3
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 5
+        CanIfTxPduId: 3
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: FALSE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: PduR_CanIfTxConfirmation
+        CanIfTxPduUserTxConfirmationUL: PDUR
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_2
+        CanIfTxPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_D
+        DefinitionRef: CanIfTxPduCfg
+      DefinitionRef: CanIfInitCfg
+    CanIfInitCfg_1:
+      CanIfInitCfgSet: sub_canif_config
+      CanIfInitHohCfg_1:
+        CanIfInitRefCfgSet: CanConfigSet
+        CanIfHthCfg_3:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_1
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_0
+          DefinitionRef: CanIfHthCfg
+        CanIfHrhCfg_3:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: /CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_1
+          CanIfHrhIdSymRef: /Can/Can/CanConfigSet/CanHardwareObject_1
+          DefinitionRef: CanIfHrhCfg
+        DefinitionRef: CanIfInitHohCfg
+      CanIfRxPduCfg_3:
+        CanIfRxPduCanId: 1
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 8
+        CanIfRxPduId: 1
+        CanIfRxPduReadData: false
+        CanIfRxPduReadNotifyStatus: true
+        CanIfRxPduUserRxIndicationName: PduR_CanIfRxIndication
+        CanIfRxPduUserRxIndicationUL: PDUR
+        CanIfRxPduHrhIdRef: /CanIf/CanIf/CanIfInitCfg_1/CanIfInitHohCfg_1/CanIfHrhCfg_3
+        CanIfRxPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_H
+        DefinitionRef: CanIfRxPduCfg
+      CanIfTxPduCfg_3:
+        CanIfTxPduCanId: 0
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 2
+        CanIfTxPduId: 0
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: FALSE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: PduR_CanIfTxConfirmation
+        CanIfTxPduUserTxConfirmationUL: PDUR
+        CanIfTxPduBufferRef: /CanIf/CanIf/CanIfInitCfg_1/CanIfBufferCfg_3
+        CanIfTxPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_G
+        DefinitionRef: CanIfTxPduCfg 
+      DefinitionRef: CanIfInitCfg
+    CanIfCtrlDrvCfg_0:
+      CanIfCtrlDrvTxCancellation: false
+      CanIfCtrlDrvInitHohConfigRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0
+      CanIfCtrlDrvNameRef: /Can/Can/CanGeneral
+      CanIfCtrlCfg_0:
+        CanIfCtrlId: 0
+        CanIfCtrlWakeupSupport: true
+        CanIfCtrlCanCtrlRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanIfCtrlCfg
+      CanIfCtrlCfg_1:
+        CanIfCtrlId: 1
+        CanIfCtrlWakeupSupport: false
+        CanIfCtrlCanCtrlRef: /Can/Can/CanConfigSet/CanController_1
+        DefinitionRef: CanIfCtrlCfg
+      DefinitionRef: CanIfCtrlDrvCfg
+
+EcuC:
+  EcuC:
+    EcucPduCollection:
+      Pdu_A:
+        PduLength: 3
+        DefinitionRef: Pdu
+      Pdu_B:
+        PduLength: 7
+        DefinitionRef: Pdu
+      Pdu_C:
+        PduLength: 4
+        DefinitionRef: Pdu
+      Pdu_D:
+        PduLength: 1
+        DefinitionRef: Pdu
+      Pdu_E:
+        PduLength: 4
+        DefinitionRef: Pdu
+      Pdu_F:
+        PduLength: 2
+        DefinitionRef: Pdu
+      Pdu_G:
+        PduLength: 2
+        DefinitionRef: Pdu
+      Pdu_H:
+        PduLength: 7
+        DefinitionRef: Pdu
+
+PduR:
+  PduR:
+    PduRGeneral:
+      PduRZeroCostOperation: true
+    PduRRoutingTables:
+      PduRConfigurationId: 0
+      PduRRoutingTable:
+        PduRRoutingPath_0:
+          PduRDestPdu:
+            PduRDestPduHandleId: 0
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_A
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 0
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_A
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_1:
+          PduRDestPdu:
+            PduRDestPduHandleId: 1
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_B
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 1
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_B
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_2:
+          PduRDestPdu:
+            PduRDestPduHandleId: 2
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_C
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 2
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_C
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_3:
+          PduRDestPdu:
+            PduRDestPduHandleId: 3
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_D
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 3
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_D
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_4:
+          PduRDestPdu:
+            PduRDestPduHandleId: 4
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_E
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 4
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_E
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_5:
+          PduRDestPdu:
+            PduRDestPduHandleId: 5
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_F
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 5
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_F
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_6:
+          PduRDestPdu:
+            PduRDestPduHandleId: 6
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_G
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 6
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_G
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_7:
+          PduRDestPdu:
+            PduRDestPduHandleId: 7
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_H
+          PduRSrcPdu:
+            PduRSourcePduHandleId: 7
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_H
+          DefinitionRef: PduRRoutingPath
+
+Can:
+  Can:
+    CanConfigSet:
+      CanHardwareObject_0:
+        CanIdValue: 0
+        CanObjectId: 0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_1:
+        CanIdValue: 1
+        CanObjectId: 1
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_2:
+        CanIdValue: 2
+        CanObjectId: 2
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_3:
+        CanIdValue: 3
+        CanObjectId: 3
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_4:
+        CanIdValue: 4
+        CanObjectId: 4
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_5:
+        CanIdValue: 5
+        CanObjectId: 5
+        DefinitionRef: CanHardwareObject
+      CanController_0:
+        CanControllerId: 0
+        CanWakeupSourceRef: EcuM/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource_0
+        DefinitionRef: CanController
+      CanController_1:
+        CanControllerId: 1
+        CanWakeupSourceRef: EcuM/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource_1
+        DefinitionRef: CanController
+    CanGeneral:
+      CanIndex: 0
+
+EcuM:
+  EcuM:
+    EcuMConfiguration:
+      EcuMCommonConfiguration:
+        EcuMWakeupSource_0:
+          EcuMWakeupSourceId: 0
+          DefinitionRef: EcuMWakeupSource
+        EcuMWakeupSource_1:
+          EcuMWakeupSourceId: 1
+          DefinitionRef: EcuMWakeupSource
