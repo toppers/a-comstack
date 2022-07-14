@@ -39,7 +39,7 @@
 #  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 #  の責任を負わない．
 #
-#  $Id: check_target_spec_coverage.rb 913 2014-12-26 06:08:05Z shigihara $
+#  $Id: check_target_spec_coverage.rb 13 2015-07-15 08:58:53Z fujisft-kaitori $
 #
 
 #

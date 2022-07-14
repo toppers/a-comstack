@@ -38,7 +38,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: EcuM_Cbk.h 599 2014-10-17 01:27:58Z shigihara $
+ *  $Id: EcuM_Cbk.h 13 2015-07-15 08:58:53Z fujisft-kaitori $
  */
 
 #ifndef TOPPERS_ECUM_CBK_H

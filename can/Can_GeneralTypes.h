@@ -45,7 +45,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Can_GeneralTypes.h 599 2014-10-17 01:27:58Z shigihara $
+ *  $Id: Can_GeneralTypes.h 13 2015-07-15 08:58:53Z fujisft-kaitori $
  */
 
 /* [CAN439] インクルードガード */

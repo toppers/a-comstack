@@ -48,7 +48,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: SchM_Can.h 1241 2015-03-25 07:26:02Z panasonic-ayane $
+ *  $Id: SchM_Can.h 13 2015-07-15 08:58:53Z fujisft-kaitori $
  */
 
 #ifndef TOPPERS_SCHM_CAN_H

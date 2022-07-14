@@ -38,7 +38,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Can_Prc.h 1064 2015-02-12 04:25:57Z shigihara $
+ *  $Id: Can_Prc.h 13 2015-07-15 08:58:53Z fujisft-kaitori $
  */
 
 #ifndef TOPPERS_CAN_PRC_H
@@ -195,9 +195,9 @@ LOCAL_INLINE boolean can_target_wakeup_controller_and_change_interrupt(uint8 ctr
 LOCAL_INLINE boolean can_target_disable_controller_interrupts(uint8 ctrl_id);
 LOCAL_INLINE boolean can_target_enable_controller_interrupts(uint8 ctrl_id);
 LOCAL_INLINE boolean can_target_check_wakeup(uint8 ctrl_id);
-LOCAL_INLINE Can_ReturnType can_target_transmit(uint8 ctrl_id, Can_HwHandleType mb_idx, const Can_PduType *PduInfo);
+LOCAL_INLINE Can_ReturnType can_target_transmit(uint8 ctrl_id, Can_HwHandleType hth, Can_HwHandleType mb_idx, const Can_PduType *PduInfo);
 LOCAL_INLINE boolean can_target_check_and_get_rbox(uint8 ctrl_id, Can_HwHandleType *p_rbox_idx);
-LOCAL_INLINE boolean can_target_get_rdata(uint8 ctrl_id, Can_HwHandleType rbox_id, Can_IdType *p_can_id, uint8 *p_can_dlc, uint8 can_sdu[]);
+LOCAL_INLINE boolean can_target_get_rdata(uint8 ctrl_id, Can_HwHandleType rbox_idx, Can_IdType *p_can_id, uint8 *p_can_dlc, uint8 can_sdu[]);
 LOCAL_INLINE boolean can_target_check_and_get_tbox(uint8 ctrl_id, Can_HwHandleType *p_tbox_idx);
 LOCAL_INLINE Can_StateTransitionType can_target_get_mode(uint8 ctrl_id);
 LOCAL_INLINE void can_target_busy_wait(void);
@@ -483,7 +483,7 @@ can_target_start_controller_and_change_interrupt(uint8 ctrl_id, const CAN_CTRL_I
 	/* [CAN261] チャネル通信モードに遷移 */
 	RSCAN0CmCTR(ctrl_id) &= ~(CAN_BIT1 | CAN_BIT0);
 
-	/* チャネル通信モードになるまでループ(#67) */
+	/* チャネル通信モードになるまでループ */
 	while ((RSCAN0CmSTS(ctrl_id) &CAN_BIT7) == 0U) {
 	}
 
@@ -594,7 +594,7 @@ can_target_check_wakeup(uint8 ctrl_id)
 
 /* Can_Write：送信データ及び送信要求設定 */
 LOCAL_INLINE Can_ReturnType
-can_target_transmit(uint8 ctrl_id, Can_HwHandleType mb_idx, const Can_PduType *PduInfo)
+can_target_transmit(uint8 ctrl_id, Can_HwHandleType hth, Can_HwHandleType mb_idx, const Can_PduType *PduInfo)
 {
 	Can_ReturnType	ret;
 	uint8			i;
@@ -675,37 +675,37 @@ can_target_check_and_get_rbox(uint8 ctrl_id, Can_HwHandleType *p_rbox_idx)
 
 /* Can_IsrRx：受信IDのデータ取得 */
 LOCAL_INLINE boolean
-can_target_get_rdata(uint8 ctrl_id, Can_HwHandleType rbox_id, Can_IdType *p_can_id, uint8 *p_can_dlc, uint8 can_sdu[])
+can_target_get_rdata(uint8 ctrl_id, Can_HwHandleType rbox_idx, Can_IdType *p_can_id, uint8 *p_can_dlc, uint8 can_sdu[])
 {
 	uint8	i;
 	uint8	local_dlc;
 
 	/* CAN-ID取得(RSCAN0CFID.CFID) */
-	*p_can_id = (Can_IdType) RSCAN0CFID(CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_id));
+	*p_can_id = (Can_IdType) RSCAN0CFID(CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_idx));
 
 	/* DLC取得(RSCAN0CFPTR.CFDLC) */
-	local_dlc = (uint8) (RSCAN0CFPTR(CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_id)) >> 28U);
+	local_dlc = (uint8) (RSCAN0CFPTR(CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_idx)) >> 28U);
 	*p_can_dlc = local_dlc;
 
 	/* [CAN012][CAN060][CAN299][CAN300] データ取得 */
 	/* データ格納(0〜3バイト) */
 	for (i = 0U; i < 4U; i++) {
-		can_sdu[i] = RSCAN0CFDF0((CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_id)), i);
+		can_sdu[i] = RSCAN0CFDF0((CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_idx)), i);
 	}
 
 	/* データが4byte以上か判定 */
 	if (local_dlc > 4U) {
 		/* データ格納(4〜7バイト) */
 		for (i = 4U; i < local_dlc; i++) {
-			can_sdu[i] = RSCAN0CFDF1((CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_id)), (i - 4U));
+			can_sdu[i] = RSCAN0CFDF1((CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_idx)), (i - 4U));
 		}
 	}
 
 	/* リードポインタ移動(RSCAN0CFPCTR.CFPC) */
-	RSCAN0CFPCTR(CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_id)) = 0xFFU;
+	RSCAN0CFPCTR(CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_idx)) = 0xFFU;
 
 	/* [CAN420] 送受信FIFO受信割込み要求フラグクリア */
-	RSCAN0CFSTS(CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_id)) &= ~CAN_BIT3;
+	RSCAN0CFSTS(CAN_TXRX_FIFO_BUFF_NO(ctrl_id, rbox_idx)) &= ~CAN_BIT3;
 
 	return(TRUE);
 }

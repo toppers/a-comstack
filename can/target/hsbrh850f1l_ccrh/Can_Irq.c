@@ -38,7 +38,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Can_Irq.c 907 2014-12-24 02:47:55Z shigihara $
+ *  $Id: Can_Irq.c 13 2015-07-15 08:58:53Z fujisft-kaitori $
  */
 
 #include "Os.h"
