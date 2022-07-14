@@ -1,0 +1,1749 @@
+#
+#  TOPPERS/A-CANTP
+#      Automotive CANTP
+#
+#  Copyright (C) 2016-2017 by Center for Embedded Computing Systems
+#                             Graduate School of Information Science, Nagoya Univ., JAPAN
+#  Copyright (C) 2016-2017 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2016-2017 by NEC Communication Systems, Ltd., JAPAN
+#  Copyright (C) 2016-2017 by SCSK Corporation, JAPAN
+#  Copyright (C) 2016-2017 by SUZUKI MOTOR CORPORATION
+#  Copyright (C) 2016-2017 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2016-2017 by Witz Corporation
+#
+#  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
+#  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
+#  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
+#  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
+#      権表示，この利用条件および下記の無保証規定が，そのままの形でソー
+#      スコード中に含まれていること．
+#  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
+#      用できる形で再配布する場合には，再配布に伴うドキュメント（利用
+#      者マニュアルなど）に，上記の著作権表示，この利用条件および下記
+#      の無保証規定を掲載すること．
+#  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
+#      用できない形で再配布する場合には，次のいずれかの条件を満たすこ
+#      と．
+#    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
+#        作権表示，この利用条件および下記の無保証規定を掲載すること．
+#    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
+#        報告すること．
+#  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
+#      害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+#      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
+#      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
+#      免責すること．
+#
+#  本ソフトウェアは，AUTOSAR（AUTomotive Open System ARchitecture）仕
+#  様に基づいている．上記の許諾は，AUTOSARの知的財産権を許諾するもので
+#  はない．AUTOSARは，AUTOSAR仕様に基づいたソフトウェアを商用目的で利
+#  用する者に対して，AUTOSARパートナーになることを求めている．
+#
+#  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
+#  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
+#  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
+#  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
+#  の責任を負わない．
+#
+#  $Id: cantp.yaml 3480 2017-03-08 11:51:15Z suzuki-kawaguchi $
+#
+
+Com:
+  Com:
+    ComGeneral:
+      ComSupportedIPduGroups: 1
+      ComVersionInfoApi: true
+      ComConfigurationUseDet: true
+      ComRetryFailedTransmitRequests: true
+      ComEnableMDTForCyclicTransmission: true
+    ComConfig_0:
+      DefinitionRef: ComConfig
+      ComConfigurationId: 0
+
+      ComTimeBase:
+        ComTxTimeBase: 0.2
+        ComRxTimeBase: 0.1
+
+      ComIPduGroup_0:
+        ComIPduGroupHandleId: 0
+        DefinitionRef: ComIPduGroup
+
+      ComIPdu_0:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 2
+              ComTxModeRepetitionPeriod: 3.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxIPduUnusedAreasDefault: 1
+        ComIPduDirection: SEND
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 0
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/SIGNAL_A
+        ComIPduSignalGroupRef:
+        - /Com/Com/ComConfig_0/SIGNAL_G_A
+        ComIPduCancellationSupport: true
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_A
+        DefinitionRef: ComIPdu
+
+      SIGNAL_A:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 1
+        ComBitPosition: 0
+        ComBitSize: 8
+        ComHandleId: 0
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkTxAck_snA
+        ComErrorNotification: Rte_COMCbkTxErr_snA
+        ComTimeoutNotification: Rte_COMCbkTxTOut_snA
+        ComSignalDataInvalidValue: 11
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: UINT8
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        DefinitionRef: ComSignal
+
+      SIGNAL_G_A:
+        ComHandleId: 0
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkTxAck_sgA
+        ComErrorNotification: Rte_COMCbkTxErr_sgA
+        ComTimeoutNotification: Rte_COMCbkTxTOut_sgA
+        DefinitionRef: ComSignalGroup
+        SIGNAL_B:
+          ComFilter:
+            ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+            ComFilterMask: 28
+            ComFilterX: 28
+          ComBitPosition: 8
+          ComBitSize: 8
+          ComHandleId: 1
+          ComSignalDataInvalidValue: 22
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 2
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+        SIGNAL_C:
+          ComFilter:
+            ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+            ComFilterMask: 28
+            ComFilterX: 28
+          ComBitPosition: 16
+          ComBitSize: 8
+          ComHandleId: 2
+          ComSignalDataInvalidValue: 33
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 3
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+
+      ComIPdu_1:
+        ComIPduDirection: RECEIVE
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 1
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/SIGNAL_D
+        ComIPduSignalGroupRef:
+        - /Com/Com/ComConfig_0/SIGNAL_G_B
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_B
+        DefinitionRef: ComIPdu
+        
+      SIGNAL_D:
+        ComBitPosition: 0
+        ComBitSize: 8
+        ComHandleId: 3
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkRxAck_snD
+        ComInvalidNotification: Rte_COMCbkInv_snD
+        ComTimeoutNotification: Rte_COMCbkRxTOut_snD
+        ComSignalDataInvalidValue: 44
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 4
+        ComSignalType: UINT8
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+
+      SIGNAL_G_B:
+        ComHandleId: 1
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkRxAck_sgB
+        ComInvalidNotification: Rte_COMCbkInv_sgB
+        ComTimeoutNotification: Rte_COMCbkRxTOut_sgB
+        DefinitionRef: ComSignalGroup
+        SIGNAL_E:
+          ComBitPosition: 8
+          ComBitSize: 8
+          ComHandleId: 4
+          ComSignalDataInvalidValue: 55
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 5
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+        SIGNAL_F:
+          ComBitPosition: 16
+          ComBitSize: 8
+          ComHandleId: 5
+          ComSignalDataInvalidValue: 66
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 6
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+
+      ComIPdu_2:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 2
+              ComTxModeRepetitionPeriod: 3.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxIPduUnusedAreasDefault: 1
+        ComIPduDirection: SEND
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 2
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/SIGNAL_G
+        ComIPduSignalGroupRef:
+        - /Com/Com/ComConfig_0/SIGNAL_G_C
+        ComIPduCancellationSupport: true
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_C
+        DefinitionRef: ComIPdu
+
+      SIGNAL_G:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 1
+        ComBitPosition: 0
+        ComBitSize: 8
+        ComHandleId: 6
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkTxAck_snG
+        ComErrorNotification: Rte_COMCbkTxErr_snG
+        ComTimeoutNotification: Rte_COMCbkTxTOut_snG
+        ComSignalDataInvalidValue: 11
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: UINT8
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        DefinitionRef: ComSignal
+
+      SIGNAL_G_C:
+        ComHandleId: 2
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkTxAck_sgC
+        ComErrorNotification: Rte_COMCbkTxErr_sgC
+        ComTimeoutNotification: Rte_COMCbkTxTOut_sgC
+        DefinitionRef: ComSignalGroup
+        SIGNAL_H:
+          ComFilter:
+            ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+            ComFilterMask: 28
+            ComFilterX: 28
+          ComBitPosition: 8
+          ComBitSize: 8
+          ComHandleId: 7
+          ComSignalDataInvalidValue: 22
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 2
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+        SIGNAL_I:
+          ComFilter:
+            ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+            ComFilterMask: 28
+            ComFilterX: 28
+          ComBitPosition: 16
+          ComBitSize: 8
+          ComHandleId: 8
+          ComSignalDataInvalidValue: 33
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 3
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+
+      ComIPdu_3:
+        ComIPduDirection: RECEIVE
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 3
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/SIGNAL_J
+        ComIPduSignalGroupRef:
+        - /Com/Com/ComConfig_0/SIGNAL_G_D
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_D
+        DefinitionRef: ComIPdu
+        
+      SIGNAL_J:
+        ComBitPosition: 0
+        ComBitSize: 8
+        ComHandleId: 9
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkRxAck_snJ
+        ComInvalidNotification: Rte_COMCbkInv_snJ
+        ComTimeoutNotification: Rte_COMCbkRxTOut_snJ
+        ComSignalDataInvalidValue: 44
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 4
+        ComSignalType: UINT8
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+
+      SIGNAL_G_D:
+        ComHandleId: 3
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkRxAck_sgD
+        ComInvalidNotification: Rte_COMCbkInv_sgD
+        ComTimeoutNotification: Rte_COMCbkRxTOut_sgD
+        DefinitionRef: ComSignalGroup
+        SIGNAL_K:
+          ComBitPosition: 8
+          ComBitSize: 8
+          ComHandleId: 10
+          ComSignalDataInvalidValue: 55
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 5
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+        SIGNAL_L:
+          ComBitPosition: 16
+          ComBitSize: 8
+          ComHandleId: 11
+          ComSignalDataInvalidValue: 66
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 6
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+
+      ComIPdu_4:
+        ComTxIPdu:
+          ComTxModeFalse:
+            ComTxMode:
+              ComTxModeMode: DIRECT
+              ComTxModeNumberOfRepetitions: 2
+              ComTxModeRepetitionPeriod: 3.0
+          ComTxModeTrue:
+            ComTxMode:
+              ComTxModeMode: PERIODIC
+              ComTxModeTimeOffset: 3.0
+              ComTxModeTimePeriod: 5.0
+          ComTxIPduUnusedAreasDefault: 1
+        ComIPduDirection: SEND
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 4
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/SIGNAL_M
+        ComIPduSignalGroupRef:
+        - /Com/Com/ComConfig_0/SIGNAL_G_E
+        ComIPduCancellationSupport: true
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_E
+        DefinitionRef: ComIPdu
+
+      SIGNAL_M:
+        ComFilter:
+          ComFilterAlgorithm: MASKED_NEW_DIFFERS_MASKED_OLD
+          ComFilterMask: 1
+        ComBitPosition: 0
+        ComBitSize: 8
+        ComHandleId: 12
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkTxAck_snM
+        ComErrorNotification: Rte_COMCbkTxErr_snM
+        ComTimeoutNotification: Rte_COMCbkTxTOut_snM
+        ComSignalDataInvalidValue: 11
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 1
+        ComSignalType: UINT8
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        DefinitionRef: ComSignal
+
+      SIGNAL_G_E:
+        ComHandleId: 4
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkTxAck_sgE
+        ComErrorNotification: Rte_COMCbkTxErr_sgE
+        ComTimeoutNotification: Rte_COMCbkTxTOut_sgE
+        DefinitionRef: ComSignalGroup
+        SIGNAL_N:
+          ComFilter:
+            ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+            ComFilterMask: 28
+            ComFilterX: 28
+          ComBitPosition: 8
+          ComBitSize: 8
+          ComHandleId: 13
+          ComSignalDataInvalidValue: 22
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 2
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+        SIGNAL_O:
+          ComFilter:
+            ComFilterAlgorithm: MASKED_NEW_EQUALS_X
+            ComFilterMask: 28
+            ComFilterX: 28
+          ComBitPosition: 16
+          ComBitSize: 8
+          ComHandleId: 14
+          ComSignalDataInvalidValue: 33
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 3
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+
+      ComIPdu_5:
+        ComIPduDirection: RECEIVE
+        ComIPduSignalProcessing: IMMEDIATE
+        ComIPduHandleId: 5
+        ComIPduType: NORMAL
+        ComIPduGroupRef:
+        - /Com/Com/ComConfig_0/ComIPduGroup_0
+        ComIPduSignalRef:
+        - /Com/Com/ComConfig_0/SIGNAL_P
+        ComIPduSignalGroupRef:
+        - /Com/Com/ComConfig_0/SIGNAL_G_F
+        ComPduIdRef: /EcuC/EcuC/EcucPduCollection/Pdu_F
+        DefinitionRef: ComIPdu
+        
+      SIGNAL_P:
+        ComBitPosition: 0
+        ComBitSize: 8
+        ComHandleId: 15
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkRxAck_snP
+        ComInvalidNotification: Rte_COMCbkInv_snP
+        ComTimeoutNotification: Rte_COMCbkRxTOut_snP
+        ComSignalDataInvalidValue: 44
+        ComSignalEndianness: LITTLE_ENDIAN
+        ComSignalInitValue: 4
+        ComSignalType: UINT8
+        ComTransferProperty: TRIGGERED
+        DefinitionRef: ComSignal
+
+      SIGNAL_G_F:
+        ComHandleId: 5
+        ComTransferProperty: TRIGGERED_ON_CHANGE
+        ComFirstTimeout: 2.0
+        ComTimeout: 4.0
+        ComNotification: Rte_COMCbkRxAck_sgF
+        ComInvalidNotification: Rte_COMCbkInv_sgF
+        ComTimeoutNotification: Rte_COMCbkRxTOut_sgF
+        DefinitionRef: ComSignalGroup
+        SIGNAL_Q:
+          ComBitPosition: 8
+          ComBitSize: 8
+          ComHandleId: 16
+          ComSignalDataInvalidValue: 55
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 5
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+        SIGNAL_R:
+          ComBitPosition: 16
+          ComBitSize: 8
+          ComHandleId: 17
+          ComSignalDataInvalidValue: 66
+          ComSignalEndianness: LITTLE_ENDIAN
+          ComSignalInitValue: 6
+          ComSignalType: UINT8
+          ComTransferProperty: TRIGGERED_ON_CHANGE
+          DefinitionRef: ComGroupSignal
+
+CanTp:
+  CanTp:
+    CanTpGeneral:
+      CanTpDevErrorDetect: True
+      CanTpDynIdSupport: False
+      CanTpFlexibleDataRateSupport: True
+      CanTpGenericConnectionSupport: False
+      CanTpChangeParameterApi: True
+      CanTpReadParameterApi: True
+      CanTpVersionInfoApi: True
+      CanTpPaddingByte: 255
+      DefinitionRef: CanTpGeneral
+    CanTpConfig_0:
+      CanTpMainFunctionPeriod: 0.005
+      CanTpMaxChannelCnt: 2
+      CanTpChannel_0:
+        CanTpChannelMode: CANTP_MODE_FULL_DUPLEX
+        CanTpTxNSdu_A:
+          CanTpNas: 1.0
+          CanTpNbs: 5.0
+          CanTpNcs: 6.0
+          CanTpTc: True
+          CanTpTxAddressingFormat: CANTP_STANDARD
+          CanTpTxPaddingActivation: CANTP_ON
+          CanTpTxTaType: CANTP_PHYSICAL
+          CanTpTxNSduId: 0
+          CanTpTxNSduRef: EcuC/EcuC/EcucPduCollection/Sdu_A
+          CanTpTxNPdu:
+            CanTpTxNPduConfirmationPduId: 0
+            CanTpTxNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_0
+            DefinitionRef: CanTpTxNPdu
+          CanTpRxFcNPdu:
+            CanTpRxFcNPduId: 1
+            CanTpRxFcNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_1
+            DefinitionRef: CanTpRxFcNPdu
+          DefinitionRef: CanTpTxNSdu
+        CanTpRxNSdu_B:
+          CanTpBs: 0
+          CanTpNar: 1.0
+          CanTpNbr: 6.0
+          CanTpNcr: 5.0
+          CanTpTc: True
+          CanTpRxAddressingFormat: CANTP_STANDARD
+          CanTpRxPaddingActivation: CANTP_ON
+          CanTpRxTaType: CANTP_PHYSICAL
+          CanTpRxWftMax: 5
+          CanTpSTmin: 0.0
+          CanTpRxNSduId: 1
+          CanTpRxNSduRef: EcuC/EcuC/EcucPduCollection/Sdu_B
+          CanTpTxFcNPdu:
+            CanTpTxFcNPduConfirmationPduId: 2
+            CanTpTxFcNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_2
+            DefinitionRef: CanTpTxFcNPdu
+          CanTpRxNPdu:
+            CanTpRxNPduId: 3
+            CanTpRxNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_3
+            DefinitionRef: CanTpRxNPdu
+          DefinitionRef: CanTpRxNSdu
+        CanTpTxNSdu_C:
+          CanTpNas: 1.0
+          CanTpNbs: 5.0
+          CanTpNcs: 6.0
+          CanTpTc: True
+          CanTpTxAddressingFormat: CANTP_STANDARD
+          CanTpTxPaddingActivation: CANTP_ON
+          CanTpTxTaType: CANTP_CANFD_PHYSICAL
+          CanTpTxNSduId: 2
+          CanTpTxNSduRef: EcuC/EcuC/EcucPduCollection/Sdu_C
+          CanTpTxNPdu:
+            CanTpTxNPduConfirmationPduId: 4
+            CanTpTxNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_4
+            DefinitionRef: CanTpTxNPdu
+          CanTpRxFcNPdu:
+            CanTpRxFcNPduId: 5
+            CanTpRxFcNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_5
+            DefinitionRef: CanTpRxFcNPdu
+          DefinitionRef: CanTpTxNSdu
+        CanTpRxNSdu_D:
+          CanTpBs: 0
+          CanTpNar: 1.0
+          CanTpNbr: 6.0
+          CanTpNcr: 5.0
+          CanTpTc: True
+          CanTpRxAddressingFormat: CANTP_STANDARD
+          CanTpRxPaddingActivation: CANTP_ON
+          CanTpRxTaType: CANTP_CANFD_PHYSICAL
+          CanTpRxWftMax: 5
+          CanTpSTmin: 0.0
+          CanTpRxNSduId: 3
+          CanTpRxNSduRef: EcuC/EcuC/EcucPduCollection/Sdu_D
+          CanTpTxFcNPdu:
+            CanTpTxFcNPduConfirmationPduId: 6
+            CanTpTxFcNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_6
+            DefinitionRef: CanTpTxFcNPdu
+          CanTpRxNPdu:
+            CanTpRxNPduId: 7
+            CanTpRxNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_7
+            DefinitionRef: CanTpRxNPdu
+          DefinitionRef: CanTpRxNSdu
+        CanTpTxNSdu_E:
+          CanTpNas: 1.0
+          CanTpNbs: 5.0
+          CanTpNcs: 6.0
+          CanTpTc: True
+          CanTpTxAddressingFormat: CANTP_EXTENDED
+          CanTpTxPaddingActivation: CANTP_ON
+          CanTpTxTaType: CANTP_PHYSICAL
+          CanTpTxNSduId: 4
+          CanTpTxNSduRef: EcuC/EcuC/EcucPduCollection/Sdu_E
+          CanTpTxNPdu:
+            CanTpTxNPduConfirmationPduId: 8
+            CanTpTxNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_8
+            DefinitionRef: CanTpTxNPdu
+          CanTpRxFcNPdu:
+            CanTpRxFcNPduId: 9
+            CanTpRxFcNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_9
+            DefinitionRef: CanTpRxFcNPdu
+          CanTpNTa:
+            CanTpNTa: 85
+            DefinitionRef: CanTpNTa
+          DefinitionRef: CanTpTxNSdu
+        CanTpRxNSdu_F:
+          CanTpBs: 0
+          CanTpNar: 1.0
+          CanTpNbr: 6.0
+          CanTpNcr: 5.0
+          CanTpTc: True
+          CanTpRxAddressingFormat: CANTP_EXTENDED
+          CanTpRxPaddingActivation: CANTP_ON
+          CanTpRxTaType: CANTP_PHYSICAL
+          CanTpRxWftMax: 5
+          CanTpSTmin: 0.0
+          CanTpRxNSduId: 5
+          CanTpRxNSduRef: EcuC/EcuC/EcucPduCollection/Sdu_F
+          CanTpTxFcNPdu:
+            CanTpTxFcNPduConfirmationPduId: 10
+            CanTpTxFcNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_10
+            DefinitionRef: CanTpTxFcNPdu
+          CanTpRxNPdu:
+            CanTpRxNPduId: 11
+            CanTpRxNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_11
+            DefinitionRef: CanTpRxNPdu
+          CanTpNTa:
+            CanTpNTa: 170
+            DefinitionRef: CanTpNTa
+          DefinitionRef: CanTpRxNSdu
+        DefinitionRef: CanTpChannel
+      CanTpChannel_1:
+        CanTpChannelMode: CANTP_MODE_FULL_DUPLEX
+        CanTpTxNSdu_G:
+          CanTpNas: 1.0
+          CanTpNbs: 5.0
+          CanTpNcs: 6.0
+          CanTpTc: True
+          CanTpTxAddressingFormat: CANTP_EXTENDED
+          CanTpTxPaddingActivation: CANTP_ON
+          CanTpTxTaType: CANTP_PHYSICAL
+          CanTpTxNSduId: 6
+          CanTpTxNSduRef: EcuC/EcuC/EcucPduCollection/Sdu_G
+          CanTpTxNPdu:
+            CanTpTxNPduConfirmationPduId: 12
+            CanTpTxNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_12
+            DefinitionRef: CanTpTxNPdu
+          CanTpRxFcNPdu:
+            CanTpRxFcNPduId: 13
+            CanTpRxFcNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_13
+            DefinitionRef: CanTpRxFcNPdu
+          CanTpNTa:
+            CanTpNTa: 86
+          DefinitionRef: CanTpTxNSdu
+        CanTpRxNSdu_H:
+          CanTpBs: 0
+          CanTpNar: 1.0
+          CanTpNbr: 6.0
+          CanTpNcr: 5.0
+          CanTpTc: True
+          CanTpRxAddressingFormat: CANTP_EXTENDED
+          CanTpRxPaddingActivation: CANTP_ON
+          CanTpRxTaType: CANTP_PHYSICAL
+          CanTpRxWftMax: 5
+          CanTpSTmin: 0.0
+          CanTpRxNSduId: 7
+          CanTpRxNSduRef: EcuC/EcuC/EcucPduCollection/Sdu_H
+          CanTpTxFcNPdu:
+            CanTpTxFcNPduConfirmationPduId: 14
+            CanTpTxFcNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_14
+            DefinitionRef: CanTpTxFcNPdu
+          CanTpRxNPdu:
+            CanTpRxNPduId: 15
+            CanTpRxNPduRef: EcuC/EcuC/EcucPduCollection/Pdu_15
+            DefinitionRef: CanTpRxNPdu
+          CanTpNTa:
+            CanTpNTa: 171
+          DefinitionRef: CanTpRxNSdu
+        DefinitionRef: CanTpChannel
+      DefinitionRef: CanTpConfig
+
+
+CanIf:
+  CanIf:
+    CanIfPublicCfg:
+      CanIfPublicCancelTransmitSupport: true
+      CanIfPublicChangeBaudrateSupport: true
+      CanIfPublicDevErrorDetect: true
+      CanIfPublicHandleTypeEnum: UINT8
+      CanIfPublicMultipleDrvSupport: false
+      CanIfPublicNumberOfCanHwUnits: 1
+      CanIfPublicPnSupport: false
+      CanIfPublicReadRxPduDataApi: true
+      CanIfPublicReadRxPduNotifyStatusApi: true
+      CanIfPublicReadTxPduNotifyStatusApi: true
+      CanIfPublicSetDynamicTxIdApi: false
+      CanIfPublicTxBuffering: false
+      CanIfPublicTxConfirmPollingSupport: true
+      CanIfPublicVersionInfoApi: true
+      CanIfPublicWakeupCheckValidSupport: true
+    CanIfPrivateCfg:
+      CanIfPrivateDlcCheck: FALSE
+      CanIfSupportTTCAN: FALSE
+    CanIfDispatchCfg:
+      CanIfDispatchUserCtrlBusOffName: CanSM_ControllerBusOff
+      CanIfDispatchUserCtrlBusOffUL: CAN_SM
+      CanIfDispatchUserCtrlModeIndicationName: CanSM_ControllerModeIndication
+      CanIfDispatchUserCtrlModeIndicationUL: CAN_SM
+      CanIfDispatchUserValidateWakeupEventName: EcuM_ValidateWakeupEvent
+      CanIfDispatchUserValidateWakeupEventUL: ECUM
+    CanIfInitCfg_0:
+      CanIfInitCfgSet: main_canif_config
+      CanIfBufferCfg_0:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_0
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_1:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_1
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_2:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_2
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_3:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_3
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_4:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_4
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_5:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_5
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_6:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_6
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_7:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_7
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_8:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_8
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_9:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_9
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_10:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_10
+        DefinitionRef: CanIfBufferCfg
+      CanIfBufferCfg_11:
+        CanIfBufferSize: 0
+        CanIfBufferHthRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHthCfg_11
+        DefinitionRef: CanIfBufferCfg
+      CanIfInitHohCfg_0:
+        CanIfInitRefCfgSet: CanConfigSet
+        CanIfHrhCfg_0:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_1
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_1:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_3
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_2:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_5
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_3:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_7
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_4:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_9
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_5:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_11
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_6:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_13
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_7:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_15
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_8:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_17
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_9:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_19
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_10:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_21
+          DefinitionRef: CanIfHrhCfg
+        CanIfHrhCfg_11:
+          CanIfHrhSoftwareFilter: FALSE
+          CanIfHrhCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHrhIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_23
+          DefinitionRef: CanIfHrhCfg
+        CanIfHthCfg_0:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_0
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_1:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_2
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_2:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_4
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_3:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_6
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_4:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_8
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_5:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_10
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_6:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_12
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_7:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_14
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_8:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_16
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_9:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_18
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_10:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_20
+          DefinitionRef: CanIfHthCfg
+        CanIfHthCfg_11:
+          CanIfHthCanCtrlIdRef: CanIf/CanIf/CanIfCtrlDrvCfg_0/CanIfCtrlCfg_0
+          CanIfHthIdSymRef: Can/Can/CanConfigSet/CanHardwareObject_22
+          DefinitionRef: CanIfHthCfg
+        DefinitionRef: CanIfInitHohCfg
+      CanIfRxPduCfg_0:
+        CanIfRxPduCanId: 2
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 8
+        CanIfRxPduId: 1
+        CanIfRxPduReadData: FALSE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: PduR_CanIfRxIndication
+        CanIfRxPduUserRxIndicationUL: PDUR
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_0
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_B
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_1:
+        CanIfRxPduCanId: 4
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 8
+        CanIfRxPduId: 3
+        CanIfRxPduReadData: true
+        CanIfRxPduReadNotifyStatus: true
+        CanIfRxPduUserRxIndicationName: PduR_CanIfRxIndication
+        CanIfRxPduUserRxIndicationUL: PDUR
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_1
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_D
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_2:
+        CanIfRxPduCanId: 6
+        CanIfRxPduCanIdType: STANDARD_FD_CAN
+        CanIfRxPduDlc: 20
+        CanIfRxPduId: 5
+        CanIfRxPduReadData: TRUE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: PduR_CanIfRxIndication
+        CanIfRxPduUserRxIndicationUL: PDUR
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_2
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_F
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_3:
+        CanIfRxPduCanId: 8
+        CanIfRxPduCanIdType: STANDARD_FD_CAN
+        CanIfRxPduDlc: 32
+        CanIfRxPduId: 7
+        CanIfRxPduReadData: TRUE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: PduR_CanIfRxIndication
+        CanIfRxPduUserRxIndicationUL: PDUR
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_3
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_H
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_4:
+        CanIfRxPduCanId: 10
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 8
+        CanIfRxPduId: 9
+        CanIfRxPduReadData: FALSE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: CanTp_RxIndication
+        CanIfRxPduUserRxIndicationUL: CAN_TP
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_4
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_1
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_5:
+        CanIfRxPduCanId: 12
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 8
+        CanIfRxPduId: 11
+        CanIfRxPduReadData: true
+        CanIfRxPduReadNotifyStatus: true
+        CanIfRxPduUserRxIndicationName: CanTp_RxIndication
+        CanIfRxPduUserRxIndicationUL: CAN_TP
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_5
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_3
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_6:
+        CanIfRxPduCanId: 14
+        CanIfRxPduCanIdType: STANDARD_FD_CAN
+        CanIfRxPduDlc: 64
+        CanIfRxPduId: 13
+        CanIfRxPduReadData: TRUE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: CanTp_RxIndication
+        CanIfRxPduUserRxIndicationUL: CAN_TP
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_6
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_5
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_7:
+        CanIfRxPduCanId: 16
+        CanIfRxPduCanIdType: STANDARD_FD_CAN
+        CanIfRxPduDlc: 64
+        CanIfRxPduId: 15
+        CanIfRxPduReadData: TRUE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: CanTp_RxIndication
+        CanIfRxPduUserRxIndicationUL: CAN_TP
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_7
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_7
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_8:
+        CanIfRxPduCanId: 18
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 8
+        CanIfRxPduId: 17
+        CanIfRxPduReadData: FALSE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: CanTp_RxIndication
+        CanIfRxPduUserRxIndicationUL: CAN_TP
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_8
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_9
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_9:
+        CanIfRxPduCanId: 20
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 8
+        CanIfRxPduId: 19
+        CanIfRxPduReadData: true
+        CanIfRxPduReadNotifyStatus: true
+        CanIfRxPduUserRxIndicationName: CanTp_RxIndication
+        CanIfRxPduUserRxIndicationUL: CAN_TP
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_9
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_11
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_10:
+        CanIfRxPduCanId: 18
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 8
+        CanIfRxPduId: 21
+        CanIfRxPduReadData: FALSE
+        CanIfRxPduReadNotifyStatus: FALSE
+        CanIfRxPduUserRxIndicationName: CanTp_RxIndication
+        CanIfRxPduUserRxIndicationUL: CAN_TP
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_10
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_13
+        DefinitionRef: CanIfRxPduCfg
+      CanIfRxPduCfg_11:
+        CanIfRxPduCanId: 20
+        CanIfRxPduCanIdType: STANDARD_CAN
+        CanIfRxPduDlc: 8
+        CanIfRxPduId: 23
+        CanIfRxPduReadData: true
+        CanIfRxPduReadNotifyStatus: true
+        CanIfRxPduUserRxIndicationName: CanTp_RxIndication
+        CanIfRxPduUserRxIndicationUL: CAN_TP
+        CanIfRxPduHrhIdRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0/CanIfHrhCfg_11
+        CanIfRxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_15
+        DefinitionRef: CanIfRxPduCfg
+      CanIfTxPduCfg_0:
+        CanIfTxPduCanId: 1
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 8
+        CanIfTxPduId: 0
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: PduR_CanIfTxConfirmation
+        CanIfTxPduUserTxConfirmationUL: PDUR
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_0
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_A
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_1:
+        CanIfTxPduCanId: 3
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 8
+        CanIfTxPduId: 2
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: PduR_CanIfTxConfirmation
+        CanIfTxPduUserTxConfirmationUL: PDUR
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_1
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_C
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_2:
+        CanIfTxPduCanId: 5
+        CanIfTxPduCanIdType: STANDARD_FD_CAN
+        CanIfTxPduDlc: 12
+        CanIfTxPduId: 4
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: FALSE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: PduR_CanIfTxConfirmation
+        CanIfTxPduUserTxConfirmationUL: PDUR
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_2
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_E
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_3:
+        CanIfTxPduCanId: 7
+        CanIfTxPduCanIdType: STANDARD_FD_CAN
+        CanIfTxPduDlc: 64
+        CanIfTxPduId: 6
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: FALSE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: PduR_CanIfTxConfirmation
+        CanIfTxPduUserTxConfirmationUL: PDUR
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_3
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_G
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_4:
+        CanIfTxPduCanId: 9
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 8
+        CanIfTxPduId: 8
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: CanTp_TxConfirmation
+        CanIfTxPduUserTxConfirmationUL: CAN_TP
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_4
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_0
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_5:
+        CanIfTxPduCanId: 11
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 8
+        CanIfTxPduId: 10
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: CanTp_TxConfirmation
+        CanIfTxPduUserTxConfirmationUL: CAN_TP
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_5
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_2
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_6:
+        CanIfTxPduCanId: 13
+        CanIfTxPduCanIdType: STANDARD_FD_CAN
+        CanIfTxPduDlc: 64
+        CanIfTxPduId: 12
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: FALSE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: CanTp_TxConfirmation
+        CanIfTxPduUserTxConfirmationUL: CAN_TP
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_6
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_4
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_7:
+        CanIfTxPduCanId: 15
+        CanIfTxPduCanIdType: STANDARD_FD_CAN
+        CanIfTxPduDlc: 64
+        CanIfTxPduId: 14
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: FALSE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: CanTp_TxConfirmation
+        CanIfTxPduUserTxConfirmationUL: CAN_TP
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_7
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_6
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_8:
+        CanIfTxPduCanId: 17
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 8
+        CanIfTxPduId: 16
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: CanTp_TxConfirmation
+        CanIfTxPduUserTxConfirmationUL: CAN_TP
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_8
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_8
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_9:
+        CanIfTxPduCanId: 19
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 8
+        CanIfTxPduId: 18
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: CanTp_TxConfirmation
+        CanIfTxPduUserTxConfirmationUL: CAN_TP
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_9
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_10
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_10:
+        CanIfTxPduCanId: 17
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 8
+        CanIfTxPduId: 20
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: CanTp_TxConfirmation
+        CanIfTxPduUserTxConfirmationUL: CAN_TP
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_10
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_12
+        DefinitionRef: CanIfTxPduCfg
+      CanIfTxPduCfg_11:
+        CanIfTxPduCanId: 19
+        CanIfTxPduCanIdType: STANDARD_CAN
+        CanIfTxPduDlc: 8
+        CanIfTxPduId: 22
+        CanIfTxPduPnFilterPdu: FALSE
+        CanIfTxPduReadNotifyStatus: TRUE
+        CanIfTxPduType: STATIC
+        CanIfTxPduUserTxConfirmationName: CanTp_TxConfirmation
+        CanIfTxPduUserTxConfirmationUL: CAN_TP
+        CanIfTxPduBufferRef: CanIf/CanIf/CanIfInitCfg_0/CanIfBufferCfg_11
+        CanIfTxPduRef: EcuC/EcuC/EcucPduCollection/Pdu_14
+        DefinitionRef: CanIfTxPduCfg
+      DefinitionRef: CanIfInitCfg
+    CanIfCtrlDrvCfg_0:
+      CanIfCtrlDrvTxCancellation: false
+      CanIfCtrlDrvInitHohConfigRef: CanIf/CanIf/CanIfInitCfg_0/CanIfInitHohCfg_0
+      CanIfCtrlDrvNameRef: /Can/Can/CanGeneral
+      CanIfCtrlCfg_0:
+        CanIfCtrlId: 0
+        CanIfCtrlWakeupSupport: true
+        CanIfCtrlCanCtrlRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanIfCtrlCfg
+      DefinitionRef: CanIfCtrlDrvCfg
+
+EcuC:
+  EcuC:
+    EcucPduCollection:
+      PduIdTypeEnum: UINT16
+      PduLengthTypeEnum: UINT16
+      Pdu_A:
+        PduLength: 3
+        DefinitionRef: Pdu
+      Pdu_B:
+        PduLength: 7
+        DefinitionRef: Pdu
+      Pdu_C:
+        PduLength: 4
+        DefinitionRef: Pdu
+      Pdu_D:
+        PduLength: 5
+        DefinitionRef: Pdu
+      Pdu_E:
+        PduLength: 12
+        DefinitionRef: Pdu
+      Pdu_F:
+        PduLength: 20
+        DefinitionRef: Pdu
+      Pdu_G:
+        PduLength: 64
+        DefinitionRef: Pdu
+      Pdu_H:
+        PduLength: 32
+        DefinitionRef: Pdu
+      Sdu_A:
+        PduLength: 5
+        DefinitionRef: Pdu
+      Pdu_0:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Pdu_1:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Sdu_B:
+        PduLength: 5
+        DefinitionRef: Pdu
+      Pdu_2:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Pdu_3:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Sdu_C:
+        PduLength: 100
+        DefinitionRef: Pdu
+      Pdu_4:
+        PduLength: 64
+        DefinitionRef: Pdu
+      Pdu_5:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Sdu_D:
+        PduLength: 100
+        DefinitionRef: Pdu
+      Pdu_6:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Pdu_7:
+        PduLength: 64
+        DefinitionRef: Pdu
+      Sdu_E:
+        PduLength: 10
+        DefinitionRef: Pdu
+      Pdu_8:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Pdu_9:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Sdu_F:
+        PduLength: 10
+        DefinitionRef: Pdu
+      Pdu_10:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Pdu_11:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Sdu_G:
+        PduLength: 10
+        DefinitionRef: Pdu
+      Pdu_12:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Pdu_13:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Sdu_H:
+        PduLength: 10
+        DefinitionRef: Pdu
+      Pdu_14:
+        PduLength: 8
+        DefinitionRef: Pdu
+      Pdu_15:
+        PduLength: 8
+        DefinitionRef: Pdu
+
+PduR:
+  PduR:
+    PduRGeneral:
+      PduRDevErrorDetect: false
+      PduRVersionInfoApi: false
+      PduRZeroCostOperation: true
+    PduRRoutingTables:
+      PduRConfigurationId: 0
+      PduRRoutingTable:
+        PduRIsMinimumRouting: false
+        PduRRoutingPath_0:
+          PduRDestPdu_0:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 0
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_A
+          PduRSrcPdu_0:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 0
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_A
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_1:
+          PduRDestPdu_1:
+            DefinitionRef: PduRDestPdu
+#            PduRDestPduHandleId: 1
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_B
+          PduRSrcPdu_1:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 1
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_B
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_2:
+          PduRDestPdu_2:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 2
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_C
+          PduRSrcPdu_2:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 2
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_C
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_3:
+          PduRDestPdu_3:
+            DefinitionRef: PduRDestPdu
+#            PduRDestPduHandleId: 3
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_D
+          PduRSrcPdu_3:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 3
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_D
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_4:
+          PduRDestPdu_4:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 4
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_E
+          PduRSrcPdu_4:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 4
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_E
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_5:
+          PduRDestPdu_5:
+            DefinitionRef: PduRDestPdu
+#            PduRDestPduHandleId: 5
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_F
+          PduRSrcPdu_5:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 5
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_F
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_6:
+          PduRDestPdu_6:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 6
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_G
+          PduRSrcPdu_6:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 6
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_G
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_7:
+          PduRDestPdu_7:
+            DefinitionRef: PduRDestPdu
+#            PduRDestPduHandleId: 7
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_H
+          PduRSrcPdu_7:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 7
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Pdu_H
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_8:
+          PduRDestPdu_8:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 8
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_A
+          PduRSrcPdu_8:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 8
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_A
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_9:
+          PduRDestPdu_9:
+            DefinitionRef: PduRDestPdu
+#            PduRDestPduHandleId: 9
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_B
+          PduRSrcPdu_9:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 9
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_B
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_10:
+          PduRDestPdu_10:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 10
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_C
+          PduRSrcPdu_10:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 10
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_C
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_11:
+          PduRDestPdu_11:
+            DefinitionRef: PduRDestPdu
+#            PduRDestPduHandleId: 11
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_D
+          PduRSrcPdu_11:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 11
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_D
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_12:
+          PduRDestPdu_12:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 12
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_E
+          PduRSrcPdu_12:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 12
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_E
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_13:
+          PduRDestPdu_13:
+            DefinitionRef: PduRDestPdu
+#            PduRDestPduHandleId: 13
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_F
+          PduRSrcPdu_13:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 13
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_F
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_14:
+          PduRDestPdu_14:
+            DefinitionRef: PduRDestPdu
+            PduRDestPduHandleId: 14
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_G
+          PduRSrcPdu_14:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 14
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_G
+          DefinitionRef: PduRRoutingPath
+        PduRRoutingPath_15:
+          PduRDestPdu_15:
+            DefinitionRef: PduRDestPdu
+#            PduRDestPduHandleId: 15
+            PduRDestPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_H
+          PduRSrcPdu_15:
+            DefinitionRef: PduRSrcPdu
+            PduRSourcePduHandleId: 15
+            PduRSrcPduRef: /EcuC/EcuC/EcucPduCollection/Sdu_H
+          DefinitionRef: PduRRoutingPath
+
+Can:
+  Can:
+    CanConfigSet:
+      CanController_0:
+        CanBusoffProcessing: INTERRUPT
+        CanControllerId: 0
+        CanRxProcessing: INTERRUPT
+        CanTxProcessing: INTERRUPT
+        CanWakeupProcessing: INTERRUPT
+        CanWakeupSupport: FALSE
+        CanControllerDefaultBaudrate: Can/Can/CanConfigSet/CanController_0/CanControllerBaudrateConfig_0
+        CanWakeupSourceRef: EcuM/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource_0
+        CanControllerBaudrateConfig_0:
+          CanControllerBaudRate: 500
+          DefinitionRef: CanControllerBaudrateConfig
+        CanControllerBaudrateConfig_1:
+          CanControllerBaudRate: 250
+          DefinitionRef: CanControllerBaudrateConfig
+        CanFilterMask_0:
+          CanFilterMaskValue: 0x12
+          DefinitionRef: CanFilterMask
+        CanFilterMask_1:
+          CanFilterMaskValue: 0x14
+          DefinitionRef: CanFilterMask
+        CanFilterMask_2:
+          CanFilterMaskValue: 0x16
+          DefinitionRef: CanFilterMask
+        CanFilterMask_3:
+          CanFilterMaskValue: 0x18
+          DefinitionRef: CanFilterMask
+        CanFilterMask_4:
+          CanFilterMaskValue: 0x1a
+          DefinitionRef: CanFilterMask
+        CanFilterMask_5:
+          CanFilterMaskValue: 0x1c
+          DefinitionRef: CanFilterMask
+        CanFilterMask_6:
+          CanFilterMaskValue: 0x1e
+          DefinitionRef: CanFilterMask
+        CanFilterMask_7:
+          CanFilterMaskValue: 0x20
+          DefinitionRef: CanFilterMask
+        CanFilterMask_8:
+          CanFilterMaskValue: 0x22
+          DefinitionRef: CanFilterMask
+        CanFilterMask_9:
+          CanFilterMaskValue: 0x24
+          DefinitionRef: CanFilterMask
+        CanFilterMask_10:
+          CanFilterMaskValue: 0x26
+          DefinitionRef: CanFilterMask
+        CanFilterMask_11:
+          CanFilterMaskValue: 0x28
+          DefinitionRef: CanFilterMask
+        DefinitionRef: CanController
+      CanHardwareObject_0:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 1
+        CanObjectId: 0
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_1:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 2
+        CanObjectId: 1
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_2:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 3
+        CanObjectId: 2
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_3:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 4
+        CanObjectId: 3
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_1
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_4:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 5
+        CanObjectId: 4
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_5:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 6
+        CanObjectId: 5
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_2
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_6:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 7
+        CanObjectId: 6
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_7:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 8
+        CanObjectId: 7
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_3
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_8:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 9
+        CanObjectId: 8
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_9:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 10
+        CanObjectId: 9
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_4
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_10:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 11
+        CanObjectId: 10
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_11:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 12
+        CanObjectId: 11
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_5
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_12:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 13
+        CanObjectId: 12
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_13:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 14
+        CanObjectId: 13
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_6
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_14:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 15
+        CanObjectId: 14
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_15:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 16
+        CanObjectId: 15
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_7
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_16:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 17
+        CanObjectId: 16
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_17:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 18
+        CanObjectId: 17
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_8
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_18:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 19
+        CanObjectId: 18
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_19:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 20
+        CanObjectId: 19
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_9
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_20:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 17
+        CanObjectId: 20
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_21:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 18
+        CanObjectId: 21
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_10
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_22:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 19
+        CanObjectId: 22
+        CanObjectType: TRANSMIT
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        DefinitionRef: CanHardwareObject
+      CanHardwareObject_23:
+        CanHandleType: FULL
+        CanIdType: STANDARD
+        CanIdValue: 20
+        CanObjectId: 23
+        CanObjectType: RECEIVE
+        CanControllerRef: Can/Can/CanConfigSet/CanController_0
+        CanFilterMaskRef: Can/Can/CanConfigSet/CanController_0/CanFilterMask_11
+        DefinitionRef: CanHardwareObject
+    CanGeneral:
+      CanChangeBaudrateApi: FALSE
+      CanDevErrorDetection: FALSE
+      CanIndex: 0
+      CanMultiplexedTransmission: FALSE
+      CanVersionInfoApi: TRUE
+
+EcuM:
+  EcuM:
+    EcuMConfiguration:
+      EcuMCommonConfiguration:
+        EcuMWakeupSource_0:
+          EcuMWakeupSourceId: 0
+          DefinitionRef: EcuMWakeupSource
+
+
