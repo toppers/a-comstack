@@ -3,14 +3,17 @@
 #  ABREX
 #      AUTOSAR BSW and RTE XML Generator
 #
-#  Copyright (C) 2013-2014 by Center for Embedded Computing Systems
+#  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
 #              Graduate School of Information Science, Nagoya Univ., JAPAN
-#  Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
-#  Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+#  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
+#  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
+#  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 #  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-#  Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
-#  Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
-#  Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+#  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
+#  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
+#  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2013-2015 by Witz Corporation
 #
 #  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
 #  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -89,6 +92,10 @@ XML_VALUE_TYPE = {"ECUC-REFERENCE-DEF"               => "ECUC-REFERENCE-VALUE",
                   "ECUC-FUNCTION-NAME-DEF"           => "ECUC-TEXTUAL-PARAM-VALUE",
                   "ECUC-LINKER-SYMBOL-DEF"           => "ECUC-TEXTUAL-PARAM-VALUE"}
 
+# インスタンス参照型の特別コンテナ
+XML_INSTANCE_REF_CONTAINER = {"EcucPartitionSoftwareComponentInstanceRef" =>
+                                {"CONTEXT-ELEMENT-REF" => "ROOT-SW-COMPOSITION-PROTOTYPE",
+                                 "TARGET-REF" => "SW-COMPONENT-PROTOTYPE"}}
 
 ######################################################################
 # YAML → XML 実行機能
@@ -344,23 +351,36 @@ def YamlToXml_make_container(sShortName, hParamInfo, sPath)
         if (!sahValue.is_a?(Array))
           abort("#{sParamName} must be Array !!")
         end
+        # 未サポートコンテナは生成できないためエラーとする
+        if (!XML_INSTANCE_REF_CONTAINER.has_key?(sParamName))
+          abort("#{sParamName} is not supported !!")
+        end
         if (hCheck[XML_REFER] == false)
           cContainer.add_element(XML_REFER)
           hCheck[XML_REFER] = true
         end
-        cParamContainer_ = Element.new()
-        cParamContainer = cParamContainer_.add_element($hEcuc[sParamName])
-        cParamContainer.add_element("DEFINITION-REF", {"DEST" => $hDest[sParamName]}).add_text("#{sPath}/#{hParamInfo["DefinitionRef"]}/#{sParamName}")
-        cInstanceRef = cParamContainer.add_element("VALUE-IREF")
-        sahValue.each{|hVal|
-          if (hVal.has_key?("CONTEXT-ELEMENT-REF"))
-            cInstanceRef.add_element("CONTEXT-ELEMENT-REF", {"DEST" => "ROOT-SW-COMPOSITION-PROTOTYPE"}).add_text(hVal["CONTEXT-ELEMENT-REF"].to_s())
-          end
-          if (hVal.has_key?("TARGET-REF"))
-            cInstanceRef.add_element("TARGET-REF", {"DEST" => "SW-COMPONENT-PROTOTYPE"}).add_text(hVal["TARGET-REF"].to_s())
-          end
+
+        # 多重度*対応(2次元配列かチェック)
+        aTemp = []
+        if (sahValue[0].is_a?(Array))
+          aTemp = sahValue
+        else
+          aTemp.push(sahValue)
+        end
+        aTemp.each{|aVal|
+          cParamContainer_ = Element.new()
+          cParamContainer = cParamContainer_.add_element($hEcuc[sParamName])
+          cParamContainer.add_element("DEFINITION-REF", {"DEST" => $hDest[sParamName]}).add_text("#{sPath}/#{hParamInfo["DefinitionRef"]}/#{sParamName}")
+          cInstanceRef = cParamContainer.add_element("VALUE-IREF")
+          aVal.each{|hVal|
+            XML_INSTANCE_REF_CONTAINER[sParamName].each{|sParam, sDest|
+              if (hVal.has_key?(sParam))
+                cInstanceRef.add_element(sParam, {"DEST" => sDest}).add_text(hVal[sParam].to_s())
+              end
+            }
+          }
+          cContainer.elements[XML_REFER].add_element(cParamContainer)
         }
-        cContainer.elements[XML_REFER].add_element(cParamContainer)
 
       # 参照型の場合
       elsif ($hReferenceParam.include?(sParamName))
@@ -418,56 +438,59 @@ end
 ######################################################################
 # XML → YAML 実行機能
 ######################################################################
-def XmlToYaml(sFileName)
-  # ファイルが存在しない場合エラー
-  if (!File.exist?(sFileName))
-    abort("Argument error !! [#{sFileName}]")
-  end
+def XmlToYaml(sFirstFile, aExtraFile)
+  aExtraFile.unshift(sFirstFile)
+  aExtraFile.each{|sFileName|
+    # ファイルが存在しない場合エラー
+    if (!File.exist?(sFileName))
+      abort("Argument error !! [#{sFileName}]")
+    end
 
-  # 出力ファイル名作成
-  if (File.extname(sFileName) == ".arxml")
-    sYamlName = File.dirname(sFileName) + "/" + File.basename(sFileName, ".arxml") + ".yaml"
-  else
-    abort("not ARXML file !! [#{sFileName}]")
-  end
+    # 出力ファイル名作成
+    if (File.extname(sFileName) == ".arxml")
+      sYamlName = File.dirname(sFileName) + "/" + File.basename(sFileName, ".arxml") + ".yaml"
+    else
+      abort("not ARXML file !! [#{sFileName}]")
+    end
 
-  # XMLライブラリでの読み込み
-  cXmlData = REXML::Document.new(open(sFileName))
+    # XMLライブラリでの読み込み
+    cXmlData = REXML::Document.new(open(sFileName))
 
-  hResult = {}
+    hResult = {}
 
-  cXmlData.elements.each("AUTOSAR/AR-PACKAGES/AR-PACKAGE"){|cElement1|
-    cElement1.elements.each("ELEMENTS/ECUC-MODULE-CONFIGURATION-VALUES"){|cElement2|
-      sPackageName = cElement1.elements["SHORT-NAME"].text()
-      if (!hResult.has_key?(sPackageName))
-        hResult[sPackageName] = {}
-      end
+    cXmlData.elements.each("AUTOSAR/AR-PACKAGES/AR-PACKAGE"){|cElement1|
+      cElement1.elements.each("ELEMENTS/ECUC-MODULE-CONFIGURATION-VALUES"){|cElement2|
+        sPackageName = cElement1.elements["SHORT-NAME"].text()
+        if (!hResult.has_key?(sPackageName))
+          hResult[sPackageName] = {}
+        end
 
-      sModuleName = cElement2.elements["SHORT-NAME"].text()
-      hResult[sPackageName][sModuleName] = {}
+        sModuleName = cElement2.elements["SHORT-NAME"].text()
+        hResult[sPackageName][sModuleName] = {}
 
-      cElement2.elements.each("CONTAINERS/ECUC-CONTAINER-VALUE"){|cElement3|
-        XmlToYaml_parse_parameter(cElement3, hResult[sPackageName][sModuleName])
+        cElement2.elements.each("CONTAINERS/ECUC-CONTAINER-VALUE"){|cElement3|
+          XmlToYaml_parse_parameter(cElement3, hResult[sPackageName][sModuleName])
+        }
       }
     }
+
+    # YAMLファイル出力
+    open(sYamlName, "w") do |io|
+      YAML.dump(hResult, io)
+    end
+
+    # YAML整形処理
+    # ・先頭の区切り文字削除
+    # ・コーテーションの削除
+    # ・配列のインデント整列
+    sFileData = File.read(sYamlName)
+    sFileData.gsub!(/^---$/, "")
+    sFileData.gsub!("'", "")
+    sFileData.gsub!(/^(\s+)-(\s.*)$/, "\\1  -\\2")
+    File.write(sYamlName, sFileData)
+
+    puts("Generated #{sYamlName}")
   }
-
-  # YAMLファイル出力
-  open(sYamlName, "w") do |io|
-    YAML.dump(hResult, io)
-  end
-
-  # YAML整形処理
-  # ・先頭の区切り文字削除
-  # ・コーテーションの削除
-  # ・配列のインデント整列
-  sFileData = File.read(sYamlName)
-  sFileData.gsub!(/^---$/, "")
-  sFileData.gsub!("'", "")
-  sFileData.gsub!(/^(\s+)-(\s.*)$/, "\\1  -\\2")
-  File.write(sYamlName, sFileData)
-
-  puts("Generated #{sYamlName}")
 end
 
 # コンテナパース関数
@@ -505,6 +528,9 @@ def XmlToYaml_parse_parameter(cElement, hTarget)
   # 参照，外部参照，選択参照
   cElement.elements.each("REFERENCE-VALUES/ECUC-REFERENCE-VALUE"){|cElementC|
     sName = cElementC.elements["DEFINITION-REF"].text().split("/")[-1]
+    if (cElementC.elements["VALUE-REF"].nil?)
+      abort("<VALUE> is not found in '#{sParamShortName}'")
+    end
     sValue = cElementC.elements["VALUE-REF"].text()
     # 複数多重度対応
     if (hTarget[sParamShortName].has_key?(sName))
@@ -565,6 +591,8 @@ ECUC-ENUMERATION-PARAM-DEF:
   - OsIsrInterruptSource
   - OsInterCoreInterruptInterruptSource
   - OsSpinlockLockMethod
+  - WdgTriggerMode
+  - WdgTimeoutReaction
 ECUC-INTEGER-PARAM-DEF:
   - OsMasterCoreId
   - OsHookStackSize
@@ -591,6 +619,7 @@ ECUC-INTEGER-PARAM-DEF:
   - OsMemoryAreaSize
   - OsStandardMemoryCoreAssignment
   - OsIsrMaxFrequency
+  - WdgWindowOpenRate
 ECUC-STRING-PARAM-DEF:
   - OsIncludeFileName
   - OsMemoryRegionName
@@ -641,6 +670,8 @@ ECUC-FLOAT-PARAM-DEF:
   - OsSystemCycleTimeWindowLength
   - OsOsInterruptLockBudget
   - OsResourceLockBudget
+  - WdgTimeout
+  - WdgTriggerInterruptPeriod
 EOS
   $hResult = YAML.load(sNcesContainer)
 
@@ -981,7 +1012,7 @@ case lMode
   when :YamlToXml
     YamlToXml(aArgData, sEcuExtractRef)
   when :XmlToYaml
-    XmlToYaml(sOptData)
+    XmlToYaml(sOptData, aArgData)
   when :MakeParamInfo
     MakeParamInfo(sOptData)
   when :MakeCsv

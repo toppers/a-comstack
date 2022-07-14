@@ -2,14 +2,17 @@
  *  TOPPERS/A-CANIF
  *      Automotive CANIF
  *
- *  Copyright (C) 2013-2014 by Center for Embedded Computing Systems
- *              Graduate School of Information Science, Nagoya Univ., JAPAN
- *  Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
- *  Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+ *  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+ *                             Graduate School of Information Science, Nagoya Univ., JAPAN
+ *  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
+ *  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
  *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
- *  Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
- *  Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
- *  Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+ *  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
+ *  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2015 by Witz Corporation
  *
  *  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -45,7 +48,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: CanIf.c 797 2014-12-01 08:44:47Z panasonic-ayane $
+ *  $Id: CanIf.c 1241 2015-03-25 07:26:02Z panasonic-ayane $
  */
 
 /* CanIf.c */

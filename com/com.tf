@@ -2,14 +2,17 @@ $
 $  TOPPERS/A-COM
 $      AuTomotive COM
 $
-$  Copyright (C) 2013-2014 by Center for Embedded Computing Systems
-$              Graduate School of Information Science, Nagoya Univ., JAPAN
-$  Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
-$  Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+$  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+$                             Graduate School of Information Science, Nagoya Univ., JAPAN
+$  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
+$  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
+$  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
+$  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 $  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-$  Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
-$  Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
-$  Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+$  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
+$  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
+$  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
+$  Copyright (C) 2013-2015 by Witz Corporation
 $
 $  ¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î(1)¡Á(4)¤Î¾ò·ï¤òËþ¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥½¥Õ¥È¥¦¥§
 $  ¥¢¡ÊËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò²þÊÑ¤·¤¿¤â¤Î¤ò´Þ¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²þ
@@ -45,7 +48,7 @@ $  ¤ËÂÐ¤¹¤ëÅ¬¹çÀ­¤â´Þ¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊÝ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Þ¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§
 $  ¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½
 $  ¤ÎÀÕÇ¤¤òÉé¤ï¤Ê¤¤¡¥
 $
-$  $Id: com.tf 626 2014-10-21 08:06:47Z panasonic-ayane $
+$  $Id: com.tf 1241 2015-03-25 07:26:02Z panasonic-ayane $
 $
 
 $	// [COM006] XML¤Ë¤è¤ë¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¥Ñ¥é¥á¡¼¥¿½èÍý
@@ -144,6 +147,25 @@ $FUNCTION SIGNAL_RANGE_CHECK$
 	$IF (value < min) || (max < value)$
 		$ERROR$$FORMAT(_("%1%\ is `%2%\'. It is not within the range of ComBitSize. (ComBitSize:%3%\ [min:%4%\  max:%5%\])"), ARGV[4], value, size, min, max)$$END$$DIE()$
 	$END$
+$END$
+
+$ ====================================================================
+$ MSB¢ªLSBÊÑ´¹´Ø¿ô
+$ ====================================================================
+$FUNCTION MSB2LSB$
+	$msb = ARGV[1]$
+	$size = ARGV[2]$
+$	// msb¤ÎµÕ½çÈÖ¹æ¤ò»»½Ð
+	$bit_index = msb % 8$
+	$byte_index = msb / 8$
+	$msb_inv = (7 - bit_index) + 8 * byte_index$
+$	// lsb¤ÎµÕ½çÈÖ¹æ¤ò»»½Ð
+	$lsb_inv = msb_inv + (size - 1)$
+$	// lsb¤ò»»½Ð
+	$bit_index = lsb_inv % 8$
+	$byte_index = lsb_inv / 8$
+	$lsb = 8 * byte_index + (7 - bit_index)$
+	$RESULT = lsb$
 $END$
 
 $ ====================================================================
@@ -419,6 +441,7 @@ $		// IPDU¤´¤È¤ËComTimeout¤ÈComFirstTimeout¤ÎºÇ¾®ÃÍ¤òÊÝ»ý¤·¤Æ³Æ¥·¥°¥Ê¥ë¤ËÈ¿±Ç
 		$ComIPdu.timeout_min[ipdu_id] = 0$
 		$ComIPdu.first_timeout_min[ipdu_id] = 0$
 		$IF EQ(ComIPdu.ComIPduDirection[ipdu_id], "SEND")$
+$			// [NCOM049] Á÷¿®¥·¥°¥Ê¥ë¤¬¤¢¤ë¾ì¹ç¤ÏComTxTimeBaseÉ¬¿Ü
 			$IF EQ(ComConfig.tx_time_base[com_config_id], "COM_INVALID_UINT32")$
 				$ERROR$$FORMAT(_("`%1%\' should be set ComTxTimeBase."), ComIPdu.PARENT[ipdu_id])$$END$$DIE()$
 			$END$
@@ -458,6 +481,7 @@ $				// [NCOM005] MF¸Æ½Ð¤·²ó¿ô¤ËÊÑ´¹
 				$END$
 			$END$
 		$ELIF EQ(ComIPdu.ComIPduDirection[ipdu_id], "RECEIVE")$
+$			// [NCOM050] ¼õ¿®¥·¥°¥Ê¥ë¤¬¤¢¤ë¾ì¹ç¤ÏComRxTimeBaseÉ¬¿Ü
 			$IF EQ(ComConfig.rx_time_base[com_config_id], "COM_INVALID_UINT32")$
 				$ERROR$$FORMAT(_("`%1%\' should be set ComRxTimeBase."), ComIPdu.PARENT[ipdu_id])$$END$$DIE()$
 			$END$
@@ -531,7 +555,7 @@ $				// [NCOM037] ComMinimumDelayTime¤ËÀßÄê¤µ¤ì¤¿ÃÍ¤¬ComTxTimeBase¤è¤ê¾®¤µ¤¤¾ì¹ç
 
 $			// [COM576_Conf] ComTxIPduClearUpdateBit
 			$IF LENGTH(ComTxIPdu.ComTxIPduClearUpdateBit[tx_ipdu_id])$
-				$IF !EQ(ComTxIPdu.ComTxIPduClearUpdateBit[tx_ipdu_id], "CONFIMATION")
+				$IF !EQ(ComTxIPdu.ComTxIPduClearUpdateBit[tx_ipdu_id], "CONFIRMATION")
 					&& !EQ(ComTxIPdu.ComTxIPduClearUpdateBit[tx_ipdu_id], "TRANSMIT")
 					&& !EQ(ComTxIPdu.ComTxIPduClearUpdateBit[tx_ipdu_id], "TRIGGER_TRANSMIT")$
 					$ERROR$$FORMAT(_("ComTxIPduClearUpdateBit should not be set `%1%\'. (%2%\)"),ComTxIPdu.ComTxIPduClearUpdateBit[tx_ipdu_id] , ComTxIPdu[tx_ipdu_id])$$END$$DIE()$
@@ -698,6 +722,7 @@ $		// [COM127_Conf] ComSignalType
 			$ComSignal.signal_type_str[signal_id] = "float32"$
 		$ELIF EQ(ComSignal.ComSignalType[signal_id], "FLOAT64")$
 			$ComSignal.signal_type_str[signal_id] = "float64"$
+			$float64_flg = "TRUE"$
 		$ELSE$
 $			// [COM675] COM¤¬¥µ¥Ý¡¼¥È¤¹¤ë·¿°Ê³°¤¬»ØÄê¤µ¤ì¤Æ¤¤¤ë¾ì¹ç¤Ï¥¨¥é¡¼
 			$ERROR$$FORMAT(_("ComSignalType should not be set to `%1%\'."), ComSignal.ComSignalType[signal_id])$$END$$DIE()$
@@ -850,6 +875,12 @@ $			// [NCOM019] ¥Ç¡¼¥¿·¿¤¬UINT8_N¤Î¥·¥°¥Ê¥ë¤ÎComBitPosition¤¬8¤ÎÇÜ¿ô¤Ç¤Ê¤¤¾ì¹ç¤
 				$ERROR$$FORMAT(_("ComBitPosition is not the correct value. `%1%\' is UINT8_N."), ComSignal[signal_id])$$END$$DIE()$
 			$END$
 		$END$
+$		// ComSignalEndianness¤¬BIG_ENDIAN¤Î¾ì¹ç¤ÏComBitPosition(MSB)¤òLSB¤ËÊÑ´¹
+		$IF EQ (ComSignal.ComSignalEndianness[signal_id], "BIG_ENDIAN") && (ComSignal.ComBitSize[signal_id] > 1)$
+			$ComSignal.lsb[signal_id] = MSB2LSB(ComSignal.ComBitPosition[signal_id], ComSignal.ComBitSize[signal_id])$
+		$ELSE$
+			$ComSignal.lsb[signal_id] = ComSignal.ComBitPosition[signal_id]$
+		$END$
 
 $		// [COM232_Conf] ComTransferProperty
 		$IF LENGTH(ComSignal.ComTransferProperty[signal_id])$
@@ -865,6 +896,10 @@ $			// [COM762] ComBitSize¤¬0¤Î¥·¥°¥Ê¥ë¤ÎComTransferProperty¤ËTRIGGERED_ON_CHANG
 				$ERROR$$FORMAT(_("ComBitSize 0 signal should NOT set 'TRIGGERED_ON_CHANGE' or 'TRIGGERED_ON_CHANGE_WITHOUT_REPETITION'. (%1%\)"),ComSignal[signal_ref_id])$$END$$DIE()$
 			$END$
 		$ELSE$
+$			// [NCOM042] Á÷¿®¥·¥°¥Ê¥ë¤ËComTransferProperty¤¬»ØÄê¤µ¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
+			$IF EQ(ComSignal.direction[signal_id], "SEND")$
+				$ERROR$$FORMAT(_("Send Signal should be set value to ComTransferProperty. (%1%\)"), signal_id)$$END$$DIE()$
+			$END$
 			$ComSignal.ComTransferProperty[signal_id] = "INVALID_UINT8"$
 		$END$
 
@@ -888,28 +923,28 @@ $			// [COM500]ComRxDataTimeoutAction¤¬¾ÊÎ¬¤µ¤ì¤¿¾ì¹ç¤ÏNONE¤ÈÆ±Åù
 		$END$
 
 $		// ¥·¥°¥Ê¥ë¤¬IPDU¥Ð¥Ã¥Õ¥¡¤Î³°¤ËÇÛÃÖ¤µ¤ì¤Ê¤¤¤«¥Á¥§¥Ã¥¯
-		$bit_position = ComSignal.ComBitPosition[signal_id]$
+		$lsb = ComSignal.lsb[signal_id]$
 		$signal_length = ComSignal.ComSignalLength[signal_id]$
 		$signal_size = ComSignal.ComBitSize[signal_id]$
 		$ipdu_id = ComSignal.ipdu_ref[signal_id]$
 		$pdu_length = ComIPdu.pdu_length[ipdu_id]$
 		$IF EQ(ComSignal.ComSignalType[signal_id], "UINT8_N")$
-			$IF ((bit_position + (signal_length * 8)) > (pdu_length * 8))$
+			$IF ((lsb + (signal_length * 8)) > (pdu_length * 8))$
 $				// [NCOM015]IPDU¥Ð¥Ã¥Õ¥¡Æâ¤Ë¥·¥°¥Ê¥ë¤¬¼ý¤é¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 				$ERROR$$FORMAT(_("`%1%\' is not fit in IPDU buffer."), ComSignal[signal_id])$$END$$DIE()$
 			$END$
 		$ELSE$
 			$IF EQ(ComSignal.ComSignalEndianness[signal_id], "LITTLE_ENDIAN")$
-				$IF ((bit_position + signal_size) > (pdu_length * 8))$
+				$IF ((lsb + signal_size) > (pdu_length * 8))$
 $					// [NCOM016]IPDU¥Ð¥Ã¥Õ¥¡Æâ¤Ë¥·¥°¥Ê¥ë¤¬¼ý¤é¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 					$ERROR$$FORMAT(_("`%1%\' is not fit in IPDU buffer."), ComSignal[signal_id])$$END$$DIE()$
 				$END$
 			$ELIF EQ(ComSignal.ComSignalEndianness[signal_id], "BIG_ENDIAN")$
-				$IF (((bit_position / 8) * 8) + (8 - (bit_position % 8))) < signal_size$
+				$IF (((lsb / 8) * 8) + (8 - (lsb % 8))) < signal_size$
 $					// [NCOM017]IPDU¥Ð¥Ã¥Õ¥¡Æâ¤Ë¥·¥°¥Ê¥ë¤¬¼ý¤é¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 					$ERROR$$FORMAT(_("`%1%\' is not fit in IPDU buffer."), ComSignal[signal_id])$$END$$DIE()$
 				$END$
-				$IF (bit_position > ((pdu_length * 8) - 1))$
+				$IF (lsb > ((pdu_length * 8) - 1))$
 $					// [NCOM018]IPDU¥Ð¥Ã¥Õ¥¡Æâ¤Ë¥·¥°¥Ê¥ë¤¬¼ý¤é¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 					$ERROR$$FORMAT(_("`%1%\' is not fit in IPDU buffer."), ComSignal[signal_id])$$END$$DIE()$
 				$END$
@@ -1013,20 +1048,21 @@ $			// ComFilterAlgorithm¤ËÅ¬ÀÚ¤ÊÃÍ¤¬ÀßÄê¤µ¤ì¤Æ¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 		$signal_ref_id = ComFilter.PARENT[filter_id]$
 		$ComFilter.config_ref_id[filter_id] = com_config_id$
 		$ComSignal.filter_ref_id[signal_ref_id] = filter_id$
-		$IF EQ(ComSignal.ComSignalType[signal_ref_id], "BOOLEAN")$
+		$signal_type = ComSignal.ComSignalType[signal_ref_id]$
+		$IF EQ(signal_type, "BOOLEAN")$
 $			// [COM439] BOOLEAN¤Î¥·¥°¥Ê¥ë¤ËNEW_IS_WITHIN¤Þ¤¿¤ÏNEW_IS_OUTSIDE¤¬ÀßÄê¤µ¤ì¤¿¾ì¹ç¤Ï¥¨¥é¡¼
 			$IF EQ(ComFilter.ComFilterAlgorithm[filter_id], "NEW_IS_WITHIN") || EQ(ComFilter.ComFilterAlgorithm[filter_id], "NEW_IS_OUTSIDE")$
 				$ERROR$$FORMAT(_("BOOLEAN type signal should NOT set 'NEW_IS_WITHIN' or 'NEW_IS_OUTSIDE' to ComFilterAlgorithm. (%1%\)"),ComSignal[signal_ref_id])$$END$$DIE()$
 			$END$
 		$END$
-		$IF EQ(ComSignal.ComSignalType[signal_ref_id], "UINT8_N")$
+		$IF EQ(signal_type, "UINT8_N")$
 $			// [COM380] UINT8_N¤Î¥·¥°¥Ê¥ë¤ÎComFilterAlgorithm¤ËALWAYS¤Þ¤¿¤ÏNEVER¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 			$IF !EQ(ComFilter.ComFilterAlgorithm[filter_id], "ALWAYS") && !EQ(ComFilter.ComFilterAlgorithm[filter_id], "NEVER")$
 				$ERROR$$FORMAT(_("UINT8_N type signal should set 'ALWAYS' or 'NEVER' to ComFilterAlgorithm. (%1%\)"),ComSignal[signal_ref_id])$$END$$DIE()$
 			$END$
 		$END$
 $		// [COM319] FLOAT32¤Þ¤¿¤ÏFLOAT64¤Î¥·¥°¥Ê¥ë¤ËComFilter¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤ë¾ì¹ç¤Ï¥¨¥é¡¼
-		$IF EQ(ComSignal.ComSignalType[signal_ref_id], "FLOAT32") || EQ(ComSignal.ComSignalType[signal_ref_id], "FLOAT64")$
+		$IF EQ(signal_type, "FLOAT32") || EQ(signal_type, "FLOAT64")$
 			$ERROR$$FORMAT(_("FLOAT32 type or FLOAT64 type signal should NOT have ComFilter container. (%1%\)"),ComSignal[signal_ref_id])$$END$$DIE()$
 		$END$
 $		// [COM764] ComBitSize¤¬0¤Î¥·¥°¥Ê¥ë¤ÎComFilterAlgorithm¤¬MASKED_NEW_DIFFERS_MASKED_OLD¤Î¾ì¹ç¤Ï¥¨¥é¡¼
@@ -1062,6 +1098,145 @@ $		// [COM147_Conf] ComFilterX
 $		// [COM535] ComFilterAlgorithm¤¬ONE_EVERY_N¤Î¤È¤­¤ËComFilterOffset¤¬ComFilterPeriod¤è¤êÂç¤­¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 		$IF EQ(ComFilter.ComFilterAlgorithm[filter_id], "ONE_EVERY_N") && (ComFilter.ComFilterOffset[filter_id] > ComFilter.ComFilterPeriod[filter_id])$
 			$ERROR$$FORMAT(_("Because ComFilterAlgorithm is ONE_EVERY_N, ComFilterOffset should be set to a value lesser than ComFilterPeriod'. (%1%\)"),ComFilter[filter_id])$$END$$DIE()$
+		$END$
+
+$		// ComFilterAlgorithm¤¬NEW_IS_OUTSIDE¤Þ¤¿¤ÏNEW_IS_WITHIN¤Ç¤¢¤ë¥Õ¥£¥ë¥¿¤ËÂÐ¤¹¤ë¥Á¥§¥Ã¥¯
+		$IF EQ(ComFilter.ComFilterAlgorithm[filter_id], "NEW_IS_OUTSIDE") || EQ(ComFilter.ComFilterAlgorithm[filter_id], "NEW_IS_WITHIN")$
+$			// [NCOM043][NCOM044][NCOM045] ComFilterMin¡¤ComFilterMax¤¬½êÂ°¥·¥°¥Ê¥ë¤Î·¿¤ÎÈÏ°Ï³°¤Î¾ì¹ç¤Ï¥¨¥é¡¼
+			$IF EQ(signal_type, "UINT8")$
+				$IF (ComFilter.ComFilterMin[filter_id] < 0) || (255 < ComFilter.ComFilterMin[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT8, ComFilterMin(%2%\) should be in the range from 0 to 255. (%1%\)"), signal_ref_id, ComFilter.ComFilterMin[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterMax[filter_id] < 0) || (255 < ComFilter.ComFilterMax[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT8, ComFilterMax(%2%\) should be in the range from 0 to 255. (%1%\)"), signal_ref_id, ComFilter.ComFilterMax[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "UINT16")$
+				$IF (ComFilter.ComFilterMin[filter_id] < 0) || (65535 < ComFilter.ComFilterMin[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT16, ComFilterMin(%2%\) should be in the range from 0 to 65535. (%1%\)"), signal_ref_id, ComFilter.ComFilterMin[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterMax[filter_id] < 0) || (65535 < ComFilter.ComFilterMax[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT16, ComFilterMax(%2%\) should be in the range from 0 to 65535. (%1%\)"), signal_ref_id, ComFilter.ComFilterMax[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "UINT32")$
+				$IF (ComFilter.ComFilterMin[filter_id] < 0) || (4294967295 < ComFilter.ComFilterMin[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT32, ComFilterMin(%2%\) should be in the range from 0 to 4294967295. (%1%\)"), signal_ref_id, ComFilter.ComFilterMin[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterMax[filter_id] < 0) || (4294967295 < ComFilter.ComFilterMax[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT32, ComFilterMax(%2%\) should be in the range from 0 to 4294967295. (%1%\)"), signal_ref_id, ComFilter.ComFilterMax[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "SINT8")$
+				$IF (ComFilter.ComFilterMin[filter_id] < -128) || (127 < ComFilter.ComFilterMin[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT8, ComFilterMin(%2%\) should be in the range from -128 to 127. (%1%\)"), signal_ref_id, ComFilter.ComFilterMin[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterMax[filter_id] < -128) || (127 < ComFilter.ComFilterMax[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT8, ComFilterMax(%2%\) should be in the range from -128 to 127. (%1%\)"), signal_ref_id, ComFilter.ComFilterMax[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "SINT16")$
+				$IF (ComFilter.ComFilterMin[filter_id] < -32768) || (32767 < ComFilter.ComFilterMin[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT16, ComFilterMin(%2%\) should be in the range from -32768 to 32767. (%1%\)"), signal_ref_id, ComFilter.ComFilterMin[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterMax[filter_id] < -32768) || (32767 < ComFilter.ComFilterMax[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT16, ComFilterMax(%2%\) should be in the range from -32768 to 32767. (%1%\)"), signal_ref_id, ComFilter.ComFilterMax[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "SINT32")$
+				$IF (ComFilter.ComFilterMin[filter_id] < -2147483648) || (2147483647 < ComFilter.ComFilterMin[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT32, ComFilterMin(%2%\) should be in the range from -2147483648 to 2147483647. (%1%\)"), signal_ref_id, ComFilter.ComFilterMin[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterMax[filter_id] < -2147483648) || (2147483647 < ComFilter.ComFilterMax[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT32, ComFilterMax(%2%\) should be in the range from -2147483648 to 2147483647. (%1%\)"), signal_ref_id, ComFilter.ComFilterMax[filter_id])$$END$$DIE()$
+				$END$
+			$END$
+$			// [NCOM046] ComFilterMin¤¬ComFilterMax¤è¤ê¤âÂç¤­¤¤¾ì¹ç¤Ï¥¨¥é¡¼
+			$IF (ComFilter.ComFilterMin[filter_id] > ComFilter.ComFilterMax[filter_id])$
+				$ERROR$$FORMAT(_("ComFilterMin should be set to a value lesser than ComFilterMax'. (%1%\)"), filter_id)$$END$$DIE()$
+			$END$
+		$END$
+$		// ComFilterAlgorithm¤¬COM_MASKED_NEW_DIFFERS_X¤Þ¤¿¤ÏCOM_MASKED_NEW_EQUALS_X¤Ç¤¢¤ë¥Õ¥£¥ë¥¿¤ËÂÐ¤¹¤ë¥Á¥§¥Ã¥¯
+		$IF EQ(ComFilter.ComFilterAlgorithm[filter_id], "NEW_IS_OUTSIDE") || EQ(ComFilter.ComFilterAlgorithm[filter_id], "NEW_IS_WITHIN")$
+$			// [NCOM047][NCOM048] ComFilterMask¡¤ComFilterX¤¬½êÂ°¥·¥°¥Ê¥ë¤Î·¿¤ÎÈÏ°Ï³°¤Î¾ì¹ç¤Ï¥¨¥é¡¼
+			$IF EQ(signal_type, "BOOLEAN")$
+				$IF (ComFilter.ComFilterMask[filter_id] < 0) || (1 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is BOOLEAN, ComFilterMask(%2%\) should be in the range from 0 to 1. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterX[filter_id] < 0) || (1 < ComFilter.ComFilterX[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT8, ComFilterX(%2%\) should be in the range from 0 to 1. (%1%\)"), signal_ref_id, ComFilter.ComFilterX[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "UINT8")$
+				$IF (ComFilter.ComFilterMask[filter_id] < 0) || (255 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT8, ComFilterMask(%2%\) should be in the range from 0 to 255. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterX[filter_id] < 0) || (255 < ComFilter.ComFilterX[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT8, ComFilterX(%2%\) should be in the range from 0 to 255. (%1%\)"), signal_ref_id, ComFilter.ComFilterX[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "UINT16")$
+				$IF (ComFilter.ComFilterMask[filter_id] < 0) || (65535 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT16, ComFilterMask(%2%\) should be in the range from 0 to 65535. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterX[filter_id] < 0) || (65535 < ComFilter.ComFilterX[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT16, ComFilterX(%2%\) should be in the range from 0 to 65535. (%1%\)"), signal_ref_id, ComFilter.ComFilterX[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "UINT32")$
+				$IF (ComFilter.ComFilterMask[filter_id] < 0) || (4294967295 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT32, ComFilterMask(%2%\) should be in the range from 0 to 4294967295. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterX[filter_id] < 0) || (4294967295 < ComFilter.ComFilterX[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT32, ComFilterX(%2%\) should be in the range from 0 to 4294967295. (%1%\)"), signal_ref_id, ComFilter.ComFilterX[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "SINT8")$
+				$IF (ComFilter.ComFilterMask[filter_id] < -128) || (127 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT8, ComFilterMask(%2%\) should be in the range from -128 to 127. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterX[filter_id] < -128) || (127 < ComFilter.ComFilterX[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT8, ComFilterX(%2%\) should be in the range from -128 to 127. (%1%\)"), signal_ref_id, ComFilter.ComFilterX[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "SINT16")$
+				$IF (ComFilter.ComFilterMask[filter_id] < -32768) || (32767 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT16, ComFilterMask(%2%\) should be in the range from -32768 to 32767. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterX[filter_id] < -32768) || (32767 < ComFilter.ComFilterX[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT16, ComFilterX(%2%\) should be in the range from -32768 to 32767. (%1%\)"), signal_ref_id, ComFilter.ComFilterX[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "SINT32")$
+				$IF (ComFilter.ComFilterMask[filter_id] < -2147483648) || (2147483647 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT32, ComFilterMask(%2%\) should be in the range from -2147483648 to 2147483647. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+				$IF (ComFilter.ComFilterX[filter_id] < -2147483648) || (2147483647 < ComFilter.ComFilterX[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT32, ComFilterX(%2%\) should be in the range from -2147483648 to 2147483647. (%1%\)"), signal_ref_id, ComFilter.ComFilterX[filter_id])$$END$$DIE()$
+				$END$
+			$END$
+		$END$
+$		// ComFilterAlgorithm¤¬COM_MASKED_NEW_DIFFERS_MASKED_OLD¤Ç¤¢¤ë¥Õ¥£¥ë¥¿¤ËÂÐ¤¹¤ë¥Á¥§¥Ã¥¯
+		$IF EQ(ComFilter.ComFilterAlgorithm[filter_id], "COM_MASKED_NEW_DIFFERS_MASKED_OLD")$
+$			// [NCOM047] ComFilterMask¤¬½êÂ°¥·¥°¥Ê¥ë¤Î·¿¤ÎÈÏ°Ï³°¤Î¾ì¹ç¤Ï¥¨¥é¡¼
+			$IF EQ(signal_type, "BOOLEAN")$
+				$IF (ComFilter.ComFilterMask[filter_id] < 0) || (1 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is BOOLEAN, ComFilterMask(%2%\) should be in the range from 0 to 1. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "UINT8")$
+				$IF (ComFilter.ComFilterMask[filter_id] < 0) || (255 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT8, ComFilterMask(%2%\) should be in the range from 0 to 255. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "UINT16")$
+				$IF (ComFilter.ComFilterMask[filter_id] < 0) || (65535 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT16, ComFilterMask(%2%\) should be in the range from 0 to 65535. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "UINT32")$
+				$IF (ComFilter.ComFilterMask[filter_id] < 0) || (4294967295 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is UINT32, ComFilterMask(%2%\) should be in the range from 0 to 4294967295. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "SINT8")$
+				$IF (ComFilter.ComFilterMask[filter_id] < -128) || (127 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT8, ComFilterMask(%2%\) should be in the range from -128 to 127. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "SINT16")$
+				$IF (ComFilter.ComFilterMask[filter_id] < -32768) || (32767 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT16, ComFilterMask(%2%\) should be in the range from -32768 to 32767. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+			$ELIF EQ(signal_type, "SINT32")$
+				$IF (ComFilter.ComFilterMask[filter_id] < -2147483648) || (2147483647 < ComFilter.ComFilterMask[filter_id])$
+					$ERROR$$FORMAT(_("Because ComSignalType is SINT32, ComFilterMask(%2%\) should be in the range from -2147483648 to 2147483647. (%1%\)"), signal_ref_id, ComFilter.ComFilterMask[filter_id])$$END$$DIE()$
+				$END$
+			$END$
 		$END$
 	$END$
 
@@ -1176,7 +1351,7 @@ $	// IPDU¥Ð¥Ã¥Õ¥¡¤Î¥ª¡¼¥Ð¡¼¥é¥Ã¥×¥Á¥§¥Ã¥¯
 		$END$
 $		// [COM102] ¥·¥°¥Ê¥ëÆ±»Î¤¬¥ª¡¼¥Ð¡¼¥é¥Ã¥×¤·¤¿¾ì¹ç¤Ï¥¨¥é¡¼
 		$FOREACH signal_ref_id ComIPdu.ComIPduSignalRef[ipdu_id]$
-			$bit_position = ComSignal.ComBitPosition[signal_ref_id]$
+			$bit_position = ComSignal.lsb[signal_ref_id]$
 			$IF EQ(ComSignal.ComSignalType[signal_ref_id], "UINT8_N")$
 				$signal_length = ComSignal.ComSignalLength[signal_ref_id]$
 				$FOREACH index RANGE(1, signal_length * 8)$
@@ -1284,6 +1459,13 @@ $FUNCTION GEN_COM_CONFIG$
 	#ifndef TOPPERS_A_COM_CFG_H$NL$
 	#define TOPPERS_A_COM_CFG_H$NL$
 	$NL$
+
+	$IF EQ(float64_flg, "TRUE")$
+		#ifndef INT64_MAX$NL$
+		#error FLOAT64 can not support.$NL$
+		#endif$NL$
+		$NL$
+	$END$
 
 $	// [COM541_Conf] ComGeneral
 $	// [COM141_Conf][COM028] ComConfigurationUseDet
@@ -1852,7 +2034,7 @@ $		// [COM785] ComBitSize¤Ï¥Ç¡¼¥¿·¿¤Î¥µ¥¤¥º¤Ø¤Î³ÈÄ¥¤ò¤·¤Ê¤¤
 		$TAB$$TAB$COM_$ComSignal.ComSignalEndianness[signal_id]$,$TAB$/* ComSignalEndianness */$NL$
 		$TAB$$TAB$COM_$ComSignal.ComSignalType[signal_id]$,$TAB$/* ComSignalType */$NL$
 		$TAB$$TAB$COM_$ComSignal.ComTransferProperty[signal_id]$,$TAB$/* ComTransferProperty */$NL$
-		$TAB$$TAB$$ComSignal.ComBitPosition[signal_id]$U,$TAB$/* ComBitPosition */$NL$
+		$TAB$$TAB$$ComSignal.lsb[signal_id]$U,$TAB$/* ComBitPositionLsb */$NL$
 		$IF EQ(ComSignal.ComSignalLength[signal_id], "COM_INVALID_UINT16")$
 			$TAB$$TAB$$ComSignal.ComSignalLength[signal_id]$,$TAB$/* ComSignalLength */$NL$
 		$ELSE$
@@ -1951,7 +2133,7 @@ $				// ¼õ¿®¤Î¾ì¹ç¡¤¼õ¿®DM¤¬¤Ê¤±¤ì¤ÐNULL_PTR
 				$TAB$$TAB$NULL_PTR,$TAB$/* ¥·¥°¥Ê¥ë´ÉÍý¥Ö¥í¥Ã¥¯ */$NL$
 			$END$
 $			// ¼õ¿®¤Î¾ì¹ç¡¤É¬¿Ü
-			$TAB$$TAB$(void *)&signal_buffer_$com_config_id$_$ComSignal[signal_id]$,$TAB$/* ¥·¥°¥Ê¥ë¥Ð¥Ã¥Õ¥¡ */$NL$
+			$TAB$$TAB$(void *)&signal_buffer_$com_config_id$_$ComSignal[signal_id]$$TAB$/* ¥·¥°¥Ê¥ë¥Ð¥Ã¥Õ¥¡ */$NL$
 		$END$
 		$TAB$}
 	$END$
@@ -1969,6 +2151,7 @@ $	// ID¥½¡¼¥È
 $ID_SORT()$
 
 $	// ¥¨¥é¡¼¥Á¥§¥Ã¥¯
+$float64_flg = "FALSE"$
 $FOREACH config_id ComConfig.ID_LIST$
 	$ERROR_CHECK(config_id)$
 $END$
@@ -2093,7 +2276,6 @@ $	  <COM002_Conf> ComSignalGroup/ComGroupSignal/ComSystemTemplateSystemSignalRef
 $	  <COM519_Conf> ComIPdu/ComIPduSignalGroupRef
 
 $	¤½¤ÎÂ¾¤Î»ÅÍÍÀâÌÀ
-$	  <COM489> Á÷¿®Â¦¤È¼õ¿®Â¦¤ÎÌµ¸úÃÍ¤¬°ìÃ×¤·¤Æ¤¤¤ë¤³¤È¤Ï¥æ¡¼¥¶¤¬ÊÝ¾Ú¤¹¤ëÉ¬Í×¤¬¤¢¤ë
 $	  <COM585> ËÜ¥¸¥§¥Í¥ì¡¼¥¿¤Ç¤ÏCom_Cfg.c¤ÏÀ¸À®¤·¤Ê¤¤
 $	  <COM607> ËÜ¥¸¥§¥Í¥ì¡¼¥¿¤Ç¤Ï¥ê¥ó¥¯¥¿¥¤¥à¥Ñ¥é¥á¡¼¥¿¤Ï¥µ¥Ý¡¼¥È¤·¤Ê¤¤
 $	  [COM401] ComSignalGroup¤ÈComGroupSignal¤Î¥·¥ç¡¼¥È¥Í¡¼¥à¤Ï½ÅÊ£ÉÔ²Ä

@@ -5,9 +5,6 @@ Com.h
 com.csv
 com.ini
 com.tf
-doc/com_container.txt
-doc/com_spec.txt
-doc/com_system_service.txt
 sample/Makefile
 sample/PduR_Com.h
 sample/SchM_Com.h
@@ -20,12 +17,9 @@ sample/os.yaml
 sample/readme.txt
 sample/com_debug.h
 coverage/check_spec_coverage.rb
+coverage/get_spec_id.rb
+coverage/get_impl_id.rb
 coverage/readme.txt
-coverage/autosar/autosar_spec_id.txt
-coverage/autosar/get_spec_id.rb
-coverage/implementation/get_spec_id.rb
-coverage/implementation/impl_spec_id.txt
-coverage/implementation/nces_spec_id.txt
 performance/Com_Cbk.c
 performance/Com_Cbk.h
 performance/Com_Cfg.h

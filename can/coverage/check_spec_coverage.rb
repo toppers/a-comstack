@@ -3,14 +3,18 @@
 #  TOPPRES/A-CAN
 #      Automotive CAN
 #
-#  Copyright (C) 2013-2014 by Center for Embedded Computing Systems
-#              Graduate School of Information Science, Nagoya Univ., JAPAN
-#  Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
-#  Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+#  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+#                             Graduate School of Information Science, Nagoya Univ., JAPAN
+#  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd.
+#  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2014-2015 by FUJITSU TEN LIMITED.
+#  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
+#  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 #  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-#  Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
-#  Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
-#  Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+#  Copyright (C) 2014-2015 by SCSK Corporation
+#  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
+#  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2013-2015 by Witz Corporation, JAPAN
 #
 #  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
 #  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -46,7 +50,7 @@
 #  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 #  の責任を負わない．
 #
-#  $Id: check_spec_coverage.rb 599 2014-10-17 01:27:58Z shigihara $
+#  $Id: check_spec_coverage.rb 1241 2015-03-25 07:26:02Z panasonic-ayane $
 #
 
 #

@@ -8,14 +8,18 @@
 TOPPRES/A-COM
     Automotive COM
 
-Copyright (C) 2013-2014 by Center for Embedded Computing Systems
-            Graduate School of Information Science, Nagoya Univ., JAPAN
-Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+                           Graduate School of Information Science, Nagoya Univ., JAPAN
+Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd.
+Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2015 by FUJITSU TEN LIMITED.
+Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
-Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+Copyright (C) 2014-2015 by SCSK Corporation
+Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
+Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2015 by Witz Corporation, JAPAN
 
 上記著作権者は，以下の (1)〜(3)の条件を満たす場合に限り，本ドキュメ
 ント（本ドキュメントを改変したものを含む．以下同じ）を使用・複製・改
@@ -43,7 +47,7 @@ Copyright (C) 2013-2014 by Witz Corporation, JAPAN
 により直接的または間接的に生じたいかなる損害に関しても，その責任を負
 わない．
 
-$Id: readme.txt 425 2014-09-17 00:46:01Z fsi-dankei $
+$Id: readme.txt 854 2014-12-10 06:10:08Z panasonic-ayane $
 ----------------------------------------------------------------------
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -51,50 +55,44 @@ $Id: readme.txt 425 2014-09-17 00:46:01Z fsi-dankei $
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 coverage
-┣ check_spec_coverage.rb        ：仕様カバレッジチェックスクリプト
-┃
-┣ autosar
-┃ ┣ get_spec_id.rb             ：AUTOSAR仕様書から仕様タグを抜き出すスクリプト
-┃ ┣ autosar_spec_id.txt        ：get_spec_id.rbで生成したファイル
-┃ ┗ AUTOSAR_SWS_COM_R4.0.3.txt ：AUTOSAR仕様書テキスト版(同梱していない)
-┃
-┗ implementation
-   ┣ get_spec_id.rb             ：A-COMのコードから仕様タグを抜き出すスクリプト
-   ┣ impl_spec_id.txt           ：get_spec_id.rbで生成したファイル(AUTOSAR仕様)
-   ┗ nces_spec_id.txt           ：get_spec_id.rbで生成したファイル(NCES独自仕様)
+┣ check_spec_coverage.rb：仕様カバレッジチェックスクリプト
+┣ get_spec_id.rb        ：AUTOSAR仕様書から仕様タグを抜き出すスクリプト
+┣ get_impl_id.rb        ：get_spec_id.rbで生成したファイル
+┣ com_spec.txt          ：COM外部仕様書テキスト版(同梱していない)
+┣ com_spec_id.txt       ：get_spec_id.rbで生成したファイル(COM仕様一覧)
+┣ com_impl_id.txt       ：get_impl_id.rbで生成したファイル(実装仕様一覧)
+┗ readme.txt            ：本ドキュメント
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (2) 使い方
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ―――――――――――――――――――――――――――――――――――
-(2.1) AUTOSAR仕様書テキスト版の用意
+(2.1) COM外部仕様書テキスト版の用意
 ―――――――――――――――――――――――――――――――――――
 
-AUTOSARのWebサイト(http://www.autosar.org/)からpdfで配布されている
-AUTOSAR COMの仕様書(AUTOSAR_SWS_COM.pdf)をダウンロードし，Adobe Reader
-等の変換機能を使用して，テキストファイルを作成する．
-ファイル名はAUTOSAR_SWS_COM_R4.0.3.txtとして，(1)フォルダ構成に従って配
-置する．
-※R4.0.3のみ対応
+TOPPERSのWebサイト(https://www.toppers.jp/)からpdfで配布されている，
+COMの外部仕様書をダウンロードし，Adobe Reader等の変換機能を使用して，
+テキストファイルを作成する．
+ファイル名はcom_spec.txtとして，(1)フォルダ構成 に従って配置する．
 
 ―――――――――――――――――――――――――――――――――――
-(2.2) AUTOSAR仕様一覧の作成
+(2.2) COM仕様一覧の作成
 ―――――――――――――――――――――――――――――――――――
 
-$ cd coverage/autosar
+$ cd coverage
 $ ruby get_spec_id.rb
 
-上記コマンドによりautosar_spec_id.txtが生成される．
+上記コマンドによりcom_spec_id.txtが生成される．
 
 ―――――――――――――――――――――――――――――――――――
 (2.3) A-COM実装仕様一覧の作成
 ―――――――――――――――――――――――――――――――――――
 
-$ cd coverage/implementation
-$ ruby get_spec_id.rb
+$ cd coverage
+$ ruby get_impl_id.rb
 
-上記コマンドによりimpl_spec_id.txt，nces_spec_id.txtが生成される．
+上記コマンドによりcom_impl_id.txtが生成される．
 
 ―――――――――――――――――――――――――――――――――――
 (2.4) A-COMに実装された仕様カバレッジを取得する
@@ -105,15 +103,14 @@ $ ruby check_spec_coverage.rb
 
 上記コマンドにより，以下のようなカバレッジ確認結果が出力される．
 
-$ ./check_spec_coverage.rb
+$ ruby check_spec_coverage.rb
 ==============================
-AUTOSAR tags    : 436
-Implemented tags: 436
+Com spec tags   : 479
+Implemented tags: 479
 Spec Coverage   : 100.0 %
 ------------------------------
 Not implementation tags: 0
 ==============================
-
 
 
 以上．

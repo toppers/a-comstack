@@ -2,14 +2,17 @@
  *  TOPPERS/A-COM
  *      Automotive COM
  *
- *  Copyright (C) 2013-2014 by Center for Embedded Computing Systems
- *              Graduate School of Information Science, Nagoya Univ., JAPAN
- *  Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
- *  Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+ *  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+ *                             Graduate School of Information Science, Nagoya Univ., JAPAN
+ *  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
+ *  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
  *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
- *  Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
- *  Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
- *  Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+ *  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
+ *  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2015 by Witz Corporation
  *
  *  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -45,7 +48,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Com.h 789 2014-11-28 06:04:31Z panasonic-ayane $
+ *  $Id: Com.h 1245 2015-03-25 09:25:18Z panasonic-ayane $
  */
 
 /* [COM005] Com.h */
@@ -75,7 +78,6 @@
 #define COM_INVALID_UINT8							(uint8) 0xFF
 #define COM_INVALID_UINT16							(uint16) 0xFFFF
 #define COM_INVALID_UINT32							(uint32) 0xFFFFFFFF
-#define E_NOT_SEND									0x02U    /* E_OK，E_NOT_OKと区別できればよい */
 
 #define COM_ALWAYS									0x01U
 #define COM_MASKED_NEW_DIFFERS_MASKED_OLD			0x02U
@@ -138,36 +140,35 @@
 
 /* IPDU状態操作マクロ */
 #define IPDU_STARTED_BIT						0x01U       /* IPDUが開始されているかどうか */
-#define IPDU_UPDATED_BIT						0x02U       /* Com_SendSignalによってIPDUバッファが更新された状態かどうか */
-#define IPDU_NOTICED_BIT						0x04U       /* DEFERREDのIPDUの受信(送信完了)通知がきたかどうか */
-#define IPDU_WITHOUT_REPETITION_BIT				0x08U       /* 1回のみIPDUを送信するかどうか */
-#define IPDU_DIRECT_RETRITED_BIT				0x10U       /* [DIRECT]MDT待ち，またはPduRへの送信に失敗したためにリトライしている状態かどうか */
-#define IPDU_PERIODIC_RETRITED_BIT				0x20U       /* [PERIODIC]MDT待ち，またはPduRへの送信に失敗したためにリトライしている状態かどうか */
+#define IPDU_NOTICED_BIT						0x02U       /* DEFERREDのIPDUの受信(送信完了)通知がきたかどうか */
+#define IPDU_DIRECT_SEND_BIT					0x04U       /* DIRECT送信中かどうか */
+#define IPDU_FIRST_DIRECT_SEND_BIT				0x08U       /* 初回のDIRECT送信であるかどうか */
+#define IPDU_RETRY_BIT							0x10U       /* リトライ状態かどうか */
+#define IPDU_MDT_WAIT_BIT						0x20U       /* MDT待ち状態かどうか */
 #define IPDU_DM_BIT								0x40U       /* DMが開始されているかどうか */
 #define IPDU_TRIGGERED_BIT						0x80U       /* Com_TriggerIPDUSendが呼ばれたかどうか */
 #define IPDU_IS_STARTED(state)					(((*(state)) & IPDU_STARTED_BIT) != 0U)
-#define IPDU_IS_UPDATED(state)					(((*(state)) & IPDU_UPDATED_BIT) != 0U)
 #define IPDU_IS_NOTICED(state)					(((*(state)) & IPDU_NOTICED_BIT) != 0U)
-#define IPDU_IS_DIRECT_RETRITED(state)			(((*(state)) & IPDU_DIRECT_RETRITED_BIT) != 0U)
-#define IPDU_IS_PERIODIC_RETRITED(state)		(((*(state)) & IPDU_PERIODIC_RETRITED_BIT) != 0U)
-#define IPDU_IS_WITHOUT_REPETITION(state)		(((*(state)) & IPDU_WITHOUT_REPETITION_BIT) != 0U)
+#define IPDU_IS_DIRECT_SEND(state)				(((*(state)) & IPDU_DIRECT_SEND_BIT) != 0U)
+#define IPDU_IS_FIRST_DIRECT_SEND(state)		(((*(state)) & IPDU_FIRST_DIRECT_SEND_BIT) != 0U)
+#define IPDU_IS_RETRY(state)					(((*(state)) & IPDU_RETRY_BIT) != 0U)
+#define IPDU_IS_MDT_WAIT(state)					(((*(state)) & IPDU_MDT_WAIT_BIT) != 0U)
 #define IPDU_IS_DM(state)						(((*(state)) & IPDU_DM_BIT) != 0U)
 #define IPDU_IS_TRIGGERED(state)				(((*(state)) & IPDU_TRIGGERED_BIT) != 0U)
 #define IPDU_SET_STARTED(state)					((*(state)) |= IPDU_STARTED_BIT)
-#define IPDU_SET_UPDATED(state)					((*(state)) |= IPDU_UPDATED_BIT)
 #define IPDU_SET_NOTICED(state)					((*(state)) |= IPDU_NOTICED_BIT)
-#define IPDU_SET_DIRECT_RETRITED(state)			((*(state)) |= IPDU_DIRECT_RETRITED_BIT)
-#define IPDU_SET_PERIODIC_RETRITED(state)		((*(state)) |= IPDU_PERIODIC_RETRITED_BIT)
-#define IPDU_SET_WITHOUT_REPETITION(state)		((*(state)) |= IPDU_WITHOUT_REPETITION_BIT)
+#define IPDU_SET_DIRECT_SEND(state)				((*(state)) |= IPDU_DIRECT_SEND_BIT)
+#define IPDU_SET_FIRST_DIRECT_SEND(state)		((*(state)) |= IPDU_FIRST_DIRECT_SEND_BIT)
+#define IPDU_SET_RETRY(state)					((*(state)) |= IPDU_RETRY_BIT)
+#define IPDU_SET_MDT_WAIT(state)				((*(state)) |= IPDU_MDT_WAIT_BIT)
 #define IPDU_SET_DM(state)						((*(state)) |= IPDU_DM_BIT)
 #define IPDU_SET_TRIGGERED(state)				((*(state)) |= IPDU_TRIGGERED_BIT)
 #define IPDU_CLEAR_STARTED(state)				((*(state)) &= (uint8) (~IPDU_STARTED_BIT))
-#define IPDU_CLEAR_UPDATED(state)				((*(state)) &= (uint8) (~IPDU_UPDATED_BIT))
 #define IPDU_CLEAR_NOTICED(state)				((*(state)) &= (uint8) (~IPDU_NOTICED_BIT))
-#define IPDU_CLEAR_DIRECT_RETRITED(state)		((*(state)) &= (uint8) (~IPDU_DIRECT_RETRITED_BIT))
-#define IPDU_CLEAR_PERIODIC_RETRITED(state)		((*(state)) &= (uint8) (~IPDU_PERIODIC_RETRITED_BIT))
-#define IPDU_CLEAR_WITHOUT_REPETITION(state)	((*(state)) &= (uint8) (~IPDU_WITHOUT_REPETITION_BIT))
-#define IPDU_CLEAR_RETRITED(state)				((*(state)) &= (uint8) (~(IPDU_WITHOUT_REPETITION_BIT | IPDU_DIRECT_RETRITED_BIT | IPDU_PERIODIC_RETRITED_BIT)))
+#define IPDU_CLEAR_DIRECT_SEND(state)			((*(state)) &= (uint8) (~IPDU_DIRECT_SEND_BIT))
+#define IPDU_CLEAR_FIRST_DIRECT_SEND(state)		((*(state)) &= (uint8) (~IPDU_FIRST_DIRECT_SEND_BIT))
+#define IPDU_CLEAR_RETRY(state)					((*(state)) &= (uint8) (~IPDU_RETRY_BIT))
+#define IPDU_CLEAR_MDT_WAIT(state)				((*(state)) &= (uint8) (~IPDU_MDT_WAIT_BIT))
 #define IPDU_CLEAR_DM(state)					((*(state)) &= (uint8) (~IPDU_DM_BIT))
 #define IPDU_CLEAR_TRIGGERED(state)				((*(state)) &= (uint8) (~IPDU_TRIGGERED_BIT))
 #define IPDU_CLEAR_ALL(state)					((*(state)) = 0x00U)
@@ -252,7 +253,7 @@
 #endif /* (COM_DEV_ERROR_DETECT == STD_ON) && !defined(OMIT_COM_DEBUG) */
 
 /*
- *  [COM673] AUTOSARリリースバージョン
+ *  AUTOSARリリースバージョン
  */
 #define COM_AR_RELEASE_MAJOR_VERSION	4U
 #define COM_AR_RELEASE_MINOR_VERSION	0U
@@ -262,7 +263,7 @@
  *  サプライヤバージョン情報
  */
 #define COM_SW_MAJOR_VERSION	1U
-#define COM_SW_MINOR_VERSION	1U
+#define COM_SW_MINOR_VERSION	2U
 #define COM_SW_PATCH_VERSION	0U
 #define COM_VENDOR_ID			65U  /* NCESベンダID */
 
@@ -292,12 +293,9 @@
 #define COMServiceId_GetVersionInfo					0x09U
 #define COMServiceId_SendSignal						0x0AU
 #define COMServiceId_ReceiveSignal					0x0BU
-#define COMServiceId_UpdateShadowSignal				0x0CU
 #define COMServiceId_SendSignalGroup				0x0DU
 #define COMServiceId_ReceiveSignalGroup				0x0EU
-#define COMServiceId_ReceiveShadowSignal			0x0FU
 #define COMServiceId_InvalidateSignal				0x10U
-#define COMServiceId_InvalidateShadowSignal			0x16U
 #define COMServiceId_TriggerIPDUSend				0x17U
 #define COMServiceId_MainFunctionRx					0x18U
 #define COMServiceId_MainFunctionTx					0x19U
@@ -341,10 +339,12 @@
 #define COMServiceId_check_signal_dm				0x67U
 #define COMServiceId_reset_signal_dm				0x68U
 #define COMServiceId_check_updatebit				0x69U
-#define COMServiceId_direct_send					0x6AU
-#define COMServiceId_periodic_send					0x6BU
-#define COMServiceId_trigger_send					0x6CU
 #define COMServiceId_ipdu_initialize				0x6DU
+#define COMServiceId_set_tx_mode					0x6EU
+#define COMServiceId_switch_tx_mode					0x6FU
+#define COMServiceId_clear_occurrence				0x70U
+#define COMServiceId_ipdu_send						0x71U
+#define COMServiceId_stop_rx_dm						0x72U
 
 
 typedef uint16	Com_SignalIdType;
@@ -510,7 +510,7 @@ typedef struct signal_initialization_block {
 	uint8			ComSignalEndianness;                /* 必須 */
 	uint8			ComSignalType;                      /* 必須 */
 	uint8			ComTransferProperty;                /* 送信の場合，必須．受信の場合，COM_INVALID_UINT8 */
-	uint16			ComBitPosition;                     /* 必須 */
+	uint16			ComBitPositionLsb;                  /* 必須 */
 	uint16			ComSignalLength;                    /* UINT8_N以外の場合，COM_INVALID_UINT16 */
 	uint16			ComUpdateBitPosition;               /* 未設定の場合，COM_INVALID_UINT16 */
 	uint32			ComFirstTimeout;                    /* 未設定の場合，0 */
@@ -612,11 +612,8 @@ extern const Com_ConfigType	com_config[];
 
 extern uint8 Com_SendDynSignal(Com_SignalIdType SignalId, const void *SignalDataPtr, uint16 Length);
 extern uint8 Com_ReceiveDynSignal(Com_SignalIdType SignalId, void *SignalDataPtr, uint16 *Length);
-extern void Com_UpdateShadowSignal(Com_SignalIdType SignalId, const void *SignalDataPtr);
 extern uint8 Com_SendSignalGroup(Com_SignalGroupIdType SignalGroupId);
 extern uint8 Com_ReceiveSignalGroup(Com_SignalGroupIdType SignalGroupId);
-extern void Com_ReceiveShadowSignal(Com_SignalIdType SignalId, void *SignalDataPtr);
-extern void Com_InvalidateShadowSignal(Com_SignalIdType SignalId);
 extern uint8 Com_InvalidateSignalGroup(Com_SignalGroupIdType SignalGroupId);
 extern void Com_MainFunctionRouteSignals(void);
 extern Std_ReturnType Com_TriggerTransmit(PduIdType TxPduId, PduInfoType *PduInfoPtr);
@@ -639,8 +636,7 @@ extern BufReq_ReturnType Com_CopyTxData(PduIdType PduId, PduInfoType *PduInfoPtr
  *    <COM596><COM597>
  *  - シグナルグループ
  *    <COM682><COM683><COM737><COM718>[COM500]<COM393><COM513><COM053><COM484><COM050>
- *    <COM051><COM061><COM741><COM769><COM742><COM743><COM770><COM326><COM286><COM365>
- *    <COM575>
+ *    <COM051><COM061><COM741><COM769><COM742><COM743><COM770><COM326><COM365><COM575>
  *  - 大型データ
  *    <COM713><COM714><COM662><COM759><COM760><COM720>
  *  - 動的データ
@@ -651,7 +647,6 @@ extern BufReq_ReturnType Com_CopyTxData(PduIdType PduId, PduInfoType *PduInfoPtr
 
 /*
  *  その他の仕様説明
- *    <COM671> コールバックルーチンの実装方法に関する説明でありComへの要求仕様ではない
  *    [COM780][COM781] 本実装ではCom_TriggerIPDUSend, Com_SendSignal内で即時送信しないため対処不要
  *    <COM696><COM697> Com_TriggerTransmit未サポートのため，対処不要
  */

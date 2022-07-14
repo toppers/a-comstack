@@ -7,14 +7,17 @@
 TOPPRES/A-COMSTACK
     Automotive COMSTACK
 
-Copyright (C) 2013-2014 by Center for Embedded Computing Systems
-            Graduate School of Information Science, Nagoya Univ., JAPAN
-Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+                           Graduate School of Information Science, Nagoya Univ., JAPAN
+Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
+Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
-Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
+Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
+Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2015 by Witz Corporation
 
 上記著作権者は，以下の (1)〜(3)の条件を満たす場合に限り，本ドキュメ
 ント（本ドキュメントを改変したものを含む．以下同じ）を使用・複製・改
@@ -42,27 +45,28 @@ Copyright (C) 2013-2014 by Witz Corporation, JAPAN
 により直接的または間接的に生じたいかなる損害に関しても，その責任を負
 わない．
 
-$Id: readme.txt 480 2014-09-29 11:12:34Z panasonic-ayane $
+$Id: readme.txt 1241 2015-03-25 07:26:02Z panasonic-ayane $
 ----------------------------------------------------------------------
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (1) 概要
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-A-COMSTACKは，AUTOSARで定義されている通信スタックである，以下の4つのモ
-ジュールを含んでいる．
+TOPPERS/A-COMSTACKは，AUTOSARで定義されている通信スタックのうち，以下の
+4つのモジュールを含んでいる．
 
-・Com（Communication）
-・PduR（PDU Router）
-・CanIf（CAN Interface）
-・Can（CAN Driver）
+・Com（Communication）  : A-COM
+・PduR（PDU Router）    : A-PDUR
+・CanIf（CAN Interface）: A-CANIF
+・Can（CAN Driver）     : A-CAN
 
-現状，TOPPERS/ATK2-SC1のnios2_dev_gcc依存部のみで動作確認済みである．
-Canはハードウェアに依存したコンポーネントであり，A-COMSTACKのCanは
-nios2_dev_gcc依存部用を用意している．
+Canはハードウェアに依存したモジュールであり，TOPPERS/A-COMSTACKのA-CAN
+は依存部として以下を用意している．
+・nios2_dev_gcc依存部
+・hsbv850e2fg4_cx依存部
 
-それぞれのモジュールに関する詳細は，各モジュールフォルダのdocフォルダに
-あるドキュメントを参照すること．
+それぞれのモジュールに関する詳細は，外部仕様書または各モジュールフォル
+ダのdocフォルダにあるドキュメントを参照すること．
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 (2) TOPPERS/ATK2上での使い方
@@ -85,28 +89,32 @@ TOPPERS/ATK2，TOPPERS/A-COMSTACKを入手し，以下のように同一フォルダ内に
 配置する．
 
 ┣ a-comstack         ：A-COMSTACK
-┃ ┣ can             ：A-CAN
-┃ ┃  ┣ doc         ：A-CAN用ドキュメント
-┃ ┃  ┗ sample      ：A-CAN用サンプルアプリケーション
+┃ ┣ com             ：A-COM
+┃ ┃  ┣ coverage    ：A-COM用仕様カバレッジチェックツール
+┃ ┃  ┣ performance ：A-COM用性能評価プログラム
+┃ ┃  ┗ sample      ：A-CANIF用サンプルアプリケーション
+┃ ┃
+┃ ┣ pdur            ：A-PDUR
+┃ ┃  ┣ doc         ：A-PDUR用ドキュメント
+┃ ┃  ┗ sample      ：A-PDUR用サンプルコンフィギュレーション
 ┃ ┃
 ┃ ┣ canif           ：A-CANIF
 ┃ ┃  ┣ coverage    ：A-CANIF用仕様カバレッジチェックツール
 ┃ ┃  ┣ doc         ：A-CANIF用ドキュメント
 ┃ ┃  ┗ sample      ：A-CANIF用サンプルアプリケーション
 ┃ ┃
-┃ ┣ com             ：A-COM
-┃ ┃  ┣ coverage    ：A-COM用仕様カバレッジチェックツール
-┃ ┃  ┣ doc         ：A-COM用ドキュメント
-┃ ┃  ┣ performance ：A-COM用性能評価プログラム
-┃ ┃  ┗ sample      ：A-CANIF用サンプルアプリケーション
+┃ ┣ can             ：A-CAN
+┃ ┃  ┣ arch        ：A-CAN用アーキテクチャ
+┃ ┃  ┣ coverage    ：A-CAN用仕様カバレッジチェックツール
+┃ ┃  ┣ doc         ：A-CAN用ドキュメント
+┃ ┃  ┣ stub        ：A-CAN用スタブ
+┃ ┃  ┗ target      ：A-CAN用ターゲット依存部
 ┃ ┃
 ┃ ┣ general         ：全モジュールで使用するソースコード
 ┃ ┃
-┃ ┣ pdur            ：A-PDUR
-┃ ┃  ┣ doc         ：A-PDUR用ドキュメント
-┃ ┃  ┗ sample      ：A-PDUR用サンプルコンフィギュレーション
-┃ ┃
 ┃ ┣ stub            ：A-COMSTACK以外のAUTOSARモジュールスタブ
+┃ ┃
+┃ ┣ doc             ：A-COMSTACK用ドキュメント
 ┃ ┃
 ┃ ┗ utils           ：ユーティリティプログラム
 ┃     ┗ abrex       ：ARXML生成ツール

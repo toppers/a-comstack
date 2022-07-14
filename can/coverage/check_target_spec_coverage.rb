@@ -39,7 +39,7 @@
 #  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 #  の責任を負わない．
 #
-#  $Id: check_target_spec_coverage.rb 599 2014-10-17 01:27:58Z shigihara $
+#  $Id: check_target_spec_coverage.rb 913 2014-12-26 06:08:05Z shigihara $
 #
 
 #
@@ -57,7 +57,7 @@ require "pp"
 sNonDependSpecFile = "#{TOOL_ROOT}/implementation/impl_spec_id.txt"
 
 # 依存部対象ファイルデータ
-hTargetFiles = {"hsbv850e2fg4_cx" => ["#{TOOL_ROOT}/../arch/v850e2/Can_Prc.h", "#{TOOL_ROOT}/../arch/v850e2/Can_Prc.tf"],
+hTargetFiles = {"hsbv850e2fg4_cx" => ["#{TOOL_ROOT}/../arch/fcn/Can_Prc.h", "#{TOOL_ROOT}/../arch/fcn/Can_Prc.tf"],
                 "nios2_dev_gcc" => []}
 hTargetFiles.each{|sName, aFiles|
   aFiles.push("#{TOOL_ROOT}/../target/#{sName}/Can_Irq.c")

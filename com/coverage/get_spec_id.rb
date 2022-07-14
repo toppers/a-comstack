@@ -50,61 +50,90 @@
 #  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 #  の責任を負わない．
 #
-#  $Id: check_spec_coverage.rb 1241 2015-03-25 07:26:02Z panasonic-ayane $
+#  $Id: get_spec_id.rb 1241 2015-03-25 07:26:02Z panasonic-ayane $
 #
 
-#
-#  仕様カバレッジをチェックする
-#
+#=====================================================================
+# テキストファイル(com_spec.txt)から，COMに関する仕様タグを抜き出して，
+# ID一覧をファイルへ出力する
+# ※テキストファイルは，外部仕様書をWord等の変換機能を使用して作成する
+#=====================================================================
 
-if ($0 == __FILE__)
-  TOOL_ROOT = File.expand_path(File.dirname(__FILE__) + "/")
-  $LOAD_PATH.unshift(TOOL_ROOT)
+# 書き出すファイル
+sWriteFileId = File.dirname(__FILE__) + "/com_spec_id.txt"
+
+# pdfから読み出したテキストデータ
+sTextFile = "com_spec.txt"
+
+# テキストファイルを読み込む
+sText = File.read(sTextFile)
+
+# 改行を削除(タグの途中で改行が入るケース対応)
+sText.gsub!("\r\n", "")
+sText.gsub!("\r", "")
+sText.gsub!("\n", "")
+
+# 対象タグを検索する
+aData1 = sText.scan(/\WCOM[0-9][0-9][0-9]\W/)
+aData2 = sText.scan(/COM[0-9][0-9][0-9]_Conf/)
+aData3 = sText.scan(/COMa[0-9][0-9][0-9]/)
+aData4 = sText.scan(/NCOM[0-9][0-9][0-9]/)
+
+# 削除された仕様タグ
+aDelTag = []
+
+# 不要な文字列を削除
+aTmp = []
+aData1.each{|sTag|
+  if (sTag.include?("＜"))
+    aDelTag.push(sTag.gsub(/\W(COM[0-9][0-9][0-9])\W/, "\\1"))
+  else
+    aTmp.push(sTag.gsub(/\W(COM[0-9][0-9][0-9])\W/, "\\1"))
+  end
+}
+aData1 = aTmp
+
+# 重複したIDを削除
+aData1.uniq!
+aData2.uniq!
+aData3.uniq!
+aData4.uniq!
+
+# タグの数を計測
+nData1 = aData1.size()
+nData2 = aData2.size()
+nData3 = aData3.size()
+nData4 = aData4.size()
+
+# タグ一覧を出力
+aData = aData1 + aData2 + aData3 + aData4
+
+# IDでソート
+aData.sort!
+
+# 1つの文字列にする
+sOutString = aData.join("\n")
+
+# ファイルへ出力する
+File.open(sWriteFileId, "w") {|io|
+  io.puts(sOutString)
+}
+
+# 仕様IDの件数を表示する
+puts("=" * 20)
+printf("COM***      : %3d\n", nData1)
+printf("COM***_Conf : %3d\n", nData2)
+printf("COMa***     : %3d\n", nData3)
+printf("NCOM***     : %3d\n", nData4)
+puts("-" * 20)
+printf("Total       : %3d\n", (nData1 + nData2 + nData3 + nData4))
+puts("=" * 20)
+printf("Delete tags : %3d\n", aDelTag.size())
+if (aDelTag != nil)
+  aDelTag.sort!
+  puts("-" * 20)
+  aDelTag.each{|sDelTag|
+    puts(sDelTag)
+  }
 end
-
-require "pp"
-
-# 対象タグ正規表現
-TAG_REG_ALL = "N?COMa?[0-9][0-9][0-9][_Conf]*"
-
-# COMタグ一覧
-aComSpecId = File.read("#{TOOL_ROOT}/com_spec_id.txt").split("\n")
-
-# 実装済みタグ一覧ファイル
-aImplSpecId = []
-aFileData = File.read("#{TOOL_ROOT}/com_impl_id.txt").split("\n")
-aFileData.each{|sLine|
-  if (sLine =~ /\W#{TAG_REG_ALL}\W/)
-    aImplSpecId.push(sLine.gsub(/^\W(#{TAG_REG_ALL})\W.*$/, "\\1"))
-  end
-}
-
-# 未実装タグ一覧
-aNonImplTags = []
-aComSpecId.each{|sTag|
-  if (!aImplSpecId.include?(sTag))
-    aNonImplTags.push(sTag)
-  end
-}
-
-# 結果表示
-puts("=" * 30)
-puts("Com spec tags   : #{aComSpecId.size()}")
-puts("Implemented tags: #{aImplSpecId.size()}")
-fCoverage = aImplSpecId.size().to_f() / aComSpecId.size().to_f() * 100
-puts("Spec Coverage   : #{sprintf('%0.1f', fCoverage)} %")
-puts("-" * 30)
-puts("Not implementation tags: #{aNonImplTags.size()}")
-puts("=" * 30)
-
-aNonImplTags.each{|sTag|
-  puts(sTag)
-}
-
-# 仕様にないタグが実装されていないかチェック
- aImplSpecId.each{|sTag|
-  if (!aComSpecId.include?(sTag))
-    puts("!! Not exist tag: #{sTag}")
-  end
-}
-
+puts("=" * 20)

@@ -88,6 +88,7 @@ ECUC-ENUMERATION-PARAM-DEF:
 - WdgDefaultMode
 - WdgMWatchdogMode
 - WdgRunArea
+- WdgTimeoutReaction
 - WdgTriggerMode
 ECUC-INTEGER-PARAM-DEF:
 - CanControllerBaseAddress
@@ -271,6 +272,7 @@ ECUC-INTEGER-PARAM-DEF:
 - WdgMSupervisedEntityId
 - WdgMSupervisionReferenceCycle
 - WdgMTriggerConditionValue
+- WdgWindowOpenRate
 ECUC-STRING-PARAM-DEF:
 - CanIfInitCfgSet
 - CanIfPublicCddHeaderFile
@@ -622,6 +624,8 @@ ECUC-FLOAT-PARAM-DEF:
 - WdgMDeadlineMin
 - WdgMSupervisionCycle
 - WdgMaxTimeout
+- WdgTimeout
+- WdgTriggerInterruptPeriod
 ECUC-SYMBOLIC-NAME-REFERENCE-DEF:
 - CanIfCtrlCanCtrlRef
 - CanIfHrhCanHandleTypeRef
