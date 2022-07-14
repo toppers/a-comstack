@@ -2,7 +2,7 @@
  *  TOPPERS/A-CAN
  *      Automotive CAN
  *
- *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+ *  Copyright (C) 2013-2020 by Center for Embedded Computing Systems
  *                             Graduate School of Information Science, Nagoya Univ., JAPAN
  *  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
  *  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
@@ -15,6 +15,8 @@
  *  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
  *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
  *  Copyright (C) 2013-2016 by Witz Corporation
+ *  Copyright (C) 2018-2020 by CRESCO LTD., JAPAN
+ *  Copyright (C) 2018-2020 by ICOMSYSTECH Co.,Ltd., JAPAN
  *
  *  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -84,7 +86,7 @@
 /* [CAN034][CAN393] */
 #include "Det.h"
 #endif /* CAN_DEV_ERROR_DETECT == STD_ON */
-
+#include "sysmod/syslog.h"
 
 /*
  *  現在実行中のCanコンフィギュレーション情報
@@ -913,6 +915,9 @@ Can_IsrTx(uint8 Controller)
 		/* [CAN016] 上位レイヤへの通知 */
 		CanIf_TxConfirmation(GET_SAVED_PDU_ID(Controller, tbox_idx));
 	}
+
+	/* 送信バッファの割り込みクリア */
+	can_target_release_interrupt(Controller);
 
   error_exit:
 	/* [CAN091] */

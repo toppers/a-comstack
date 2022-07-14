@@ -1,0 +1,8 @@
+E_PACKAGE a-can_hsbrh850f1l_ccrh
+VERSION %date
+
+INCLUDE ../../MANIFEST
+INCLUDE ../../arch/ccrh/MANIFEST
+INCLUDE ../../arch/rs_can/MANIFEST
+INCLUDE MANIFEST
+
