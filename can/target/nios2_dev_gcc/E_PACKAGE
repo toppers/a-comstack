@@ -1,0 +1,6 @@
+E_PACKAGE a-can_nios2_dev_gcc
+VERSION %date
+
+INCLUDE ../../MANIFEST
+INCLUDE MANIFEST
+
