@@ -1,226 +1,238 @@
 
-	TOPPERS/A-CAN ³°Éô»ÅÍÍ½ñ
+	TOPPERS/A-CAN å¤–éƒ¨ä»•æ§˜æ›¸
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤AUTOSAR»ÅÍÍ¤ò¥Ù¡¼¥¹¤È¤·¤¿A-CAN¤Î³°Éô»ÅÍÍ¤òÀâÌÀ¤¹¤ë
-¤â¤Î¤Ç¤¢¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒAUTOSARä»•æ§˜ã‚’ãƒ™ãƒ¼ã‚¹ã¨ã—ãŸA-CANã®å¤–éƒ¨ä»•æ§˜ã‚’èª¬æ˜Žã™ã‚‹
+ã‚‚ã®ã§ã‚ã‚‹ï¼Ž
 
 ----------------------------------------------------------------------
 TOPPERS/A-CAN
     Automotive CAN
 
-Copyright (C) 2014 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+                           Graduate School of Information Science, Nagoya Univ., JAPAN
+Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
+Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2016 by Witz Corporation
 
-¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î (1)¡Á(3)¤Î¾ò·ï¤òËþ¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥É¥­¥å¥á
-¥ó¥È¡ÊËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿¤â¤Î¤ò´Þ¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²þ
-ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½þ¤ÇµöÂú¤¹¤ë¡¥
-(1) ËÜ¥É¥­¥å¥á¥ó¥È¤òÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï
-    ¤ª¤è¤Ó²¼µ­¤ÎÌµÊÝ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Þ¤Þ¤Î·Á¤Ç¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤Þ¤ì¤Æ
-    ¤¤¤ë¤³¤È¡¥
-(2) ËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿»Ý¤Îµ­½Ò
-    ¤ò¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤á¤ë¤³¤È¡¥¤¿¤À¤·¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á
-    ¥ó¥È¤¬¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È»ØÄê¤Î³«È¯À®²ÌÊª¤Ç¤¢¤ë¾ì¹ç¤Ë¤Ï¡¤¤³¤Î¸Â
-    ¤ê¤Ç¤Ï¤Ê¤¤¡¥
-(3) ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»³²
-    ¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥¤Þ¤¿¡¤
-    ËÜ¥É¥­¥å¥á¥ó¥È¤Î¥æ¡¼¥¶¤Þ¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍýÍ³¤Ë´ð¤Å
-    ¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
+ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã® (1)ï½ž(3)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡
+ãƒ³ãƒˆï¼ˆæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼Žä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼Ž
+(1) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶
+    ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã¾ã‚Œã¦
+    ã„ã‚‹ã“ã¨ï¼Ž
+(2) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã™ã‚‹å ´åˆã«ã¯ï¼Œãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸæ—¨ã®è¨˜è¿°
+    ã‚’ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã‚ã‚‹ã“ã¨ï¼ŽãŸã ã—ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡
+    ãƒ³ãƒˆãŒï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å®šã®é–‹ç™ºæˆæžœç‰©ã§ã‚ã‚‹å ´åˆã«ã¯ï¼Œã“ã®é™
+    ã‚Šã§ã¯ãªã„ï¼Ž
+(3) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æå®³
+    ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Žã¾ãŸï¼Œ
+    æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†ç”±ã«åŸºã¥
+    ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»ÅÍÍ
-¤Ë´ð¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç¤Ï¤Ê
-¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ð¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍøÍÑ¤¹¤ë
-¼Ô¤ËÂÐ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•æ§˜
+ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼Žä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§ã¯ãª
+ã„ï¼ŽAUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©ç”¨ã™ã‚‹
+è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤ÌµÊÝ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª¤è
-¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª¤ËÂÐ¤¹
-¤ëÅ¬¹çÀ­¤â´Þ¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊÝ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Þ¤¿¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ
-¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½¤ÎÀÕÇ¤¤òÉé
-¤ï¤Ê¤¤¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼Žä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆ
+ã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„ã«å¯¾ã™
+ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼Žã¾ãŸï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨
+ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œãã®è²¬ä»»ã‚’è² 
+ã‚ãªã„ï¼Ž
 
-$Id: can_spec.txt 599 2014-10-17 01:27:58Z shigihara $
+$Id: can_spec.txt 2995 2016-03-02 02:05:09Z fsi-kaitori $
 ----------------------------------------------------------------------
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(1) ³µÍ×
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-A-CAN¤Ï¡¤AUTOSAR¤Î°Ê²¼¤Î»ÅÍÍ¤Ë½àµò¤·¤Æ³«È¯¤¹¤ë¡¥
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(1) æ¦‚è¦
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+A-CANã¯ï¼ŒAUTOSARã®ä»¥ä¸‹ã®ä»•æ§˜ã«æº–æ‹ ã—ã¦é–‹ç™ºã™ã‚‹ï¼Ž
 Specification of CAN V4.2.0 R4.0 Rev 3
 
-¤Þ¤¿¡¤AUTOSAR CAN¤Ï¥¿¡¼¥²¥Ã¥È°ÍÂ¸¤Î¥½¥Õ¥È¥¦¥§¥¢¤Ç¤¢¤ë¤¬¡¤¾éÄ¹¥³¡¼¥É¤Îºï
-¸º¤È¥Ý¡¼¥ê¥ó¥°ÍÆ°×À­¤ò¹â¤á¤ë¤¿¤á¡¤ATK2Æ±ÍÍ¡¤¥¿¡¼¥²¥Ã¥ÈÈó°ÍÂ¸Éô¤È¡¤°ÍÂ¸
-Éô¤ËÊ¬¤±¤Æ¥³¡¼¥É´ÉÍý¤¹¤ë¡¥
-Èó°ÍÂ¸Éô¤Î¥½¡¼¥¹¥³¡¼¥ÉÃæ¤Î»ÅÍÍ¥¿¥°¤Î°ÕÌ£¤Ï°Ê²¼¤Î¤È¤ª¤ê¤Ç¤¢¤ë¡¥
-¡¦[CANxxx]¡§Èó°ÍÂ¸Éô¤ÇÂÐ±þ¤·¤¿Í×µá¥¿¥°
-¡¦<CANxxx>¡§Èó°ÍÂ¸Éô¤ÇÌ¤ÂÐ±þ¤È¤·¤¿Í×µá¥¿¥°
-¡¦(CANxxx)¡§°ÍÂ¸Éô¤ÇÂÐ±þ¤¹¤ë¤Ù¤­Í×µá¥¿¥° 
-¢¨°ÍÂ¸Éô¥³¡¼¥É¤Ë¤ª¤¤¤Æ¤Ï¡¤(CANxxx)¤ËÂÐ¤·¤Æ¤É¤Î¤è¤¦¤Ë¼ÂÁõ¤ò¹Ô¤Ã¤¿¤«¤ò¡¤
-  °ÍÂ¸Éô¥³¡¼¥ÉÃæ¤Ë¡¤[CANxxx]Åù¤òÍÑ¤¤¤Æµ­½Ò¤¹¤ë¤³¤È¤ò¿ä¾©¤¹¤ë
+ã¾ãŸï¼ŒAUTOSAR CANã¯ã‚¿ãƒ¼ã‚²ãƒƒãƒˆä¾å­˜ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã§ã‚ã‚‹ãŒï¼Œå†—é•·ã‚³ãƒ¼ãƒ‰ã®å‰Š
+æ¸›ã¨ãƒãƒ¼ãƒ†ã‚£ãƒ³ã‚°å®¹æ˜“æ€§ã‚’é«˜ã‚ã‚‹ãŸã‚ï¼ŒATK2åŒæ§˜ï¼Œã‚¿ãƒ¼ã‚²ãƒƒãƒˆéžä¾å­˜éƒ¨ã¨ï¼Œä¾å­˜
+éƒ¨ã«åˆ†ã‘ã¦ã‚³ãƒ¼ãƒ‰ç®¡ç†ã™ã‚‹ï¼Ž
+éžä¾å­˜éƒ¨ã®ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ä¸­ã®ä»•æ§˜ã‚¿ã‚°ã®æ„å‘³ã¯ä»¥ä¸‹ã®ã¨ãŠã‚Šã§ã‚ã‚‹ï¼Ž
+ãƒ»[CANxxx]ï¼šéžä¾å­˜éƒ¨ã§å¯¾å¿œã—ãŸè¦æ±‚ã‚¿ã‚°
+ãƒ»<CANxxx>ï¼šéžä¾å­˜éƒ¨ã§æœªå¯¾å¿œã¨ã—ãŸè¦æ±‚ã‚¿ã‚°
+ãƒ»(CANxxx)ï¼šä¾å­˜éƒ¨ã§å¯¾å¿œã™ã‚‹ã¹ãè¦æ±‚ã‚¿ã‚° 
+â€»ä¾å­˜éƒ¨ã‚³ãƒ¼ãƒ‰ã«ãŠã„ã¦ã¯ï¼Œ(CANxxx)ã«å¯¾ã—ã¦ã©ã®ã‚ˆã†ã«å®Ÿè£…ã‚’è¡Œã£ãŸã‹ã‚’ï¼Œ
+  ä¾å­˜éƒ¨ã‚³ãƒ¼ãƒ‰ä¸­ã«ï¼Œ[CANxxx]ç­‰ã‚’ç”¨ã„ã¦è¨˜è¿°ã™ã‚‹ã“ã¨ã‚’æŽ¨å¥¨ã™ã‚‹
 
-Can¥â¥¸¥å¡¼¥ë¤Î³Æµ¡Ç½¤Î¥µ¥Ý¡¼¥ÈÍ­Ìµ¤Ï¡¤¥¿¡¼¥²¥Ã¥È¤Ë°ÍÂ¸¤¹¤ë¤¿¤á¡¤ËÜ¥É¥­
-¥å¥á¥ó¥È¤Ç¤Ï¸ÀµÚ¤·¤Ê¤¤¡¥³Æ¥¿¡¼¥²¥Ã¥È°ÍÂ¸ÉôÆâ¤Î¥É¥­¥å¥á¥ó¥È¤ò»²¾È¤¹¤ë¤³¤È¡¥
+Canãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®å„æ©Ÿèƒ½ã®ã‚µãƒãƒ¼ãƒˆæœ‰ç„¡ã¯ï¼Œã‚¿ãƒ¼ã‚²ãƒƒãƒˆã«ä¾å­˜ã™ã‚‹ãŸã‚ï¼Œæœ¬ãƒ‰ã‚­
+ãƒ¥ãƒ¡ãƒ³ãƒˆã§ã¯è¨€åŠã—ãªã„ï¼Žå„ã‚¿ãƒ¼ã‚²ãƒƒãƒˆä¾å­˜éƒ¨å†…ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’å‚ç…§ã™ã‚‹ã“ã¨ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ç¤Ï¡¤AUTOSAR»ÅÍÍ¤ÎÃæ¤Ç¡¤¥¿¡¼¥²¥Ã¥ÈÈó°ÍÂ¸Éô¤Ë¤ª¤±¤ëA-CAN
-¤Î¥µ¥Ý¡¼¥È/Ì¤¥µ¥Ý¡¼¥È»ÅÍÍ¡¤ÄÉ²Ã/²þÊÑ¤·¤¿»ÅÍÍ¡¤Û£Ëæ¤Ê»ÅÍÍ¤Î²ò¼á¤òÀâÌÀ¤¹¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã§ã¯ï¼ŒAUTOSARä»•æ§˜ã®ä¸­ã§ï¼Œã‚¿ãƒ¼ã‚²ãƒƒãƒˆéžä¾å­˜éƒ¨ã«ãŠã‘ã‚‹A-CAN
+ã®ã‚µãƒãƒ¼ãƒˆ/æœªã‚µãƒãƒ¼ãƒˆä»•æ§˜ï¼Œè¿½åŠ /æ”¹å¤‰ã—ãŸä»•æ§˜ï¼Œæ›–æ˜§ãªä»•æ§˜ã®è§£é‡ˆã‚’èª¬æ˜Žã™ã‚‹ï¼Ž
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(1.1) Î¬¸ì°ìÍ÷
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-MF    ¡§Can_MainFunction
-TTCAN ¡§Time-Triggered CAN
-[*]   ¡§¥Ü¥Ç¥£·Ï¥µ¥Ö¥»¥Ã¥ÈÂÐ¾Ý
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(1.1) ç•¥èªžä¸€è¦§
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+MF    ï¼šCan_MainFunction
+TTCAN ï¼šTime-Triggered CAN
+[*]   ï¼šãƒœãƒ‡ã‚£ç³»ã‚µãƒ–ã‚»ãƒƒãƒˆå¯¾è±¡
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(2) ¥µ¥Ý¡¼¥È¤¹¤ëµ¡Ç½
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.1) µ¡Ç½
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¡ãµ¡Ç½°ìÍ÷¡ä
-¢£Á÷¿®
-  ¡¦CAN¥³¥ó¥È¥í¡¼¥é¤Ø¤Î¥á¥Ã¥»¡¼¥¸½ñ¤­¹þ¤ß [*]
-¢£¼õ¿®
-  ¡¦¼õ¿®¥Ï¡¼¥É¥¦¥§¥¢¥Õ¥£¥ë¥¿¥ê¥ó¥°
-¢£¥·¥¹¥Æ¥à¤Î´ÉÍý
-  ¡¦½é´ü²½ [*]
-  ¡¦¥Ð¡¼¥¸¥ç¥ó¾ðÊó¼èÆÀ
-  ¡¦¥Ü¡¼¥ì¡¼¥È´ÉÍý [*]
-  ¡¦CAN¥³¥ó¥È¥í¡¼¥é¥â¡¼¥É´ÉÍý [*]
-  ¡¦¥Ð¥¹¾õÂÖ´ÉÍý
-  ¡¦³ä¹þ¤ßÀ©¸æ [*]
-    ¡¦¼õ¿®,Á÷¿®´°Î»¤Î¤ß¥µ¥Ý¡¼¥È
-  ¡¦MF¤Ë¤è¤ë¥Ý¡¼¥ê¥ó¥°À©¸æ [*]
-  ¡¦OS¥«¥¦¥ó¥¿»ÈÍÑ¤Ë¤è¤ë¥³¥ó¥È¥í¡¼¥é¤Î¥ì¥¹¥Ý¥ó¥¹´Æ»ë
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(2) ã‚µãƒãƒ¼ãƒˆã™ã‚‹æ©Ÿèƒ½
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.1) æ©Ÿèƒ½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+ï¼œæ©Ÿèƒ½ä¸€è¦§ï¼ž
+â– é€ä¿¡
+  ãƒ»CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æ›¸ãè¾¼ã¿ [*]
+â– å—ä¿¡
+  ãƒ»å—ä¿¡ãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°
+â– ã‚·ã‚¹ãƒ†ãƒ ã®ç®¡ç†
+  ãƒ»åˆæœŸåŒ– [*]
+  ãƒ»ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±å–å¾—
+  ãƒ»ãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆç®¡ç† [*]
+  ãƒ»CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¢ãƒ¼ãƒ‰ç®¡ç† [*]
+  ãƒ»ãƒã‚¹çŠ¶æ…‹ç®¡ç†
+  ãƒ»å‰²è¾¼ã¿åˆ¶å¾¡ [*]
+    ãƒ»å—ä¿¡,é€ä¿¡å®Œäº†ã®ã¿ã‚µãƒãƒ¼ãƒˆ
+  ãƒ»MFã«ã‚ˆã‚‹ãƒãƒ¼ãƒªãƒ³ã‚°åˆ¶å¾¡ [*]
+  ãƒ»OSã‚«ã‚¦ãƒ³ã‚¿ä½¿ç”¨ã«ã‚ˆã‚‹ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã®ãƒ¬ã‚¹ãƒãƒ³ã‚¹ç›£è¦–
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.2) ¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¢£CanGeneral
-  ¡¦CanChangeBaudrateApi [*]
-  ¡¦CanDevErrorDetection [*]
-  ¡¦CanIndex [*]
-  ¡¦CanLPduReceiveCalloutFunction [*]
-  ¡¦CanMainFunctionBusoffPeriod [*]
-  ¡¦CanMainFunctionModePeriod [*]
-  ¡¦CanMainFunctionWakeupPeriod [*]
-  ¡¦CanMultiplexedTransmission
-  ¡¦CanTimeoutDuration [*]
-  ¡¦CanVersionInfoApi
-  ¡¦CanCounterRef [*]
-  ¢§CanMainFunctionRWPeriods [*]
-    ¡¦CanMainFunctionReadPeriod [*]
-    ¡¦CanMainFunctionWritePeriod [*]
-¢£CanConfigSet
-  ¢§CanController
-    ¡¦CanBusoffProcessing [*]
-    ¡¦CanControllerActivation [*]
-    ¡¦CanControllerBaseAddress [*]
-    ¡¦CanControllerId [*]
-    ¡¦CanRxProcessing [*]
-    ¡¦CanTxProcessing [*]
-    ¡¦CanWakeupProcessing [*]
-    ¡¦CanWakeupSupport [*]
-    ¡¦CanControllerDefaultBaudrate [*]
-    ¡¦CanWakeupSourceRef
-    ¢§CanControllerBaudrateConfig
-      ¡¦CanControllerBaudRate [*]
-      ¡¦CanControllerPropSeg [*]
-      ¡¦CanControllerSeg1 [*]
-      ¡¦CanControllerSeg2 [*]
-      ¡¦CanControllerSyncJumpWidth [*]
-    ¢§CanFilterMask
-      ¡¦CanFilterMaskValue
-  ¢§CanHardwareObject
-    ¡¦CanHandleType [*]
-    ¡¦CanIdType [*]
-    ¡¦CanIdValue [*]
-    ¡¦CanObjectId [*]
-    ¡¦CanObjectType [*]
-    ¡¦CanControllerRef [*]
-    ¡¦CanFilterMaskRef
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.2) ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠ
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+â– CanGeneral
+  ãƒ»CanChangeBaudrateApi [*]
+  ãƒ»CanDevErrorDetection [*]
+  ãƒ»CanIndex [*]
+  ãƒ»CanLPduReceiveCalloutFunction [*]
+  ãƒ»CanMainFunctionBusoffPeriod [*]
+  ãƒ»CanMainFunctionModePeriod [*]
+  ãƒ»CanMainFunctionWakeupPeriod [*]
+  ãƒ»CanMultiplexedTransmission
+  ãƒ»CanTimeoutDuration [*]
+  ãƒ»CanVersionInfoApi
+  ãƒ»CanCounterRef [*]
+  â–¼CanMainFunctionRWPeriods [*]
+    ãƒ»CanMainFunctionReadPeriod [*]
+    ãƒ»CanMainFunctionWritePeriod [*]
+â– CanConfigSet
+  â–¼CanController
+    ãƒ»CanBusoffProcessing [*]
+    ãƒ»CanControllerActivation
+    ãƒ»CanControllerBaseAddress
+    ãƒ»CanControllerId [*]
+    ãƒ»CanRxProcessing [*]
+    ãƒ»CanTxProcessing [*]
+    ãƒ»CanWakeupProcessing [*]
+    ãƒ»CanWakeupSupport [*]
+    ãƒ»CanControllerDefaultBaudrate [*]
+    ãƒ»CanWakeupSourceRef
+    â–¼CanControllerBaudrateConfig
+      ãƒ»CanControllerBaudRate [*]
+      ãƒ»CanControllerPropSeg [*]
+      ãƒ»CanControllerSeg1 [*]
+      ãƒ»CanControllerSeg2 [*]
+      ãƒ»CanControllerSyncJumpWidth [*]
+    â–¼CanFilterMask
+      ãƒ»CanFilterMaskValue
+  â–¼CanHardwareObject
+    ãƒ»CanHandleType [*]
+    ãƒ»CanIdType [*]
+    ãƒ»CanIdValue [*]
+    ãƒ»CanObjectId [*]
+    ãƒ»CanObjectType [*]
+    ãƒ»CanControllerRef [*]
+    ãƒ»CanFilterMaskRef
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.3) ¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¡¦Can_Init [*]
-¡¦Can_GetVersionInfo
-¡¦Can_CheckBaudrate [*]
-¡¦Can_ChangeBaudrate [*]
-¡¦Can_SetControllerMode [*]
-¡¦Can_DisableControllerInterrupts [*]
-¡¦Can_EnableControllerInterrupts [*]
-¡¦Can_Write [*]
-¡¦Can_CheckWakeup [*]
-¡¦Can_MainFunction_Write [*]
-¡¦Can_MainFunction_Read [*]
-¡¦Can_MainFunction_BusOff [*]
-¡¦Can_MainFunction_Wakeup [*]
-¡¦Can_MainFunction_Mode [*]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.3) ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+ãƒ»Can_Init [*]
+ãƒ»Can_GetVersionInfo
+ãƒ»Can_CheckBaudrate [*]
+ãƒ»Can_ChangeBaudrate [*]
+ãƒ»Can_SetControllerMode [*]
+ãƒ»Can_DisableControllerInterrupts [*]
+ãƒ»Can_EnableControllerInterrupts [*]
+ãƒ»Can_Write [*]
+ãƒ»Can_CheckWakeup [*]
+ãƒ»Can_MainFunction_Write [*]
+ãƒ»Can_MainFunction_Read [*]
+ãƒ»Can_MainFunction_BusOff [*]
+ãƒ»Can_MainFunction_Wakeup [*]
+ãƒ»Can_MainFunction_Mode [*]
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(3) ¥µ¥Ý¡¼¥È¤·¤Ê¤¤µ¡Ç½
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(3.1) µ¡Ç½
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¡ãµ¡Ç½°ìÍ÷¡ä
-¢£Á÷¼õ¿®
-  ¡¦¥Þ¥ë¥ÁCANÁ÷¿®¥µ¥Ý¡¼¥È
-  ¡¦¥ê¥â¡¼¥È¥Õ¥ì¡¼¥à
-  ¡¦³ÈÄ¥¥Õ¥ì¡¼¥à
-  ¡¦Á÷¿®¥­¥ã¥ó¥»¥ë
-¢£¥·¥¹¥Æ¥à¤Î´ÉÍý
-  ¡¦TTCAN¥µ¥Ý¡¼¥È
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(3) ã‚µãƒãƒ¼ãƒˆã—ãªã„æ©Ÿèƒ½
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(3.1) æ©Ÿèƒ½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+ï¼œæ©Ÿèƒ½ä¸€è¦§ï¼ž
+â– é€å—ä¿¡
+  ãƒ»ãƒžãƒ«ãƒCANé€ä¿¡ã‚µãƒãƒ¼ãƒˆ
+  ãƒ»ãƒªãƒ¢ãƒ¼ãƒˆãƒ•ãƒ¬ãƒ¼ãƒ 
+  ãƒ»æ‹¡å¼µãƒ•ãƒ¬ãƒ¼ãƒ 
+  ãƒ»é€ä¿¡ã‚­ãƒ£ãƒ³ã‚»ãƒ«
+â– ã‚·ã‚¹ãƒ†ãƒ ã®ç®¡ç†
+  ãƒ»TTCANã‚µãƒãƒ¼ãƒˆ
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(3.2) ¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¢£CanGeneral
-  ¡¦CanHardwareCancellation [*]
-  ¡¦CanIdenticalIdCancellation [*]
-  ¡¦CanSupportTTCANRef
-¢£CanConfigSet
-  ¢§CanController
-    ¡¦CanCpuClockRef [*]
-    ¢§CanTTController
-  ¢§CanHardwareObject
-    ¡¦CanMainFunctionRWPeriodRef [*]
-    ¢§CanTTHardwareObjectTrigger
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(3.2) ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠ
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+â– CanGeneral
+  ãƒ»CanHardwareCancellation [*]
+  ãƒ»CanIdenticalIdCancellation [*]
+  ãƒ»CanSupportTTCANRef
+â– CanConfigSet
+  â–¼CanController
+    ãƒ»CanCpuClockRef [*]
+    â–¼CanTTController
+  â–¼CanHardwareObject
+    ãƒ»CanMainFunctionRWPeriodRef [*]
+    â–¼CanTTHardwareObjectTrigger
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(4) ÄÉ²Ã¡¤²þÊÑ»ÅÍÍ
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(4.1) CanMainFunctionReadPeriod ¥³¥ó¥Æ¥ÊÂ¿½ÅÅÙ
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¢£AUTOSAR»ÅÍÍ¤Ç¤Ï¡¤Â¿½ÅÅÙ¤¬0..*¤È¤Ê¤Ã¤Æ¤¤¤ë¤¬¡¤¼þ´üËè¤Î¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹
-  ¤Î¼ÂÁõ¤Ï¡¤¥¿¡¼¥²¥Ã¥È°ÍÂ¸¤È¤Ê¤ê¡¤Èó°ÍÂ¸Éô¤È¤ÎÀÚ¤êÊ¬¤±¤¬Æñ¤·¤¤¡¥½¾¤Ã¤Æ¡¤
-  ËÜ»ÅÍÍ¤Ç¤Ï¡¤ËÜ¥³¥ó¥Æ¥Ê¤ÎÂ¿½ÅÅÙ¤ò0..1¤È¤·¤Æ¡¤¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¤Ï
-  Can_MainFunction_Read¤Î¤ß¤È¤¹¤ë¡¥[NCAN001]
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(4) è¿½åŠ ï¼Œæ”¹å¤‰ä»•æ§˜
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(4.1) CanMainFunctionReadPeriod ã‚³ãƒ³ãƒ†ãƒŠå¤šé‡åº¦
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+â– AUTOSARä»•æ§˜ã§ã¯ï¼Œå¤šé‡åº¦ãŒ0..*ã¨ãªã£ã¦ã„ã‚‹ãŒï¼Œå‘¨æœŸæ¯Žã®ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹
+  ã®å®Ÿè£…ã¯ï¼Œã‚¿ãƒ¼ã‚²ãƒƒãƒˆä¾å­˜ã¨ãªã‚Šï¼Œéžä¾å­˜éƒ¨ã¨ã®åˆ‡ã‚Šåˆ†ã‘ãŒé›£ã—ã„ï¼Žå¾“ã£ã¦ï¼Œ
+  æœ¬ä»•æ§˜ã§ã¯ï¼Œæœ¬ã‚³ãƒ³ãƒ†ãƒŠã®å¤šé‡åº¦ã‚’0..1ã¨ã—ã¦ï¼Œã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã¯
+  Can_MainFunction_Readã®ã¿ã¨ã™ã‚‹ï¼Ž[NCAN001]
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(4.2) CanMainFunctionWritePeriod ¥³¥ó¥Æ¥ÊÂ¿½ÅÅÙ
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¢£AUTOSAR»ÅÍÍ¤Ç¤Ï¡¤Â¿½ÅÅÙ¤¬0..*¤È¤Ê¤Ã¤Æ¤¤¤ë¤¬¡¤¼þ´üËè¤Î¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹
-  ¤Î¼ÂÁõ¤Ï¡¤¥¿¡¼¥²¥Ã¥È°ÍÂ¸¤È¤Ê¤ê¡¤Èó°ÍÂ¸Éô¤È¤ÎÀÚ¤êÊ¬¤±¤¬Æñ¤·¤¤¡¥½¾¤Ã¤Æ¡¤
-  ËÜ»ÅÍÍ¤Ç¤Ï¡¤ËÜ¥³¥ó¥Æ¥Ê¤ÎÂ¿½ÅÅÙ¤ò0..1¤È¤·¤Æ¡¤¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¤Ï
-  Can_MainFunction_Write¤Î¤ß¤È¤¹¤ë¡¥[NCAN002]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(4.2) CanMainFunctionWritePeriod ã‚³ãƒ³ãƒ†ãƒŠå¤šé‡åº¦
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+â– AUTOSARä»•æ§˜ã§ã¯ï¼Œå¤šé‡åº¦ãŒ0..*ã¨ãªã£ã¦ã„ã‚‹ãŒï¼Œå‘¨æœŸæ¯Žã®ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹
+  ã®å®Ÿè£…ã¯ï¼Œã‚¿ãƒ¼ã‚²ãƒƒãƒˆä¾å­˜ã¨ãªã‚Šï¼Œéžä¾å­˜éƒ¨ã¨ã®åˆ‡ã‚Šåˆ†ã‘ãŒé›£ã—ã„ï¼Žå¾“ã£ã¦ï¼Œ
+  æœ¬ä»•æ§˜ã§ã¯ï¼Œæœ¬ã‚³ãƒ³ãƒ†ãƒŠã®å¤šé‡åº¦ã‚’0..1ã¨ã—ã¦ï¼Œã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã¯
+  Can_MainFunction_Writeã®ã¿ã¨ã™ã‚‹ï¼Ž[NCAN002]
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(4.3) Can_Init¤Î°ú¿ô¥Á¥§¥Ã¥¯
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¢£Can_Init¤Î°ú¿ô¤ËÉÔÀµ¤Ê¥Ý¥¤¥ó¥¿¤¬»ØÄê¤µ¤ì¤¿¾ì¹ç¡¤DET¤Ø
-  CAN_E_PARAM_POINTER¤òÄÌÃÎ¤Èµ¬Äê¤µ¤ì¤Æ¤¤¤ë¡¥[CAN175] ¤·¤«¤·¡¤CanIf¤Î
-  CanIf_Init¤Ç¤Ï¡¤NULL_PTR¤¬»ØÄê¤µ¤ì¤¿¾ì¹ç¤Ï¡¤¥Ç¥Õ¥©¥ë¥È¤Î¥³¥ó¥Õ¥£¥®¥å
-  ¥ì¡¼¥·¥ç¥ó¤ò»ÈÍÑ¤¹¤ë¤Èµ¬Äê¤µ¤ì¤Æ¤¤¤ë¡¥[CANIF301]
-  ¤³¤ì¤Ë¹ç¤ï¤»¤Æ¡¤Can_Init¤âÉÔÀµ¤Ê¥Ý¥¤¥ó¥¿¤È¤·¤ÆNULL_PTR¤¬»ØÄê¤µ¤ì¤¿¾ì
-  ¹ç¡¤¥Ç¥Õ¥©¥ë¥È¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¤È¤·¤Æ¡¤ÀèÆ¬¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼
-  ¥·¥ç¥ó¤ò»ÈÍÑ¤¹¤ë¡¥[NCAN003]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(4.3) Can_Initã®å¼•æ•°ãƒã‚§ãƒƒã‚¯
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+â– Can_Initã®å¼•æ•°ã«ä¸æ­£ãªãƒã‚¤ãƒ³ã‚¿ãŒæŒ‡å®šã•ã‚ŒãŸå ´åˆï¼ŒDETã¸
+  CAN_E_PARAM_POINTERã‚’é€šçŸ¥ã¨è¦å®šã•ã‚Œã¦ã„ã‚‹ï¼Ž[CAN175] ã—ã‹ã—ï¼ŒCanIfã®
+  CanIf_Initã§ã¯ï¼ŒNULL_PTRãŒæŒ‡å®šã•ã‚ŒãŸå ´åˆã¯ï¼Œãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥
+  ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹ã¨è¦å®šã•ã‚Œã¦ã„ã‚‹ï¼Ž[CANIF301]
+  ã“ã‚Œã«åˆã‚ã›ã¦ï¼ŒCan_Initã‚‚ä¸æ­£ãªãƒã‚¤ãƒ³ã‚¿ã¨ã—ã¦NULL_PTRãŒæŒ‡å®šã•ã‚ŒãŸå ´
+  åˆï¼Œãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã¨ã—ã¦ï¼Œå…ˆé ­ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼
+  ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹ï¼Ž[NCAN003]
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(4.4) CanConfigSet ¥³¥ó¥Æ¥ÊÂ¿½ÅÅÙ
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¢£AUTOSAR»ÅÍÍ¤Ç¤Ï¡¤Â¿½ÅÅÙ¤¬1¤È¤Ê¤Ã¤Æ¤¤¤ë¤¬¡¤¥Ý¥¹¥È¥Ó¥ë¥É¤Ë¤è¤êÊ£¿ô¤Î¥³
-  ¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ðÊó¤ËÂÐ±þ¤¹¤ë¤¿¤á¡¤Â¿½ÅÅÙ¤ò1..*¤È¤¹¤ë¡¥[NCAN004]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(4.4) CanConfigSet ã‚³ãƒ³ãƒ†ãƒŠå¤šé‡åº¦
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+â– AUTOSARä»•æ§˜ã§ã¯ï¼Œå¤šé‡åº¦ãŒ1ã¨ãªã£ã¦ã„ã‚‹ãŒï¼Œãƒã‚¹ãƒˆãƒ“ãƒ«ãƒ‰ã«ã‚ˆã‚Šè¤‡æ•°ã®ã‚³
+  ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã«å¯¾å¿œã™ã‚‹ãŸã‚ï¼Œå¤šé‡åº¦ã‚’1..*ã¨ã™ã‚‹ï¼Ž[NCAN004]
 
 
 
-°Ê¾å
+ä»¥ä¸Š

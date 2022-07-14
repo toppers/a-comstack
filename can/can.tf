@@ -2,54 +2,59 @@ $
 $  TOPPERS/A-CAN
 $      Automotive CAN
 $
-$  Copyright (C) 2013-2014 by Center for Embedded Computing Systems
-$              Graduate School of Information Science, Nagoya Univ., JAPAN
-$  Copyright (C) 2013-2014 by FUJI SOFT INCORPORATED, JAPAN
-$  Copyright (C) 2013-2014 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+$  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+$                             Graduate School of Information Science, Nagoya Univ., JAPAN
+$  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+$  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+$  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+$  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+$  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 $  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-$  Copyright (C) 2013-2014 by Sunny Giken Inc., JAPAN
-$  Copyright (C) 2013-2014 by TOSHIBA CORPORATION, JAPAN
-$  Copyright (C) 2013-2014 by Witz Corporation, JAPAN
+$  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+$  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+$  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+$  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+$  Copyright (C) 2013-2016 by Witz Corporation
 $
-$  ¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î(1)¡Á(4)¤Î¾ò·ï¤òËş¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥½¥Õ¥È¥¦¥§
-$  ¥¢¡ÊËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò²şÊÑ¤·¤¿¤â¤Î¤ò´Ş¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²ş
-$  ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½ş¤ÇµöÂú¤¹¤ë¡¥
-$  (1) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¥½¡¼¥¹¥³¡¼¥É¤Î·Á¤ÇÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî
-$      ¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Ş¤Ş¤Î·Á¤Ç¥½¡¼
-$      ¥¹¥³¡¼¥ÉÃæ¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤³¤È¡¥
-$  (2) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤¥é¥¤¥Ö¥é¥ê·Á¼°¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
-$      ÍÑ¤Ç¤­¤ë·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ
-$      ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­
-$      ¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
-$  (3) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤µ¡´ï¤ËÁÈ¤ß¹ş¤à¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
-$      ÍÑ¤Ç¤­¤Ê¤¤·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¼¡¤Î¤¤¤º¤ì¤«¤Î¾ò·ï¤òËş¤¿¤¹¤³
-$      ¤È¡¥
-$    (a) ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃø
-$        ºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
-$    (b) ºÆÇÛÉÛ¤Î·ÁÂÖ¤ò¡¤ÊÌ¤ËÄê¤á¤ëÊıË¡¤Ë¤è¤Ã¤Æ¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È¤Ë
-$        Êó¹ğ¤¹¤ë¤³¤È¡¥
-$  (4) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»
-$      ³²¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
-$      ¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Î¥æ¡¼¥¶¤Ş¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍı
-$      Í³¤Ë´ğ¤Å¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤ò
-$      ÌÈÀÕ¤¹¤ë¤³¤È¡¥
+$  ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã®(1)ï½(4)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+$  ã‚¢ï¼ˆæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼ä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+$  å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼
+$  (1) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®å½¢ã§åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œ
+$      æ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ã‚½ãƒ¼
+$      ã‚¹ã‚³ãƒ¼ãƒ‰ä¸­ã«å«ã¾ã‚Œã¦ã„ã‚‹ã“ã¨ï¼
+$  (2) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œãƒ©ã‚¤ãƒ–ãƒ©ãƒªå½¢å¼ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+$      ç”¨ã§ãã‚‹å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œå†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨
+$      è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜
+$      ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+$  (3) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œæ©Ÿå™¨ã«çµ„ã¿è¾¼ã‚€ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+$      ç”¨ã§ããªã„å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œæ¬¡ã®ã„ãšã‚Œã‹ã®æ¡ä»¶ã‚’æº€ãŸã™ã“
+$      ã¨ï¼
+$    (a) å†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—
+$        ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+$    (b) å†é…å¸ƒã®å½¢æ…‹ã‚’ï¼Œåˆ¥ã«å®šã‚ã‚‹æ–¹æ³•ã«ã‚ˆã£ã¦ï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«
+$        å ±å‘Šã™ã‚‹ã“ã¨ï¼
+$  (4) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æ
+$      å®³ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼
+$      ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†
+$      ç”±ã«åŸºã¥ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’
+$      å…è²¬ã™ã‚‹ã“ã¨ï¼
 $
-$  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»Å
-$  ÍÍ¤Ë´ğ¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç
-$  ¤Ï¤Ê¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ğ¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍø
-$  ÍÑ¤¹¤ë¼Ô¤ËÂĞ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+$  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•
+$  æ§˜ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼ä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§
+$  ã¯ãªã„ï¼AUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©
+$  ç”¨ã™ã‚‹è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼
 $
-$  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤ÌµÊİ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª
-$  ¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª
-$  ¤ËÂĞ¤¹¤ëÅ¬¹çÀ­¤â´Ş¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊİ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§
-$  ¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½
-$  ¤ÎÀÕÇ¤¤òÉé¤ï¤Ê¤¤¡¥
+$  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼ä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠ
+$  ã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„
+$  ã«å¯¾ã™ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+$  ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œã
+$  ã®è²¬ä»»ã‚’è² ã‚ãªã„ï¼
 $
-$  $Id: can.tf 1370 2015-05-21 06:09:15Z fsi-kaitori $
+$  $Id: can.tf 2995 2016-03-02 02:05:09Z fsi-kaitori $
 $
 
 $ ====================================================================
-$ booleanÈ½Äê´Ø¿ô
+$ booleanåˆ¤å®šé–¢æ•°
 $ ====================================================================
 $FUNCTION IS_TRUE$
 	$true_list = {1, "1", "true", "TRUE", "ON", "ENABLE"}$
@@ -77,7 +82,7 @@ $FUNCTION IS_TRUE$
 $END$
 
 $ ====================================================================
-$  ¥³¥ó¥Õ¥£¥°¥»¥Ã¥È¤´¤È¤Î¥ê¥¹¥È¤òºîÀ®
+$  ã‚³ãƒ³ãƒ•ã‚£ã‚°ã‚»ãƒƒãƒˆã”ã¨ã®ãƒªã‚¹ãƒˆã‚’ä½œæˆ
 $ ====================================================================
 $FUNCTION MAKE_CFG_LIST$
 	$ctrl_id_num_max = 0$
@@ -93,14 +98,14 @@ $		// [CAN354_Conf] CanController
 		$CanConfigSet.ctrl_id_list[config_id] = new_list$
 		$CanConfigSet.ctrl_id_num[config_id] = LENGTH(new_list)$
 
-$		// ¥³¥ó¥È¥í¡¼¥é¿ô¤Î¥¨¥é¡¼³ÎÇ§
+$		// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©æ•°ã®ã‚¨ãƒ©ãƒ¼ç¢ºèª
 		$IF (CanConfigSet.ctrl_id_num[config_id] > TARGET_TMAX_CONTROLLER_NUM)$
 			$ERROR$$FORMAT(_("There is too much CanController(%1% > %2%) of CanConfigSet(%3%)."),
 								CanConfigSet.ctrl_id_num[config_id], TARGET_TMAX_CONTROLLER_NUM, config_id)$$END$
 			$DIE()$
 		$END$
 
-$		// ¥³¥ó¥È¥í¡¼¥é¿ô¤ÎºÇÂçÃÍÈæ³Ó
+$		// ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©æ•°ã®æœ€å¤§å€¤æ¯”è¼ƒ
 		$IF (ctrl_id_num_max < CanConfigSet.ctrl_id_num[config_id])$
 			$ctrl_id_num_max = CanConfigSet.ctrl_id_num[config_id]$
 		$END$
@@ -149,10 +154,10 @@ $				// [CAN327_Conf] CanObjectType
 		$CanController.hth_list[ctrl_id] = new_hth_list$
 		$CanController.hth_num[ctrl_id] = LENGTH(new_hth_list)$
 
-$		// ¥á¡¼¥ë¥Ü¥Ã¥¯¥¹ºÇÂç¿ô¥Á¥§¥Ã¥¯
+$		// ãƒ¡ãƒ¼ãƒ«ãƒœãƒƒã‚¯ã‚¹æœ€å¤§æ•°ãƒã‚§ãƒƒã‚¯
 		$IF ISFUNCTION("CHECK_MAILBOX_NUM")$
 			$ret = 1$
-$			// (CAN022)(CAN024) CAN¥³¥ó¥È¥í¡¼¥é°ÍÂ¸¤Î¥Á¥§¥Ã¥¯
+$			// (CAN022)(CAN024) CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ä¾å­˜ã®ãƒã‚§ãƒƒã‚¯
 			$ret = CHECK_MAILBOX_NUM(ctrl_id, CanController.hrh_num[ctrl_id], CanController.hth_num[ctrl_id])$
 
 			$IF (ret == 0)$
@@ -172,7 +177,7 @@ $		// [CAN351_Conf] CanFilterMask
 		$CanController.filtermask_list[ctrl_id] = new_list$
 		$CanController.filtermask_num[ctrl_id] = LENGTH(new_list)$
 
-$		// CanFilterMaskºÇÂç¿ô¥Á¥§¥Ã¥¯
+$		// CanFilterMaskæœ€å¤§æ•°ãƒã‚§ãƒƒã‚¯
 		$IF (CanController.filtermask_num[ctrl_id]) > TARGET_TMAX_FILTERMASK_NUM$
 			$ERROR$$FORMAT(_("There is too much CanFilterMask(%1% > %2%) of CanController(%3%)."),
 								CanController.filtermask_num[ctrl_id], TARGET_TMAX_FILTERMASK_NUM, ctrl_id)$$END$
@@ -188,7 +193,7 @@ $		// [CAN359_Conf] CanWakeupSourceRef
 	$END$
 
 	$FOREACH config_id CanConfigSet.ID_LIST$
-$		// CanConfigSet¤´¤È¤ÎHOH¥ê¥¹¥È
+$		// CanConfigSetã”ã¨ã®HOHãƒªã‚¹ãƒˆ
 		$new_list = {}$
 		$FOREACH ctrl_id CanConfigSet.ctrl_id_list[config_id]$
 			$new_list = APPEND(new_list, CanController.hoh_list[ctrl_id])$
@@ -201,10 +206,10 @@ $END$
 
 
 $ ====================================================================
-$  IDÏ¢ÈÖ¥½¡¼¥È´Ø¿ô
+$  IDé€£ç•ªã‚½ãƒ¼ãƒˆé–¢æ•°
 $ ====================================================================
 $FUNCTION ID_SORT$
-$	// [CAN316_Conf] CanControllerId ½ç¤Ë¥½¡¼¥È
+$	// [CAN316_Conf] CanControllerId é †ã«ã‚½ãƒ¼ãƒˆ
 	$FOREACH config_id CanConfigSet.ID_LIST$
 $		// [CAN316_Conf] CanControllerId
 		$new_list = {}$
@@ -216,7 +221,7 @@ $		// [CAN316_Conf] CanControllerId
 					$find = find + 1$
 				$END$
 			$END$
-$			// CanControllerId¤¬0¤«¤é¤ÎÏ¢ÈÖ¤Ç¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
+$			// CanControllerIdãŒ0ã‹ã‚‰ã®é€£ç•ªã§ãªã„å ´åˆã¯ã‚¨ãƒ©ãƒ¼
 			$IF find == 0$
 				$ERROR$$FORMAT(_("CanControllerId(%1%\) is not found. CanControllerId should be sequential from 0."), index)$$END$$DIE()$
 			$END$
@@ -227,7 +232,7 @@ $			// CanControllerId¤¬0¤«¤é¤ÎÏ¢ÈÖ¤Ç¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 		$CanConfigSet.ctrl_id_list[config_id] = new_list$
 	$END$
 
-$	// [CAN326_Conf] HOH¥ê¥¹¥È¤ò CanObjectId ½ç¤Ë¥½¡¼¥È
+$	// [CAN326_Conf] HOHãƒªã‚¹ãƒˆã‚’ CanObjectId é †ã«ã‚½ãƒ¼ãƒˆ
 	$FOREACH config_id CanConfigSet.ID_LIST$
 		$new_list = {}$
 		$FOREACH index RANGE(0, LENGTH(CanConfigSet.hoh_list[config_id]) - 1)$
@@ -238,7 +243,7 @@ $	// [CAN326_Conf] HOH¥ê¥¹¥È¤ò CanObjectId ½ç¤Ë¥½¡¼¥È
 					$find = find + 1$
 				$END$
 			$END$
-$			// CanObjectId¤¬0¤«¤é¤ÎÏ¢ÈÖ¤Ç¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
+$			// CanObjectIdãŒ0ã‹ã‚‰ã®é€£ç•ªã§ãªã„å ´åˆã¯ã‚¨ãƒ©ãƒ¼
 			$IF find == 0$
 				$ERROR$$FORMAT(_("CanObjectId(%1%\) is not found. CanObjectId should be sequential from 0."), index)$$END$$DIE()$
 			$END$
@@ -250,43 +255,26 @@ $			// CanObjectId¤¬0¤«¤é¤ÎÏ¢ÈÖ¤Ç¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 	$END$
 
 	$FOREACH ctrl_id CanController.ID_LIST$
-$		// HRH¥ê¥¹¥È¤ò¼õ¿®¥Ü¥Ã¥¯¥¹ÈÖ¹æ½ç¤Ë¥½¡¼¥È
+$		// HRHãƒªã‚¹ãƒˆã‚’å—ä¿¡ãƒœãƒƒã‚¯ã‚¹ç•ªå·é †ã«ã‚½ãƒ¼ãƒˆ
 		$new_list = {}$
 		$FOREACH index RANGE(0, LENGTH(CanController.hrh_list[ctrl_id]) - 1)$
 			$find = 0$
 			$FOREACH hrh_id CanController.hrh_list[ctrl_id]$
 				$IF CanHardwareObject.box_idx[hrh_id] == index$
 					$new_list = APPEND(new_list, hrh_id)$
-					$find = find + 1$
 				$END$
-			$END$
-$			// box_idx¤¬0¤«¤é¤ÎÏ¢ÈÖ¤Ç¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
-			$IF find == 0$
-				$ERROR$$FORMAT(_("box_idx(%1%\) is not found. box_idx should be sequential from 0."), index)$$END$$DIE()$
-			$END$
-			$IF find > 1$
-				$ERROR$$FORMAT(_("box_idx(%1%\) is duplicated. box_idx should be unique."), index)$$END$$DIE()$
 			$END$
 		$END$
 		$CanController.hrh_list[ctrl_id] = new_list$
 		
-$		// HTH¥ê¥¹¥È¤òÁ÷¿®¥Ü¥Ã¥¯¥¹ÈÖ¹æ½ç¤Ë¥½¡¼¥È
-$		// [CAN100] HTH¤Î¹½À®
+$		// HTHãƒªã‚¹ãƒˆã‚’é€ä¿¡ãƒœãƒƒã‚¯ã‚¹ç•ªå·é †ã«ã‚½ãƒ¼ãƒˆ
+$		// [CAN100] HTHã®æ§‹æˆ
 		$new_list = {}$
 		$FOREACH index RANGE(0, LENGTH(CanController.hth_list[ctrl_id]) - 1)$
-			$find = 0$
 			$FOREACH hth_id CanController.hth_list[ctrl_id]$
 				$IF CanHardwareObject.box_idx[hth_id] == index$
 					$new_list = APPEND(new_list, hth_id)$
-					$find = find + 1$
 				$END$
-			$END$
-$			// box_idx¤¬0¤«¤é¤ÎÏ¢ÈÖ¤Ç¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
-			$IF find == 0$
-				$ERROR$$FORMAT(_("box_idx(%1%\) is not found. box_idx should be sequential from 0."), index)$$END$$DIE()$
-			$END$
-			$IF find > 1$
-				$ERROR$$FORMAT(_("box_idx(%1%\) is duplicated. box_idx should be unique."), index)$$END$$DIE()$
 			$END$
 		$END$
 		$CanController.hth_list[ctrl_id] = new_list$
@@ -294,10 +282,10 @@ $			// box_idx¤¬0¤«¤é¤ÎÏ¢ÈÖ¤Ç¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 $END$
 
 $ ====================================================================
-$  [CAN023] ¥¨¥é¡¼¥Á¥§¥Ã¥¯´Ø¿ô
+$  [CAN023] ã‚¨ãƒ©ãƒ¼ãƒã‚§ãƒƒã‚¯é–¢æ•°
 $ ====================================================================
 $FUNCTION ERROR_CHECK$
-$	// ¥·¥ç¡¼¥È¥Í¡¼¥à¤Î½ÅÊ£¥Á¥§¥Ã¥¯
+$	// ã‚·ãƒ§ãƒ¼ãƒˆãƒãƒ¼ãƒ ã®é‡è¤‡ãƒã‚§ãƒƒã‚¯
 	$FOREACH baudrate_id CanControllerBaudrateConfig.ID_LIST$
 		$FOREACH baudrate_chk_id CanControllerBaudrateConfig.ID_LIST$
 			$IF EQ(baudrate_id, baudrate_chk_id) && (baudrate_id != baudrate_chk_id)$
@@ -321,7 +309,7 @@ $	// ¥·¥ç¡¼¥È¥Í¡¼¥à¤Î½ÅÊ£¥Á¥§¥Ã¥¯
 	$END$
 
 	$FOREACH ctrl_id CanController.ID_LIST$
-$		// CanIfÂ¦¤Î¥³¥ó¥È¥í¡¼¥éIDÊİ»ı
+$		// CanIfå´ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©IDä¿æŒ
 		$canif_ctrl_id_ref = ""$
 		$FOREACH canif_ctrl_id CanIfCtrlCfg.ID_LIST$
 			$IF EQ(ctrl_id, CanIfCtrlCfg.CanIfCtrlCanCtrlRef[canif_ctrl_id])$
@@ -386,7 +374,7 @@ $		// [CAN330_Conf] CanWakeupSupport
 	
 	$FOREACH baudrate_id CanControllerBaudrateConfig.ID_LIST$
 $		// [CAN005_Conf] CanControllerBaudRate
-$		// ¥µ¥İ¡¼¥È¤·¤Æ¤¤¤ë¥Ü¡¼¥ì¡¼¥È¤ò³ÎÇ§
+$		// ã‚µãƒãƒ¼ãƒˆã—ã¦ã„ã‚‹ãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆã‚’ç¢ºèª
 		$IF !LENGTH(FIND(TARGET_SUPPORT_BAUDRATE_LIST, CanControllerBaudrateConfig.CanControllerBaudRate[baudrate_id]))$
 			$ERROR$$FORMAT(_("CanControllerBaudRate(%1%) is not supported. (%2%)"), 
 								CanControllerBaudrateConfig.CanControllerBaudRate[baudrate_id], baudrate_id)$$END$
@@ -398,7 +386,7 @@ $		// ¥µ¥İ¡¼¥È¤·¤Æ¤¤¤ë¥Ü¡¼¥ì¡¼¥È¤ò³ÎÇ§
 		$FOREACH ctrl_id CanConfigSet.ctrl_id_list[config_id]$
 			$find = 0$
 			$FOREACH i RANGE(0, LENGTH(CanController.baudrate_list[ctrl_id]) - 1)$
-$				// CanControllerDefaultBaudrate¤¬Æ±¤¸CanControllerÆâ¤«¤é»ØÄê¤·¤Æ¤¤¤ë¤«³ÎÇ§
+$				// CanControllerDefaultBaudrateãŒåŒã˜CanControllerå†…ã‹ã‚‰æŒ‡å®šã—ã¦ã„ã‚‹ã‹ç¢ºèª
 				$IF EQ(CanController.CanControllerDefaultBaudrate[ctrl_id], AT(CanController.baudrate_list[ctrl_id], i))$
 					$find = 1$
 				$END$
@@ -420,12 +408,12 @@ $		// [CAN066_Conf] CanFilterMaskValue
 
 	$FOREACH hoh_id CanHardwareObject.ID_LIST$
 $		// [CAN323_Conf] CanHandleType
-$		// FullCAN¤Î¤ß¥µ¥İ¡¼¥È
+$		// FullCANã®ã¿ã‚µãƒãƒ¼ãƒˆ
 		$IF !EQ(CanHardwareObject.CanHandleType[hoh_id], "FULL")$
 			$ERROR$$FORMAT(_("CanHandleType should be set to `FULL'. (%1%\)"), hoh_id)$$END$$DIE()$
 		$END$
 $		// [CAN065_Conf] CanIdType
-$		// STANDARD¤Î¤ß¥µ¥İ¡¼¥È
+$		// STANDARDã®ã¿ã‚µãƒãƒ¼ãƒˆ
 		$IF !EQ(CanHardwareObject.CanIdType[hoh_id], "STANDARD")$
 			$ERROR$$FORMAT(_("CanIdType should be set to `STANDARD'. (%1%\)"), hoh_id)$$END$$DIE()$
 		$END$
@@ -443,7 +431,7 @@ $		// [CAN327_Conf] CanObjectType
 		$END$
 $		// [CAN321_Conf] CanFilterMaskRef
 		$IF LENGTH(CanHardwareObject.CanFilterMaskRef[hoh_id])$
-$			// CanFilterMaskRef¤Î»²¾ÈÀè¤ÎCanFilterMask¤Ï¡¤CanControllerRef¤¬»²¾È¤¹¤ë¥³¥ó¥È¥í¡¼¥é¤ÈÆ±¤¸
+$			// CanFilterMaskRefã®å‚ç…§å…ˆã®CanFilterMaskã¯ï¼ŒCanControllerRefãŒå‚ç…§ã™ã‚‹ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã¨åŒã˜
 			$IF (!EQ(CanHardwareObject.CanControllerRef[hoh_id], CanFilterMask.PARENT[CanHardwareObject.CanFilterMaskRef[hoh_id]]))$
 				$ERROR$$FORMAT(_("CanControllerRef and CanFilterMaskRef should be equal CanController'. (%1%\)"),
 								 CanHardwareObject.CanControllerRef[hoh_id])$$END$$DIE()$
@@ -462,9 +450,9 @@ $		// [CAN320_Conf] CanIndex
 			$ERROR$$FORMAT(_("CanIndex should be in the range of 0..255. (%1%\)"), general_id)$$END$$DIE()$
 		$END$
 $		// [CAN095_Conf] CanMultiplexedTransmission
-$		// false¤Î¤ß¥µ¥İ¡¼¥È
+$		// falseã®ã¿ã‚µãƒãƒ¼ãƒˆ
 		$IF IS_TRUE(CanGeneral.CanMultiplexedTransmission[general_id])$
-			$ERROR$$FORMAT(_("CanIndex should be `FALSE'. (%1%\)"), general_id)$$END$$DIE()$
+			$ERROR$$FORMAT(_("CanMultiplexedTransmission should be `FALSE'. (%1%\)"), general_id)$$END$$DIE()$
 		$END$
 $		// [CAN106_Conf] CanVersionInfoApi
 		$ret = IS_TRUE(CanGeneral.CanVersionInfoApi[general_id])$
@@ -472,10 +460,10 @@ $		// [CAN106_Conf] CanVersionInfoApi
 $END$
 
 $ ====================================================================
-$  [CAN220][CAN389] ¥×¥ê¥³¥ó¥Ñ¥¤¥ëÍÑ¥Ø¥Ã¥ÀÀ¸À®´Ø¿ô
+$  [CAN220][CAN389] ãƒ—ãƒªã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ç”¨ãƒ˜ãƒƒãƒ€ç”Ÿæˆé–¢æ•°
 $ ====================================================================
 $FUNCTION GEN_CAN_CFG_H$
-$	// [CAN047] human readable¤ÊÆâÍÆ
+$	// [CAN047] human readableãªå†…å®¹
 	$FILE "Can_Cfg.h"$
 	/* Can_Cfg.h */$NL$
 
@@ -521,7 +509,7 @@ $	// [CAN431_Conf] CanCounterRef
 	#define CAN_COUNTER_TICKS2SEC(tick)$TAB$OS_TICKS2SEC_$CanGeneral.CanCounterRef[1]$(tick)$NL$
 	$NL$
 
-$	// CanController¤´¤È¤ÎMainFunction APIÍ­¸ú/Ìµ¸ú¤ò³ÎÇ§
+$	// CanControllerã”ã¨ã®MainFunction APIæœ‰åŠ¹/ç„¡åŠ¹ã‚’ç¢ºèª
 	$busoff_int = 0$
 	$busoff_poll = 0$
 	$rx_int = 0$
@@ -584,33 +572,31 @@ $	// CanController¤´¤È¤ÎMainFunction APIÍ­¸ú/Ìµ¸ú¤ò³ÎÇ§
 		#define USE_CAN_WAKEUP_POLLING$NL$
 	$END$
 
-$	// CanLPduReceiveCalloutFunctionÀßÄê³ÎÇ§
+$	// CanLPduReceiveCalloutFunctionè¨­å®šç¢ºèª
 	$IF LENGTH(CanGeneral.CanLPduReceiveCalloutFunction[1])$
 		#define USE_CAN_LPDU_RECEIVE_CALLOUT_FUNCTION$NL$
 	$END$
 	$NL$
 
-$	// MainFunctionÍÑÄêµÁ
+$	// MainFunctionç”¨å®šç¾©
 $	// [CAN355_Conf] CanMainFunctionBusoffPeriod
 	$IF LENGTH(CanGeneral.CanMainFunctionBusoffPeriod[1])$
 		#define CAN_MAIN_FUNCTION_BUSOFF_PERIOD$TAB$($CanGeneral.CanMainFunctionBusoffPeriod[1]$)$NL$
 	$END$
 $	// [CAN376_Conf] CanMainFunctionModePeriod
-	$IF LENGTH(CanGeneral.CanMainFunctionModePeriod[1])$
-		#define CAN_MAIN_FUNCTION_MODE_PERIOD$TAB$($CanGeneral.CanMainFunctionModePeriod[1]$)$NL$
-	$END$
+	#define CAN_MAIN_FUNCTION_MODE_PERIOD$TAB$($CanGeneral.CanMainFunctionModePeriod[1]$)$NL$
 $	// [CAN357_Conf] CanMainFunctionWakeupPeriod
 	$IF LENGTH(CanGeneral.CanMainFunctionWakeupPeriod[1])$
 		#define CAN_MAIN_FUNCTION_WAKEUP_PERIOD$TAB$($CanGeneral.CanMainFunctionWakeupPeriod[1]$)$NL$
 	$END$
 $	// [CAN437_Conf] CanMainFunctionRWPeriods
 $	// [CAN356_Conf] CanMainFunctionReadPeriod
-$	// [NCAN001] Â¿½ÅÅÙ0..1¤È¤·¡¤Í£°ì¤ÎÃÍ¤Î¤ß½ĞÎÏ
+$	// [NCAN001] å¤šé‡åº¦0..1ã¨ã—ï¼Œå”¯ä¸€ã®å€¤ã®ã¿å‡ºåŠ›
 	$IF LENGTH(CanMainFunctionRWPeriods.CanMainFunctionReadPeriod[1])$
 		#define CAN_MAIN_FUNCTION_READ_PERIOD$TAB$($CanMainFunctionRWPeriods.CanMainFunctionReadPeriod[1]$)$NL$
 	$END$
 $	// [CAN358_Conf] CanMainFunctionWritePeriod
-$	// [NCAN002] Â¿½ÅÅÙ0..1¤È¤·¡¤Í£°ì¤ÎÃÍ¤Î¤ß½ĞÎÏ
+$	// [NCAN002] å¤šé‡åº¦0..1ã¨ã—ï¼Œå”¯ä¸€ã®å€¤ã®ã¿å‡ºåŠ›
 	$IF LENGTH(CanMainFunctionRWPeriods.CanMainFunctionWritePeriod[1])$
 		#define CAN_MAIN_FUNCTION_WRITE_PERIOD$TAB$($CanMainFunctionRWPeriods.CanMainFunctionWritePeriod[1]$)$NL$
 	$END$
@@ -620,17 +606,17 @@ $	// [NCAN002] Â¿½ÅÅÙ0..1¤È¤·¡¤Í£°ì¤ÎÃÍ¤Î¤ß½ĞÎÏ
 $END$
 
 $ ====================================================================
-$  [CAN078][CAN221] ¥İ¥¹¥È¥Ó¥ë¥ÉÍÑ¼ÂÂÎÀ¸À®´Ø¿ô
+$  [CAN078][CAN221] ãƒã‚¹ãƒˆãƒ“ãƒ«ãƒ‰ç”¨å®Ÿä½“ç”Ÿæˆé–¢æ•°
 $ ====================================================================
 $FUNCTION GEN_CAN_PB_CFG_C$
-$ 	// ¥Ó¥ë¥É¸å¤Ë¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó²ÄÇ½¤Ê¥Ñ¥é¥á¡¼¥¿ÍÑ
+$ 	// ãƒ“ãƒ«ãƒ‰å¾Œã«ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å¯èƒ½ãªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ç”¨
 	$FILE "Can_PBcfg.c"$
 	/* Can_PBcfg.c */$NL$
 
 	#include "Can.h"$NL$
 	$NL$
 
-	/* ¥µ¥İ¡¼¥È¥Ü¡¼¥ì¡¼¥ÈÇÛÎó : baudrate_<CanConfigSet>_<CanController> */$NL$
+	/* ã‚µãƒãƒ¼ãƒˆãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆé…åˆ— : baudrate_<CanConfigSet>_<CanController> */$NL$
 	$FOREACH config_id CanConfigSet.ID_LIST$
 		$FOREACH ctrl_id CanConfigSet.ctrl_id_list[config_id]$
 			static const Can_ControllerBaudrateConfigType baudrate_$config_id$_$ctrl_id$[$CanController.baudrate_num[ctrl_id]$] = {$NL$
@@ -655,7 +641,7 @@ $				// [CAN383_Conf] CanControllerSyncJumpWidth
 	$END$
 
 $	// [CAN066_Conf] CanFilterMaskValue
-	/* ¥Õ¥£¥ë¥¿¥Ş¥¹¥¯ÃÍÇÛÎó : filtermask_<CanConfigSet>_<CanController> */$NL$
+	/* ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚¹ã‚¯å€¤é…åˆ— : filtermask_<CanConfigSet>_<CanController> */$NL$
 	$FOREACH config_id CanConfigSet.ID_LIST$
 		$FOREACH ctrl_id CanConfigSet.ctrl_id_list[config_id]$
 			$IF (CanController.filtermask_num[ctrl_id] != 0)$
@@ -669,7 +655,7 @@ $	// [CAN066_Conf] CanFilterMaskValue
 		$END$
 	$END$
 
-	/* ¼õ¿®¥Ü¥Ã¥¯¥¹ÈÖ¹æ¢ªHRHÊÑ´¹¥Æ¡¼¥Ö¥ë : rbox_hrh_table_<CanConfigSet>_<CanController> */$NL$
+	/* å—ä¿¡ãƒœãƒƒã‚¯ã‚¹ç•ªå·â†’HRHå¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ« : rbox_hrh_table_<CanConfigSet>_<CanController> */$NL$
 	$FOREACH config_id CanConfigSet.ID_LIST$
 		$FOREACH ctrl_id CanConfigSet.ctrl_id_list[config_id]$
 			$IF (CanController.hrh_num[ctrl_id] != 0)$
@@ -683,7 +669,7 @@ $	// [CAN066_Conf] CanFilterMaskValue
 		$END$
 	$END$
 
-	/* ¼õ¿®¥Ü¥Ã¥¯¥¹CAN-ID¥Æ¡¼¥Ö¥ë : rbox_canid_table_<CanConfigSet>_<CanController> */$NL$
+	/* å—ä¿¡ãƒœãƒƒã‚¯ã‚¹CAN-IDãƒ†ãƒ¼ãƒ–ãƒ« : rbox_canid_table_<CanConfigSet>_<CanController> */$NL$
 	$FOREACH config_id CanConfigSet.ID_LIST$
 		$FOREACH ctrl_id CanConfigSet.ctrl_id_list[config_id]$
 			$IF (CanController.hrh_num[ctrl_id] != 0)$
@@ -714,7 +700,7 @@ $					// [CAN321_Conf] CanFilterMaskRef
 		$END$
 	$END$
 
-	/* HTH´ÉÍı¥Ö¥í¥Ã¥¯ÇÛÎó : can_hth_cb_table_<CanConfigSet>_<CanController> */$NL$
+	/* HTHç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯é…åˆ— : can_hth_cb_table_<CanConfigSet>_<CanController> */$NL$
 	$FOREACH config_id CanConfigSet.ID_LIST$
 		$FOREACH ctrl_id CanConfigSet.ctrl_id_list[config_id]$
 			$IF (CanController.hth_num[ctrl_id] != 0)$
@@ -724,7 +710,7 @@ $					// [CAN321_Conf] CanFilterMaskRef
 		$END$
 	$END$
 
-	/* Can¥³¥ó¥È¥í¡¼¥é´ÉÍı¥Ö¥í¥Ã¥¯ÇÛÎó : can_ctrl_inib_table_<CanConfigSet> */$NL$
+	/* Canã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯é…åˆ— : can_ctrl_inib_table_<CanConfigSet> */$NL$
 	$FOREACH config_id CanConfigSet.ID_LIST$
 		static const CAN_CTRL_INIB can_ctrl_inib_table_$config_id$[$CanConfigSet.ctrl_id_num[config_id]$] = {$NL$
 		$JOINEACH ctrl_id CanConfigSet.ctrl_id_list[config_id] ",\n"$
@@ -777,7 +763,7 @@ $				// [CAN435_Conf] CanControllerDefaultBaudrate
 	$END$
 	$NL$
 
-	/* HOH¢ª¥Ü¥Ã¥¯¥¹ÈÖ¹æÊÑ´¹¥Æ¡¼¥Ö¥ë : hoh_box_table_<CanConfigSet> */$NL$
+	/* HOHâ†’ãƒœãƒƒã‚¯ã‚¹ç•ªå·å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ« : hoh_box_table_<CanConfigSet> */$NL$
 	$FOREACH config_id CanConfigSet.ID_LIST$
 		static const Can_HohBoxType hoh_box_table_$config_id$[$CanConfigSet.hoh_num[config_id]$] = {$NL$
 		$TAB$/* { CanControllerId, CanObjectType, box_idx } */$NL$
@@ -798,9 +784,9 @@ $				// [CAN435_Conf] CanControllerDefaultBaudrate
 	$END$
 
 $	// [CAN343_Conf] CanConfigSet
-$	// [CAN021][CAN291] ¥³¥ó¥È¥í¡¼¥é¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¤ò´Ş¤à'Config'¤Î¾ğÊó
-$	// [NCAN004] ¥İ¥¹¥È¥Ó¥ë¥ÉÂĞ±ş¤Î¤¿¤ácan_config¤ÎÂ¿½ÅÅÙ¤Ï1..*
-	/* Can¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó */$NL$
+$	// [CAN021][CAN291] ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å«ã‚€'Config'ã®æƒ…å ±
+$	// [NCAN004] ãƒã‚¹ãƒˆãƒ“ãƒ«ãƒ‰å¯¾å¿œã®ãŸã‚can_configã®å¤šé‡åº¦ã¯1..*
+	/* Canã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ± */$NL$
 	const Can_ConfigType can_config[$LENGTH(CanConfigSet.ID_LIST)$] = {$NL$
 	$JOINEACH config_id CanConfigSet.ID_LIST ",\n"$
 		$TAB$/* $config_id$ */$NL$
@@ -814,21 +800,21 @@ $	// [NCAN004] ¥İ¥¹¥È¥Ó¥ë¥ÉÂĞ±ş¤Î¤¿¤ácan_config¤ÎÂ¿½ÅÅÙ¤Ï1..*
 	$NL$};$NL$
 	$NL$
 
-	/* ³ä¹ş¤ß¶Ø»ß¥Í¥¹¥È¥«¥¦¥ó¥È */$NL$
+	/* å‰²è¾¼ã¿ç¦æ­¢ãƒã‚¹ãƒˆã‚«ã‚¦ãƒ³ãƒˆ */$NL$
 	uint8 can_interrupt_nested_cnt[$ctrl_id_num_max$];$NL$
 	$NL$
 
-	/* Can_SetControllerModeÆ°ºî¾õÂÖ¥Õ¥é¥° */$NL$
+	/* Can_SetControllerModeå‹•ä½œçŠ¶æ…‹ãƒ•ãƒ©ã‚° */$NL$
 	boolean can_set_controller_mode_flg[$ctrl_id_num_max$];$NL$
 	$NL$
 
-	/* CAN¥³¥ó¥È¥í¡¼¥é¾õÂÖ¾ğÊó */$NL$
+	/* CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©çŠ¶æ…‹æƒ…å ± */$NL$
 	Can_StateTransitionType can_current_state[$ctrl_id_num_max$];$NL$
 	$NL$
 
 $	// [CAN434_Conf] CanLPduReceiveCalloutFunction
 	$IF LENGTH(CanGeneral.CanLPduReceiveCalloutFunction[1])$
-		/* ¥³¡¼¥ë¥¢¥¦¥È´Ø¿ô */$NL$
+		/* ã‚³ãƒ¼ãƒ«ã‚¢ã‚¦ãƒˆé–¢æ•° */$NL$
 		extern boolean $CanGeneral.CanLPduReceiveCalloutFunction[1]$(uint8 Hrh, Can_IdType CanId, uint8 CanDlc, const uint8 *CanSduPtr);$NL$
 		const Can_LpduCallout CanLpduCalloutFunction = $CanGeneral.CanLPduReceiveCalloutFunction[1]$;$NL$
 	$END$
@@ -837,42 +823,42 @@ $END$
 
 
 $ ====================================================================
-$  ¥á¥¤¥ó½èÍı
+$  ãƒ¡ã‚¤ãƒ³å‡¦ç†
 $ ====================================================================
 
 $	DUMP()$
 
-$ ¥ê¥¹¥ÈºîÀ®
+$ ãƒªã‚¹ãƒˆä½œæˆ
 $MAKE_CFG_LIST()$
 
-$ ID¥½¡¼¥È
+$ IDã‚½ãƒ¼ãƒˆ
 $ID_SORT()$
 
-$ ¥¨¥é¡¼¥Á¥§¥Ã¥¯
+$ ã‚¨ãƒ©ãƒ¼ãƒã‚§ãƒƒã‚¯
 $ERROR_CHECK()$
 
-$ ¥¿¡¼¥²¥Ã¥È°ÍÂ¸Éô¥Á¥§¥Ã¥¯
+$ ã‚¿ãƒ¼ã‚²ãƒƒãƒˆä¾å­˜éƒ¨ãƒã‚§ãƒƒã‚¯
 $IF ISFUNCTION("TARGET_CHECK")$
 	$TARGET_CHECK()$
 $END$
 
-$ ¥×¥ê¥³¥ó¥Ñ¥¤¥ëÍÑ
+$ ãƒ—ãƒªã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ç”¨
 $GEN_CAN_CFG_H()$
 
-$ ¥İ¥¹¥È¥Ó¥ë¥ÉÍÑ
+$ ãƒã‚¹ãƒˆãƒ“ãƒ«ãƒ‰ç”¨
 $GEN_CAN_PB_CFG_C()$
 
 
-$	TOPPERS/A-CAN ¤Ç¤ÏÂĞ±ş¤·¤Ê¤¤»ÅÍÍ¥¿¥°°ìÍ÷
+$	TOPPERS/A-CAN ã§ã¯å¯¾å¿œã—ãªã„ä»•æ§˜ã‚¿ã‚°ä¸€è¦§
 $
-$	- Á÷¿®¥­¥ã¥ó¥»¥ë
+$	- é€ä¿¡ã‚­ãƒ£ãƒ³ã‚»ãƒ«
 $		<CAN069_Conf> CanGeneral/CanHardwareCancellation
 $		<CAN378_Conf> CanGeneral/CanIdenticalIdCancellation
 $	- TTCAN
 $		<CAN430_Conf> CanGeneral/CanSupportTTCANRef
-$	- CAN¥³¥ó¥È¥í¡¼¥é
-$		<CAN315_Conf> CAN¥³¥ó¥È¥í¡¼¥é¤ÎÌµ¸ú»ØÄê¤ÏÌ¤¥µ¥İ¡¼¥È
-$		<CAN382_Conf> CAN¥³¥ó¥È¥í¡¼¥é¤Î¥Ù¡¼¥¹¥¢¥É¥ì¥¹»ØÄê¤ÏÌ¤¥µ¥İ¡¼¥È
-$	- ¤½¤ÎÂ¾
-$		<CAN313_Conf> Mcu¥â¥¸¥å¡¼¥ë¤«¤é¤Î»²¾È¤ÏÌ¤¥µ¥İ¡¼¥È
-$		<CAN438_Conf> CanHardwareObjectËè¤ÎPeriod»ØÄê¤ÏÌ¤¥µ¥İ¡¼¥È
+$	- CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©
+$		<CAN315_Conf> CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã®ç„¡åŠ¹æŒ‡å®šã¯æœªã‚µãƒãƒ¼ãƒˆ
+$		<CAN382_Conf> CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã®ãƒ™ãƒ¼ã‚¹ã‚¢ãƒ‰ãƒ¬ã‚¹æŒ‡å®šã¯æœªã‚µãƒãƒ¼ãƒˆ
+$	- ãã®ä»–
+$		<CAN313_Conf> Mcuãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‹ã‚‰ã®å‚ç…§ã¯æœªã‚µãƒãƒ¼ãƒˆ
+$		<CAN438_Conf> CanHardwareObjectæ¯ã®PeriodæŒ‡å®šã¯æœªã‚µãƒãƒ¼ãƒˆ

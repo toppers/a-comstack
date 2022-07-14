@@ -1,0 +1,7489 @@
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　
+　次世代車載システム向けCOM
+外部仕様書
+　Ver.1.1.0
+　
+　2016/03/31
+　
+　
+　
+
+
+
+
+＜目次＞
+1 概要	１
+1.1 本文書の目的	１
+1.2 関連文書	１
+1.2.1 ベースとした文書	１
+1.2.2 参考文書	２
+1.3 凡例	３
+1.3.1 仕様番号	３
+1.3.2 API仕様	４
+1.3.3 注記	５
+2 概念	６
+2.1 機能一覧	６
+2.2 主要概念	８
+2.2.1 OSEK COM	８
+2.2.2 初期化処理	１０
+2.2.2.1 IPDUグループの初期化	１０
+2.2.2.2 IPDUの初期化	１０
+2.2.2.3 シグナルの初期化	１０
+2.2.2.4 フィルタの初期化	１０
+2.2.3 未初期化処理	１１
+2.2.4 IPDUグループ管理	１２
+2.2.4.1 IPDUグループの定義	１２
+2.2.4.2 IPDUグループの起動	１２
+2.2.4.3 IPDUグループの停止	１４
+2.2.5 デッドラインモニタリング(DM)	１６
+2.2.5.1 送信デッドラインモニタリング	１６
+2.2.5.2 受信デッドラインモニタリング	１８
+2.2.5.2.1 受信DMの有効化および無効化	２０
+2.2.6 最小遅延タイマ(MDT)	２１
+2.2.7 受信完了通知タイミング	２２
+2.2.8 エンディアン変換	２３
+2.2.9 符号拡張	２４
+2.2.10 フィルタリング	２５
+2.2.10.1 フィルタアルゴリズム	２７
+2.2.11 送信モード	２９
+2.2.11.1 送信プロパティと送信モード	２９
+2.2.11.1.1 シグナル	２９
+2.2.11.1.2 シグナルグループ	３０
+2.2.11.2 TMS判定	３２
+2.2.11.3 直接N回送信	３４
+2.2.11.4 周期送信	３５
+2.2.11.5 送信モードのユースケース	３６
+2.2.11.5.1 周期送信(送信モード変更なし)	３７
+2.2.11.6 VFB仕様との関係	３９
+2.2.12 失敗送信要求リトライ	４０
+2.2.13 シグナル無効化	４１
+2.2.13.1 無効化されたシグナルの送信	４１
+2.2.13.2 無効化されたシグナルの受信	４１
+2.3 シグナルグループ(複合データ型のIPDUへのマッピング)	４３
+2.3.1 シグナルグループの初期化	４３
+2.3.2 シグナルグループの送信	４３
+2.3.3 シグナルグループの受信	４３
+2.3.4 シグナルグループ関連の通知	４３
+2.3.5 シグナルグループの属性	４３
+2.4 大型データ	４５
+2.4.1 大型データの送信	４５
+2.4.2 大型データの受信	４５
+2.5 可変長データ	４７
+2.5.1 可変長データの送信	４７
+2.5.2 可変長データの受信	４７
+2.6 アップデートビット	４８
+2.6.1 送信側のアップデートビット処理	４８
+2.6.2 受信側のアップデートビット処理	４９
+2.7 データシーケンス管理	５０
+2.7.1 送信側のデータシーケンス管理	５０
+2.7.2 受信側のデータシーケンス管理	５０
+2.8 通信保護	５２
+2.8.1 送信側の通信保護	５２
+2.8.2 受信側の通信保護	５２
+2.8.3 制約事項	５３
+2.9 シグナルゲートウェイ	５４
+2.9.1 シグナルに対するルーティング	５４
+2.9.2 シグナルグループに対するルーティング	５４
+2.9.3 タイムアウト発生時のルーティング	５５
+2.9.4 アップデートビット処理	５５
+2.9.5 シグナルゲートウェイの分離	５６
+2.10 エラー処理	５７
+2.10.1 エラー検出	５７
+2.10.2 エラー通知	５７
+2.11 関連モジュール	５８
+2.11.1 RTE	５８
+2.11.2 PduR	５８
+2.11.2.1 ComとPduR間のインタフェース	５８
+2.12 COM通信モデル	６０
+2.12.1 COM送信モデル	６１
+2.12.2 COM受信モデル	６２
+2.13 ファイル構成	６３
+2.14 コンフィギュレーション	６４
+2.14.1 コンフィギュレーションクラス	６４
+2.14.2 コンフィギュレーションルール	６５
+2.14.2.1 全般	６５
+2.14.2.2 シグナル	６６
+2.14.2.3 シグナルグループ	６７
+2.14.2.4 IPDU	６７
+2.14.2.5 シグナルゲートウェイ	６７
+2.14.2.6 フィルタ	６７
+2.14.2.7 周期関数呼び出し回数	６８
+2.15 本バージョン対象機能	６９
+3 API仕様	７１
+3.1 API実装方針	７１
+3.1.1 実装言語	７１
+3.1.2 再入可能性	７１
+3.1.3 引数チェック	７１
+3.1.4 デバッグ	７１
+3.2 データ型	７２
+3.2.1 外部からインポートするデータ型	７２
+3.2.2 内部で定義するデータ型	７２
+3.2.2.1 Com_StatusType	７２
+3.2.2.2 Com_SignalIdType	７２
+3.2.2.3 Com_SignalGroupIdType	７２
+3.2.2.4 Com_IpduGroupIdType	７３
+3.2.2.5 Com_IpduGroupVector	７３
+3.2.2.6 Com_ServiceIdType	７３
+3.2.2.7 Com_ConfigType	７４
+3.3 定数	７５
+3.3.1 IPDU通信方向設定	７５
+3.3.2 IPDU種別設定	７５
+3.3.3 シグナル型設定	７５
+3.3.4 エンディアン設定	７６
+3.3.5 フィルタアルゴリズム設定	７７
+3.3.6 送信モード設定	７８
+3.3.7 送信プロパティ設定	７８
+3.3.8 通信完了通知タイミング設定	７９
+3.3.9 アップデートビットクリアタイミング設定	７９
+3.3.10 エラー発生時処理設定	７９
+3.3.11 システムサービス返り値	８０
+3.3.12 無効値	８０
+3.4 返り値	８１
+3.5 エラーコード	８１
+3.5.1 標準エラー	８１
+3.5.2 拡張エラー	８１
+3.6 システムサービス	８２
+3.6.1 Com_Init	８２
+3.6.2 Com_DeInit	８３
+3.6.3 Com_IpduGroupControl	８４
+3.6.4 Com_ReceptionDMControl	８５
+3.6.5 Com_GetStatus	８６
+3.6.6 Com_GetConfigurationId	８６
+3.6.7 Com_GetVersionInfo	８７
+3.6.8 Com_ClearIpduGroupVector	８８
+3.6.9 Com_SetIpduGroup	８８
+3.6.10 Com_SendSignal	９０
+3.6.11 Com_SendDynSignal	９１
+3.6.12 Com_ReceiveSignal	９３
+3.6.13 Com_ReceiveDynSignal	９４
+3.6.14 Com_SendSignalGroup	９５
+3.6.15 Com_ReceiveSignalGroup	９６
+3.6.16 Com_InvalidateSignal	９７
+3.6.17 Com_InvalidateSignalGroup	９８
+3.6.18 Com_TriggerIPDUSend	９９
+3.6.19 Com_SwitchIpduTxMode	１００
+3.7 コールバック関数	１０１
+3.7.1 Com_TriggerTransmit	１０１
+3.7.2 Com_RxIndication	１０２
+3.7.3 Com_TpRxIndication	１０３
+3.7.4 Com_TxConfirmation	１０４
+3.7.5 Com_TpTxConfirmation	１０５
+3.7.6 Com_StartOfReception	１０６
+3.7.7 Com_CopyRxData	１０８
+3.7.8 Com_CopyTxData	１０９
+3.8 周期関数	１１０
+3.8.1 Com_MainFunctionRx	１１０
+3.8.2 Com_MainFunctionTx	１１０
+3.8.3 Com_MainFunctionRouteSignals	１１１
+3.9 依存インタフェース	１１２
+3.9.1 必須インタフェース	１１２
+3.9.2 任意インタフェース	１１２
+3.9.3 コンフィギュレーション可能なインタフェース	１１３
+3.9.3.1 コールバック関数	１１３
+3.9.3.1.1 Com_CbkTxAck	１１３
+3.9.3.1.2 Com_CbkTxErr	１１３
+3.9.3.1.3 Com_CbkTxTOut	１１４
+3.9.3.1.4 Com_CbkRxAck	１１４
+3.9.3.1.5 Com_CbkRxTOut	１１５
+3.9.3.1.6 Com_CbkInv	１１５
+3.9.3.1.7 Com_CbkCounterErr	１１６
+3.9.3.2 コールアウト関数	１１７
+3.9.3.2.1 Com_RxIpduCallout	１１７
+3.9.3.2.2 Com_TxIpduCallout	１１８
+3.10 コンテナおよびパラメータ	１２０
+3.10.1 Com	１２０
+3.10.2 ComGeneral	１２０
+3.10.2.1 ComConfigurationUseDet	１２０
+3.10.2.2 ComEnableMDTForCyclicTransmission	１２１
+3.10.2.3 ComRetryFailedTransmitRequests	１２１
+3.10.2.4 ComSupportedIPduGroups	１２１
+3.10.2.5 ComVersionInfoApi	１２２
+3.10.3 ComConfig	１２３
+3.10.3.1 ComConfigurationId	１２３
+3.10.4 ComTimeBase	１２３
+3.10.4.1 ComTxTimeBase	１２４
+3.10.4.2 ComRxTimeBase	１２４
+3.10.4.3 ComGwTimeBase	１２５
+3.10.5 ComIPduGroup	１２６
+3.10.5.1 ComIPduGroupHandleId	１２６
+3.10.5.2 ComIPduGroupGroupRef	１２６
+3.10.6 ComIPdu	１２８
+3.10.6.1 ComIPduHandleId	１２８
+3.10.6.2 ComIPduType	１２９
+3.10.6.3 ComIPduDirection	１２９
+3.10.6.4 ComIPduSignalProcessing	１３０
+3.10.6.5 ComIPduCancellationSupport	１３０
+3.10.6.6 ComIPduCallout	１３０
+3.10.6.7 ComIPduTriggerTransmitCallout	１３１
+3.10.6.8 ComIPduGroupRef	１３１
+3.10.6.9 ComIPduSignalRef	１３１
+3.10.6.10 ComIPduSignalGroupRef	１３２
+3.10.6.11 ComPduIdRef	１３２
+3.10.7 ComTxIPdu	１３２
+3.10.7.1 ComTxIPduUnusedAreasDefault	１３３
+3.10.7.2 ComTxIPduClearUpdateBit	１３３
+3.10.7.3 ComMinimumDelayTime	１３４
+3.10.8 ComTxModeTrue	１３５
+3.10.9 ComTxModeFalse	１３５
+3.10.10 ComTxMode	１３６
+3.10.10.1 ComTxModeMode	１３６
+3.10.10.2 ComTxModeNumberOfRepetitions	１３６
+3.10.10.3 ComTxModeRepetitionPeriod	１３７
+3.10.10.4 ComTxModeTimeOffset	１３７
+3.10.10.5 ComTxModeTimePeriod	１３８
+3.10.11 ComIPduCounter	１３９
+3.10.11.1 ComIPduCounterStartPosition	１３９
+3.10.11.2 ComIPduCounterSize	１３９
+3.10.11.3 ComIPduCounterThreshold	１４０
+3.10.11.4 ComIPduCounterErrorNotification	１４０
+3.10.12 ComIPduReplication	１４１
+3.10.12.1 ComIPduReplicationQuorum	１４１
+3.10.12.2 ComIPduReplicaRef	１４１
+3.10.13 ComSignal	１４２
+3.10.13.1 ComHandleId	１４２
+3.10.13.2 ComSignalType	１４３
+3.10.13.3 ComBitPosition	１４４
+3.10.13.4 ComBitSize	１４５
+3.10.13.5 ComSignalLength	１４５
+3.10.13.6 ComUpdateBitPosition	１４６
+3.10.13.7 ComSignalInitValue	１４６
+3.10.13.8 ComSignalDataInvalidValue	１４７
+3.10.13.9 ComSignalEndianness	１４７
+3.10.13.10 ComTransferProperty	１４８
+3.10.13.11 ComFirstTimeout	１４９
+3.10.13.12 ComTimeout	１４９
+3.10.13.13 ComDataInvalidAction	１４９
+3.10.13.14 ComRxDataTimeoutAction	１４９
+3.10.13.15 ComNotification	１５０
+3.10.13.16 ComErrorNotification	１５０
+3.10.13.17 ComInvalidNotification	１５０
+3.10.13.18 ComTimeoutNotification	１５１
+3.10.13.19 ComSystemTemplateSystemSignalRef	１５１
+3.10.14 ComSignalGroup	１５２
+3.10.14.1 ComHandleId	１５２
+3.10.14.2 ComUpdateBitPosition	１５３
+3.10.14.3 ComTransferProperty	１５３
+3.10.14.4 ComFirstTimeout	１５４
+3.10.14.5 ComTimeout	１５４
+3.10.14.6 ComDataInvalidAction	１５４
+3.10.14.7 ComRxDataTimeoutAction	１５４
+3.10.14.8 ComNotification	１５５
+3.10.14.9 ComErrorNotification	１５５
+3.10.14.10 ComInvalidNotification	１５５
+3.10.14.11 ComTimeoutNotification	１５６
+3.10.14.12 ComSystemTemplateSignalGroupRef	１５６
+3.10.15 ComGroupSignal	１５７
+3.10.15.1 ComHandleId	１５７
+3.10.15.2 ComSignalType	１５７
+3.10.15.3 ComBitPosition	１５８
+3.10.15.4 ComBitSize	１５８
+3.10.15.5 ComSignalLength	１５９
+3.10.15.6 ComSignalInitValue	１５９
+3.10.15.7 ComSignalDataInvalidValue	１５９
+3.10.15.8 ComSignalEndianness	１６０
+3.10.15.9 ComTransferProperty	１６０
+3.10.15.10 ComSystemTemplateSystemSignalRef	１６１
+3.10.16 ComFilter	１６２
+3.10.16.1 ComFilterAlgorithm	１６２
+3.10.16.2 ComFilterMask	１６３
+3.10.16.3 ComFilterX	１６３
+3.10.16.4 ComFilterMin	１６４
+3.10.16.5 ComFilterMax	１６５
+3.10.16.6 ComFilterOffset	１６５
+3.10.16.7 ComFilterPeriod	１６６
+3.10.17 ComGwMapping	１６７
+3.10.18 ComGwSource	１６７
+3.10.19 ComGwDestination	１６７
+3.10.20 ComGwSourceDescription	１６８
+3.10.20.1 ComSignalType	１６８
+3.10.20.2 ComBitPosition	１６９
+3.10.20.3 ComBitSize	１６９
+3.10.20.4 ComSignalLength	１６９
+3.10.20.5 ComUpdateBitPosition	１７０
+3.10.20.6 ComSignalEndianness	１７０
+3.10.20.7 ComGwIPduRef	１７０
+3.10.21 ComGwDestinationDesctiption	１７１
+3.10.21.1 ComBitPosition	１７１
+3.10.21.2 ComUpdateBitPosition	１７２
+3.10.21.3 ComSignalInitValue	１７２
+3.10.21.4 ComSignalEndianness	１７２
+3.10.21.5 ComTransferProperty	１７３
+3.10.21.6 ComGwIPduRef	１７３
+3.10.22 ComGwSignal	１７５
+3.10.22.1 ComGwSignalRef	１７５
+4 リファレンス	１７６
+4.1 データ型一覧	１７６
+4.2 定数一覧	１７６
+4.3 システムサービス一覧	１７８
+4.4 コールバック関数一覧	１７９
+4.5 周期関数一覧	１７９
+4.6 エラーコード一覧	１７９
+4.7 仕様番号一覧	１８０
+4.7.1 削除したAUTOSAR仕様一覧	１８０
+4.7.2 改変したAUTOSAR仕様一覧	１８０
+4.7.3 追加したNCES仕様一覧	１８１
+4.7.4 本バージョンで対象外となるAUTOSAR仕様一覧	１８４
+　
+
+図 21 受信DMとアップデートビットの関係	１８
+図 22 ONE_EVERY_Nのフィルタリング例	２８
+図 23 他モジュールとの関係	５７
+図 24 COM送信モデル図	６０
+図 25 COM受信モデル図	６１
+図 26 インクルードファイル構成	６２
+　
+　
+
+表 11 ベースとした文書一覧	１
+表 12 参考文書一覧	２
+表 13 仕様番号凡例	３
+表 21 除外されたOSEK COMの機能とその根拠	８
+表 22 有効化されたIPDUに対する振舞い	１４
+表 23 無効化されたIPDUに対する振舞い	１５
+表 24 ComSignalTypeとComFilterAlgorithmsの対応表	２６
+表 25 送信モードおよび送信プロパティとIPDU送信タイミングの関係	２９
+表 26 TMS判定	３１
+表 27 ユースケース凡例	３５
+表 28 送信モードおよび送信プロパティとVFB送信モードの関係	３８
+表 29 シグナルグループの属性	４３
+表 210 アップデートビットの状態とその意味	４７
+表 211 アップデートビットとルーティングの関係	５５
+表 212 IPDU種別(ComIPduType) ごとの対応API	５８
+表 213 本バージョン対象機能	６８
+表 214 本バージョン対象システムサービス	６９
+表 31 インポートするデータ型	７１
+表 32 COMシステムサービスの返り値一覧	８０
+表 33 拡張エラーコード一覧	８０
+表 34 必須インタフェース	１１１
+表 35 任意インタフェース	１１１
+表 36 シグナルのIPDU配置位置チェック概要	１４３
+表 41 データ型一覧	１７５
+表 42 定数一覧	１７５
+表 43 システムサービス一覧	１７７
+表 44 コールバック関数一覧	１７８
+表 45 周期関数一覧	１７８
+表 46 エラーコード一覧	１７８
+　
+
+
+1  
+1  概要
+1.1  本文書の目的
+　本文書は「Requirements on Communication」に記述された要求事項を満たすCOMの機能仕様を規定するものである．
+　本文書に含まれる仕様(以降，本仕様と略す)は，AUTOSAR Specification of Communication仕様(以降，AUTOSAR仕様と略す)をベースに，必要な拡張と修正を行ったものである．また，AUTOSAR仕様はOSEK/VDX Communication仕様(以降，OSEK仕様と略す)をベースにしているため，本仕様も間接的にOSEK仕様をベースにしている．
+　本文書に含まれる用語の定義は，「次世代車載システム向けCOM用語集」に記述している．
+　本文書は，COMに関する一般的な知識を持ったソフトウェア技術者が読むことを想定している． OSEK仕様やAUTOSAR仕様に関する知識を持っていることが望ましいが，それを前提とせずに記述している．
+
+1.2  関連文書
+1.2.1  ベースとした文書
+　以下の表 11は，本文書のベースとした文書であり，その内容は本文書内に含まれている．
+　ただし，AUTOSAR仕様はOSEK仕様の一部のみ含む〔COM013〕ため，AUTOSAR仕様に含まないOSEK仕様に関する内容は本文書に含まれていない．
+　
+　表 11 ベースとした文書一覧
+文書名
+バージョン
+OSEK/VDX Communication
+Ver.3.0.3
+AUTOSAR Specification of Communication
+V4.2.0 (R4.0 Rev3)
+　
+
+
+1.2.2  参考文書
+　以下の表 12 参考文書一覧表 12は，本文書から参照している文書，または本文書を理解するために必要な文書である．その内容は本文書に含まれていない．
+　
+　表 12 参考文書一覧
+文書名
+バージョン
+次世代車載システム向けCOM用語集
+Ver.1.0.1
+次世代車載システム向けRTOS外部仕様書
+Ver3.2.0
+次世代車載システム向けRTE外部仕様書
+Ver1.0.0
+AUTOSAR Layered Architecture
+V3.2.0 (R4.0 Rev3)
+Virtual Functional Bus
+V2.2.0 (R4.0 Rev3)
+General Requirements on Basic Software Modules
+V3.2.0 (R4.0 Rev3)
+List of Basic Software Modules
+V1.6.0 (R4.0 Rev3)
+Software Component Template
+V4.2.0 (R4.0 Rev3)
+Generic Structure Template
+V3.2.0 (R4.0 Rev3)
+Requirements on System Template
+V3.1.0 (R4.0 Rev3)
+Requirements on Debugging
+V1.0.0 (R4.0 Rev1)
+Requirements on Communication
+V3.1.0 (R4.0 Rev3)
+Requirements on Gateway
+V2.2.0 (R4.0 Rev3)
+Specification of BSW Module Description Template
+V2.2.0 (R4.0 Rev3)
+Specification of ECU Configuration
+V3.2.0 (R4.0 Rev3)
+Specification of Standard Types
+V1.3.0 (R4.0 Rev1)
+Specification of Communication Stack Types
+V3.2.0 (R4.0 Rev3)
+Specification of Communication Manager
+V4.0.0 (R4.0 Rev3)
+Specification of CAN Transport Layer
+V4.0.0 (R4.0 Rev3)
+Specification of FlexRay Transport Layer
+V3.0.0 (R4.0 Rev3)
+Specification of PDU Router
+V3.2.0 (R4.0 Rev3)
+　
+
+
+1.3  凡例
+1.3.1  仕様番号
+　本文書では，OSEK仕様と，AUTOSAR仕様と，名古屋大学大学院情報科学研究科附属組込みシステム研究センター(NCES)を中心とする次世代車載システム向けRTOSの仕様検討及び開発に関するコンソーシアム型共同研究(ATK2コンソーシアム)で新規に規定した仕様とが混在しているため，以下に示す仕様番号用いてこれらの仕様を区別して管理を行う．仕様番号は，要求事項にのみ付与することを基本とする．ただし，AUTOSAR仕様において，概念の説明や補足事項に対しても仕様番号が付与されているものに関しては，そのまま付与する．また，本文書からATK2コンソーシアムで開発したA-COMの実装に依存する仕様は，参考情報として本文書に記載するため，仕様番号を付与する．
+
+　表 13 仕様番号凡例
+仕様番号
+内容
+【CCOMxxx】
+関連文書「OSEK/VDX Communication」で規定された仕様．
+【COMxxx】
+関連文書「AUTOSAR Specification of Communication」で規定された仕様．AUTOSAR仕様で記述されているCOM仕様番号を用いる．本仕様に採用しないAUTOSAR仕様についても【COMxxx】で記載している．
+【COMxxx_Conf】
+関連文書「AUTOSAR Specification of Communication」で規定された仕様．AUTOSAR仕様に記述されているコンフィギュレーション仕様番号を用いる．本仕様に採用しないAUTOSAR仕様についても【COMxxx_Conf】で記載している．
+【COMaxxx】
+関連文書「AUTOSAR Specification of Communication」で規定された機能仕様のうち，仕様番号が付与されていないもの．AUTOSAR仕様の要求事項であるため，本仕様において仕様番号を付与する．
+【NCOMxxx】
+ATK2コンソ－シアムで新規に規定した仕様．
+〔CCOMxxx〕
+〔COMxxx〕
+〔NCOMxxx〕
+本文書で上記の仕様番号を内部参照する際に使用する．
+仕様定義である【CCOMxxx】【COMxxx】【NCOMxxx】と区別するために左記のように記述する．
+＜COMxxx＞
+本仕様で削除したAUTOSAR仕様の仕様番号を記載する際に使用する．
+
+
+
+1.3.2  API仕様
+データ型名
+データ型名
+＜データ型のID名を記載する＞
+型
+＜データ型の種類を記載する＞
+範囲
+＜そのデータ型の値の範囲を記載する＞
+概要
+＜データ型が示す内容を記載する＞
+
+定数名
+定数名
+＜定数のID名を記載する＞
+概要
+＜定数が示す内容を記載する＞
+
+システムサービス名
+サービスID
+＜システムサービスのIDを記載する＞
+C言語I/F
+＜システムサービスのC言語I/Fを記載する＞
+パラメータ
+[in]
+＜システムサービスのパラメータで入力となるものを記載する＞
+
+[in/out]
+＜システムサービスのパラメータで入力と出力となるものを記載する＞
+
+[out]
+＜システムサービスのパラメータで出力となるものを記載する＞
+返り値
+＜システムサービスの返り値で標準エラーとなるものと，該当エラーが発生する条件を記載する．(W)が付いている場合は警告として扱っても良い＞
+DETエラー
+＜システムサービス内で通知するDETエラーのエラーコードと発生条件を記載する＞
+同期/非同期
+＜システムサービスの同期性を記載する＞
+再入可能/再入不可能
+＜システムサービスの再入可能性を記載する＞
+機能
+＜システムサービスの機能を記載する＞
+
+メイン関数名
+サービスID
+＜メイン関数のIDを記載する＞
+C言語I/F
+＜メイン関数のC言語I/Fを記載する＞
+起動タイミング
+＜メイン関数の起動タイミングを記載する＞
+DETエラー
+＜システムサービス内で通知するDETエラーのエラーコードと発生条件を記載する＞
+機能
+＜システムサービスの機能を記載する＞
+
+
+
+
+コンテナ名＜コンテナ名称の末尾のみを記載する＞
+コンテナ名
+＜コンテナ名称をフルパスで記載する＞
+概要
+＜コンテナの概要を記載する＞
+多重度
+＜コンテナの多重度を記載する＞
+パラメータ
+＜コンテナが含むパラメータ名を列挙する＞
+サブコンテナ
+＜コンテナが含むサブコンテナ名を列挙する＞
+
+パラメータ＜パラメータ名称の末尾のみを記載する＞
+パラメータ名
+＜パラメータ名称をフルパスで記載する＞
+概要
+＜パラメータの概要を記載する＞
+多重度
+＜パラメータの多重度を記載する＞
+型
+＜パラメータの型を記載する＞
+値の範囲
+＜パラメータの値の範囲を記載する＞
+デフォルト値
+＜パラメータのデフォルト値を記載する＞
+コンフィギュレーションクラス
+＜プレコンパイルタイム，リンクタイム，ポストビルドタイムのいずれかを記載する＞
+制限事項
+＜パラメータの制限事項を記載する＞
+　
+1.3.3  注記
+AUTOSAR仕様との違い
+　削除や改変を行ったAUTOSAR仕様に対して，どのような差分があるかを説明する．
+　
+OSEK仕様との違い
+　削除や改変を行ったOSEK仕様に対して，どのような差分があるかを説明する．
+　
+設計上の注意
+　本仕様に準拠したCOM(以降，本COMと略す)を開発するユーザに対する注意事項または推奨事項を説明する．本COMの使用者に向けた項目ではない．
+　
+使用上の注意
+　本COMを使用してアプリケーションを開発するユーザに対する注意事項または推奨事項を説明する．本COMの開発者に向けた項目ではない．
+　
+
+
+2  概念
+2.1  機能一覧
+　本COMが提供する機能の概略を以下に示す．
+　
+シグナル送受信
+　RTEに向けた，シグナル単位のデータ送受信を行う機能．
+　
+シグナルグループ送受信
+　RTEに向けた，シグナルグループ単位のデータ送受信を行う機能．
+　
+パッキング
+　送信シグナルを送信IPDUへ梱包する機能．
+
+アンパッキング
+　受信IPDUから受信シグナルを解梱する機能．
+　
+通信制御
+　IPDUグループごとに，通信の開始と停止を制御する機能．
+　
+最小遅延タイマ(MDT)
+　IPDUの送信間隔における，最小時間を確保する機能．
+　
+デッドラインモニタリング(DM)
+　シグナル送受信におけるタイムアウトを監視する機能．
+　送信側のデッドラインモニタリングを送信DMと呼び，受信側のデッドラインモニタリングを受信DMと呼ぶ．
+　
+フィルタリング
+　フィルタアルゴリズムに従ってシグナルの有効無効を判定する機能．
+　
+エンディアン変換
+　指定されたエンディアンに従ってパッキングまたはアンパッキングを行う機能．
+　指定可能なエンディアンは以下の3種類．
+・ リトルエンディアン
+・ ビックエンディアン
+・ オペーク
+　
+符号拡張
+　アンパッキングしたシグナルのデータを指定されたシグナル型に合わせる機能．
+　
+通知
+　以下をRTEへ通知する機能．
+・ 要求された送信が完了したことを通知するための，送信完了通知
+・ 受信が発生したことを通知するための，受信通知
+・ DMで通信のタイムアウトが発生したことを通知するための，タイムアウト通知
+　
+TMS判定
+　IPDUの送信モードを選択する機能．
+　IPDUの送信モードは2種類(ComTxModeTrueおよびComTxModeFalse)持つことが可能であり，どちらのモードを選択するかを，シグナルの状態(TMC)によって判定する．
+
+失敗送信要求リトライ
+　失敗した送信を再度PDURへ送信要求する機能．
+
+シグナル無効化
+　シグナルの無効値(ComSignalDataInvalidValue) を送信することでシグナルを無効化する機能．
+　受信側では，無効化されたシグナルを受信した場合の対応を行う．
+
+シグナルゲートウェイ
+　受信IPDU内のシグナルまたはシグナルグループをRTEへ伝送せずに，COM内部で他のIPDUに梱包して送信する機能．
+　
+可変長データ通信
+　可変長シグナルおよび可変長IPDUの送受信を行う機能．TPを用いて実現する．
+　
+大型データ通信
+　大型シグナルおよび大型IPDUの送受信を行う機能．TPを用いて実現する．
+　
+
+
+2.2  主要概念
+2.2.1  OSEK COM
+　OSEK COMは，AUTOSAR COMの機能のベースである．
+　OSEK COMの機能のうち，COM013において除外されたもの以外をAUTOSAR COMに実装する【COM010】〔COM013〕．OSEK仕様とAUTOSAR仕様との間で機能の定義が異なる場合は，AUTOSAR仕様に従う【COM011】．OSEK仕様には定義されていない機能がAUTOSAR仕様に定義されている場合は，AUTOSAR仕様に従って実装する【COM012】．OSEK COMの機能のうち，以下の表 21に示す機能はAUTOSAR COMに実装しない【COM013】．
+　
+　表 21 除外されたOSEK COMの機能とその根拠
+除外されたOSEK COMの機能
+除外された根拠
+1:N通信
+RTEで実現するため
+M:1送信
+RTEで実現するため
+メッセージのキューイング
+RTEで実現するため
+通知メカニズム(TASK，FLAG，EVENT)
+RTEで実現するため
+ECU内通信
+RTEで実現するため
+アプリケーションモード
+・GetComApplicationMode
+不要な機能であるため
+間接NMへのインタフェース
+・I_MessageTransfer
+・I_MessageTimeOut
+不要な機能であるため
+ゼロサイズメッセージ
+・SendZeroMessage
+不要な機能であるため
+(部分的にCom_TriggerTransmitでカバー)
+送信側のシグナルフィルタリング
+ユースケースが無いため
+(ただし，送信モードの選択のためにフィルタリングのアルゴリズムを利用する)
+IPDU内のメッセージのオーバーラップ
+ユースケースが無く，危険な概念であるため
+OILの使用
+AUTOSAR仕様ではコンフィギュレーション時にOILを使用しないため
+再入可能性
+AUTOSAR仕様のAPIのすべてが再入可能ではないため
+周期メッセージの起動と停止
+・StartPeriodic,
+・StopPeriodic
+AUTOSAR仕様ではIPDUグループごとに起動と停止を行うため
+・Com_IPduGroupStart
+・Com_IpduGroupStop
+ネットワークオーダーメッセージコールアウト
+CPUオーダーメッセージコールアウト
+AUTOSAR仕様ではIPDUコールアウトのみサポートするため
+エラーフックルーチン
+・COMErrorHook
+・COMError_Name1_Name2 macros
+・COMErrorGetServiceId
+AUTOSAR仕様ではDEMとDETのAPIを直接利用してエラー通知するため
+コールバックルーチンのためのインタフェース
+・COMCallback
+AUTOSAR仕様ではコールバック関数のシグネチャが明示的に定義されるため
+スタートアップ処理のためのAPI
+・StartCOM
+・StopCOM
+・StartCOMExtensions
+・InitMessage
+以下のAPIに置き換えるため
+・Com_Init
+・Com_DeInit
+・Com_IpduGroupControl
+　
+
+
+2.2.2  初期化処理
+　本章では，Com_Initにおいて行う処理について記述する．
+
+　COMシステムサービスが呼び出される前に，C言語のスタートアップ処理によってグローバル変数および静的変数が初期化されていることを前提条件とする．
+　COMは，C言語のスタートアップ処理で初期化されない変数を，Com_Initにおいて初期化する【COM128】．
+　Com_Initは，ECU間通信の有効化を行わない【COM328】．
+
+2.2.2.1  IPDUグループの初期化
+　IPDUグループの状態のデフォルトは停止状態であり，Com_Initによって開始状態に遷移することはない【COM444】．
+　
+2.2.2.2  IPDUの初期化
+　COMは，初期化時に送信側のIPDUバッファを送信IPDU未使用エリアデフォルト値(ComTxIPduUnusedAreasDefault) の値で初期化する【COM015】．
+　COMは，初期化時にすべてのアップデートビットをクリアする【COM117】．
+　シグナルのサイズ(ComBitSize) にnが設定されたシグナルの初期値(ComSignalInitValue) の下位nビットを，IPDUバッファにコピーする【COM098】．
+　シグナルの型(ComSignalType) がUINT8_Nのシグナルの初期値(ComSignalInitValue) を，下位バイトから順に，シグナルの長さ(ComSignalLength) の分だけIPDUバッファにコピーする【COM483】．
+
+　COMは，以下の順でIPDUバッファを初期化する【COM217】．
+・ 送信側のIPDUバッファを送信IPDU未使用エリアデフォルト値(ComTxIPduUnusedAreasDefault) の値で初期化する〔COM015〕
+・ シグナルの初期値(ComSignalInitValue) をIPDUバッファに配置する〔COM098〕〔COM483〕
+・ アップデートビットをクリアする〔COM117〕
+
+2.2.2.3  シグナルの初期化
+　COMは，シグナルバッファをシグナルの初期値(ComSignalInitValue) で初期化する〔COM217〕．
+　
+2.2.2.4  フィルタの初期化
+　COMは，初期化時に前回値(new_value)にシグナルの初期値(ComSignalInitValue) をコピーする〔COM603〕．
+
+
+2.2.3  未初期化処理
+　本章では，Com_DeInitにおいて行う処理について記述する．
+
+　Com_DeInitによって，すべてのIPDUグループは停止され，ECU間通信は無効化される〔COM129〕．
+　Com_DeInitの処理が終了した後，COMの状態は未初期化状態へ遷移する．
+
+
+
+2.2.4  IPDUグループ管理
+2.2.4.1  IPDUグループの定義
+　IPDUグループに対して，以下の規則が適用される．
+1. IPDUは，任意のIPDUグループに所属することができる．
+2. IPDUが所属しているIPDUグループのいずれかが起動された場合，そのIPDUは有効化される【COM771】．
+3. サポートするIPDUグループの最大数はプリコンパイルタイムにおいて設定される．
+
+　規則の1と3はCOMのコンフィギュレーション情報によってサポートされる．サポートするIPDUグループの最大数はサポートIPDUグループ数(ComSupportedIpduGroups) によって設定可能である〔COM710_Conf〕．
+　
+　IPDUの通信を行うためには，そのIPDUを有効化する必要がある．IPDUは所属IPDUグループの起動によって有効化されるため，IPDUグループに所属していないIPDUの通信は行われない．
+　
+AUTOSAR仕様との違い
+　AUTOSAR仕様ではIPDUグループのネスト所属がサポートされているが，本仕様ではサポートしない〔NCOM009〕．
+　
+2.2.4.2  IPDUグループの起動
+　IPDUグループのデフォルトの状態は停止状態である〔COM444〕．Com_IpduGroupControlの呼び出しによって，停止状態のIPDUグループが起動された場合，そのIPDUグループの状態は起動状態に遷移する．
+　Com_IpduGroupControlの呼び出しによってIPDUが有効化された場合，COMはそのIPDUに所属しているシグナルおよびシグナルグループに対する送信要求および受信要求を受け付ける【COM114】．
+　
+　Com_IpduGroupControlの呼び出しによってIPDUが有効化された場合，COMはそのIPDUに対する以下の初期化処理を常に行う【COM787】．
+・ 送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，MDTリセット
+・ 送信DMおよび受信DMのタイムアウト監視のためのタイマをリセット
+・ IPDU内の全アップデートビットをクリア
+・ フィルタアルゴリズム(ComFilterAlgorithm) がONE_EVERY_Nのフィルタを持つシグナルのOCCURRENCEをリセット
+・ 送信IPDUのカウンタ値を0にする
+・ 次に受け入れた受信IPDUのカウンタ値を受け入れる
+
+　引数InitializeにTRUEを指定した上でCom_IpduGroupControlを呼び出すことによって，IPDUが有効化された場合，COMはそのIPDUに対する以下の初期化処理を常に行う【COM222】．
+・ 〔COM217〕で定義されているIPDUのデータを初期化
+・ シグナルグループに含まれるシャドウバッファを初期化
+・ フィルタリングのための前回値をシグナルの初期値(ComSignalInitValue) に置き換える
+・ 送信モード(ComTxModeMode) がPERIODICまたはMIXEDである場合，送信周期のためのタイマをリセット
+
+　〔COM787〕および〔COM222〕では，Com_IpduGroupControlによって初期化されるパラメータに関して説明されているが，送信モード(ComTxModeMode) がPERIODICのIPDUが初期化なしで有効化された場合に，そのIPDUの周期送信が再度オフセット時間から始まることは読み取れない．
+　したがって，送信モード(ComTxModeMode) がPERIODICのIPDUがCom_IpduGroupControlで無効化された場合，その時点で周期カウンタを一旦停止し，その後，Com_IpduGroupControlが初期化なしで呼び出され，かつIPDUが有効化された場合，周期カウンタを初期化せずにそのまま周期送信を再開する【COMa001】．
+※ 周期送信のoffsetは送信開始タイミングをIPDUごとに分けて，負荷分散するユースケースが考えられるため，本仕様が望ましい
+※ MIXEDにおける周期も同様である
+
+　Com_IpduGroupControlの呼び出しによって送信IPDUが有効化された場合，COMはそのIPDUに含まれるシグナルの状態(TMC)に従ってTMS判定し，送信モードを決定する【COM223】．
+　ただし，フィルタアルゴリズムがONE_EVERY_Nに設定されているシグナルの状態(TMC)はFALSEとする【NCOM053】．
+　TMS判定による送信モード決定に関しては，「2.2.11.2 TMS判定」を参照．
+　Com_IpduGroupControlの呼び出しによって送信IPDUが有効化された場合，その時点でまだ更新されていないシグナルに対しては，そのシグナルの初期値(ComSignalInitValue) を利用して送信モードの決定を行う【COM228】．
+　Com_IpduGroupControlの呼び出しによって送信IPDUが有効化された場合，その時点で既に更新されているシグナルに対しては，そのシグナルの最新の値を利用して送信モードの決定を行う【COM229】．
+　Com_IpduGroupControlの呼び出しによってIPDUが有効化された場合，そのIPDUに含まれるシグナルに設定したDMを開始する【COM733】．
+　Com_Init後に初めてCom_IpduGroupControlを呼び出す際に，引数initializeがFALSEで指定された場合，TRUEを指定した場合と同じ結果になる【COM740】．
+
+
+　表 22 有効化されたIPDUに対する振舞い
+受信側
+送信側
+1. Com_IpduGroupControlのパラメータがTRUEの場合，受信DM用タイマを再初期化
+・ ComSignalFirstTimeout
+・ ComSignalTimeout
+・ ComSignalGroupFirstTimeout
+・ ComSignalGroupTimeout
+2. Com_RxIndicationおよびCom_TpRxIndicationの処理を行う
+3. Com_ReceiveSignalおよびCom_ReceiveSignalGroupの処理を行う
+1. 以下のシステムサービス内の処理を行う
+・ Com_InvalidateSignal
+・ Com_SendSignal
+・ Com_SendSignalGroup
+・ Com_SendSignalGroup 
+2. 次の送信要求を受け取るまではタイムアウト通知を行わない
+3. Com_TxConfirmationおよびCom_TpTxConfirmationの処理を行う
+4. Com_TriggerTransmitの処理を行う
+5. 周期送信の周期をリセット
+
+2.2.4.3  IPDUグループの停止
+　Com_IpduGroupControlの呼び出しによって，起動状態のIPDUグループが停止された場合，そのIPDUグループの状態は停止状態に遷移する．
+　ある送信IPDUを無効化して送信を停止するためには，そのIPDUのすべての所属IPDUグループの状態が停止状態でなければならない．したがって，listen-only-modeを実現するためには，送信IPDUが所属しているIPDUグループすべてを停止しなければならない．停止されたIPDUグループに受信IPDUが含まれている場合，その受信IPDUも無効化される．
+　
+　Com_SendSignalまたはCom_SendSignalGroupまたはCom_InvalidateSignalの呼び出しによる内部バッファの更新は，無効化されたIPDUに対しても同じように行われる【COM334】．
+　無効化された送信IPDUに含まれるシグナルの値が更新された際に，そのシグナルが送信トリガであったとしても，IPDU送信は行わず，そのトリガの保存も行わない．よって，その送信IPDUが有効化された場合でも，即時に送信されることはない．
+　
+　Com_IpduGroupControlの呼び出しによって送信IPDUが無効化された場合，COMはその送信IPDUの送信DMをキャンセルし，以降の送信完了通知を無視する【COM115】．
+　
+　COMは無効化されたIPDUに対するCom_TriggerTransmitの呼び出しを禁止することはできないが，呼び出された場合はE_NOT_OKを返す〔COM001〕．
+　
+　Com_IpduGroupControlの呼び出しによって無効化された送信IPDUに対して，届いていない送信完了通知が存在する場合，COMはエラー通知(ComErrorNotification) に指定されたコールバック関数を呼び出す【COM479】．
+　ただし，IPDUにエラー通知(ComErrorNotification) が指定されていない場合は何もしない．
+　
+　Com_IpduGroupControlの呼び出しによって送信中の大型IPDUが無効化された場合，COMはその大型IPDUに対する送信処理を即時に停止する【COM714】．
+　
+　Com_IpduGroupControlの呼び出しによって受信IPDUが無効化された場合，COMはその受信IPDUに対する受信処理を行わない【COM684】．
+　Com_IpduGroupControlの呼び出しによって受信中の大型IPDUが無効化された場合，COMはその大型IPDUに対する受信処理を行わず，受信途中であっても無視する【COM713】．
+　
+　Com_IpduGroupControlの呼び出しによって受信IPDUが無効化された場合，COMはその受信IPDUのDMをキャンセルする【COM685】．
+　
+　表 23 無効化されたIPDUに対する振舞い
+受信側
+送信側
+1. 受信DM停止
+2. Com_RxIndicationにおける受信処理不可
+3. Com_ReceiveSignalおよびCom_ReceiveSignalGroupが呼び出された場合，内部バッファの値を受信シグナルのデータとして返し，返り値をCOM_SERVICE_NOT_AVAILABLEとする
+1. 送信停止
+2. 送信DM停止
+3. Com_TxConfirmationにおいて
+・ タイムアウトを無視
+・ RTEでの使用を無視
+4. Com_SendSignalおよびCom_SendSignalGroupおよびCom_InvalidateSignalが呼び出された場合，内部バッファ値を更新し，返り値をCOM_SERVICE_NOT_AVAILABLEとする
+5. 保留された送信要求をキャンセル
+6. Com_TriggerTransmitが呼び出された場合，返り値をE_NOT_OKとする
+
+　表 23 において，無効化されたIPDUに対する振る舞いとして，「RTEでの使用を無視」するという記述がある．これはPduRへのIPDU送信後に，Com_TxConfirmationが呼び出される前にIPDUが無効化された場合，その後Com_TxConfirmationを呼び出されてもRTEへの通知を行わないものと解釈する【COMa002】．
+
+
+2.2.5  デッドラインモニタリング(DM)
+　シグナルグループに対するDM処理が，シグナルに対する処理と同様な場合は特記しない．
+　ユーザは，DMの監視する時間として初回タイムアウト(ComFirstTimeout) およびタイムアウト(ComTimeout) を指定することができ，タイムアウト発生時にRTEに通知するためのコールバック関数をタイムアウト通知(ComTimeoutNotification) に指定することができる．なお，これらのパラメータはシグナル(ComSignal) および シグナルグループ(ComSignalGroup) ごとに指定される．
+　
+　シグナルまたはシグナルグループのタイムアウト(ComTimeout) に値を指定しない，または0を指定した場合，そのシグナルまたはシグナルグループのデッドラインモニタリングは行われず，初回タイムアウト(ComFirstTimeout) の値も無視される【COM333】．
+　
+2.2.5.1  送信デッドラインモニタリング
+　送信処理はシグナルのアップデートビット有無による影響を受けず，IPDUごとに行われるため，送信DMはIPDUごとに行われる．ただし，送信タイムアウト発生時のタイムアウト通知(ComTimeoutNotification) はシグナルごとに行う．
+　
+　シグナルの送信プロパティ(ComTransferProperty) に依らず，かつ送信タイムアウト時間が指定されている場合，COMは送信モードにも依らずに送信DMを行う【NCOM100】．
+　シグナルの送信プロパティ(ComTransferProperty) がPENDINGまたはTRIGGEREDのどちらであっても，送信DMの振舞いに違いはない．
+ 
+　AUTOSAR仕様との違い
+　AUTOSAR仕様では，送信プロパティ(ComTransferProperty)がTRIGGEREDに設定されている場合，タイムアウト値が設定されている場合送信モードに依らず送信DMを行うとされているが，．本仕様では，送信プロパティに依らず送信DMを開始することとする〔NCOM100〕．
+　
+　IPDUに含まれるシグナルのタイムアウト(ComTimeout) のうち，最小値をそのIPDUのタイムアウト時間として使用する【COM445】．
+　
+　送信DMは，送信完了通知をサポートしているバスにのみ設定されるべきものであり，それ以外の場合は必ず送信タイムアウトが発生してしまう．
+　
+　TRUEモード(ComTxModeTrue) およびFALSEモード(ComTxModeFalse) の送信モード(ComTxModeMode) がどちらもNONEであるIPDUに送信タイムアウト時間が設定された場合，そのIPDUが所属しているIPDUグループの起動時に送信DMを開始する【COM696】．
+　TRUEモード(ComTxModeTrue) およびFALSEモード(ComTxModeFalse) の送信モード(ComTxModeMode) がどちらもNONEであるIPDUに送信タイムアウト時間が設定された場合，Com_TxConfirmationによって送信完了通知を受け取った際に，そのIPDUの送信DMをリセットする【COM697】．
+　
+　TRUEモード(ComTxModeTrue) またはFALSEモード(ComTxModeFalse) の送信モード(ComTxModeMode) の一方がNONEであり，もう一方がNONEでない場合，NONE側の送信モードである間は，そのIPDUの送信DMは行われない【COMa021】．
+　
+　シグナルグループの場合，ユーザは，送信タイムアウト時間をグループシグナルごとではなく，シグナルグループに対してのみ指定することができる．
+　
+　送信キャンセルサポート有無(ComIPduCancellationSupport) がTRUEである場合，IPDU種別(ComIPduType) がNORMALであるIPDUの送信タイムアウトが発生した際に，COMはPduR_ComCancelTransmitを呼び出して送信要求をキャンセルする【COM708】．
+　PduR_ComCancelTransmitの呼び出しは，通常のタイムアウト発生時処理と併せて行う．この際，COMはPduR_ComCancelTransmitの返り値を無視する．PduR_ComCancelTransmitがE_OK以外を返すのは拡張エラーが有効になっている場合のみであるため，特に問題はない．
+　
+　PDURからの送信完了通知がなく，送信タイムアウト時間を経過して送信タイムアウトが発生した場合，COMはタイムアウト通知(ComTimeoutNotification) を呼び出してRTEに通知する【COM304】．
+　送信タイムアウト時間を経過した場合，その理由に依らずにタイムアウト通知を行う．そのため，MDTまたはIPDUコールアウト関数によるフィルタリングによって送信が延期されていたとしても，送信タイムアウトは発生し，タイムアウト通知が行われる．
+　
+　Com_SendSignalまたはCom_SendSignalGroupの呼び出し完了時に送信DMが開始される．
+　
+　送信モード(ComTxModeMode) がDIRECTまたはMIXEDのIPDUに対して送信DMを行う場合，送信タイムアウトが発生する前に，送信要求繰り返し回数(ComTxModeNumberOfRepetitions) に指定された回数分の送信要求をPDURに送り，すべての送信完了通知をPDURから受け取らなければならない．送信タイムアウト時間が経過する前に，送信要求を繰り返した回数分の送信完了通知を受け取りきれなかった場合，送信タイムアウト時間が発生し，RTEに対するタイムアウト通知が行われる．
+　
+　送信モード(ComTxModeMode) がDIRECTであり，かつ送信要求繰り返し回数(ComTxModeNumberOfRepetitions) が0よりも大きい場合，送信要求を繰り返した回数分の送信完了通知を受け取った後に送信DMをキャンセルする【COM308】．
+　送信要求を繰り返した回数分の送信完了通知を受け取り，送信DMをキャンセルした後，送信完了通知がRTEに送られる〔COM305〕．
+　
+　送信モード(ComTxModeMode) がDIRECTであり，かつ送信要求繰り返し回数(ComTxModeNumberOfRepetitions) が0よりも大きい場合，新しい送信要求が起こった際に送信DMをリセットする【COM739】．
+　
+2.2.5.2  受信デッドラインモニタリング
+　受信DMを有効にしているIPDUグループに所属しているIPDUのみ，受信DMが有効となり，それ以外のIPDUの受信DMは無効となる【COM772】．
+　アップデートビットを持つシグナルまたはシグナルグループに受信タイムアウト時間が設定されている場合，シグナルまたはシグナルグループごとに受信DMを行う【COM292】．
+　アップデードビットを持たないシグナルまたはシグナルグループに受信タイムアウト時間が設定されている場合，IPDUごとに受信DMを行う【COM290】．
+　アップデートビットを持たないシグナルまたはシグナルグループの初回タイムアウト(ComFirstTimeout) およびタイムアウト(ComTimeout) のうち，IPDU内の最小値をそれぞれ用いてIPDUごとの受信DMを行う【COM291】．
+　受信DMとアップデートビットの関係を以下の図に示す．
+　
+
+　図 21 受信DMとアップデートビットの関係
+
+　受信タイムアウトが発生した場合の処理は，受信タイムアウト時処理(ComRxDataTimeoutAction) で指定する．
+　
+　受信タイムアウトが発生したシグナルの受信タイムアウト時処理(ComRxDataTimeoutAction) がREPLACEの場合，そのシグナルの値を初期値(ComSignalInitValue) に置き換える【COM470】．
+　シグナルの値を初期値(ComSignalInitValue) で置き換えた場合，最後に受信した値は失われるため，新しい値を受信するまでは初期値(ComSignalInitValue) がシグナルの値として扱われる．
+　
+　受信タイムアウト発生によりシグナルまたはシグナルグループの値を初期値(ComSignalInitValue) に置き換えたとしても，フィルタリングのための前回値(old_value)は更新しない【COM393】．
+　
+　受信タイムアウトが発生したシグナルグループの受信タイムアウト時処理(ComRxDataTimeoutAction) がREPLACEの場合，そのシグナルグループに含まれるすべてのグループシグナルの値を初期値(ComSignalInitValue) に置き換える【COM513】．
+　
+　受信タイムアウトが発生したシグナルの受信タイムアウト時処理(ComRxDataTimeoutAction) がNONEまたは省略されている場合，そのシグナルの値の置き換えは行わない【COM500】．
+　
+　Com_RxIndicationまたはCom_TpRxIndicationによって受信通知を受けたIPDUまたは大型IPDUに受信DMが設定されている場合，COMはその受信DMタイマをリセットする【COM715】．
+　受信DMでは受信したシグナルの値を考慮しないため，無効値を受信した場合でも受信DMタイマをリセットして受信DMを再スタートする【COM738】．
+
+　アップデートビットを持つシグナルは，シグナルごとに受信DMが行われる〔COM292〕．
+　アップデートビットがセットされているシグナルを受信した場合，そのシグナルの受信DMタイマはリセットされる【NCOM031】．
+
+　シグナルまたはシグナルグループの初回タイムアウト(ComFirstTimeout) に0が指定されているまたは省略されている場合，所属IPDUが有効化された後から初めて受信されるまでの間の受信DMは行われない【COM716】．
+
+　受信DMを開始するタイミングは周期関数の呼出しとは関係ないため，初回タイムアウト時間(ComFirstTimeout) に指定された時間を確実に待機するために，算出した周期関数呼出し回数に1を加えたタイミングで次の受信タイムアウトが検出される【NCOM033】．
+　受信DMタイマがCom_RxIndicationによってリセットされた場合，受信DMを再開するタイミングが周期関数の呼び出しとは関係なくなるため，タイムアウト時間(ComTimeout) に指定された時間を確実に経過するために，算出した周期関数呼出し回数に1を加えたタイミングで次の受信タイムアウトが検出される【NCOM034】．
+　Com_RxIndicationが呼び出されず，周期関数において受信DMタイマがリセットされた場合，算出した周期関数呼び出し回数のタイミングで次の受信タイムアウトが検出される【NCOM035】．
+　
+例
+　[A]のタイミングで受信DMが開始された場合，周期関数呼び出しの2回目で受信タイムアウトを検出してしまうと，1.x秒で受信タイムアウトが発生したことになってしまう．そこで，周期関数呼び出しの3回目でタイムアウト検出を行う．この後，Com_RxIndicationが呼び出されないままであれば，タイムアウト時間(ComTimeout) から算出した周期関数呼出し回数の通り，3回目の[6]でタイムアウト検出を行う．この後，[B]のタイミングでCom_RxIndicationが呼び出され，受信DMタイマが  タイムアウト時間(ComTimeout) でリセットされた場合，2.x秒でタイムアウト通知してしまうことを避けるために，その後の4回目の[11]でタイムアウト検出を行う．
+
+　一方，送信DMを開始するタイミングは周期関数呼出しのタイミングのみであるので，一律算出した周期関数呼出し回数分でタイムアウト検出を行う．
+
+2.2.5.2.1  受信DMの有効化および無効化
+　ユーザは，Com_ReceptionDMControlを呼び出すことにより，IPDUグループごとに受信DMの有効化および無効化を行うことができる．受信DMが有効化されたIPDUグループに所属しているIPDUは，受信DMが有効となり，それ以外のIPDUは受信DMが無効となる〔COM772〕．
+　IPDUの受信DMが無効な場合，受信タイムアウトが発生してもRTEへの受信タイムアウト通知は行われない．ただし，受信DMの無効化によってIPDUの受信が停止されることはない．
+　IPDUの受信DMが有効な場合，受信タイムアウト発生時にRTEに対する受信タイムアウト通知が行われる．
+　
+　Com_ReceptionDMControlにより受信DMの状態を無効から有効に切り替えた場合，初回タイムアウト(ComFirstTimeout) の値を受信DMタイマに設定して受信DMを開始する【COM224】．
+　Com_ReceptionDMControlにおいて，受信DMが既に有効なIPDUに対する，受信DM有効化の要求は無視される【COM486】．
+　Com_ReceptionDMControlの呼び出し時に，指定されたIPDUグループに含まれている送信IPDUは無視される【COM534】．
+　Com_ReceptionDMControlにおいて，受信DMが既に無効なIPDUに対する，受信DM無効化の要求は無視される【COM225】．
+
+
+2.2.6  最小遅延タイマ(MDT)
+　ユーザは，MDTによって送信の最小遅延時間を確保することができる．
+　Com_IpduGroupControlの呼び出しによってIPDUが有効化された際に，MDTはリセットされる〔COM787〕．したがって，MDTを停止後すぐにIPDUを有効化することにより，最小遅延時間を違反することができる．
+　なお，送信DMはMDTによる送信の遅延からの影響を受けない．
+　
+　最小遅延時間(ComMinimumDelayTime) に値を指定しない，または0を指定した場合，MDT監視は行われない【COM471】．
+　
+　周期送信MDT有無(ComEnableMDTForCyclicTransmission) にFALSEを指定した場合，以下に対するMDT監視は行われない【COM789】．
+・ 送信モード(ComTxModeMode) にPERIODICが指定されたIPDUの周期送信
+・ 送信モード(ComTxModeMode) にMIXEDが指定されたIPDUの周期送信
+・ 送信モード(ComTxModeMode) にDIRECTが指定され，かつ送信要求繰り返し回数(ComTxModeNumberOfRepetitions) に1以上が指定されたIPDUの直接N回送信
+
+　最小遅延時間(ComMinimumDelayTime) に0より大きい値を指定した場合，COMはPduR_ComTransmitを呼び出してPDURへIPDUを送信する度にMDTをリセットし，監視を開始する【COM698】．
+　最小遅延時間(ComMinimumDelayTime) に0より大きい値を指定した場合，COMはCom_TxConfirmationが呼び出された際に，既に監視が開始しているMDTのカウンタに最小遅延時間(ComMinimumDelayTime) の値を再設定して，PduR_ComTransmitを呼び出した際にMDT監視を開始する【COM469】．
+　
+　IPDUの送信完了通知を受け取った際に最小遅延時間(ComMinimumDelayTime) を経過していない場合，監視中のMDTカウンタは再設定される．最小遅延時間(ComMinimumDelayTime) を経過しない限り，次のIPDU送信は行われない．
+　ただし，Com_TriggerTransmitでは最小遅延時間(ComMinimumDelayTime) を考慮しない〔COM475〕．
+　送信DMにおいてタイムアウトが発生した場合，MDTはリセットされる【COMa006】．
+
+
+2.2.7  受信完了通知タイミング
+　割込み駆動およびポーリングシステムの両方をサポートするために，受信完了通知を送るタイミングを指定することができる．ユーザは，IPDUのシグナル処理タイミング(ComIPduSignalProcessing) にIMMEDIATEまたはDEFERREDを指定する〔COM119_Conf〕．
+　Com_RxIndicationまたはCom_TpRxIndicationの呼び出しにより受信したIPDUのシグナル処理タイミング(ComIPduSignalProcessing) がIMMEDIATEの場合，COMは即時にアンパッキングおよび受信完了通知(ComNotifications) の呼び出しを行う【COM300】．
+　Com_RxIndicationまたはCom_TpRxIndicationの呼び出しにより受信したIPDUのシグナル処理タイミング(ComIPduSignalProcessing) がDEFERREDの場合，COMは受信したIPDUのデータを内部バッファにコピーし，次のCom_MainFunctionRxのタイミングで，アンパッキングおよび受信完了通知(ComNotifications) の呼び出しを行う【COM301】．
+　〔COM301〕のようにアンパッキングが遅延されており，シグナルバッファを更新する前にCom_ReceiveSignalが呼び出された場合，更新前のシグナルバッファの値を返す．
+　
+　Com_RxIndicationにおいて，COMは受信したIPDUのデータの長さ(PduInfoPtr->SduLength)をチェックしてからアンパッキングし，完全に受信したシグナルに対してのみ受信完了通知を行う【COM574】．
+　Com_RxIndicationにおいて，COMは受信したIPDUのデータの長さ(PduInfoPtr->SduLength)をチェックしてからアンパッキングし，完全に受信したシグナルグループに対してのみ受信完了通知を行う【COM575】．
+　これにより，不整合な複合型(シグナルグループ)の受信を防ぐ．
+　
+　受信したIPDUのデータの長さが期待値よりも短い場合，COMはそのIPDUに対する受信処理を行わない【COMa005】． 
+
+2.2.8  エンディアン変換
+　必要なAUTOSARデータ型(符号あり整数型，符号なし整数型，ASCII，列挙型，OPAQUE型)をサポートするために，COMはすべての整数型に対するエンディアン変換をサポートする【COM007】．すなわち，整数型以外のAUTOSARデータ型(ASCII，列挙型，OPAQUE型)のデータに関しては，そのデータの内容を解釈せずに扱う(AUTOSARデータ型の詳細は参考文書「次世代車載システム向けRTE外部仕様書」を参照)．
+　
+　COMは以下のデータ型をサポートする【COM675】．
+・ BOOLEAN
+・ UINT8
+・ UINT16
+・ UINT32
+・ SINT8
+・ SINT16
+・ SINT32
+・ UINT8_N
+・ UINT8_DYN
+・ FLOAT32
+・ FLOAT64
+　
+　AUTOSARデータ型のうち，OPAQUE型のデータを，COMはUINT8_NまたはUINT8_DYNとして解釈し，常にnバイトの大きさのシグナルにマッピングする【COM472】．
+　ユーザは，OPAQUE型のデータのエンディアン(ComSignalEndianness) にはOPAQUEを指定しなければならない〔COM553〕〔COM157_Conf〕．
+　COMは，符号あり整数型のデータに対しても，エンディアン変換を行う【COM674】．
+　COMは，送信IPDUのコールアウト関数を呼び出す前に，エンディアン変換を行う【COM221】．
+　シグナルの型(ComSignalType)がFLOAT32またはFLOAT64の場合，COMはエンディアン変換以外の変換(分数・指数・記号・バイアス値の複雑な変換や正規化)をサポートしてはならない【COM580】．
+
+
+
+2.2.9  符号拡張
+　COMは，受信したデータを受信シグナルの型(ComSignalType) の大きさに合わせるために符号拡張する【COM008】． 
+　COMは，シグナルの初期値(ComSignalInitValue) を型(ComSignalType) の大きさに合わせるために符号拡張する【COM723】．
+　受信したシグナルの型(ComSignalType)がFLOAT32またはFLOAT64の場合，符号拡張は行わない【COM579】．
+
+　COMは，受信したシグナルに対して，フィルタリングおよび通知検出を行う前に，符号拡張を行う【COM352】．
+
+　送信側では符号拡張を行わない【COM353】．
+
+
+　COMは，符号あり整数型のデータを符号拡張する場合，負の値も正しくマッピングする．
+
+　例：受信したシグナルのサイズ(ComSignalSize) が5ビットであり，その受信シグナルの型(ComSignalType) がSINT8の場合の符号拡張
+
+受信シグナル
+0
+0
+0
+1
+1
+1
+0
+1
+　	↓符号拡張
+シグナルバッファ
+1
+1
+1
+1
+1
+1
+0
+1
+　
+　※受信した値(-3)のまま保持する
+
+
+2.2.10  フィルタリング
+　フィルタリング結果はTRUEまたはFALSEのいずれかとなる【COM694】．
+
+　フィルタリングは受信側でのみ行われる【COM695】．
+　受信側で行われたフィルタリング結果がFALSEとなった場合，そのシグナルは破棄され，それ以降の処理は行われない【COM273】〔COM303〕．
+
+　送信側ではフィルタリングを行わないが，TMC判定のためにフィルタを利用する【COM602】．TMC判定については，「送信モード」を参照．
+
+　COMはグループシグナルに対するフィルタリングをサポートしない【COM327】．ただし，TMC判定のためにフィルタを利用する可能性はある〔COM326〕．
+
+　COMは，符号ありのデータ型に対しても〔COM146_Conf〕で設定されたフィルタリングをサポートする【COM132】．
+
+　ユーザは，フィルタアルゴリズム(ComFilterAlgorithms) に以下を設定できる〔COM146_Conf〕．
+・ ALWAYS
+・ NEVER
+・ MASKED_NEW_EQUALS_X
+・ MASKED_NEW_DIFFERS_X
+・ MASKED_NEW_DIFFERS_MASKED_OLD
+・ NEW_IS_WITHIN
+・ NEW_IS_OUTSIDE
+・ ONE_EVERY_N
+
+　AUTOSAR仕様では，フィルタリングの複雑度低減のために，OSEK仕様で定義されているフィルタアルゴリズムの内の一部のみをサポートしている．
+　
+　COMは，〔COM146_Conf〕で設定されたフィルタアルゴリズムをサポートする【COM325】．ただし，以下の例外を除く．
+　
+　シグナルの型(ComSignalType) がUINT8_NまたはUINT8_DYNの場合，そのシグナルのフィルタアルゴリズム(ComFilterAlgorithms) はALWAYSまたはNEVERのみサポートする【COM380】．
+　シグナルの型(ComSignalType) がBOOLEANの場合，そのシグナルのフィルタアルゴリズム(ComFilterAlgorithms) はALWAYS，NEVER，MASKED_NEW_EQUALS_X，MASKED_NEW_DIFFERS_X，MASKED_NEW_DIFFERS_MASKED_OLD，ONE_EVERY_Nのみをサポートする【COM439】．
+　シグナルの型(ComSignalType) がFLOAT32またはFLOAT64の場合，そのシグナルに対するフィルタリングはサポートしない【COM319】．
+
+　シグナルの型(ComSignalType) とフィルタアルゴリズム(ComFilterAlgorithms)のサポート関係を以下の表 24に示す．
+
+　表 24 ComSignalTypeとComFilterAlgorithmsの対応表
+型
+(ComSignalType)
+フィルタアルゴリズム(ComFilterAlgorithms)
+
+ALWAYS
+NEVER
+MASKED_NEW_EQUALS_X
+MASKED_NEW_DIFFERS_X
+MASKED_NEW_DIFFERS_MASKED_OLD
+NEW_IS_WITHIN
+NEW_IS_OUTSIDE
+ONE_EVERY_N
+BOOLEAN
+○
+○
+○
+○
+○
+×
+×
+○
+UINT8
+○
+○
+○
+○
+○
+○
+○
+○
+UINT16
+○
+○
+○
+○
+○
+○
+○
+○
+UINT32
+○
+○
+○
+○
+○
+○
+○
+○
+SINT8
+○
+○
+○
+○
+○
+○
+○
+○
+SINT16
+○
+○
+○
+○
+○
+○
+○
+○
+SINT32
+○
+○
+○
+○
+○
+○
+○
+○
+FLOAT32
+×
+×
+×
+×
+×
+×
+×
+×
+FLOAT64
+×
+×
+×
+×
+×
+×
+×
+×
+UINT8_N
+○
+○
+×
+×
+×
+×
+×
+×
+UINT8_DYN
+○
+○
+×
+×
+×
+×
+×
+×
+
+　あるフィルタリングにおいて，フィルタ対象シグナルの値を”今回値(new_value)”と呼び，最後にフィルタを通過したシグナルの値を”前回値(old_value)”と呼ぶ．
+　
+　前回値が必要なフィルタを持つシグナルに対して，COMは以下の処理を行う．
+・ 初期化時，前回値にシグナルの初期値(ComSignalInitValue) をコピーする【COM603】
+・ フィルタリング結果がTRUEとなった場合，前回値に今回値をコピーする【COM302】
+・ フィルタリング結果がFALSEとなった場合，前回値を更新しない【COM303】
+
+　アプリケーションによって今回値が更新されるまでの間，COMは，シグナルの初期値(ComSignalInitValue) を今回値として使用する【COM604】．
+
+2.2.10.1  フィルタアルゴリズム
+　各フィルタアルゴリズムのフィルタリング内容を以下に示す．
+
+ALWAYS
+　フィルタアルゴリズム(ComFilterAlgorithms) がALWAYSの場合，常にTRUEとなる【CCOM2201】．
+　
+NEVER
+　フィルタアルゴリズム(ComFilterAlgorithms) がNEVERの場合，常にFALSEとなる【CCOM2202】．
+　
+MASKED_NEW_EQUALS_X
+　フィルタアルゴリズム(ComFilterAlgorithms) がMASKED_NEW_EQUALS_Xの場合，マスクした今回値とXの値(ComFilterX) が一致していればTRUEとなり，異なっていればFALSEとなる【CCOM2203】．
+　
+MASKED_NEW_DIFFERS_X
+　フィルタアルゴリズム(ComFilterAlgorithms) がMASKED_NEW_DIFFERS_Xの場合，マスクした今回値とXの値(ComFilterX) が異なっていればTRUEとなり，一致していればFALSEとなる【CCOM2204】．
+　
+MASKED_NEW_DIFFERS_MASKED_OLD
+　フィルタアルゴリズム(ComFilterAlgorithms) がMASKED_NEW_DIFFERS_MASKED_OLDの場合，マスクした今回値とマスクした前回値が異なっていればTRUEとなり，一致していればFALSEとなる【CCOM2205】．
+　
+NEW_IS_WITHIN
+　フィルタアルゴリズム(ComFilterAlgorithms) がNEW_IS_WITHINの場合，今回値が指定された範囲内(指定値を含む)であればTRUEとなり，範囲外であればFALSEとなる【CCOM2206】．
+　
+NEW_IS_OUTSIDE
+　フィルタアルゴリズム(ComFilterAlgorithms) がNEW_IS_OUTSIDEの場合，今回値が指定された範囲外であればTRUEとなり，範囲内(指定値を含む)であればFALSEとなる【CCOM2207】．
+　
+ONE_EVERY_N
+　フィルタアルゴリズム(ComFilterAlgorithms) がONE_EVERY_Nの場合，フィルタリングをN回行う度にTRUEとなり，それ以外はFALSEとなる【CCOM2205】．
+　フィルタアルゴリズム(ComFilterAlgorithms) がONE_EVERY_Nの場合，COMは以下の処理を行う【COM231】．
+・ OCCURRENCEの値とPERIODの値が一致した場合，OCCURRENCEを0にする
+・ OCCURRENCEの値とOFFSETの値が一致した場合，フィルタリング結果をTRUEとする
+・ フィルタリング処理を行った後，OCCURRENCEの値をインクリメントする
+
+　なお，Com_IpduGroupControlが呼び出されたことによってあるIPDUが開始された場合，そのIPDUに所属するシグナルが持つフィルタのOCCURRENCEは0にクリアされる〔COM787〕．
+
+　フィルタアルゴリズム(ComFilterAlgorithms) がONE_EVERY_Nの場合のフィルタリング例を，図 22に示す．なお，このコンフィギュレーション情報は以下のとおり．
+・ ComFilterOffset〔COM313_Conf〕	：5
+・ ComFilterPeriod〔COM312_Conf〕	：8
+
+
+
+
+2.2.11  送信モード
+2.2.11.1  送信プロパティと送信モード
+2.2.11.1.1  シグナル
+　ユーザは，シグナルごとに送信プロパティ(ComTransferProperty) を設定することが可能であり，IPDUごとに送信モード(ComTxModeMode) を設定することが可能である．Com_SendSignalによって送信要求を受けたシグナルの送信プロパティ(ComTransferProperty) と，所属IPDU送信モード(ComTxModeMode) の組合せによる，IPDU送信タイミングの違いを以下の表 25に示す．
+
+　表 25 送信モードおよび送信プロパティとIPDU送信タイミングの関係
+送信モード(ComTxModeMode)
+送信プロパティ(ComTransferProperty)
+
+PENDING
+TRIGGERED
+TRIGGERED_ON_CHANGE
+TRIGGERED_WITHOUT_REPETITION
+TRIGGERED_ON_CHANGE_WITHOUT_REPETITION
+DIRECT
+送信しない
+直接N回送信
+バッファ値を変更した場合
+直接N回送信
+直接1回送信
+バッファ値を変更した場合直接1回送信
+MIXED
+送信しない
+(周期送信のみ)
+直接N回送信
+(＋周期送信)
+バッファ値を変更した場合
+直接N回送信(＋周期送信)
+直接1回送信
+(＋周期送信)
+バッファ値を変更した場合直接1回送信
+(＋周期送信)
+PERIODIC
+送信しない(周期送信のみ)
+NONE
+送信しない(トリガ送信のみ)
+
+　送信要求を受けたシグナルの送信プロパティ(ComTransferProperty) がTRIGGEREDであり，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，COMはそのIPDUの直接送信をN回(ComTxModeNumberOfRepetitions) 繰り返して行う【COM330】．
+　送信要求を受けたシグナルの送信プロパティ(ComTransferProperty) がTRIGGERED_WITHOUT_REPETITIONであり，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，COMはそのIPDUの直接送信を1回行う【COM767】．
+　送信要求を受けたシグナルの送信プロパティ(ComTransferProperty) がTRIGGERED_ON_CHANGEであり，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，送信シグナルの値とシグナルバッファの値が異なっていれば，COMはそのIPDUの直接送信をN回(ComTxModeNumberOfRepetitions) 繰り返して行う【COM734】．
+　送信要求を受けたシグナルの送信プロパティ(ComTransferProperty) がTRIGGERED_ON_CHANGE_WITHOUT_REPETITIONであり，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，送信シグナルの値とシグナルバッファの値が異なっていれば，COMはそのIPDUの直接送信を1回行う【COM768】．
+　送信モード(ComTxModeMode) がNONEのIPDUの送信を開始しない【COM135】．
+　送信モード(ComTxModeMode) がNONEのIPDUに対しては，Com_TriggerTransmitによって送信を要求することができる．
+　送信プロパティ(ComTransferProperty) がTRIGGEREDであるシグナルの送信中に，TRIGGERED_WITHOUT_REPETITIONであるシグナルを送信した場合，COMはそのIPDUの直接送信をN回繰り返して行う【NCOM098】．
+　送信要求を受けたシグナルの送信プロパティ(ComTransferProperty) がPENDINGであり，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，COMはそのIPDUの送信を開始しない【NCOM099】．
+
+2.2.11.1.2  シグナルグループ
+　ユーザは，シグナルグループおよびグループシグナルごとに送信プロパティ(ComTransferProperty)を設定することが可能であり，IPDUごとに送信モード(ComTxModeMode) を設定することが可能である．
+　送信要求を受けたシグナルグループの送信プロパティ(ComTransferProperty) がTRIGGEREDであり，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，COMはそのIPDUの直接送信をN回(ComTxModeNumberOfRepetitions) 繰り返して行う【COM741】．
+　送信要求を受けたシグナルグループの送信プロパティ(ComTransferProperty) がTRIGGERED_WITHOUT_REPETITIONであり，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，COMはそのIPDUの直接送信を1回行う【COM769】．
+　送信要求を受けたシグナルグループの送信プロパティ(ComTransferProperty) がTRIGGERED_ON_CHANGEであり，そのシグナルグループに付属しているグループシグナルすべてに送信プロパティ(ComTransferProperty) が設定されておらず，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，そのシグナルグループのグループシグナルの値のいずれか一つでもグループシグナルバッファの値と異なっていれば，COMはそのIPDUの直接送信をN回(ComTxModeNumberOfRepetitions) 繰り返して行う【COM742】．
+　送信要求を受けたシグナルグループの送信プロパティ(ComTransferProperty) がTRIGGERED_ON_CHANGEであり，そのシグナルグループに付属しているグループシグナルのいずれかに送信プロパティ(ComTransferProperty) が設定されており，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，送信プロパティ(ComTransferProperty) がTRIGGERED_ON_CHANGEであるグループシグナルの値がグループシグナルバッファの値と異なっていれば，COMはそのIPDUの直接送信をN回(ComTxModeNumberOfRepetitions) 繰り返して行う【COM743】．
+　送信要求を受けたシグナルグループの送信プロパティ(ComTransferProperty) がTRIGGERED_ON_CHANGE_WITHOUT_REPETITIONであり，所属IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDである場合，送信グループシグナルの値がグループシグナルバッファの値と異なっていれば，COMはそのIPDUの直接送信を1回行う【COM770】．
+
+
+2.2.11.2  TMS判定
+　COMは下位層との通信をIPDU単位で行い，IPDUには複数のシグナルを付属できる．ユーザは，送信IPDUに異なる2つの送信モードを設定できる〔COM032〕．COMは，送信IPDUに付属するシグナルの状態から，送信モードを選択する．このとき，シグナルの状態をTMCと呼び，送信モード選択結果をTMSと呼ぶ．
+　送信モードを選択するための条件は，コンフィギュレーション時に静的に設定される〔COM676〕．
+
+　COMは，送信シグナルのフィルタリング結果をTMCとして扱う〔COM602〕．
+　フィルタアルゴリズム(ComFilterAlgorithms) がMASKED_NEW_DIFFERS_MASKED_OLDであるフィルタを持つシグナルに対しては，シグナルのサイズ(ComBitSize) を考慮したTMC判定を行うが，他のフィルタを持つシグナルに対しては，シグナルの型(ComSignalType) の大きさを考慮したTMC判定を行う【COM763】．
+
+　TMS判定はIPDUごとに行う【COM605】．
+　RTEがCom_SendSignalまたはCom_SendSignalGroupを呼び出した際に，COMは，更新したシグナルまたはシグナルグループが所属するIPDUのTMS判定を行う【COM245】．
+
+　IPDU(ComIPdu) に付属するシグナル(ComSignal) のいずれかがフィルタ(ComFilter) を持つ場合，COMはフィルタを持つシグナルのTMCを用いてTMS判定を行う【COM676】．
+　IPDU(ComIPdu) に付属するシグナル(ComSignal) のいずれもフィルタ(ComFilter) を持たない場合，COMはそのIPDUのTMSを常にTRUEとする【COM677】．
+
+　IPDUに付属するいずれかのシグナルのTMCがTRUEである場合，COMはそのIPDUのTMSをTRUEとする【COM678】．
+　IPDUに付属するすべてのシグナルのTMCがFALSEである場合，COMはそのIPDUのTMSをFALSEとする【COM679】．
+　
+　TMS判定の条件および結果の概略を以下の表 26に示す．
+　
+　表 26 TMS判定
+条件
+TMS
+IPDUに付属するシグナルのすべてがフィルタを持たない
+TRUE
+IPDUに付属するシグナルのいずれかがフィルタを持つ
+フィルタを持つシグナルのいずれかのTMCがTRUE
+TRUE
+
+フィルタを持つシグナルのすべてのTMCがFALSE
+FALSE
+
+　COMは，TMSがTRUEとなった場合はTRUEモード(ComTxModeTrue) の送信モード(ComTxModeMode) を使用し，TMSがFALSEとなった場合はFALSEモード(ComTxModeFalse)  の送信モード(ComTxModeMode) を使用する【COM032】．
+　
+　COMは，TMS判定により決定した送信モードと，各シグナルの送信プロパティに従って，IPDUの送信タイミングを決定する【COM238】．
+　
+　TMS判定によりIPDUの送信モードが変更された場合，COMは変更後の送信モードを即時に適用し，必要に応じてPduR_ComTransmitを呼び出す【COM239】． 
+　TMS判定によりIPDUの送信モードが変更された場合，COMは周期送信のための周期タイマをリセットして再スタートする【COM244】．
+　RTEがCom_SendSignalおよびCom_SendSignalGroupを呼び出した際に，TMS判定によって既に開始されているIPDUの送信モードがPERIODICまたはMIXEDに変更された場合，COMは即時にPduR_ComTransmitを呼び出し，変更後の送信モードを適用して新しい送信サイクルを開始する．この送信サイクルは，シグナルまたはシグナルグループの送信プロパティに関わらず，送信モードの変更により開始される．ただし，MDTおよび送信オフセット(ComTxModeTimeOffset) は考慮する【COM495】．
+　TMS判定により送信モードがDIRECTに変更された場合，即時に直接(N回)送信が開始される．ただし，MDTは考慮する【COM582】．
+　
+　1回のCom_MainFunctionTxの処理内では，同じIPDUの送信を複数回行わない【COM478】．
+　
+　COMは，グループシグナルの状態から，設定された条件に従ってTMS判定を行う【COM326】．このとき，送信モードの選択自体はシグナルの場合と同様に行われる．
+　
+
+
+
+2.2.11.3  直接N回送信
+　送信モード(ComTxModeMode) がDIRECTまたはMIXEDであるIPDUの送信要求を繰り返す回数は，送信要求繰り返し回数(ComTxModeNumberOfRepetitions)〔COM281_Conf〕によって設定される．
+
+　失敗送信要求リトライ有無(ComRetryFailedTransmitRequests) にFALSEが設定されており，IPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDであり，かつ送信要求繰り返し回数(ComTxModeNumberOfRepetitions) が0の場合，COMはPduR_ComTransmitを1回のみ呼び出し，送信コンファメーションの結果を考慮しない【COM467】．
+
+　IPDUの送信要求を繰り返している途中に，RTEから新しい送信要求を受け取った場合，COMは実行中の送信要求の繰り返し処理をキャンセルし，新しい送信要求に対する処理を即時に開始する【COM279】．
+　
+　RTEがCom_SendSignalまたはCom_SendSignalGroupを呼び出すことにより送信することになったIPDUの送信モード(ComTxModeMode) がDIRECTまたはMIXEDであり，送信要求繰り返し回数(ComTxModeNumberOfRepetitions) が1以上の場合，COMはPDURへの送信とRTEへの送信完了通知を，以下の順に実行する【COM305】．
+1. 送信要求繰り返しカウンタに送信要求繰り返し回数(ComTxModeNumberOfRepetitions) を代入する．
+2. 送信要求繰り返しカウンタの値が0でない限り，COMは送信要求繰り返し周期(ComTxModeRepetitionPeriod) に従ってPduR_ComTransmitを呼び出してIPDUの送信要求を送る．
+3. PDURから送信完了通知を受け取った際に，送信要求繰り返しカウンタの値が0でない場合，COMは送信要求繰り返しカウンタの値をデクリメントする．
+PDURから送信完了通知を受け取った際に，送信要求繰り返しカウンタの値が0である場合，COMはその送信完了通知を無視する．
+4. 送信要求繰り返しカウンタの値が0になった場合，COMはRTEに対して送信完了通知を送り，そのIPDUの送信DMをキャンセルする〔COM392〕．
+　
+　〔COM305〕はCOMの実装を完全に定義してはいない．しかし，COMを実装する際には上記の定義に従って送信完了通知を実装しなければならない．これにより，ある極限状態における送信完了通知が周期から遅れて到着した場合は，周期を違反しても良いことになる．これは，CANがLPDUのためのキューを持たないことを前提としている．特殊な状況においては，ハードウェアとCANとCANIFの間で競合状態が発生し，過剰な送信を引き起こす可能性がある．
+　
+　IPDUの送信要求を繰り返している途中に，PDURがE_NOT_OKを返して送信失敗を通知したとしても，COMはその通知を無視する．COMは送信完了通知を受け取った場合にのみ送信要求繰り返しカウンタの値をデクリメントするため，失敗した送信要求を安全に無視することができる．
+
+　送信モード(ComTxModeMode) がMIXEDであるIPDUの直接N回送信と周期送信のタイミングが重なった場合，COMはその送信要求を直接N回送信のものとしてカウントする【COM494】．
+
+　直接N回送信が完了する前に，送信DMのタイムアウトが発生した場合，COMはそのIPDUの送信要求をそれ以上繰り返さない【COM392】．
+
+2.2.11.4  周期送信
+　Com_IpduGroupControlによって起動されたIPDUグループに含まれているIPDUの送信モード(ComTxModeMode) がPERIODICまたはMIXEDである場合，そのIPDUの周期送信が開始される．周期送信が開始されてから最初の送信が行われるまでの間をオフセット時間として待機することが可能であり，そのオフセット時間は周期送信オフセット(ComTxModeTimeOffset) に指定される．最初の送信が行われて以降は，送信周期(ComTxModeTimePeriod) に指定された時間間隔で周期送信が行われる．
+　送信オフセット(ComTxModeTimeOffset) および送信周期(ComTxModeTimePeriod) は送信タイムベース(ComTxTimeBase) に指定された値から周期関数呼び出し回数に変換される〔NCOM005〕．
+　周期送信が開始されるタイミングは周期関数の呼び出しとは関係ないため，送信オフセット(ComTxModeTimeOffset) に指定された時間を確実に待機するために，算出した周期関数呼び出し回数に1を加えたタイミングで送信が行われる【NCOM020】．
+
+例：周期送信のオフセット時間
+
+　上記において，[A]のタイミングで周期送信が開始された場合，周期関数呼び出しの2回目で送信してしまうと，オフセット時間が1.x秒となってしまう．そこで，周期関数呼び出しの3回目で最初の送信を行うことにより，指定された2.0秒を確実に待機する．以後の周期4.0秒に対しては，算出した周期関数呼出し回数分の周期関数実行後に送信を行うことにより，指定した周期を実現する．
+
+
+2.2.11.5  送信モードのユースケース
+　本章では，送信モードごとの代表的なユースケースについて記載する．ユースケースの凡例を以下の表 27に示す．
+　
+　表 27 ユースケース凡例
+記号
+説明
+tc, tc1, tc2
+周期(ComTxModeTimePeriod)
+td
+送信要求繰り返し回数(ComTxModeNumberOfRepetitions)
+to
+周期オフセット(ComTxModeTimeOffset)
+tr,min
+COMの最小ソフトウェア応答時間(内部の周期時間など)
+V
+通信データの値
+x　　 ：任意の値，またはその値の範囲,
+a..w　：ユーザが定義した値，またはその値の範囲
+a <> b：aとbの値の範囲は連続しない
+
+
+RTEからCOMへの要求
+
+COMからPDURへの要求
+
+保留されたCOMからPDURへの要求
+(要因：RTEからの新しい要求，MDTによる遅延など)
+dt
+PDURへの送信要求の最小遅延時間(MDT)
+(I-PDUごとに設定可能：最小遅延時間(ComMinimumDelayTime) )
+w/o TMS switch
+TMS判定による送信モードの変更なし
+W TMS switch
+TMS判定による送信モードの変更あり
+　
+
+
+2.2.11.5.1  周期送信(送信モード変更なし)
+周期送信オフセットなし
+
+
+ComSignal
+
+ComTransferProperty
+PENDING
+
+ComFilter
+
+
+ComFilterAlgorithm
+ALWAYS
+ComIPdu 
+
+ComIPduDirection  
+SEND
+　
+ComTxModeTrue
+　
+
+ComTxMode
+　
+
+
+ComTxModeMode
+PERIODIC
+　
+
+
+ComTxModeNumberOfRepetitions
+－
+　
+
+
+ComTxModeRepetitionPeriod
+－
+　
+
+
+ComTxModeTimeOffset
+0
+　
+
+
+ComTxModeTimePeriod
+tc
+
+
+
+
+周期送信オフセットあり
+
+
+ComSignal
+
+ComTransferProperty
+PENDING
+
+ComFilter
+
+
+ComFilterAlgorithm
+ALWAYS
+ComIPdu 
+
+ComIPduDirection  
+SEND
+　
+ComTxModeTrue
+　
+
+ComTxMode
+　
+
+
+ComTxModeMode
+PERIODIC
+　
+
+
+ComTxModeNumberOfRepetitions
+－
+　
+
+
+ComTxModeRepetitionPeriod
+－
+　
+
+
+ComTxModeTimeOffset
+to
+　
+
+
+ComTxModeTimePeriod
+tc
+
+
+
+2.2.11.6  VFB仕様との関係
+　SWC実装時は，どの通信媒体を使用するのかは不明である．そのため，そのSWCからの送信要求に対する，バス固有の繰り返しおよびバス固有のタイミング処理は，COM(または適切なバスインタフェースおよびドライバ)によって隠蔽化する．
+　COMは，送信プロパティと送信モードの組み合わせにより，送信要求の繰り返しおよびバス固有のタイミング処理を実現する．
+　送信モードおよび送信プロパティと，VFBの送信モードの関係を以下の表 28 送信モードおよび送信プロパティとVFB送信モードの関係表 28に示す．
+
+　表 28 送信モードおよび送信プロパティとVFB送信モードの関係
+送信モード(ComTxModeMode)
+送信プロパティ(ComTransferProperty)
+
+TRIGGERED / TRIGGERED_ON_CHANGE
+PENDING
+DIRECT
+DIRECT
+－
+MIXED
+DIRECT
+PERIODIC
+PERIODIC
+－
+PERIODIC
+NONE
+－
+－
+
+
+
+2.2.12  失敗送信要求リトライ
+　失敗送信要求リトライ有無(ComRetryFailedTransmitRequests) がTRUEの場合，COMはPduR_ComTransmitの返り値を評価しなければならない．PduR_ComTransmitの返り値がE_OKでない場合，COMは，次のCom_MainFunctionTxのタイミングでPduR_ComTransmitを呼び出して送信失敗したIPDUの送信要求を再度行う【COM773】．
+　失敗送信要求リトライを行う前にIPDUバッファが更新された場合，最新のデータが送られる【COMa020】．
+　直接N回送信の間に失敗送信要求リトライが来た場合，繰り返し送信タイミングはリトライの影響を受けない【NCOM097】．
+
+　失敗送信要求リトライは送信DMと独立した機能であり，失敗送信要求リトライによるIPDUの送信要求は送信DMに影響を与えない【COM774】．
+　失敗送信要求リトライ有無(ComRetryFailedTransmitRequests) がTRUEであり，かつ，あるIPDUにおいて送信DMのタイムアウトが発生した場合，COMは，そのIPDUに対する保留中の送信要求をすべて無効化する【COM775】．
+　
+　周期送信のための周期タイマは，最初の送信を行った際に常に開始される【COM776】．
+　
+　COMは，停止中のIPDUに対しては失敗送信要求リトライを行わない【COM777】．
+　失敗送信要求リトライ有無(ComRetryFailedTransmitRequests) がTRUEであり，かつ，Com_IpduGroupControlの引数InitializeをTRUEに指定して呼び出されたことによってあるIPDUが開始された場合，COMは，そのIPDUに対する保留中の送信要求をすべて無効化する【COM778】．
+　失敗送信要求リトライ有無(ComRetryFailedTransmitRequests) がTRUEである場合，COMは，PduR_ComTransmitの返り値を〔COM773〕に従って評価し，そうでない場合は〔COM305〕に従って評価する【COM779】．
+　
+
+
+
+2.2.13  シグナル無効化
+　送信側が有効なシグナルの値を提供できない場合，COMは無効値(ComSignalDataInvalidValue) を送信することでシグナルを無効化することができる．送信側で無効化されたシグナルを受信した場合，COMは無効値受信時処理(ComDataInvalidAction) の設定に従って対処する．
+
+2.2.13.1  無効化されたシグナルの送信
+　COMは，Com_InvalidateSignalの内部でCom_SendSignalを呼び出すことにより無効値(ComSignalDataInvalidValue) を送信する【COM099】．
+　無効化されたシグナルを含むIPDUを下位層に送るタイミングは，送信モード(ComTxModeMode) および送信プロパティ(ComTransferProperty) によって決定される．Com_InvalidateSignalの内部でCom_SendSignalを呼び出すことにより，無効化されたシグナルに対してもTMS判定が行われる．
+　
+　グループシグナルごとに無効値を設定することが可能であるため，グループシグナルの無効化はCom_InvalidateSignalGroupまたはCom_InvalidateSignalにより実現できる〔COM520_Conf〕．
+　
+　VFBは複合データ型という属性のみを定義する．複合データ型の無効化とシグナルグループの無効化との最適なマッピング方法は，シグナルグループに付属するすべてのグループシグナルを無効化することである．RTEはCom_InvalidateSignalGroupを呼び出すことにより，シグナルグループを完全に無効化することが可能である．
+
+2.2.13.2  無効化されたシグナルの受信
+　受信シグナルの値が無効値(ComSignalDataInvalidValue) と等しく，かつ，そのシグナルの無効値受信時処理(ComDataInvalidAction) がNOTIFYである場合，COMは，無効値受信通知(ComInvalidNotification) で定義されたコールバック関数を呼び出すことによってRTEへ通知し，そのシグナルに対するフィルタリングなどの受信処理や受信完了通知を行わない【COM680】．
+　ただし，無効化されたシグナルを受信した場合でも，受信DMのタイマは再スタートされる．
+
+　受信シグナルの値が無効値(ComSignalDataInvalidValue) と等しく，かつ，そのシグナルの無効値受信時処理(ComDataInvalidAction) がNOTIFYである場合，COMは，シグナルバッファを更新しない【COM717】．
+
+　受信シグナルの値が無効値(ComSignalDataInvalidValue) と等しく，かつ，そのシグナルの無効値受信時処理(ComDataInvalidAction) がREPLACEである場合，COMは，受信シグナルの値を初期値(ComSignalInitValue) に置き換えて，有効な値を受信したかのように受信処理や受信完了通知を行う【COM681】．
+
+
+　無効値受信時処理(ComDataInvalidAction) が設定されていないシグナルを受信した場合，COMは常に有効な値を受信したかのように受信処理や受信完了通知を行う【COM736】．
+
+　受信シグナルグループに付属するいずれかのグループシグナルの値が無効値(ComSignalDataInvalidValue) と等しく，かつ，そのシグナルグループの無効値受信時処理(ComDataInvalidAction) がNOTIFYである場合，COMは，無効値受信通知(ComInvalidNotification) で定義されたコールバック関数を呼び出すことによってRTEへ通知し，そのシグナルグループに対するフィルタリングなどの受信処理や受信完了通知を行わない【COM682】．
+
+　受信シグナルグループに付属するいずれかのグループシグナルの値が無効値(ComSignalDataInvalidValue) と等しく，かつ，そのシグナルグループの無効値受信時処理(ComDataInvalidAction) がNOTIFYである場合，COMは，グループシグナルバッファを更新しない【COM718】．
+　グループシグナルを受信する前にCom_ReceiveSignalGroupが呼び出された場合，グループシグナルバッファの値は初期化された状態から更新されていないため，初期値(ComSignalInitValue) が返される．
+
+　受信シグナルグループに付属するいずれかのグループシグナルの値が無効値(ComSignalDataInvalidValue) と等しく，かつ，そのシグナルグループの無効値受信時処理(ComDataInvalidAction) がREPLACEである場合，COMは，そのシグナルグループに付属するすべてのグループシグナルの値を初期値(ComSignalInitValue) に置き換えて，有効な値を受信したかのように受信処理や受信完了通知を行う【COM683】．
+
+　無効値受信時処理(ComDataInvalidAction) が設定されていないシグナルグループを受信した場合，COMは常に有効な値を受信したかのように受信処理や受信完了通知を行う【COM737】．
+　
+　
+
+2.3  シグナルグループ(複合データ型のIPDUへのマッピング)
+　AUTOSARの複合データ型をサポートするために，COMはシグナルグループを提供する．シグナルグループの整合性を考慮して通信を行うことにより，複合データ型に必要な整合性を保証する．COMは，シグナルグループの整合性を考慮した通信を行うために，シャドウバッファを使用する．RTEはシャドウバッファに格納されたグループシグナルにアクセスして通信を行う．RTEはCom_SendSignalGroupまたはCom_ReveiveSignalGroupを呼び出すことにより，シャドウバッファとIPDUを同期することができる．
+　シグナルグループはコンフィギュレーション時に静的に指定され，それぞれのショートネームを利用したシンボル名が与えられる〔COM345_Conf〕〔COM044〕．
+
+2.3.1  シグナルグループの初期化
+　Com_Initにより，送信側のシグナルグループのシャドウバッファが初期化される【COM484】．
+　
+2.3.2  シグナルグループの送信
+　グループシグナルを指定してCom_SendSignalまたはCom_InvalidateSignalが呼び出された場合，COMはシャドウバッファの更新のみを行う．このとき，IPDUバッファは更新されないため，TMS判定などの送信処理は不要である【COMa010】．
+　Com_SendSignalGroupにより，シャドウバッファの値がIPDUバッファにパッキングされる【COM050】．
+　
+2.3.3  シグナルグループの受信
+　Com_ReceiveSignalGroupにより，受信IPDUのバッファ内にあるシグナルグループのデータがシャドウバッファにアンパッキングされた後，Com_ReceiveSignalによるシャドウバッファからグループシグナルの受信が可能となる．
+　Com_ReceiveSignalGroupにより，IPDUバッファ内にあるシグナルグループのデータがシャドウバッファにアンパッキングされる【COM051】．
+　
+2.3.4  シグナルグループ関連の通知
+　送信側および受信側のどちらにおいても，完全なシグナルグループに対してのみ，グループシグナルおよび通知を指定することができる．
+　完全なシグナルグループに対して，送受信または無効化が行われた場合，COMはRTEに対して通知を行う【COM053】〔COM345_Conf〕〔COM520_Conf〕．
+　
+2.3.5  シグナルグループの属性
+　シグナルグループおよびグループシグナルに関するコンフィギュレーション情報および処理の一覧と，それぞれの対象について以下に示す．
+　
+　表 29 シグナルグループの属性
+属性
+シグナルグループごと
+グループシグナルごと
+アップデートビット(ComUpdateBitPosition)
+○〔COM257_Conf〕
+×
+通知(ComNotification)
+○〔COM498_Conf〕
+×
+エラー通知(ComErrorNotification)
+○〔COM499_Conf〕
+×
+タイムアウト通知(ComTimeoutNotification)
+○〔COM552_Conf〕
+×
+無効値受信通知(ComSignalDataInvalidValue)
+○〔COM391_Conf〕
+×
+送信要求
+○〔COM200〕，〔COM557〕
+○〔COM197〕，〔COM203〕
+TMS判定
+×
+○
+受信要求
+○〔COM201〕
+○〔COM198〕
+フィルタリング
+×
+×
+
+
+
+2.4  大型データ
+　※大型データ通信は本バージョン対象外の機能であるため，本章の内容は対象外となる．
+
+　大型シグナルとは，下位層の通信プロトコルで扱われるLPDUに納まりきらない大きさのシグナルのことである．大型シグナルが所属しているIPDUのことを大型IPDUと呼び，これらを総括して大型データと呼ぶ．例えば，CANの場合は8バイトを超えるシグナルは大型シグナルとなる．FlexRayの場合，1つのフレームに複数のLPDUを含むことができるため，状況は複雑になる．したがって，FlexRayのフレームサイズを超えない大きさのシグナルを大型シグナルと定義しても良い．
+　大型シグナルは大型IPDUに所属し，大型IPDUはTPを介して下位層に送信される．大型IPDUに1つ以上の大型シグナルが含まれている必要はない．
+　
+　大型IPDUおよび大型シグナルの大きさは4095バイトに制限される〔COM437_Conf〕．大型シグナルの長さは固定であり，実行時に変更することはできない．
+　大型シグナルの型(ComSignalType) はUINT8_Nでなければならない．
+　
+　COMは下位層のバス特性を認識しないため，あるIPDUが単一のLPDUで送信できるかどうかをコンフィギュレーション情報から取得する必要がある〔COM761_Conf〕．
+　また，COMは下位層のバスに依存しないPDURのインタフェースを使用しているため，下位層のLPDUにとって大きすぎるIPDUを送信していないかどうかを検出して防ぐことができない．
+　しかし，COMはTPによって通信可能な最大サイズを許可しなければならないため，IPDUの長さに対するこれ以上の制限を行わない．
+　
+2.4.1  大型データの送信
+　大型IPDUを送信するために，COMはPDURシステムサービスを使用してTP送信を行う．
+　
+　大型IPDUを送信する場合のシーケンスは以下のとおり．
+1. PduR_ComTransmit	：送信要求のためのPDURシステムサービス
+2. Com_CopyTxData		：送信データコピーのためのCOMコールバック関数(1回以上)
+3. Com_TpTxConfirmation	：TP送信完了通知のためのCOMコールバック関数
+
+　PduR_ComTransmitにより大型IPDUの送信要求を行った後，Com_TpTxConfirmationによりTP送信完了が通知されるまで，または送信中止が通知されるまでの間，COMはその大型IPDUの内部バッファを更新しない【COM662】．
+　
+2.4.2  大型データの受信
+　大型IPDUを受信するために，COMはPDURシステムサービスを使用してTP受信を行う．
+　
+　大型IPDUを受信する場合のシーケンスは以下のとおり．
+1. Com_StartOfReception	：受信要求のためのCOMコールバック関数
+2. Com_CopyRxData		：受信データコピーのためのCOMコールバック関数(1回以上)
+3. Com_TpRxIndication	：大型IPDU受信完了通知
+　
+
+
+2.5  可変長データ
+　※可変長データ通信は本バージョン対象外の機能であるため，本章の内容は対象外となる．
+　
+　可変長シグナルとは，実行時にデータの長さを変更することができるシグナルのことである．可変長シグナルの最大長は，コンフィギュレーション時に指定されなければならない．可変長シグナルを含むIPDUは可変長IPDUと呼ばれ，可変長IPDUの通信はTPを介して行われる．
+　可変長シグナルの型(ComSignalType) はUINT8_DYNでなければならない【COM753】．
+　〔COM753〕により，可変長シグナルの長さはバイト単位でしか指定できない．
+　可変長シグナル以外の全シグナル(大型シグナルも含む)は，可変長シグナルよりも先にIPDUへパッキングされる〔COM754〕〔COM755〕〔COM756〕．したがって，IPDU内の可変長シグナルの長さはエンコードしない．受信側において，受信した可変長シグナルの長さは，受信したIPDUのデータの長さから算出することができる．
+　ユーザは，可変長シグナルにアップデートビットを設定することができる．この場合，アップデートビットは可変長シグナルのデータの前に配置する必要がある〔COM755〕．
+　あるシグナルグループ内に大型シグナルと可変長シグナル両方を含めることができる．
+　
+2.5.1  可変長データの送信
+　可変長IPDUはPDURシステムサービスによってTPを介して送信される．
+　RTEは，送信する可変長シグナルの実際の長さを指定してCom_SendDynSignalを呼び出すことによって，可変長シグナルの送信要求をCOMに渡す〔COM627〕．
+　Com_SendDynSignalの引数に指定された可変長シグナルの長さによって可変長IPDUの長さが決められるため，可変長シグナルのデータの実際の長さと等しくなければならない【COM757】．
+　
+2.5.2  可変長データの受信
+　RTEは，可変長シグナルを受信する際に，その実際の長さを知る必要がある．
+　Com_StartOfReceptionによって可変長I-PDUの受信が開始され，可変長IPDUに含まれている可変長シグナルの長さが以下のように算出される(単位はバイト)【COM758】．
+　＜可変長シグナルの長さ＞
+　  ＝ ＜受信したIPDUの長さ＞ － ＜可変長シグナルのビット位置(ComBitPosition)＞ / 8
+　
+　Com_ReceiveDynSignalは，〔COM758〕によって算出された可変長シグナルの実際の長さを返す．
+
+
+2.6  アップデートビット
+　ユーザは，シグナルまたはシグナルグループのデータが更新されているかどうかを事前に識別できるようにするために，アップデートビットの指定が可能である．アップデートビットはIPDUバッファ内に含まれており，IPDUバッファにパッキングされたシグナルおよびシグナルグループのデータと共にPDURへ送信される．
+　送信モードがDIRECTであり，かつ送信要求繰り返し回数(ComTxModeNumberOfRepetitions) が1以上である場合，アップデートビットはサポートされない〔COM310〕．
+　アップデートビットはシグナルまたはシグナルグループごとに指定可能であり，アップデートビット位置(ComUpdateBitPosition) に従って，シグナルまたはシグナルグループの所属IPDUの内部バッファに配置される．
+　アップデートビットはシグナルまたはシグナルグループの内部バッファには配置されず，COMの内部のみで処理される【COM055】．
+　よって，AUTOSAR SW-Cがアップデートビットに直接アクセスすることはできない．
+
+　COMはアップデートビットを以下の表 210ように解釈する【COM059】．
+　
+　表 210 アップデートビットの状態とその意味
+状態
+意味
+0
+アップデートビットはクリアされている．つまり，データは更新されていない．
+1
+アップデートビットはセットされている．つまり，データは更新されている．
+
+　初期化時にすべてのアップデートビットがクリアされる〔COM117〕．
+
+　アップデートビットを持つシグナルのDMについては，「2.2.5 デッドラインモニタリング(DM)」を参照．
+
+2.6.1  送信側のアップデートビット処理
+　Com_SendSignalによりシグナルの値が更新された場合，そのシグナルのアップデートビットはセットされ，Com_SendSignalGroupによりシグナルグループの値が更新された場合，そのシグナルグループのアップデートビットはセットされる【COM061】．
+　AUTOSAR仕様では，Com_SendSignalによってシグナルが送信された場合，前回送信時の値と変化がなくても，アップデートビットをセットするかどうかの規定がない．しかし，受信DMにおいてアップデートビットの値で受信タイムアウト判定を行うため，Com_SendSignalではシグナルの値に関わらず一律アップデートビットをセットする【COMa003】．
+　
+　アップデートビットクリアタイミング(ComTxIPduClearUpdateBit) がTRANSMITの場合，シグナルおよびシグナルグループの所属IPDUがPduR_ComTransmitによって下位層に送信され，かつE_OKが返された後に，そのシグナルおよびシグナルグループのアップデートビットはすべてクリアされる【COM062】．
+　アップデートビットクリアタイミング(ComTxIPduClearUpdateBit) がCONFIRMATIONの場合，シグナルおよびシグナルグループの所属IPDUがPduR_ComTransmitによって下位層に送信され，かつE_OKが返された後，Com_TxConfirmationが呼び出された際に，そのシグナルおよびシグナルグループのアップデートビットはすべてクリアされる【COM577】．
+　
+　送信モード(ComTxModeMode) がDIRECTであり，かつ送信要求繰り返し回数(ComTxModeNumberOfRepetitions) が1以上であるIPDUの送信完了通知処理は，〔COM305〕で定義された通りに行われる．
+　
+　アップデートビットクリアタイミング(ComTxIPduClearUpdateBit) がTRIGGER_TRANSMITの場合，シグナルおよびシグナルグループの所属IPDUがCom_TriggerTransmitによってトリガ送信された後に，そのシグナルおよびシグナルグループのアップデートビットはすべてクリアされる【COM578】．
+　
+2.6.2  受信側のアップデートビット処理
+　アップデートビットを持つシグナルまたはシグナルグループを受信した際に，そのアップデートビットがセットされている場合，そのシグナルまたはシグナルグループのデータは更新されたと判断される【COM067】．
+　受信したシグナルまたはシグナルグループにアップデートビットが指定されている場合，アップデートビットがセットされていれば受信処理(フィルタリング，通知，シグナルゲートウェイ，エンディアン変換)が行われ，アップデートビットがクリアされていれば受信したシグナルまたはシグナルグループは破棄される【COM324】．
+　アップデートビットを持つシグナルを受信した際に，そのアップデートビットがクリアされている場合，そのシグナルのデータは破棄され，シグナルゲートウェイも行われない．アップデートビットがクリアされているシグナルに対する受信処理は行われないため，シグナルの内部バッファも更新されない．よって，アップデードビットがクリアされているシグナルに対してRTEが受信要求を出した場合，そのシグナルの初期値または最後に受信した値が返される．
+　
+
+
+2.7  データシーケンス管理
+　※データシーケンス管理は本バージョン対象外の機能であるため，本章の内容は対象外となる．
+
+　ユーザは，IPDUカウンタによりデータシーケンス管理を行うことができる．IPDUカウンタはIPDUごとに指定することができる〔COM592_Conf〕．
+　
+2.7.1  送信側のデータシーケンス管理
+　通信方向(ComIPduDirection) がSENDであるIPDUがIPDUカウンタ(ComIPduCounter) を持つ場合，Com_Initまたは引数Initializeがtrue に指定されたCom_IpduGroupControlにおいて，IPDUカウンタの値に0が設定される【COM687】．
+　PduR_ComTransmitによってIPDUが送信される前に，IPDUカウンタの値はインクリメントされる．ただし，PduR_ComTransmitの返り値がE_OKではない場合，IPDUカウンタの値はデクリメントされる【COM688】．
+　
+2.7.2  受信側のデータシーケンス管理
+　通信方向(ComIPduDirection) がRECEIVEであるIPDUがIPDUカウンタ(ComIPduCounter) を持つ場合，Com_Initまたは引数Initializeがtrue に指定されたCom_IpduGroupControlにおいて初期化された後，IPDUカウンタの値に関わらずIPDUが受信される【COM587】．
+
+　IPDUカウンタ(ComIPduCounter) を持つIPDUを受信した場合，そのIPDUカウンタの期待値が設定される【COM588】．
+　
+例：IPDUカウンタのサイズが4ビットの場合
+　サイズが4ビットのIPDUカウンタは0から15までの値を持つことが出来るため，受信したIPDUのIPDUカウンタの値が15である場合，次の期待値は0である．受信したIPDUのIPDUカウンタ値が期待値と一致しているかどうかに関わらず，期待値は更新される．
+　
+　IPDUカウンタ(ComIPduCounter) を持ち，かつIPDU複製が設定されていないIPDUを受信し，〔COM588〕に従って次の期待値が設定された後に，IPDUカウンタの値が以下のいずれかである場合，そのIPDUは廃棄される【COM590】．
+・ 受信したIPDUカウンタの値 ＜ IPDUカウンタの期待値
+・ 受信したIPDUカウンタの値 ＞
+IPDUカウンタの期待値 ＋ IPDUカウンタの閾値(ComIPduCounterThreshold)
+
+　受信したIPDUカウンタの値と期待値の不一致を検出した場合，IPDUカウンタエラー通知(ComIPduCounterErrorNotification) に指定されたコールバック関数を呼び出すことによってRTEへ通知される【COM727】〔COM726〕．
+　
+
+2.8  通信保護
+　※通信保護は本バージョン対象外の機能であるため，本章の内容は対象外となる．
+
+　ユーザは，安全に関わるIPDUのデータの破損や損失を防ぐために，複数のLPDUに複製することができる．PDURにおいてIPDUの複製が行われ，COMにおいて複製されたIPDUの比較と判定が行われる．複製されたIPDUは，比較のためのチェックサムまたはシグネチャを持っていないため，受信側で完全なIPDUの保存と比較を行う必要がある．
+　複製IPDU(ComIPduReplicaRef) が参照するIPDUが複製される〔COM601_Conf〕．IPDUを複製する数は複製数(ComIPduReplicationQuorum) に指定され，指定可能な値は1から3のいずれかである〔COM600_Conf〕．
+　PDURはTPを介した通信における1:nルーティングおよび送信のための複数フレームはサポートしない．したがって，大型IPDUおよび可変長IPDUの複製はサポートしない．
+　受信側で行う通信保護判定はIPDUカウンタに依存するため，複製するIPDUがIPDUカウンタを持っていることを保証しなければならない．
+
+2.8.1  送信側の通信保護
+　IPDUの複製自体はPDURによって行われるため，COMの送信側の通信保護として行う処理は特にない．
+
+2.8.2  受信側の通信保護
+　受信側では，複製されたIPDUの比較と判定が行われ，正常に受信したIPDUに含まれるシグナルのみを通過させる．
+
+　複製されるIPDUはIPDUカウンタを持たなければならない．ただし，そのIPDUカウンタの閾値(ComIPduCounterThreshold) は0でなければならない〔COM595_Conf〕．IPDUカウンタの処理は複製されたIPDUそれぞれに対して行われる．
+
+　複製されるIPDUは，IPDU種別(ComIPduType) がNORMALでなければならない．
+
+　複製数(ComIPduReplicationQuorum) に指定された数の複製IPDUがすべて同一な場合のみ，そのIPDUに含まれるシグナルおよびシグナルグループを受信する【COM596】．
+　〔COM596〕でシグナルおよびシグナルグループを正常に受信した場合，その受信完了通知は，複製数(ComIPduReplicationQuorum) に関わらず，一度のみRTEへ通知される【COM597】．
+
+　IPDUは特別なチェックサムを持たないため，複製されたIPDUと比較する場合はデータをバイトごとの比較によって実現されることが期待される．
+
+2.8.3  制約事項
+　既存機能を再利用するアプローチとしてPDURにおいてIPDUの複製を行うため，システムのセットアップは注意して行わなければならない．
+　PDURとしては，異なるバスでのIPDU複製も可能である．COMの受信側では複製されたIPDUは同じIDとなるが，Com_RxIndicationはこれらのIPDUに対してリエントラントに呼び出してはならない．
+　これを防ぐための簡単な方法としては，すべてのIPDUが同じインタフェースモジュールで受信されるようにすることにより，同じバスでのIPDU複製とすることである．なお，これはAUTOSARが推奨する方法であり，システムインテグレータは他の方法を選択することも可能である．
+　さらに，上位層からのIPDUの更新を防ぐ機能は存在しないため，通信保護としては，Com_TriggerTransmitによるIPDUトリガ送信と組み合わせることはできない．
+
+
+2.9  シグナルゲートウェイ
+　※シグナルゲートウェイは本バージョン対象外の機能であるため，本章の内容は対象外となる．
+　
+　ユーザは，シグナルおよびシグナルグループに対して，1:nのシグナルゲートウェイを利用できる．シグナルゲートウェイでは，シグナルおよびシグナルグループのIDを識別するための定数を用いてルーティングを行う．ルーティング元とルーティング先はコンフィギュレーション時に設定される．
+　
+　すべてのシグナルおよびシグナルグループにおいてシグナルゲートウェイが不要な場合，COMはシグナルゲートウェイの機能を無効化する【COM370】．
+
+　シグナルゲートウェイはCOMに閉じた機能であり，周期タスク呼び出しを除き，他のモジュールからアクセスすることはできない．
+
+　シグナルゲートウェイのコンフィギュレーション情報はゲートウェイマッピング情報(ComGwMapping) というコンテナに集約されている〔COM544_Conf〕．シグナルゲートウェイのルーティング先はシグナルおよびシグナルグループそれぞれに独立して設定できる．
+　ゲートウェイ先情報(ComGwDestinationDescription) 内のGWシグナル(ComGwSignal) にルーティング先のシグナルまたはシグナルグループが指定される〔COM549_Conf〕〔COM551_Conf〕．
+
+　シグナルゲートウェイを持つシグナルまたはシグナルグループは，ルーティング先のシグナルまたはシグナルグループにコピーされる【COM377】．
+　
+　なお，シグナルゲートウェイは大型IPDUに含まれているシグナルおよびシグナルグループはサポートしない〔COM598〕．
+
+2.9.1  シグナルに対するルーティング
+　シグナルゲートウェイを持つシグナルは，受信IPDUから送信IPDUにルーティングされる【COM357】．
+　受信したシグナルとルーティング先のシグナルのエンディアンが異なる場合，エンディアン変換が行われる【COM360】．
+　
+2.9.2  シグナルグループに対するルーティング
+　シグナルゲートウェイを持つシグナルグループは，受信IPDUから送信IPDUにルーティングされる【COM361】．
+　シグナルグループのデータの整合性を保つために，シグナルグループごとにルーティングされる【COM383】．
+　シグナルグループに含まれるグループシグナルの内の一部をまとめたシグナルグループへの転送は整合性を保ってルーティングされる【COM735】．
+　受信したグループシグナルとルーティング先のシグナルのエンディアンが異なる場合，エンディアン変換が行われる【COM362】．
+
+2.9.3  タイムアウト発生時のルーティング
+　シグナルゲートウェイを持つシグナルまたはシグナルグループに対して，受信タイムアウトが発生した場合でも，ルーティングは行われる【COM701】．
+　つまり，シグナルゲートウェイを持つシグナルまたはシグナルグループの受信が発生しない場合でも，ルーティングは行われる．
+　
+2.9.4  アップデートビット処理
+　受信したシグナルまたはシグナルグループがアップデートビットを持ち，かつ，ルーティング先のシグナルまたはシグナルグループもアップデートビットを持つ場合，アップデートビットがセットされているシグナルまたはシグナルグループに対してルーティングが行われ，ルーティング先のシグナルまたはシグナルグループが送信された後にアップデートビットがクリアされる【COM702】．
+　受信したシグナルまたはシグナルグループがアップデートビットを持ち，かつ，ルーティング先のシグナルまたはシグナルグループもアップデートビットを持つ場合，アップデートビットがクリアされているシグナルまたはシグナルグループに対するルーティングは行われない【COM703】．
+　
+　受信したシグナルまたはシグナルグループはアップデートビットを持ち，かつ，ルーティング先のシグナルまたはシグナルグループはアップデートビットを持たない場合，アップデートビットがセットされているシグナルまたはシグナルグループに対してルーティングが行われる【COM704】．
+　受信したシグナルまたはシグナルグループはアップデートビットを持ち，かつ，ルーティング先のシグナルまたはシグナルグループはアップデートビットを持たない場合，アップデートビットがクリアされているシグナルまたはシグナルグループに対するルーティングは行われない【COM705】．
+　
+　受信したシグナルまたはシグナルグループはアップデートビットを持たず，かつ，ルーティング先のシグナルまたはシグナルグループはアップデートビットを持つ場合，ルーティング後にアップデートビットはセットされ，送信後にアップデートビットはクリアされる【COM706】．
+
+
+
+　表 211 アップデートビットとルーティングの関係
+　　　　ルーティング先
+ルーティング元
+　アップデートビットを持つ
+アップデートビットを持たない
+アップデートビットを持たない
+ルーティングされる．
+ルーティング先のアップデートビットはルーティング後にセットされ，送信後にクリアされる．
+ルーティングされる．
+アップデートビットを持つ
+セット
+
+
+
+クリア
+ルーティングされない．
+
+2.9.5  シグナルゲートウェイの分離
+　IPDU受信に使われる割込み処理にかかる時間を短縮するために，シグナルゲートウェイを割込み処理から分離する必要がある．
+　シグナルゲートウェイ処理はすべてCom_MainFunctionRouteSignalsにて行われる【COM359】〔COM400〕．
+　Com_MainFunctionRouteSignalsでは，以下の順で送信プロパティおよび送信モードの判定も行われる【COM466】．
+1. ルーティングされたシグナルをIPDUの内部バッファにコピーする
+2. ルーティングされたシグナルの値からTMC判定を行う
+3. コピーしたIPDUのTMS判定を行う
+
+Com_MainFunctionRouteSignalsが1回呼び出されるごとに，最多1回のIPDU送信が行われる【COM539】．
+
+
+2.10  エラー処理
+　COMは標準エラーを定義しないため，本章では拡張エラーに関してのみ記述する．
+　COMは，DET使用有無ComConfigurationUseDetにTRUEが設定された場合は拡張エラーを有効化し，FALSEが設定された場合は拡張エラーを無効化する【COM028】〔COM141_Conf〕．
+
+2.10.1  エラー検出
+　COMにおける拡張エラーの検出は，プリコンパイル時に有効化および無効化の設定が可能である〔COM028〕〔COM141_Conf〕．
+
+2.10.2  エラー通知
+　COMは，拡張エラーを検出した際に，DETシステムサービスのDet_ReportErrorを呼び出して以下を通知することにより，拡張エラーを通知する【COM442】．
+・ COMのモジュールID (50)
+・ インスタンスID (0)
+・ 拡張エラーを検出したCOMシステムサービスのID (Com_ServiceIdType参照)
+・ エラーコード〔COM707〕
+
+
+
+2.11  関連モジュール
+　COMは，他モジュールに向けて機能を提供し，また，他モジュールから提供される機能を利用する．COMと他モジュールとの関係を以下の図 23 他モジュールとの関係図 23に示す．
+　
+　
+2.11.1  RTE
+　RTEは，COMの上位に位置するモジュールであり，シグナル送受信のためにCOMの機能を利用する． RTEの詳細は参考文書「次世代車載システム向けRTE外部仕様書」を参照．
+　
+2.11.2  PduR
+　PduRは，COMの下位に位置するモジュールであり，IPDUの送受信のためにCOMの機能を利用する．PduRの詳細は参考文書「Specification of PDU Router」を参照．
+　PduRはCOMに対して以下の機能を要求する．
+・ IPDUの受信を通知するためのインタフェース(受信インディケーション)
+・ IPDUの送信完了を通知するためのインタフェース(送信コンファメーション)
+・ トリガ送信を引き起こすためのインタフェース
+・ TP通信のためのバッファリング
+
+2.11.2.1  ComとPduR間のインタフェース
+　COMの下位に位置するモジュールはPDURのみである．COMは，通信プロトコル固有のTPを介した通信を行うのか，通常の通信を行うのかが異なる2種類のIPDUの通信をPDURシステムサービスの利用により実現する．IPDUがTPを介した通信を行うかどうかは，IPDU種別(ComIPduType) によって指定される．
+　
+　COMは，PduR_ComTransmitを呼び出すことによりIPDUを送信する【COM138】．
+　
+　IPDU種別(ComIPduType) がNORMALの場合，TP通信を使用しないモジュールに向けてPDURを使う【COM759】．
+　この場合，PDURは以下のCOMコールバック関数を使用する．
+・ Com_TxConfirmation
+・ Com_RxIndication
+・ Com_TriggerTransmit
+　
+　IPDU種別(ComIPduType) がTPの場合，TP通信を使用するモジュールに向けてPDURを使う【COM760】．
+　この場合，PDURは以下のCOMコールバック関数を使用する．
+・ Com_TpTxConfirmation
+・ Com_TpRxIndication
+・ Com_StartOfReception
+・ Com_CopyTxData
+・ Com_CopyRxData
+
+　表 212 IPDU種別(ComIPduType) ごとの対応API
+API名
+IPDU種別(ComIPduType)
+
+NORMAL
+TP
+PduR_ComTransmit
+○
+○
+Com_TxConfirmation
+○
+×
+Com_RxIndication
+○
+×
+Com_TriggerTransmit
+○
+×
+Com_TpTxConfirmation
+×
+○
+Com_TpRxIndication
+×
+○
+Com_StartOfReception
+×
+○
+Com_CopyTxData
+×
+○
+Com_CopyRxData
+×
+○
+
+
+
+2.12  COM通信モデル
+　本章では，COMの通信機能のモデル図を記載する．モデル図にはすべての主要機能が記載されているが，実際に使用する際には，一部の必要な機能のみで構成される可能性がある．
+　
+　ある受信シグナルに対してフィルタリングおよび無効値検出および通知が構成されている場合，これらの機能は以下の順序で実現される【COM396】．
+1. 無効値検出
+2. フィルタリング
+3. 通知
+　
+　シグナルまたはシグナルグループに，受信タイムアウト処理(ComRxDataTimeoutAction) および受信タイムアウト通知(ComTimeoutNotification) の両方が設定されている場合，これらの機能は以下の順序で実現される【COM744】．
+1. 受信タイムアウト処理
+2. 受信タイムアウト通知
+
+
+2.12.1  COM送信モデル
+　COM送信モデル図を以下の図 24に示す．
+　
+　
+　
+
+
+2.12.2  COM受信モデル
+　COM受信モデルを以下の図 25に示す．
+　
+
+　図 25 COM受信モデル図
+
+
+
+
+
+2.13  ファイル構成
+　本文書ではファイルの構成を完全には定義しない．本章では，ファイル構成に含まれる必要のあるファイルの名称と概要について記述する．
+　COMのコードファイルの構成を以下に示す．
+・ Com.c		：COMのAPIの実態を含む【COM584】．
+・ Com_Cfg.c		：プレコンパイル時に設定可能なパラメータを含む【COM585】．
+・ Com_Lcfg.c	：リンク時に設定可能なパラメータを含む【COM583】．
+・ Com_PBcfg.c	：ポストビルド時に設定可能なパラメータを含む【COM583】．
+　COMのヘッダファイルの構成を以下に示す．
+・ Com.h		：COMのAPIの定義を含む【COM005】．
+：外部モジュールへ公開するパラメータを含む【COM786】．
+・ Com_Cbk.h	：COMのコールバック関数とコールアウト関数を含む【COM731】．
+　COMに関連するファイルは，図 26に示すようなインクルード構成とする【COM220】．
+　
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，PDUのIDや長さを示すデータ型のサイズを，COMスタックジェネレータで生成し，ComStack_Cfg.hに定義すると規定されている〔EcuC041_Conf〕〔EcuC042_Conf〕〔COMTYPE029〕．しかし，これらはジェネレータで生成するほどの内容で無いため，本仕様では，ComStack_Cfg.hは使用せず，ComStack_Types.hにPDU関連のデータ型を直接定義する【NCOM025】．
+
+2.14  コンフィギュレーション
+　AUTOSARアーキテクチャの全体像については，参考文書「AUTOSAR Layered Architecture」および参考文書「Specification of ECU Configuration」を参照．
+　コンフィギュレーション情報はXML形式で記述されなければならない【COM006】．
+　すべてのコンフィギュレーションセットはIDによって識別される【COM374】〔COM394_Conf〕．
+
+　COMジェネレータで生成するコンフィギュレーションデータは，”com_config”という変数名の配列で，ComConfigコンテナごとに定義する【NCOM024】．
+　したがって，Com_Initでは” Com_Init(&com_config[0]); ”のように指定する．添字はコンフィギュレーションID (ComConfigurationId) で指定した値となる．
+　
+2.14.1  コンフィギュレーションクラス
+　各パラメータは以下のいずれかのコンフィギュレーションクラスを持つ．
+・ VARIANT-PRE-COMPILE
+・ VARIANT-LINK-TIME
+・ VARIANT-POST-BUILD
+　
+　VARIANT-PRE-COMPILEはプレコンパイルタイムにコンフィギュレーション可能なパラメータであることを示し，#defineされるなど，多くの場合はソースコードとして提供される【COM606】．
+　VARIANT-LINK-TIMEはリンクタイムまたはプレコンパイルタイムにコンフィギュレーション可能なパラメータであることを示し，多くの場合はオブジェクトコードとして提供される【COM607】．
+　VARIANT-POST-BUILDはポストビルドタイムまたはリンクタイムまたはプレコンパイルタイムにコンフィギュレーション可能なパラメータであることを示し，多くの場合はオブジェクトコードとして提供される【COM608】．
+
+　ポストビルドタイムにコンフィギュレーション可能なパラメータは，そのパラメータが使用されていないタイミングに更新される【COM373】．
+　ポストビルドタイムのコンフィギュレーションされるコンフィギュレーション情報は，一意なIDで識別される【COM487】．
+
+
+
+2.14.2  コンフィギュレーションルール
+　コンフィギュレーションルールに反するディスクリプションファイルを入力された場合，COMジェネレータはエラーを検出する【NCOM007】．
+　
+2.14.2.1  全般
+　以下のパラメータのショートネームは重複してはならない【COM401】．
+・ ComSignal
+・ ComSignalGroup
+・ ComGroupSignal
+・ ComIPdu
+・ ComIPduGroup
+
+　以下のパラメータに指定する文字列は，〔COM401〕に挙げられたパラメータのショートネームとは異なる文字列でなければならない【COM732】．
+・ ComNotification
+・ ComErrorNotification
+・ ComTimeoutNotification
+・ ComInvalidNotification
+・ ComIPduCallout
+ 
+　以下はC言語の識別子ルールに従って記述されなければならない【COM402】．
+・ ComSignalのショートネーム
+・ ComSignalGroupのショートネーム
+・ ComGroupSignalのショートネーム
+・ ComIPduのショートネーム
+・ ComIPduGroupのショートネーム
+・ ComNotificationの設定値
+・ ComErrorNotificationの設定値
+・ ComTimeoutNotificationの設定値
+・ ComInvalidNotificationの設定値
+・ ComIPduCalloutの設定値
+ 
+　以下のパラメータは0から連番で指定されなければならない【NCOM008】．
+・ ComConfigurationId
+・ ComIPduHandleId
+・ ComIPduGroupHandleId
+・ ComHandleId
+　〔NCOM008〕により，処理を高速化することができる．なお，ComConfigが複数定義されている場合，ComConfigごとに0から連番とする．各IDはコンフィギュレーションツールにより自動付番される想定であるため，この制約が問題になるとは考えにくい．
+ 
+ 以下の数値変換できないパラメータが指定された場合，エラーとする【NCOM104】．
+ ・10進数，16進数(0x)以外の記法で書かれた数値
+ ・「aaa」のように数値と関係のない文字列
+ ・空文字列
+ ・32bitで表現できない桁数の数値
+ 
+2.14.2.2  シグナル
+　シグナルおよびグループシグナルは複数のIPDUに所属してはならない【COM101】．
+　シグナルおよびグループシグナルのデータはオーバーラップしてはならない【COM102】．
+　
+　ユーザは，送信側および受信側のシグナル無効値(ComSignalDataInvalidValue) を一致させなければならず，シグナル無効値(ComSignalDataInvalidValue) にアプリケーション内で有効となる値を指定してはならない．
+
+　シグナルのサイズ(ComBitSize) は，そのシグナルの型(ComSignalType) が取り得る最大値を超えてはならない【COM785】．
+　シグナルおよびグループシグナルの型(ComSignalType) がUINT8_NまたはUINT8_DYNである場合，そのサイズはNバイトでなければならない【COM443】．
+　シグナルおよびグループシグナルの型(ComSignalType) がUINT8_NまたはUINT8_DYNである場合，そのエンディアン(ComSignalEndianness) はOPAQUEでなければならない【COM553】．
+
+　ある可変長IPDUに所属している可変長シグナルの数は最大1つでなければならない【COM754】．
+　可変長シグナルは可変長IPDU内の一番後ろに配置されなければならない【COM755】．
+　可変長シグナルの長さ(ComSignalLength) には，取り得る最大の長さが指定されなければならない【COM756】．
+　送信モード(ComTxModeMode) がDIRECTまたはMIXEDであり，かつ送信要求繰り返し回数(ComTxModeNumberOfRepetitions) が1以上である場合，アップデートビットが指定されてはならない【COM310】
+
+　シグナルの初期値(ComSignalInitValues) および無効値(ComSignalDataInvalidValue) に指定された値は，整数型およびブーリアン型として解釈される【COM790】．
+　シグナルの型(ComSignalType) がUINT8_Nの場合，その初期値(ComSignalInitValues) および無効値(ComSignalDataInvalidValue) に指定された値は，空白で区切られた10進のASCIIコード表記の文字列として解釈される【COM791】．例えば，“97 98 99” と指定した場合，”abc”と解釈される．
+
+　シグナルの型(ComSignalType) がFLOAT32またはFLOAT64の場合，そのシグナルはフィルタを持ってはならない〔COM319〕．よって，シグナルの型(ComSignalType) がFLOAT32またはFLOAT64の場合，そのシグナルの値はTMS判定には用いられない．
+
+2.14.2.3  シグナルグループ
+　シグナルゲートウェイを持つシグナルグループの場合，ルーティング元およびルーティング先に対して同じ型が指定されなければならない【COM365】．
+　シグナルおよびシグナルグループのIPDUへの配置に関して特に制約は無く，シグナルとシグナルグループを交互に配置しても良い．
+　
+2.14.2.4  IPDU
+　送信IPDU(ComTxIPdu) はTMS判定の結果により選択され得る送信モードのコンフィギュレーション情報(ComTxModeTrueまたはComTxModeFalse)を持たなければならない【COM465】．
+　アップデートビットを持つシグナルが所属している送信IPDUのアップデートビットクリアタイミング(ComTxIPduClearUpdateBit) が省略されている場合，COMジェネレータによってデフォルト値のTRANSMITで補完される【NCOM030】．
+
+2.14.2.5  シグナルゲートウェイ
+　ルーティング元およびルーティング先のシグナルのサイズ(ComBitSize) は等しくなければならない【COM384】．
+　最適化の問題：ルーティング元およびルーティング先のシグナルの配置順序およびエンディアンが等しい場合，ルーティング先の所属IPDUごとにルーティングできる【COM386】．
+　IPDU種別(ComIPduType) がTPの場合，そのIPDUに含まれるシグナルおよびシグナルグループは，シグナルゲートウェイ(ComGwMapping) を持ってはならない【COM598】．
+
+2.14.2.6  フィルタ
+　フィルタアルゴリズム(ComFilterAlgorithm) がONE_EVERY_Nの場合，フィルタオフセット(ComFilterOffset) にはフィルタ周期(ComFilterPeriod) よりも小さい値が指定されなければならない【COM535】．
+　フィルタアルゴリズム(ComFilterAlgorithm) がNEW_IS_OUTSIDEまたはNEW_IS_WITHINの場合，そのフィルタを持つシグナルの型(ComSignalType) の範囲内の値をフィルタ最小値(ComFilterMin) およびフィルタ最大値(ComFilterMax) に指定しなければならない【NCOM045】．
+　フィルタアルゴリズム(ComFilterAlgorithm) がNEW_IS_OUTSIDEまたはNEW_IS_WITHINの場合，そのフィルタのフィルタ最小値(ComFilterMin) はフィルタ最大値(ComFilterMax) よりも小さい値が指定されなければならない【NCOM046】．
+　
+2.14.2.7  周期関数呼び出し回数
+　送信周期やDMのタイムアウト時間は秒単位で指定される．COMにおいては，一定間隔ごとに呼び出される周期関数の呼出し回数によって，これらの時間の計測を行う．また，周期関数の呼出し間隔も秒単位で指定される．
+
+　本仕様では，各パラメータに指定された秒を使用して以下の方法で周期関数の呼出し回数の算出を行う【NCOM005】．
+1. 対象時間が周期関数呼出し間隔時間で割り切れる場合
+周期関数呼出し回数 = 対象時間 / 周期関数呼出し間隔時間
+　
+　  (例) ComTxModeTimePeriod: 5.0，ComTxTimeBase: 1.0 の場合，
+　　　　MF呼出し回数は5回
+　
+2. 対象時間がMF呼出し間隔時間で割り切れない場合
+周期関数呼出し回数 = (対象時間 / 周期関数呼出し間隔時間) + 1
+　
+　  (例) ComTxModeTimePeriod: 5.0，ComTxTimeBase: 2.0 の場合，
+　      MF呼出し回数は3回 (切り上げた(ceil)整数値)
+
+
+2.15  本バージョン対象機能
+　本章では，通信プロトコルをCANのみに限定する．
+　本バージョン対象のCOM機能を以下の表 213に示す．
+
+　表 213 本バージョン対象機能
+分類
+機能名
+対象
+通信管理
+初期化
+○
+
+未初期化
+○
+
+IPDUグループ管理
+○
+
+シグナル無効化
+○
+
+データシーケンス管理
+×
+
+通信保護
+×
+
+DETエラー通知
+○
+送信
+送信処理
+○
+
+送信モード
+○
+
+MDT
+○
+
+送信DM
+○
+
+失敗送信要求リトライ
+○
+
+下位層からのトリガ送信
+×
+受信
+受信処理
+○
+
+フィルタリング
+○
+
+受信DM
+○
+通信形式
+シグナル通信
+○
+
+シグナルグループ通信
+○
+
+可変長データ通信
+×
+
+大型データ通信
+×
+
+TP通信
+×
+
+シグナルゲートウェイ
+×
+
+
+
+　本バージョン対象のCOMシステムサービスを以下の表に示す．
+　
+　表 214 本バージョン対象システムサービス
+システムサービス名
+対象
+Com_Init
+○
+Com_DeInit
+○
+Com_GetStatus
+○
+Com_GetConfigurationId
+○
+Com_GetVersionInfo
+○
+Com_IpduGroupControl
+○
+Com_ReceptionDMControl
+○
+Com_SetIpduGroup
+○
+Com_ClearIpduGroupVector
+○
+Com_SendSignal
+○
+Com_SendDynSignal
+×
+Com_SendSignalGroup
+○
+Com_ReceiveSignal
+○
+Com_ReceiveDynSignal
+×
+Com_ReceiveSignalGroup
+○
+Com_InvalidateSignal
+○
+Com_InvalidateSignalGroup
+○
+Com_TriggerIPDUSend
+○
+Com_SwitchIpduTxMode
+○
+　
+
+
+3  API仕様
+3.1  API実装方針
+3.1.1  実装言語
+　システムサービスのインタフェースはISO/ANSI-Cに基づいて定義する【CCOM2901】．
+　通常はシステムサービスを関数として実装するが，必要に応じてC言語のプリプロセッサマクロで実装しても良い【COM434】．
+
+3.1.2  再入可能性
+　あるシステムサービスが再入不可能である場合，そのシステムサービスの呼び出し側は，そのシステムサービスが実行されている間に再度呼び出さないことを保証しなければならない【COM320】．
+　再入不可能なシステムサービスは，再入可能なシステムサービスから呼ばれているかどうかを確認する必要はない【COM321】．
+　
+AUTOSAR仕様との違い
+　COMシステムサービスには再入不可能と規定されているものがあるが，これはRTE側で排他することを想定しているものである．本仕様では，直接システムサービスを使用された場合のデータ整合性を考慮し，すべてのシステムサービスを再入可能として実装するものとする．
+　排他エリア用のAPIをRTEから提供されることを前提として，排他エリアのショートネームを<Reentrant>とした場合，COMの実装上では以下のAPIを記述する【NCOM032】．
+・ SchM_Enter_Com_<Reentrant>()
+・ SchM_Exit_Com_<Reentrant>()
+　なお，ショートネーム<Reentrant>の命名規則は実装依存とする．ネスト呼出しされる可能性があるシステムサービスに対しては，通常の排他エリアとは異なる排他エリアを用意する必要がある．
+
+3.1.3  引数チェック
+　COMのシステムサービスの引数で渡された入力パラメータの妥当性を確認しなければならない．なお，この引数チェックは開発中のソースコードでのみ有効となり，製品には含まれない【COM024】．
+
+3.1.4  デバッグ
+　デバッグの際に参照する必要がある変数をグローバル変数として定義する【COM745】．
+　デバッグの際に参照する必要がある変数の型をCom.hに定義する【COM746】．
+　Com.h内で定義された型のサイズはC言語のsizeofにより取得可能とする【COM747】．
+　デバッグの際に参照する必要がある変数については，本文書内に記載される【COM748】．
+
+
+
+3.2  データ型
+3.2.1  外部からインポートするデータ型
+　COMは，表 31に示すデータ型をインポートして使用する【COM609】．
+ 
+　表 31 インポートするデータ型
+ファイル名
+データ型
+ComStack_Types.h
+BufReq_ReturnType
+
+NotifResultType
+
+ComStack_Types
+
+PduIdType
+
+PduInfoType
+
+PduLengthType
+
+RetryInfoType
+Dem.h
+Dem_EventIdType
+
+Dem_EventStatusType
+Std_Types.h
+Std_ReturnType
+
+Std_VersionInfoType
+
+3.2.2  内部で定義するデータ型
+3.2.2.1  Com_StatusType
+データ型名
+Com_StatusType【COMa011】
+型
+列挙型
+値の範囲
+COM_UNINIT
+COMは初期化されておらず，使用不可能な状態．
+リセット後のデフォルト値であり，値は0となる．
+
+COM_INIT
+COMは初期化されており，使用可能な状態．
+概要
+COM状態型．Com_GetStatusの返り値に利用される．
+
+3.2.2.2  Com_SignalIdType
+データ型名
+Com_SignalIdType【COMa012】
+型
+uint16
+値の範囲
+0..＜シグナルIDの最大値＞
+0から連番となる整数値．
+概要
+シグナルID型．
+
+3.2.2.3  Com_SignalGroupIdType
+データ型名
+Com_SignalGroupIdType【COMa013】
+型
+uint16
+値の範囲
+0..＜シグナルグループIDの最大値＞
+0から連番となる整数値．
+概要
+シグナルグループID型．
+
+3.2.2.4  Com_IpduGroupIdType
+データ型名
+Com_IpduGroupIdType【COMa014】
+型
+uint16
+値の範囲
+0..＜IPDUグループIDの最大値＞
+0から連番となる整数値．
+＜IPDUグループIDの最大値＞は，ComSupportedIPduGroups〔COM710_Conf〕に指定した値よりも小さくなくてはならない．
+概要
+IPDUグループID型．
+
+3.2.2.5  Com_IpduGroupVector
+データ型名
+Com_IpduGroupVector【COMa015】
+型
+uint8[(ComSupportedIPduGroups ? 1) / 8 + 1]
+値の範囲
+ビットフィールド
+概要
+IPDUグループベクタ型．IPDUグループの起動状態とデッドラインモニタリング状態を指定するために使われる．
+
+3.2.2.6  Com_ServiceIdType
+データ型名
+Com_ServiceIdType【COMa016】
+型
+uint8
+値の範囲
+COMServiceId_Init
+0x01
+
+COMServiceId_DeInit
+0x02
+
+COMServiceId_IpduGroupControl
+0x03
+
+COMServiceId_ReceptionDMControl
+0x06
+
+COMServiceId_GetStatus
+0x07
+
+COMServiceId_GetConfigurationId
+0x08
+
+COMServiceId_GetVersionInfo
+0x09
+
+COMServiceId_SendSignal
+0x0A
+
+COMServiceId_ReceiveSignal
+0x0B
+
+COMServiceId_SendSignalGroup
+0x0D
+
+COMServiceId_ReceiveSignalGroup
+0x0E
+
+COMServiceId_InvalidateSignal
+0x10
+
+COMServiceId_TriggerIPDUSend
+0x17
+
+COMServiceId_MainFunctionRx
+0x18
+
+COMServiceId_MainFunctionTx
+0x19
+
+COMServiceId_MainFunctionRouteSignals
+0x1A
+
+COMServiceId_InvalidateSignalGroup
+0x1B
+
+COMServiceId_ClearIpduGroupVector
+0x1C
+
+COMServiceId_SetIpduGroup
+0x1D
+
+COMServiceId_TpRxIndication
+0x1E
+
+COMServiceId_SendDynSignal
+0x21
+
+COMServiceId_ReceiveDynSignal
+0x22
+
+COMServiceId_CopyRxData
+0x23
+
+COMServiceId_CopyTxData
+0x24
+
+COMServiceId_StartOfReception
+0x25
+
+COMServiceId_TpTxConfirmation
+0x26
+
+COMServiceId_SwitchIpduTxMode
+0x27
+
+COMServiceId_TxConfirmation
+0x40
+
+COMServiceId_TriggerTransmit
+0x41
+
+COMServiceId_RxIndication
+0x42
+概要
+システムサービスID型．
+
+3.2.2.7  Com_ConfigType 
+データ型名
+Com_ConfigType【COMa017】
+型
+構造体型
+値の範囲
+実装仕様
+概要
+コンフィギュレーションデータ型．
+
+
+
+3.3  定数
+3.3.1  IPDU通信方向設定
+SEND
+定数名
+SEND
+概要
+送信側であることを示す定数
+
+RECEIVE
+定数名
+RECEIVE
+概要
+受信側であることを示す定数
+
+3.3.2  IPDU種別設定
+NORMAL
+定数名
+NORMAL
+概要
+通常通信を行うIPDUであることを示す定数
+
+TP
+定数名
+TP
+概要
+TP通信を行うIPDUであることを示す定数
+
+3.3.3  シグナル型設定
+BOOLEAN
+定数名
+BOOLEAN
+概要
+ブーリアン型であることを示す定数
+
+UINT8
+定数名
+UINT8
+概要
+8ビットの符号なし整数型であることを示す定数
+
+UINT16	
+定数名
+UINT16
+概要
+16ビットの符号なし整数型であることを示す定数
+
+UINT32	
+定数名
+UINT32
+概要
+32ビットの符号なし整数型であることを示す定数
+
+SINT8
+定数名
+SINT8
+概要
+8ビットの符号あり整数型であることを示す定数
+
+SINT16
+定数名
+SINT16
+概要
+16ビットの符号あり整数型であることを示す定数
+
+SINT32
+定数名
+SINT32
+概要
+32ビットの符号あり整数型であることを示す定数
+
+UINT8_N
+定数名
+UINT8_N
+概要
+8ビットの符号なし整数の配列型であることを示す定数
+
+UINT8_DYN
+定数名
+UINT8_DYN
+概要
+8ビットの符号なし整数の可変長配列型であることを示す定数
+
+FLOAT32
+定数名
+FLOAT32
+概要
+32ビットの浮動小数点型であることを示す定数
+
+FLOAT64
+定数名
+FLOAT64
+概要
+64ビットの浮動小数点型であることを示す定数
+
+3.3.4  エンディアン設定
+BIG_ENDIAN
+定数名
+BIG_ENDIAN
+概要
+ビックエンディアンであることを示す定数
+
+LITTLE_ENDIAN
+定数名
+LITTLE_ENDIAN
+概要
+リトルエンディアンであることを示す定数
+
+OPAQUE
+		定数名
+OPAQUE
+		概要
+オペークであることを示す定数
+
+3.3.5  フィルタアルゴリズム設定
+ALWAYS
+定数名
+ALWAYS
+		概要
+常に通過するフィルタであることを示す定数
+
+NEVER
+		定数名
+NEVER
+		概要
+常に通過しないフィルタであることを示す定数
+
+MASKED_NEW_DIFFERS_MASKED_OLD
+		定数名
+MASKED_NEW_DIFFERS_MASKED_OLD
+概要
+マスクした今回値とマスクした前回値を比較して，値が異なる場合のみ通過するフィルタであることを示す定数
+
+MASKED_NEW_DIFFERS_X
+		定数名
+MASKED_NEW_DIFFERS_X
+概要
+マスクした今回値とXの値を比較して，値が異なる場合のみ通過するフィルタであることを示す定数
+
+MASKED_NEW_EQUALS_X
+定数名
+MASKED_NEW_EQUALS_X
+概要
+マスクした今回値とXの値を比較して，値が一致する場合のみ通過するフィルタであることを示す定数
+
+NEW_IS_OUTSIDE
+定数名
+NEW_IS_OUTSIDE
+概要
+今回値が指定された範囲外の値である場合のみ通過するフィルタであることを示す定数
+
+NEW_IS_WITHIN
+定数名
+NEW_IS_WITHIN
+概要
+今回値が指定された範囲内の値である場合のみ通過するフィルタであること
+を示す定数
+
+ONE_EVERY_N
+定数名
+ONE_EVERY_N
+概要
+N回フィルタリングされる度に1回のみ通過するフィルタであることを示す定数
+
+3.3.6  送信モード設定
+DIRECT
+定数名
+DIRECT
+概要
+直接(N回)送信であることを示す定数
+
+PERIODIC
+定数名
+PERIODIC
+概要
+周期送信であることを示す定数
+
+MIXED
+定数名
+MIXED
+概要
+直接(N回)送信と周期送信を並行して行うことを示す定数
+
+3.3.7  送信プロパティ設定
+PENDING
+定数名
+PENDING
+概要
+送信トリガではないことを示す定数
+
+TRIGGERED
+定数名
+TRIGGERED
+概要
+送信トリガであることを示す定数
+
+TRIGGERED_ON_CHANGE
+定数名
+TRIGGERED_ON_CHANGE
+概要
+値の変更がある場合のみ送信トリガとなることを示す定数
+
+TRIGGERED_ON_CHANGE_WITHOUT_REPETITION
+定数名
+TRIGGERED_ON_CHANGE_WITHOUT_REPETITION
+概要
+値の変更がある場合のみ繰り返しなしの送信トリガとなることを示す定数
+
+TRIGGERED_WITHOUT_REPETITION
+定数名
+TRIGGERED_WITHOUT_REPETITION
+概要
+繰り返しなしの送信トリガとなることを示す定数
+
+3.3.8  通信完了通知タイミング設定
+DEFERRED
+定数名
+DEFERRED
+概要
+通信完了通知を周期関数で通知することを示す定数
+
+IMMEDIATE
+定数名
+IMMEDIATE
+概要
+通信完了通知を即時に通知することを示す定数
+
+3.3.9  アップデートビットクリアタイミング設定
+CONFIRMATION
+定数名
+CONFIRMATION
+概要
+送信完了通知を受け取った際にアップデートビットをクリアすることを示す定数
+
+TRANSMIT
+定数名
+TRANSMIT
+概要
+PduR_ComTransmitを呼び出した際にアップデートビットをクリアすることを示す定数
+
+TRIGGER_TRANSMIT
+定数名
+TRIGGER_TRANSMIT
+概要
+Com_TriggerTransmitによりIPDUがフェッチされた際にアップデートビットをクリアすることを示す定数
+
+3.3.10  エラー発生時処理設定
+NOTIFY
+定数名
+NOTIFY
+概要
+コールバック関数を呼び出してRTEへ通知することを示す定数
+
+REPLACE
+定数名
+REPLACE
+概要
+バッファの値を初期値に置き換えることを示す定数
+
+NONE
+定数名
+NONE
+概要
+特に何もしないことを示す定数
+
+3.3.11  システムサービス返り値
+COM_SERVICE_NOT_AVAILABLE
+定数名
+COM_SERVICE_NOT_AVAILABLE
+概要
+システムサービスが利用不可であることを示す定数
+
+COM_BUSY
+定数名
+COM_BUSY
+概要
+リソース使用中によるシステムサービス異常終了であることを示す定数
+
+3.3.12  無効値
+COM_INVALID_UINT8
+定数名
+COM_INVALID_UINT8
+概要
+8ビットの符号なし整数型のための無効値(0xFF)
+
+COM_INVALID_UINT16
+定数名
+COM_INVALID_UINT16
+概要
+16ビットの符号なし整数型のための無効値(0xFFFF)
+
+COM_INVALID_UINT32
+定数名
+COM_INVALID_UINT32
+概要
+32ビットの符号なし整数型のための無効値(0xFFFFFFFF)
+
+
+
+
+3.4  返り値
+　COMはシステムサービスの返り値のためのデータ型を定義しない．COMシステムサービスはStd_ReturnTypeの値，または，エラー通知のための定数を返す．
+　COMシステムサービスの返り値を以下の表 32に示す【COM459】．
+　
+　表 32 COMシステムサービスの返り値一覧
+返り値名
+値
+ファイル名
+概要
+E_OK
+0x00
+Std_Types.h
+システムサービス正常終了
+E_NOT_OK
+0x01
+Std_Types.h
+システムサービス異常終了
+COM_SERVICE_NOT_AVAILABLE
+0x80
+Com.h
+システムサービス利用不可
+COM_BUSY
+0x81
+Com.h
+リソース使用中によるシステムサービス異常終了
+
+
+3.5  エラーコード
+3.5.1  標準エラー
+　COMは標準エラーを定義しない．そのため，COMはDEMへのエラー通知を行わない．ただし，今後のバージョンにおいて標準エラーを定義した場合，COMはDEMへのエラー通知を行わなければならない．
+
+3.5.2  拡張エラー
+　COMは以下の表 33で示す拡張エラーを定義する【COM707】．
+
+　表 33 拡張エラーコード一覧
+エラーコード
+値
+概要
+COM_E_PARAM
+0x01
+不正な値を引数に与えてCOMシステムサービスを呼び出した
+COM_E_UNINIT
+0x02
+COMが未初期化状態(Com_Init呼び出し前またはCom_Deinit呼び出し後)の間にCOMシステムサービスを呼び出した
+COM_E_PARAM_POINTER
+0x03
+NULLポインタを引数に与えてCOMシステムサービスを呼び出した
+
+
+
+3.6  システムサービス
+3.6.1  Com_Init
+サービスID
+0x01
+C言語I/F
+void Com_Init(const Com_ConfigType* config) 【COM432】
+パラメータ
+[in]
+config
+コンフィギュレーション情報へのポインタ
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+COM_E_PARAM
+引数configが不正 〔COM433〕〔NCOM056〕
+
+
+既に初期化されている〔COM373〕
+同期/非同期
+同期
+再入可能/再入不可能
+再入不可能
+機能
+本システムサービスは，COMの初期化を行う．
+
+機能仕様
+　本システムサービスは，引数configにNULLポインタが指定された場合，コンフィギュレーションID(ComConfigurationId) が0のコンフィギュレーション情報をデフォルトとして使用する【NCOM040】．
+　引数に指定されたconfigが，設定されたコンフィギュレーション情報以外が指定された場合を不正とする【NCOM056】．
+　本システムサービスは，引数configに与えられたコンフィギュレーション情報が不正であり，かつ，DETエラーが有効である場合に，DETモジュールのDet_ReportErrorを利用してエラーコードCOM_E_PARAMを報告する【COM433】〔COM024〕．
+　ポストビルドタイムパラメータは，未使用時(つまり，未初期化時)にのみ更新できる〔COM373〕．
+　
+　本システムサービスの詳細な機能に関しては，「2.2.2 初期化処理」を参照．
+　
+設計上の注意
+　本システムサービスは，他のCOMシステムサービスの機能を実現してはならない．
+　
+使用上の注意
+　本システムサービスが呼び出されて正常終了しない限り，他のCOMシステムサービスは利用不可能である．なお，本システムサービスを呼び出しただけでは，ECU間通信は開始されない．
+　
+
+
+3.6.2  Com_DeInit
+サービスID
+0x02
+C言語I/F
+void Com_DeInit(void)【COM130】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM068】
+同期/非同期
+同期
+再入可能/再入不可能
+再入不可能
+機能
+本システムサービスは，COMの未初期化を行い，ECU間通信を終了させる．
+
+機能仕様
+　本システムサービスは，すべてのIPDUグループを停止する【COM129】．
+
+設計上の注意
+　本システムサービスは，他のCOMシステムサービスの機能を実現してはならない．
+
+
+
+3.6.3  Com_IpduGroupControl
+サービスID
+0x03
+C言語I/F
+void Com_IpduGroupControl(Com_IpduGroupVector ipduGroupVector, boolean initialize)【COM751】
+パラメータ
+[in]
+ipduGroupVector
+全IPDUグループに対して起動または停止を指定するためのIPDUグループベクタ
+(ベクタ値：停止 = 0，起動 = 1)
+
+
+initialize
+新たに起動されたIPDUの初期化を要求するフラグ
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM069】
+
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された【NCOM091】
+同期/非同期
+同期
+再入可能/再入不可能
+再入不可能
+機能
+本システムサービスは，全IPDUグループの起動および停止行う．
+
+機能仕様
+　本システムサービスは，引数ipduGroupVectorで指定された値に従って，IPDUグループの状態を起動状態または停止状態に設定する【COM612】．
+　本システムサービスは，〔COM612〕により状態が変更されたIPDUグループに対して，その状態に応じてIPDUグループの起動および停止を行う【COM613】．
+　本システムサービスは，〔COM613〕により起動したIPDUグループに所属しているIPDUに対して，〔COM787〕および〔COM222〕で定義されている(再)初期化処理を行う【COM614】．
+　本システムサービスは，〔COM612〕により状態が変更されなかったIPDUグループに対して，処理を行わない【COM615】．
+　
+
+
+3.6.4  Com_ReceptionDMControl
+サービスID
+0x06
+C言語I/F
+void Com_ReceptionDMControl(Com_IpduGroupVector ipduGroupVector)【COM752】
+パラメータ
+[in]
+ipduGroupVector
+全IPDUグループに対して受信DMの有効または無効を指定するためのIPDUグループベクタ
+(ベクタ値：無効 = 0，有効 = 1)
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM070】
+
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された【NCOM092】
+同期/非同期
+同期
+再入可能/再入不可能
+再入不可能
+機能
+本システムサービスは，全IPDUグループの受信DM無効化および有効化を行う．
+
+機能仕様
+　本システムサービスは，引数ipduGroupVectorで指定された値に従って，IPDUグループの受信DM状態を有効状態または無効状態に設定する【COM616】．
+　本システムサービスは，〔COM616〕により受信DM状態が変更されたIPDUグループに対して，受信DMの有効化および無効化を行う【COM617】．
+　本システムサービスは，〔COM616〕により受信DM状態が変更されなかったIPDUグループに対して，処理を行わない【COM618】．
+
+
+
+3.6.5  Com_GetStatus
+サービスID
+0x07
+C言語I/F
+Com_StatusType Com_GetStatus(void)【COM194】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+－
+返り値
+COM_UNINIT
+COM未初期化状態
+
+COM_INIT
+COM初期化状態
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+再入可能
+機能
+本システムサービスは，COMの現状態を返す．
+
+3.6.6  Com_GetConfigurationId
+サービスID
+0x08
+C言語I/F
+uint32 Com_GetConfigurationId(void)【COM375】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+－
+返り値
+ConfigurationId
+コンフィギュレーションID
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+再入不可能
+機能
+本システムサービスは，現在有効なコンフィギュレーションIDを返す．
+
+機能仕様
+　初期化前に本システムサービスが呼び出された場合，コンフィギュレーションIDが確定していないため，正しい値を返せない．
+　Com_Initが呼び出される前にCom_GetConfigurationIdが呼び出された場合，Com_GetConfigurationIdはCOM_INVALID_UINT32 (0xFFFFFFFF)を返す【NCOM001】．
+
+設計上の注意
+　コンフィギュレーションIDはコンフィギュレーション時に静的に指定され，COMによって変更することはできない【COM619】．
+　
+
+
+3.6.7  Com_GetVersionInfo
+サービスID
+0x09
+C言語I/F
+void Com_GetVersionInfo(Std_VersionInfoType* versioninfo)【COM426】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+versioninfo
+バージョン情報
+返り値
+－
+DETエラー
+COM_E_PARAM_POINTER
+引数にNULLポインタが指定された〔NCOM039〕
+同期/非同期
+同期
+再入可能/再入不可能
+再入可能
+機能
+本システムサービスは，COMのバージョン情報を返す．
+
+機能仕様
+　本システムサービスは，COMのバージョン情報として以下を返す【COM424】．
+・ ベンダID
+・ モジュールID
+・ SWメジャーバージョン
+・ SWマイナーバージョン
+・ SWパッチバージョン
+
+　本システムサービスは， COM_VERSION_INFO_APIの値によってプレコンパイル時に有効化または無効化される【COM425】．
+　引数versioninfoにNULLポインタが指定され，かつDETエラーが有効である場合，DETエラーCOM_E_PARAM_POINTERを通知する【NCOM039】．
+
+設計上の注意
+　本システムサービスの呼び出し元と呼び出し先のソースコードが利用可能である場合，本システムサービスはマクロとしてCom.hに定義される．
+
+
+
+
+3.6.8  Com_ClearIpduGroupVector 
+サービスID
+0x1c
+C言語I/F
+void Com_ClearIpduGroupVector(Com_IpduGroupVector ipduGroupVector)【COM749】
+パラメータ
+[in]
+－
+
+[in/out]
+ipduGroupVector
+クリアされるIPDUグループベクタ
+
+[out]
+－
+返り値
+－
+DETエラー
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された【NCOM093】
+同期/非同期
+同期
+再入可能/再入不可能
+再入不可能
+機能
+本システムサービスは，IPDUグループベクタの全ビットを0クリアする．
+
+3.6.9  Com_SetIpduGroup
+サービスID
+0x1d
+C言語I/F
+void Com_SetIpduGroup(Com_IpduGroupVector ipduGroupVector, Com_IpduGroupIdType ipduGroupId, boolean bitval)【COM750】
+パラメータ
+[in]
+ipduGroupId
+設定するIPDUグループのID
+
+
+bitval
+設定するビット値
+
+[in/out]
+ipduGroupVector
+設定されるIPDUグループベクタ
+
+[out]
+－
+返り値
+－
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM071】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM057〕
+
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された【NCOM094】
+同期/非同期
+同期
+再入可能/再入不可能
+再入不可能
+機能
+本システムサービスは，IPDUグループベクタのうち，IPDUグループIDに対応する位置のビット値を，指定されたビット値に設定する．
+
+機能仕様
+　本システムサービスは，引数ipduGroupVectorで渡されたIPDUグループベクタのうち，引数ipduGroupIdで指定されたIPDUグループIDに対応する位置のビット値を，引数bitvalで指定されたビット値に設定する【COM623】．
+　引数に指定されたIPDUグループ数が，コンフィギュレーション時に設定されたIPDUグループ数と等しいか，それより大きい場合を不正とする【NCOM057】．
+
+
+3.6.10  Com_SendSignal
+サービスID
+0x0a
+C言語I/F
+uint8 Com_SendSignal(Com_SignalIdType SignalId, const void* SignalDataPtr)【COM197】
+パラメータ
+[in]
+SignalId
+送信するシグナルのID
+
+
+SignalDataPtr
+送信するシグナルデータへのポインタ
+
+[in/out]
+－
+
+[out]
+－
+返り値
+E_OK
+送信成功
+
+COM_SERVICE_
+NOT_AVAILABLE
+対応するIPDUグループが停止している
+(または，DETエラー発生により異常終了した)
+
+COM_BUSY
+大型データ処理のため，TPバッファがロックされている
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM072】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM058〕
+
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された【NCOM073】
+同期/非同期
+非同期
+再入可能/再入不可能
+同じシグナルに対しては再入不可能．違うシグナルに対しては再入可能．
+機能
+本システムサービスは，シグナルを送信する．
+
+機能仕様
+　本システムサービスは，引数SignalIdで指定されたシグナルIDに対応するシグナルバッファを，引数SignalDataPtrで指定されたシグナルデータで更新する【COM624】．
+　〔COM624〕で更新されたシグナルのComTransferProperty にTRIGGEREDが指定されており，かつ，そのシグナルが所属しているIPDUのComTxModeMode にDIRECTまたはMIXEDが指定されている場合，本システムサービスは，他のCOMシステムサービスによって遅延されない限り，そのIPDUの送信を即時に行う【COM625】〔NCOM006〕．
+　引数に指定されたシグナルIDが，コンフィギュレーション時に設定されたIPDUに所属するシグナル数と等しいか，それより大きい場合を不正とする【NCOM058】．
+　
+設計上の注意
+　本システムサービスに関連する機能として，MDTやオフセット送信が挙げられる．
+　大型データ通信は本バージョン対象外の機能であるため，返り値COM_BUSYは対象外となる．
+
+
+3.6.11  Com_SendDynSignal
+サービスID
+0x21
+C言語I/F
+uint8 Com_SendDynSignal(Com_SignalIdType SignalId, const void* SignalDataPtr, uint16 Length)【COM627】
+パラメータ
+[in]
+SignalId
+送信するシグナルのID
+
+
+SignalDataPtr
+送信するシグナルデータへのポインタ
+
+
+Length
+送信するシグナルの長さ
+
+[in/out]
+－
+
+[out]
+－
+返り値
+E_OK
+送信成功
+
+E_NOT_OK
+引数Lengthで指定された値が，対象シグナルのComSignalLengthで指定された値よりも大きい
+
+COM_SERVICE_NOT_AVAILABLE
+対応するIPDUグループが停止している
+(または，DETエラー発生により異常終了した)
+
+COM_BUSY
+大型データ処理のため，TPバッファがロックされている
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM085】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM086〕
+
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された【NCOM087】
+同期/非同期
+非同期
+再入可能/再入不可能
+同じシグナルに対しては再入不可能．違うシグナルに対しては再入可能．
+機能
+本システムサービスは，可変長シグナルを送信する．
+
+機能仕様
+　本システムサービスは，引数SignalIdで指定されたシグナルIDに対応するシグナルバッファを，引数SignalDataPtrで指定されたシグナルデータで更新する【COM628】．
+　〔COM628〕で更新されたシグナルのComTransferProperty にTRIGGEREDが指定されており，そのシグナルが所属しているIPDUのComTxModeMode にDIRECTまたはMIXEDが指定されている場合，本システムサービスは，そのIPDUの送信を即時に行う【COM629】．
+　〔COM628〕で更新されたシグナルのComTransferProperty にPENDINGが指定されている場合，本システムサービスは，そのシグナルが所属しているIPDUの送信は行わない【COM630】．
+　引数に指定されたシグナルIDが，コンフィギュレーション時に設定されたIPDUに所属するシグナル数と等しいか，それより大きい場合を不正とする【NCOM086】．
+設計上の注意
+　可変長シグナル通信は本バージョン対象外の機能であるため，本システムサービスは対象外である．
+
+使用上の注意
+　可変長シグナルの長さの最大値はComSignalLength に指定した値を超えてはならないが，最小値に対する制限はない．したがって，可変長シグナルの長さをゼロに指定することも可能である．
+
+
+3.6.12  Com_ReceiveSignal
+サービスID
+0x0b
+C言語I/F
+uint8 Com_ReceiveSignal(Com_SignalIdType SignalId, void* SignalDataPtr)【COM198】
+パラメータ
+[in]
+SignalId
+受信するシグナルのID
+
+[in/out]
+－
+
+[out]
+SignalDataPtr
+受信したシグナルデータの格納場所へのポインタ
+返り値
+E_OK
+受信成功
+
+COM_SERVICE_NOT_AVAILABLE
+対応するIPDUグループが停止している
+(または，DETエラー発生により異常終了した)
+
+COM_BUSY
+大型データ処理のため，TPバッファがロックされている
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM074】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM059〕
+
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された【NCOM075】
+同期/非同期
+同期
+再入可能/再入不可能
+同じシグナルに対しては再入不可能．違うシグナルに対しては再入可能．
+機能
+本システムサービスは，シグナルを受信する．
+
+機能仕様
+　本システムサービスは，引数SignalIdで指定されたシグナルIDに対応するシグナルバッファのデータを，引数SignalDataPtrで指定された位置に格納する【COM631】．
+　引数に指定されたシグナルIDが，コンフィギュレーション時に設定されたIPDUに所属するシグナル数と等しいか，それより大きい場合を不正とする【NCOM059】．
+　本システムサービスが呼び出された場合，対応するIPDU内を引数SignalDataPtrのデータで常に更新する．よって，そのIPDUの受信があった場合は最新の受信データで更新し，そのIPDUの受信がなかった場合はシグナルの初期値ComSignalInitValueで更新する．この更新は，たとえIPDUが停止しており，COM_SERVICE_NOT_AVAILABLEが返された場合でも行う【COMa019】．
+
+設計上の注意
+　大型データ通信は本バージョン対象外の機能であるため，返り値COM_BUSYは対象外となる．
+
+使用上の注意
+　本システムサービスは，シグナルバッファの更新を行わない．
+
+
+3.6.13  Com_ReceiveDynSignal 
+サービスID
+0x22
+C言語I/F
+uint8 Com_ReceiveDynSignal(Com_SignalIdType SignalId, void* SignalDataPtr, uint16* Length)【COM690】
+パラメータ
+[in]
+SignalId
+受信するシグナルのID
+
+[in/out]
+Length
+in ：受信可能な長さの最大値
+out：受信したシグナルの長さ
+
+[out]
+SignalDataPtr
+受信したシグナルデータの格納場所へのポインタ
+返り値
+E_OK
+受信成功
+
+E_NOT_OK
+引数Lengthで指定された値が，受信したシグナルの長さよりも小さい
+
+COM_SERVICE_NOT_AVAILABLE
+対応するIPDUグループが停止している
+(または，DETエラー発生により異常終了した)
+
+COM_BUSY
+TPバッファがロックされている
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM088】
+
+COM_E_PARAM	
+引数に不正な値が指定された〔NCOM089〕
+
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された【NCOM090】
+同期/非同期
+同期
+再入可能/再入不可能
+同じシグナルに対しては再入不可能．違うシグナルに対しては再入可能．
+機能
+本システムサービスは，可変長シグナルを受信する．
+
+機能仕様
+　本システムサービスは，引数SignalIdで指定されたシグナルIDに対応するシグナルバッファのデータを，引数SignalDataPtrで指定された位置に格納する【COM711】．
+　本システムサービスは，引数SignalIdで指定されたシグナルIDに対応するシグナルバッファのデータの長さを，引数Lengthで指定された位置に格納する【COM712】．
+　本システムサービスは，引数Lengthで指定された受信可能な長さの最大値よりも受信したシグナルの長さの方が長い場合，〔COM711〕と〔COM712〕の処理を行わない【COM724】．
+　引数に指定されたシグナルIDが，コンフィギュレーション時に設定されたIPDUに所属するシグナル数と等しいか，それより大きい場合を不正とする【NCOM089】．
+
+設計上の注意
+　可変長シグナル通信は本バージョン対象外の機能であるため，本システムサービスは対象外である．
+
+
+3.6.14  Com_SendSignalGroup
+サービスID
+0x0d
+C言語I/F
+uint8 Com_SendSignalGroup(Com_SignalGroupIdType SignalGroupId)【COM200】
+パラメータ
+[in]
+SignalGroupId
+送信するシグナルグループのID
+
+[in/out]
+－
+
+[out]
+－
+返り値
+E_OK
+送信成功
+
+COM_SERVICE_NOT_AVAILABLE
+対応するIPDUグループが停止している
+(または，DETエラー発生により異常終了した)
+
+COM_BUSY
+大型データ通信のため，TPバッファがロックされている
+　DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM076】
+
+COM_E_PARAM	
+引数に不正な値が指定された〔NCOM060〕
+同期/非同期
+非同期
+再入可能/再入不可能
+同じグループシグナルに対しては再入不可能．違うグループシグナルに対しては再入可能．
+機能
+本システムサービスは，シャドウバッファのデータでIPDUを更新する．
+
+機能仕様
+　本システムサービスは，引数SignalGroupIdで指定されたシグナルグループのシャドウバッファのデータでIPDUを更新する【COM635】．
+　引数に指定されたシグナルグループIDが，コンフィギュレーション時に設定されたIPDUに所属するシグナルグループ数と等しいか，それより大きい場合を不正とする【NCOM060】．
+
+使用上の注意
+　本システムサービスを使用する場合，コンフィギュレーション時にシグナルグループを設定する必要がある【COM637】〔COM345_Conf〕．
+　本システムサービスを呼び出す前に，Com_SendSignalを呼び出して対象のシグナルグループのシャドウバッファを更新しなければならない【COM636】．
+　大型データ通信は本バージョン対象外の機能であるため，返り値COM_BUSYは対象外となる．
+
+
+3.6.15  Com_ReceiveSignalGroup 
+サービスID
+0x0e
+C言語I/F
+uint8 Com_ReceiveSignalGroup(Com_SignalGroupIdType SignalGroupId)【COM201】
+パラメータ
+[in]
+SignalGroupId
+受信するシグナルグループのID
+
+[in/out]
+－
+
+[out]
+－
+返り値
+E_OK
+送信成功
+
+COM_SERVICE_NOT_AVAILABLE
+対応するIPDUグループが停止している
+(または，DETエラー発生により異常終了した)
+
+COM_BUSY
+大型データ通信のため，TPバッファがロックされている
+　DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM077】
+
+COM_E_PARAM	
+引数に不正な値が指定された〔NCOM061〕
+同期/非同期
+同期
+再入可能/再入不可能
+同じグループシグナルに対しては再入不可能．違うグループシグナルに対しては再入可能．
+機能
+本システムサービスは，IPDU内のデータでシャドウバッファを更新する．
+
+機能仕様
+　本システムサービスは，引数SignalGroupIdで指定されたシグナルグループが所属するIPDUからデータを取り出し，対応するシャドウバッファを更新する【COM638】．
+　本システムサービスを使用する場合，コンフィギュレーション時にシグナルグループを設定する必要がある【COM639】〔COM345_Conf〕．
+　本システムサービスが呼び出された場合，対応するIPDU内のデータでシャドウバッファを常に更新する．よって，そのIPDUの受信があった場合は最新の受信データで更新し，そのIPDUの受信がなかった場合はグループシグナルの初期値ComSignalInitValue で更新する．この更新は，たとえIPDUが停止しており，COM_SERVICE_NOT_AVAILABLEが返された場合でも行う【COM461】．
+　引数に指定されたシグナルグループIDが，コンフィギュレーション時に設定されたIPDUに所属するシグナルグループ数と等しいか，それより大きい場合を不正とする【NCOM061】．
+
+使用上の注意
+　RTEがCom_ReceiveSignalを呼び出してシャドウバッファのデータを取り出すためには，事前に本システムサービスを呼び出す必要がある．
+　大型データ通信は本バージョン対象外の機能であるため，返り値COM_BUSYは対象外となる．
+
+
+3.6.16  Com_InvalidateSignal 
+サービスID
+0x10
+C言語I/F
+uint8 Com_InvalidateSignal(Com_SignalIdType SignalId)【COM203】
+パラメータ
+[in]
+SignalId
+無効化するシグナルのID
+
+[in/out]
+－
+
+[out]
+－
+返り値
+E_OK
+無効化成功
+
+COM_SERVICE_NOT_AVAILABLE
+対応するIPDUグループが停止している，または，指定されたシグナルに無効値が設定されていない
+(または，DETエラー発生により異常終了した)
+
+COM_BUSY
+大型データ処理のため，TPバッファがロックされている
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM078】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM062〕
+同期/非同期
+非同期
+再入可能/再入不可能
+同じシグナルに対しては再入不可能．違うシグナルに対しては再入可能．
+機能
+本システムサービスは，シグナルを無効化する．
+
+機能仕様
+　本システムサービスは，引数SignalIdで指定されたシグナルを無効化した後，内部でCom_SendSignalを呼び出すことで無効値を送信する【COM642】〔COM099〕．
+　本システムサービスは，引数SignalIdで指定されたシグナル(ComSignal )に無効値(ComSignalDataInvalidValue )が設定されていない場合，COM_SERVICE_NOT_AVAILABLEを返す【COM643】．
+　引数に指定されたシグナルIDが，コンフィギュレーション時に設定されたIPDUに所属するシグナル数と等しいか，それより大きい場合を不正とする【NCOM062】．
+
+設計上の注意
+　大型データ通信は本バージョン対象外の機能であるため，返り値COM_BUSYは対象外となる．
+
+
+3.6.17  Com_InvalidateSignalGroup
+サービスID
+0x1b
+C言語I/F
+uint8 Com_InvalidateSignalGroup(Com_SignalGroupIdType SignalGroupId)【COM557】
+パラメータ
+[in]
+SignalGroupId
+無効化するシグナルグループのID
+
+[in/out]
+－
+
+[out]
+－
+返り値
+E_OK
+無効化成功
+
+COM_SERVICE_NOT_AVAILABLE
+対応するIPDUグループが停止している，または，指定されたシグナルグループに所属しているグループシグナルのいずれかに無効値が設定されていない
+(または，DETエラー発生により異常終了した)
+
+COM_BUSY
+大型データ通信のため，TPバッファがロックされている
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM079】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM063〕
+　同期/非同期
+非同期
+再入可能/再入不可能
+同じシグナルグループに対しては再入不可能．違うシグナルグループに対しては再入可能．
+機能
+本システムサービスは，シグナルグループを無効化する．
+
+機能仕様
+　本システムサービスは，引数SignalGroupIdで指定されたシグナルを無効化した後，内部でCom_SendSignalGroupを呼び出すことで無効値を送信する【COM645】
+　引数に指定されたシグナルグループIDが，コンフィギュレーション時に設定されたIPDUに所属するシグナルグループ数と等しいか，それより大きい場合を不正とする【NCOM063】．
+　
+ 設計上の注意
+　大型データ通信は本バージョン対象外の機能であるため，返り値COM_BUSYは対象外となる．
+
+
+3.6.18  Com_TriggerIPDUSend
+サービスID
+0x17
+C言語I/F
+void Com_TriggerIPDUSend(PduIdType PduId)【COM348】
+パラメータ
+[in]
+PduId
+トリガ送信するIPDUのID
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM080】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM064〕
+同期/非同期
+同期
+再入可能/再入不可能
+再入不可能．
+機能
+本システムサービスは，IPDUをトリガ送信する．
+
+機能仕様
+　本システムサービスは，IPDU送信時にMDTのみを考慮し，必要に応じて送信の延期やMDTタイマのリセットを行う．送信モードは考慮しない【COM388】．
+　本システムサービスは，引数PduIdで指定されたIPDUにコールアウト関数が設定されている場合は，そのコールアウト関数を呼び出す【COM492】〔COM387_Conf〕．
+　引数に指定されたIPDU数が，コンフィギュレーション時に設定されたIPDU数と等しいか，それより大きい場合を不正とする【NCOM064】．
+
+使用上の注意
+　本システムサービス実行中に，再度本システムサービスの呼び出す場合，アプリケーションプログラマは無限再帰を作成しないように注意すること．本システムサービスを，同じComPduIdで呼び出すことによる直接再帰と，長い再帰パスを持つ間接再帰は，理論上可能である．
+
+
+3.6.19  Com_SwitchIpduTxMode
+サービスID
+0x27
+C言語I/F
+void Com_SwitchIpduTxMode(PduIdType PduId, boolean Mode)【COM784】
+パラメータ
+[in]
+PduId
+送信モードを変更するIPDUのID
+
+
+Mode
+送信モード
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM081】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM065〕
+同期/非同期
+同期
+再入可能/再入不可能
+同じIPDUに対しては再入不可能．異なるIPDUに対しては再入可能．
+機能
+本システムサービスは，IPDUの送信モードを変更する．
+
+機能仕様
+　本システムサービスは，引数PduIdで指定されたIPDUの送信モードを，引数Modeで指定された送信モードで更新する．送信モードが変更された場合，新しい送信モードが即時に有効となる．なお，引数PduIdで指定されたIPDUの送信モードが，引数Modeで指定された送信モードと既に同じ場合，本システムサービスは何もしない．【COMa018】
+　引数に指定されたIPDU数が，コンフィギュレーション時に設定されたIPDU数と等しいか，それより大きい場合を不正とする【NCOM065】．
+
+使用上の注意
+　ユーザは，本システムサービスを呼び出すことによる送信モード変更と，Com_SendSignalまたはCom_SendSignalGroupの呼び出しによる送信モード変更(TMS)を併用する場合，より直近に変更された送信モードが有効となることを考慮して使用しなければならない．
+
+
+3.7  コールバック関数
+3.7.1  Com_TriggerTransmit
+サービスID
+0x41
+C言語I/F
+Std_ReturnType Com_TriggerTransmit(PduIdType TxPduId, PduInfoType* PduInfoPtr)【COM001】
+パラメータ
+[in]
+TxPduId
+トリガ送信するIPDUのID
+
+[in/out]
+－
+
+[out]
+PduInfoPtr
+送信するSDUデータの格納場所へのポインタ
+返り値
+E_OK
+SDUのトリガ送信成功
+
+E_NOT_OK
+SDUのトリガ送信失敗
+(PduInfoPtrはNULLポインタとなる可能性がある)
+DETエラー
+COM_E_PARAM
+引数に不正な値が指定された
+
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された
+同期/非同期
+同期
+再入可能/再入不可能
+同じSDUに対しては再入不可能．異なるSDUに対しては再入可能．
+機能
+本システムサービスは，下位層のモジュールからの送信要求を受けて，SDUをトリガ送信する．
+
+機能仕様
+　本システムサービスは，引数TxPduIdで指定されたIPDUのデータのうち，SDUデータを引数PduInfoPtrで指定された場所のPduInfoPtr->SduDataPtrに格納し，そのSDUデータの長さをPduInfoPtr->SduLengthに格納する【COM647】．
+　本システムサービスは，MDTを考慮せず，MDTタイマのリセットも行わない【COM475】．
+　引数TxPduIdで指定されたIPDUが所属しているIPDUグループが停止している場合，本システムサービスはE_NOT_OKを返すが，〔COM647〕で要求されている処理は行う．したがって，本システムサービスを呼び出した下位層のモジュール(PduR)は，E_NOT_OKが返された場合のPduInfoPtrの取り扱いを判断する必要がある．
+　本システムサービスは，引数TxPduIdで指定されたIPDUのIPDU種別ComIPduTypeがNORMALである場合，送信モードに関わらず処理を行う【COM260】．
+　本システムサービスは，割込みにより呼び出される可能性がある【COM648】．
+　
+設計上の注意
+　本バージョン対象外の機能であるため，本システムサービスは対象外である．
+
+
+3.7.2  Com_RxIndication
+サービスID
+0x42
+C言語I/F
+void Com_RxIndication(PduIdType RxPduId, PduInfoType* PduInfoPtr)【COM123】
+パラメータ
+[in]
+RxPduId
+受信したIPDUのID
+
+
+PduInfoPtr
+受信したIPDUデータへのポインタ
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+　DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM082】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM066〕
+
+COM_E_PARAM_
+POINTER
+引数にNULLポインタが指定された【NCOM083】
+同期/非同期
+同期
+再入可能/再入不可能
+同じIPDUに対しては再入不可能．異なるIPDUに対しては再入可能．
+機能
+本システムサービスは，下位層のモジュール(PduR)からのIPDU受信通知を受け付ける．
+
+機能仕様
+　本システムサービスは割込みにより呼び出される可能性があるため，データの整合性を保証する【COM649】．
+　引数に指定されたIPDU数が，コンフィギュレーション時に設定されたIPDU数と等しいか，それより大きい場合を不正とする【NCOM066】．
+
+
+
+3.7.3  Com_TpRxIndication
+サービスID
+0x1e
+C言語I/F
+void Com_TpRxIndication(PduIdType PduId, NotifResultType Result)【COM650】
+パラメータ
+[in]
+RxPduId
+受信したIPDUのID
+
+
+Result
+NTFRSLT_OK
+IPDU受信成功し，受信バッファにデータが格納されている
+
+
+
+上記以外
+IPDU受信失敗
+(受信バッファのロック解除が可能)
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+同じIPDUに対しては再入不可能．異なるIPDUに対しては再入可能．
+機能
+本システムサービスは，下位層のモジュール(PduR)からの大型IPDUまたは可変長IPDUの受信通知を受け付ける．
+
+機能仕様
+　本システムサービスは割込みにより呼び出される可能性があるため，データの整合性を保証する【COM651】．
+　
+設計上の注意
+　大型データ通信および可変長データ通信は本バージョン対象外の機能であるため，本システムサービスは対象外である．
+
+
+3.7.4  Com_TxConfirmation
+サービスID
+0x40
+C言語I/F
+void Com_TxConfirmation(PduIdType TxPduId)【COM124】
+パラメータ
+[in]
+TxPduId
+送信したIPDUのID
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+　DETエラー
+COM_E_UNINIT
+初期化未実施【NCOM084】
+
+COM_E_PARAM
+引数に不正な値が指定された〔NCOM067〕
+同期/非同期
+同期
+再入可能/再入不可能
+同じIPDUに対しては再入不可能．異なるIPDUに対しては再入可能．
+機能
+本システムサービスは，下位層のモジュール(PduR)からのIPDU送信完了通知を受け付ける．
+
+機能仕様
+　本システムサービスは割込みにより呼び出される可能性があるため，データの整合性を保証する【COM652】．
+　引数に指定されたIPDU数が，コンフィギュレーション時に設定されたIPDU数と等しいか，それより大きい場合を不正とする【NCOM067】．
+
+
+3.7.5  Com_TpTxConfirmation
+サービスID
+0x26
+C言語I/F
+void Com_TpTxConfirmation(PduIdType PduId, NotifResultType Result)【COM725】
+パラメータ
+[in]
+PduId
+送信したIPDUのID
+
+
+Result
+IPDU送信結果
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+同じIPDUに対しては再入不可能．異なるIPDUに対しては再入可能．
+機能
+本システムサービスは，下位層のモジュール(PduR)からの大型IPDUまたは可変長IPDUの送信完了通知を受け付ける．
+
+設計上の注意
+　大型データ通信および可変長データ通信は本バージョン対象外の機能であるため，本システムサービスは対象外である．
+
+
+3.7.6  Com_StartOfReception
+サービスID
+0x25
+C言語I/F
+BufReq_ReturnType Com_StartOfReception(PduIdType ComRxPduId, PduLengthType TpSduLength, PduLengthType* RxBufferSizePtr)【COM691】
+パラメータ
+[in]
+ComRxPduId
+TPで受信するIPDUのID
+
+
+TpSduLength
+TPで受信するIPDUの長さ
+
+[in/out]
+－
+
+[out]
+RxBufferSizePtr
+内部TPの受信バッファサイズの格納場所へのポインタ
+返り値
+BUFREQ_OK
+接続が確立された(RxBufferSizePtrには受信可能なバッファサイズが格納されている)
+
+BUFREQ_E_NOT_OK
+接続が拒否された(RxBufferSizePtrは更新されない)
+
+BUFREQ_E_OVFL
+PDU長(PduLength)がTpSduLengthより小さい
+
+BUFREQ_E_BUSY
+受信バッファが新しい受信を受け付けられない
+(実装依存)
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+同じIPDUに対しては再入不可能．異なるIPDUに対しては再入可能．
+機能
+本システムサービスは，内部TPの受信バッファサイズを返す．
+
+機能仕様
+　本システムサービスは，引数ComRxPduIdで指定されたIPDUが大型IPDUであり，かつ，引数TpSduLengthで指定された値がコンフィギュレーション時のIPDUの長さより大きい場合，BUFREQ_E_OVFLを返す【COM654】．
+　本システムサービスは，引数ComRxPduIdで指定されたIPDUが可変長IPDUであり，かつ，引数TpSduLengthで指定された値がコンフィギュレーション時のIPDUの長さより大きい場合，BUFREQ_E_OVFLを返す【COM655】．
+　本システムサービスは，引数ComRxPduIdで指定されたIPDUが可変長IPDUである場合，引数TpSduLengthを用いて，そのIPDUに所属している可変長シグナルの長さを計算する【COM656】．
+　本システムサービスは，COM内部のTPバッファがロックされておらず，かつ，引数TpSduLengthで指定された値がコンフィギュレーション時のIPDUの長さより小さい場合，引数RxBufferSizePtrで指定された場所に引数ComRxPduIdで指定されたIPDUのバッファサイズを格納する【COM657】．
+　本システムサービスは，引数ComRxPduIdで指定されたIPDUが所属しているIPDUグループが停止している場合，BUFREQ_E_NOT_OKを返す【COM721】．
+
+設計上の注意
+　大型データ通信および可変長データ通信は本バージョン対象外の機能であるため，本システムサービスは対象外である．
+
+
+3.7.7  Com_CopyRxData
+サービスID
+0x23
+C言語I/F
+BufReq_ReturnType Com_CopyRxData(PduIdType PduId, const PduInfoType* PduInfoPointer, PduLengthType* RxBufferSizePtr)【COM692】
+パラメータ
+[in]
+PduId
+TPで受信するIPDUのID
+
+
+PduInfoPointer
+TPで受信するIPDUデータへのポインタ(受信する長さ(SduLength)と受信するデータ(SduDataPtr)が含まれる)
+SduLengthにゼロを指定した場合，使用可能な受信バッファのサイズが取得できるが，PduInfoPtrは不正なデータとなる
+
+[in/out]
+－
+
+[out]
+RxBufferSizePtr
+TPバッファのサイズへのポインタ
+返り値
+BUFREQ_OK
+受信データのコピー成功
+
+BUFREQ_E_NOT_OK
+受信データのコピー失敗
+
+BUFREQ_E_BUSY
+受信バッファが使用不可能
+(実装依存)
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+同じIPDUに対しては再入不可能．異なるIPDUに対しては再入可能．
+機能
+本システムサービスは，受信データをTPバッファにコピーする．
+
+機能仕様
+　本システムサービスは，割込みにより呼び出される可能性があるため，データの整合性を保証する【COM658】．
+　本システムサービスは，引数PduIdで指定されたIPDUの所属IPDUグループが停止している場合，BUFREQ_E_NOT_OKを返し，データはコピーしない【COM782】．
+
+設計上の注意
+　大型データ通信および可変長データ通信は本バージョン対象外の機能であるため，本システムサービスは対象外である．
+　
+使用上の注意
+　本システムサービスは，Com_StartOfReceptionの呼び出しにより接続が有効化されている場合のみ有効となる．
+
+3.7.8  Com_CopyTxData
+サービスID
+0x24
+C言語I/F
+BufReq_ReturnType Com_CopyTxData(PduIdType PduId, PduInfoType* PduInfoPtr, RetryInfoType* RetryInfoPtr, PduLengthType* TxDataCntPtr)【COM693】
+パラメータ
+[in]
+PduId
+TPで送信するIPDUのID
+
+
+PduInfoPtr
+TPで送信するIPDUデータへのポインタ(送信するデータ(SduDataPtr)とその長さ(SduLength)が含まれる)である．SduLengthにゼロを指定した場合は送信可能なデータサイズが取得できるが，PduInfoPtrは不正なデータとなる．
+
+
+RetryInfoPtr
+大型IPDUの送信が完了または中止されるまで，常に完全なバッファを保持しているため，COMはこのポインタの値を無視する
+
+[in/out]
+－
+
+[out]
+TxDataCntPtr
+残りの送信データサイズ
+返り値
+BUFREQ_OK
+送信データのコピー成功
+
+BUFREQ_E_NOT_OK
+送信データのコピー失敗
+
+BUFREQ_E_BUSY
+TPバッファが使用不可能
+(実装依存)
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+同じIPDUに対しては再入不可能．異なるIPDUに対しては再入可能．
+機能
+本システムサービスは，大型IPDUの送信データを送信TPバッファにコピーして，TxDataCntPtrに残りの送信データのサイズを格納する．
+
+機能仕様
+　本システムサービスは，以下を考慮する【COM663】．
+・ 割込みにより呼び出される可能性があるため，データの整合性が取れていること
+・ ComPduIdがPduR_ComTransmitのIDと一致していること
+　本システムサービスは，引数PduIdで指定されたIPDUの所属しているIPDUグループが停止している場合，BUFREQ_E_NOT_OKを返し，データはコピーしない【COM783】．
+
+
+
+3.8  周期関数
+3.8.1  Com_MainFunctionRx
+サービスID
+0x18
+C言語I/F
+void Com_MainFunctionRx(void)【COM398】
+起動タイミング
+FIXED_CYCLIC
+DETエラー
+－
+機能
+本システムサービスは，受信処理を周期的に行う．
+
+機能仕様
+　事前にCom_Initが呼び出されてCOMの初期化が完了しない限り，本システムサービスは処理を何もせずに終了する【COM664】．
+
+3.8.2  Com_MainFunctionTx 
+サービスID
+0x19
+C言語I/F
+void Com_MainFunctionTx(void)【COM399】
+起動タイミング
+FIXED_CYCLIC
+DETエラー
+－
+機能
+本システムサービスは，送信処理を周期的に行う．
+
+機能仕様
+　事前にCom_Initが呼び出されてCOMの初期化が完了しない限り，本システムサービスは処理を何もせずに終了する【COM665】．
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，即時送信対象のシグナルに対してCom_SendSignalが発行された場合に，Com_SendSignalの中でPduR_ComTransmitを呼び出すか，次回のCom_MainFunctionTx実行時に呼び出すかは，実装依存となっている．
+　本仕様では，次回のCom_MainFunctionTx実行時に，PduR_ComTransmitを呼び出すこととする【NCOM006】．
+　よって，ユーザがCom_MainFunctionTxの起動周期(ComTxTimeBase) に指定した時間によっては， Com_SendSignalを呼び出してからPduR_ComTransmitが呼び出されるまでの間隔が開いてしまう場合もあるため，注意すること．
+
+
+3.8.3  Com_MainFunctionRouteSignals
+サービスID
+0x1a
+C言語I/F
+void Com_MainFunctionRouteSignals(void)【COM400】
+起動タイミング
+FIXED_CYCLIC
+DETエラー
+－
+機能
+本システムサービスは，シグナルゲートウェイの処理を周期的に行う．
+　
+機能仕様
+　事前にCom_Initが呼び出されてCOMの初期化が完了しない限り，本システムサービスは処理を何もせずに終了する【COM666】．
+　本システムサービスは，以下を考慮する【COM667】．
+・ 起動周期(おそらく従来のタスクまたはスレッドのサイクル)は直接シグナルゲートウェイの待ち時間に影響を与えること
+・ 非干渉受信割込みおよびシグナルゲートウェイタスクのための呼び出しを挿入すること
+　本システムサービスを周期的に起動するための周期タスクを設定する必要がある【COM668】〔COM186_Conf〕．
+　
+設計上の注意
+　シグナルゲートウェイは本バージョン対象外の機能であるため，本システムサービスは対象外となる．
+
+
+
+3.9  依存インタフェース
+3.9.1  必須インタフェース
+　本COMの機能を実現するために，表 34で示すインタフェースが必要となる【COM669】．
+　
+　表 34 必須インタフェース
+システムサービス名
+概要
+PduR_ComTransmit
+PduRに対して，IPDUの送信を要求するためのシステムサービス．
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，〔COM669〕においてDem_ReportErrorStatusも必須インタフェースと定義している．しかし，COMは標準エラーを持たないため，DEMへの報告が不要である．よって，必須インタフェース一覧からDem_ReportErrorStatusを削除した．
+
+3.9.2  任意インタフェース
+　本COMの任意の機能を実現するために，表 35で示すインタフェースが必要となる【COM670】．
+　
+　表 35 任意インタフェース
+システムサービス名
+概要
+Det_ReportError
+BSWモジュールから報告されたイベントをキューに入れるためのシステムサービス(BSWモジュールのみが使用する)．報告されたイベントに対する処理自体はDemのメイン関数内で行う．
+PduR_ComCancelTransmit
+PduRに対して，IPDUの送信を要求するためのシステムサービス．
+
+　Det_ReportErrorは，DET使用有無ComConfigurationUseDetにTRUEが設定された場合に有効となり，FALSEが設定された場合に無効となる〔COM141_Conf〕．
+　PduR_ComCancelTransmitは，送信キャンセルサポートComTxIPduCancelTransmitSupportにTRUEが設定されたIPDUが存在する場合に有効となり，そうでない場合に無効となる〔COM709_Conf〕．
+
+
+
+3.9.3  コンフィギュレーション可能なインタフェース
+3.9.3.1  コールバック関数
+　コールバック関数は割込みレベルまたはタスクレベルで実行されるため，それぞれのレベルのOS制約が適用される．
+
+3.9.3.1.1  Com_CbkTxAck
+C言語I/F
+void Com_CbkTxAck(void)【COM468】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+考慮しない
+機能
+本コールバック関数は，IPDU送信成功を通知する．
+
+コンフィギュレーション仕様
+　本コールバック関数は，送信側でのみ呼び出される．
+　本コールバック関数は，シグナルおよびシグナルグループごとに設定可能であり，RTEが生成したRte_COMCbkTxAck_<sn>またはRte_COMCbkTxAck_<sg>と対応している．
+　本コールバック関数の名前は通知ComNotificationで定義される〔COM498_Conf〕．
+
+3.9.3.1.2  Com_CbkTxErr
+C言語I/F
+void Com_CbkTxErr(void)【COM491】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+考慮しない
+機能
+本コールバック関数は，IPDU送信失敗を通知する．
+
+コンフィギュレーション仕様
+　本コールバック関数は，送信側でのみ呼び出される．
+　本コールバック関数は，シグナルおよびシグナルグループごとに設定可能であり，RTEが生成したRte_COMCbkTxErr_<sn>またはRte_COMCbkTxErr_<sg>と対応している．
+　本コールバック関数の名前はエラー通知ComErrorNotificationで定義される〔COM499_Conf〕．
+
+3.9.3.1.3  Com_CbkTxTOut
+C言語I/F
+void Com_CbkTxTOut(void)【COM554】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+考慮しない
+機能
+本コールバック関数は，送信タイムアウト発生を通知する．
+
+コンフィギュレーション仕様
+　本コールバック関数は，送信側でのみ呼び出される．
+　本コールバック関数は，シグナルおよびシグナルグループごとに設定可能であり，RTEが生成したRte_COMCbkTxTOut_<sn>またはRte_COMCbkTxTOut_<sg>と対応している．
+　本コールバック関数の名前はタイムアウト通知ComTimeoutNotificationで定義される〔COM552_Conf〕．
+
+3.9.3.1.4  Com_CbkRxAck
+C言語I/F
+void Com_CbkRxAck(void)【COM555】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+考慮しない
+機能
+本コールバック関数は，IPDU受信成功を通知する．
+
+コンフィギュレーション仕様
+　本コールバック関数は，受信側でのみ呼び出される．
+　本コールバック関数は，シグナルおよびシグナルグループごとに設定可能であり，RTEが生成したRte_COMCbkRxAck_<sn>またはRte_COMCbkRxAck_<sg>と対応している．
+　本コールバック関数の名前は通知ComNotificationで定義される〔COM498_Conf〕．
+
+3.9.3.1.5  Com_CbkRxTOut
+C言語I/F
+void Com_CbkRxTOut(void)【COM556】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+考慮しない
+機能
+本コールバック関数は，受信タイムアウト発生を通知する．
+
+コンフィギュレーション仕様
+　本コールバック関数は，受信側でのみ呼び出される．
+　本コールバック関数は，シグナルおよびシグナルグループごとに設定可能であり，RTEが生成したRte_COMCbkRxTOut_<sn>またはRte_COMCbkRxTOut_<sg>と対応している．
+　本コールバック関数の名前はタイムアウト通知ComTimeoutNotificationで定義される〔COM552_Conf〕．
+
+3.9.3.1.6  Com_CbkInv
+C言語I/F
+void Com_CbkInv(void)【COM536】
+パラメータ
+[in]
+－
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+考慮しない
+機能
+本コールバック関数は，無効値の受信を通知する．
+
+コンフィギュレーション仕様
+　本コールバック関数は，受信側でのみ呼び出される．
+　本コールバック関数は，シグナルおよびシグナルグループごとに設定可能であり，RTEが生成したRte_COMCbkInv_<sn>またはRte_COMCbkInv_<sg>と対応している．
+　本コールバック関数の名前は無効値通知ComInvalidNotificationで定義される〔COM315_Conf〕．
+
+3.9.3.1.7  Com_CbkCounterErr
+C言語I/F
+void Com_CbkCounterErr(PduIdType ComPduId, uint8 ExpectedCounter, uint8 ReceivedCounter)【COM726】
+パラメータ
+[in]
+ComPduId
+カウンタエラーが発生したIPDUのID
+
+
+ExpectedCounter
+カウンタ期待値
+
+
+ReceivedCounter
+実際に受信したカウンタ値
+
+[in/out]
+－
+
+[out]
+－
+返り値
+－
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+考慮しない
+機能
+本コールバック関数は，カウンタエラー発生を通知する．
+
+コンフィギュレーション仕様
+　本コールバック関数は，IPDUごとに設定可能であり，受信側でのみ呼び出される．
+　本コールバック関数の名前はIPDUカウンタエラー通知ComIPduCounterErrorNotificationで定義される〔COM003_Conf〕．
+
+
+
+3.9.3.2  コールアウト関数
+　COMは，IPDUのコールアウト関数のみをサポートする．IPDUのIPDU通信種別(ComIPduType) がNORMALまたはTPの場合，そのIPDUのコールアウト関数をサポートする．
+　IPDUのコールアウト関数がFALSEを返した場合，COMは，そのIPDUに対する処理をそれ以降行わない【COMa004】．
+　
+3.9.3.2.1  Com_RxIpduCallout
+C言語I/F
+boolean Com_RxIpduCallout(PduIdType Id, const uint8* IpduData)【COM700】
+パラメータ
+[in]
+Id
+受信したIPDUのID
+
+
+IpduData
+受信したIPDUのデータへのポインタ
+
+[in/out]
+－
+
+[out]
+－
+返り値
+TRUE
+IPDUは正常に処理される
+
+FALSE
+IPDUはこれ以上処理されない
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+考慮しない
+機能
+本コールアウト関数は，ユーザ定義の受信フィルタリングを行う．
+
+コンフィギュレーション仕様
+　本コールアウト関数の名前はIPDUコールアウトComIPduCalloutで定義される〔COM387_Conf〕．
+
+機能仕様
+　TPによって大型IPDUを受信した場合，本コールアウト関数は，Com_TpRxIndicationの処理中に呼び出される【COM720】．
+　
+　本コールアウト関数は，受信した全てのデータをIPDUに格納する【NCOM096】．
+　
+
+
+3.9.3.2.2  Com_TxIpduCallout
+C言語I/F
+boolean Com_TxIpduCallout(PduIdType Id, uint8* IpduData)【COM346】
+パラメータ
+[in]
+Id
+送信したIPDUのID
+
+
+IpduData
+送信したIPDUのデータへのポインタ
+
+[in/out]
+－
+
+[out]
+－
+返り値
+TRUE
+IPDUは正常に処理される
+
+FALSE
+IPDUはこれ以上処理されない
+DETエラー
+－
+同期/非同期
+同期
+再入可能/再入不可能
+考慮しない
+機能
+本コールアウト関数は，ユーザ定義の送信フィルタリングまたは事前送信処理を行う．
+　
+コンフィギュレーション仕様
+　本コールアウト関数の名前はIPDUコールアウトComIPduCalloutまたはIPDUトリガ送信コールアウトComIPduTriggerTransmitCalloutで定義される〔COM387_Conf〕〔COM765_Conf〕．
+　
+機能仕様
+　本コールアウト関数は，以下のCOMシステムサービスを呼び出すことが可能である【COM381】．
+・ Com_TriggerIPDUSend
+・ Com_SendSignal
+・ Com_SendSignalGroup
+
+　本コールアウト関数によって更新される可能性があるシグナルおよびシグナルグループおよびグループシグナルの送信プロパティ(ComTranferProperty) には，TRIGGEREDまたはTRIGGERED_ON_CHANGEを設定してはならない【COM780】．
+
+　本コールアウト関数によって更新される可能性があるシグナルおよびグループシグナルにフィルタ(ComFilter) が設定される場合，そのフィルタアルゴリズム(ComFilterAlgorithm) には，ALWAYSまたはNEVERのどちらかを設定しなければならない【COM781】．
+
+　Com_TriggerTransmitは，IPDUトリガ送信コールアウトComIPduTriggerTransmitCalloutが設定されたIPDUを指定して呼び出された場合，そのコールアウト関数を呼び出す【COM766】．
+　Com_TriggerTransmitは，IPDUトリガ送信コールアウトComIPduTriggerTransmitCalloutに設定されたコールアウト関数の返り値を無視する【COM395】．
+
+　送信IPDUにIPDUコールアウトComIPduCalloutが設定されている場合，その送信IPDUをPduR_ComTransmitで送信する前に，本コールアウト関数を呼び出す【COM719】．
+
+
+3.10  コンテナおよびパラメータ
+3.10.1  Com
+コンテナ名
+/AUTOSAR/EcucDefs/Com【COM540_Conf】
+概要
+COMトップコンテナ
+多重度
+1
+パラメータ
+－
+サブコンテナ
+ComConfig
+
+ComGeneral
+
+3.10.2  ComGeneral
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComGeneral【COM541_Conf】
+概要
+全般的な設定を含むコンテナ
+多重度
+1
+パラメータ
+ComConfigurationUseDet
+
+ComEnableMDTForCyclicTransmission
+
+ComRetryFailedTransmitRequests
+
+ComSupportedIPduGroups
+
+ComVersionInfoApi
+サブコンテナ
+－
+
+3.10.2.1  ComConfigurationUseDet
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComGeneral/ComConfigurationUseDet【COM141_Conf】
+概要
+DETの使用有無
+多重度
+0..1
+型
+EcucBooleanParamDef
+値の範囲
+TRUE
+DETエラー有効
+
+FALSE
+DETエラー無効
+デフォルト値
+FALSE【NCOM103】
+コンフィギュレーションクラス
+プレコンパイルタイム
+コンフィギュレーション仕様
+　COMジェネレータは，本パラメータの値を定義するための定数COM_DEV_ERROR_DETECTを生成する〔COM028〕．
+　DETは開発時に明確に発行する意図がある場合のみ発行されるべきもので，ユーザに対しては発行すべきではないため，デフォルト値はFALSEとする〔NCOM103〕．
+3.10.2.2  ComEnableMDTForCyclicTransmission
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComGeneral/ ComEnableMDTForCyclicTransmission【COM788_Conf】
+概要
+周期送信におけるMDTの使用有無
+多重度
+0..1
+型
+EcucBooleanParamDef
+値の範囲
+TRUE
+周期送信におけるMDT有効
+
+FALSE
+周期送信におけるMDT無効
+デフォルト値
+TRUE
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+3.10.2.3  ComRetryFailedTransmitRequests
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComGeneral/ ComRetryFailedTransmitRequests【COM780_Conf】
+概要
+失敗送信要求のリトライの使用有無
+多重度
+0..1
+型
+EcucBooleanParamDef
+値の範囲
+TRUE
+失敗した送信要求のリトライ有効
+
+FALSE
+失敗した送信要求のリトライ無効
+デフォルト値
+TRUE
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+3.10.2.4  ComSupportedIPduGroups
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComGeneral/ComSupportedIPduGroups【COM710_Conf】
+概要
+IPDUグループ数の最大値
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..65535
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+3.10.2.5  ComVersionInfoApi
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComGeneral/ComVersionInfoApi【COM438_Conf】
+概要
+Com_GetVersionInfo使用有無
+多重度
+1
+型
+EcucBooleanParamDef
+値の範囲
+TRUE
+Com_GetVersionInfo有効
+
+FALSE
+Com_GetVersionInfo無効
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+
+
+3.10.3  ComConfig
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig【COM337_Conf】
+概要
+コンフィギュレーションごとの設定を含むコンテナ
+多重度
+1..*【NCOM002】
+パラメータ
+ComConfigurationId
+サブコンテナ
+ComTimeBase
+
+ComIPduGroup
+
+ComIPdu
+
+ComSignal
+
+ComSignalGroup
+
+ComGwMapping
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，本コンテナの多重度を1としているが，ポストビルド対応により複数のコンフィギュレーション情報に対応するため，多重度を1..*とする〔NCOM002〕．
+
+3.10.3.1  ComConfigurationId
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComConfigurationId【COM394_Conf】
+概要
+コンフィギュレーションID
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..4294967295
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.4  ComTimeBase
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComTimeBase【COM730_Conf】
+概要
+タイムベースの設定を含むコンテナ
+多重度
+1
+パラメータ
+ComTxTimeBase
+
+ComRxTimeBase
+
+ComGwTimeBase
+サブコンテナ
+－
+
+3.10.4.1  ComTxTimeBase
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComTimeBase/ComTxTimeBase【COM186_Conf】
+概要
+Com_MainFunctionTxの起動周期[秒]
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0 ＜ x ≦ 3600【NCOM101】
+x : ComTxTimeBase
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+コンフィギュレーション仕様
+　ComIPduDirection がSENDであるComIPduが1つ以上存在している場合，ComTxTimeBaseに値を指定しなければならない【NCOM049】．
+　ComTxTimeBaseに0を指定した場合，エラーとする〔NCOM101〕．
+　
+
+3.10.4.2  ComRxTimeBase
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComTimeBase/ComRxTimeBase【COM728_Conf】
+概要
+Com_MainFunctionRxの起動周期[秒]
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0 ＜ x ≦ 3600【NCOM102】
+x : ComRxTimeBase
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+コンフィギュレーション仕様
+　ComIPduDirection がRECEIVEであるComIPduが1つ以上存在している場合，ComRxTimeBaseに値を指定しなければならない【NCOM050】．
+　ComRxTimeBaseに0を指定した場合，エラーとする〔NCOM102〕．
+　
+
+3.10.4.3  ComGwTimeBase
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComTimeBase/ComGwTimeBase【COM729_Conf】
+概要
+Com_MainFunctionRouteSignalsの起動周期[秒]
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0..3600
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+
+
+3.10.5  ComIPduGroup
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPduGroup【COM341_Conf】
+概要
+IPDUグループの設定を含むコンテナ
+多重度
+1..*【NCOM028】
+パラメータ
+ComIPduGroupHandleId
+
+ComIPduGroupGroupRef
+サブコンテナ
+－
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，多重度を0..*としているが，本パラメータを設定しないユースケースが想定されないため，多重度を1..*とする〔NCOM028〕．
+
+コンフィギュレーション仕様
+　COMジェネレータは，本コンテナのショートネームとIPDUグループID (ComIPduGroupHandleId) を関連付けるための定数をCom_Cfg.hに生成する【COM126】．
+　〔COM126〕で生成された定数は，Com_IpduGroupControlなどのIPDUグループIDを指定するシステムサービスを呼び出す際に使用できる．
+
+3.10.5.1  ComIPduGroupHandleId
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPduGroup/ ComIPduGroupHandleId【COM184_Conf】
+概要
+IPDUグループID (定数生成)
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..3600
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.5.2  ComIPduGroupGroupRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPduGroup/ ComIPduGroupGroupRef【COM185_Conf】
+概要
+所属IPDUグループ参照
+多重度
+0..*
+型
+/AUTOSAR/EcucDefs/ComConfig/ComIPduGroupへの参照
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+AUTOSAR仕様との違い
+　本仕様では，IPDUグループのネスト所属をサポートしないため，IPDUグループ所属グループ(ComIPduGroupGroupRef) を指定した場合，エラーとする【NCOM009】．
+
+
+3.10.6  ComIPdu
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu【COM340_Conf】
+概要
+IPDUの設定を含むコンテナ
+多重度
+1..*【NCOM027】
+パラメータ
+ComIPduHandleId
+
+ComIPduType
+
+ComIPduDirection
+
+ComIPduSignalProcessing
+
+ComIPduCancellationSupport
+
+ComIPduCallout
+
+ComIPduTriggerTransmitCallout
+
+ComIPduGroupRef
+
+ComIPduSignalRef
+
+ComIPduSignalGroupRef
+
+ComPduIdRef
+サブコンテナ
+ComTxIPdu
+
+ComIPduCounter
+
+ComIPduReplication
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，本コンテナの多重度を0..*としているが，本コンテナを設定しないユースケースが想定されないため，多重度を1..*とする〔NCOM027〕．
+
+コンフィギュレーション仕様
+　COMジェネレータは，本コンテナのショートネームとIPDU ID(ComIPduHandleId) を関連付けるための定数をCom_Cfg.hに生成する【COM174】．
+　〔COM174〕で生成された定数は，PduR_ComTransmitなどのIPDU IDを指定するシステムサービスを呼び出す際に使用できる．
+　IPDU通信方向(ComIPduDirection) にSENDが設定された場合，サブコンテナComTxIPduの設定は必須となる【COM497】．
+
+3.10.6.1  ComIPduHandleId
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduHandleId【COM175_Conf】
+概要
+IPDUのID
+(受信通知または送信通知の対象IPDUを識別するために使用される)
+多重度
+1【NCOM003】
+型
+EcucIntegerParamDef
+値の範囲
+0..65535
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，本パラメータの多重度を0..1としているが，送信通知および受信通知のどちらも起こらないIPDUは存在しないため，多重度を1とする〔NCOM003〕．
+
+3.10.6.2  ComIPduType
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduType【COM761_Conf】
+概要
+IPDU通信の種別
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+NORMAL
+通常通信のためのIPDU
+
+TP
+TP通信のためのIPDU
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.6.3  ComIPduDirection
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduDirection【COM493_Conf】
+概要
+IPDU通信の方向
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+SEND
+送信IPDU
+
+RECEIVE
+受信IPDU
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.6.4  ComIPduSignalProcessing
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ ComIPduSignalProcessing【COM119_Conf】
+概要
+シグナル通知処理タイミング
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+DEFERRED
+周期タスク(メイン関数)でシグナルの送信完了通知および受信通知を行う
+
+IMMEDIATE
+Com_TxConfirmationおよびCom_RxIndicationでシグナルの送信完了通知や受信通知を行う
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.6.5  ComIPduCancellationSupport
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ ComIPduCancellationSupport【COM709_Conf】
+概要
+IPDU通信要求キャンセルの使用有無
+多重度
+0..1
+型
+EcucBooleanParamDef
+値の範囲
+TRUE
+IPDU通信要求キャンセル有効
+
+FALSE
+IPDU通信要求キャンセル無効
+デフォルト値
+FALSE
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+使用上の注意
+　IPDU通信種別(ComIPduType) がNORMALの場合，送信要求キャンセルをサポートし，IPDU通信種(ComIPduType) がTPの場合，送信要求キャンセルと受信要求キャンセルをサポートする．
+
+3.10.6.6  ComIPduCallout
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduCallout【COM387_Conf】
+概要
+IPDU通信前に呼び出されるコールアウト関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+3.10.6.7  ComIPduTriggerTransmitCallout
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ ComIPduTriggerTransmitCallout【COM765_Conf】
+概要
+IPDUトリガ送信時に呼び出されるコールアウト関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム
+　
+3.10.6.8  ComIPduGroupRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduGroupRef【COM206_Conf】
+概要
+所属しているIPDUグループへの参照
+多重度
+1..*【NCOM004】
+型
+/AUTOSAR/EcucDefs/ComConfig/ComIPduGroupへの参照
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，本パラメータの多重度を0..*としているが，IPDUグループに所属しないIPDUを開始する方法が存在しないため，多重度を1..*とする〔NCOM004〕．
+
+3.10.6.9  ComIPduSignalRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduSignalRef【COM518_Conf】
+概要
+所持しているシグナルへの参照
+多重度
+0..*
+型
+/AUTOSAR/EcucDefs/ComConfig/ComSignalへの参照
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.6.10  ComIPduSignalGroupRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ ComIPduSignalGroupRef【COM519_Conf】
+概要
+所持しているシグナルグループへの参照
+多重度
+0..*
+型
+/AUTOSAR/EcucDefs/ComConfig/ComSignalGroupへの参照
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.6.11  ComPduIdRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComPduIdRef【COM711_Conf】
+概要
+対応するPDUへの参照
+多重度
+1
+型
+/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pduへの参照
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+コンフィギュレーション仕様
+Comに構成されている全てのIPDUに対応するPduRSrcPduを持たないPduRと構成された場合エラーとする【NCOM052】．
+
+3.10.7  ComTxIPdu
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu【COM496_Conf】
+概要
+送信IPDUの設定を含むコンテナ
+多重度
+0..1
+パラメータ
+ComTxIPduUnusedAreasDefault
+
+ComTxIPduClearUpdateBit
+
+ComMinimumDelayTime
+サブコンテナ
+ComTxModeTrue
+
+ComTxModeFalse
+
+コンフィギュレーション仕様
+　IPDUに属するシグナルのフィルタアルゴリズムにより，以下のように不要となるコンテナが指定されている場合，警告とする【NCOM041】．
+・ IPDUに属するシグナルのフィルタアルゴリズムがすべてALWAYSの場合，TMSの判定結果は常にtrueとなるため，ComTxModeFalseの設定は不要
+・ IPDUに属するシグナルのフィルタアルゴリズムがすべてNEVERの場合，TMSの判定結果は常にfalseとなるため，ComTxModeTrueの設定は不要
+
+3.10.7.1  ComTxIPduUnusedAreasDefault
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxIPduUnusedAreasDefault【COM017_Conf】
+概要
+IPDU未使用領域のためのデフォルト値(バイトパターン)
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..255
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.7.2  ComTxIPduClearUpdateBit
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxIPduClearUpdateBit【COM576_Conf】
+概要
+送信IPDUが所持しているシグナルおよびシグナルグループの，アップデートビットをクリアするタイミング
+多重度
+0..1
+型
+EcucEnumerationParamDef
+値の範囲
+CONFIRMATION
+送信完了通知を受け取った際にクリア
+
+TRANSMIT
+PduR_ComTransmitを呼び出した際にクリア
+
+TRIGGER_TRANSMIT
+Com_TriggerTransmitによりIPDUがフェッチされた際にクリア
+デフォルト値
+TRANSMIT〔NCOM030〕
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.7.3  ComMinimumDelayTime
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComMinimumDelayTime【COM181_Conf】
+概要
+最小遅延時間(MDT) [秒]
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0..3600
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+
+
+
+3.10.8  ComTxModeTrue
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeTrue【COM455_Conf】
+概要
+TMSがTRUEの場合の送信モード
+多重度
+0..1
+パラメータ
+－
+サブコンテナ
+ComTxMode
+
+3.10.9  ComTxModeFalse
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeFalse【COM454_Conf】
+概要
+TMSがFALSEの場合の送信モード
+多重度
+0..1
+パラメータ
+－
+サブコンテナ
+ComTxMode
+
+
+
+3.10.10  ComTxMode
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeTrue/ComTxMode
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeFalse/ComTxMode【COM351_Conf】
+概要
+送信モードの設定を含むコンテナ
+多重度
+1
+パラメータ
+ComTxModeMode
+
+ComTxModeNumberOfRepetitions
+
+ComTxModeRepetitionPeriod
+
+ComTxModeTimeOffset
+
+ComTxModeTimePeriod
+サブコンテナ
+－
+
+3.10.10.1  ComTxModeMode
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeTrue/ComTxMode/ComTxModeMode
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeFalse/ComTxMode/ComTxModeMode【COM137_Conf】
+概要
+送信モード
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+DIRECT
+直接(N回)送信
+
+PERIODIC
+周期送信
+
+MIXED
+DIRECT＋PERIODIC
+
+NONE
+送信しない
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.10.2  ComTxModeNumberOfRepetitions
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeTrue/ComTxMode/ComTxModeNumberOfRepetitions
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeFalse/ComTxMode/ComTxModeNumberOfRepetitions【COM281_Conf】
+概要
+直接N回送信の送信回数
+(送信モードがDIRECTまたはMIXEDの場合に有効)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..255
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.10.3  ComTxModeRepetitionPeriod
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeTrue/ComTxMode/ComTxModeRepetitionPeriod
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeFalse/ComTxMode/ComTxModeRepetitionPeriod【COM282_Conf】
+概要
+直接N回送信の送信間隔[秒]
+(直接N回送信の送信回数が1以上であり，送信モードがDIRECTまたはMIXEDの場合に有効)
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0 ＜ x ≦ 3600【NCOM054】
+
+x : ComTxModeRepetitionPeriod
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+　コンフィギュレーション仕様
+　ComTxModeRepetitionPeriodに0を指定した場合，エラーとする〔NCOM054〕．
+
+3.10.10.4  ComTxModeTimeOffset
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeTrue/ComTxMode/ComTxModeTimeOffset
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeFalse/ComTxMode/ComTxModeTimeOffset【COM180_Conf】
+概要
+周期送信のオフセット時間[秒]
+(送信モードがPERIODICまたはMIXEDの場合に有効)
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0..3600
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.10.5  ComTxModeTimePeriod
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeTrue/ComTxMode/ComTxModeTimePeriod
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ ComTxModeFalse/ComTxMode/ComTxModeTimePeriod【COM178_Conf】
+概要
+周期送信の周期時間[秒]
+(送信モードがPERIODICまたはMIXEDの場合に有効)
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0 ＜ x ≦ 3600【NCOM055】
+
+x : ComTxModeTimePeriod
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+　コンフィギュレーション仕様
+　ComTxModeTimePeriodに0を指定した場合，エラーとする〔NCOM055〕．
+
+
+
+3.10.11  ComIPduCounter
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduCounter【COM592_Conf】
+概要
+PDUカウンタの設定を含むコンテナ(任意)
+多重度
+0..1
+パラメータ
+ComIPduCounterThreshold
+
+ComIPduCounterStartPosition
+
+ComIPduCounterSize
+
+ComIPduCounterErrorNotification
+サブコンテナ
+－
+
+設計上の注意
+　データシーケンス管理は本バージョン対象外の機能であるため，本コンテナは対象外となる．
+
+3.10.11.1  ComIPduCounterStartPosition
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduCounter/ ComIPduCounterStartPosition【COM594_Conf】
+概要
+IPDUカウンタ開始位置
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..2031
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+3.10.11.2  ComIPduCounterSize
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduCounter/ ComIPduCounterSize【COM593_Conf】
+概要
+IPDUカウンタサイズ[bit]
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..8
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+3.10.11.3  ComIPduCounterThreshold
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduCounter/ ComIPduCounterThreshold【COM595_Conf】
+概要
+IPDUカウンタ閾値
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..255
+デフォルト値
+0
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+3.10.11.4  ComIPduCounterErrorNotification
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduCounter/ ComIPduCounterErrorNotification【COM003_Conf】
+概要
+IPDUカウンタエラー通知コールバック関数(Com_CbkCounterErr)の名前
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+
+
+3.10.12  ComIPduReplication
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduReplication【COM599_Conf】
+概要
+IPDU複製の設定を含むコンテナ
+多重度
+0..1
+パラメータ
+ComIPduReplicationQuorum
+
+ComIPduReplicaRef
+サブコンテナ
+－
+
+設計上の注意
+　通信保護は本バージョン対象外の機能であるため，本コンテナは対象外となる．
+
+3.10.12.1  ComIPduReplicationQuorum
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduReplication/ ComIPduReplicationQuorum【COM600_Conf】
+概要
+IPDU複製数 
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+1..3
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+3.10.12.2  ComIPduReplicaRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComIPduReplication/ ComIPduReplicaRef【COM601_Conf】
+概要
+複製するIPDUのレプリカPDUへの参照
+多重度
+1..2
+型
+/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pduへの参照
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム
+
+
+
+3.10.13  ComSignal
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal【COM344_Conf】
+概要
+シグナルの設定を含むコンテナ
+多重度
+0..*【NCOM029】
+パラメータ
+ComHandleId
+
+ComSignalType
+
+ComBitPosition
+
+ComBitSize
+
+ComSignalLength
+
+ComUpdateBitPosition
+
+ComSignalInitValue
+
+ComSignalDataInvalidValue
+
+ComSignalEndianness
+
+ComTransferProperty
+
+ComFirstTimeout
+
+ComTimeout
+
+ComDataInvalidAction
+
+ComRxDataTimeoutAction
+
+ComNotification
+
+ComErrorNotification
+
+ComInvalidNotification
+
+ComTimeoutNotification
+
+ComSystemTemplateSystemSignalRef
+サブコンテナ
+ComFilter
+
+コンフィギュレーション仕様
+　COMジェネレータは，本コンテナのショートネームとシグナルID(ComHandleId) を関連付けるための定数をCom_Cfg.hに生成する【COM163】．
+　〔COM163〕で生成された定数は，Com_SendSignalなどのシグナルIDを指定するシステムサービスを呼び出す際に使用できる．
+
+3.10.13.1  ComHandleId
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComHandleId【COM165_Conf】
+概要
+シグナルのID
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..65535
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.13.2  ComSignalType
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComSignalType【COM127_Conf】
+概要
+シグナルの型
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+BOOLEAN
+boolean
+
+UINT8
+符号なし整数(8bit)
+
+UINT16
+符号なし整数(16bit)
+
+UINT32
+符号なし整数(32bit)
+
+SINT8
+符号あり整数(8bit)
+
+SINT16
+符号あり整数(16bit)
+
+SINT32
+符号あり整数(32bit)
+
+FLOAT32
+浮動小数点(32bit)
+
+FLOAT64
+浮動小数点(64bit)
+
+UINT8_N
+配列(8bit)
+
+UINT8_DYN
+可変長配列(8bit)
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+コンフィギュレーション仕様
+　可変長データ通信は本バージョン対象外の機能であるため，ComSignalTypeにUINT8_DYNを指定した場合エラーとする【NCOM095】．
+
+
+3.10.13.3  ComBitPosition
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComBitPosition【COM259_Conf】
+概要
+シグナルのビット位置
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..2031
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+コンフィギュレーション仕様
+　シグナルの型(ComSignalType) がUINT8_Nの場合に，ComBitPositionが8の倍数でない場合，エラーとする【NCOM019】．
+　シグナルがIPDUバッファの外に配置されてしまうことを避けるため，COMジェネレータは以下の場合をエラーとする．
+・ シグナルの型(ComSignalType) がUINT8_Nの場合，ComBitPosition+(ComSignalLength*8)が，(PduLength*8)-1 より大きい【NCOM015】
+・ シグナルの型(ComSignalType) がUINT8_N以外，かつリトルエンディアンの場合，ComBitPosition+ComBitSizeが，(PduLength*8)-1 より大きい【NCOM016】
+・ シグナルの型(ComSignalType) がUINT8_N以外かつビッグエンディアンの場合，((ComBitPosition/8)*8) + (8-(ComBitPosition%8))が，ComBitSize より小さい【NCOM017】
+・ シグナルの型(ComSignalType) がUINT8_N以外かつビッグエンディアンの場合，ComBitPositionが，(PduLength*8)-1 より大きい【NCOM018】
+COMジェネレータは，IPDUバッファに配置されないシグナルまたはシグナルグループをエラーとする【NCOM051】．
+　表 36 シグナルのIPDU配置位置チェック概要
+型(ComSignalType)
+エンディアン(ComSignalEndianness)
+エラー条件
+UINT8_N
+OPAQUE
+ComBitPosition+(ComSignalLength*8)
+> (PduLength*8)-1〔NCOM015〕
+UINT8_N以外
+LITTLE_ENDIAN
+ComBitPosition+ComBitSize > (PduLength*8)-1 〔NCOM016〕
+
+BIG_ENDIAN
+((ComBitPosition/8)*8) + (8-(ComBitPosition%8)) < ComBitSize〔NCOM017〕
+
+
+ComBitPosition > (PduLength*8)-1 〔NCOM018〕
+
+3.10.13.4  ComBitSize
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComBitSize【COM158_Conf】
+概要
+シグナルのビットサイズ
+(シグナル型がUINT8_NまたはUINT8_DYNの場合は無効)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+1..64
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+コンフィギュレーション仕様
+　シグナルの型(ComSignalType) に指定したデータ型のビットサイズより大きい値をシグナルのサイズ(ComBitSize) に指定した場合，エラーとする【NCOM010】〔COM785〕．
+　例：ComSignalTypeがUINT8のシグナルに対して，ComBitSizeを10とした場合，エラー
+
+　シグナルの型(ComSignalType) がUINT8_NおよびUINT8_DYN以外のシグナルに対して，シグナルのサイズ(ComBitSize) を指定していない場合，エラーとする【NCOM011】．
+
+　シグナルの型(ComSignalType) がUINT8，UINT16，UINT32，SINT8，SINT16，SINT32，UINT8_Nのシグナルに対して，シグナルのサイズ(ComBitSize) より大きいビットサイズの値を初期値(ComSignalInitValue) または無効値(ComSignalDataInvalidValue) に指定した場合，エラーとする【NCOM038】．
+　例：ComSignalTypeがSINT8，ComBitSizeが7のシグナルに対して，ComSignalInitValueに85(1010101)を指定した場合，エラー
+　※1010101を指定したい場合は，-43(11010101)を指定するか，ComSignalTypeをUINT8に変更して85を指定する
+
+　型(ComSignalType) がUINT8_Nのシグナルに，サイズ(ComBitSize) を指定した場合，警告とする【NCOM021】．
+　型(ComSignalType) がFLOAT32またはFLOAT64のシグナルに，サイズ(ComBitSize) を指定した場合，警告とする【NCOM022】．
+
+3.10.13.5  ComSignalLength
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComSignalLength【COM437_Conf】
+概要
+シグナルの長さ[byte]
+(シグナル型がUINT8_NまたはUINT8_DYNの場合のみ有効)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+1..8
+CANまたはLIN通信するIPDUに所属する場合
+
+1..254
+FlexRay通信するIPDUに所属する場合
+
+1..4095
+TP通信するIPDUに所属する場合
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+コンフィギュレーション仕様
+　型(ComSignalType) がUINT8_Nのシグナルに，長さ(ComSignalLength) を指定しない場合，または長さ(ComSignalLength) に0を指定した場合，エラーとする【NCOM012】．
+　型(ComSignalType) がUINT8_N以外のシグナルに，長さ(ComSignalLength) を指定した場合，警告とする【NCOM023】．
+
+3.10.13.6  ComUpdateBitPosition
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComUpdateBitPosition【COM257_Conf】
+概要
+シグナルのアップデートビット位置
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..63
+CANまたはLIN通信するIPDUに所属する場合
+
+0..2031
+FlexRay通信するIPDUに所属する場合
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.13.7  ComSignalInitValue
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComSignalInitValue【COM170_Conf】
+概要
+シグナルの初期値
+多重度
+0..1
+型
+EcucStringParamDef
+値の範囲
+シグナルの型ごとに異なる
+デフォルト値
+0
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+コンフィギュレーション仕様
+　シグナルの型(ComSignalType) がUINT8_Nの場合に，初期値(ComSignalInitValue) に指定した文字列に含まれるデータ数が，シグナルの長さ(ComSignalLength) と一致しない場合，エラーとする【NCOM013】．
+　例：ComSignalLengthが3であり，ComSignalInitValueを”96 97 98 100”とした場合，エラー
+
+3.10.13.8  ComSignalDataInvalidValue
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ ComSignalDataInvalidValue【COM391_Conf】
+概要
+シグナルの無効値
+多重度
+0..1
+型
+EcucStringParamDef
+値の範囲
+シグナルの型ごとに異なる
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+コンフィギュレーション仕様
+　シグナルの型(ComSignalType) がUINT8_Nの場合に，無効値(ComSignalDataInvalidValue) に指定した文字列に含まれるデータ数が，シグナルの長さ(ComSignalLength) と一致しない場合，エラーとする【NCOM014】．
+  例：ComSignalLengthが3であり，ComSignalDataInvalidValueを”1 2”とした場合，エラー
+
+3.10.13.9  ComSignalEndianness
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComSignalEndianness【COM157_Conf】
+概要
+シグナルのエンディアン
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+LITTLE_ENDIAN
+リトルエンディアン
+
+BIG_ENDIAN
+ビッグエンディアン
+
+OPAQUE
+オペーク
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+コンフィギュレーション仕様
+　シグナルの型(ComSignalType) がUINT8_NおよびUINT8_DYN以外であり，かつ，エンディアン(ComSignalEndianness) がOPAQUEである場合，エラーとする【NCOM026】．
+
+3.10.13.10  ComTransferProperty
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComTransferProperty【COM232_Conf】
+概要
+シグナルの送信プロパティ
+多重度
+0..1
+型
+EcucEnumerationParamDef
+値の範囲
+PENDING
+シグナルの書き込みが発生しても，所属IPDUの送信(繰り返しあり)はトリガしない
+
+TRIGGERED
+シグナル書き込みが発生した場合，所属IPDUの送信(繰り返しあり)をトリガする
+
+TRIGGERED_WITHOUT_REPETITION
+シグナルの書込みが発生した場合，所属IPDUの送信(繰り返しなし)をトリガする
+
+TRIGGERED_ON_CHANGE
+シグナルの書き込みが発生し，バッファの値が前回値と異なる場合，所属IPDUの送信(繰り返しあり)をトリガする
+
+TRIGGERED_ON_CHANGE_WITHOUT_REPETITION
+シグナルの書き込みが発生し，バッファの値が前回値と異なる場合，所属IPDUの送信(繰り返しなし)をトリガする
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+コンフィギュレーション仕様
+　送信シグナルは送信プロパティ(ComTransferProperty) に値を指定しなければならない【NCOM042】．
+　
+
+3.10.13.11  ComFirstTimeout
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComFirstTimeout【COM183_Conf】
+概要
+シグナルの初回タイムアウト時間[秒]
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0..3600
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.13.12  ComTimeout
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComTimeout【COM263_Conf】
+概要
+シグナルのタイムアウト時間[秒]
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0..3600
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.13.13  ComDataInvalidAction
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComDataInvalidAction【COM314_Conf】
+概要
+シグナルの無効値を受信した場合の処理
+多重度
+0..1
+型
+EcucEnumerationParamDef
+値の範囲
+NOTIFY
+無効値受信通知用コールバック関数を呼び出す
+
+REPLACE
+初期値に置き換える
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.13.14  ComRxDataTimeoutAction
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ ComRxDataTimeoutAction【COM412_Conf】
+概要
+シグナルの受信タイムアウトが発生した場合の処理
+多重度
+0..1
+型
+EcucEnumerationParamDef
+値の範囲
+NONE
+何もしない
+
+REPLACE
+初期値に置き換える
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.13.15  ComNotification
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComNotification【COM498_Conf】
+概要
+シグナルの送信通知または受信通知のためのコールバック関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.13.16  ComErrorNotification
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComErrorNotification【COM499_Conf】
+概要
+シグナルのエラー通知のためのコールバック関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.13.17  ComInvalidNotification
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ ComInvalidNotification【COM315_Conf】
+概要
+シグナルの無効値受信を通知するためのコールバック関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.13.18  ComTimeoutNotification
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ ComTimeoutNotification【COM552_Conf】
+概要
+シグナルのタイムアウト発生を通知するためのコールバック関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.13.19  ComSystemTemplateSystemSignalRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ ComSystemTemplateSystemSignalRef【COM002_Conf】
+概要
+システムテンプレートのシグナルへの参照
+多重度
+0..1
+型
+EcucStringParamDef
+値の範囲
+I-SIGNAL-TO-I-PDU-MAPPINGへの参照
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+
+3.10.14  ComSignalGroup
+コンテナ名
+/AUTOSAR/EcucDefs/Com/Config/ComSignalGroup【COM345_Conf】
+概要
+シグナルグループの設定を含むコンテナ
+多重度
+0..*
+パラメータ
+ComHandleId
+
+ComUpdateBitPosition
+
+ComTransferProperty
+
+ComFirstTimeout
+
+ComTimeout
+
+ComDataInvalidAction
+
+ComRxDataTimeoutAction
+
+ComNotification
+
+ComErrorNotification
+
+ComInvalidNotification
+
+ComTimeoutNotification
+
+ComSystemTemplateSignalGroupRef
+サブコンテナ
+ComGroupSignal
+
+コンフィギュレーション仕様
+　COMジェネレータは，本コンテナのショートネームとシグナルグループID(ComHandleId) を関連付けるための定数をCom_Cfg.hに生成する【COM044】．
+　〔COM044〕で生成された定数は，Com_SendSignalGroupなどのシグナルグループIDを指定するシステムサービスを呼び出す際に使用できる．
+
+3.10.14.1  ComHandleId
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ComHandleId【COM165_Conf】
+概要
+シグナルグループのID
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..65535
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.14.2  ComUpdateBitPosition
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComUpdateBitPosition【COM257_Conf】
+概要
+シグナルグループのアップデートビット位置
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..63
+CANまたはLIN通信するIPDUに所属する場合
+
+0..2031
+FlexRay通信するIPDUに所属する場合
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.14.3  ComTransferProperty
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComTransferProperty【COM232_Conf】
+概要
+シグナルグループの送信プロパティ
+多重度
+0..1
+型
+EcucEnumerationParamDef
+値の範囲
+PENDING
+シグナルの書き込みが発生しても，所属IPDUの送信(繰り返しあり)をトリガしない
+
+TRIGGERED
+シグナルの書き込みが発生した場合，所属IPDUの送信(繰り返しあり)をトリガする
+
+TRIGGERED_WITHOUT_REPETITION
+シグナルの書き込みが発生した場合，所属IPDUの送信(繰り返しなし)をトリガする
+
+TRIGGERED_ON_CHANGE
+シグナルの書き込みが発生し，バッファの値が前回値と異なる場合，所属IPDUの送信(繰り返しあり)をトリガする
+
+TRIGGERED_ON_CHANGE_WITHOUT_REPETITION
+シグナルの書き込みが発生し，バッファの値が前回値と異なる場合，所属IPDUの送信(繰り返しなし)をトリガする
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+コンフィギュレーション仕様
+送信シグナルは送信プロパティ(ComTransferProperty) に値を指定しなければならない【NCOM042】．
+
+3.10.14.4  ComFirstTimeout
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComFirstTimeout【COM183_Conf】
+概要
+シグナルグループの初回タイムアウト時間[秒]
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0..3600
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.14.5  ComTimeout
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ComTimeout【COM263_Conf】
+概要
+シグナルグループのタイムアウト時間[秒]
+多重度
+0..1
+型
+EcucFloatParamDef
+値の範囲
+0..3600
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.14.6  ComDataInvalidAction
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComDataInvalidAction【COM314_Conf】
+概要
+シグナルグループの無効値を受信した場合の処理
+多重度
+0..1
+型
+EcucEnumerationParamDef
+値の範囲
+NOTIFY
+無効値受信通知用コールバック関数を呼び出す
+
+REPLACE
+初期値に置き換える
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.14.7  ComRxDataTimeoutAction
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComRxDataTimeoutAction【COM412_Conf】
+概要
+シグナルの受信タイムアウトが発生した場合の処理
+多重度
+0..1
+型
+EcucEnumerationParamDef
+値の範囲
+NONE
+何もしない
+
+REPLACE
+初期値に置き換える
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.14.8  ComNotification
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ComNotification【COM498_Conf】
+概要
+シグナルグループの送信通知または受信通知のためのコールバック関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.14.9  ComErrorNotification
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComErrorNotification【COM499_Conf】
+概要
+シグナルグループのエラー通知のためのコールバック関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.14.10  ComInvalidNotification
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComInvalidNotification【COM315_Conf】
+概要
+シグナルグループの無効値受信を通知するためのコールバック関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.14.11  ComTimeoutNotification
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComTimeoutNotification【COM552_Conf】
+概要
+シグナルグループのタイムアウト発生を通知するためのコールバック関数名
+多重度
+0..1
+型
+EcucFunctionNameDef
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.14.12  ComSystemTemplateSignalGroupRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComSystemTemplateSignalGroupRef【COM001_Conf】
+概要
+システムテンプレートのシグナルグループへの参照
+多重度
+0..1
+型
+EcucStringParamDef
+値の範囲
+I-SIGNAL-TO-I-PDU-MAPPINGへの参照
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+
+
+3.10.15  ComGroupSignal
+コンテナ名
+/AUTOSAR/EcucDefs/Com/Config/ComSignalGroup/ComGroupSignal【COM520_Conf】
+概要
+グループシグナルの設定を含むコンテナ
+多重度
+1..*
+パラメータ
+ComHandleId
+
+ComSignalType
+
+ComBitPosition
+
+ComBitSize
+
+ComSignalLength
+
+ComSignalInitValue
+
+ComSignalDataInvalidValue
+
+ComSignalEndianness
+
+ComTransferProperty
+
+ComSystemTemplateSystemSignalRef
+サブコンテナ
+ComFilter
+
+コンフィギュレーション仕様
+　COMジェネレータは，本コンテナのショートネームとグループシグナルID(ComHandleId) を関連付けるための定数をCom_Cfg.hに生成する【COM521】．
+　〔COM521〕で生成された定数は，Com_SendSignalなどのグループシグナルIDを指定するシステムサービスを呼び出す際に使用できる．
+
+3.10.15.1  ComHandleId
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComHandleId【COM165_Conf】
+概要
+グループシグナルのID
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..65535
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.15.2  ComSignalType
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComSignalType【COM127_Conf】
+概要
+グループシグナルの型
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+BOOLEAN
+boolean
+
+UINT8
+符号なし整数(8bit)
+
+UINT16
+符号なし整数(16bit)
+
+UINT32
+符号なし整数(32bit)
+
+SINT8
+符号あり整数(8bit)
+
+SINT16
+符号あり整数(16bit)
+
+SINT32
+符号あり整数(32bit)
+
+FLOAT32
+浮動小数点(32bit)
+
+FLOAT64
+浮動小数点(64bit)
+
+UINT8_N
+配列(8bit)
+
+UINT8_DYN
+可変長配列(8bit)
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.15.3  ComBitPosition
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComBitPosition【COM259_Conf】
+概要
+グループシグナルのビット位置
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..2031
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.15.4  ComBitSize
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComBitSize【COM158_Conf】
+概要
+グループシグナルのビットサイズ
+(グループシグナルの型がUINT8_NまたはUINT8_DYNの場合は無効)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+1..64
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.15.5  ComSignalLength
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComSignalLength【COM437_Conf】
+概要
+グループシグナルの長さ[byte]
+(グループシグナルの型がUINT8_NまたはUINT8_DYNの場合のみ有効)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+1..8
+CANまたはLIN通信するIPDUに所属する場合
+
+1..254
+FlexRay通信するIPDUに所属する場合
+
+1..4095
+TP通信するIPDUに所属する場合
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+　コンフィギュレーション仕様
+　型(ComSignalType) がUINT8_Nのシグナルに，長さ(ComSignalLength) を指定しない場合，または長さ(ComSignalLength) に0を指定した場合，エラーとする【NCOM012】．
+
+3.10.15.6  ComSignalInitValue
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComSignalInitValue【COM170_Conf】
+概要
+グループシグナルの初期値
+多重度
+0..1
+型
+EcucStringParamDef
+値の範囲
+グループシグナルの型ごとに異なる
+デフォルト値
+0
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.15.7  ComSignalDataInvalidValue
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComSignalDataInvalidValue【COM391_Conf】
+概要
+グループシグナルの無効値
+多重度
+0..1
+型
+EcucStringParamDef
+値の範囲
+グループシグナルの型ごとに異なる
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.15.8  ComSignalEndianness
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComSignalEndianness【COM157_Conf】
+概要
+グループシグナルのエンディアン
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+LITTLE_ENDIAN
+リトルエンディアン
+
+BIG_ENDIAN
+ビッグエンディアン
+
+OPAQUE
+オペーク
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.15.9  ComTransferProperty
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComTransferProperty【COM560_Conf】
+概要
+グループシグナルの送信プロパティ
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+PENDING
+グループシグナルの書き込みが発生しても，所属しているシグナルグループの送信プロパティに影響を与えない
+
+TRIGGERED_ON_CHANGE
+グループシグナルの書き込みが発生し，バッファの値が前回値と異なる場合，所属しているシグナルグループの送信プロパティに影響を与える
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.15.10  ComSystemTemplateSystemSignalRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComSystemTemplateSystemSignalRef【COM002_Conf】
+概要
+システムテンプレートのグループシグナルへの参照
+多重度
+0..1
+型
+EcucStringParamDef
+値の範囲
+I-SIGNAL-TO-I-PDU-MAPPINGへの参照
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+
+
+3.10.16  ComFilter
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComFilter
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComFilter【COM339_Conf】
+概要
+フィルタの設定を含むコンテナ
+多重度
+0..1
+パラメータ
+ComFilterAlgorithm
+
+ComFilterMask
+
+ComFilterMin
+
+ComFilterMax
+
+ComFilterOffset
+
+ComFilterPeriod
+
+ComFilterX
+サブコンテナ
+－
+
+3.10.16.1  ComFilterAlgorithm
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComFilter/ ComFilterAlgorithm
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComFilter/ComFilterAlgorithm【COM146_Conf】
+概要
+フィルタのアルゴリズム
+・今回値：フィルタ対象のシグナル値，
+・前回値：前回フィルタを通過したシグナル値
+・Xの値：ComFilterXに設定した値
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+ALWAYS
+フィルタ結果は常にTRUE
+
+NEVER
+フィルタ結果は常にFALSE
+
+MASKED_NEW_
+DIFFERS_MASKED_OLD
+マスクした今回値とマスクした前回値を比較
+・同じ場合　：FALSE
+・異なる場合：TRUE
+
+MASKED_NEW_
+DIFFERS_X
+マスクした今回値とXの値を比較
+・同じ場合　：FALSE
+・異なる場合：TRUE
+
+MASKED_NEW_
+EQUALS_X
+マスクした今回値とXの値を比較
+・同じ場合　：TRUE
+・異なる場合：FALSE
+
+NEW_IS_OUTSIDE
+今回値が範囲外である場合，TRUE
+
+NEW_IS_WITHIN
+今回値が範囲内である場合，TRUE
+
+ONE_EVERY_N
+N回フィルタされる度に1回のみTRUE
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.16.2  ComFilterMask
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComFilter/ ComFilterMask
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComFilter/ComFilterMask【COM235_Conf】
+概要
+フィルタのマスク値
+(フィルタアルゴリズムComFilterAlgorithmがMASKED_NEW_DIFFERS_MASKED_OLDまたはMASKED_NEW_DIFFERS_XまたはMASKED_NEW_EQUALS_Xの場合，有効となる)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+-2147483648..4294967295【NCOM047】
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，ComFilterMaskの値の範囲が0..18446744073709551615と規定されているが，フィルタアルゴリズム(ComFilterAlgorithm) がMASKED_NEW_DIFFERS_MASKED_OLDまたはMASKED_NEW_DIFFERS_XまたはMASKED_NEW_EQUALS_Xのフィルタを持つシグナルが符号ありの型である可能性もある．そして，浮動小数点型のシグナルに対するフィルタリングはサポートされないため，64ビットの範囲を考慮する必要がない．したがって，本仕様ではComFilterMaskの値の範囲を-2147483648..4294967295とする〔NCOM047〕．
+
+3.10.16.3  ComFilterX
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComFilter/ComFilterX
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComFilter/ComFilterX【COM147_Conf】
+概要
+フィルタのXの値
+(フィルタアルゴリズムComFilterAlgorithmがMASKED_NEW_DIFFERS_XまたはMASKED_NEW_EQUALS_Xの場合，有効となる)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+-2147483648..4294967295【NCOM048】
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+　AUTOSAR仕様との違い
+　AUTOSAR仕様では，ComFilterXの値の範囲が0..18446744073709551615と規定されているが，フィルタアルゴリズム(ComFilterAlgorithm) がMASKED_NEW_DIFFERS_XまたはMASKED_NEW_EQUALS_Xのフィルタを持つシグナルが符号ありの型である可能性もある．そして，浮動小数点型のシグナルに対するフィルタリングはサポートされないため，64ビットの範囲を考慮する必要がない．したがって，本仕様ではComFilterXの値の範囲を-2147483648..4294967295とする〔NCOM048〕．
+
+3.10.16.4  ComFilterMin
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComFilter/ ComFilterMin
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComFilter/ComFilterMin【COM318_Conf】
+概要
+フィルタを通過できる最小値
+(フィルタアルゴリズムComFilterAlgorithmがNEW_IS_OUTSIDEまたはNEW_IS_WITHINの場合，有効となる)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+-2147483648..4294967295【NCOM043】
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，ComFilterMinの値の範囲が0..18446744073709551615と規定されているが，フィルタアルゴリズム(ComFilterAlgorithm) がNEW_IS_OUTSIDEまたはNEW_IS_WITHINのフィルタを持つシグナルが符号ありの型である可能性もある．そして，浮動小数点型のシグナルに対するフィルタリングはサポートされないため，64ビットの範囲を考慮する必要がない．したがって，本仕様ではComFilterMinの値の範囲を-2147483648..4294967295とする〔NCOM043〕．
+
+3.10.16.5  ComFilterMax
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComFilter/ ComFilterMax
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComFilter/ComFilterMax【COM317_Conf】
+概要
+フィルタを通過できる最大値
+(フィルタアルゴリズムComFilterAlgorithmがNEW_IS_OUTSIDEまたはNEW_IS_WITHINの場合，有効となる)
+多重度
+0..1
+型
+EcucEnumerationParamDef
+値の範囲
+-2147483648..4294967295【NCOM044】
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+AUTOSAR仕様との違い
+　AUTOSAR仕様では，ComFilterMaxの値の範囲が0..18446744073709551615と規定されているが，フィルタアルゴリズム(ComFilterAlgorithm) がNEW_IS_OUTSIDEまたはNEW_IS_WITHINのフィルタを持つシグナルが符号ありの型である可能性もある．そして，浮動小数点型のシグナルに対するフィルタリングはサポートされないため，64ビットの範囲を考慮する必要がない．したがって，本仕様ではComFilterMaxの値の範囲を-2147483648..4294967295とする〔NCOM044〕．
+
+3.10.16.6  ComFilterOffset
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComFilter/ ComFilterOffset
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComFilter/ComFilterOffset【COM313_Conf】
+概要
+フィルタのオフセット
+(フィルタアルゴリズムComFilterAlgorithmがONE_EVERY_Nの場合，有効となる)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..18446744073709551615
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+3.10.16.7  ComFilterPeriod
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal/ComFilter/ ComFilterPeriod
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroup/ ComGroupSignal/ComFilter/ComFilterPeriod【COM312_Conf】
+概要
+フィルタの通過周期
+(フィルタアルゴリズムComFilterAlgorithmがONE_EVERY_Nの場合，有効となる)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..18446744073709551615
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム
+
+
+
+3.10.17  ComGwMapping
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping【COM544_Conf】
+概要
+シグナルゲートウェイの設定を含むコンテナ
+多重度
+0..*
+パラメータ
+－
+サブコンテナ
+ComGwSource
+
+ComGwDestination
+
+設計上の注意
+　シグナルゲートウェイは本バージョン対象外の機能であるため，本コンテナおよびサブコンテナは対象外となる．
+
+3.10.18  ComGwSource
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource【COM545_Conf】
+概要
+ゲートウェイ元シグナルの設定を含むコンテナ
+多重度
+1
+パラメータ
+－
+サブコンテナ
+ComGwSourceDescription
+
+ComGwSignal
+
+3.10.19  ComGwDestination
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination【COM546_Conf】
+概要
+ゲートウェイ先シグナルの設定を含むコンテナ
+多重度
+1..*
+パラメータ
+－
+サブコンテナ
+ComGwDestinationDescription
+
+ComGwSignal
+
+
+
+3.10.20  ComGwSourceDescription
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSourceDescription【COM548_Conf】
+概要
+ゲートウェイ元シグナルの記述の設定を含むコンテナ
+多重度
+0..1
+パラメータ
+ComSignalType
+
+ComBitPosition
+
+ComBitSize
+
+ComSignalLength
+
+ComUpdateBitPosition
+
+ComSignalEndianness
+
+ComGwIPduRef
+サブコンテナ
+－
+
+3.10.20.1  ComSignalType
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSourceDescription/ComSignalType【COM127_Conf】
+概要
+ゲートウェイ元シグナルの型
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+BOOLEAN
+boolean
+
+UINT8
+符号なし整数(8bit)
+
+UINT16
+符号なし整数(16bit)
+
+UINT32
+符号なし整数(32bit)
+
+SINT8
+符号あり整数(8bit)
+
+SINT16
+符号あり整数(16bit)
+
+SINT32
+符号あり整数(32bit)
+
+FLOAT32
+浮動小数点(32bit)
+
+FLOAT64
+浮動小数点(64bit)
+
+UINT8_N
+配列(8bit)
+
+UINT8_DYN
+可変長配列(8bit)
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.20.2  ComBitPosition
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSourceDescription/ComBitPosition【COM259_Conf】
+概要
+ゲートウェイ元シグナルのビット位置
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..2031
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.20.3  ComBitSize
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSourceDescription/ComBitSize【COM158_Conf】
+概要
+ゲートウェイ元シグナルのビットサイズ
+(シグナル型がUINT8_NまたはUINT8_DYNの場合は無効)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..64
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.20.4  ComSignalLength
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSourceDescription/ComSignalLength【COM437_Conf】
+概要
+ゲートウェイ元シグナルの長さ[byte]
+(シグナル型がUINT8_NまたはUINT8_DYNの場合のみ有効)
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..8
+CANまたはLIN通信するIPDUに所属する場合
+
+0..254
+FlexRay通信するIPDUに所属する場合
+
+0..4095
+TP通信するIPDUに所属する場合
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+3.10.20.5  ComUpdateBitPosition
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSourceDescription/ComUpdateBitPosition【COM257_Conf】
+概要
+ゲートウェイ元シグナルのアップデートビット位置
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..63
+CANまたはLIN通信するIPDUに所属する場合
+
+0..2031
+FlexRay通信するIPDUに所属する場合
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.20.6  ComSignalEndianness
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSourceDescription /ComSignalEndianness【COM157_Conf】
+概要
+ゲートウェイ元シグナルのエンディアン
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+LITTLE_ENDIAN
+リトルエンディアン
+
+BIG_ENDIAN
+ビッグエンディアン
+
+OPAQUE
+オペーク
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.20.7  ComGwIPduRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSourceDescription /ComGwIPduRef【COM550_Conf】
+概要
+ゲートウェイ元のシグナルの所属IPDUへの参照
+多重度
+1
+型
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPduへの参照
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.21  ComGwDestinationDesctiption
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination/ComGwDestinationDescription【COM549_Conf】
+概要
+ゲートウェイ先シグナルの記述の設定を含むコンテナ
+多重度
+0..1
+パラメータ
+ComBitPosition
+
+ComUpdateBitPosition
+
+ComSignalInitValue
+
+ComSignalEndianness
+
+ComTransferProperty
+
+ComGwIPduRef
+サブコンテナ
+ComFilter
+
+3.10.21.1  ComBitPosition
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination/ComGwDestinationDescription/ComBitPosition【COM259_Conf】
+概要
+ゲートウェイ先シグナルのビット位置
+多重度
+1
+型
+EcucIntegerParamDef
+値の範囲
+0..2031
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+
+
+3.10.21.2  ComUpdateBitPosition
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination/ComGwDestinationDescription/ ComUpdateBitPosition【COM257_Conf】
+概要
+ゲートウェイ先シグナルのアップデートビット位置
+多重度
+0..1
+型
+EcucIntegerParamDef
+値の範囲
+0..63
+CANまたはLIN通信するIPDUに所属する場合
+
+0..2031
+FlexRay通信するIPDUに所属する場合
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.21.3  ComSignalInitValue
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination/ComGwDestinationDescription/ComSignalInitValue【COM170_Conf】
+概要
+ゲートウェイ先シグナルの初期値
+多重度
+0..1
+型
+EcucStringParamDef
+値の範囲
+シグナルの型ごとに異なる
+デフォルト値
+0
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.21.4  ComSignalEndianness
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination/ComGwDestinationDescription/ ComSignalEndianness【COM157_Conf】
+概要
+ゲートウェイ先シグナルのエンディアン
+多重度
+1
+型
+EcucEnumerationParamDef
+値の範囲
+LITTLE_ENDIAN
+リトルエンディアン
+
+BIG_ENDIAN
+ビッグエンディアン
+
+OPAQUE
+オペーク
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.21.5  ComTransferProperty
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination/ComGwDestinationDescription/ ComTransferProperty【COM232_Conf】
+概要
+ゲートウェイ先シグナルの送信プロパティ
+多重度
+0..1
+型
+EcucEnumerationParamDef
+値の範囲
+PENDING
+シグナルの書き込みが発生しても，所属IPDUの送信(繰り返しあり)はトリガしない
+
+TRIGGERED
+シグナル書き込みが発生した場合，所属IPDUの送信(繰り返しあり)をトリガする
+
+TRIGGERED_WITHOUT_REPETITION
+シグナルの書込みが発生した場合，所属IPDUの送信(繰り返しなし)をトリガする
+
+TRIGGERED_ON_CHANGE
+シグナルの書き込みが発生し，バッファの値が前回値と異なる場合，所属IPDUの送信(繰り返しあり)をトリガする
+
+TRIGGERED_ON_CHANGE_WITHOUT_REPETITION
+シグナルの書き込みが発生し，バッファの値が前回値と異なる場合，所属IPDUの送信(繰り返しなし)をトリガする
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+3.10.21.6  ComGwIPduRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination/ComGwDestinationDescription/ComGwIPduRef【COM550_Conf】
+概要
+ゲートウェイ先シグナルの所属IPDUへの参照
+多重度
+1
+型
+/AUTOSAR/EcucDefs/Com/ComConfig/ComIPduへの参照
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+
+
+3.10.22  ComGwSignal
+コンテナ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSignal
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination/ComGwSignal【COM551_Conf】
+概要
+ゲートウェイするシグナルへの参照を含むコンテナ
+多重度
+0..1
+パラメータ
+ComGwSignalRef
+サブコンテナ
+－
+
+3.10.22.1  ComGwSignalRef
+パラメータ名
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ComGwSource/ ComGwSignal/ComGwSignalRef
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGwMapping/ ComGwDestination/ComGwSignal/ComGwSignalRef【COM547_Conf】
+概要
+ゲートウェイ対象シグナルへの参照
+多重度
+1
+型
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalへの参照 または
+/AUTOSAR/EcucDefs/Com/ComConfig/ComSignalGroupへの参照 または
+/AUTOSAR/EcucDefs/Com/ComConfig/ComGroupSignalへの参照
+値の範囲
+－
+デフォルト値
+－
+コンフィギュレーションクラス
+プレコンパイルタイム，リンクタイム，ポストビルドタイム
+
+
+
+4  リファレンス
+4.1  データ型一覧
+　
+　表 41 データ型一覧
+データ型名
+概要
+Com_StatusType
+COM状態型．
+Com_SignalIdType
+シグナルID型
+Com_SignalGroupIdType
+シグナルグループID型
+Com_IpduGroupIdType
+IPDUグループID型
+Com_IpduGroupVector
+IPDUグループベクタ型
+Com_ServiceIdType
+サービスID型
+Com_ConfigType
+COMのコンフィギュレーション型
+
+4.2  定数一覧
+
+　表 42 定数一覧
+定数名
+概要
+SEND
+送信側であることを示す定数
+RECEIVE
+受信側であることを示す定数
+NORMAL
+通常通信を行うIPDUであることを示す定数
+TP
+TP通信を行うIPDUであることを示す定数
+BOOLEAN
+ブーリアン型であることを示す定数
+UINT8
+8ビットの符号なし整数型であることを示す定数
+UINT16
+16ビットの符号なし整数型であることを示す定数
+UINT32
+32ビットの符号なし整数型であることを示す定数
+SINT8
+8ビットの符号あり整数型であることを示す定数
+SINT16
+16ビットの符号あり整数型であることを示す定数
+SINT32
+32ビットの符号あり整数型であることを示す定数
+UINT8_N
+8ビットの符号なし整数の配列型であることを示す定数
+UINT8_DYN
+8ビットの符号なし整数の可変長配列型であることを示す定数
+FLOAT32
+32ビットの浮動小数点型であることを示す定数
+FLOAT64
+64ビットの浮動小数点型であることを示す定数
+BIG_ENDIAN
+ビックエンディアンであることを示す定数
+LITTLE_ENDIAN
+リトルエンディアンであることを示す定数
+OPAQUE
+オペークであることを示す定数
+ALWAYS
+常に通過するフィルタであることを示す定数
+NEVER
+常に通過しないフィルタであることを示す定数
+MASKED_NEW_DIFFERS_MASKED_OLD
+マスクした今回値とマスクした前回値を比較して，値が異なる場合のみ通過するフィルタであることを示す定数
+MASKED_NEW_DIFFERS_X
+マスクした今回値とXの値を比較して，値が異なる場合のみ通過するフィルタであることを示す定数
+MASKED_NEW_EQUALS_X
+マスクした今回値とXの値を比較して，値が一致する場合のみ通過するフィルタであることを示す定数
+NEW_IS_OUTSIDE
+今回値が指定された範囲外の値である場合のみ通過するフィルタであることを示す定数
+NEW_IS_WITHIN
+今回値が指定された範囲内の値である場合のみ通過するフィルタであることを示す定数
+ONE_EVERY_N
+N回フィルタリングされる度に1回のみ通過するフィルタであることを示す定数
+DIRECT
+直接(N回)送信であることを示す定数
+PERIODIC
+周期送信であることを示す定数
+MIXED
+直接(N回)送信と周期送信を並行して行うことを示す定数
+PENDING
+送信トリガではないことを示す定数
+TRIGGERED
+送信トリガであることを示す定数
+TRIGGERED_ON_CHANGE
+値の変更がある場合のみ送信トリガとなることを示す定数
+TRIGGERED_ON_CHANGE_WITHOUT_REPETITION
+値の変更がある場合のみ繰り返しなしの送信トリガとなることを示す定数
+TRIGGERED_WITHOUT_REPETITION
+繰り返しなしの送信トリガとなることを示す定数
+DEFERRED
+通信完了通知を周期関数で通知することを示す定数
+IMMEDIATE
+通信完了通知を即時に通知することを示す定数
+CONFIRMATION
+送信完了通知を受け取った際にアップデートビットをクリアすることを示す定数
+TRANSMIT
+PduR_ComTransmitを呼び出した際にアップデートビットをクリアすることを示す定数
+TRIGGER_TRANSMIT
+Com_TriggerTransmitによりIPDUがフェッチされた際にアップデートビットをクリアすることを示す定数
+NOTIFY
+コールバック関数を呼び出してRTEへ通知することを示す定数
+REPLACE
+バッファの値を初期値に置き換えることを示す定数
+NONE
+特に何もしないことを示す定数
+COM_SERVICE_NOT_AVAILABLE
+システムサービスが利用不可であることを示す定数
+COM_BUSY
+リソース使用中によるシステムサービス異常終了であることを示す定数
+COM_INVALID_UINT8
+8ビットの符号なし整数型のための無効値(0xFF)
+COM_INVALID_UINT16
+16ビットの符号なし整数型のための無効値(0xFFFF)
+COM_INVALID_UINT32
+32ビットの符号なし整数型のための無効値(0xFFFFFFFF)
+
+4.3  システムサービス一覧
+　
+　表 43 システムサービス一覧
+システムサービス名
+概要
+Com_Init
+初期化
+Com_DeInit
+未初期化
+Com_GetStatus
+状態取得
+Com_GetConfigurationId
+現在有効なコンフィギュレーション情報のID取得
+Com_GetVersionInfo
+COMのバージョン情報取得
+Com_IpduGroupControl
+IPDUグループ管理
+Com_ReceptionDMControl
+受信DM管理
+Com_SetIpduGroup
+IPDUグループベクタ設定
+Com_ClearIpduGroupVector
+IPDUグループベクタクリア
+Com_SendSignal
+シグナル送信
+Com_SendDynSignal
+可変長シグナル送信
+Com_SendSignalGroup
+シグナルグループ送信
+Com_ReceiveSignal
+シグナル受信
+Com_ReceiveDynSignal
+可変長シグナル受信
+Com_ReceiveSignalGroup
+シグナルグループ受信
+Com_InvalidateSignal
+シグナル無効化
+Com_InvalidateSignalGroup
+シグナルグループ無効化
+Com_TriggerIPDUSend
+IPDUトリガ送信
+Com_SwitchIpduTxMode
+IPDU送信モード変更
+　
+　
+
+
+4.4  コールバック関数一覧
+　
+　表 44 コールバック関数一覧
+コールバック関数名
+概要
+Com_TxConfirmation
+送信完了通知
+Com_TpTxConfirmation
+TP送信完了通知
+Com_RxIndication
+受信完了通知
+Com_TpRxIndication
+TP受信完了通知
+Com_TriggerTransmit
+トリガ送信
+Com_StartOfReception
+受信開始
+Com_CopyTxData
+送信データコピー
+Com_CopyRxData
+受信データコピー
+
+4.5  周期関数一覧
+　
+　表 45 周期関数一覧
+周期関数名
+概要
+Com_MainFunctionTx
+送信処理を行う周期関数
+Com_MainFunctionRx
+受信処理を行う周期関数
+Com_MainFunctionRouteSignals
+ルーティング処理を行う周期関数
+
+4.6  エラーコード一覧
+　
+　表 46 エラーコード一覧
+エラーコード名
+概要
+COM_E_PARAM
+引数に不正な値が渡された
+COM_E_UNINIT
+初期化が未実施である
+COM_E_PARAM_POINTER
+引数にNULLポインタが渡された
+
+
+
+4.7  仕様番号一覧
+4.7.1  削除したAUTOSAR仕様一覧
+仕様タグ
+削除理由
+＜COM199＞
+非推奨なシステムサービス(Com_UpdateShadowSignal)である
+＜COM632＞
+非推奨なシステムサービス(Com_UpdateShadowSignal)である
+＜COM633＞
+非推奨なシステムサービス(Com_UpdateShadowSignal)である
+＜COM634＞
+非推奨なシステムサービス(Com_UpdateShadowSignal)である
+＜COM202＞
+非推奨なシステムサービス(Com_ReceiveShadowSignal)である
+＜COM640＞
+非推奨なシステムサービス(Com_ReceiveShadowSignal)である
+＜COM641＞
+非推奨なシステムサービス(Com_ReceiveShadowSignal)である
+＜COM286＞
+非推奨なシステムサービス(Com_InvalidateShadowSignal)である
+＜COM288＞
+非推奨なシステムサービス(Com_InvalidateShadowSignal)である
+＜COM644＞
+非推奨なシステムサービス(Com_InvalidateShadowSignal)である
+＜COM489＞
+送信側と受信側の無効値が一致していることはユーザが保証する必要がある
+＜COM671＞
+コールバック関数の実装方法に関する説明であり，要求仕様ではない
+＜COM673＞
+COMのバージョンチェックはユーザが行う(※R4.1.1で削除される)
+＜COM762＞
+ComBitSizeの設定可能範囲を1..64とする
+＜COM764＞
+ComBitSizeの設定可能範囲を1..64とする
+＜COM999＞
+要求仕様ではない
+
+4.7.2  改変したAUTOSAR仕様一覧
+仕様タグ
+改変内容
+〔NCOM002〕
+ComConfigの多重度変更〔COM337_Conf〕
+〔NCOM003〕
+ComIPduHandleIdの多重度変更〔COM175_Conf〕
+〔NCOM004〕
+ComIPduGroupRefの多重度変更〔COM206_Conf〕
+〔NCOM009〕
+IPDUグループのネスト所属は非サポート〔COM185_Conf〕
+〔NCOM025〕
+PDU関連のデータ型の定義規則〔COM220〕
+〔NCOM027〕
+ComIPduの多重度変更〔COM340_Conf〕
+〔NCOM028〕
+ComIPduGroupの多重度変更〔COM341_Conf〕
+〔NCOM029〕
+ComSignalの多重度変更〔COM344_Conf〕
+〔NCOM043〕
+ComFilterMinの値の範囲変更〔COM318_Conf〕
+〔NCOM044〕
+ComFilterMaxの値の範囲変更〔COM317_Conf〕
+〔NCOM047〕
+ComFilterMaskの値の範囲変更〔COM235_Conf〕
+〔NCOM048〕
+ComFilterXの値の範囲変更〔COM147_Conf〕
+〔NCOM100〕
+送信プロパティの依らず送信DMを行う〔COM481〕
+
+4.7.3  追加したNCES仕様一覧
+仕様タグ
+概要
+〔NCOM001〕
+初期化前にCom_GetConfigurationIdが呼び出された場合の返り値
+〔NCOM005〕
+周期関数の呼出し回数の算出方法
+〔NCOM006〕
+PduR_ComTransmit呼出しタイミング
+〔NCOM007〕
+COMジェネレータでのエラー検出
+〔NCOM008〕
+ID系パラメータは0から連番
+〔NCOM010〕
+ComSignalTypeとComBitSizeの整合チェック
+〔NCOM011〕
+ComSignalTypeとComBitSizeの整合チェック
+〔NCOM012〕
+ComSignalTypeとComSignalLengthの整合チェック
+〔NCOM013〕
+ComSignalInitValueとComSignalLengthの整合チェック
+〔NCOM014〕
+ComSignalDataInvalidValueとComSignalLengthの整合チェック
+〔NCOM015〕
+シグナル配置のチェック
+〔NCOM016〕
+シグナル配置のチェック
+〔NCOM017〕
+シグナル配置のチェック
+〔NCOM018〕
+シグナル配置のチェック
+〔NCOM019〕
+ComSignalTypeとComBitPositionの整合チェック
+〔NCOM020〕
+周期送信のオフセット時間算出方法
+〔NCOM021〕
+ComSignalTypeとComBitSizeの整合チェック
+〔NCOM022〕
+ComSignalTypeとComBitSizeの整合チェック
+〔NCOM023〕
+ComSignalTypeとComSignalLengthの整合チェック
+〔NCOM024〕
+コンフィギュレーションデータの変数名の定義規則
+〔NCOM026〕
+ComSignalTypeとComSignalEndiannessの整合チェック
+〔NCOM030〕
+ComTxIPduClearUpdateBitのデフォルト値
+〔NCOM031〕
+DMタイマのリセットタイミング
+〔NCOM032〕
+COMシステムサービスで用いる排他エリア
+〔NCOM033〕
+タイムアウト検出タイミング
+〔NCOM034〕
+タイムアウト検出タイミング
+〔NCOM035〕
+タイムアウト検出タイミング
+〔NCOM038〕
+ComBitSizeとComSignalInitValueまたはComSignalDataInvalidValueの整合性チェック
+〔NCOM039〕
+NULLポインタ指定時の振舞い
+〔NCOM040〕
+NULLポインタ指定時の振舞い
+〔NCOM041〕
+ComTxModeTrueおよびComTxModeFalseの整合性チェック
+〔NCOM042〕
+送信シグナルにはComTransferPropertyを指定しなければならない
+〔NCOM045〕
+ComFilterMinおよびComFilterMaxの整合性チェック
+〔NCOM046〕
+ComFilterMinおよびComFilterMaxの整合性チェック
+〔NCOM049〕
+ComTxTimeBase制限事項
+〔NCOM050〕
+ComRxTimeBase制限事項
+〔NCOM056〕
+Com_Initの引数範囲指定
+〔NCOM057〕
+Com_SetIpduGroupの引数範囲指定
+〔NCOM058〕
+Com_SendSignalの引数範囲指定
+〔NCOM059〕
+Com_ReceiveSignalの引数範囲指定
+〔NCOM060〕
+Com_SendSignalGroupの引数範囲指定
+〔NCOM061〕
+Com_ReceiveSignalGroupの引数範囲指定
+〔NCOM062〕
+Com_InvalidateSignalの引数範囲指定
+〔NCOM063〕
+Com_InvalidateSignalGroupの引数範囲指定
+〔NCOM064〕
+Com_TriggerIPDUSendの引数範囲指定
+〔NCOM065〕
+Com_SwitchIpduTxModeの引数範囲指定
+〔NCOM066〕
+Com_RxIndicationの引数範囲指定
+〔NCOM067〕
+Com_TxConfirmationの引数範囲指定
+　〔NCOM068〕
+Com_DeInitの初期化チェック
+　〔NCOM069〕
+Com_IpduGroupControlの初期化チェック
+　〔NCOM070〕
+Com_ReceptionDMControlの初期化チェック
+　〔NCOM071〕
+Com_SetIpduGroupIdの初期化チェック
+　〔NCOM072〕
+Com_SendSignalの初期化チェック
+　〔NCOM073〕
+Com_SendSignalの引数がNULL_PTR
+　〔NCOM074〕
+Com_ReceiveSignalの初期化チェック
+　〔NCOM075〕
+Com_ReceiveSignalの引数がNULL_PTR
+　〔NCOM076〕
+Com_SendSignalGroupの初期化チェック
+　〔NCOM077〕
+Com_ReceiveSignalGroupの初期化チェック
+　〔NCOM078〕
+Com_InvalidateSignalの初期化チェック
+　〔NCOM079〕
+Com_InvalidateSignalGroupの初期化チェック
+　〔NCOM080〕
+Com_TriggerIPDUSendの初期化チェック
+　〔NCOM081〕
+Com_SwitchIpduTxModeの初期化チェック
+　〔NCOM082〕
+Com_RxIndicationの初期化チェック
+　〔NCOM083〕
+Com_RxIndicationの引数がNULL_PTR
+　〔NCOM084〕
+Com_TxConfirmationの初期化チェック
+　〔NCOM085〕
+Com_SendDynSignalの初期化チェック
+　〔NCOM086〕
+Com_SendDynSignalの引数範囲指定
+　〔NCOM087〕
+Com_SendDynSignalの引数がNULL_PTR
+　〔NCOM088〕
+Com_ReceiveDynSignalの初期化チェック
+　〔NCOM089〕
+Com_ReceiveDynSignalの引数範囲指定
+　〔NCOM090〕
+Com_ReceiveDynSignalの引数がNULL_PTR
+　〔NCOM091〕
+Com_IpduGroupControlの引数がNULL_PTR
+　〔NCOM092〕
+Com_ ReceptionDMControlの引数がNULL_PTR
+　〔NCOM093〕
+Com_ClearIpduGroupVectorの引数がNULL_PTR
+　〔NCOM094〕
+Com_SetIpduGroupの引数がNULL_PTR
+　〔NCOM095〕
+ComSignalTypeにUINT8_DYNを指定した場合エラー
+　〔NCOM096〕
+Com_RxIpduCalloutの振る舞い
+　〔NCOM097〕
+N回送信中にリトライ要求が起こった場合の振る舞い
+　〔NCOM098〕
+1回送信要求とN回送信要求が同時に来た場合の振る舞い
+　〔NCOM099〕
+送信プロパティがPENDINGの場合の振る舞い
+　〔NCOM101〕
+ComTxTimeBaseの範囲を指定
+　〔NCOM102〕
+ComRxTimeBaseの範囲を指定
+　〔NCOM103〕
+ComConfigurationUseDetのデフォルト値を指定
+　〔NCOM104〕
+数値変換できないパラメータが指定された場合
+
+
+4.7.4  本バージョンで対象外となるAUTOSAR仕様一覧
+データシーケンス管理
+〔COM587〕，〔COM588〕，〔COM590〕，〔COM687〕，〔COM688〕，〔COM726〕，〔COM727〕，〔COM003_Conf〕，〔COM592_Conf〕，〔COM593_Conf〕，〔COM594_Conf〕，〔COM595_Conf〕
+
+通信保護
+〔COM596〕，〔COM597〕，〔COM599_Conf〕，〔COM600_Conf〕，〔COM601_Conf〕
+
+可変長データ通信
+〔COM627〕，〔COM628〕，〔COM629〕，〔COM630〕，〔COM690〕，〔COM711〕，〔COM712〕，〔COM724〕，〔COM753〕，〔COM754〕，〔COM755〕，〔COM756〕，〔COM757〕，〔COM758〕
+
+大型データ通信
+〔COM662〕，〔COM713〕，〔COM714〕，〔COM720〕
+
+TP通信
+〔COM650〕，〔COM651〕，〔COM654〕，〔COM655〕，〔COM656〕，〔COM657〕，〔COM658〕，〔COM663〕，〔COM691〕，〔COM692〕，〔COM693〕，〔COM721〕，〔COM725〕，〔COM760〕，〔COM782〕，〔COM783〕
+
+シグナルゲートウェイ
+〔COM357〕，〔COM359〕，〔COM360〕，〔COM361〕，〔COM362〕，〔COM365〕，〔COM370〕，〔COM377〕，〔COM383〕，〔COM384〕，〔COM386〕，〔COM400〕，〔COM466〕，〔COM539〕，〔COM598〕，〔COM666〕，〔COM667〕，〔COM668〕，〔COM701〕，〔COM702〕，〔COM703〕，〔COM704〕，〔COM705〕，〔COM706〕，〔COM735〕，〔COM544_Conf〕，〔COM545_Conf〕，〔COM546_Conf〕，〔COM547_Conf〕，〔COM548_Conf〕，〔COM549_Conf〕，〔COM550_Conf〕，〔COM551_Conf〕，〔COM729_Conf〕
+
+以下の仕様の内，シグナルゲートウェイに関する部分は対象外となる．
+〔COM127_Conf〕，〔COM157_Conf〕，〔COM158_Conf〕，〔COM170_Conf〕，〔COM232_Conf〕，〔COM257_Conf〕，〔COM259_Conf〕，〔COM437_Conf〕
+
+下位層からのトリガ送信
+ 〔COM001〕，〔COM260〕，〔COM395〕，〔COM475〕，〔COM578〕，〔COM647〕，〔COM648〕，〔COM696〕，〔COM697〕，〔COM766〕，〔COM765_Conf〕
+　
+その他
+ 〔COM001_Conf〕，〔COM002_Conf〕
+　
+
+変更履歴
+バージョン
+変更日
+変更内容
+変更者
+1.0.0
+2014/12/02
+新規作成
+NCES
+1.0.1
+2015/03/31
+誤記修正
+NCES
+1.1.0
+2016/03/31
+シグナルグループ対応
+NCES
+
+
+
+
+　
+　
+　
+　
+　文書番号　：COM_SPEC-01
+　文書名　　：次世代車載システム向けCOM外部仕様書
+　Ver.1.1.0
+　
+　
+　
+　１１２
+　
+　
+　文書番号：COM_SPEC-01
+　
+　
+　

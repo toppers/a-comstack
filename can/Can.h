@@ -2,64 +2,66 @@
  *  TOPPERS/A-CAN
  *      Automotive CAN
  *
- *  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+ *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
  *                             Graduate School of Information Science, Nagoya Univ., JAPAN
- *  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
- *  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
- *  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
- *  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+ *  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+ *  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
  *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
- *  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
- *  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
- *  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
- *  Copyright (C) 2013-2015 by Witz Corporation
+ *  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+ *  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+ *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2016 by Witz Corporation
  *
- *  ¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î(1)¡Á(4)¤Î¾ò·ï¤òËş¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥½¥Õ¥È¥¦¥§
- *  ¥¢¡ÊËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò²şÊÑ¤·¤¿¤â¤Î¤ò´Ş¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²ş
- *  ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½ş¤ÇµöÂú¤¹¤ë¡¥
- *  (1) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¥½¡¼¥¹¥³¡¼¥É¤Î·Á¤ÇÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî
- *      ¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Ş¤Ş¤Î·Á¤Ç¥½¡¼
- *      ¥¹¥³¡¼¥ÉÃæ¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤³¤È¡¥
- *  (2) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤¥é¥¤¥Ö¥é¥ê·Á¼°¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
- *      ÍÑ¤Ç¤­¤ë·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ
- *      ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­
- *      ¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
- *  (3) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤µ¡´ï¤ËÁÈ¤ß¹ş¤à¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
- *      ÍÑ¤Ç¤­¤Ê¤¤·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¼¡¤Î¤¤¤º¤ì¤«¤Î¾ò·ï¤òËş¤¿¤¹¤³
- *      ¤È¡¥
- *    (a) ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃø
- *        ºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
- *    (b) ºÆÇÛÉÛ¤Î·ÁÂÖ¤ò¡¤ÊÌ¤ËÄê¤á¤ëÊıË¡¤Ë¤è¤Ã¤Æ¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È¤Ë
- *        Êó¹ğ¤¹¤ë¤³¤È¡¥
- *  (4) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»
- *      ³²¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
- *      ¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Î¥æ¡¼¥¶¤Ş¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍı
- *      Í³¤Ë´ğ¤Å¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤ò
- *      ÌÈÀÕ¤¹¤ë¤³¤È¡¥
+ *  ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã®(1)ï½(4)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+ *  ã‚¢ï¼ˆæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼ä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+ *  å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼
+ *  (1) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®å½¢ã§åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œ
+ *      æ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ã‚½ãƒ¼
+ *      ã‚¹ã‚³ãƒ¼ãƒ‰ä¸­ã«å«ã¾ã‚Œã¦ã„ã‚‹ã“ã¨ï¼
+ *  (2) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œãƒ©ã‚¤ãƒ–ãƒ©ãƒªå½¢å¼ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+ *      ç”¨ã§ãã‚‹å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œå†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨
+ *      è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜
+ *      ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+ *  (3) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œæ©Ÿå™¨ã«çµ„ã¿è¾¼ã‚€ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+ *      ç”¨ã§ããªã„å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œæ¬¡ã®ã„ãšã‚Œã‹ã®æ¡ä»¶ã‚’æº€ãŸã™ã“
+ *      ã¨ï¼
+ *    (a) å†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—
+ *        ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+ *    (b) å†é…å¸ƒã®å½¢æ…‹ã‚’ï¼Œåˆ¥ã«å®šã‚ã‚‹æ–¹æ³•ã«ã‚ˆã£ã¦ï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«
+ *        å ±å‘Šã™ã‚‹ã“ã¨ï¼
+ *  (4) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æ
+ *      å®³ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼
+ *      ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†
+ *      ç”±ã«åŸºã¥ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’
+ *      å…è²¬ã™ã‚‹ã“ã¨ï¼
  *
- *  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»Å
- *  ÍÍ¤Ë´ğ¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç
- *  ¤Ï¤Ê¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ğ¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍø
- *  ÍÑ¤¹¤ë¼Ô¤ËÂĞ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+ *  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•
+ *  æ§˜ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼ä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§
+ *  ã¯ãªã„ï¼AUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©
+ *  ç”¨ã™ã‚‹è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼
  *
- *  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤ÌµÊİ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª
- *  ¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª
- *  ¤ËÂĞ¤¹¤ëÅ¬¹çÀ­¤â´Ş¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊİ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§
- *  ¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½
- *  ¤ÎÀÕÇ¤¤òÉé¤ï¤Ê¤¤¡¥
+ *  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼ä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠ
+ *  ã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„
+ *  ã«å¯¾ã™ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+ *  ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œã
+ *  ã®è²¬ä»»ã‚’è² ã‚ãªã„ï¼
  *
- *  $Id: Can.h 1245 2015-03-25 09:25:18Z panasonic-ayane $
+ *  $Id: Can.h 2995 2016-03-02 02:05:09Z fsi-kaitori $
  */
 
 #ifndef TOPPERS_CAN_H
 #define TOPPERS_CAN_H
 
 /*
- * [CAN043][CAN037] ËÜ¥Õ¥¡¥¤¥ë¤Ë¤Ï¡¤Can¤Î¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¤äÊÑ¿ô¤ÎexternÀë¸À¡¤¥Ç¡¼¥¿·¿ÄêµÁ¤òµ­½Ò¤¹¤ë
+ * [CAN043][CAN037] æœ¬ãƒ•ã‚¡ã‚¤ãƒ«ã«ã¯ï¼ŒCanã®ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã‚„å¤‰æ•°ã®externå®£è¨€ï¼Œãƒ‡ãƒ¼ã‚¿å‹å®šç¾©ã‚’è¨˜è¿°ã™ã‚‹
  */
 
 /* [CAN034][CAN435][CAN388] */
-/* [CAN222] Can¥â¥¸¥å¡¼¥ë¤ÇÉ¬Í×¤Ê¥Ç¡¼¥¿·¿¤¬ÄêµÁ¤µ¤ì¤¿¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë */
+/* [CAN222] Canãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§å¿…è¦ãªãƒ‡ãƒ¼ã‚¿å‹ãŒå®šç¾©ã•ã‚ŒãŸãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ« */
 #include "ComStack_Types.h"
 #include "Can_GeneralTypes.h"
 #include "Can_Cfg.h"
@@ -68,22 +70,22 @@
 #define CAN_MODULE_ID	80U
 
 /*
- *  [CAN111] AUTOSAR¥ê¥ê¡¼¥¹¥Ğ¡¼¥¸¥ç¥ó
+ *  [CAN111] AUTOSARãƒªãƒªãƒ¼ã‚¹ãƒãƒ¼ã‚¸ãƒ§ãƒ³
  */
 #define CAN_AR_RELEASE_MAJOR_VERSION		4U
 #define CAN_AR_RELEASE_MINOR_VERSION		0U
 #define CAN_AR_RELEASE_REVISION_VERSION		3U
 
 /*
- *  ¥µ¥×¥é¥¤¥ä¥Ğ¡¼¥¸¥ç¥ó¾ğÊó
+ *  ã‚µãƒ—ãƒ©ã‚¤ãƒ¤ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±
  */
 #define CAN_SW_MAJOR_VERSION	1U
 #define CAN_SW_MINOR_VERSION	2U
 #define CAN_SW_PATCH_VERSION	0U
-#define CAN_VENDOR_ID			65U /* NCES¥Ù¥ó¥ÀID */
+#define CAN_VENDOR_ID			65U /* NCESãƒ™ãƒ³ãƒ€ID */
 
 /*
- *  ¾ğÊó¼èÆÀ¥Ş¥¯¥í
+ *  æƒ…å ±å–å¾—ãƒã‚¯ãƒ­
  */
 #define GET_HOH_NUM()								p_cur_can_config->tnum_hoh
 #define GET_CONTROLLER_NUM()						p_cur_can_config->tnum_controller
@@ -100,13 +102,13 @@
 #define GET_CAN_CTRL_INIB(id)						&p_cur_can_ctrl_inib_table[(id)]
 
 /*
- *  ¾ğÊóÀßÄê¥Ş¥¯¥í
+ *  æƒ…å ±è¨­å®šãƒã‚¯ãƒ­
  */
 #define SET_SAVED_PDU_ID(id, box_no, pdu_id)		(p_cur_can_ctrl_inib_table[(id)].p_can_hth_cb_table[(box_no)].saved_pduid = (pdu_id))
 #define SET_HTH_MUTEX(id, box_no, mutex_state)		(p_cur_can_ctrl_inib_table[(id)].p_can_hth_cb_table[(box_no)].mutex = (mutex_state))
 
 /*
- *  [CAN080] ¥¨¥é¡¼¥³¡¼¥É(uint8)
+ *  [CAN080] ã‚¨ãƒ©ãƒ¼ã‚³ãƒ¼ãƒ‰(uint8)
  */
 #define CAN_E_PARAM_POINTER		0x01U
 #define CAN_E_PARAM_HANDLE		0x02U
@@ -119,26 +121,26 @@
 #define CAN_E_FATAL				0xFFU
 
 /*
- *  ¥Õ¥£¥ë¥¿¥Ş¥¹¥¯Ì¤ÀßÄêÍÑ¥¤¥ó¥Ç¥Ã¥¯¥¹
+ *  ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚¹ã‚¯æœªè¨­å®šç”¨ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
  */
 #define CAN_NO_MASK_IDX			0xFFU
 
 /*
- *  Á÷¼õ¿®¼ïÊÌ
+ *  é€å—ä¿¡ç¨®åˆ¥
  */
 #define CAN_TRANSMIT			0x00U
 #define CAN_RECEIVE				0x01U
 
 /*
- *  CAN¥É¥é¥¤¥Ğ¾õÂÖ¼ïÊÌ
+ *  CANãƒ‰ãƒ©ã‚¤ãƒçŠ¶æ…‹ç¨®åˆ¥
  */
 #define CAN_UNINIT				0x00U
 #define CAN_READY				0x01U
 
-/* ¥Í¥¹¥È¥«¥¦¥ó¥ÈºÇÂçÃÍ */
+/* ãƒã‚¹ãƒˆã‚«ã‚¦ãƒ³ãƒˆæœ€å¤§å€¤ */
 #define CAN_INTERRUPT_NESTED_CNT_MAX		0xFFU
 
-/* ¥İ¡¼¥ê¥ó¥°¥â¡¼¥É¼ïÊÌ */
+/* ãƒãƒ¼ãƒªãƒ³ã‚°ãƒ¢ãƒ¼ãƒ‰ç¨®åˆ¥ */
 #define CAN_USE_POLLING_BUSOFF	0x01U
 #define CAN_USE_POLLING_RX		0x02U
 #define CAN_USE_POLLING_TX		0x04U
@@ -146,10 +148,10 @@
 
 
 /*
- *  [CAN082][CAN083][CAN084] DET¥¨¥é¡¼¥Ş¥¯¥í(ON/OFFÀÚ¤êÂØ¤¨)
+ *  [CAN082][CAN083][CAN084] DETã‚¨ãƒ©ãƒ¼ãƒã‚¯ãƒ­(ON/OFFåˆ‡ã‚Šæ›¿ãˆ)
  */
 #if CAN_DEV_ERROR_DETECT == STD_ON
-/* [CAN027][CAN028] DET¥¨¥é¡¼¤¬Í­¸ú¤Î¾ì¹ç¡¤DET¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¤ò¸Æ¤Ó½Ğ¤¹ */
+/* [CAN027][CAN028] DETã‚¨ãƒ©ãƒ¼ãŒæœ‰åŠ¹ã®å ´åˆï¼ŒDETã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™ */
 #define CAN_DET_REPORT_ERROR(ApiId, ErrorId)	(void) Det_ReportError(CAN_MODULE_ID, 0U, (ApiId), (ErrorId))
 
 #define CAN_CHECK_INITIALIZED(ApiId)					 \
@@ -230,7 +232,7 @@
 		}												\
 	} while (0)
 #else /* CAN_DEV_ERROR_DETECT == STD_OFF */
-/* [CAN424][CAN089] DET¥¨¥é¡¼¤¬Ìµ¸ú¤Î¾ì¹ç¡¤²¿¤â½èÍı¤·¤Ê¤¤ */
+/* [CAN424][CAN089] DETã‚¨ãƒ©ãƒ¼ãŒç„¡åŠ¹ã®å ´åˆï¼Œä½•ã‚‚å‡¦ç†ã—ãªã„ */
 #define CAN_DET_REPORT_ERROR(ApiId, ErrorId)
 #define CAN_CHECK_INITIALIZED(ApiId)
 #define CAN_CHECK_INITIALIZED_ERCD_STD_RETERN_TYPE(ApiId)
@@ -244,7 +246,7 @@
 #define CAN_CHECK_MAILBOX_INDEX_NUM(exp, ApiId)
 #endif /* CAN_DEV_ERROR_DETECT == STD_ON */
 
-/* [CAN431] ¥Á¥§¥Ã¥¯¥Ş¥¯¥í(MainFunctionÍÑ) */
+/* [CAN431] ãƒã‚§ãƒƒã‚¯ãƒã‚¯ãƒ­(MainFunctionç”¨) */
 #define CAN_CHECK_INITIALIZED_MF(ApiId)					 \
 	do {												 \
 		if (can_init_flg == CAN_UNINIT) {				 \
@@ -254,7 +256,7 @@
 	} while (0)
 
 /*
- *  DET¤ØÄÌÃÎ¤¹¤ë¥µ¡¼¥Ó¥¹ID
+ *  DETã¸é€šçŸ¥ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ID
  */
 #define CANServiceId_Init							0x00U
 #define CANServiceId_GetVersionInfo					0x07U
@@ -276,7 +278,7 @@
 #define CANServiceId_IsrWakeup						0x23U
 
 /*
- *  [CAN414] ¥Ü¡¼¥ì¡¼¥ÈÀßÄê¾ğÊó
+ *  [CAN414] ãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆè¨­å®šæƒ…å ±
  */
 typedef struct can_controller_baudrate_config_type {
 	uint16	CanControllerBaudRate;
@@ -287,67 +289,67 @@ typedef struct can_controller_baudrate_config_type {
 } Can_ControllerBaudrateConfigType;
 
 /*
- *  HOH¥Ü¥Ã¥¯¥¹¥Æ¡¼¥Ö¥ë´ÉÍı¥Ö¥í¥Ã¥¯
+ *  HOHãƒœãƒƒã‚¯ã‚¹ãƒ†ãƒ¼ãƒ–ãƒ«ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct {
-	uint8				CanControllerId;        /* CAN¥³¥ó¥È¥í¡¼¥éID */
-	uint8				box_obj_type;           /* Á÷¼õ¿®¼ïÊÌ */
-	Can_HwHandleType	box_idx;                /* HRH¤Ş¤¿¤ÏHTH */
+	uint8				CanControllerId;        /* CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ID */
+	uint8				box_obj_type;           /* é€å—ä¿¡ç¨®åˆ¥ */
+	Can_HwHandleType	box_idx;                /* HRHã¾ãŸã¯HTH */
 } Can_HohBoxType;
 
 /*
- *  ¼õ¿®¥Ü¥Ã¥¯¥¹CAN-ID¥Æ¡¼¥Ö¥ë´ÉÍı¥Ö¥í¥Ã¥¯
+ *  å—ä¿¡ãƒœãƒƒã‚¯ã‚¹CAN-IDãƒ†ãƒ¼ãƒ–ãƒ«ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct {
 	Can_IdType	CanIdValue;         /* CAN-ID */
-	uint8		filtermask_idx;     /* ¥Õ¥£¥ë¥¿¥Ş¥¹¥¯¥Æ¡¼¥Ö¥ë¤Î¥¤¥ó¥Ç¥Ã¥¯¥¹ */
+	uint8		filtermask_idx;     /* ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚¹ã‚¯ãƒ†ãƒ¼ãƒ–ãƒ«ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ */
 } Can_RboxCanidType;
 
 /*
- *  HTH´ÉÍı¥Ö¥í¥Ã¥¯
+ *  HTHç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct can_hth_control_block {
-	PduIdType	saved_pduid;        /* Á÷¿®´°Î»ÄÌÃÎÍÑPDU-IDÊİÂ¸ */
-	boolean		mutex;              /* ¥ß¥å¡¼¥Æ¥Ã¥¯¥¹´ÉÍı */
+	PduIdType	saved_pduid;        /* é€ä¿¡å®Œäº†é€šçŸ¥ç”¨PDU-IDä¿å­˜ */
+	boolean		mutex;              /* ãƒŸãƒ¥ãƒ¼ãƒ†ãƒƒã‚¯ã‚¹ç®¡ç† */
 } CAN_HTH_CB;
 
 /*
- *  CAN¥³¥ó¥È¥í¡¼¥é´ÉÍı¥Ö¥í¥Ã¥¯
+ *  CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct can_controller_initialization_block {
-	uint8									CanIfCtrlId;            /* CanIfÂ¦¤Î¥³¥ó¥È¥í¡¼¥éID */
-	uint8									tnum_baudrate;          /* ÁªÂò²ÄÇ½¤Ê¥Ü¡¼¥ì¡¼¥È¿ô */
-	Can_HwHandleType						tnum_hth;               /* HTH¿ô */
-	Can_HwHandleType						tnum_hrh;               /* HRH¿ô */
-	uint8									tnum_filtermask;        /* ¥Õ¥£¥ë¥¿¥Ş¥¹¥¯¿ô */
-	uint8									use_polling;            /* ¥İ¡¼¥ê¥ó¥°¥â¡¼¥É»ÈÍÑ´ÉÍı */
-	boolean									CanWakeupSupport;       /* ¥¦¥§¥¤¥¯¥¢¥Ã¥×¥µ¥İ¡¼¥ÈÍ­Ìµ */
-	EcuM_WakeupSourceType					EcuMWakeupSourceId;     /* CanWakeupSourceRef¤Î»²¾ÈÀè */
-	const Can_ControllerBaudrateConfigType	*p_default_baudrate;    /* ¥Ç¥Õ¥©¥ë¥È¥Ü¡¼¥ì¡¼¥È */
-	const Can_ControllerBaudrateConfigType	*p_baudrate_table;      /* ¥µ¥İ¡¼¥È¥Ü¡¼¥ì¡¼¥È¥ê¥¹¥È */
-	const Can_IdType						*p_filtermask_table;    /* ¥Õ¥£¥ë¥¿¥Ş¥¹¥¯¥ê¥¹¥È */
-	const Can_HwHandleType					*p_rbox_hrh_table;      /* ¼õ¿®¥Ü¥Ã¥¯¥¹ÈÖ¹æ¢ªHRHÊÑ´¹¥Æ¡¼¥Ö¥ëÇÛÎó */
-	const Can_RboxCanidType					*p_rbox_canid_table;    /* ¼õ¿®¥Ü¥Ã¥¯¥¹CAN-ID¥Æ¡¼¥Ö¥ë */
-	CAN_HTH_CB * const						p_can_hth_cb_table;     /* HTH´ÉÍı¥Ö¥í¥Ã¥¯¥Æ¡¼¥Ö¥ë */
+	uint8									CanIfCtrlId;            /* CanIfå´ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ID */
+	uint8									tnum_baudrate;          /* é¸æŠå¯èƒ½ãªãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆæ•° */
+	Can_HwHandleType						tnum_hth;               /* HTHæ•° */
+	Can_HwHandleType						tnum_hrh;               /* HRHæ•° */
+	uint8									tnum_filtermask;        /* ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚¹ã‚¯æ•° */
+	uint8									use_polling;            /* ãƒãƒ¼ãƒªãƒ³ã‚°ãƒ¢ãƒ¼ãƒ‰ä½¿ç”¨ç®¡ç† */
+	boolean									CanWakeupSupport;       /* ã‚¦ã‚§ã‚¤ã‚¯ã‚¢ãƒƒãƒ—ã‚µãƒãƒ¼ãƒˆæœ‰ç„¡ */
+	EcuM_WakeupSourceType					EcuMWakeupSourceId;     /* CanWakeupSourceRefã®å‚ç…§å…ˆ */
+	const Can_ControllerBaudrateConfigType	*p_default_baudrate;    /* ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆ */
+	const Can_ControllerBaudrateConfigType	*p_baudrate_table;      /* ã‚µãƒãƒ¼ãƒˆãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆãƒªã‚¹ãƒˆ */
+	const Can_IdType						*p_filtermask_table;    /* ãƒ•ã‚£ãƒ«ã‚¿ãƒã‚¹ã‚¯ãƒªã‚¹ãƒˆ */
+	const Can_HwHandleType					*p_rbox_hrh_table;      /* å—ä¿¡ãƒœãƒƒã‚¯ã‚¹ç•ªå·â†’HRHå¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«é…åˆ— */
+	const Can_RboxCanidType					*p_rbox_canid_table;    /* å—ä¿¡ãƒœãƒƒã‚¯ã‚¹CAN-IDãƒ†ãƒ¼ãƒ–ãƒ« */
+	CAN_HTH_CB * const						p_can_hth_cb_table;     /* HTHç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯ãƒ†ãƒ¼ãƒ–ãƒ« */
 } CAN_CTRL_INIB;
 
 /*
- *  [CAN413] Can¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó´ÉÍı¥Ö¥í¥Ã¥¯
+ *  [CAN413] Canã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct can_config_type {
-	Can_HwHandleType		tnum_hoh;                   /* HOH¿ô */
-	uint8					tnum_controller;            /* ¥³¥ó¥È¥í¡¼¥é¿ô */
-	const Can_HohBoxType	*p_hoh_box_table;           /* HOH¢ª¥Ü¥Ã¥¯¥¹ÈÖ¹æÊÑ´¹¥Æ¡¼¥Ö¥ëÇÛÎó */
-	const CAN_CTRL_INIB		*p_can_ctrl_inib_table;     /* ¥³¥ó¥È¥í¡¼¥é½é´ü²½¥Ö¥í¥Ã¥¯¥Æ¡¼¥Ö¥ë */
+	Can_HwHandleType		tnum_hoh;                   /* HOHæ•° */
+	uint8					tnum_controller;            /* ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©æ•° */
+	const Can_HohBoxType	*p_hoh_box_table;           /* HOHâ†’ãƒœãƒƒã‚¯ã‚¹ç•ªå·å¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«é…åˆ— */
+	const CAN_CTRL_INIB		*p_can_ctrl_inib_table;     /* ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯ãƒ†ãƒ¼ãƒ–ãƒ« */
 } Can_ConfigType;
 
 /*
- *  L-PDU-Callout´Ø¿ô·¿ÄêµÁ
+ *  L-PDU-Callouté–¢æ•°å‹å®šç¾©
  */
 typedef boolean (*Can_LpduCallout)(uint8 Hrh, Can_IdType CanId, uint8 CanDlc, const uint8 *CanSduPtr);
 
 /*
- *  Can¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¥×¥í¥È¥¿¥¤¥×Àë¸À
+ *  Canã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
  */
 extern void Can_Init(const Can_ConfigType *Config);
 extern void Can_GetVersionInfo(Std_VersionInfoType *versioninfo);
@@ -365,7 +367,7 @@ extern void Can_MainFunction_Wakeup(void);
 extern void Can_MainFunction_Mode(void);
 
 /*
- *  Can³ä¹ş¤ß¥µ¡¼¥Ó¥¹¥ë¡¼¥Á¥ó¥×¥í¥È¥¿¥¤¥×Àë¸À
+ *  Canå‰²è¾¼ã¿ã‚µãƒ¼ãƒ“ã‚¹ãƒ«ãƒ¼ãƒãƒ³ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
  */
 extern void Can_IsrRx(uint8 Controller);
 extern void Can_IsrTx(uint8 Controller);
@@ -375,7 +377,7 @@ extern void Can_IsrWakeup(uint8 Controller);
 extern const CAN_CTRL_INIB	can_ctrl_inib_table[];
 
 /*
- *  Can¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó(Can_PBcfg.c)
+ *  Canã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±(Can_PBcfg.c)
  */
 extern const Can_ConfigType	can_config[];
 

@@ -1,113 +1,115 @@
 
-	TOPPRES/A-CAN »ÅÍÍ¥«¥Ð¥ì¥Ã¥¸¥Á¥§¥Ã¥¯¥Ä¡¼¥ë¼Â¹Ô¼ê½ç
+	TOPPRES/A-CAN ä»•æ§˜ã‚«ãƒãƒ¬ãƒƒã‚¸ãƒã‚§ãƒƒã‚¯ãƒ„ãƒ¼ãƒ«å®Ÿè¡Œæ‰‹é †
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤TOPPRES/A-CAN¤Î»ÅÍÍ¥«¥Ð¥ì¥Ã¥¸¥Á¥§¥Ã¥¯¥Ä¡¼¥ë¤ò¼Â¹Ô¤¹¤ë
-¼ê½ç¤ò¼¨¤¹¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒTOPPRES/A-CANã®ä»•æ§˜ã‚«ãƒãƒ¬ãƒƒã‚¸ãƒã‚§ãƒƒã‚¯ãƒ„ãƒ¼ãƒ«ã‚’å®Ÿè¡Œã™ã‚‹
+æ‰‹é †ã‚’ç¤ºã™ï¼Ž
 
 ----------------------------------------------------------------------
 TOPPRES/A-CAN
     Automotive CAN
 
-Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+Copyright (C) 2013-2016 by Center for Embedded Computing Systems
                            Graduate School of Information Science, Nagoya Univ., JAPAN
-Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
-Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
-Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
-Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
-Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2015 by Witz Corporation
+Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2016 by Witz Corporation
 
-¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î (1)¡Á(3)¤Î¾ò·ï¤òËþ¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥É¥­¥å¥á
-¥ó¥È¡ÊËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿¤â¤Î¤ò´Þ¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²þ
-ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½þ¤ÇµöÂú¤¹¤ë¡¥
-(1) ËÜ¥É¥­¥å¥á¥ó¥È¤òÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï
-    ¤ª¤è¤Ó²¼µ­¤ÎÌµÊÝ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Þ¤Þ¤Î·Á¤Ç¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤Þ¤ì¤Æ
-    ¤¤¤ë¤³¤È¡¥
-(2) ËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿»Ý¤Îµ­½Ò
-    ¤ò¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤á¤ë¤³¤È¡¥¤¿¤À¤·¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á
-    ¥ó¥È¤¬¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È»ØÄê¤Î³«È¯À®²ÌÊª¤Ç¤¢¤ë¾ì¹ç¤Ë¤Ï¡¤¤³¤Î¸Â
-    ¤ê¤Ç¤Ï¤Ê¤¤¡¥
-(3) ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»³²
-    ¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥¤Þ¤¿¡¤
-    ËÜ¥É¥­¥å¥á¥ó¥È¤Î¥æ¡¼¥¶¤Þ¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍýÍ³¤Ë´ð¤Å
-    ¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
+ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã® (1)ï½ž(3)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡
+ãƒ³ãƒˆï¼ˆæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼Žä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼Ž
+(1) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶
+    ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã¾ã‚Œã¦
+    ã„ã‚‹ã“ã¨ï¼Ž
+(2) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã™ã‚‹å ´åˆã«ã¯ï¼Œãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸæ—¨ã®è¨˜è¿°
+    ã‚’ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã‚ã‚‹ã“ã¨ï¼ŽãŸã ã—ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡
+    ãƒ³ãƒˆãŒï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å®šã®é–‹ç™ºæˆæžœç‰©ã§ã‚ã‚‹å ´åˆã«ã¯ï¼Œã“ã®é™
+    ã‚Šã§ã¯ãªã„ï¼Ž
+(3) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æå®³
+    ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Žã¾ãŸï¼Œ
+    æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†ç”±ã«åŸºã¥
+    ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»ÅÍÍ
-¤Ë´ð¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç¤Ï¤Ê
-¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ð¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍøÍÑ¤¹¤ë
-¼Ô¤ËÂÐ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•æ§˜
+ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼Žä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§ã¯ãª
+ã„ï¼ŽAUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©ç”¨ã™ã‚‹
+è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤ÌµÊÝ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª¤è
-¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª¤ËÂÐ¤¹
-¤ëÅ¬¹çÀ­¤â´Þ¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊÝ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Þ¤¿¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ
-¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½¤ÎÀÕÇ¤¤òÉé
-¤ï¤Ê¤¤¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼Žä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆ
+ã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„ã«å¯¾ã™
+ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼Žã¾ãŸï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨
+ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œãã®è²¬ä»»ã‚’è² 
+ã‚ãªã„ï¼Ž
 
-$Id: readme.txt 1241 2015-03-25 07:26:02Z panasonic-ayane $
+$Id: readme.txt 2995 2016-03-02 02:05:09Z fsi-kaitori $
 ----------------------------------------------------------------------
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(1) ¥Õ¥©¥ë¥À¹½À®
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(1) ãƒ•ã‚©ãƒ«ãƒ€æ§‹æˆ
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 
 coverage
-¨² check_spec_coverage.rb                ¡§»ÅÍÍ¥«¥Ð¥ì¥Ã¥¸¥Á¥§¥Ã¥¯¥¹¥¯¥ê¥×¥È
-¨² check_target_spec_coverage.rb         ¡§°ÍÂ¸Éô»ÅÍÍ¥«¥Ð¥ì¥Ã¥¸¥Á¥§¥Ã¥¯¥¹¥¯¥ê¥×¥È
-¨­
-¨² autosar
-¨­ ¨² get_spec_id.rb                     ¡§AUTOSAR»ÅÍÍ½ñ¤«¤é»ÅÍÍ¥¿¥°¤òÈ´¤­½Ð¤¹¥¹¥¯¥ê¥×¥È
-¨­ ¨² autosar_spec_id.txt                ¡§get_spec_id.rb¤ÇÀ¸À®¤·¤¿¥Õ¥¡¥¤¥ë
-¨­ ¨± AUTOSAR_SWS_CANDriver_R4.0.3.txt   ¡§AUTOSAR»ÅÍÍ½ñ¥Æ¥­¥¹¥ÈÈÇ(Æ±º­¤·¤Æ¤¤¤Ê¤¤)
-¨­
-¨± implementation
-   ¨² get_spec_id.rb                     ¡§A-CAN¤Î¥³¡¼¥É¤«¤é»ÅÍÍ¥¿¥°¤òÈ´¤­½Ð¤¹¥¹¥¯¥ê¥×¥È
-   ¨² impl_spec_id.txt                   ¡§get_spec_id.rb¤ÇÀ¸À®¤·¤¿¥Õ¥¡¥¤¥ë(AUTOSAR»ÅÍÍ)
-   ¨± nces_spec_id.txt                   ¡§get_spec_id.rb¤ÇÀ¸À®¤·¤¿¥Õ¥¡¥¤¥ë(NCESÆÈ¼«»ÅÍÍ)
+â”£ check_spec_coverage.rb                ï¼šä»•æ§˜ã‚«ãƒãƒ¬ãƒƒã‚¸ãƒã‚§ãƒƒã‚¯ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
+â”£ check_target_spec_coverage.rb         ï¼šä¾å­˜éƒ¨ä»•æ§˜ã‚«ãƒãƒ¬ãƒƒã‚¸ãƒã‚§ãƒƒã‚¯ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
+â”ƒ
+â”£ autosar
+â”ƒ â”£ get_spec_id.rb                     ï¼šAUTOSARä»•æ§˜æ›¸ã‹ã‚‰ä»•æ§˜ã‚¿ã‚°ã‚’æŠœãå‡ºã™ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
+â”ƒ â”£ autosar_spec_id.txt                ï¼šget_spec_id.rbã§ç”Ÿæˆã—ãŸãƒ•ã‚¡ã‚¤ãƒ«
+â”ƒ â”— AUTOSAR_SWS_CANDriver_R4.0.3.txt   ï¼šAUTOSARä»•æ§˜æ›¸ãƒ†ã‚­ã‚¹ãƒˆç‰ˆ(åŒæ¢±ã—ã¦ã„ãªã„)
+â”ƒ
+â”— implementation
+   â”£ get_spec_id.rb                     ï¼šA-CANã®ã‚³ãƒ¼ãƒ‰ã‹ã‚‰ä»•æ§˜ã‚¿ã‚°ã‚’æŠœãå‡ºã™ã‚¹ã‚¯ãƒªãƒ—ãƒˆ
+   â”£ impl_spec_id.txt                   ï¼šget_spec_id.rbã§ç”Ÿæˆã—ãŸãƒ•ã‚¡ã‚¤ãƒ«(AUTOSARä»•æ§˜)
+   â”— nces_spec_id.txt                   ï¼šget_spec_id.rbã§ç”Ÿæˆã—ãŸãƒ•ã‚¡ã‚¤ãƒ«(NCESç‹¬è‡ªä»•æ§˜)
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(2) »È¤¤Êý
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(2) ä½¿ã„æ–¹
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.1) AUTOSAR»ÅÍÍ½ñ¥Æ¥­¥¹¥ÈÈÇ¤ÎÍÑ°Õ
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.1) AUTOSARä»•æ§˜æ›¸ãƒ†ã‚­ã‚¹ãƒˆç‰ˆã®ç”¨æ„
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
 
-AUTOSAR¤ÎWeb¥µ¥¤¥È(http://www.autosar.org/)¤«¤épdf¤ÇÇÛÉÛ¤µ¤ì¤Æ¤¤¤ë
-AUTOSAR CAN¤Î»ÅÍÍ½ñ(AUTOSAR_SWS_CANDriver.pdf)¤ò¥À¥¦¥ó¥í¡¼¥É¤·¡¤
-Adobe ReaderÅù¤ÎÊÑ´¹µ¡Ç½¤ò»ÈÍÑ¤·¤Æ¡¤¥Æ¥­¥¹¥È¥Õ¥¡¥¤¥ë¤òºîÀ®¤¹¤ë¡¥
-¥Õ¥¡¥¤¥ëÌ¾¤ÏAUTOSAR_SWS_CANDriver_R4.0.3.txt¤È¤·¤Æ¡¤(1)¥Õ¥©¥ë¥À¹½À®
-¤Ë½¾¤Ã¤ÆÇÛÃÖ¤¹¤ë¡¥
-¢¨R4.0.3¤Î¤ßÂÐ±þ
+AUTOSARã®Webã‚µã‚¤ãƒˆ(http://www.autosar.org/)ã‹ã‚‰pdfã§é…å¸ƒã•ã‚Œã¦ã„ã‚‹
+AUTOSAR CANã®ä»•æ§˜æ›¸(AUTOSAR_SWS_CANDriver.pdf)ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã—ï¼Œ
+Adobe Readerç­‰ã®å¤‰æ›æ©Ÿèƒ½ã‚’ä½¿ç”¨ã—ã¦ï¼Œãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹ï¼Ž
+ãƒ•ã‚¡ã‚¤ãƒ«åã¯AUTOSAR_SWS_CANDriver_R4.0.3.txtã¨ã—ã¦ï¼Œ(1)ãƒ•ã‚©ãƒ«ãƒ€æ§‹æˆ
+ã«å¾“ã£ã¦é…ç½®ã™ã‚‹ï¼Ž
+â€»R4.0.3ã®ã¿å¯¾å¿œ
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.2) AUTOSAR»ÅÍÍ°ìÍ÷¤ÎºîÀ®
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.2) AUTOSARä»•æ§˜ä¸€è¦§ã®ä½œæˆ
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
 
 $ cd coverage/autosar
 $ ruby get_spec_id.rb
 
-¾åµ­¥³¥Þ¥ó¥É¤Ë¤è¤êautosar_spec_id.txt¤¬À¸À®¤µ¤ì¤ë¡¥
+ä¸Šè¨˜ã‚³ãƒžãƒ³ãƒ‰ã«ã‚ˆã‚Šautosar_spec_id.txtãŒç”Ÿæˆã•ã‚Œã‚‹ï¼Ž
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.3) A-CAN¼ÂÁõ»ÅÍÍ°ìÍ÷¤ÎºîÀ®
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.3) A-CANå®Ÿè£…ä»•æ§˜ä¸€è¦§ã®ä½œæˆ
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
 
 $ cd coverage/implementation
 $ ruby get_spec_id.rb
 
-¾åµ­¥³¥Þ¥ó¥É¤Ë¤è¤êimpl_spec_id.txt¡¤nces_spec_id.txt¤¬À¸À®¤µ¤ì¤ë¡¥
+ä¸Šè¨˜ã‚³ãƒžãƒ³ãƒ‰ã«ã‚ˆã‚Šimpl_spec_id.txtï¼Œnces_spec_id.txtãŒç”Ÿæˆã•ã‚Œã‚‹ï¼Ž
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.4) A-CAN¤Ë¼ÂÁõ¤µ¤ì¤¿»ÅÍÍ¥«¥Ð¥ì¥Ã¥¸¤ò¼èÆÀ¤¹¤ë
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.4) A-CANã«å®Ÿè£…ã•ã‚ŒãŸä»•æ§˜ã‚«ãƒãƒ¬ãƒƒã‚¸ã‚’å–å¾—ã™ã‚‹
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
 
 $ cd coverage
 $ ruby check_spec_coverage.rb
 
-¾åµ­¥³¥Þ¥ó¥É¤Ë¤è¤ê¡¤°Ê²¼¤Î¤è¤¦¤Ê¥«¥Ð¥ì¥Ã¥¸³ÎÇ§·ë²Ì¤¬½ÐÎÏ¤µ¤ì¤ë¡¥
+ä¸Šè¨˜ã‚³ãƒžãƒ³ãƒ‰ã«ã‚ˆã‚Šï¼Œä»¥ä¸‹ã®ã‚ˆã†ãªã‚«ãƒãƒ¬ãƒƒã‚¸ç¢ºèªçµæžœãŒå‡ºåŠ›ã•ã‚Œã‚‹ï¼Ž
 
 $ ./check_spec_coverage.rb
 ==============================
@@ -120,4 +122,4 @@ Not implementation tags: 0
 
 
 
-°Ê¾å¡¥
+ä»¥ä¸Šï¼Ž

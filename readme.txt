@@ -1,133 +1,135 @@
 
 	TOPPRES/A-COMSTACK
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤A-COMSTACK¤ò»ÈÍÑ¤¹¤ë¾å¤ÇÉ¬Í×¤Ê¾ðÊó¤ò¾Ò²ð¤¹¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒA-COMSTACKã‚’ä½¿ç”¨ã™ã‚‹ä¸Šã§å¿…è¦ãªæƒ…å ±ã‚’ç´¹ä»‹ã™ã‚‹ï¼Ž
 
 ----------------------------------------------------------------------
 TOPPRES/A-COMSTACK
     Automotive COMSTACK
 
-Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+Copyright (C) 2013-2016 by Center for Embedded Computing Systems
                            Graduate School of Information Science, Nagoya Univ., JAPAN
-Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
-Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
-Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
-Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
-Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2015 by Witz Corporation
+Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2016 by Witz Corporation
 
-¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î (1)¡Á(3)¤Î¾ò·ï¤òËþ¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥É¥­¥å¥á
-¥ó¥È¡ÊËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿¤â¤Î¤ò´Þ¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²þ
-ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½þ¤ÇµöÂú¤¹¤ë¡¥
-(1) ËÜ¥É¥­¥å¥á¥ó¥È¤òÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï
-    ¤ª¤è¤Ó²¼µ­¤ÎÌµÊÝ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Þ¤Þ¤Î·Á¤Ç¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤Þ¤ì¤Æ
-    ¤¤¤ë¤³¤È¡¥
-(2) ËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿»Ý¤Îµ­½Ò
-    ¤ò¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤á¤ë¤³¤È¡¥¤¿¤À¤·¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á
-    ¥ó¥È¤¬¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È»ØÄê¤Î³«È¯À®²ÌÊª¤Ç¤¢¤ë¾ì¹ç¤Ë¤Ï¡¤¤³¤Î¸Â
-    ¤ê¤Ç¤Ï¤Ê¤¤¡¥
-(3) ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»³²
-    ¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥¤Þ¤¿¡¤
-    ËÜ¥É¥­¥å¥á¥ó¥È¤Î¥æ¡¼¥¶¤Þ¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍýÍ³¤Ë´ð¤Å
-    ¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
+ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã® (1)ï½ž(3)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡
+ãƒ³ãƒˆï¼ˆæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼Žä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼Ž
+(1) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶
+    ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã¾ã‚Œã¦
+    ã„ã‚‹ã“ã¨ï¼Ž
+(2) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã™ã‚‹å ´åˆã«ã¯ï¼Œãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸæ—¨ã®è¨˜è¿°
+    ã‚’ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã‚ã‚‹ã“ã¨ï¼ŽãŸã ã—ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡
+    ãƒ³ãƒˆãŒï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å®šã®é–‹ç™ºæˆæžœç‰©ã§ã‚ã‚‹å ´åˆã«ã¯ï¼Œã“ã®é™
+    ã‚Šã§ã¯ãªã„ï¼Ž
+(3) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æå®³
+    ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Žã¾ãŸï¼Œ
+    æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†ç”±ã«åŸºã¥
+    ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»ÅÍÍ
-¤Ë´ð¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç¤Ï¤Ê
-¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ð¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍøÍÑ¤¹¤ë
-¼Ô¤ËÂÐ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•æ§˜
+ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼Žä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§ã¯ãª
+ã„ï¼ŽAUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©ç”¨ã™ã‚‹
+è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤ÌµÊÝ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª¤è
-¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª¤ËÂÐ¤¹
-¤ëÅ¬¹çÀ­¤â´Þ¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊÝ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Þ¤¿¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ
-¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½¤ÎÀÕÇ¤¤òÉé
-¤ï¤Ê¤¤¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼Žä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆ
+ã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„ã«å¯¾ã™
+ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼Žã¾ãŸï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨
+ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œãã®è²¬ä»»ã‚’è² 
+ã‚ãªã„ï¼Ž
 
-$Id: readme.txt 1241 2015-03-25 07:26:02Z panasonic-ayane $
+$Id: readme.txt 2995 2016-03-02 02:05:09Z fsi-kaitori $
 ----------------------------------------------------------------------
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(1) ³µÍ×
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(1) æ¦‚è¦
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 
-TOPPERS/A-COMSTACK¤Ï¡¤AUTOSAR¤ÇÄêµÁ¤µ¤ì¤Æ¤¤¤ëÄÌ¿®¥¹¥¿¥Ã¥¯¤Î¤¦¤Á¡¤°Ê²¼¤Î
-4¤Ä¤Î¥â¥¸¥å¡¼¥ë¤ò´Þ¤ó¤Ç¤¤¤ë¡¥
+TOPPERS/A-COMSTACKã¯ï¼ŒAUTOSARã§å®šç¾©ã•ã‚Œã¦ã„ã‚‹é€šä¿¡ã‚¹ã‚¿ãƒƒã‚¯ã®ã†ã¡ï¼Œä»¥ä¸‹ã®
+4ã¤ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å«ã‚“ã§ã„ã‚‹ï¼Ž
 
-¡¦Com¡ÊCommunication¡Ë  : A-COM
-¡¦PduR¡ÊPDU Router¡Ë    : A-PDUR
-¡¦CanIf¡ÊCAN Interface¡Ë: A-CANIF
-¡¦Can¡ÊCAN Driver¡Ë     : A-CAN
+ãƒ»Comï¼ˆCommunicationï¼‰  : A-COM
+ãƒ»PduRï¼ˆPDU Routerï¼‰    : A-PDUR
+ãƒ»CanIfï¼ˆCAN Interfaceï¼‰: A-CANIF
+ãƒ»Canï¼ˆCAN Driverï¼‰     : A-CAN
 
-Can¤Ï¥Ï¡¼¥É¥¦¥§¥¢¤Ë°ÍÂ¸¤·¤¿¥â¥¸¥å¡¼¥ë¤Ç¤¢¤ê¡¤TOPPERS/A-COMSTACK¤ÎA-CAN
-¤Ï°ÍÂ¸Éô¤È¤·¤Æ°Ê²¼¤òÍÑ°Õ¤·¤Æ¤¤¤ë¡¥
-¡¦nios2_dev_gcc°ÍÂ¸Éô
-¡¦hsbv850e2fg4_cx°ÍÂ¸Éô
+Canã¯ãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢ã«ä¾å­˜ã—ãŸãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ã‚ã‚Šï¼ŒTOPPERS/A-COMSTACKã®A-CAN
+ã¯ä¾å­˜éƒ¨ã¨ã—ã¦ä»¥ä¸‹ã‚’ç”¨æ„ã—ã¦ã„ã‚‹ï¼Ž
+ãƒ»nios2_dev_gccä¾å­˜éƒ¨
+ãƒ»hsbv850e2fg4_cxä¾å­˜éƒ¨
 
-¤½¤ì¤¾¤ì¤Î¥â¥¸¥å¡¼¥ë¤Ë´Ø¤¹¤ë¾ÜºÙ¤Ï¡¤³°Éô»ÅÍÍ½ñ¤Þ¤¿¤Ï³Æ¥â¥¸¥å¡¼¥ë¥Õ¥©¥ë
-¥À¤Îdoc¥Õ¥©¥ë¥À¤Ë¤¢¤ë¥É¥­¥å¥á¥ó¥È¤ò»²¾È¤¹¤ë¤³¤È¡¥
+ãã‚Œãžã‚Œã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«é–¢ã™ã‚‹è©³ç´°ã¯ï¼Œå¤–éƒ¨ä»•æ§˜æ›¸ã¾ãŸã¯å„ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚©ãƒ«
+ãƒ€ã®docãƒ•ã‚©ãƒ«ãƒ€ã«ã‚ã‚‹ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’å‚ç…§ã™ã‚‹ã“ã¨ï¼Ž
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(2) TOPPERS/ATK2¾å¤Ç¤Î»È¤¤Êý
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.1) Æ°ºî´Ä¶­
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(2) TOPPERS/ATK2ä¸Šã§ã®ä½¿ã„æ–¹
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.1) å‹•ä½œç’°å¢ƒ
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
 
-TOPPERS/ATK2¤òÆþ¼ê¤·¡¤ÉÕÂ°¤Î¥µ¥ó¥×¥ë¥×¥í¥°¥é¥à¤¬Æ°ºî¤¹¤ë´Ä¶­¤ò¹½ÃÛ¤¹¤ë¡¥
-¤Þ¤¿¡¤ATK2ÉÕÂ°¤ÎXMLÀ¸À®¥Ä¡¼¥ë(ABREX)¤â»ÈÍÑ¤¹¤ë¤¿¤á¡¤Ruby¤âÉ¬Í×¤È¤Ê¤ë¡¥
+TOPPERS/ATK2ã‚’å…¥æ‰‹ã—ï¼Œä»˜å±žã®ã‚µãƒ³ãƒ—ãƒ«ãƒ—ãƒ­ã‚°ãƒ©ãƒ ãŒå‹•ä½œã™ã‚‹ç’°å¢ƒã‚’æ§‹ç¯‰ã™ã‚‹ï¼Ž
+ã¾ãŸï¼ŒATK2ä»˜å±žã®XMLç”Ÿæˆãƒ„ãƒ¼ãƒ«(ABREX)ã‚‚ä½¿ç”¨ã™ã‚‹ãŸã‚ï¼ŒRubyã‚‚å¿…è¦ã¨ãªã‚‹ï¼Ž
 
-¢¨¸½»þÅÀ¤Ç¤ÎÆ°ºî³ÎÇ§´Ä¶­¤Ï°Ê²¼
-¡¦TOPPERS/ATK2-SC1 (nios2_dev_gcc°ÍÂ¸Éô)
+â€»ç¾æ™‚ç‚¹ã§ã®å‹•ä½œç¢ºèªç’°å¢ƒã¯ä»¥ä¸‹
+ãƒ»TOPPERS/ATK2-SC1 (nios2_dev_gccä¾å­˜éƒ¨)
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.2) ¥Õ¥©¥ë¥À¹½À®
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.2) ãƒ•ã‚©ãƒ«ãƒ€æ§‹æˆ
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
 
-TOPPERS/ATK2¡¤TOPPERS/A-COMSTACK¤òÆþ¼ê¤·¡¤°Ê²¼¤Î¤è¤¦¤ËÆ±°ì¥Õ¥©¥ë¥ÀÆâ¤Ë
-ÇÛÃÖ¤¹¤ë¡¥
+TOPPERS/ATK2ï¼ŒTOPPERS/A-COMSTACKã‚’å…¥æ‰‹ã—ï¼Œä»¥ä¸‹ã®ã‚ˆã†ã«åŒä¸€ãƒ•ã‚©ãƒ«ãƒ€å†…ã«
+é…ç½®ã™ã‚‹ï¼Ž
 
-¨² a-comstack         ¡§A-COMSTACK
-¨­ ¨² com             ¡§A-COM
-¨­ ¨­  ¨² coverage    ¡§A-COMÍÑ»ÅÍÍ¥«¥Ð¥ì¥Ã¥¸¥Á¥§¥Ã¥¯¥Ä¡¼¥ë
-¨­ ¨­  ¨² performance ¡§A-COMÍÑÀ­Ç½É¾²Á¥×¥í¥°¥é¥à
-¨­ ¨­  ¨± sample      ¡§A-CANIFÍÑ¥µ¥ó¥×¥ë¥¢¥×¥ê¥±¡¼¥·¥ç¥ó
-¨­ ¨­
-¨­ ¨² pdur            ¡§A-PDUR
-¨­ ¨­  ¨² doc         ¡§A-PDURÍÑ¥É¥­¥å¥á¥ó¥È
-¨­ ¨­  ¨± sample      ¡§A-PDURÍÑ¥µ¥ó¥×¥ë¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó
-¨­ ¨­
-¨­ ¨² canif           ¡§A-CANIF
-¨­ ¨­  ¨² coverage    ¡§A-CANIFÍÑ»ÅÍÍ¥«¥Ð¥ì¥Ã¥¸¥Á¥§¥Ã¥¯¥Ä¡¼¥ë
-¨­ ¨­  ¨² doc         ¡§A-CANIFÍÑ¥É¥­¥å¥á¥ó¥È
-¨­ ¨­  ¨± sample      ¡§A-CANIFÍÑ¥µ¥ó¥×¥ë¥¢¥×¥ê¥±¡¼¥·¥ç¥ó
-¨­ ¨­
-¨­ ¨² can             ¡§A-CAN
-¨­ ¨­  ¨² arch        ¡§A-CANÍÑ¥¢¡¼¥­¥Æ¥¯¥Á¥ã
-¨­ ¨­  ¨² coverage    ¡§A-CANÍÑ»ÅÍÍ¥«¥Ð¥ì¥Ã¥¸¥Á¥§¥Ã¥¯¥Ä¡¼¥ë
-¨­ ¨­  ¨² doc         ¡§A-CANÍÑ¥É¥­¥å¥á¥ó¥È
-¨­ ¨­  ¨² stub        ¡§A-CANÍÑ¥¹¥¿¥Ö
-¨­ ¨­  ¨± target      ¡§A-CANÍÑ¥¿¡¼¥²¥Ã¥È°ÍÂ¸Éô
-¨­ ¨­
-¨­ ¨² general         ¡§Á´¥â¥¸¥å¡¼¥ë¤Ç»ÈÍÑ¤¹¤ë¥½¡¼¥¹¥³¡¼¥É
-¨­ ¨­
-¨­ ¨² stub            ¡§A-COMSTACK°Ê³°¤ÎAUTOSAR¥â¥¸¥å¡¼¥ë¥¹¥¿¥Ö
-¨­ ¨­
-¨­ ¨² doc             ¡§A-COMSTACKÍÑ¥É¥­¥å¥á¥ó¥È
-¨­ ¨­
-¨­ ¨± utils           ¡§¥æ¡¼¥Æ¥£¥ê¥Æ¥£¥×¥í¥°¥é¥à
-¨­     ¨± abrex       ¡§ARXMLÀ¸À®¥Ä¡¼¥ë
-¨­ 
-¨± atk2-sc1           ¡§ATK2-SC1
+â”£ a-comstack         ï¼šA-COMSTACK
+â”ƒ â”£ com             ï¼šA-COM
+â”ƒ â”ƒ  â”£ coverage    ï¼šA-COMç”¨ä»•æ§˜ã‚«ãƒãƒ¬ãƒƒã‚¸ãƒã‚§ãƒƒã‚¯ãƒ„ãƒ¼ãƒ«
+â”ƒ â”ƒ  â”£ performance ï¼šA-COMç”¨æ€§èƒ½è©•ä¾¡ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
+â”ƒ â”ƒ  â”— sample      ï¼šA-CANIFç”¨ã‚µãƒ³ãƒ—ãƒ«ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³
+â”ƒ â”ƒ
+â”ƒ â”£ pdur            ï¼šA-PDUR
+â”ƒ â”ƒ  â”£ doc         ï¼šA-PDURç”¨ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ
+â”ƒ â”ƒ  â”— sample      ï¼šA-PDURç”¨ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
+â”ƒ â”ƒ
+â”ƒ â”£ canif           ï¼šA-CANIF
+â”ƒ â”ƒ  â”£ coverage    ï¼šA-CANIFç”¨ä»•æ§˜ã‚«ãƒãƒ¬ãƒƒã‚¸ãƒã‚§ãƒƒã‚¯ãƒ„ãƒ¼ãƒ«
+â”ƒ â”ƒ  â”£ doc         ï¼šA-CANIFç”¨ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ
+â”ƒ â”ƒ  â”— sample      ï¼šA-CANIFç”¨ã‚µãƒ³ãƒ—ãƒ«ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³
+â”ƒ â”ƒ
+â”ƒ â”£ can             ï¼šA-CAN
+â”ƒ â”ƒ  â”£ arch        ï¼šA-CANç”¨ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£
+â”ƒ â”ƒ  â”£ coverage    ï¼šA-CANç”¨ä»•æ§˜ã‚«ãƒãƒ¬ãƒƒã‚¸ãƒã‚§ãƒƒã‚¯ãƒ„ãƒ¼ãƒ«
+â”ƒ â”ƒ  â”£ doc         ï¼šA-CANç”¨ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ
+â”ƒ â”ƒ  â”£ stub        ï¼šA-CANç”¨ã‚¹ã‚¿ãƒ–
+â”ƒ â”ƒ  â”— target      ï¼šA-CANç”¨ã‚¿ãƒ¼ã‚²ãƒƒãƒˆä¾å­˜éƒ¨
+â”ƒ â”ƒ
+â”ƒ â”£ general         ï¼šå…¨ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã§ä½¿ç”¨ã™ã‚‹ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰
+â”ƒ â”ƒ
+â”ƒ â”£ stub            ï¼šA-COMSTACKä»¥å¤–ã®AUTOSARãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚¹ã‚¿ãƒ–
+â”ƒ â”ƒ
+â”ƒ â”£ doc             ï¼šA-COMSTACKç”¨ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ
+â”ƒ â”ƒ
+â”ƒ â”— utils           ï¼šãƒ¦ãƒ¼ãƒ†ã‚£ãƒªãƒ†ã‚£ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
+â”ƒ     â”— abrex       ï¼šARXMLç”Ÿæˆãƒ„ãƒ¼ãƒ«
+â”ƒ 
+â”— atk2-sc1           ï¼šATK2-SC1
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.3) ¥µ¥ó¥×¥ë¥¢¥×¥ê¥±¡¼¥·¥ç¥ó¤Î¼Â¹Ô
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.3) ã‚µãƒ³ãƒ—ãƒ«ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®å®Ÿè¡Œ
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
 
-³Æ¥â¥¸¥å¡¼¥ë¥Õ¥©¥ë¥À¤ÎsampleÆâ¤Ë¤¢¤ëreadme.txt¤Ë½¾¤Ã¤Æ¡¤¥µ¥ó¥×¥ë¥¢¥×¥ê
-¥±¡¼¥·¥ç¥ó¤ò¼Â¹Ô¤¹¤ë¡¥
+å„ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãƒ•ã‚©ãƒ«ãƒ€ã®sampleå†…ã«ã‚ã‚‹readme.txtã«å¾“ã£ã¦ï¼Œã‚µãƒ³ãƒ—ãƒ«ã‚¢ãƒ—ãƒª
+ã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å®Ÿè¡Œã™ã‚‹ï¼Ž
 
 
 
-°Ê¾å¡¥
+ä»¥ä¸Šï¼Ž

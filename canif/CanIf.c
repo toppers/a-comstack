@@ -2,53 +2,55 @@
  *  TOPPERS/A-CANIF
  *      Automotive CANIF
  *
- *  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+ *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
  *                             Graduate School of Information Science, Nagoya Univ., JAPAN
- *  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
- *  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
- *  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
- *  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+ *  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+ *  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
  *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
- *  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
- *  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
- *  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
- *  Copyright (C) 2013-2015 by Witz Corporation
+ *  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+ *  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+ *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2016 by Witz Corporation
  *
- *  ¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î(1)¡Á(4)¤Î¾ò·ï¤òËş¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥½¥Õ¥È¥¦¥§
- *  ¥¢¡ÊËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò²şÊÑ¤·¤¿¤â¤Î¤ò´Ş¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²ş
- *  ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½ş¤ÇµöÂú¤¹¤ë¡¥
- *  (1) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¥½¡¼¥¹¥³¡¼¥É¤Î·Á¤ÇÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî
- *      ¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Ş¤Ş¤Î·Á¤Ç¥½¡¼
- *      ¥¹¥³¡¼¥ÉÃæ¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤³¤È¡¥
- *  (2) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤¥é¥¤¥Ö¥é¥ê·Á¼°¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
- *      ÍÑ¤Ç¤­¤ë·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ
- *      ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­
- *      ¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
- *  (3) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤µ¡´ï¤ËÁÈ¤ß¹ş¤à¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
- *      ÍÑ¤Ç¤­¤Ê¤¤·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¼¡¤Î¤¤¤º¤ì¤«¤Î¾ò·ï¤òËş¤¿¤¹¤³
- *      ¤È¡¥
- *    (a) ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃø
- *        ºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
- *    (b) ºÆÇÛÉÛ¤Î·ÁÂÖ¤ò¡¤ÊÌ¤ËÄê¤á¤ëÊıË¡¤Ë¤è¤Ã¤Æ¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È¤Ë
- *        Êó¹ğ¤¹¤ë¤³¤È¡¥
- *  (4) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»
- *      ³²¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
- *      ¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Î¥æ¡¼¥¶¤Ş¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍı
- *      Í³¤Ë´ğ¤Å¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤ò
- *      ÌÈÀÕ¤¹¤ë¤³¤È¡¥
+ *  ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã®(1)ï½(4)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+ *  ã‚¢ï¼ˆæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼ä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+ *  å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼
+ *  (1) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®å½¢ã§åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œ
+ *      æ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ã‚½ãƒ¼
+ *      ã‚¹ã‚³ãƒ¼ãƒ‰ä¸­ã«å«ã¾ã‚Œã¦ã„ã‚‹ã“ã¨ï¼
+ *  (2) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œãƒ©ã‚¤ãƒ–ãƒ©ãƒªå½¢å¼ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+ *      ç”¨ã§ãã‚‹å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œå†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨
+ *      è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜
+ *      ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+ *  (3) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œæ©Ÿå™¨ã«çµ„ã¿è¾¼ã‚€ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+ *      ç”¨ã§ããªã„å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œæ¬¡ã®ã„ãšã‚Œã‹ã®æ¡ä»¶ã‚’æº€ãŸã™ã“
+ *      ã¨ï¼
+ *    (a) å†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—
+ *        ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+ *    (b) å†é…å¸ƒã®å½¢æ…‹ã‚’ï¼Œåˆ¥ã«å®šã‚ã‚‹æ–¹æ³•ã«ã‚ˆã£ã¦ï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«
+ *        å ±å‘Šã™ã‚‹ã“ã¨ï¼
+ *  (4) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æ
+ *      å®³ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼
+ *      ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†
+ *      ç”±ã«åŸºã¥ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’
+ *      å…è²¬ã™ã‚‹ã“ã¨ï¼
  *
- *  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»Å
- *  ÍÍ¤Ë´ğ¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç
- *  ¤Ï¤Ê¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ğ¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍø
- *  ÍÑ¤¹¤ë¼Ô¤ËÂĞ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+ *  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•
+ *  æ§˜ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼ä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§
+ *  ã¯ãªã„ï¼AUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©
+ *  ç”¨ã™ã‚‹è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼
  *
- *  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤ÌµÊİ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª
- *  ¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª
- *  ¤ËÂĞ¤¹¤ëÅ¬¹çÀ­¤â´Ş¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊİ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§
- *  ¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½
- *  ¤ÎÀÕÇ¤¤òÉé¤ï¤Ê¤¤¡¥
+ *  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼ä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠ
+ *  ã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„
+ *  ã«å¯¾ã™ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+ *  ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œã
+ *  ã®è²¬ä»»ã‚’è² ã‚ãªã„ï¼
  *
- *  $Id: CanIf.c 1241 2015-03-25 07:26:02Z panasonic-ayane $
+ *  $Id: CanIf.c 2995 2016-03-02 02:05:09Z fsi-kaitori $
  */
 
 /* CanIf.c */
@@ -62,14 +64,14 @@
 #include "Dem.h"        /* [CANIF020][CANIF150][CANIF153][CANIF155][CANIF223] */
 #include "MemMap.h"     /* [CANIF278][CANIF463] */
 
-/* PduR_CanIf.h¤ÏPduR¥¸¥§¥Í¥ì¡¼¥¿¤Ë¤è¤êÀ¸À®¤µ¤ì¤ë */
+/* PduR_CanIf.hã¯PduRã‚¸ã‚§ãƒãƒ¬ãƒ¼ã‚¿ã«ã‚ˆã‚Šç”Ÿæˆã•ã‚Œã‚‹ */
 #include "PduR_CanIf.h" /* [CANIF208] */
-/* SchM_CanIf.h¤ÏRTE¥¸¥§¥Í¥ì¡¼¥¿¤Ë¤è¤êÀ¸À®¤µ¤ì¤ë */
+/* SchM_CanIf.hã¯RTEã‚¸ã‚§ãƒãƒ¬ãƒ¼ã‚¿ã«ã‚ˆã‚Šç”Ÿæˆã•ã‚Œã‚‹ */
 #include "SchM_CanIf.h" /* [CANIF208][CANIF040] */
 
 
 /*
- *  ¸½ºß¼Â¹ÔÃæ¤ÎCanIf¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó
+ *  ç¾åœ¨å®Ÿè¡Œä¸­ã®CanIfã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±
  */
 static const CanIf_ConfigType	*p_cur_canif_config;
 static const CANIF_CTRL_INIB	*p_cur_canif_ctrl_inib;
@@ -77,7 +79,7 @@ static const LPDU_INIB			*p_cur_lpdu_inib;
 static const LPDU_INIB			* const *pp_cur_lpdu_inib_hoh;
 
 /*
- *  CanIf¤Î½é´ü²½¾õÂÖ
+ *  CanIfã®åˆæœŸåŒ–çŠ¶æ…‹
  */
 static uint8					canif_state = CANIF_UNINIT;
 
@@ -97,20 +99,20 @@ CanIf_Init(const CanIf_ConfigType *ConfigPtr)
 	SchM_Enter_CanIf_Reentrant_0();
 
 	/*
-	 *  [CANIF302] ÉÔÀµ¤Ê¥İ¥¤¥ó¥¿¤Ø¤ÎÂĞ±ş¤Ï¡¤NULL_PTR¤ËÂĞ¤·¤Æ¤Î¤ß¹Ô¤¦
+	 *  [CANIF302] ä¸æ­£ãªãƒã‚¤ãƒ³ã‚¿ã¸ã®å¯¾å¿œã¯ï¼ŒNULL_PTRã«å¯¾ã—ã¦ã®ã¿è¡Œã†
 	 */
 	if (ConfigPtr == NULL_PTR) {
-		/* [CANIF301] NULL_PTR¤Î¾ì¹ç¡¤¥Ç¥Õ¥©¥ë¥È¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤ò»ÈÍÑ¤¹¤ë */
+		/* [CANIF301] NULL_PTRã®å ´åˆï¼Œãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’ä½¿ç”¨ã™ã‚‹ */
 		ConfigPtr = p_default_canif_config;
 	}
 
-	/* ¸½ºß¼Â¹ÔÃæ¤Î¥³¥ó¥Õ¥£¥°¥ì¡¼¥·¥ç¥ó¾ğÊó¤òÊİ»ı */
+	/* ç¾åœ¨å®Ÿè¡Œä¸­ã®ã‚³ãƒ³ãƒ•ã‚£ã‚°ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’ä¿æŒ */
 	p_cur_canif_config = ConfigPtr;
 	p_cur_canif_ctrl_inib = canif_ctrl_inib_table;
 	p_cur_lpdu_inib = ConfigPtr->p_lpdu_inib_table;
 	pp_cur_lpdu_inib_hoh = ConfigPtr->pp_lpdu_inib_hoh_list;
 
-	/* [CANIF085] CanIf¤Î¥°¥í¡¼¥Ğ¥ëÊÑ¿ô¤È¥Ç¡¼¥¿¹½Â¤¤ò½é´ü²½ */
+	/* [CANIF085] CanIfã®ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°ã¨ãƒ‡ãƒ¼ã‚¿æ§‹é€ ã‚’åˆæœŸåŒ– */
 	canif_state = CANIF_INIT;
 
 	for (i = 0U; i < GET_CANIF_CTRL_NUM(); i++) {
@@ -171,13 +173,13 @@ CanIf_SetControllerMode(uint8 ControllerId, CanIf_ControllerModeType ControllerM
 
 	/*
 	 *  [CANIF474]
-	 *  CanIf¤Ï´°Á´¤ÊCAN¥³¥ó¥È¥í¡¼¥é¥¹¥Æ¡¼¥È¥Ş¥·¥ó¤Ï´Ş¤ó¤Ç¤¤¤Ê¤¤
+	 *  CanIfã¯å®Œå…¨ãªCANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³ã¯å«ã‚“ã§ã„ãªã„
 	 *
-	 *  CanIf¤Ç³ÎÇ§¤Ç¤­¤ëCCMSM¥â¡¼¥É¤ÏCANIF_CS_UNINIT¡¤CANIF_CS_STOPPED¡¤CANIF_CS_STARTED¡¤¤ª¤è¤ÓCANIF_CS_SLEEP¤Î¤ß¤Ç¤¢¤ê¡¤
-	 *  ¤½¤ÎÂ¾¤ÎCCMSM¾õÂÖ(CANIF_CS_START_TO_SLEEP¡¤CANIF_CS_SLEEP_TO_START)¤Ï´Ş¤Ş¤Ê¤¤¡¥
+	 *  CanIfã§ç¢ºèªã§ãã‚‹CCMSMãƒ¢ãƒ¼ãƒ‰ã¯CANIF_CS_UNINITï¼ŒCANIF_CS_STOPPEDï¼ŒCANIF_CS_STARTEDï¼ŒãŠã‚ˆã³CANIF_CS_SLEEPã®ã¿ã§ã‚ã‚Šï¼Œ
+	 *  ãã®ä»–ã®CCMSMçŠ¶æ…‹(CANIF_CS_START_TO_SLEEPï¼ŒCANIF_CS_SLEEP_TO_START)ã¯å«ã¾ãªã„ï¼
 	 */
 
-	/* [CANIF308] CAN¥³¥ó¥È¥í¡¼¥é¤ËÂĞ¤·¤ÆCan_SetControllerMode¤ò¸Æ¤Ó½Ğ¤¹ */
+	/* [CANIF308] CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã«å¯¾ã—ã¦Can_SetControllerModeã‚’å‘¼ã³å‡ºã™ */
 	if (ControllerMode == CANIF_CS_SLEEP) {
 		/* [CANIF482][CANIF486] */
 		ret_can = Can_SetControllerMode(p_canif_ctrl_inib->CanControllerId, CAN_T_SLEEP);
@@ -202,7 +204,7 @@ CanIf_SetControllerMode(uint8 ControllerId, CanIf_ControllerModeType ControllerM
 		ercd = E_OK;
 	}
 	else {
-		/* [CANIF475] Can_SetControllerMode¤¬CAN_NOT_OK¤òÊÖ¤·¤¿¾ì¹ç¡¤CanIf_SetControllerMode¤ÏE_NOT_OK¤òÊÖ¤¹ */
+		/* [CANIF475] Can_SetControllerModeãŒCAN_NOT_OKã‚’è¿”ã—ãŸå ´åˆï¼ŒCanIf_SetControllerModeã¯E_NOT_OKã‚’è¿”ã™ */
 		ercd = E_NOT_OK;
 	}
 
@@ -280,15 +282,15 @@ CanIf_Transmit(PduIdType CanTxPduId, const PduInfoType *PduInfoPtr)
 							 (p_canif_ctrl_cb->pdu_mode == CANIF_GET_OFFLINE_ACTIVE) ||
 							 (p_canif_ctrl_cb->pdu_mode == CANIF_GET_OFFLINE_ACTIVE_RX_ONLINE), CanIfServiceId_Transmit, CANIF_E_STOPPED);
 
-	/* [CANIF075][CANIF491] PDU¥Á¥ã¥Í¥ë¥â¡¼¥É¤¬CANIF_GET_ONLINE¡¤CANIF_GET_TX_ONLINE¤Î¾ì¹ç */
+	/* [CANIF075][CANIF491] PDUãƒãƒ£ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ãŒCANIF_GET_ONLINEï¼ŒCANIF_GET_TX_ONLINEã®å ´åˆ */
 	if ((p_canif_ctrl_cb->pdu_mode == CANIF_GET_ONLINE) || (p_canif_ctrl_cb->pdu_mode == CANIF_GET_TX_ONLINE)) {
-		/* CAN PDU¹½Â¤ÂÎÀßÄê */
+		/* CAN PDUæ§‹é€ ä½“è¨­å®š */
 		PduInfo.id = p_lpdu_inib->CanIfPduCanId;
 		PduInfo.swPduHandle = CanTxPduId;
 		PduInfo.sdu = PduInfoPtr->SduDataPtr;
 		PduInfo.length = ((uint8) PduInfoPtr->SduLength);
 
-		/* [CANIF318] ¥á¥Ã¥»¡¼¥¸½ñ¤­¹ş¤ß */
+		/* [CANIF318] ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸æ›¸ãè¾¼ã¿ */
 		if (Can_Write(p_lpdu_inib->CanObjectId, &PduInfo) == CAN_OK) {
 			/* [CANIF162] */
 			ercd = E_OK;
@@ -299,21 +301,21 @@ CanIf_Transmit(PduIdType CanTxPduId, const PduInfoType *PduInfoPtr)
 	}
 	else {
 		/*
-		 * [CANIF072] PDU¥Á¥ã¥Í¥ë¥â¡¼¥É¤¬CANIF_GET_OFFLINE_ACTIVE¡¤CANIF_GET_OFFLINE_ACTIVE_RX_ONLINE¤Î¾ì¹ç¡¤
-		 *            Á÷¿®¥³¥ó¥Õ¥¡¥á¡¼¥·¥ç¥ó¥³¡¼¥ë¥Ğ¥Ã¥¯¤ò¸Æ¤Ó½Ğ¤¹
+		 * [CANIF072] PDUãƒãƒ£ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ãŒCANIF_GET_OFFLINE_ACTIVEï¼ŒCANIF_GET_OFFLINE_ACTIVE_RX_ONLINEã®å ´åˆï¼Œ
+		 *            é€ä¿¡ã‚³ãƒ³ãƒ•ã‚¡ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’å‘¼ã³å‡ºã™
 		 */
 		if (p_lpdu_inib->CanIfPduUserConfirmationName != NULL_PTR) {
-			/* ÇÓÂ¾¥¨¥ê¥¢Æâ¤Ç³Æ¾ğÊó¤ò¼è¤ê½Ğ¤¹ */
+			/* æ’ä»–ã‚¨ãƒªã‚¢å†…ã§å„æƒ…å ±ã‚’å–ã‚Šå‡ºã™ */
 			TxConfirmation = ((User_TxConfirmation) p_lpdu_inib->CanIfPduUserConfirmationName);
 			pduid = p_lpdu_inib->PduRPduHandleId;
-			/* ºÆ½é´ü²½¥Á¥§¥Ã¥¯ÍÑ¤Ë¸½ºß¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤òÊİ»ı */
+			/* å†åˆæœŸåŒ–ãƒã‚§ãƒƒã‚¯ç”¨ã«ç¾åœ¨ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’ä¿æŒ */
 			p_saved_config = p_cur_canif_config;
 
 			SchM_Exit_CanIf_Reentrant_0();
 			TxConfirmation(pduid);
 			SchM_Enter_CanIf_Reentrant_0();
 
-			/* ÇÓÂ¾¥¨¥ê¥¢³°¤Ç¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤¬ÊÑ²½¤·¤Æ¤¤¤Ê¤¤¤«¥Á¥§¥Ã¥¯¤¹¤ë */
+			/* æ’ä»–ã‚¨ãƒªã‚¢å¤–ã§ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ãŒå¤‰åŒ–ã—ã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ */
 			CANIF_CHECK_PARAM_ERCD(p_saved_config == p_cur_canif_config, CanIfServiceId_Transmit, CANIF_E_FATAL);
 		}
 		ercd = E_OK;
@@ -350,7 +352,7 @@ CanIf_CancelTransmit(PduIdType CanTxPduId)
 	SchM_Exit_CanIf_Reentrant_0();
 #endif /* CANIF_PUBLIC_DEV_ERROR_DETECT == STD_ON */
 
-	/* CanIf_CancelTransmit¤Ëµ¡Ç½¤Ï¤Ê¤¤ */
+	/* CanIf_CancelTransmitã«æ©Ÿèƒ½ã¯ãªã„ */
 
 	return(ercd);
 }
@@ -359,7 +361,7 @@ CanIf_CancelTransmit(PduIdType CanTxPduId)
 /*
  *  [CANIF194] CanIf_ReadRxPduData
  */
-/* [CANIF330] CANIF_PUBLIC_READRXPDU_DATA_API¤¬STD_ON¤Ê¤é¤Ğ¡¤ËÜ¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¤ÏÍ­¸ú */
+/* [CANIF330] CANIF_PUBLIC_READRXPDU_DATA_APIãŒSTD_ONãªã‚‰ã°ï¼Œæœ¬ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã¯æœ‰åŠ¹ */
 #if CANIF_PUBLIC_READRXPDU_DATA_API == STD_ON
 Std_ReturnType
 CanIf_ReadRxPduData(PduIdType CanRxPduId, PduInfoType *PduInfoPtr)
@@ -384,10 +386,10 @@ CanIf_ReadRxPduData(PduIdType CanRxPduId, PduInfoType *PduInfoPtr)
 	/* [CANIF325] */
 	CANIF_CHECK_PARAM_ERCD(p_lpdu_inib->lpdu_direction == CANIF_RECEIVE, CanIfServiceId_ReadRxPduData, CANIF_E_INVALID_RXPDUID);
 
-	/* [CANIF325] ¼õ¿®¥Ğ¥Ã¥Õ¥¡¤¬¹½À®¤µ¤ì¤Æ¤Ê¤¤ */
+	/* [CANIF325] å—ä¿¡ãƒãƒƒãƒ•ã‚¡ãŒæ§‹æˆã•ã‚Œã¦ãªã„ */
 	CANIF_CHECK_PARAM_ERCD((p_lpdu_inib->p_rx_lpdu_buffer != NULL_PTR), CanIfServiceId_ReadRxPduData, CANIF_E_INVALID_RXPDUID);
 
-	/* [CANIFa001] ÂĞ¾İ¤ÎPDU¤ò°ìÅÙ¤â¼õ¿®¤·¤Æ¤Ê¤¤¾ì¹ç¤Ï²¿¤â½èÍı¤»¤º¡¤E_NOT_OK¤òÊÖ¤¹ */
+	/* [CANIFa001] å¯¾è±¡ã®PDUã‚’ä¸€åº¦ã‚‚å—ä¿¡ã—ã¦ãªã„å ´åˆã¯ä½•ã‚‚å‡¦ç†ã›ãšï¼ŒE_NOT_OKã‚’è¿”ã™ */
 	CANIF_CHECK_PARAM_ERCD((p_lpdu_inib->p_rx_indication_flg != NULL_PTR), CanIfServiceId_ReadRxPduData, CANIF_E_PARAM_POINTER);
 	D_CANIF_CHECK_PARAM_ERCD(*(p_lpdu_inib->p_rx_indication_flg) == TRUE);
 
@@ -395,15 +397,15 @@ CanIf_ReadRxPduData(PduIdType CanRxPduId, PduInfoType *PduInfoPtr)
 
 	/*
 	 *  [CANIF324]
-	 *  CCMSM¤¬CANIF_CS_STARTED¤Ç¤Ï¤Ê¤¤¾ì¹ç¡¤¤Ş¤¿¤ÏPDU¥Á¥ã¥Í¥ë¥â¡¼¥É¤¬¼õ¿®¥Ñ¥¹¥ª¥ó¥é¥¤¥ó
-	 *  (CANIF_GET_OFFLINE_ACTIVE_RX_ONLINE¡¤CANIF_GET_ONLINE¡¤CANIF_GET_RX_ONLINE)¤Ç¤Ï¤Ê¤¤¾ì¹ç¤ÏE_NOT_OK¤òÊÖ¤¹
+	 *  CCMSMãŒCANIF_CS_STARTEDã§ã¯ãªã„å ´åˆï¼Œã¾ãŸã¯PDUãƒãƒ£ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ãŒå—ä¿¡ãƒ‘ã‚¹ã‚ªãƒ³ãƒ©ã‚¤ãƒ³
+	 *  (CANIF_GET_OFFLINE_ACTIVE_RX_ONLINEï¼ŒCANIF_GET_ONLINEï¼ŒCANIF_GET_RX_ONLINE)ã§ã¯ãªã„å ´åˆã¯E_NOT_OKã‚’è¿”ã™
 	 */
 	D_CANIF_CHECK_PARAM_ERCD(p_canif_ctrl_cb->controller_mode == CANIF_CS_STARTED);
 	D_CANIF_CHECK_PARAM_ERCD((p_canif_ctrl_cb->pdu_mode == CANIF_GET_OFFLINE_ACTIVE_RX_ONLINE) ||
 							 (p_canif_ctrl_cb->pdu_mode == CANIF_GET_ONLINE) ||
 							 (p_canif_ctrl_cb->pdu_mode == CANIF_GET_RX_ONLINE));
 
-	/* [CANIF058] ¼õ¿®¥Ğ¥Ã¥Õ¥¡¡¤DLC¤òÅÏ¤¹ */
+	/* [CANIF058] å—ä¿¡ãƒãƒƒãƒ•ã‚¡ï¼ŒDLCã‚’æ¸¡ã™ */
 	for (i = 0U; i < p_lpdu_inib->CanIfPduDlc; i++) {
 		(PduInfoPtr->SduDataPtr)[i] = (p_lpdu_inib->p_rx_lpdu_buffer)[i];
 	}
@@ -420,7 +422,7 @@ CanIf_ReadRxPduData(PduIdType CanRxPduId, PduInfoType *PduInfoPtr)
 /*
  *  [CANIF202] CanIf_ReadTxNotifStatus
  */
-/* [CANIF335] CANIF_PUBLIC_READTXPDU_NOTIFY_STATUS_API¤¬STD_ON¤Ê¤é¤Ğ¡¤ËÜ¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¤ÏÍ­¸ú */
+/* [CANIF335] CANIF_PUBLIC_READTXPDU_NOTIFY_STATUS_APIãŒSTD_ONãªã‚‰ã°ï¼Œæœ¬ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã¯æœ‰åŠ¹ */
 #if CANIF_PUBLIC_READTXPDU_NOTIFY_STATUS_API == STD_ON
 CanIf_NotifStatusType
 CanIf_ReadTxNotifStatus(PduIdType CanTxPduId)
@@ -440,12 +442,12 @@ CanIf_ReadTxNotifStatus(PduIdType CanTxPduId)
 	/* [CANIF331] */
 	CANIF_CHECK_PARAM(p_lpdu_inib->lpdu_direction == CANIF_SEND, CanIfServiceId_ReadTxNotifStatus, CANIF_E_INVALID_TXPDUID);
 
-	/* [CANIF331] ¥¹¥Æ¡¼¥¿¥¹¾ğÊó¤¬¹½À®¤µ¤ì¤Æ¤Ê¤¤¾ì¹ç¡¤¥¨¥é¡¼¤È¤¹¤ë */
+	/* [CANIF331] ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ãŒæ§‹æˆã•ã‚Œã¦ãªã„å ´åˆï¼Œã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹ */
 	CANIF_CHECK_PARAM((p_lpdu_inib->p_notify_status != NULL_PTR), CanIfServiceId_ReadTxNotifStatus, CANIF_E_INVALID_TXPDUID);
 
 	status = *(p_lpdu_inib->p_notify_status);
 
-	/* [CANIF393] LPDU¤ÎÄÌÃÎ¥¹¥Æ¡¼¥¿¥¹¤ò¥ê¥»¥Ã¥È¤¹¤ë */
+	/* [CANIF393] LPDUã®é€šçŸ¥ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ */
 	*(p_lpdu_inib->p_notify_status) = CANIF_NO_NOTIFICATION;
 
   no_error_exit:
@@ -461,7 +463,7 @@ CanIf_ReadTxNotifStatus(PduIdType CanTxPduId)
 /*
  *  [CANIF230] CanIf_ReadRxNotifStatus
  */
-/* [CANIF340] CANIF_PUBLIC_READRXPDU_NOTIFY_STATUS_API¤¬STD_ON¤Ê¤é¤Ğ¡¤ËÜ¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¤ÏÍ­¸ú */
+/* [CANIF340] CANIF_PUBLIC_READRXPDU_NOTIFY_STATUS_APIãŒSTD_ONãªã‚‰ã°ï¼Œæœ¬ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã¯æœ‰åŠ¹ */
 #if CANIF_PUBLIC_READRXPDU_NOTIFY_STATUS_API == STD_ON
 CanIf_NotifStatusType
 CanIf_ReadRxNotifStatus(PduIdType CanRxPduId)
@@ -481,14 +483,14 @@ CanIf_ReadRxNotifStatus(PduIdType CanRxPduId)
 	/* [CANIF336] */
 	CANIF_CHECK_PARAM(p_lpdu_inib->lpdu_direction == CANIF_RECEIVE, CanIfServiceId_ReadRxNotifStatus, CANIF_E_INVALID_RXPDUID);
 
-	/* [CANIF336] CANIF_READRXPDU_DATA_API¤¬Ìµ¸ú¤Î¾ì¹ç¡¤¥¨¥é¡¼¤È¤¹¤ë */
+	/* [CANIF336] CANIF_READRXPDU_DATA_APIãŒç„¡åŠ¹ã®å ´åˆï¼Œã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹ */
 	CANIF_CHECK_PARAM((CANIF_PUBLIC_READRXPDU_DATA_API == STD_ON), CanIfServiceId_ReadRxNotifStatus, CANIF_E_INVALID_RXPDUID);
-	/* [CANIF336] ¥¹¥Æ¡¼¥¿¥¹¾ğÊó¤¬¹½À®¤µ¤ì¤Æ¤Ê¤¤¾ì¹ç¡¤¥¨¥é¡¼¤È¤¹¤ë */
+	/* [CANIF336] ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹æƒ…å ±ãŒæ§‹æˆã•ã‚Œã¦ãªã„å ´åˆï¼Œã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹ */
 	CANIF_CHECK_PARAM((p_lpdu_inib->p_notify_status != NULL_PTR), CanIfServiceId_ReadRxNotifStatus, CANIF_E_INVALID_RXPDUID);
 
 	status = *(p_lpdu_inib->p_notify_status);
 
-	/* [CANIF394] LPDU¤ÎÄÌÃÎ¥¹¥Æ¡¼¥¿¥¹¤ò¥ê¥»¥Ã¥È¤¹¤ë */
+	/* [CANIF394] LPDUã®é€šçŸ¥ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹ */
 	*(p_lpdu_inib->p_notify_status) = CANIF_NO_NOTIFICATION;
 
   no_error_exit:
@@ -507,7 +509,7 @@ CanIf_ReadRxNotifStatus(PduIdType CanRxPduId)
 Std_ReturnType
 CanIf_SetPduMode(uint8 ControllerId, CanIf_PduSetModeType PduModeRequest)
 {
-	/* PDU¥Á¥ã¥Í¥ë¥â¡¼¥É¥Æ¡¼¥Ö¥ë */
+	/* PDUãƒãƒ£ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ãƒ†ãƒ¼ãƒ–ãƒ« */
 	CanIf_PduGetModeType	pdu_mode_table[6][7] = {
 		{ CANIF_GET_OFFLINE, CANIF_GET_ONLINE, CANIF_GET_OFFLINE,        CANIF_GET_RX_ONLINE,                CANIF_GET_OFFLINE,   CANIF_GET_OFFLINE_ACTIVE,           CANIF_GET_TX_ONLINE },
 		{ CANIF_GET_OFFLINE, CANIF_GET_ONLINE, CANIF_GET_OFFLINE_ACTIVE, CANIF_GET_OFFLINE_ACTIVE_RX_ONLINE, CANIF_GET_OFFLINE,   CANIF_GET_OFFLINE_ACTIVE,           CANIF_GET_TX_ONLINE },
@@ -529,7 +531,7 @@ CanIf_SetPduMode(uint8 ControllerId, CanIf_PduSetModeType PduModeRequest)
 
 	p_canif_ctrl_cb = GET_CANIF_CTRL_CB(ControllerId);
 
-	/* PDU¥Á¥ã¥Í¥ë¥â¡¼¥É¤òÀßÄê¤¹¤ë */
+	/* PDUãƒãƒ£ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ */
 	p_canif_ctrl_cb->pdu_mode = pdu_mode_table[p_canif_ctrl_cb->pdu_mode][PduModeRequest];
 	ercd = E_OK;
 
@@ -558,7 +560,7 @@ CanIf_GetPduMode(uint8 ControllerId, CanIf_PduGetModeType *PduModePtr)
 
 	p_canif_ctrl_cb = GET_CANIF_CTRL_CB(ControllerId);
 
-	/* ¸½ºß¤ÎPDU¥Á¥ã¥Í¥ë¥â¡¼¥É¤ò¼èÆÀ¤¹¤ë */
+	/* ç¾åœ¨ã®PDUãƒãƒ£ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ã‚’å–å¾—ã™ã‚‹ */
 	*PduModePtr = p_canif_ctrl_cb->pdu_mode;
 	ercd = E_OK;
 
@@ -609,7 +611,7 @@ CanIf_CheckWakeup(EcuM_WakeupSourceType WakeupSource)
 	for (i = 0U; i < GET_CANIF_CTRL_NUM(); i++) {
 		p_canif_ctrl_inib = GET_CANIF_CTRL_INIB(i);
 
-		/* [CANIF180][CANIF402] CanIfCtrlWakeupSupport¤¬Í­¸ú¤Î¾ì¹ç¡¤EcuMWakeupSourceId¤Ë°ìÃ×¤¹¤ë¥³¥ó¥È¥í¡¼¥é¤ò¸¡½Ğ¤¹¤ë */
+		/* [CANIF180][CANIF402] CanIfCtrlWakeupSupportãŒæœ‰åŠ¹ã®å ´åˆï¼ŒEcuMWakeupSourceIdã«ä¸€è‡´ã™ã‚‹ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‚’æ¤œå‡ºã™ã‚‹ */
 		if (((((uint32) 0x00000001) << p_canif_ctrl_inib->EcuMWakeupSourceId) & WakeupSource) != ((uint32) 0x00000000)) {
 			if (p_canif_ctrl_inib->CanIfCtrlWakeupSupport == TRUE) {
 				p_canif_ctrl_cb = p_canif_ctrl_inib->p_canif_ctrl_cb;
@@ -623,7 +625,7 @@ CanIf_CheckWakeup(EcuM_WakeupSourceType WakeupSource)
 					ercd = E_OK;
 				}
 			}
-			/* EcuMWakeupSourceId¤Ë°ìÃ×¤¹¤ë¥³¥ó¥È¥í¡¼¥é¤¬¸«¤Ä¤«¤Ã¤¿¾ì¹ç¡¤½èÍı¤òÈ´¤±¤ë */
+			/* EcuMWakeupSourceIdã«ä¸€è‡´ã™ã‚‹ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãŒè¦‹ã¤ã‹ã£ãŸå ´åˆï¼Œå‡¦ç†ã‚’æŠœã‘ã‚‹ */
 			break;
 		}
 	}
@@ -659,17 +661,17 @@ CanIf_CheckValidation(EcuM_WakeupSourceType WakeupSource)
 	for (i = 0U; i < GET_CANIF_CTRL_NUM(); i++) {
 		p_canif_ctrl_inib = GET_CANIF_CTRL_INIB(i);
 
-		/* EcuMWakeupSourceId¤Ë°ìÃ×¤¹¤ë¥³¥ó¥È¥í¡¼¥é¤ò¸¡½Ğ */
+		/* EcuMWakeupSourceIdã«ä¸€è‡´ã™ã‚‹ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã‚’æ¤œå‡º */
 		if (((((uint32) 0x00000001) << p_canif_ctrl_inib->EcuMWakeupSourceId) & WakeupSource) != ((uint32) 0x00000000)) {
 			p_canif_ctrl_cb = p_canif_ctrl_inib->p_canif_ctrl_cb;
 
 			/* [CANIF407] */
 			D_CANIF_CHECK_PARAM_ERCD(p_canif_ctrl_cb->controller_mode == CANIF_CS_STARTED);
 
-			/* ºÆ½é´ü²½¥Á¥§¥Ã¥¯ÍÑ¤Ë¸½ºß¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤òÊİ»ı */
+			/* å†åˆæœŸåŒ–ãƒã‚§ãƒƒã‚¯ç”¨ã«ç¾åœ¨ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’ä¿æŒ */
 			p_saved_config = p_cur_canif_config;
 
-			/* CAN¥á¥Ã¥»¡¼¥¸¤ò¼õ¿®¤·¤¿¾ì¹ç */
+			/* CANãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ãŸå ´åˆ */
 			if (p_canif_ctrl_cb->validation_status != FALSE) {
 				/* [CANIF179][CANIF532] */
 				SchM_Exit_CanIf_Reentrant_0();
@@ -677,7 +679,7 @@ CanIf_CheckValidation(EcuM_WakeupSourceType WakeupSource)
 				SchM_Enter_CanIf_Reentrant_0();
 			}
 			else {
-				/* [CANIF681][CANIF532] CAN¥á¥Ã¥»¡¼¥¸¤ò¼õ¿®¤·¤Æ¤Ê¤¤¾ì¹ç¤Ï¡¤WakeupSource¤ÎÁ´¥Ó¥Ã¥È¤ò¥¯¥ê¥¢¤·¤ÆÁ÷¿®¤¹¤ë */
+				/* [CANIF681][CANIF532] CANãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å—ä¿¡ã—ã¦ãªã„å ´åˆã¯ï¼ŒWakeupSourceã®å…¨ãƒ“ãƒƒãƒˆã‚’ã‚¯ãƒªã‚¢ã—ã¦é€ä¿¡ã™ã‚‹ */
 				SchM_Exit_CanIf_Reentrant_0();
 				CanIfDispatchUserValidateWakeupEventName(0U);
 				SchM_Enter_CanIf_Reentrant_0();
@@ -685,7 +687,7 @@ CanIf_CheckValidation(EcuM_WakeupSourceType WakeupSource)
 
 			ercd = E_OK;
 
-			/* ÇÓÂ¾¥¨¥ê¥¢³°¤Ç¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤¬ÊÑ²½¤·¤Æ¤¤¤Ê¤¤¤«¥Á¥§¥Ã¥¯¤¹¤ë */
+			/* æ’ä»–ã‚¨ãƒªã‚¢å¤–ã§ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ãŒå¤‰åŒ–ã—ã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ */
 			CANIF_CHECK_PARAM_ERCD(p_saved_config == p_cur_canif_config, CanIfServiceId_CheckValidation, CANIF_E_FATAL);
 
 			break;
@@ -741,7 +743,7 @@ CanIf_GetTxConfirmationState(uint8 ControllerId)
 /*
  *  [CANIF775] CanIf_CheckBaudrate
  */
-/* [CANIF780] CANIF_PUBLIC_CHANGE_BAUDRATE_SUPPORT¤¬STD_OFF¤Î¾ì¹ç¤Ï¡¤CanIf_CheckBaudrate¤âÌµ¸ú¤Ë¤¹¤ë */
+/* [CANIF780] CANIF_PUBLIC_CHANGE_BAUDRATE_SUPPORTãŒSTD_OFFã®å ´åˆã¯ï¼ŒCanIf_CheckBaudrateã‚‚ç„¡åŠ¹ã«ã™ã‚‹ */
 #if CANIF_PUBLIC_CHANGE_BAUDRATE_SUPPORT == STD_ON
 Std_ReturnType
 CanIf_CheckBaudrate(uint8 ControllerId, const uint16 Baudrate)
@@ -821,7 +823,7 @@ CanIf_TxConfirmation(PduIdType CanTxPduId)
 	CANIF_CHECK_PARAM(p_lpdu_inib->lpdu_direction == CANIF_SEND, CanIfServiceId_TxConfirmation, CANIF_E_PARAM_LPDU);
 
 #if CANIF_PUBLIC_READTXPDU_NOTIFY_STATUS_API == STD_ON
-	/* [CANIF391][CANIF472] LPDU¤ÎÄÌÃÎ¥¹¥Æ¡¼¥¿¥¹¤òÀßÄê¤¹¤ë */
+	/* [CANIF391][CANIF472] LPDUã®é€šçŸ¥ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¨­å®šã™ã‚‹ */
 	if (p_lpdu_inib->p_notify_status != NULL_PTR) {
 		*(p_lpdu_inib->p_notify_status) = CANIF_TX_RX_NOTIFICATION;
 	}
@@ -830,13 +832,13 @@ CanIf_TxConfirmation(PduIdType CanTxPduId)
 	p_canif_ctrl_cb = p_lpdu_inib->p_canif_ctrl_cb;
 
 #if CANIF_PUBLIC_TXCONFIRM_POLLING_SUPPORT == STD_ON
-	/* [CANIF740] TxConfirmation¤¬¸Æ¤Ğ¤ì¤¿¤³¤È¤òÊİ»ı¤¹¤ë */
+	/* [CANIF740] TxConfirmationãŒå‘¼ã°ã‚ŒãŸã“ã¨ã‚’ä¿æŒã™ã‚‹ */
 	p_canif_ctrl_cb->tx_confirmation_flg = TRUE;
 #endif /* CANIF_PUBLIC_TXCONFIRM_POLLING_SUPPORT == STD_ON */
 
 	/*
 	 *  [CANIF073][CANIF489][CANIF075][CANIF491]
-	 *  Á÷¿®¥Ñ¥¹¤¬¥ª¥ó¥é¥¤¥ó¤Ş¤¿¤Ï¥ª¥ó¥é¥¤¥ó¥¢¥¯¥Æ¥£¥Ö¤Î¾ì¹ç¡¤¾å°Ì¥ì¥¤¥ä¤Ø¤ÎÁ÷¿®¥³¥ó¥Õ¥¡¥á¡½¥·¥ç¥ó¥µ¡¼¥Ó¥¹¤ò¸Æ¤Ó½Ğ¤¹
+	 *  é€ä¿¡ãƒ‘ã‚¹ãŒã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã¾ãŸã¯ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã®å ´åˆï¼Œä¸Šä½ãƒ¬ã‚¤ãƒ¤ã¸ã®é€ä¿¡ã‚³ãƒ³ãƒ•ã‚¡ãƒ¡â€•ã‚·ãƒ§ãƒ³ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™
 	 */
 	D_CANIF_CHECK_PARAM((p_canif_ctrl_cb->pdu_mode == CANIF_GET_ONLINE) ||
 						(p_canif_ctrl_cb->pdu_mode == CANIF_GET_TX_ONLINE) ||
@@ -844,18 +846,18 @@ CanIf_TxConfirmation(PduIdType CanTxPduId)
 						(p_canif_ctrl_cb->pdu_mode == CANIF_GET_OFFLINE_ACTIVE_RX_ONLINE));
 
 	if (p_lpdu_inib->CanIfPduUserConfirmationName != NULL_PTR) {
-		/* ÇÓÂ¾¥¨¥ê¥¢Æâ¤Ç³Æ¾ğÊó¤ò¼è¤ê½Ğ¤¹ */
+		/* æ’ä»–ã‚¨ãƒªã‚¢å†…ã§å„æƒ…å ±ã‚’å–ã‚Šå‡ºã™ */
 		TxConfirmation = ((User_TxConfirmation) p_lpdu_inib->CanIfPduUserConfirmationName);
 		pduid = p_lpdu_inib->PduRPduHandleId;
-		/* ºÆ½é´ü²½¥Á¥§¥Ã¥¯ÍÑ¤Ë¸½ºß¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤òÊİ»ı */
+		/* å†åˆæœŸåŒ–ãƒã‚§ãƒƒã‚¯ç”¨ã«ç¾åœ¨ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’ä¿æŒ */
 		p_saved_config = p_cur_canif_config;
 
-		/* [CANIF383][CANIF414] Á÷¿®¥³¥ó¥Õ¥¡¥á¡¼¥·¥ç¥ó¥³¡¼¥ë¥Ğ¥Ã¥¯ */
+		/* [CANIF383][CANIF414] é€ä¿¡ã‚³ãƒ³ãƒ•ã‚¡ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ */
 		SchM_Exit_CanIf_Reentrant_1();
 		TxConfirmation(pduid);
 		SchM_Enter_CanIf_Reentrant_1();
 
-		/* ÇÓÂ¾¥¨¥ê¥¢³°¤Ç¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤¬ÊÑ²½¤·¤Æ¤¤¤Ê¤¤¤«¥Á¥§¥Ã¥¯¤¹¤ë */
+		/* æ’ä»–ã‚¨ãƒªã‚¢å¤–ã§ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ãŒå¤‰åŒ–ã—ã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ */
 		CANIF_CHECK_PARAM(p_saved_config == p_cur_canif_config, CanIfServiceId_TxConfirmation, CANIF_E_FATAL);
 	}
 
@@ -902,11 +904,11 @@ CanIf_RxIndication(Can_HwHandleType Hrh, Can_IdType CanId, uint8 CanDlc, uint8 *
 	/* [CANIF417] */
 	CANIF_CHECK_PARAM((CanId == p_lpdu_inib->CanIfPduCanId), CanIfServiceId_RxIndication, CANIF_E_PARAM_CANID);
 
-	/* DLC¥Á¥§¥Ã¥¯ */
+	/* DLCãƒã‚§ãƒƒã‚¯ */
 	/* [CANIF390][CANIF026][CANIF168] */
 	A_CHECK_DLC(CanDlc, p_lpdu_inib->CanIfPduDlc);
 
-	/* ¼õ¿®LPDU¤Î¥Ğ¥Ã¥Õ¥¡¥ê¥ó¥° */
+	/* å—ä¿¡LPDUã®ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚° */
 #if CANIF_PUBLIC_READRXPDU_DATA_API == STD_ON
 	if (p_lpdu_inib->p_rx_lpdu_buffer != NULL_PTR) {
 		/* [CANIF198][CANIF297] */
@@ -914,43 +916,43 @@ CanIf_RxIndication(Can_HwHandleType Hrh, Can_IdType CanId, uint8 CanDlc, uint8 *
 			(p_lpdu_inib->p_rx_lpdu_buffer)[i] = CanSduPtr[i];
 		}
 	}
-	/* [CANIFa001] ¼õ¿®¤·¤¿¤Î¤Çp_tx_rx_flg¤òTRUE¤Ë¤¹¤ë */
+	/* [CANIFa001] å—ä¿¡ã—ãŸã®ã§p_tx_rx_flgã‚’TRUEã«ã™ã‚‹ */
 	CANIF_CHECK_PARAM((p_lpdu_inib->p_rx_indication_flg != NULL_PTR), CanIfServiceId_RxIndication, CANIF_E_PARAM_POINTER);
 	*(p_lpdu_inib->p_rx_indication_flg) = TRUE;
 #endif /* CANIF_PUBLIC_READRXPDU_DATA_API == STD_ON */
 
 #if CANIF_PUBLIC_READRXPDU_NOTIFY_STATUS_API == STD_ON
 	if (p_lpdu_inib->p_notify_status != NULL_PTR) {
-		/* [CANIF392][CANIF473] ÄÌÃÎ¥¹¥Æ¡¼¥¿¥¹¤òÀßÄê¤¹¤ë */
+		/* [CANIF392][CANIF473] é€šçŸ¥ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¨­å®šã™ã‚‹ */
 		*(p_lpdu_inib->p_notify_status) = CANIF_TX_RX_NOTIFICATION;
 	}
 #endif /* CANIF_PUBLIC_READRXPDU_NOTIFY_STATUS_API = STD_ON */
 
 #if CANIF_PUBLIC_WAKEUP_CHECK_VALIDATION_SUPPORT == STD_ON
 	if (p_canif_ctrl_cb->controller_mode == CANIF_CS_STARTED) {
-		/* [CANIF286] ÂĞ¾İ¤Î¥³¥ó¥È¥í¡¼¥é¤ËÂĞ¤·¤Æ¡¤CCMSM¤¬CANIF_CS_STARTED¤Ç¤¢¤ì¤Ğ¡¤CanIf_RxIndication¤¬¸Æ¤Ğ¤ì¤¿¤³¤È¤òÊİ»ı¤¹¤ë */
+		/* [CANIF286] å¯¾è±¡ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã«å¯¾ã—ã¦ï¼ŒCCMSMãŒCANIF_CS_STARTEDã§ã‚ã‚Œã°ï¼ŒCanIf_RxIndicationãŒå‘¼ã°ã‚ŒãŸã“ã¨ã‚’ä¿æŒã™ã‚‹ */
 		p_canif_ctrl_cb->validation_status = TRUE;
 	}
 #endif /* CANIF_PUBLIC_WAKEUP_CHECK_VALIDATION_SUPPORT == STD_ON */
 
 	/*
 	 *  [CANIF073][CANIF490][CANIF492][CANIF075][CANIF492][CANIF490]
-	 *  ¼õ¿®¥Ñ¥¹¤¬¥ª¥ó¥é¥¤¥ó¤Î¾ì¹ç¡¤¾å°Ì¥ì¥¤¥ä¤Ø¤Î¼õ¿®ÄÌÃÎ¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¤ò¸Æ¤Ó½Ğ¤¹
+	 *  å—ä¿¡ãƒ‘ã‚¹ãŒã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã®å ´åˆï¼Œä¸Šä½ãƒ¬ã‚¤ãƒ¤ã¸ã®å—ä¿¡é€šçŸ¥ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã‚’å‘¼ã³å‡ºã™
 	 */
 	D_CANIF_CHECK_PARAM((p_canif_ctrl_cb->pdu_mode == CANIF_GET_OFFLINE_ACTIVE_RX_ONLINE) ||
 						(p_canif_ctrl_cb->pdu_mode == CANIF_GET_ONLINE) ||
 						(p_canif_ctrl_cb->pdu_mode == CANIF_GET_RX_ONLINE));
 
 	if (p_lpdu_inib->CanIfPduUserConfirmationName != NULL_PTR) {
-		/* ÇÓÂ¾¥¨¥ê¥¢Æâ¤Ç³Æ¾ğÊó¤ò¼è¤ê½Ğ¤¹ */
+		/* æ’ä»–ã‚¨ãƒªã‚¢å†…ã§å„æƒ…å ±ã‚’å–ã‚Šå‡ºã™ */
 		pduid = p_lpdu_inib->PduRPduHandleId;
-		/* [CANIF056] ¾å°Ì¥ì¥¤¥ä¤Ø¤Î¼õ¿®ÄÌÃÎ¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¸Æ¤Ó½Ğ¤· */
+		/* [CANIF056] ä¸Šä½ãƒ¬ã‚¤ãƒ¤ã¸ã®å—ä¿¡é€šçŸ¥ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹å‘¼ã³å‡ºã— */
 		RxIndication = ((User_RxIndication) p_lpdu_inib->CanIfPduUserConfirmationName);
-		/* [CANIF057][CANIF135] PDU¾ğÊóÀßÄê */
+		/* [CANIF057][CANIF135] PDUæƒ…å ±è¨­å®š */
 		pduinfo.SduDataPtr = CanSduPtr;
-		/* [CANIF829][CANIF830] ¼õ¿®¤·¤¿DLC¤ò¾å°Ì¥ì¥¤¥ä¥â¥¸¥å¡¼¥ë¤ËÅÏ¤¹ */
+		/* [CANIF829][CANIF830] å—ä¿¡ã—ãŸDLCã‚’ä¸Šä½ãƒ¬ã‚¤ãƒ¤ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«æ¸¡ã™ */
 		pduinfo.SduLength = CanDlc;
-		/* ºÆ½é´ü²½¥Á¥§¥Ã¥¯ÍÑ¤Ë¸½ºß¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤òÊİ»ı */
+		/* å†åˆæœŸåŒ–ãƒã‚§ãƒƒã‚¯ç”¨ã«ç¾åœ¨ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’ä¿æŒ */
 		p_saved_config = p_cur_canif_config;
 
 		/* [CANIF423][CANIF012][CANIF415][CANIF830] */
@@ -958,7 +960,7 @@ CanIf_RxIndication(Can_HwHandleType Hrh, Can_IdType CanId, uint8 CanDlc, uint8 *
 		RxIndication(pduid, &pduinfo);
 		SchM_Enter_CanIf_Reentrant_0();
 
-		/* ÇÓÂ¾¥¨¥ê¥¢³°¤Ç¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤¬ÊÑ²½¤·¤Æ¤¤¤Ê¤¤¤«¥Á¥§¥Ã¥¯¤¹¤ë */
+		/* æ’ä»–ã‚¨ãƒªã‚¢å¤–ã§ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ãŒå¤‰åŒ–ã—ã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ */
 		CANIF_CHECK_PARAM(p_saved_config == p_cur_canif_config, CanIfServiceId_RxIndication, CANIF_E_FATAL);
 	}
 
@@ -989,12 +991,12 @@ CanIf_ControllerBusOff(uint8 ControllerId)
 	p_canif_ctrl_inib = GET_CANIF_CTRL_INIB(ControllerId);
 	p_canif_ctrl_cb = p_canif_ctrl_inib->p_canif_ctrl_cb;
 
-	/* [CANIF298][CANIF488] CCMSM¤òCANIF_CS_STOPPED¤Ë¤¹¤ë */
+	/* [CANIF298][CANIF488] CCMSMã‚’CANIF_CS_STOPPEDã«ã™ã‚‹ */
 	p_canif_ctrl_cb->controller_mode = CANIF_CS_STOPPED;
 
-	/* ÇÓÂ¾¥¨¥ê¥¢Æâ¤Ç¥³¥ó¥È¥í¡¼¥éID¤ò¼è¤ê½Ğ¤¹ */
+	/* æ’ä»–ã‚¨ãƒªã‚¢å†…ã§ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©IDã‚’å–ã‚Šå‡ºã™ */
 	ctrl_id = p_canif_ctrl_inib->CanControllerId;
-	/* ºÆ½é´ü²½¥Á¥§¥Ã¥¯ÍÑ¤Ë¸½ºß¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤òÊİ»ı */
+	/* å†åˆæœŸåŒ–ãƒã‚§ãƒƒã‚¯ç”¨ã«ç¾åœ¨ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’ä¿æŒ */
 	p_saved_config = p_cur_canif_config;
 
 	/* [CANIF724][CANIF014][CANIF433] */
@@ -1002,11 +1004,11 @@ CanIf_ControllerBusOff(uint8 ControllerId)
 	CanIfDispatchUserCtrlBusOffName(ctrl_id);
 	SchM_Enter_CanIf_Reentrant_1();
 
-	/* ÇÓÂ¾¥¨¥ê¥¢³°¤Ç¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤¬ÊÑ²½¤·¤Æ¤¤¤Ê¤¤¤«¥Á¥§¥Ã¥¯¤¹¤ë */
+	/* æ’ä»–ã‚¨ãƒªã‚¢å¤–ã§ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ãŒå¤‰åŒ–ã—ã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ */
 	CANIF_CHECK_PARAM(p_saved_config == p_cur_canif_config, CanIfServiceId_ControllerBusOff, CANIF_E_FATAL);
 
 #if CANIF_PUBLIC_TXCONFIRM_POLLING_SUPPORT == STD_ON
-	/* [CANIF739] TxConfirmation¤Ë´Ø¤¹¤ë¾ğÊó¤ò¾Ãµî¤¹¤ë */
+	/* [CANIF739] TxConfirmationã«é–¢ã™ã‚‹æƒ…å ±ã‚’æ¶ˆå»ã™ã‚‹ */
 	p_canif_ctrl_cb->tx_confirmation_flg = FALSE;
 #endif /* CANIF_PUBLIC_TXCONFIRM_POLLING_SUPPORT == STD_ON */
 
@@ -1038,19 +1040,19 @@ CanIf_ControllerModeIndication(uint8 ControllerId, CanIf_ControllerModeType Cont
 	p_canif_ctrl_cb = p_canif_ctrl_inib->p_canif_ctrl_cb;
 
 	/* [CANIF713][CANIF714][CANIF715][CANIF716][CANIF717][CANIF718][CANIF719] */
-	/* ÄÌÃÎ¤µ¤ì¤¿CCMSM¤òÀßÄê¤¹¤ë */
+	/* é€šçŸ¥ã•ã‚ŒãŸCCMSMã‚’è¨­å®šã™ã‚‹ */
 	p_canif_ctrl_cb->controller_mode = ControllerMode;
 
 #if CANIF_PUBLIC_WAKEUP_CHECK_VALIDATION_SUPPORT == STD_ON
 	if (ControllerMode == CANIF_CS_SLEEP) {
-		/* [CANIF756] CANIF_CS_SLEEP¤Î¾ì¹ç¡¤ÂĞ¾İ¤Î¥³¥ó¥È¥í¡¼¥é¤ËÂĞ¤·¤Æ¡¤CanIf_RxIndication¤¬¸Æ¤Ğ¤ì¤¿¤³¤È¤¬¥¯¥ê¥¢¤µ¤ì¤ë */
+		/* [CANIF756] CANIF_CS_SLEEPã®å ´åˆï¼Œå¯¾è±¡ã®ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã«å¯¾ã—ã¦ï¼ŒCanIf_RxIndicationãŒå‘¼ã°ã‚ŒãŸã“ã¨ãŒã‚¯ãƒªã‚¢ã•ã‚Œã‚‹ */
 		p_canif_ctrl_cb->validation_status = FALSE;
 	}
 #endif /* CANIF_PUBLIC_WAKEUP_CHECK_VALIDATION_SUPPORT == STD_ON */
 
-	/* ÇÓÂ¾¥¨¥ê¥¢Æâ¤Ç¥³¥ó¥È¥í¡¼¥éID¤ò¼è¤ê½Ğ¤¹ */
+	/* æ’ä»–ã‚¨ãƒªã‚¢å†…ã§ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©IDã‚’å–ã‚Šå‡ºã™ */
 	ctrl_id = p_canif_ctrl_inib->CanControllerId;
-	/* ºÆ½é´ü²½¥Á¥§¥Ã¥¯ÍÑ¤Ë¸½ºß¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤òÊİ»ı */
+	/* å†åˆæœŸåŒ–ãƒã‚§ãƒƒã‚¯ç”¨ã«ç¾åœ¨ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’ä¿æŒ */
 	p_saved_config = p_cur_canif_config;
 
 	/* [CANIF711][CANIF704][CANIF687] */
@@ -1058,7 +1060,7 @@ CanIf_ControllerModeIndication(uint8 ControllerId, CanIf_ControllerModeType Cont
 	CanIfDispatchUserCtrlModeIndicationName(ctrl_id, ControllerMode);
 	SchM_Enter_CanIf_Reentrant_1();
 
-	/* ÇÓÂ¾¥¨¥ê¥¢³°¤Ç¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤¬ÊÑ²½¤·¤Æ¤¤¤Ê¤¤¤«¥Á¥§¥Ã¥¯¤¹¤ë */
+	/* æ’ä»–ã‚¨ãƒªã‚¢å¤–ã§ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ãŒå¤‰åŒ–ã—ã¦ã„ãªã„ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹ */
 	CANIF_CHECK_PARAM(p_saved_config == p_cur_canif_config, CanIfServiceId_ControllerModeIndication, CANIF_E_FATAL);
 
   error_exit:
@@ -1067,7 +1069,7 @@ CanIf_ControllerModeIndication(uint8 ControllerId, CanIf_ControllerModeType Cont
 }
 
 /*
- *  °Ê²¼¡¤Ì¤¥µ¥İ¡¼¥Èµ¡Ç½
+ *  ä»¥ä¸‹ï¼Œæœªã‚µãƒãƒ¼ãƒˆæ©Ÿèƒ½
  */
 
 /* <CANIF101> */

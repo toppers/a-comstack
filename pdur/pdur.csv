@@ -25,7 +25,7 @@
 /AUTOSAR/EcucDefs/PduR/PduRRoutingTables/PduRRoutingTable,PduRRoutingTable,,0,*
 /AUTOSAR/EcucDefs/PduR/PduRRoutingTables/PduRRoutingTable/PduRIsMinimumRouting,PduRIsMinimumRouting,BOOLEAN,1
 /AUTOSAR/EcucDefs/PduR/PduRRoutingTables/PduRRoutingTable/PduRRoutingPath,PduRRoutingPath,,0,*
-/AUTOSAR/EcucDefs/PduR/PduRRoutingTables/PduRRoutingTable/PduRRoutingPath/PduRDestPdu,PduRDestPdu,,1,*
+/AUTOSAR/EcucDefs/PduR/PduRRoutingTables/PduRRoutingTable/PduRRoutingPath/PduRDestPdu,PduRDestPdu,,1
 /AUTOSAR/EcucDefs/PduR/PduRRoutingTables/PduRRoutingTable/PduRRoutingPath/PduRDestPdu/PduRDestPduDataProvision,PduRDestPduDataProvision,ENUM,0,1
 /AUTOSAR/EcucDefs/PduR/PduRRoutingTables/PduRRoutingTable/PduRRoutingPath/PduRDestPdu/PduRDestPduHandleId,PduRDestPduHandleId,INT,0,1
 /AUTOSAR/EcucDefs/PduR/PduRRoutingTables/PduRRoutingTable/PduRRoutingPath/PduRDestPdu/PduRTpThreshold,PduRTpThreshold,INT,0,1

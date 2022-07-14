@@ -2,63 +2,65 @@
  *  TOPPERS/A-COM
  *      Automotive COM
  *
- *  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+ *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
  *                             Graduate School of Information Science, Nagoya Univ., JAPAN
- *  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
- *  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
- *  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
- *  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+ *  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+ *  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
  *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
- *  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
- *  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
- *  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
- *  Copyright (C) 2013-2015 by Witz Corporation
+ *  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+ *  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+ *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2016 by Witz Corporation
  *
- *  ¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î(1)¡Á(4)¤Î¾ò·ï¤òËş¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥½¥Õ¥È¥¦¥§
- *  ¥¢¡ÊËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò²şÊÑ¤·¤¿¤â¤Î¤ò´Ş¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²ş
- *  ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½ş¤ÇµöÂú¤¹¤ë¡¥
- *  (1) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¥½¡¼¥¹¥³¡¼¥É¤Î·Á¤ÇÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî
- *      ¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Ş¤Ş¤Î·Á¤Ç¥½¡¼
- *      ¥¹¥³¡¼¥ÉÃæ¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤³¤È¡¥
- *  (2) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤¥é¥¤¥Ö¥é¥ê·Á¼°¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
- *      ÍÑ¤Ç¤­¤ë·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ
- *      ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­
- *      ¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
- *  (3) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤µ¡´ï¤ËÁÈ¤ß¹ş¤à¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
- *      ÍÑ¤Ç¤­¤Ê¤¤·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¼¡¤Î¤¤¤º¤ì¤«¤Î¾ò·ï¤òËş¤¿¤¹¤³
- *      ¤È¡¥
- *    (a) ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃø
- *        ºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
- *    (b) ºÆÇÛÉÛ¤Î·ÁÂÖ¤ò¡¤ÊÌ¤ËÄê¤á¤ëÊıË¡¤Ë¤è¤Ã¤Æ¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È¤Ë
- *        Êó¹ğ¤¹¤ë¤³¤È¡¥
- *  (4) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»
- *      ³²¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
- *      ¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Î¥æ¡¼¥¶¤Ş¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍı
- *      Í³¤Ë´ğ¤Å¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤ò
- *      ÌÈÀÕ¤¹¤ë¤³¤È¡¥
+ *  ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã®(1)ã€œ(4)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+ *  ã‚¢ï¼ˆæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼ä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+ *  å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼
+ *  (1) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®å½¢ã§åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œ
+ *      æ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ã‚½ãƒ¼
+ *      ã‚¹ã‚³ãƒ¼ãƒ‰ä¸­ã«å«ã¾ã‚Œã¦ã„ã‚‹ã“ã¨ï¼
+ *  (2) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œãƒ©ã‚¤ãƒ–ãƒ©ãƒªå½¢å¼ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+ *      ç”¨ã§ãã‚‹å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œå†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨
+ *      è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜
+ *      ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+ *  (3) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œæ©Ÿå™¨ã«çµ„ã¿è¾¼ã‚€ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+ *      ç”¨ã§ããªã„å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œæ¬¡ã®ã„ãšã‚Œã‹ã®æ¡ä»¶ã‚’æº€ãŸã™ã“
+ *      ã¨ï¼
+ *    (a) å†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—
+ *        ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+ *    (b) å†é…å¸ƒã®å½¢æ…‹ã‚’ï¼Œåˆ¥ã«å®šã‚ã‚‹æ–¹æ³•ã«ã‚ˆã£ã¦ï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«
+ *        å ±å‘Šã™ã‚‹ã“ã¨ï¼
+ *  (4) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æ
+ *      å®³ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼
+ *      ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†
+ *      ç”±ã«åŸºã¥ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’
+ *      å…è²¬ã™ã‚‹ã“ã¨ï¼
  *
- *  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»Å
- *  ÍÍ¤Ë´ğ¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç
- *  ¤Ï¤Ê¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ğ¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍø
- *  ÍÑ¤¹¤ë¼Ô¤ËÂĞ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+ *  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•
+ *  æ§˜ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼ä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§
+ *  ã¯ãªã„ï¼AUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©
+ *  ç”¨ã™ã‚‹è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼
  *
- *  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤ÌµÊİ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª
- *  ¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª
- *  ¤ËÂĞ¤¹¤ëÅ¬¹çÀ­¤â´Ş¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊİ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§
- *  ¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½
- *  ¤ÎÀÕÇ¤¤òÉé¤ï¤Ê¤¤¡¥
+ *  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼ä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠ
+ *  ã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„
+ *  ã«å¯¾ã™ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+ *  ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œã
+ *  ã®è²¬ä»»ã‚’è² ã‚ãªã„ï¼
  *
- *  $Id: Com.h 1475 2015-06-25 04:15:31Z fsi-kaitori $
+ *  $Id: Com.h 3128 2016-03-15 05:16:52Z fsi-kaitori $
  */
 
 /* [COM005] Com.h */
 
 /*
- *  ³«È¯Êı¿Ë
- *  - [COM746] Com.h¤òinclude¤¹¤ë¤À¤±¤ÇÁ´¤Æ¤Î¥Ç¡¼¥¿·¿¤ò»ÈÍÑ²ÄÇ½¤È¤¹¤ë
- *  - [COM747] ÄêµÁ¤·¤¿¥Ç¡¼¥¿·¿¤Î¥µ¥¤¥º¤òsizeof¤Ç¼èÆÀ²ÄÇ½¤È¤¹¤ë
- *  - [COM748] ¥Ç¥Ğ¥Ã¥°¤¹¤ë¤¿¤á¤ÎÊÑ¿ô¤Ë¤Ï¤½¤ì¤¾¤ìÀâÌÀ¤ò½ñ¤¯
- *  - [COM786] É¸½à²½¤µ¤ì¤¿¥Ñ¥é¥á¡¼¥¿¤ÏËÜ¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤ÇÂ¾¤ÎBSW¤ËÄó¶¡²ÄÇ½¤È¤¹¤ë
+ *  é–‹ç™ºæ–¹é‡
+ *  - [COM746] Com.hã‚’includeã™ã‚‹ã ã‘ã§å…¨ã¦ã®ãƒ‡ãƒ¼ã‚¿å‹ã‚’ä½¿ç”¨å¯èƒ½ã¨ã™ã‚‹
+ *  - [COM747] å®šç¾©ã—ãŸãƒ‡ãƒ¼ã‚¿å‹ã®ã‚µã‚¤ã‚ºã‚’sizeofã§å–å¾—å¯èƒ½ã¨ã™ã‚‹
+ *  - [COM748] ãƒ‡ãƒãƒƒã‚°ã™ã‚‹ãŸã‚ã®å¤‰æ•°ã«ã¯ãã‚Œãã‚Œèª¬æ˜ã‚’æ›¸ã
+ *  - [COM786] æ¨™æº–åŒ–ã•ã‚ŒãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¯æœ¬ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã§ä»–ã®BSWã«æä¾›å¯èƒ½ã¨ã™ã‚‹
  */
 
 #ifndef COM_H
@@ -135,18 +137,19 @@
 #define COM_STOP									0x2CU
 #define COM_WAIT									0x2DU
 
-/* IPDU¥°¥ë¡¼¥×¤Î¾õÂÖ¤ò³ÊÇ¼¤¹¤ëÇÛÎó¥µ¥¤¥º */
+/* IPDUã‚°ãƒ«ãƒ¼ãƒ—ã®çŠ¶æ…‹ã‚’æ ¼ç´ã™ã‚‹é…åˆ—ã‚µã‚¤ã‚º */
 #define IPDU_GROUP_VECTOR_NUM	(((COM_SUPPORTED_IPDU_GROUPS - 1U) / 8U) + 1U)
 
-/* IPDU¾õÂÖÁàºî¥Ş¥¯¥í */
-#define IPDU_STARTED_BIT						0x01U       /* IPDU¤¬³«»Ï¤µ¤ì¤Æ¤¤¤ë¤«¤É¤¦¤« */
-#define IPDU_NOTICED_BIT						0x02U       /* DEFERRED¤ÎIPDU¤Î¼õ¿®(Á÷¿®´°Î»)ÄÌÃÎ¤¬¤­¤¿¤«¤É¤¦¤« */
-#define IPDU_DIRECT_SEND_BIT					0x04U       /* DIRECTÁ÷¿®Ãæ¤«¤É¤¦¤« */
-#define IPDU_FIRST_DIRECT_SEND_BIT				0x08U       /* ½é²ó¤ÎDIRECTÁ÷¿®¤Ç¤¢¤ë¤«¤É¤¦¤« */
-#define IPDU_RETRY_BIT							0x10U       /* ¥ê¥È¥é¥¤¾õÂÖ¤«¤É¤¦¤« */
-#define IPDU_MDT_WAIT_BIT						0x20U       /* MDTÂÔ¤Á¾õÂÖ¤«¤É¤¦¤« */
-#define IPDU_DM_BIT								0x40U       /* DM¤¬³«»Ï¤µ¤ì¤Æ¤¤¤ë¤«¤É¤¦¤« */
-#define IPDU_TRIGGERED_BIT						0x80U       /* Com_TriggerIPDUSend¤¬¸Æ¤Ğ¤ì¤¿¤«¤É¤¦¤« */
+/* IPDUçŠ¶æ…‹æ“ä½œãƒã‚¯ãƒ­ */
+#define IPDU_STARTED_BIT						0x01U       /* IPDUãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ */
+#define IPDU_NOTICED_BIT						0x02U       /* DEFERREDã®IPDUã®å—ä¿¡(é€ä¿¡å®Œäº†)é€šçŸ¥ãŒããŸã‹ã©ã†ã‹ */
+#define IPDU_DIRECT_SEND_BIT					0x04U       /* DIRECTé€ä¿¡ä¸­ã‹ã©ã†ã‹ */
+#define IPDU_FIRST_DIRECT_SEND_BIT				0x08U       /* åˆå›ã®DIRECTé€ä¿¡ã§ã‚ã‚‹ã‹ã©ã†ã‹ */
+#define IPDU_RETRY_BIT							0x10U       /* ãƒªãƒˆãƒ©ã‚¤çŠ¶æ…‹ã‹ã©ã†ã‹ */
+#define IPDU_MDT_WAIT_BIT						0x20U       /* MDTå¾…ã¡çŠ¶æ…‹ã‹ã©ã†ã‹ */
+#define IPDU_DM_BIT								0x40U       /* DMãŒé–‹å§‹ã•ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ */
+#define IPDU_TRIGGERED_BIT						0x80U       /* Com_TriggerIPDUSendãŒå‘¼ã°ã‚ŒãŸã‹ã©ã†ã‹ */
+
 #define IPDU_IS_STARTED(state)					(((*(state)) & IPDU_STARTED_BIT) != 0U)
 #define IPDU_IS_NOTICED(state)					(((*(state)) & IPDU_NOTICED_BIT) != 0U)
 #define IPDU_IS_DIRECT_SEND(state)				(((*(state)) & IPDU_DIRECT_SEND_BIT) != 0U)
@@ -155,6 +158,7 @@
 #define IPDU_IS_MDT_WAIT(state)					(((*(state)) & IPDU_MDT_WAIT_BIT) != 0U)
 #define IPDU_IS_DM(state)						(((*(state)) & IPDU_DM_BIT) != 0U)
 #define IPDU_IS_TRIGGERED(state)				(((*(state)) & IPDU_TRIGGERED_BIT) != 0U)
+
 #define IPDU_SET_STARTED(state)					((*(state)) |= IPDU_STARTED_BIT)
 #define IPDU_SET_NOTICED(state)					((*(state)) |= IPDU_NOTICED_BIT)
 #define IPDU_SET_DIRECT_SEND(state)				((*(state)) |= IPDU_DIRECT_SEND_BIT)
@@ -163,6 +167,7 @@
 #define IPDU_SET_MDT_WAIT(state)				((*(state)) |= IPDU_MDT_WAIT_BIT)
 #define IPDU_SET_DM(state)						((*(state)) |= IPDU_DM_BIT)
 #define IPDU_SET_TRIGGERED(state)				((*(state)) |= IPDU_TRIGGERED_BIT)
+
 #define IPDU_CLEAR_STARTED(state)				((*(state)) &= (uint8) (~IPDU_STARTED_BIT))
 #define IPDU_CLEAR_NOTICED(state)				((*(state)) &= (uint8) (~IPDU_NOTICED_BIT))
 #define IPDU_CLEAR_DIRECT_SEND(state)			((*(state)) &= (uint8) (~IPDU_DIRECT_SEND_BIT))
@@ -175,9 +180,9 @@
 #define IPDU_CLEAR_EXCEPT_STARTED(state)		((*(state)) &= IPDU_STARTED_BIT)
 
 /*
- *  ¥Á¥§¥Ã¥¯¥Ş¥¯¥í
- *  [COM024] DET¥¨¥é¡¼¤¬OFF¤Î¾ì¹ç¡¤¥Ñ¥é¥á¡¼¥¿¥Á¥§¥Ã¥¯¤Ï¤·¤Ê¤¤
- *  [COM442] Det_ReportError¤ÎÂè2°ú¿ô(InstanceId)¤Ï0¤È¤¹¤ë
+ *  ãƒã‚§ãƒƒã‚¯ãƒã‚¯ãƒ­
+ *  [COM024] DETã‚¨ãƒ©ãƒ¼ãŒOFFã®å ´åˆï¼Œãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒã‚§ãƒƒã‚¯ã¯ã—ãªã„
+ *  [COM442] Det_ReportErrorã®ç¬¬2å¼•æ•°(InstanceId)ã¯0ã¨ã™ã‚‹
  */
 #if (COM_DEV_ERROR_DETECT == STD_ON) && !defined(OMIT_COM_DEBUG)
 
@@ -253,43 +258,38 @@
 #endif /* (COM_DEV_ERROR_DETECT == STD_ON) && !defined(OMIT_COM_DEBUG) */
 
 /*
- *  AUTOSAR¥ê¥ê¡¼¥¹¥Ğ¡¼¥¸¥ç¥ó
+ *  AUTOSARãƒªãƒªãƒ¼ã‚¹ãƒãƒ¼ã‚¸ãƒ§ãƒ³
  */
 #define COM_AR_RELEASE_MAJOR_VERSION	4U
 #define COM_AR_RELEASE_MINOR_VERSION	0U
 #define COM_AR_RELEASE_PATCH_VERSION	3U
 
 /*
- *  ¥µ¥×¥é¥¤¥ä¥Ğ¡¼¥¸¥ç¥ó¾ğÊó
+ *  ã‚µãƒ—ãƒ©ã‚¤ãƒ¤ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±
  */
 #define COM_SW_MAJOR_VERSION	1U
-#define COM_SW_MINOR_VERSION	2U
+#define COM_SW_MINOR_VERSION	3U
 #define COM_SW_PATCH_VERSION	0U
-#define COM_VENDOR_ID			65U  /* NCES¥Ù¥ó¥ÀID */
+#define COM_VENDOR_ID			65U  /* NCESãƒ™ãƒ³ãƒ€ID */
 
 /*
- *  ¾ğÊó¼èÆÀ¥Ş¥¯¥í
+ *  æƒ…å ±å–å¾—ãƒã‚¯ãƒ­
  */
-#define GET_SIGNAL_NUM()			p_cur_com_config->tnum_signal		/* ¥·¥°¥Ê¥ë¿ô¼èÆÀ */
-#define GET_VECTOR_NUM()			p_cur_com_config->tnum_vector		/* IPDU¥°¥ë¡¼¥×¤ò¥Ó¥Ã¥È¤Ç´ÉÍı¤¹¤ë¤Î¤ËÉ¬Í×¤Ê¥Ğ¥¤¥È¿ô¼èÆÀ */
-#define GET_IPDU_G_NUM()			p_cur_com_config->tnum_ipdu_g		/* IPDU¥°¥ë¡¼¥×¿ô¼èÆÀ */
-#define GET_IPDU_NUM()				p_cur_com_config->tnum_ipdu			/* IPDU¿ô¼èÆÀ */
-#define GET_RX_IPDU_NUM()			p_cur_com_config->tnum_rx_ipdu		/* ¼õ¿®IPDU¿ô¼èÆÀ */
-#define GET_TX_IPDU_NUM()			p_cur_com_config->tnum_tx_ipdu		/* Á÷¿®IPDU¿ô¼èÆÀ */
-#define GET_SIGNAL_INIB(SignalId)	(&p_cur_signal_inib[(SignalId)])	/* ¥·¥°¥Ê¥ë½é´ü²½¥Ö¥í¥Ã¥¯¼èÆÀ */
+#define GET_SIGNAL_NUM()				p_cur_com_config->tnum_signal
+#define GET_SIGNAL_G_NUM()				p_cur_com_config->tnum_signal_g
+#define GET_VECTOR_NUM()				p_cur_com_config->tnum_vector
+#define GET_IPDU_G_NUM()				p_cur_com_config->tnum_ipdu_g
+#define GET_IPDU_NUM()					p_cur_com_config->tnum_ipdu
+#define GET_RX_IPDU_NUM()				p_cur_com_config->tnum_rx_ipdu
+#define GET_TX_IPDU_NUM()				p_cur_com_config->tnum_tx_ipdu
+#define GET_IPDU_INIB(PduId)			pp_cur_all_ipdu_inib[(PduId)]
+#define GET_RX_IPDU_INIB(Index)			(&p_cur_rx_ipdu_inib[(Index)])
+#define GET_TX_IPDU_INIB(Index)			(&p_cur_tx_ipdu_inib[(Index)])
+#define GET_SIGNAL_INIB(SignalId)		(&p_cur_signal_inib[(SignalId)])
+#define GET_SIGNAL_G_INIB(SignalGId)	(&p_cur_signal_g_inib[(SignalGId)])
 
 /*
- *  IPDU½é´ü²½¥Ö¥í¥Ã¥¯¼èÆÀ¥Ş¥¯¥í
- *  PduId¤Ë¤è¤êIPDU½é´ü²½¥Ö¥í¥Ã¥¯¤ò¼èÆÀ¤Ç¤­¤ë¥Ş¥¯¥í¤ÏGET_IPDU_INIB¤Î¤ß¤Ç¤¢¤ë
- *  GET_RX_IPDU_INIB/GET_TX_IPDU_INIB¤Î°ú¿ô(Index)¤Ï¼õ¿®/Á÷¿®IPDU½é´ü²½¥Ö¥í¥Ã¥¯¥ê¥¹¥È¤Î¥¤¥ó¥Ç¥Ã¥¯¥¹¤Ç¤¢¤ë
- *   °ú¿ô(Index)¤ÏPduId¤È¤ÏÉ³ÉÕ¤«¤Ê¤¤
- */
-#define GET_IPDU_INIB(PduId)		pp_cur_all_ipdu_inib[(PduId)]		/* PduId¤Ë¤è¤êIPDU½é´ü²½¥Ö¥í¥Ã¥¯¼èÆÀ */
-#define GET_RX_IPDU_INIB(Index)		(&p_cur_rx_ipdu_inib[(Index)])		/* ¼õ¿®IPDU½é´ü²½¥Ö¥í¥Ã¥¯¥ê¥¹¥È¤«¤é¤ÎIPDU½é´ü²½¥Ö¥í¥Ã¥¯¼èÆÀ */
-#define GET_TX_IPDU_INIB(Index)		(&p_cur_tx_ipdu_inib[(Index)])		/* Á÷¿®IPDU½é´ü²½¥Ö¥í¥Ã¥¯¥ê¥¹¥È¤«¤é¤ÎIPDU½é´ü²½¥Ö¥í¥Ã¥¯¼èÆÀ */
-
-/*
- *  [COM442] DET¤ØÄÌÃÎ¤¹¤ë¥µ¡¼¥Ó¥¹ID
+ *  [COM442] DETã¸é€šçŸ¥ã™ã‚‹ã‚µãƒ¼ãƒ“ã‚¹ID
  */
 #define COMServiceId_Init							0x01U
 #define COMServiceId_DeInit							0x02U
@@ -321,43 +321,41 @@
 #define COMServiceId_TxConfirmation					0x40U
 #define COMServiceId_TriggerTransmit				0x41U
 #define COMServiceId_RxIndication					0x42U
-#define COMServiceId_set_signal_for_send			0x51U
-#define COMServiceId_set_signal_for_receive			0x52U
-#define COMServiceId_get_signal						0x53U
 #define COMServiceId_set_filter_buffer				0x54U
 #define COMServiceId_packing						0x55U
 #define COMServiceId_pack_little_endian				0x56U
 #define COMServiceId_pack_big_endian				0x57U
-#define COMServiceId_ipdu_receive					0x58U
+#define COMServiceId_receive_ipdu					0x58U
 #define COMServiceId_unpacking						0x59U
 #define COMServiceId_set_updatebit					0x5AU
 #define COMServiceId_clear_updatebit				0x5BU
 #define COMServiceId_mdt_send						0x5CU
-#define COMServiceId_mdt_countdown					0x5DU
-#define COMServiceId_mdt_set						0x5EU
-#define COMServiceId_changed_signal					0x5FU
+#define COMServiceId_check_tx_signal				0x5FU
 #define COMServiceId_filtering						0x60U
 #define COMServiceId_check_tms						0x61U
-#define COMServiceId_copy_signal_to_uint32			0x62U
+#define COMServiceId_copy_signal_to_uint			0x62U
 #define COMServiceId_cast_signal_to_sint32			0x63U
-#define COMServiceId_invalid_action					0x64U
+#define COMServiceId_check_invalid					0x64U
 #define COMServiceId_start_tx_dm					0x65U
 #define COMServiceId_start_rx_dm					0x66U
-#define COMServiceId_check_signal_dm				0x67U
-#define COMServiceId_reset_signal_dm				0x68U
+#define COMServiceId_check_rx_dm					0x67U
+#define COMServiceId_reset_rx_dm					0x68U
 #define COMServiceId_check_updatebit				0x69U
-#define COMServiceId_ipdu_initialize				0x6DU
+#define COMServiceId_init_ipdu						0x6DU
 #define COMServiceId_set_tx_mode					0x6EU
 #define COMServiceId_switch_tx_mode					0x6FU
 #define COMServiceId_clear_occurrence				0x70U
-#define COMServiceId_ipdu_send						0x71U
+#define COMServiceId_send_ipdu						0x71U
 #define COMServiceId_stop_rx_dm						0x72U
+#define COMServiceId_set_buffer						0x73U
+#define COMServiceId_get_buffer						0x74U
+#define COMServiceId_check_rx_g_dm					0x79U
+#define COMServiceId_init_send_signal				0x7AU
 
-
-typedef uint16	Com_SignalIdType;
-typedef uint16	Com_SignalGroupIdType;
-typedef uint16	Com_IpduGroupIdType;
-typedef uint8	Com_IpduGroupVector[IPDU_GROUP_VECTOR_NUM];
+typedef uint16	Com_SignalIdType;		/* [COMa012] */
+typedef uint16	Com_SignalGroupIdType;	/* [COMa013] */
+typedef uint16	Com_IpduGroupIdType;	/* [COMa014] */
+typedef uint8	Com_IpduGroupVector[IPDU_GROUP_VECTOR_NUM];	/* [COMa015] */
 
 typedef void (*Com_CbkTxAck)(void);     /* [COM468] */
 typedef void (*Com_CbkTxErr)(void);     /* [COM491] */
@@ -372,15 +370,16 @@ typedef boolean (*Com_RxIpduCallout)(PduIdType Id, uint8 *IpduData);    /* [COM7
 typedef boolean (*Com_TxIpduCallout)(PduIdType Id, uint8 *IpduData);    /* [COM346] */
 typedef boolean (*Com_IpduCallout)(PduIdType Id, uint8 *IpduData);      /* Com_RxIpduCallout, Com_TxIpduCallout */
 
+/* [COMa011] */
 typedef enum {
 	COM_UNINIT,
 	COM_INIT
 } Com_StatusType;
 
-typedef uint8 Com_ServiceIdType;
+typedef uint8 Com_ServiceIdType;	/* [COMa016] */
 
 /*
- *  ¥Õ¥£¥ë¥¿½é´ü²½¥Ö¥í¥Ã¥¯: UINT·Ï¤ÎCOM_MASKED_NEW_DIFFERS_X/COM_MASKED_NEW_EQUALS_XÍÑ
+ *  ãƒ•ã‚£ãƒ«ã‚¿åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯: UINTç³»ã®COM_MASKED_NEW_DIFFERS_X/COM_MASKED_NEW_EQUALS_Xç”¨
  */
 typedef struct filter_uint_masked_initialization_block {
 	uint32	ComFilterMask;
@@ -388,7 +387,7 @@ typedef struct filter_uint_masked_initialization_block {
 } FILTER_UINT_MASKED_INIB;
 
 /*
- *  ¥Õ¥£¥ë¥¿½é´ü²½¥Ö¥í¥Ã¥¯: SINT·Ï¤ÎCOM_MASKED_NEW_DIFFERS_X/COM_MASKED_NEW_EQUALS_XÍÑ
+ *  ãƒ•ã‚£ãƒ«ã‚¿åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯: SINTç³»ã®COM_MASKED_NEW_DIFFERS_X/COM_MASKED_NEW_EQUALS_Xç”¨
  */
 typedef struct filter_sint_masked_initialization_block {
 	sint32	ComFilterMask;
@@ -396,7 +395,7 @@ typedef struct filter_sint_masked_initialization_block {
 } FILTER_SINT_MASKED_INIB;
 
 /*
- *  ¥Õ¥£¥ë¥¿½é´ü²½¥Ö¥í¥Ã¥¯: UINT·Ï¤ÎCOM_MASKED_NEW_DIFFERS_MASKED_OLDÍÑ
+ *  ãƒ•ã‚£ãƒ«ã‚¿åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯: UINTç³»ã®COM_MASKED_NEW_DIFFERS_MASKED_OLDç”¨
  */
 typedef struct filter_uint_masked_old_initialization_block {
 	uint32	ComFilterMask;
@@ -404,7 +403,7 @@ typedef struct filter_uint_masked_old_initialization_block {
 } FILTER_UINT_MASKED_OLD_INIB;
 
 /*
- *  ¥Õ¥£¥ë¥¿½é´ü²½¥Ö¥í¥Ã¥¯: SINT·Ï¤ÎCOM_MASKED_NEW_DIFFERS_MASKED_OLDÍÑ
+ *  ãƒ•ã‚£ãƒ«ã‚¿åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯: SINTç³»ã®COM_MASKED_NEW_DIFFERS_MASKED_OLDç”¨
  */
 typedef struct filter_sint_masked_old_initialization_block {
 	sint32	ComFilterMask;
@@ -412,7 +411,7 @@ typedef struct filter_sint_masked_old_initialization_block {
 } FILTER_SINT_MASKED_OLD_INIB;
 
 /*
- *  ¥Õ¥£¥ë¥¿½é´ü²½¥Ö¥í¥Ã¥¯: UINT·Ï¤ÎCOM_NEW_IS_OUTSIDE/COM_NEW_IS_WITHINÍÑ
+ *  ãƒ•ã‚£ãƒ«ã‚¿åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯: UINTç³»ã®COM_NEW_IS_OUTSIDE/COM_NEW_IS_WITHINç”¨
  */
 typedef struct filter_uint_new_is_initialization_block {
 	uint32	ComFilterMax;
@@ -420,7 +419,7 @@ typedef struct filter_uint_new_is_initialization_block {
 } FILTER_UINT_NEW_IS_INIB;
 
 /*
- *  ¥Õ¥£¥ë¥¿½é´ü²½¥Ö¥í¥Ã¥¯: SINT·Ï¤ÎCOM_NEW_IS_OUTSIDE/COM_NEW_IS_WITHINÍÑ
+ *  ãƒ•ã‚£ãƒ«ã‚¿åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯: SINTç³»ã®COM_NEW_IS_OUTSIDE/COM_NEW_IS_WITHINç”¨
  */
 typedef struct filter_sint_new_is_initialization_block {
 	sint32	ComFilterMax;
@@ -428,7 +427,7 @@ typedef struct filter_sint_new_is_initialization_block {
 } FILTER_SINT_NEW_IS_INIB;
 
 /*
- *  ¥Õ¥£¥ë¥¿½é´ü²½¥Ö¥í¥Ã¥¯: COM_ONE_EVERY_NÍÑ
+ *  ãƒ•ã‚£ãƒ«ã‚¿åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯: COM_ONE_EVERY_Nç”¨
  */
 typedef struct filter_one_every_n_initialization_block {
 	uint32	ComFilterOffset;
@@ -437,143 +436,198 @@ typedef struct filter_one_every_n_initialization_block {
 } FILTER_ONE_EVERY_N_INIB;
 
 /*
- *  ¼õ¿®¥·¥°¥Ê¥ë´ÉÍı¥Ö¥í¥Ã¥¯
+ *  å—ä¿¡ã‚·ã‚°ãƒŠãƒ«ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct rx_signal_control_block {
-	uint32	dm_mf_cnt;  /* DM¤ÎMF²ó¿ô¥«¥¦¥ó¥¿[¥Ç¥Ã¥É¥é¥¤¥ó¥â¥Ë¥¿¥ê¥ó¥°»ş´Ö] */
-	uint8	dm_state;   /* START:DM´Æ»ë¤¹¤ë¡¤STOP:DM´Æ»ë¤·¤Ê¤¤¡¥WAIT:½é²ó¼õ¿®¤Ş¤ÇDM´Æ»ë¤·¤Ê¤¤ */
+	uint32	dm_mf_cnt;  /* DMã®MFå›æ•°ã‚«ã‚¦ãƒ³ã‚¿[ãƒ‡ãƒƒãƒ‰ãƒ©ã‚¤ãƒ³ãƒ¢ãƒ‹ã‚¿ãƒªãƒ³ã‚°æ™‚é–“] */
+	uint8	dm_state;   /* START:DMç›£è¦–ã™ã‚‹ï¼ŒSTOP:DMç›£è¦–ã—ãªã„ï¼WAIT:åˆå›å—ä¿¡ã¾ã§DMç›£è¦–ã—ãªã„ */
 } RX_SIGNAL_CB;
 
 /*
- *  Á÷¿®¥·¥°¥Ê¥ë´ÉÍı¥Ö¥í¥Ã¥¯
+ *  å—ä¿¡ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
+ */
+typedef struct rx_signalg_control_block {
+	uint32	dm_mf_cnt;  /* DMã®MFå›æ•°ã‚«ã‚¦ãƒ³ã‚¿[ãƒ‡ãƒƒãƒ‰ãƒ©ã‚¤ãƒ³ãƒ¢ãƒ‹ã‚¿ãƒªãƒ³ã‚°æ™‚é–“] */
+	uint8	dm_state;   /* START:DMç›£è¦–ã™ã‚‹ï¼ŒSTOP:DMç›£è¦–ã—ãªã„ï¼WAIT:åˆå›å—ä¿¡ã¾ã§DMç›£è¦–ã—ãªã„ */
+} RX_SIGNAL_G_CB;
+
+/*
+ *  é€ä¿¡ã‚·ã‚°ãƒŠãƒ«ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct tx_signal_control_block {
-	boolean	tmc;    /* TMC */
+	boolean	tmc;				/* TMCçµæœ */
+	boolean	change_signal_flg;	/* ã‚·ã‚°ãƒŠãƒ«æ›´æ–°ãƒ•ãƒ©ã‚°ã€€æ›´æ–°æœ‰ã‚Šï¼šTRUEã€€æ›´æ–°ç„¡ã—ï¼šFALSE */
 } TX_SIGNAL_CB;
 
 /*
- * Á÷¿®¥â¡¼¥É½é´ü²½¥Ö¥í¥Ã¥¯
+ *  é€ä¿¡ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
+ */
+typedef struct tx_signalg_control_block {
+	boolean	change_signal_g_flg;	/* ã‚·ã‚°ãƒŠãƒ«æ›´æ–°ãƒ•ãƒ©ã‚°ã€€æ›´æ–°æœ‰ã‚Šï¼šTRUEã€€æ›´æ–°ç„¡ã—ï¼šFALSE */
+} TX_SIGNAL_G_CB;
+
+/*
+ * é€ä¿¡ãƒ¢ãƒ¼ãƒ‰åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct tx_mode_initialization_block {
-	uint8	ComTxModeMode;                  /* É¬¿Ü */
-	uint8	ComTxModeNumberOfRepetitions;   /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤0 */
-	uint32	ComTxModeRepetitionPeriod;      /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤0 */
-	uint32	ComTxModeTimeOffset;            /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤0 */
-	uint32	ComTxModeTimePeriod;            /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤0 */
+	uint8	ComTxModeMode;                  /* å¿…é ˆ */
+	uint8	ComTxModeNumberOfRepetitions;   /* æœªè¨­å®šã®å ´åˆï¼Œ0 */
+	uint32	ComTxModeRepetitionPeriod;      /* æœªè¨­å®šã®å ´åˆï¼Œ0 */
+	uint32	ComTxModeTimeOffset;            /* æœªè¨­å®šã®å ´åˆï¼Œ0 */
+	uint32	ComTxModeTimePeriod;            /* æœªè¨­å®šã®å ´åˆï¼Œ0 */
 } TX_MODE_INIB;
 
 /*
- * Á÷¿®IPDU½é´ü²½¥Ö¥í¥Ã¥¯
+ * é€ä¿¡IPDUåˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct tx_ipdu_initialization_block {
-	uint8				ComTxIPduClearUpdateBit;        /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤COM_INVALID_UINT8 */
-	uint8				ComTxIPduUnusedAreasDefault;    /* É¬¿Ü */
-	uint32				ComMinimumDelayTime;            /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤0 */
-	const TX_MODE_INIB	*p_tx_mode_true_inib;           /* É¬¿Ü */
-	const TX_MODE_INIB	*p_tx_mode_false_inib;          /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤NULL_PTR */
+	uint8				ComTxIPduClearUpdateBit;        /* æœªè¨­å®šã®å ´åˆï¼ŒCOM_INVALID_UINT8 */
+	uint8				ComTxIPduUnusedAreasDefault;    /* å¿…é ˆ */
+	uint32				ComMinimumDelayTime;            /* æœªè¨­å®šã®å ´åˆï¼Œ0 */
+	const TX_MODE_INIB	*p_tx_mode_true_inib;           /* å¿…é ˆ */
+	const TX_MODE_INIB	*p_tx_mode_false_inib;          /* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
 } TX_IPDU_INIB;
 
 /*
- *  IPDU½é´ü²½¥Ö¥í¥Ã¥¯
+ *  IPDUåˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct ipdu_initialization_block {
-	uint8				ComIPduDirection;               /* É¬¿Ü */
-	uint8				ComIPduSignalProcessing;        /* É¬¿Ü */
-	uint8				ComIPduType;                    /* É¬¿Ü */
-	boolean				ComIPduCancellationSupport;     /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤FALSE */
-	const TX_IPDU_INIB	*p_tx_ipdu_inib;                /* Á÷¿®¤Î¾ì¹ç¡¤É¬¿Ü¡¤¼õ¿®¤Î¾ì¹ç¡¤NULL_PTR */
-	Com_IpduCallout		ComIPduCallout;                 /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤NULL_PTR */
-	PduIdType			PduRSourcePduHandleId;          /* É¬¿Ü */
-	PduLengthType		PduLength;                      /* É¬¿Ü */
+	uint8				ComIPduDirection;               /* å¿…é ˆ */
+	uint8				ComIPduSignalProcessing;        /* å¿…é ˆ */
+	uint8				ComIPduType;                    /* å¿…é ˆ */
+	boolean				ComIPduCancellationSupport;     /* æœªè¨­å®šã®å ´åˆï¼ŒFALSE */
+	const TX_IPDU_INIB	*p_tx_ipdu_inib;                /* é€ä¿¡ã®å ´åˆï¼Œå¿…é ˆï¼Œå—ä¿¡ã®å ´åˆï¼ŒNULL_PTR */
+	Com_IpduCallout		ComIPduCallout;                 /* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	PduIdType			PduRSourcePduHandleId;          /* å¿…é ˆ */
+	PduLengthType		PduLength;                      /* å¿…é ˆ */
 
-	const Com_SignalIdType		*p_signalid_list;       /* IPDU¤Ë½êÂ°¤¹¤ë¥·¥°¥Ê¥ëID¥ê¥¹¥È  */
-	const Com_IpduGroupVector	*p_ipdu_group_vector;   /* IPDU¤¬½êÂ°¤¹¤ëIPDU¥°¥ë¡¼¥×¥Ù¥¯¥¿(½êÂ°¤¹¤ë¥°¥ë¡¼¥×¤Î¥Ó¥Ã¥È¤Î¤ßON) */
-	void						*p_ipdu_cb;             /* IPDU´ÉÍı¥Ö¥í¥Ã¥¯ */
-	uint8						*p_ipdu_buffer;         /* IPDU¥Ğ¥Ã¥Õ¥¡ */
-	uint8						*p_state;               /* IPDU¾õÂÖ(0bit:³«»Ï¾õÂÖ¡¤1bit:¥Ğ¥Ã¥Õ¥¡¹¹¿·¾õÂÖ) */
-	uint16						tnum_signal;            /* IPDU¤Ë½êÂ°¤¹¤ë¥·¥°¥Ê¥ë¿ô */
-} IPDU_INIB;                                                      /* IPDU_INIB */
+	const Com_SignalIdType		*p_signalid_list;       /* IPDUã«æ‰€å±ã™ã‚‹ã‚·ã‚°ãƒŠãƒ«IDãƒªã‚¹ãƒˆ */
+	const Com_SignalGroupIdType	*p_signalgid_list;      /* IPDUã«æ‰€å±ã™ã‚‹ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—IDãƒªã‚¹ãƒˆ */
+
+	const Com_IpduGroupVector	*p_ipdu_group_vector;   /* IPDUãŒæ‰€å±ã™ã‚‹IPDUã‚°ãƒ«ãƒ¼ãƒ—ãƒ™ã‚¯ã‚¿(æ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã®ãƒ“ãƒƒãƒˆã®ã¿ON) */
+	void						*p_ipdu_cb;             /* IPDUç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯ */
+	uint8						*p_ipdu_buffer;         /* IPDUãƒãƒƒãƒ•ã‚¡ */
+	uint8						*p_state;               /* IPDUçŠ¶æ…‹(0bit:é–‹å§‹çŠ¶æ…‹ï¼Œ1bit:ãƒãƒƒãƒ•ã‚¡æ›´æ–°çŠ¶æ…‹) */
+	uint16						tnum_signal;            /* IPDUã«æ‰€å±ã™ã‚‹ã‚·ã‚°ãƒŠãƒ«æ•° */
+	uint16						tnum_signal_g;          /* IPDUã«æ‰€å±ã™ã‚‹ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—æ•° */
+	uint32						ipdu_timeout;           /* IPDUã«æ‰€å±ã™ã‚‹ã‚·ã‚°ãƒŠãƒ«/ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ã®ComTimeoutå€¤ã®æœ€å°å€¤ */
+} IPDU_INIB;                                            /* IPDU_INIB */
 
 /*
- *  Á÷¿®IPDU´ÉÍı¥Ö¥í¥Ã¥¯
+ *  é€ä¿¡IPDUç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct tx_ipdu_control_block {
-	uint32				interval_mf_cnt;        /* Á÷¿®¤¹¤ë´Ö¤ÎMF²ó¿ô¥«¥¦¥ó¥¿[DIRECT»ş¤ÎN¤Î´Ö³Ö] */
-	uint32				period_mf_cnt;          /* ¼ş´ü¤ÎMF²ó¿ô¥«¥¦¥ó¥¿[PERIODIC»ş¤ÎÁ÷¿®¼ş´ü] */
-	uint32				mdt_mf_cnt;             /* MDT¤ÎMF²ó¿ô¥«¥¦¥ó¥¿[ºÇ¾®ÃÙ±ä»ş´Ö] */
-	uint32				dm_mf_cnt;              /* DM¤ÎMF²ó¿ô¥«¥¦¥ó¥¿[¥Ç¥Ã¥É¥é¥¤¥ó¥â¥Ë¥¿¥ê¥ó¥°»ş´Ö] */
-	uint8				repeat_cnt;             /* ·«¤êÊÖ¤·²ó¿ô¥«¥¦¥ó¥¿[DIRECT»ş¤ÎN] */
-	uint8				queuing_cnt;            /* Á÷¿®´°Î»¤·¤¿²ó¿ô */
-	const TX_MODE_INIB	*p_cur_tx_mode_inib;    /* ¸½ºß¤ÎÁ÷¿®¥â¡¼¥É½é´ü²½¥Ö¥í¥Ã¥¯¤Ø¤Î¥İ¥¤¥ó¥¿ */
+	uint32				interval_mf_cnt;        /* é€ä¿¡ã™ã‚‹é–“ã®MFå›æ•°ã‚«ã‚¦ãƒ³ã‚¿[DIRECTæ™‚ã®Nã®é–“éš”] */
+	uint32				period_mf_cnt;          /* å‘¨æœŸã®MFå›æ•°ã‚«ã‚¦ãƒ³ã‚¿[PERIODICæ™‚ã®é€ä¿¡å‘¨æœŸ] */
+	uint32				mdt_mf_cnt;             /* MDTã®MFå›æ•°ã‚«ã‚¦ãƒ³ã‚¿[æœ€å°é…å»¶æ™‚é–“] */
+	uint32				dm_mf_cnt;              /* DMã®MFå›æ•°ã‚«ã‚¦ãƒ³ã‚¿[ãƒ‡ãƒƒãƒ‰ãƒ©ã‚¤ãƒ³ãƒ¢ãƒ‹ã‚¿ãƒªãƒ³ã‚°æ™‚é–“] */
+	uint8				repeat_cnt;             /* ç¹°ã‚Šè¿”ã—å›æ•°ã‚«ã‚¦ãƒ³ã‚¿[DIRECTæ™‚ã®N] */
+	uint8				queuing_cnt;            /* é€ä¿¡å®Œäº†ã—ãŸå›æ•° */
+	uint16				tmc_true_cnt;			/* TMCã®TRUEæ•° */
+	const TX_MODE_INIB	*p_cur_tx_mode_inib;    /* ç¾åœ¨ã®é€ä¿¡ãƒ¢ãƒ¼ãƒ‰åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯ã¸ã®ãƒã‚¤ãƒ³ã‚¿ */
 } TX_IPDU_CB;
 
 /*
- *  ¥·¥°¥Ê¥ë½é´ü²½¥Ö¥í¥Ã¥¯
+ *  ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯
+ */
+typedef struct signal_group_initialization_block {
+	uint16						ComUpdateBitPosition;			/* æœªè¨­å®šã®å ´åˆï¼ŒCOM_INVALID_UINT16 */
+	uint8						ComTransferProperty;			/* é€ä¿¡ã®å ´åˆï¼Œå¿…é ˆï¼å—ä¿¡ã®å ´åˆï¼ŒCOM_INVALID_UINT8 */
+	uint32						ComFirstTimeout;				/* æœªè¨­å®šã®å ´åˆï¼Œ0 */
+	uint32						ComTimeout;						/* æœªè¨­å®šã®å ´åˆï¼Œ0 */
+	uint8						ComDataInvalidAction;			/* æœªè¨­å®šã®å ´åˆï¼ŒCOM_INVALID_UINT8 */
+	uint8						ComRxDataTimeoutAction;			/* æœªè¨­å®šã®å ´åˆï¼ŒCOM_INVALID_UINT8 */
+	Com_CbkAck					ComNotification;				/* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	Com_CbkTxErr				ComErrorNotification;			/* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	Com_CbkInv					ComInvalidNotification;			/* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	Com_CbkTOut					ComTimeoutNotification;			/* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	const Com_SignalIdType		*p_gsignalid_list;				/* ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ã«æ‰€å±ã™ã‚‹ã‚°ãƒ«ãƒ¼ãƒ—ã‚·ã‚°ãƒŠãƒ«IDãƒªã‚¹ãƒˆ */
+	const IPDU_INIB				*p_ipdu_inib;					/* æ‰€å±ã™ã‚‹IPDUåˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯ */
+	uint16						tnum_g_signal;					/* ã‚°ãƒ«ãƒ¼ãƒ—ã‚·ã‚°ãƒŠãƒ«æ•° */
+	/*
+	 *  ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
+	 *  å—ä¿¡ã®å ´åˆï¼Œå—ä¿¡DMãŒãªã‘ã‚Œã°ï¼ŒNULL_PTR
+	 */
+	void						*p_signal_g_cb;					/* ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯*/
+} SIGNAL_G_INIB;
+
+/*
+ *  ã‚·ã‚°ãƒŠãƒ«åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯
  */
 typedef struct signal_initialization_block {
-	uint8			ComBitSize;                         /* UINT8_N¤Î¾ì¹ç¡¤COM_INVALID_UINT8 */
-	uint8			ComDataInvalidAction;               /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤COM_INVALID_UINT8 */
-	uint8			ComRxDataTimeoutAction;             /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤COM_INVALID_UINT8 */
-	uint8			ComSignalEndianness;                /* É¬¿Ü */
-	uint8			ComSignalType;                      /* É¬¿Ü */
-	uint8			ComTransferProperty;                /* Á÷¿®¤Î¾ì¹ç¡¤É¬¿Ü¡¥¼õ¿®¤Î¾ì¹ç¡¤COM_INVALID_UINT8 */
-	uint16			ComBitPositionLsb;                  /* É¬¿Ü */
-	uint16			ComSignalLength;                    /* UINT8_N°Ê³°¤Î¾ì¹ç¡¤COM_INVALID_UINT16 */
-	uint16			ComUpdateBitPosition;               /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤COM_INVALID_UINT16 */
-	uint32			ComFirstTimeout;                    /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤0 */
-	uint32			ComTimeout;                         /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤0 */
-	Com_CbkTxErr	ComErrorNotification;               /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤NULL_PTR */
-	Com_CbkInv		ComInvalidNotification;             /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤NULL_PTR */
-	Com_CbkAck		ComNotification;                    /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤NULL_PTR */
-	Com_CbkTOut		ComTimeoutNotification;             /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤NULL_PTR */
-	const void		*ComSignalDataInvalidValue;         /* Ì¤ÀßÄê¤Î¾ì¹ç¡¤NULL_PTR */
-	const void		*ComSignalInitValue;                /* É¬¿Ü(¥Ç¥Õ¥©¥ë¥È0) */
-	const IPDU_INIB	*p_ipdu_inib;                       /* ½êÂ°¤¹¤ëIPDU½é´ü²½¥Ö¥í¥Ã¥¯ */
-	uint8			ComFilterAlgorithm;                 /* ¥Õ¥£¥ë¥¿¤Ê¤·¤Î¾ì¹ç¡¤COM_INVALID_UINT8 */
+	uint8			ComBitSize;                         /* UINT8_Nã®å ´åˆï¼ŒCOM_INVALID_UINT8 */
+	uint8			ComDataInvalidAction;               /* æœªè¨­å®šã®å ´åˆï¼ŒCOM_INVALID_UINT8 */
+	uint8			ComRxDataTimeoutAction;             /* æœªè¨­å®šã®å ´åˆï¼ŒCOM_INVALID_UINT8 */
+	uint8			ComSignalEndianness;                /* å¿…é ˆ */
+	uint8			ComSignalType;                      /* å¿…é ˆ */
+	uint8			ComTransferProperty;                /* é€ä¿¡ã®å ´åˆï¼Œå¿…é ˆï¼å—ä¿¡ã®å ´åˆï¼ŒCOM_INVALID_UINT8 */
+	uint16			ComBitPositionLsb;                  /* å¿…é ˆ */
+	uint16			ComSignalLength;                    /* UINT8_Nä»¥å¤–ã®å ´åˆï¼ŒCOM_INVALID_UINT16 */
+	uint16			ComUpdateBitPosition;               /* æœªè¨­å®šã®å ´åˆï¼ŒCOM_INVALID_UINT16 */
+	uint32			ComFirstTimeout;                    /* æœªè¨­å®šã®å ´åˆï¼Œ0 */
+	uint32			ComTimeout;                         /* æœªè¨­å®šã®å ´åˆï¼Œ0 */
+	Com_CbkTxErr	ComErrorNotification;               /* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	Com_CbkInv		ComInvalidNotification;             /* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	Com_CbkAck		ComNotification;                    /* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	Com_CbkTOut		ComTimeoutNotification;             /* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	const void		*ComSignalDataInvalidValue;         /* æœªè¨­å®šã®å ´åˆï¼ŒNULL_PTR */
+	const void		*ComSignalInitValue;                /* å¿…é ˆ(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆ0) */
+	const IPDU_INIB	*p_ipdu_inib;                       /* æ‰€å±ã™ã‚‹IPDUåˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯ */
+	uint8			ComFilterAlgorithm;                 /* ãƒ•ã‚£ãƒ«ã‚¿ãªã—ã®å ´åˆï¼ŒCOM_INVALID_UINT8 */
 	/*
-	 *  ¥Õ¥£¥ë¥¿½é´ü²½¥Ö¥í¥Ã¥¯
-	 *  ¥Õ¥£¥ë¥¿¤Ê¤·¤Î¾ì¹ç¡¤NULL_PTR
-	 *  ¥Õ¥£¥ë¥¿¥¢¥ë¥´¥ê¥º¥à¤¬COM_ALWAYS¡¤COM_NEVER¤Î¾ì¹ç¡¤NULL_PTR
+	 *  ãƒ•ã‚£ãƒ«ã‚¿åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯
+	 *  ãƒ•ã‚£ãƒ«ã‚¿ãªã—ã®å ´åˆï¼ŒNULL_PTR
+	 *  ãƒ•ã‚£ãƒ«ã‚¿ã‚¢ãƒ«ã‚´ãƒªã‚ºãƒ ãŒCOM_ALWAYSï¼ŒCOM_NEVERã®å ´åˆï¼ŒNULL_PTR
 	 */
 	const void *p_filter_inib;
 	/*
-	 *  ¥·¥°¥Ê¥ë´ÉÍı¥Ö¥í¥Ã¥¯
-	 *  ¼õ¿®¤Î¾ì¹ç¡¤¼õ¿®DM¤¬¤Ê¤±¤ì¤Ğ¡¤NULL_PTR
-	 *  Á÷¿®¤Î¾ì¹ç¡¤¥Õ¥£¥ë¥¿¤¬¤Ê¤±¤ì¤Ğ¡¤NULL_PTR
+	 *  ã‚·ã‚°ãƒŠãƒ«ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
+	 *  å—ä¿¡ã®å ´åˆï¼Œå—ä¿¡DMãŒãªã‘ã‚Œã°ï¼ŒNULL_PTR
 	 */
 	void *p_signal_cb;
 	/*
-	 *  ¥·¥°¥Ê¥ë¥Ğ¥Ã¥Õ¥¡
-	 *  ¼õ¿®¤Î¾ì¹ç¡¤É¬¿Ü
-	 *  Á÷¿®¤Î¾ì¹ç¡¤TRIGGERED_ON_CHANGE¡¤TRIGGERED_ON_CHANGE_WITHOUT_REPETITION°Ê³°¤Ï¡¤NULL_PTR
+	 *  ã‚·ã‚°ãƒŠãƒ«ãƒãƒƒãƒ•ã‚¡
+	 *  å—ä¿¡ã®å ´åˆï¼Œå¿…é ˆ
+	 *  é€ä¿¡ã®å ´åˆï¼ŒTRIGGERED_ON_CHANGEï¼ŒTRIGGERED_ON_CHANGE_WITHOUT_REPETITIONä»¥å¤–ã¯ï¼ŒNULL_PTR
 	 */
 	void *p_signal_buffer;
+
+	/*
+	 *  ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
+	 *  å—ä¿¡ã®å ´åˆï¼Œå—ä¿¡DMãŒãªã‘ã‚Œã°ï¼ŒNULL_PTR
+	 */
+	void *p_signal_g_cb;
+
+	void *p_shadow_buffer;							/* ã‚·ãƒ£ãƒ‰ã‚¦ãƒãƒƒãƒ•ã‚¡ */
+
 } SIGNAL_INIB;
 
 /*
- *  Com¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó´ÉÍı¥Ö¥í¥Ã¥¯
- *  (1¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¤Ë¤Ä¤­1¤ÄºîÀ®¤¹¤ë)
+ *  [COMa017] Comã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯
+ *            (1ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ã«ã¤ã1ã¤ä½œæˆã™ã‚‹)
  */
 typedef struct com_config_type {
-	uint32 ComConfigurationId;                  /* É¬¿Ü */
+	uint32 ComConfigurationId;                  /* å¿…é ˆ */
 
-	uint16	tnum_signal;                        /* ¥·¥°¥Ê¥ë¿ô */
-	uint16	tnum_ipdu_g;                        /* IPDU¥°¥ë¡¼¥×¿ô */
+	uint16	tnum_signal;                        /* ã‚·ã‚°ãƒŠãƒ«æ•° */
+	uint16	tnum_signal_g;                      /* ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—æ•° */
+	uint16	tnum_ipdu_g;                        /* IPDUã‚°ãƒ«ãƒ¼ãƒ—æ•° */
 
-	const SIGNAL_INIB *p_signal_inib_table;     /* ¥·¥°¥Ê¥ë½é´ü²½¥Ö¥í¥Ã¥¯ÇÛÎó */
+	const SIGNAL_INIB 	*p_signal_inib_table;   /* ã‚·ã‚°ãƒŠãƒ«åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯é…åˆ— */
+	const SIGNAL_G_INIB *p_signal_g_inib_table; /* ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯é…åˆ— */
 
-	uint8			tnum_vector;                /* IPDU¥°¥ë¡¼¥×¤ò¥Ó¥Ã¥È¤Ç´ÉÍı¤¹¤ë¤Î¤ËÉ¬Í×¤Ê¥Ğ¥¤¥È¿ô */
-	uint16			tnum_ipdu;                  /* IPDU¿ô */
-	const IPDU_INIB	* const *pp_ipdu_inib_table;/* IPDU½é´ü²½¥Ö¥í¥Ã¥¯¥İ¥¤¥ó¥¿ÇÛÎó */
-	uint16			tnum_rx_ipdu;               /* ¼õ¿®IPDU¿ô */
-	uint16			tnum_tx_ipdu;               /* Á÷¿®IPDU¿ô */
-	const IPDU_INIB	*p_rx_ipdu_inib_list;       /* ¼õ¿®IPDU½é´ü²½¥Ö¥í¥Ã¥¯ÇÛÎó */
-	const IPDU_INIB	*p_tx_ipdu_inib_list;       /* Á÷¿®IPDU½é´ü²½¥Ö¥í¥Ã¥¯ÇÛÎó */
+	uint8			tnum_vector;                /* IPDUã‚°ãƒ«ãƒ¼ãƒ—ã‚’ãƒ“ãƒƒãƒˆã§ç®¡ç†ã™ã‚‹ã®ã«å¿…è¦ãªãƒã‚¤ãƒˆæ•° */
+	uint16			tnum_ipdu;                  /* IPDUæ•° */
+	const IPDU_INIB	* const *pp_ipdu_inib_table;/* IPDUåˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯ãƒã‚¤ãƒ³ã‚¿é…åˆ— */
+	uint16			tnum_rx_ipdu;               /* å—ä¿¡IPDUæ•° */
+	uint16			tnum_tx_ipdu;               /* é€ä¿¡IPDUæ•° */
+	const IPDU_INIB	*p_rx_ipdu_inib_list;       /* å—ä¿¡IPDUåˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯é…åˆ— */
+	const IPDU_INIB	*p_tx_ipdu_inib_list;       /* é€ä¿¡IPDUåˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯é…åˆ— */
 } Com_ConfigType;
 
 
 /*
- *  Com¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¥×¥í¥È¥¿¥¤¥×Àë¸À
+ *  Comã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ãƒ—ãƒ­ãƒˆã‚¿ã‚¤ãƒ—å®£è¨€
  */
 extern void Com_Init(const Com_ConfigType *config);
 extern void Com_DeInit(void);
@@ -585,8 +639,11 @@ extern void Com_GetVersionInfo(Std_VersionInfoType *versioninfo);
 extern void Com_ClearIpduGroupVector(Com_IpduGroupVector ipduGroupVector);
 extern void Com_SetIpduGroup(Com_IpduGroupVector ipduGroupVector, Com_IpduGroupIdType ipduGroupId, boolean bitval);
 extern uint8 Com_SendSignal(Com_SignalIdType SignalId, const void *SignalDataPtr);
+extern uint8 Com_SendSignalGroup(Com_SignalGroupIdType SignalGroupId);
 extern uint8 Com_ReceiveSignal(Com_SignalIdType SignalId, void *SignalDataPtr);
+extern uint8 Com_ReceiveSignalGroup(Com_SignalGroupIdType SignalGroupId);
 extern uint8 Com_InvalidateSignal(Com_SignalIdType SignalId);
+extern uint8 Com_InvalidateSignalGroup(Com_SignalGroupIdType SignalGroupId);
 extern void Com_TriggerIPDUSend(PduIdType PduId);
 extern void Com_SwitchIpduTxMode(PduIdType PduId, boolean Mode);
 extern void Com_RxIndication(PduIdType RxPduId, PduInfoType *PduInfoPtr);
@@ -595,13 +652,13 @@ extern void Com_MainFunctionRx(void);
 extern void Com_MainFunctionTx(void);
 
 /*
- *  Com¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó(Com_PBcfg.c)
+ *  Comã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±(Com_PBcfg.c)
  */
 extern const Com_ConfigType	com_config[];
 
 
 /*
- *  °Ê²¼¡¤Ì¤¥µ¥İ¡¼¥Èµ¡Ç½
+ *  ä»¥ä¸‹ï¼Œæœªã‚µãƒãƒ¼ãƒˆæ©Ÿèƒ½
  */
 
 #define NTFRSLT_OK						0x00U
@@ -619,9 +676,6 @@ extern const Com_ConfigType	com_config[];
 
 extern uint8 Com_SendDynSignal(Com_SignalIdType SignalId, const void *SignalDataPtr, uint16 Length);
 extern uint8 Com_ReceiveDynSignal(Com_SignalIdType SignalId, void *SignalDataPtr, uint16 *Length);
-extern uint8 Com_SendSignalGroup(Com_SignalGroupIdType SignalGroupId);
-extern uint8 Com_ReceiveSignalGroup(Com_SignalGroupIdType SignalGroupId);
-extern uint8 Com_InvalidateSignalGroup(Com_SignalGroupIdType SignalGroupId);
 extern void Com_MainFunctionRouteSignals(void);
 extern Std_ReturnType Com_TriggerTransmit(PduIdType TxPduId, PduInfoType *PduInfoPtr);
 extern void Com_TpRxIndication(PduIdType PduId, NotifResultType Result);
@@ -631,31 +685,28 @@ extern BufReq_ReturnType Com_CopyRxData(PduIdType PduId, const PduInfoType *PduI
 extern BufReq_ReturnType Com_CopyTxData(PduIdType PduId, PduInfoType *PduInfoPtr, RetryInfoType *RetryInfoPtr, PduLengthType *TxDataCntPtr);
 
 /*
- *  ¥Ü¥Ç¥£À©¸æ·Ï¥×¥í¥Õ¥¡¥¤¥ë°Ê³°¤Î¤¿¤á¤ËÂĞ±ş¤·¤Ê¤¤»ÅÍÍ¥¿¥°°ìÍ÷
- *  (Æ±°ì»ÅÍÍ¥¿¥°¤¬¥Ü¥Ç¥£À©¸æ·Ï¥×¥í¥Õ¥¡¥¤¥ë¤ÎÍ×µá»ÅÍÍ¤Ç¤â»ÈÍÑ¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ï[]¤ÇÉ½µ­)
- *  - ¥·¥°¥Ê¥ë¥²¡¼¥È¥¦¥§¥¤
+ *  ãƒœãƒ‡ã‚£åˆ¶å¾¡ç³»ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ä»¥å¤–ã®ãŸã‚ã«å¯¾å¿œã—ãªã„ä»•æ§˜ã‚¿ã‚°ä¸€è¦§
+ *  (åŒä¸€ä»•æ§˜ã‚¿ã‚°ãŒãƒœãƒ‡ã‚£åˆ¶å¾¡ç³»ãƒ—ãƒ­ãƒ•ã‚¡ã‚¤ãƒ«ã®è¦æ±‚ä»•æ§˜ã§ã‚‚ä½¿ç”¨ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã¯[]ã§è¡¨è¨˜)
+ *  - ã‚·ã‚°ãƒŠãƒ«ã‚²ãƒ¼ãƒˆã‚¦ã‚§ã‚¤
  *    <COM370><COM377>[COM324][COM067]<COM359><COM466><COM539><COM384><COM386><COM598>
  *    <COM357><COM360><COM361><COM383><COM735><COM362><COM701><COM702><COM703><COM704>
  *    <COM705><COM706>
- *  - ¥Ç¡¼¥¿¥·¡¼¥±¥ó¥¹
+ *  - ãƒ‡ãƒ¼ã‚¿ã‚·ãƒ¼ã‚±ãƒ³ã‚¹
  *    <COM687><COM688><COM587><COM588><COM590><COM726><COM727>
- *  - ÄÌ¿®Êİ¸î
+ *  - é€šä¿¡ä¿è­·
  *    <COM596><COM597>
- *  - ¥·¥°¥Ê¥ë¥°¥ë¡¼¥×
- *    <COM682><COM683><COM737><COM718>[COM500]<COM393><COM513><COM053><COM484><COM050>
- *    <COM051><COM061><COM741><COM769><COM742><COM743><COM770><COM326><COM365><COM575>
- *  - Âç·¿¥Ç¡¼¥¿
+ *  - ã‚·ã‚°ãƒŠãƒ«ã‚°ãƒ«ãƒ¼ãƒ—
+ *    <COM365>
+ *  - å¤§å‹ãƒ‡ãƒ¼ã‚¿
  *    <COM713><COM714><COM662><COM759><COM760><COM720>
- *  - Æ°Åª¥Ç¡¼¥¿
+ *  - å‹•çš„ãƒ‡ãƒ¼ã‚¿
  *    <COM753><COM754><COM755><COM756><COM757><COM758>
- *  - ¥Õ¥£¥ë¥¿¥ê¥ó¥°
- *    <COM327>
  */
 
 /*
- *  ¤½¤ÎÂ¾¤Î»ÅÍÍÀâÌÀ
- *    [COM780][COM781] ËÜ¼ÂÁõ¤Ç¤ÏCom_TriggerIPDUSend, Com_SendSignalÆâ¤ÇÂ¨»şÁ÷¿®¤·¤Ê¤¤¤¿¤áÂĞ½èÉÔÍ×
- *    <COM696><COM697> Com_TriggerTransmitÌ¤¥µ¥İ¡¼¥È¤Î¤¿¤á¡¤ÂĞ½èÉÔÍ×
+ *  ãã®ä»–ã®ä»•æ§˜èª¬æ˜
+ *    [COM780][COM781] æœ¬å®Ÿè£…ã§ã¯Com_TriggerIPDUSend, Com_SendSignalå†…ã§å³æ™‚é€ä¿¡ã—ãªã„ãŸã‚å¯¾å‡¦ä¸è¦
+ *    <COM696><COM697> Com_TriggerTransmitæœªã‚µãƒãƒ¼ãƒˆã®ãŸã‚ï¼Œå¯¾å‡¦ä¸è¦
  */
 
 #endif /* COM_H */

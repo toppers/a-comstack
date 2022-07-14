@@ -1,55 +1,57 @@
-#!ruby -Ke
+#!ruby -Ku
 #
 #  ABREX
 #      AUTOSAR BSW and RTE XML Generator
 #
-#  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+#  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
 #              Graduate School of Information Science, Nagoya Univ., JAPAN
-#  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
-#  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
-#  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
-#  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+#  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+#  Copyright (C) 2014-2016 by eSOL Co.,Ltd., JAPAN
+#  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+#  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+#  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 #  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-#  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
-#  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
-#  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
-#  Copyright (C) 2013-2015 by Witz Corporation
+#  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+#  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+#  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+#  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+#  Copyright (C) 2013-2016 by Witz Corporation
 #
-#  ¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î(1)¡Á(4)¤Î¾ò·ï¤òËş¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥½¥Õ¥È¥¦¥§
-#  ¥¢¡ÊËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò²şÊÑ¤·¤¿¤â¤Î¤ò´Ş¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²ş
-#  ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½ş¤ÇµöÂú¤¹¤ë¡¥
-#  (1) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¥½¡¼¥¹¥³¡¼¥É¤Î·Á¤ÇÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî
-#      ¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Ş¤Ş¤Î·Á¤Ç¥½¡¼
-#      ¥¹¥³¡¼¥ÉÃæ¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤³¤È¡¥
-#  (2) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤¥é¥¤¥Ö¥é¥ê·Á¼°¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
-#      ÍÑ¤Ç¤­¤ë·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ
-#      ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­
-#      ¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
-#  (3) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤µ¡´ï¤ËÁÈ¤ß¹ş¤à¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
-#      ÍÑ¤Ç¤­¤Ê¤¤·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¼¡¤Î¤¤¤º¤ì¤«¤Î¾ò·ï¤òËş¤¿¤¹¤³
-#      ¤È¡¥
-#    (a) ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃø
-#        ºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
-#    (b) ºÆÇÛÉÛ¤Î·ÁÂÖ¤ò¡¤ÊÌ¤ËÄê¤á¤ëÊıË¡¤Ë¤è¤Ã¤Æ¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È¤Ë
-#        Êó¹ğ¤¹¤ë¤³¤È¡¥
-#  (4) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»
-#      ³²¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
-#      ¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Î¥æ¡¼¥¶¤Ş¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍı
-#      Í³¤Ë´ğ¤Å¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤ò
-#      ÌÈÀÕ¤¹¤ë¤³¤È¡¥
+#  ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã®(1)ã€œ(4)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+#  ã‚¢ï¼ˆæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼ä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+#  å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼
+#  (1) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®å½¢ã§åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œ
+#      æ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ã‚½ãƒ¼
+#      ã‚¹ã‚³ãƒ¼ãƒ‰ä¸­ã«å«ã¾ã‚Œã¦ã„ã‚‹ã“ã¨ï¼
+#  (2) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œãƒ©ã‚¤ãƒ–ãƒ©ãƒªå½¢å¼ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+#      ç”¨ã§ãã‚‹å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œå†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨
+#      è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜
+#      ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+#  (3) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œæ©Ÿå™¨ã«çµ„ã¿è¾¼ã‚€ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+#      ç”¨ã§ããªã„å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œæ¬¡ã®ã„ãšã‚Œã‹ã®æ¡ä»¶ã‚’æº€ãŸã™ã“
+#      ã¨ï¼
+#    (a) å†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—
+#        ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+#    (b) å†é…å¸ƒã®å½¢æ…‹ã‚’ï¼Œåˆ¥ã«å®šã‚ã‚‹æ–¹æ³•ã«ã‚ˆã£ã¦ï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«
+#        å ±å‘Šã™ã‚‹ã“ã¨ï¼
+#  (4) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æ
+#      å®³ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼
+#      ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†
+#      ç”±ã«åŸºã¥ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’
+#      å…è²¬ã™ã‚‹ã“ã¨ï¼
 #
-#  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»Å
-#  ÍÍ¤Ë´ğ¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç
-#  ¤Ï¤Ê¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ğ¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍø
-#  ÍÑ¤¹¤ë¼Ô¤ËÂĞ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+#  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•
+#  æ§˜ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼ä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§
+#  ã¯ãªã„ï¼AUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©
+#  ç”¨ã™ã‚‹è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼
 #
-#  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤ÌµÊİ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª
-#  ¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª
-#  ¤ËÂĞ¤¹¤ëÅ¬¹çÀ­¤â´Ş¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊİ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§
-#  ¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½
-#  ¤ÎÀÕÇ¤¤òÉé¤ï¤Ê¤¤¡¥
+#  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼ä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠ
+#  ã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„
+#  ã«å¯¾ã™ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+#  ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œã
+#  ã®è²¬ä»»ã‚’è² ã‚ãªã„ï¼
 #
-# $Id: abrex.rb 8481 2014-03-07 03:54:06Z shigihara $
+# $Id: abrex.rb 632 2016-03-22 03:34:19Z mtakada $
 #
 
 if ($0 == __FILE__)
@@ -65,7 +67,7 @@ require "rexml/document.rb"
 include REXML
 
 ######################################################################
-# Äê¿ôÄêµÁ
+# å®šæ•°å®šç¾©
 ######################################################################
 VERSION       = "1.1.0"
 VER_INFO      = " Generated by ABREX Ver. #{VERSION} "
@@ -79,8 +81,8 @@ XML_AUTOSAR_FIXED_ATT = {"xmlns"              => "http://autosar.org/schema/r4.0
                          "xmlns:xsi"          => "http://www.w3.org/2001/XMLSchema-instance",
                          "xsi:schemaLocation" => "http://autosar.org/schema/r4.0 AUTOSAR_4-0-3_STRICT.xsd"}
 
-# ¥Ñ¥é¥á¡¼¥¿¥Ç¡¼¥¿·¿¼ïÊÌ³ÊÇ¼¥Ï¥Ã¥·¥å
-# (¤³¤ì°Ê³°¤Ï¤¹¤Ù¤ÆECUC-NUMERICAL-PARAM-VALUE)
+# ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ‡ãƒ¼ã‚¿å‹ç¨®åˆ¥æ ¼ç´ãƒãƒƒã‚·ãƒ¥
+# (ã“ã‚Œä»¥å¤–ã¯ã™ã¹ã¦ECUC-NUMERICAL-PARAM-VALUE)
 XML_VALUE_TYPE = {"ECUC-REFERENCE-DEF"               => "ECUC-REFERENCE-VALUE",
                   "ECUC-FOREIGN-REFERENCE-DEF"       => "ECUC-REFERENCE-VALUE",
                   "ECUC-SYMBOLIC-NAME-REFERENCE-DEF" => "ECUC-REFERENCE-VALUE",
@@ -92,33 +94,36 @@ XML_VALUE_TYPE = {"ECUC-REFERENCE-DEF"               => "ECUC-REFERENCE-VALUE",
                   "ECUC-FUNCTION-NAME-DEF"           => "ECUC-TEXTUAL-PARAM-VALUE",
                   "ECUC-LINKER-SYMBOL-DEF"           => "ECUC-TEXTUAL-PARAM-VALUE"}
 
-# ¥¤¥ó¥¹¥¿¥ó¥¹»²¾È·¿¤ÎÆÃÊÌ¥³¥ó¥Æ¥Ê
+# ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å‚ç…§å‹ã®ç‰¹åˆ¥ã‚³ãƒ³ãƒ†ãƒŠ
 XML_INSTANCE_REF_CONTAINER = {"EcucPartitionSoftwareComponentInstanceRef" =>
                                 {"CONTEXT-ELEMENT-REF" => "ROOT-SW-COMPOSITION-PROTOTYPE",
                                  "TARGET-REF" => "SW-COMPONENT-PROTOTYPE"}}
 
 ######################################################################
-# YAML ¢ª XML ¼Â¹Ôµ¡Ç½
+# YAML â†’ XML å®Ÿè¡Œæ©Ÿèƒ½
 ######################################################################
 def YamlToXml(aArgData, sEcuExtractRef)
-  # ³Æ¥Ñ¥é¥á¡¼¥¿¤Î¥Ç¡¼¥¿·¿ÄêµÁ(-p¥ª¥×¥·¥ç¥ó¤ÇÀ¸À®¤·¤¿¤â¤Î¤ò»ÈÍÑ¤¹¤ë)
+  # å„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®ãƒ‡ãƒ¼ã‚¿å‹å®šç¾©(-pã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§ç”Ÿæˆã—ãŸã‚‚ã®ã‚’ä½¿ç”¨ã™ã‚‹)
   sFileName = "#{TOOL_ROOT}/param_info.yaml"
   if (!File.exist?(sFileName))
     abort("#{sFileName} not found !!")
   end
   hParamInfo = YAML.load_file(sFileName)
-  # ¥Ï¥Ã¥·¥å¤Ç¤Ê¤¤(YAML¤Ç¤Ê¤¤)¾ì¹ç¥¨¥é¡¼
+  # ãƒãƒƒã‚·ãƒ¥ã§ãªã„(YAMLã§ãªã„)å ´åˆã‚¨ãƒ©ãƒ¼
   if (!hParamInfo.is_a?(Hash))
     abort("not YAML file !! [#{sFileName}]")
   end
 
-  # ³°Éô»²¾ÈÀè¤Î¥Ç¡¼¥¿·¿³ÊÇ¼¥Ï¥Ã¥·¥å¤òÊ¬Î¥
+  # å¤–éƒ¨å‚ç…§å…ˆã®ãƒ‡ãƒ¼ã‚¿å‹æ ¼ç´ãƒãƒƒã‚·ãƒ¥ã‚’åˆ†é›¢
   $hForeignRefType = hParamInfo.delete(:FOREIGN_REF_TYPE)
 
-  # ¥¤¥ó¥¹¥¿¥ó¥¹»²¾ÈÀè¤Î¥Ç¡¼¥¿·¿¤òÊİ»ı
+  # é¸æŠå‹ã®ã‚³ãƒ³ãƒ†ãƒŠæ ¼ç´é…åˆ—ã‚’åˆ†é›¢
+  $aChoiceContainer = hParamInfo.delete(:ECUC_CHOICE_CONTAINER_DEF)
+
+  # ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å‚ç…§å…ˆã®ãƒ‡ãƒ¼ã‚¿å‹ã‚’ä¿æŒ
   $aInstanceRefType = hParamInfo["ECUC-INSTANCE-REFERENCE-DEF"]
 
-  # ¥³¥ó¥Æ¥ÊÌ¾ÊÑ´¹¥Æ¡¼¥Ö¥ë
+  # ã‚³ãƒ³ãƒ†ãƒŠåå¤‰æ›ãƒ†ãƒ¼ãƒ–ãƒ«
   $hEcuc = {}
   $hDest = {}
 
@@ -133,19 +138,19 @@ def YamlToXml(aArgData, sEcuExtractRef)
     }
   }
 
-  # »²¾È·¿¤Î¥Ñ¥é¥á¡¼¥¿°ìÍ÷
+  # å‚ç…§å‹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ä¸€è¦§
   $hReferenceParam = hParamInfo["ECUC-REFERENCE-DEF"] + hParamInfo["ECUC-FOREIGN-REFERENCE-DEF"] + hParamInfo["ECUC-SYMBOLIC-NAME-REFERENCE-DEF"] + hParamInfo["ECUC-INSTANCE-REFERENCE-DEF"]
 
-  # Í¿¤¨¤é¤ì¤¿Á´YAML¤ò¥Ş¡¼¥¸¤¹¤ë
+  # ä¸ãˆã‚‰ã‚ŒãŸå…¨YAMLã‚’ãƒãƒ¼ã‚¸ã™ã‚‹
   hYaml = {}
   sArxmlName = nil
   aArgData.each{|sFileName|
-    # ¥Õ¥¡¥¤¥ë¤¬Â¸ºß¤·¤Ê¤¤¾ì¹ç¥¨¥é¡¼
+    # ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã‚¨ãƒ©ãƒ¼
     if (!File.exist?(sFileName))
       abort("Argument error !! [#{sFileName}]")
     end
 
-    # ½ĞÎÏ¥Õ¥¡¥¤¥ëÌ¾ºîÀ®(Ê£¿ô¤¢¤ë¾ì¹ç¡¤ºÇ½é¤Î¥Õ¥¡¥¤¥ëÌ¾¤òºÎÍÑ¤¹¤ë)
+    # å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«åä½œæˆ(è¤‡æ•°ã‚ã‚‹å ´åˆï¼Œæœ€åˆã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æ¡ç”¨ã™ã‚‹)
     if (File.extname(sFileName) == ".yaml")
       if (sArxmlName.nil?())
         sArxmlName = File.dirname(sFileName) + "/" + File.basename(sFileName, ".yaml") + ".arxml"
@@ -155,12 +160,12 @@ def YamlToXml(aArgData, sEcuExtractRef)
     end
 
     hTmpData = YAML.load(File.read(sFileName).toutf8())
-    # ¥Ï¥Ã¥·¥å¤Ç¤Ê¤¤(YAML¤Ç¤Ê¤¤)¾ì¹ç¥¨¥é¡¼
+    # ãƒãƒƒã‚·ãƒ¥ã§ãªã„(YAMLã§ãªã„)å ´åˆã‚¨ãƒ©ãƒ¼
     if (!hTmpData.is_a?(Hash))
       abort("not YAML file !! [#{sFileName}]")
     end
 
-    # ÆÉ¤ß¹ş¤ó¤À¥Ç¡¼¥¿¤ò¥Ş¡¼¥¸¤·¤Æ¤¤¤¯
+    # èª­ã¿è¾¼ã‚“ã ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒ¼ã‚¸ã—ã¦ã„ã
     YamlToXml_merge_hash(hYaml, hTmpData)
   }
 
@@ -170,7 +175,7 @@ def YamlToXml(aArgData, sEcuExtractRef)
   cXmlAutosar = cXmlInfo.add_element("AUTOSAR", XML_AUTOSAR_FIXED_ATT)
   cXmlArPackages = cXmlAutosar.add_element("AR-PACKAGES")
 
-  # IMPLEMENTATION-DATA-TYPE³ÊÇ¼¥Ï¥Ã¥·¥å¤òÊ¬Î¥¤·¤ÆÀè¤ËÅĞÏ¿
+  # IMPLEMENTATION-DATA-TYPEæ ¼ç´ãƒãƒƒã‚·ãƒ¥ã‚’åˆ†é›¢ã—ã¦å…ˆã«ç™»éŒ²
   hImplDataType = hYaml.delete("IMPLEMENTATION-DATA-TYPE")
   if (!hImplDataType.nil?())
     cXmlArPackage = cXmlArPackages.add_element("AR-PACKAGE")
@@ -193,25 +198,31 @@ def YamlToXml(aArgData, sEcuExtractRef)
       aModulePaths.push("/#{sPackageName}/#{sEcucModuleName}")
       cXmlEcucModuleConfVal = cXmlElements.add_element("ECUC-MODULE-CONFIGURATION-VALUES")
       cXmlEcucModuleConfVal.add_element(XML_SNAME).add_text(sEcucModuleName)
-      cXmlEcucModuleConfVal.add_element("DEFINITION-REF", {"DEST" => "ECUC-MODULE-DEF"}).add_text(XML_ROOT_PATH + sEcucModuleName)
+      if (hEcucModuleData.has_key?("DefinitionRef"))
+        sEcuModuleDefinitionRef = hEcucModuleData["DefinitionRef"].dup
+        hEcucModuleData.delete("DefinitionRef")
+      else
+        sEcuModuleDefinitionRef = sEcucModuleName
+      end
+      cXmlEcucModuleConfVal.add_element("DEFINITION-REF", {"DEST" => "ECUC-MODULE-DEF"}).add_text(XML_ROOT_PATH + sEcuModuleDefinitionRef)
       cXmlEcucModuleConfVal.add_element("ECUC-DEF-EDITION").add_text(XML_EDITION)
       cXmlEcucModuleConfVal.add_element("IMPLEMENTATION-CONFIG-VARIANT").add_text("VARIANT-PRE-COMPILE")
       cXmlContainers = cXmlEcucModuleConfVal.add_element("CONTAINERS")
 
-      # ³Æ¥Ñ¥é¥á¡¼¥¿ÍÑ¥³¥ó¥Æ¥Ê¤òºîÀ®¤¹¤ë
+      # å„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ç”¨ã‚³ãƒ³ãƒ†ãƒŠã‚’ä½œæˆã™ã‚‹
       hEcucModuleData.each{|sShortName, hParamInfo|
-        # DefinitionRefÊä´°
+        # DefinitionRefè£œå®Œ
         if (!hParamInfo.has_key?("DefinitionRef"))
           hParamInfo["DefinitionRef"] = sShortName
         end
 
-        cContainer = YamlToXml_make_container(sShortName, hParamInfo, XML_ROOT_PATH + sEcucModuleName)
+        cContainer = YamlToXml_make_container(sShortName, hParamInfo, XML_ROOT_PATH + sEcuModuleDefinitionRef)
         cXmlContainers.add_element(cContainer)
       }
     }
   }
 
-  # ECU-EXTRACT-REF»ØÄê¤¬¤¢¤ë¾ì¹ç¡¢<ECUC-VALUE-COLLECTION>¤òÄÉ²Ã¤¹¤ë
+  # ECU-EXTRACT-REFæŒ‡å®šãŒã‚ã‚‹å ´åˆã€<ECUC-VALUE-COLLECTION>ã‚’è¿½åŠ ã™ã‚‹
   if (!sEcuExtractRef.nil?())
     cXmlArPackage = cXmlArPackages.add_element("AR-PACKAGE")
     cXmlArPackage.add_element(XML_SNAME).add_text("EcucValueCollection")
@@ -226,26 +237,23 @@ def YamlToXml(aArgData, sEcuExtractRef)
     }
   end
 
-  # XMLÊ¸»úÎóÀ¸À®
+  # XMLæ–‡å­—åˆ—ç”Ÿæˆ
   sXmlCode = String.new()
   cXmlInfo.write(sXmlCode, 2, false)
 
-  # XMLÀë¸À¤ÎÂ°À­¤Î¥³¡¼¥Æ¡¼¥·¥ç¥ó¤ò¥À¥Ö¥ë¤Ë½ĞÍè¤Ê¤¤(?)¤¿¤á¡¤¤³¤³¤ÇÃÖ´¹¤¹¤ë
+  # XMLå®£è¨€ã®å±æ€§ã®ã‚³ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ãƒ€ãƒ–ãƒ«ã«å‡ºæ¥ãªã„(?)ãŸã‚ï¼Œã“ã“ã§ç½®æ›ã™ã‚‹
   sXmlCode.gsub!("'", "\"")
 
-  # ¥À¥Ö¥ë¥³¡¼¥Æ¡¼¥·¥ç¥ó¤¬&quot;¤ËÊÑ´¹¤µ¤ì¤ë¤Î¤òÍŞ»ß¤Ç¤­¤Ê¤¤(?)¤¿¤á¡¤¤³¤³¤ÇÃÖ´¹¤¹¤ë
+  # ãƒ€ãƒ–ãƒ«ã‚³ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ãŒ&quot;ã«å¤‰æ›ã•ã‚Œã‚‹ã®ã‚’æŠ‘æ­¢ã§ããªã„(?)ãŸã‚ï¼Œã“ã“ã§ç½®æ›ã™ã‚‹
   sXmlCode.gsub!("&quot;", "\"")
 
-  # ÃÍ¤òÄêµÁ¤¹¤ëÉôÊ¬¤À¤±¥¤¥ó¥Ç¥ó¥È¤òÆş¤ì¤Ê¤¤¤è¤¦¤Ë½ĞÍè¤Ê¤¤(?)¤¿¤á¡¤¤³¤³¤ÇÃÖ´¹¤¹¤ë
+  # å€¤ã‚’å®šç¾©ã™ã‚‹éƒ¨åˆ†ã ã‘ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’å…¥ã‚Œãªã„ã‚ˆã†ã«å‡ºæ¥ãªã„(?)ãŸã‚ï¼Œã“ã“ã§ç½®æ›ã™ã‚‹
   sXmlCode.gsub!(/>\n[\s]+([\w\.\[\]\(\)\+-\/\*~&;\s]*?)\n[\s]+</, ">\\1<")
 
-  # XMLDecl¤Î¥³¥ó¥¹¥È¥é¥¯¥¿¤Ç¤ÏEUC-JP¤ò»ØÄê½ĞÍè¤Ê¤¤(?)¤¿¤á¡¤¤³¤³¤ÇÊ¸»ú¥³¡¼¥É¤òÃÖ´¹¤¹¤ë
-  sXmlCode.sub!("UTF-8", "EUC-JP")
-
-  # ¥¤¥ó¥Ç¥ó¥È¤ò¥¿¥Ö¤Ë½ĞÍè¤Ê¤¤(?)¤¿¤á¡¤¤³¤³¤ÇÃÖ´¹¤¹¤ë
+  # ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã‚’ã‚¿ãƒ–ã«å‡ºæ¥ãªã„(?)ãŸã‚ï¼Œã“ã“ã§ç½®æ›ã™ã‚‹
   sXmlCode.gsub!("  ", "\t")
 
-  # ¥Õ¥¡¥¤¥ë½ĞÎÏ
+  # ãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
   #puts(sXmlCode)
   File.open(sArxmlName, "w") {|io|
     io.puts(sXmlCode)
@@ -254,66 +262,70 @@ def YamlToXml(aArgData, sEcuExtractRef)
   puts("Generated #{sArxmlName}")
 end
 
-# ¥Ï¥Ã¥·¥å¥Ş¡¼¥¸´Ø¿ô
+# ãƒãƒƒã‚·ãƒ¥ãƒãƒ¼ã‚¸é–¢æ•°
 def YamlToXml_merge_hash(hBase, hAdd)
   hAdd.each{|sKey, xVal|
-    # ÄÉ²ÃÀè¤Ë¥­¡¼¤¬Â¸ºß¤·¤Ê¤±¤ì¤Ğ¡¤¤½¤Î¤Ş¤ŞÄÉ²Ã¤¹¤ë¤Î¤ß
+    # è¿½åŠ å…ˆã«ã‚­ãƒ¼ãŒå­˜åœ¨ã—ãªã‘ã‚Œã°ï¼Œãã®ã¾ã¾è¿½åŠ ã™ã‚‹ã®ã¿
     if (!hBase.has_key?(sKey))
       hBase[sKey] = xVal
-    # Æ±¤¸¥­¡¼¤ÇÃÍ¤¬°ã¤¦¾ì¹ç
+    # åŒã˜ã‚­ãƒ¼ã§å€¤ãŒé•ã†å ´åˆ
     elsif (hBase[sKey] != hAdd[sKey])
-      # ¥Ï¥Ã¥·¥åÆ±»Î¤Ç¤¢¤ì¤Ğ¡¤ºÆµ¢¤ÇÄÉ²Ã
+      # ãƒãƒƒã‚·ãƒ¥åŒå£«ã§ã‚ã‚Œã°ï¼Œå†å¸°ã§è¿½åŠ 
       if (hBase[sKey].is_a?(Hash) && hAdd[sKey].is_a?(Hash))
         YamlToXml_merge_hash(hBase[sKey], hAdd[sKey])
-      # ÄÉ²ÃÀè¤¬ÇÛÎó¤Ç¤¢¤ì¤Ğ¡¤ÇÛÎó¤Ë¹ç¤ï¤»¤ÆÄÉ²Ã
+      # è¿½åŠ å…ˆãŒé…åˆ—ã§ã‚ã‚Œã°ï¼Œé…åˆ—ã«åˆã‚ã›ã¦è¿½åŠ 
       elsif (hBase[sKey].is_a?(Array))
         if (hAdd[sKey].is_a?(Array))
           hBase[sKey].concat(hAdd[sKey])
         else
           hBase[sKey].push(hAdd[sKey])
         end
-      # ÄÉ²ÃÀè¤¬ÇÛÎó¤Ç¤Ê¤±¤ì¤Ğ¡¤ÇÛÎó¤Ë¤·¤Æ¤«¤éÄÉ²Ã
+      # è¿½åŠ å…ˆãŒé…åˆ—ã§ãªã‘ã‚Œã°ï¼Œé…åˆ—ã«ã—ã¦ã‹ã‚‰è¿½åŠ 
       elsif (hAdd[sKey].is_a?(Array))
         hBase[sKey] = [hBase[sKey]]
         hBase[sKey].concat(hAdd[sKey])
-      # ¤É¤Á¤é¤âÇÛÎó¤Ç¤Ê¤¤¾ì¹ç¡¤ÇÛÎó¤È¤·¤ÆÎ¾Êı¤ò¥Ş¡¼¥¸
+      # ã©ã¡ã‚‰ã‚‚é…åˆ—ã§ãªã„å ´åˆï¼Œé…åˆ—ã¨ã—ã¦ä¸¡æ–¹ã‚’ãƒãƒ¼ã‚¸
       else
         hBase[sKey] = [hBase[sKey]]
         hBase[sKey].push(hAdd[sKey])
       end
     else
-      # Æ±¤¸¥Ñ¥é¥á¡¼¥¿¤Î¾ì¹ç¡¤²¿¤â¤·¤Ê¤¤
+      # åŒã˜ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å ´åˆï¼Œä½•ã‚‚ã—ãªã„
     end
   }
 end
 
-# ¥³¥ó¥Æ¥ÊºîÀ®´Ø¿ô
+# ã‚³ãƒ³ãƒ†ãƒŠä½œæˆé–¢æ•°
 def YamlToXml_make_container(sShortName, hParamInfo, sPath)
-  # °ìÎ§"ECUC-CONTAINER-VALUE"¤òÆş¤ì¤¿¾õÂÖ¤Ç½é´ü²½
+  # ä¸€å¾‹"ECUC-CONTAINER-VALUE"ã‚’å…¥ã‚ŒãŸçŠ¶æ…‹ã§åˆæœŸåŒ–
   cContainer = Element.new().add_element("ECUC-CONTAINER-VALUE")
 
-  # ¥·¥ç¡¼¥È¥Í¡¼¥àÄÉ²Ã
+  # ã‚·ãƒ§ãƒ¼ãƒˆãƒãƒ¼ãƒ è¿½åŠ 
   cContainer.add_element(XML_SNAME).add_text(sShortName)
 
-  # ¥³¥ó¥Æ¥Ê¤Ş¤Ç¤Î¥Ñ¥¹ÄÉ²Ã
-  cContainer.add_element("DEFINITION-REF", {"DEST" => "ECUC-PARAM-CONF-CONTAINER-DEF"}).add_text("#{sPath}/#{hParamInfo["DefinitionRef"]}")
+  # ã‚³ãƒ³ãƒ†ãƒŠã¾ã§ã®ãƒ‘ã‚¹è¿½åŠ 
+  if ($aChoiceContainer.include?(hParamInfo["DefinitionRef"]))
+    cContainer.add_element("DEFINITION-REF", {"DEST" => "ECUC-CHOICE-CONTAINER-DEF"}).add_text("#{sPath}/#{hParamInfo["DefinitionRef"]}")
+  else
+    cContainer.add_element("DEFINITION-REF", {"DEST" => "ECUC-PARAM-CONF-CONTAINER-DEF"}).add_text("#{sPath}/#{hParamInfo["DefinitionRef"]}")
+  end
 
-  # ³Æ¥Ñ¥é¥á¡¼¥¿ÀßÄê(¥Ñ¥é¥á¡¼¥¿¤¬Ìµ¤¤¾ì¹ç¤ÏÉÔÍ×)
+  # å„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿è¨­å®š(ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒç„¡ã„å ´åˆã¯ä¸è¦)
   hCheck= {}
   if (hParamInfo.size() != 1)
     hCheck[XML_PARAM] = false
     hCheck[XML_REFER] = false
     hCheck[XML_SUB] = false
 
-    # ¤Ş¤º»²¾È·¿¡¤¥µ¥Ö¥³¥ó¥Æ¥Ê°Ê³°¤òÀ¸À®(AUTOSAR¥¹¥­¡¼¥ŞÀ©Ìó)
+    # ã¾ãšå‚ç…§å‹ï¼Œã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠä»¥å¤–ã‚’ç”Ÿæˆ(AUTOSARã‚¹ã‚­ãƒ¼ãƒåˆ¶ç´„)
     hParamInfo.each{|sParamName, sahValue|
       if ((sParamName == "DefinitionRef") || (sahValue.is_a?(Hash)))
         next
       end
 
-      # »²¾È·¿¡¤¥µ¥Ö¥³¥ó¥Æ¥Ê°Ê³°¤Î¥Ñ¥é¥á¡¼¥¿
+      # å‚ç…§å‹ï¼Œã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠä»¥å¤–ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
       if (!$hReferenceParam.include?(sParamName))
-        # ¥Ñ¥é¥á¡¼¥¿Ì¾¥Á¥§¥Ã¥¯
+        # ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åãƒã‚§ãƒƒã‚¯
         if (!$hEcuc.has_key?(sParamName) || !$hDest.has_key?(sParamName))
           abort("Unknown parameter: #{sParamName}")
         end
@@ -323,7 +335,7 @@ def YamlToXml_make_container(sShortName, hParamInfo, sPath)
           hCheck[XML_PARAM] = true
         end
 
-        # Â¿½ÅÅÙ*ÂĞ±ş
+        # å¤šé‡åº¦*å¯¾å¿œ
         aTemp = []
         if (sahValue.is_a?(Array))
           aTemp = sahValue
@@ -340,18 +352,18 @@ def YamlToXml_make_container(sShortName, hParamInfo, sPath)
       end
     }
 
-    # ¼¡¤Ë»²¾È·¿¤òÀ¸À®(AUTOSAR¥¹¥­¡¼¥ŞÀ©Ìó)
+    # æ¬¡ã«å‚ç…§å‹ã‚’ç”Ÿæˆ(AUTOSARã‚¹ã‚­ãƒ¼ãƒåˆ¶ç´„)
     hParamInfo.each{|sParamName, sahValue|
       if ((sParamName == "DefinitionRef") || (sahValue.is_a?(Hash)))
         next
       end
 
-      # ¥¤¥ó¥¹¥¿¥ó¥¹»²¾È·¿¤Î¾ì¹ç
+      # ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å‚ç…§å‹ã®å ´åˆ
       if ($aInstanceRefType.include?(sParamName))
         if (!sahValue.is_a?(Array))
           abort("#{sParamName} must be Array !!")
         end
-        # Ì¤¥µ¥İ¡¼¥È¥³¥ó¥Æ¥Ê¤ÏÀ¸À®¤Ç¤­¤Ê¤¤¤¿¤á¥¨¥é¡¼¤È¤¹¤ë
+        # æœªã‚µãƒãƒ¼ãƒˆã‚³ãƒ³ãƒ†ãƒŠã¯ç”Ÿæˆã§ããªã„ãŸã‚ã‚¨ãƒ©ãƒ¼ã¨ã™ã‚‹
         if (!XML_INSTANCE_REF_CONTAINER.has_key?(sParamName))
           abort("#{sParamName} is not supported !!")
         end
@@ -360,7 +372,7 @@ def YamlToXml_make_container(sShortName, hParamInfo, sPath)
           hCheck[XML_REFER] = true
         end
 
-        # Â¿½ÅÅÙ*ÂĞ±ş(2¼¡¸µÇÛÎó¤«¥Á¥§¥Ã¥¯)
+        # å¤šé‡åº¦*å¯¾å¿œ(2æ¬¡å…ƒé…åˆ—ã‹ãƒã‚§ãƒƒã‚¯)
         aTemp = []
         if (sahValue[0].is_a?(Array))
           aTemp = sahValue
@@ -382,14 +394,14 @@ def YamlToXml_make_container(sShortName, hParamInfo, sPath)
           cContainer.elements[XML_REFER].add_element(cParamContainer)
         }
 
-      # »²¾È·¿¤Î¾ì¹ç
+      # å‚ç…§å‹ã®å ´åˆ
       elsif ($hReferenceParam.include?(sParamName))
         if (hCheck[XML_REFER] == false)
           cContainer.add_element(XML_REFER)
           hCheck[XML_REFER] = true
         end
 
-        # Â¿½ÅÅÙ*ÂĞ±ş
+        # å¤šé‡åº¦*å¯¾å¿œ
         aTemp = []
         if (sahValue.is_a?(Array))
           aTemp = sahValue
@@ -410,7 +422,7 @@ def YamlToXml_make_container(sShortName, hParamInfo, sPath)
       end
     }
 
-    # ºÇ¸å¤Ë¥µ¥Ö¥³¥ó¥Æ¥Ê¤òÀ¸À®
+    # æœ€å¾Œã«ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠã‚’ç”Ÿæˆ
     hParamInfo.each{|sParamName, sahValue|
       if ((sParamName == "DefinitionRef") || (!sahValue.is_a?(Hash)))
         next
@@ -421,12 +433,12 @@ def YamlToXml_make_container(sShortName, hParamInfo, sPath)
         hCheck[XML_SUB] = true
       end
 
-      # DefinitionRefÊä´°
+      # DefinitionRefè£œå®Œ
       if (!sahValue.has_key?("DefinitionRef"))
         sahValue["DefinitionRef"] = sParamName
       end
 
-      # ºÆµ¢¤Ç¥µ¥Ö¥³¥ó¥Æ¥Ê¤òºîÀ®¤¹¤ë
+      # å†å¸°ã§ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠã‚’ä½œæˆã™ã‚‹
       cContainer.elements[XML_SUB].add_element(YamlToXml_make_container(sParamName, sahValue, "#{sPath}/#{hParamInfo["DefinitionRef"]}"))
     }
   end
@@ -436,24 +448,24 @@ end
 
 
 ######################################################################
-# XML ¢ª YAML ¼Â¹Ôµ¡Ç½
+# XML â†’ YAML å®Ÿè¡Œæ©Ÿèƒ½
 ######################################################################
 def XmlToYaml(sFirstFile, aExtraFile)
   aExtraFile.unshift(sFirstFile)
   aExtraFile.each{|sFileName|
-    # ¥Õ¥¡¥¤¥ë¤¬Â¸ºß¤·¤Ê¤¤¾ì¹ç¥¨¥é¡¼
+    # ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã‚¨ãƒ©ãƒ¼
     if (!File.exist?(sFileName))
       abort("Argument error !! [#{sFileName}]")
     end
 
-    # ½ĞÎÏ¥Õ¥¡¥¤¥ëÌ¾ºîÀ®
+    # å‡ºåŠ›ãƒ•ã‚¡ã‚¤ãƒ«åä½œæˆ
     if (File.extname(sFileName) == ".arxml")
       sYamlName = File.dirname(sFileName) + "/" + File.basename(sFileName, ".arxml") + ".yaml"
     else
       abort("not ARXML file !! [#{sFileName}]")
     end
 
-    # XML¥é¥¤¥Ö¥é¥ê¤Ç¤ÎÆÉ¤ß¹ş¤ß
+    # XMLãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã®èª­ã¿è¾¼ã¿
     cXmlData = REXML::Document.new(open(sFileName))
 
     hResult = {}
@@ -474,15 +486,15 @@ def XmlToYaml(sFirstFile, aExtraFile)
       }
     }
 
-    # YAML¥Õ¥¡¥¤¥ë½ĞÎÏ
+    # YAMLãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
     open(sYamlName, "w") do |io|
       YAML.dump(hResult, io)
     end
 
-    # YAMLÀ°·Á½èÍı
-    # ¡¦ÀèÆ¬¤Î¶èÀÚ¤êÊ¸»úºï½ü
-    # ¡¦¥³¡¼¥Æ¡¼¥·¥ç¥ó¤Îºï½ü
-    # ¡¦ÇÛÎó¤Î¥¤¥ó¥Ç¥ó¥ÈÀ°Îó
+    # YAMLæ•´å½¢å‡¦ç†
+    # ãƒ»å…ˆé ­ã®åŒºåˆ‡ã‚Šæ–‡å­—å‰Šé™¤
+    # ãƒ»ã‚³ãƒ¼ãƒ†ãƒ¼ã‚·ãƒ§ãƒ³ã®å‰Šé™¤
+    # ãƒ»é…åˆ—ã®ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆæ•´åˆ—
     sFileData = File.read(sYamlName)
     sFileData.gsub!(/^---$/, "")
     sFileData.gsub!("'", "")
@@ -493,7 +505,7 @@ def XmlToYaml(sFirstFile, aExtraFile)
   }
 end
 
-# ¥³¥ó¥Æ¥Ê¥Ñ¡¼¥¹´Ø¿ô
+# ã‚³ãƒ³ãƒ†ãƒŠãƒ‘ãƒ¼ã‚¹é–¢æ•°
 def XmlToYaml_parse_parameter(cElement, hTarget)
   sParamShortName = cElement.elements["SHORT-NAME"].text()
   sParamDefName = cElement.elements["DEFINITION-REF"].text().split("/")[-1]
@@ -502,19 +514,19 @@ def XmlToYaml_parse_parameter(cElement, hTarget)
     hTarget[sParamShortName]["DefinitionRef"] = sParamDefName
   end
 
-  # ¥Ñ¥é¥á¡¼¥¿
+  # ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
   cElement.elements.each("PARAMETER-VALUES"){|cElementC|
     ["ECUC-NUMERICAL-PARAM-VALUE", "ECUC-TEXTUAL-PARAM-VALUE"].each{|sParamValue|
       cElementC.elements.each(sParamValue){|cElementG|
         sName = cElementG.elements["DEFINITION-REF"].text().split("/")[-1]
         sValue = cElementG.elements["VALUE"].text()
-        # Ê£¿ôÂ¿½ÅÅÙÂĞ±ş
+        # è¤‡æ•°å¤šé‡åº¦å¯¾å¿œ
         if (hTarget[sParamShortName].has_key?(sName))
           if (hTarget[sParamShortName][sName].is_a?(Array))
-            # ´û¤ËÊ£¿ô¤¢¤ë¾ì¹ç¤ÏÇÛÎó¤ËÄÉ²Ã
+            # æ—¢ã«è¤‡æ•°ã‚ã‚‹å ´åˆã¯é…åˆ—ã«è¿½åŠ 
             hTarget[sParamShortName][sName].push(sValue)
           else
-            # 1¤Ä¤À¤±ÄêµÁ¤µ¤ì¤Æ¤¤¤¿¾ì¹ç¤ÏÇÛÎó¤ËÊÑ¹¹
+            # 1ã¤ã ã‘å®šç¾©ã•ã‚Œã¦ã„ãŸå ´åˆã¯é…åˆ—ã«å¤‰æ›´
             sTemp = hTarget[sParamShortName][sName]
             hTarget[sParamShortName][sName] = [sTemp, sValue]
           end
@@ -525,20 +537,20 @@ def XmlToYaml_parse_parameter(cElement, hTarget)
     }
   }
 
-  # »²¾È¡¤³°Éô»²¾È¡¤ÁªÂò»²¾È
+  # å‚ç…§ï¼Œå¤–éƒ¨å‚ç…§ï¼Œé¸æŠå‚ç…§
   cElement.elements.each("REFERENCE-VALUES/ECUC-REFERENCE-VALUE"){|cElementC|
     sName = cElementC.elements["DEFINITION-REF"].text().split("/")[-1]
     if (cElementC.elements["VALUE-REF"].nil?)
       abort("<VALUE> is not found in '#{sParamShortName}'")
     end
     sValue = cElementC.elements["VALUE-REF"].text()
-    # Ê£¿ôÂ¿½ÅÅÙÂĞ±ş
+    # è¤‡æ•°å¤šé‡åº¦å¯¾å¿œ
     if (hTarget[sParamShortName].has_key?(sName))
       if (hTarget[sParamShortName][sName].is_a?(Array))
-        # ´û¤ËÊ£¿ô¤¢¤ë¾ì¹ç¤ÏÇÛÎó¤ËÄÉ²Ã
+        # æ—¢ã«è¤‡æ•°ã‚ã‚‹å ´åˆã¯é…åˆ—ã«è¿½åŠ 
         hTarget[sParamShortName][sName].push(sValue)
       else
-        # 1¤Ä¤À¤±ÄêµÁ¤µ¤ì¤Æ¤¤¤¿¾ì¹ç¤ÏÇÛÎó¤ËÊÑ¹¹
+        # 1ã¤ã ã‘å®šç¾©ã•ã‚Œã¦ã„ãŸå ´åˆã¯é…åˆ—ã«å¤‰æ›´
         sTemp = hTarget[sParamShortName][sName]
         hTarget[sParamShortName][sName] = [sTemp, sValue]
       end
@@ -547,7 +559,7 @@ def XmlToYaml_parse_parameter(cElement, hTarget)
     end
   }
 
-  # ¥¤¥ó¥¹¥¿¥ó¥¹»²¾È
+  # ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å‚ç…§
   cElement.elements.each("REFERENCE-VALUES/ECUC-INSTANCE-REFERENCE-VALUE"){|cElementC|
     sName = cElementC.elements["DEFINITION-REF"].text().split("/")[-1]
     hTarget[sParamShortName][sName] = []
@@ -555,7 +567,7 @@ def XmlToYaml_parse_parameter(cElement, hTarget)
     hTarget[sParamShortName][sName].push({"TARGET-REF" => cElementC.elements["VALUE-IREF"].elements["TARGET-REF"].text()})
   }
 
-  # ¥µ¥Ö¥³¥ó¥Æ¥Ê(ºÆµ¢¸Æ½Ğ¤·)
+  # ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠ(å†å¸°å‘¼å‡ºã—)
   cElement.elements.each("SUB-CONTAINERS/ECUC-CONTAINER-VALUE"){|cElementC|
     XmlToYaml_parse_parameter(cElementC, hTarget[sParamShortName])
   }
@@ -563,31 +575,31 @@ end
 
 
 ######################################################################
-# AUTOSAR¥Ñ¥é¥á¡¼¥¿¾ğÊó¥Õ¥¡¥¤¥ëºîÀ®
+# AUTOSARãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±ãƒ•ã‚¡ã‚¤ãƒ«ä½œæˆ
 ######################################################################
 def MakeParamInfo(sFileName)
-  # ¥Õ¥¡¥¤¥ë¤¬Â¸ºß¤·¤Ê¤¤¾ì¹ç¥¨¥é¡¼
+  # ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã‚¨ãƒ©ãƒ¼
   if (!File.exist?(sFileName))
     abort("Argument error !! [#{sFileName}]")
   end
 
   sParamFileName = File.dirname(sFileName) + "/param_info.yaml"
 
-  # ÆÉ¤ß¹ş¤ßÂĞ¾İ¥â¥¸¥å¡¼¥ë
+  # èª­ã¿è¾¼ã¿å¯¾è±¡ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«
   aTargetModule = ["Rte", "Os", "Com", "PduR", "CanIf", "Can", "EcuC", "EcuM", "WdgM", "WdgIf", "Wdg", "Dem"]
 
-  # XML¥é¥¤¥Ö¥é¥ê¤Ç¤ÎÆÉ¤ß¹ş¤ß
+  # XMLãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã®èª­ã¿è¾¼ã¿
   cXmlData = REXML::Document.new(open(sFileName))
 
-  # ³°Éô»²¾ÈÀè¤Î¥Ç¡¼¥¿·¿³ÊÇ¼¥Ï¥Ã¥·¥å
+  # å¤–éƒ¨å‚ç…§å…ˆã®ãƒ‡ãƒ¼ã‚¿å‹æ ¼ç´ãƒãƒƒã‚·ãƒ¥
   $hForeignRefType = {}
 
-  # ¥Ñ¡¼¥¹·ë²Ì³ÊÇ¼¥Ï¥Ã¥·¥å½é´ü²½(NCES»ÅÍÍ¥³¥ó¥Æ¥Ê¤ÏÍ½¤áÀßÄê)
+  # é¸æŠå‹ã®ã‚³ãƒ³ãƒ†ãƒŠæ ¼ç´é…åˆ—
+  $aChoiceContainer = []
+
+  # ãƒ‘ãƒ¼ã‚¹çµæœæ ¼ç´ãƒãƒƒã‚·ãƒ¥åˆæœŸåŒ–(NCESä»•æ§˜ã‚³ãƒ³ãƒ†ãƒŠã¯äºˆã‚è¨­å®š)
   sNcesContainer = <<-EOS
 ECUC-ENUMERATION-PARAM-DEF:
-  - OsViolationHandlingLevel
-  - OsTimingProtectionLevel
-  - OsMemoryProtectionLevel
   - OsMemorySectionInitialize
   - OsIsrInterruptSource
   - OsInterCoreInterruptInterruptSource
@@ -597,26 +609,20 @@ ECUC-ENUMERATION-PARAM-DEF:
 ECUC-INTEGER-PARAM-DEF:
   - OsMasterCoreId
   - OsHookStackSize
-  - OsHookStackStartAddress
   - OsHookStackCoreAssignment
   - OsOsStackSize
-  - OsOsStackStartAddress
   - OsOsStackCoreAssignment
   - OsNonTrustedHookStackSize
-  - OsNonTrustedHookStackStartAddress
   - OsNonTrustedHookStackCoreAssignment
   - OsTaskStackSize
-  - OsTaskStackStartAddress
   - OsTaskSystemStackSize
-  - OsTaskSystemStackStartAddress
   - OsIsrInterruptNumber
   - OsIsrInterruptPriority
   - OsIsrStackSize
   - OsTrustedFunctionStackSize
   - OsInterCoreInterruptStackSize
-  - OsInterCoreInterruptStackStartAddress
-  - OsMemoryRegionStartAddress
   - OsMemoryRegionSize
+  - OsMemoryRegionStartAddress
   - OsMemoryAreaSize
   - OsStandardMemoryCoreAssignment
   - OsIsrMaxFrequency
@@ -630,14 +636,20 @@ ECUC-STRING-PARAM-DEF:
   - OsLinkSectionName
   - OsIocPrimitiveDataType
   - OsIocIncludeFile
+  - OsHookStackStartAddress
+  - OsOsStackStartAddress
+  - OsNonTrustedHookStackStartAddress
+  - OsTaskStackStartAddress
+  - OsTaskSystemStackStartAddress
+  - OsInterCoreInterruptStackStartAddress
 ECUC-BOOLEAN-PARAM-DEF:
   - OsMemoryRegionWriteable
-  - OsMemoryAreaWritable
+  - OsMemoryAreaWriteable
   - OsMemoryAreaReadable
   - OsMemoryAreaExecutable
   - OsMemoryAreaCacheable
   - OsMemoryAreaDevice
-  - OsMemorySectionWritable
+  - OsMemorySectionWriteable
   - OsMemorySectionReadable
   - OsMemorySectionExecutable
   - OsMemorySectionShort
@@ -670,13 +682,14 @@ ECUC-FLOAT-PARAM-DEF:
   - OsSystemCycleTimeWindowLength
   - OsOsInterruptLockBudget
   - OsResourceLockBudget
+  - OsTrustedFunctionExecutionBudget
   - WdgTimeout
   - WdgTriggerInterruptPeriod
 EOS
   $hResult = YAML.load(sNcesContainer)
 
   cXmlData.elements.each("AUTOSAR/AR-PACKAGES/AR-PACKAGE/AR-PACKAGES/AR-PACKAGE/ELEMENTS/ECUC-MODULE-DEF"){|cElement1|
-    # ÂĞ¾İ¥â¥¸¥å¡¼¥ë¤Î¤ß¤ò½èÍı¤¹¤ë
+    # å¯¾è±¡ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã¿ã‚’å‡¦ç†ã™ã‚‹
     if (!aTargetModule.include?(cElement1.elements["SHORT-NAME"].text()))
       next
     end
@@ -686,22 +699,27 @@ EOS
     }
   }
 
-  # ¥Ñ¥é¥á¡¼¥¿Ì¾¤Ç¥½¡¼¥È¤È½ÅÊ£½üµî
+  # ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã§ã‚½ãƒ¼ãƒˆã¨é‡è¤‡é™¤å»
   hResultSort = {}
   $hResult.each{|sType, aParam|
     hResultSort[sType] = aParam.uniq().sort()
   }
 
-  # ³°Éô»²¾ÈÀè¤Î¥Ç¡¼¥¿·¿³ÊÇ¼¥Ï¥Ã¥·¥å¤ò·ë¹ç
+  # å¤–éƒ¨å‚ç…§å…ˆã®ãƒ‡ãƒ¼ã‚¿å‹æ ¼ç´ãƒãƒƒã‚·ãƒ¥ã‚’çµåˆ
   if (!$hForeignRefType.empty?())
     hResultSort[:FOREIGN_REF_TYPE] = $hForeignRefType
   end
 
-  # RteSoftwareComponentInstanceRef¤Ï³°Éô»²¾È¤È¥¤¥ó¥¹¥¿¥ó¥¹»²¾È¤Î
-  # Î¾Êı¤Ë´Ş¤Ş¤ì¤ë¤¬¡¤³°Éô»²¾È¤È¤·¤Æ°·¤¦
+  # é¸æŠå‹ã®ã‚³ãƒ³ãƒ†ãƒŠæ ¼ç´é…åˆ—ã‚’è¿½åŠ 
+  if (!$aChoiceContainer.empty?())
+    hResultSort[:ECUC_CHOICE_CONTAINER_DEF] = $aChoiceContainer
+  end
+
+  # RteSoftwareComponentInstanceRefã¯å¤–éƒ¨å‚ç…§ã¨ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å‚ç…§ã®
+  # ä¸¡æ–¹ã«å«ã¾ã‚Œã‚‹ãŒï¼Œå¤–éƒ¨å‚ç…§ã¨ã—ã¦æ‰±ã†
   hResultSort["ECUC-INSTANCE-REFERENCE-DEF"].delete("RteSoftwareComponentInstanceRef")
 
-  # YAML¥Õ¥¡¥¤¥ë½ĞÎÏ
+  # YAMLãƒ•ã‚¡ã‚¤ãƒ«å‡ºåŠ›
   open(sParamFileName, "w") do |io|
     YAML.dump(hResultSort, io)
   end
@@ -709,12 +727,13 @@ EOS
   puts("Generated #{sParamFileName}")
 end
 
-# ¥µ¥Ö¥³¥ó¥Æ¥ÊºÆµ¢¥Ñ¡¼¥¹´Ø¿ô
+# ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠå†å¸°ãƒ‘ãƒ¼ã‚¹é–¢æ•°
 def MakeParamInfo_parse_sub_container(cElement)
-  # "ECUC-PARAM-CONF-CONTAINER-DEF"¤¬ÅĞ¾ì¤¹¤ë¤Ş¤ÇºÆµ¢¤¹¤ë
+  # "ECUC-PARAM-CONF-CONTAINER-DEF"ãŒç™»å ´ã™ã‚‹ã¾ã§å†å¸°ã™ã‚‹
   cElement.elements.each{|cElementC|
-    # CHOICE¤Ï¤µ¤é¤Ë¥Í¥¹¥È¤¹¤ë
+    # CHOICEã¯ã•ã‚‰ã«ãƒã‚¹ãƒˆã™ã‚‹
     if (cElementC.name == "ECUC-CHOICE-CONTAINER-DEF")
+      $aChoiceContainer.push(cElementC.elements[XML_SNAME].text())
       MakeParamInfo_parse_sub_container(cElementC)
     elsif (cElementC.name == "ECUC-PARAM-CONF-CONTAINER-DEF")
       MakeParamInfo_parse_parameter(cElementC)
@@ -724,29 +743,29 @@ def MakeParamInfo_parse_sub_container(cElement)
   }
 end
 
-# ¥³¥ó¥Æ¥Ê¥Ñ¡¼¥¹´Ø¿ô
+# ã‚³ãƒ³ãƒ†ãƒŠãƒ‘ãƒ¼ã‚¹é–¢æ•°
 def MakeParamInfo_parse_parameter(cElement)
-  # ¥Ñ¥é¥á¡¼¥¿
+  # ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
   cElement.elements.each("PARAMETERS"){|cElementC|
     cElementC.elements.each{|cElementG|
-      # ½é½Ğ¤Î¥Ç¡¼¥¿·¿½èÍı
+      # åˆå‡ºã®ãƒ‡ãƒ¼ã‚¿å‹å‡¦ç†
       if (!$hResult.has_key?(cElementG.name))
         $hResult[cElementG.name] = []
       end
 
-      # ¼èÆÀ¤·¤¿¥Ñ¥é¥á¡¼¥¿Ì¾¤ò³ÊÇ¼¤¹¤ë
+      # å–å¾—ã—ãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã‚’æ ¼ç´ã™ã‚‹
       $hResult[cElementG.name].push(cElementG.elements["SHORT-NAME"].text())
     }
   }
 
-  # »²¾È
+  # å‚ç…§
   cElement.elements.each("REFERENCES/ECUC-REFERENCE-DEF"){|cElementC|
     $hResult["ECUC-REFERENCE-DEF"].push(cElementC.elements["SHORT-NAME"].text())
   }
 
-  # ³°Éô»²¾È
+  # å¤–éƒ¨å‚ç…§
   cElement.elements.each("REFERENCES/ECUC-FOREIGN-REFERENCE-DEF"){|cElementC|
-    # ½é½Ğ¤Î¥Ç¡¼¥¿·¿½èÍı
+    # åˆå‡ºã®ãƒ‡ãƒ¼ã‚¿å‹å‡¦ç†
     if (!$hResult.has_key?("ECUC-FOREIGN-REFERENCE-DEF"))
       $hResult["ECUC-FOREIGN-REFERENCE-DEF"] = []
     end
@@ -754,34 +773,34 @@ def MakeParamInfo_parse_parameter(cElement)
     $hForeignRefType[cElementC.elements["SHORT-NAME"].text()] = cElementC.elements["DESTINATION-TYPE"].text()
   }
 
-  # ÁªÂò»²¾È
+  # é¸æŠå‚ç…§
   cElement.elements.each("REFERENCES/ECUC-CHOICE-REFERENCE-DEF"){|cElementC|
-    # ½é½Ğ¤Î¥Ç¡¼¥¿·¿½èÍı
+    # åˆå‡ºã®ãƒ‡ãƒ¼ã‚¿å‹å‡¦ç†
     if (!$hResult.has_key?("ECUC-CHOICE-REFERENCE-DEF"))
       $hResult["ECUC-CHOICE-REFERENCE-DEF"] = []
     end
     $hResult["ECUC-CHOICE-REFERENCE-DEF"].push(cElementC.elements["SHORT-NAME"].text())
   }
 
-  # ¥·¥ó¥Ü¥ë»²¾È
+  # ã‚·ãƒ³ãƒœãƒ«å‚ç…§
   cElement.elements.each("REFERENCES/ECUC-SYMBOLIC-NAME-REFERENCE-DEF"){|cElementC|
-    # ½é½Ğ¤Î¥Ç¡¼¥¿·¿½èÍı
+    # åˆå‡ºã®ãƒ‡ãƒ¼ã‚¿å‹å‡¦ç†
     if (!$hResult.has_key?("ECUC-SYMBOLIC-NAME-REFERENCE-DEF"))
       $hResult["ECUC-SYMBOLIC-NAME-REFERENCE-DEF"] = []
     end
     $hResult["ECUC-SYMBOLIC-NAME-REFERENCE-DEF"].push(cElementC.elements["SHORT-NAME"].text())
   }
 
-  # ¥¤¥ó¥¹¥¿¥ó¥¹»²¾È
+  # ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å‚ç…§
   cElement.elements.each("REFERENCES/ECUC-INSTANCE-REFERENCE-DEF"){|cElementC|
-    # ½é½Ğ¤Î¥Ç¡¼¥¿·¿½èÍı
+    # åˆå‡ºã®ãƒ‡ãƒ¼ã‚¿å‹å‡¦ç†
     if (!$hResult.has_key?("ECUC-INSTANCE-REFERENCE-DEF"))
       $hResult["ECUC-INSTANCE-REFERENCE-DEF"] = []
     end
     $hResult["ECUC-INSTANCE-REFERENCE-DEF"].push(cElementC.elements["SHORT-NAME"].text())
   }
 
-  # ¥µ¥Ö¥³¥ó¥Æ¥Ê(ºÆµ¢¸Æ½Ğ¤·)
+  # ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠ(å†å¸°å‘¼å‡ºã—)
   cElement.elements.each("SUB-CONTAINERS"){|cElementC|
     MakeParamInfo_parse_sub_container(cElementC)
   }
@@ -789,24 +808,24 @@ end
 
 
 ######################################################################
-# ¥¸¥§¥Í¥ì¡¼¥¿ÍÑcsv¥Õ¥¡¥¤¥ë¤ÎÀ¸À®
+# ã‚¸ã‚§ãƒãƒ¬ãƒ¼ã‚¿ç”¨csvãƒ•ã‚¡ã‚¤ãƒ«ã®ç”Ÿæˆ
 ######################################################################
 def MakeCsv(sFileName, sTargetModule)
-  # ¥Õ¥¡¥¤¥ë¤¬Â¸ºß¤·¤Ê¤¤¾ì¹ç¥¨¥é¡¼
+  # ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ãªã„å ´åˆã‚¨ãƒ©ãƒ¼
   if (!File.exist?(sFileName))
     abort("Argument error !! [#{sFileName}]")
   end
 
   sCsvFileName = File.dirname(sFileName) + "/" + sTargetModule + ".csv"
 
-  # XML¥é¥¤¥Ö¥é¥ê¤Ç¤ÎÆÉ¤ß¹ş¤ß
+  # XMLãƒ©ã‚¤ãƒ–ãƒ©ãƒªã§ã®èª­ã¿è¾¼ã¿
   cXmlData = REXML::Document.new(open(sFileName))
 
   $hResult = {}
   $sNowContainer = ""
 
   cXmlData.elements.each("AUTOSAR/AR-PACKAGES/AR-PACKAGE/AR-PACKAGES/AR-PACKAGE/ELEMENTS/ECUC-MODULE-DEF"){|cElement1|
-    # ÂĞ¾İ¥â¥¸¥å¡¼¥ë¤Î¤ß¤ò½èÍı¤¹¤ë
+    # å¯¾è±¡ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã¿ã‚’å‡¦ç†ã™ã‚‹
     if (cElement1.elements["SHORT-NAME"].text() != sTargetModule)
       next
     end
@@ -853,9 +872,9 @@ def MakeCsv(sFileName, sTargetModule)
   puts("Generated #{sCsvFileName}")
 end
 
-# ¥Ñ¥é¥á¡¼¥¿¾ğÊóÄÉ²Ã´Ø¿ô
+# ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æƒ…å ±è¿½åŠ é–¢æ•°
 def MakeCsv_add_parameter_info(cElement, sName = cElement.name)
-  # ¥Ñ¥é¥á¡¼¥¿Ëè¤Ë¡¤·¿¡¦Â¿½ÅÅÙ²¼¸Â¡¤¾å¸Â¤Î¾ğÊó¤ò¼èÆÀ
+  # ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æ¯ã«ï¼Œå‹ãƒ»å¤šé‡åº¦ä¸‹é™ï¼Œä¸Šé™ã®æƒ…å ±ã‚’å–å¾—
   sLower = nil
   if (!cElement.elements["LOWER-MULTIPLICITY"].nil?)
     sLower = cElement.elements["LOWER-MULTIPLICITY"].text()
@@ -874,11 +893,11 @@ def MakeCsv_add_parameter_info(cElement, sName = cElement.name)
   return [sName, sLower, sUpper]
 end
 
-# ¥µ¥Ö¥³¥ó¥Æ¥ÊºÆµ¢¥Ñ¡¼¥¹´Ø¿ô
+# ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠå†å¸°ãƒ‘ãƒ¼ã‚¹é–¢æ•°
 def MakeCsv_parse_sub_container(cElement)
-  # "ECUC-PARAM-CONF-CONTAINER-DEF"¤¬ÅĞ¾ì¤¹¤ë¤Ş¤ÇºÆµ¢¤¹¤ë
+  # "ECUC-PARAM-CONF-CONTAINER-DEF"ãŒç™»å ´ã™ã‚‹ã¾ã§å†å¸°ã™ã‚‹
   cElement.elements.each{|cElementC|
-    # CHOICE¤Ï¤µ¤é¤Ë¥Í¥¹¥È¤¹¤ë
+    # CHOICEã¯ã•ã‚‰ã«ãƒã‚¹ãƒˆã™ã‚‹
     if (cElementC.name == "ECUC-CHOICE-CONTAINER-DEF")
       $sContainer += "/#{cElementC.elements["SHORT-NAME"].text()}"
       $hResult[$sContainer] = MakeCsv_add_parameter_info(cElementC, nil)
@@ -901,9 +920,9 @@ def MakeCsv_parse_sub_container(cElement)
   }
 end
 
-# ¥³¥ó¥Æ¥Ê¥Ñ¡¼¥¹´Ø¿ô
+# ã‚³ãƒ³ãƒ†ãƒŠãƒ‘ãƒ¼ã‚¹é–¢æ•°
 def MakeCsv_parse_parameter(cElement)
-  # ¥Ñ¥é¥á¡¼¥¿
+  # ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
   cElement.elements.each("PARAMETERS"){|cElementC|
     cElementC.elements.each{|cElementG|
       sParamName = "#{$sContainer}/#{cElementG.elements["SHORT-NAME"].text()}"
@@ -911,37 +930,37 @@ def MakeCsv_parse_parameter(cElement)
     }
   }
 
-  # »²¾È
+  # å‚ç…§
   cElement.elements.each("REFERENCES/ECUC-REFERENCE-DEF"){|cElementC|
     sParamName = "#{$sContainer}/#{cElementC.elements["SHORT-NAME"].text()}"
     $hResult[sParamName] = MakeCsv_add_parameter_info(cElementC)
   }
 
-  # ³°Éô»²¾È
+  # å¤–éƒ¨å‚ç…§
   cElement.elements.each("REFERENCES/ECUC-FOREIGN-REFERENCE-DEF"){|cElementC|
     sParamName = "#{$sContainer}/#{cElementC.elements["SHORT-NAME"].text()}"
     $hResult[sParamName] = MakeCsv_add_parameter_info(cElementC)
   }
 
-  # ÁªÂò»²¾È
+  # é¸æŠå‚ç…§
   cElement.elements.each("REFERENCES/ECUC-CHOICE-REFERENCE-DEF"){|cElementC|
     sParamName = "#{$sContainer}/#{cElementC.elements["SHORT-NAME"].text()}"
     $hResult[sParamName] = MakeCsv_add_parameter_info(cElementC)
   }
 
-  # ¥·¥ó¥Ü¥ë¥Í¡¼¥à»²¾È
+  # ã‚·ãƒ³ãƒœãƒ«ãƒãƒ¼ãƒ å‚ç…§
   cElement.elements.each("REFERENCES/ECUC-SYMBOLIC-NAME-REFERENCE-DEF"){|cElementC|
     sParamName = "#{$sContainer}/#{cElementC.elements["SHORT-NAME"].text()}"
     $hResult[sParamName] = MakeCsv_add_parameter_info(cElementC)
   }
 
-  # ¥¤¥ó¥¹¥¿¥ó¥¹»²¾È
+  # ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹å‚ç…§
   cElement.elements.each("REFERENCES/ECUC-INSTANCE-REFERENCE-DEF"){|cElementC|
     sParamName = "#{$sContainer}/#{cElementC.elements["SHORT-NAME"].text()}"
     $hResult[sParamName] = MakeCsv_add_parameter_info(cElementC)
   }
 
-  # ¥µ¥Ö¥³¥ó¥Æ¥Ê(ºÆµ¢¸Æ½Ğ¤·)
+  # ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠ(å†å¸°å‘¼å‡ºã—)
   cElement.elements.each("SUB-CONTAINERS"){|cElementC|
     MakeCsv_parse_sub_container(cElementC)
   }
@@ -949,7 +968,7 @@ end
 
 
 ######################################################################
-# ¥ª¥×¥·¥ç¥ó½èÍı
+# ã‚ªãƒ—ã‚·ãƒ§ãƒ³å‡¦ç†
 ######################################################################
 lMode = :YamlToXml
 sEcuExtractRef = nil
@@ -1006,7 +1025,7 @@ end
 
 
 ######################################################################
-# ¥ª¥×¥·¥ç¥ó¤Ë½¾¤Ã¤Æ³Æ½èÍı¤ò¼Â¹Ô
+# ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«å¾“ã£ã¦å„å‡¦ç†ã‚’å®Ÿè¡Œ
 ######################################################################
 case lMode
   when :YamlToXml

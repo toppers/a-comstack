@@ -2,57 +2,59 @@ $
 $  TOPPERS/A-CANIF
 $      AuTomotive CANIF
 $
-$  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+$  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
 $                             Graduate School of Information Science, Nagoya Univ., JAPAN
-$  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
-$  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
-$  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
-$  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+$  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+$  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+$  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+$  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+$  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 $  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-$  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
-$  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
-$  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
-$  Copyright (C) 2013-2015 by Witz Corporation
+$  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+$  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+$  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+$  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+$  Copyright (C) 2013-2016 by Witz Corporation
 $
-$  ¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î(1)¡Á(4)¤Î¾ò·ï¤òËş¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥½¥Õ¥È¥¦¥§
-$  ¥¢¡ÊËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò²şÊÑ¤·¤¿¤â¤Î¤ò´Ş¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²ş
-$  ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½ş¤ÇµöÂú¤¹¤ë¡¥
-$  (1) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¥½¡¼¥¹¥³¡¼¥É¤Î·Á¤ÇÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî
-$      ¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Ş¤Ş¤Î·Á¤Ç¥½¡¼
-$      ¥¹¥³¡¼¥ÉÃæ¤Ë´Ş¤Ş¤ì¤Æ¤¤¤ë¤³¤È¡¥
-$  (2) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤¥é¥¤¥Ö¥é¥ê·Á¼°¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
-$      ÍÑ¤Ç¤­¤ë·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ
-$      ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­
-$      ¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
-$  (3) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ò¡¤µ¡´ï¤ËÁÈ¤ß¹ş¤à¤Ê¤É¡¤Â¾¤Î¥½¥Õ¥È¥¦¥§¥¢³«È¯¤Ë»È
-$      ÍÑ¤Ç¤­¤Ê¤¤·Á¤ÇºÆÇÛÉÛ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¼¡¤Î¤¤¤º¤ì¤«¤Î¾ò·ï¤òËş¤¿¤¹¤³
-$      ¤È¡¥
-$    (a) ºÆÇÛÉÛ¤ËÈ¼¤¦¥É¥­¥å¥á¥ó¥È¡ÊÍøÍÑ¼Ô¥Ş¥Ë¥å¥¢¥ë¤Ê¤É¡Ë¤Ë¡¤¾åµ­¤ÎÃø
-$        ºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï¤ª¤è¤Ó²¼µ­¤ÎÌµÊİ¾Úµ¬Äê¤ò·ÇºÜ¤¹¤ë¤³¤È¡¥
-$    (b) ºÆÇÛÉÛ¤Î·ÁÂÖ¤ò¡¤ÊÌ¤ËÄê¤á¤ëÊıË¡¤Ë¤è¤Ã¤Æ¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È¤Ë
-$        Êó¹ğ¤¹¤ë¤³¤È¡¥
-$  (4) ËÜ¥½¥Õ¥È¥¦¥§¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»
-$      ³²¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
-$      ¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Î¥æ¡¼¥¶¤Ş¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍı
-$      Í³¤Ë´ğ¤Å¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤ò
-$      ÌÈÀÕ¤¹¤ë¤³¤È¡¥
+$  ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã®(1)ï½(4)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+$  ã‚¢ï¼ˆæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼ä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+$  å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼
+$  (1) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã®å½¢ã§åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œ
+$      æ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ã‚½ãƒ¼
+$      ã‚¹ã‚³ãƒ¼ãƒ‰ä¸­ã«å«ã¾ã‚Œã¦ã„ã‚‹ã“ã¨ï¼
+$  (2) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œãƒ©ã‚¤ãƒ–ãƒ©ãƒªå½¢å¼ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+$      ç”¨ã§ãã‚‹å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œå†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨
+$      è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜
+$      ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+$  (3) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’ï¼Œæ©Ÿå™¨ã«çµ„ã¿è¾¼ã‚€ãªã©ï¼Œä»–ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢é–‹ç™ºã«ä½¿
+$      ç”¨ã§ããªã„å½¢ã§å†é…å¸ƒã™ã‚‹å ´åˆã«ã¯ï¼Œæ¬¡ã®ã„ãšã‚Œã‹ã®æ¡ä»¶ã‚’æº€ãŸã™ã“
+$      ã¨ï¼
+$    (a) å†é…å¸ƒã«ä¼´ã†ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆï¼ˆåˆ©ç”¨è€…ãƒãƒ‹ãƒ¥ã‚¢ãƒ«ãªã©ï¼‰ã«ï¼Œä¸Šè¨˜ã®è‘—
+$        ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šã‚’æ²è¼‰ã™ã‚‹ã“ã¨ï¼
+$    (b) å†é…å¸ƒã®å½¢æ…‹ã‚’ï¼Œåˆ¥ã«å®šã‚ã‚‹æ–¹æ³•ã«ã‚ˆã£ã¦ï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã«
+$        å ±å‘Šã™ã‚‹ã“ã¨ï¼
+$  (4) æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æ
+$      å®³ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼
+$      ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†
+$      ç”±ã«åŸºã¥ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’
+$      å…è²¬ã™ã‚‹ã“ã¨ï¼
 $
-$  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»Å
-$  ÍÍ¤Ë´ğ¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç
-$  ¤Ï¤Ê¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ğ¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍø
-$  ÍÑ¤¹¤ë¼Ô¤ËÂĞ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+$  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•
+$  æ§˜ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼ä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§
+$  ã¯ãªã„ï¼AUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©
+$  ç”¨ã™ã‚‹è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼
 $
-$  ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ï¡¤ÌµÊİ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª
-$  ¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥½¥Õ¥È¥¦¥§¥¢¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª
-$  ¤ËÂĞ¤¹¤ëÅ¬¹çÀ­¤â´Ş¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊİ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Ş¤¿¡¤ËÜ¥½¥Õ¥È¥¦¥§
-$  ¥¢¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Ş¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½
-$  ¤ÎÀÕÇ¤¤òÉé¤ï¤Ê¤¤¡¥
+$  æœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼ä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠ
+$  ã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„
+$  ã«å¯¾ã™ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼ã¾ãŸï¼Œæœ¬ã‚½ãƒ•ãƒˆã‚¦ã‚§
+$  ã‚¢ã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æ¥çš„ã¾ãŸã¯é–“æ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œã
+$  ã®è²¬ä»»ã‚’è² ã‚ãªã„ï¼
 $
-$  $Id: canif.tf 1241 2015-03-25 07:26:02Z panasonic-ayane $
+$  $Id: canif.tf 3189 2016-03-22 09:49:19Z aisincom-ishikawa $
 $
 
 $ ====================================================================
-$ booleanÈ½Äê´Ø¿ô
+$ booleanåˆ¤å®šé–¢æ•°
 $ ====================================================================
 $FUNCTION IS_TRUE$
 	$true_list = {1, "1", "true", "TRUE", "ON", "ENABLE"}$
@@ -80,7 +82,7 @@ $FUNCTION IS_TRUE$
 $END$
 
 $ ====================================================================
-$  ¥³¥ó¥Õ¥£¥°¥»¥Ã¥È¤´¤È¤Î¥ê¥¹¥È¤òºîÀ®
+$  ã‚³ãƒ³ãƒ•ã‚£ã‚°ã‚»ãƒƒãƒˆã”ã¨ã®ãƒªã‚¹ãƒˆã‚’ä½œæˆ
 $ ====================================================================
 $FUNCTION MAKE_CFG_LIST$
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
@@ -146,13 +148,13 @@ $END$
 
 
 $ ====================================================================
-$  IDÏ¢ÈÖ¥½¡¼¥È´Ø¿ô
+$  IDé€£ç•ªã‚½ãƒ¼ãƒˆé–¢æ•°
 $ ====================================================================
 $FUNCTION ID_SORT$
-$	// [CANIF647_Conf] CanIfCtrlId ½ç¤Ë¥½¡¼¥È
-$	// [CANIF653] CanIfCtrlId¤Ï0¤«¤é³«»Ï¤¹¤ë
-$	// [NCANIF003] CanIfCtrlId¤Ï0¤«¤é¤ÎÏ¢ÈÖ¤È¤¹¤ë
-$	// [NCANIF017] CanIfCtrlDrvCfg¤ÎÂ¿½ÅÅÙ¤Ï1¤Ç¤¢¤ë¤¿¤á¡¤PARENT¥Á¥§¥Ã¥¯ÉÔÍ×
+$	// [CANIF647_Conf] CanIfCtrlId é †ã«ã‚½ãƒ¼ãƒˆ
+$	// [CANIF653] CanIfCtrlIdã¯0ã‹ã‚‰é–‹å§‹ã™ã‚‹
+$	// [NCANIF003] CanIfCtrlIdã¯0ã‹ã‚‰ã®é€£ç•ªã¨ã™ã‚‹
+$	// [NCANIF017] CanIfCtrlDrvCfgã®å¤šé‡åº¦ã¯1ã§ã‚ã‚‹ãŸã‚ï¼ŒPARENTãƒã‚§ãƒƒã‚¯ä¸è¦
 	$new_list = {}$
 	$FOREACH index RANGE(0, LENGTH(CanIfCtrlCfg.ID_LIST) - 1)$
 		$find = 0$
@@ -162,7 +164,7 @@ $	// [NCANIF017] CanIfCtrlDrvCfg¤ÎÂ¿½ÅÅÙ¤Ï1¤Ç¤¢¤ë¤¿¤á¡¤PARENT¥Á¥§¥Ã¥¯ÉÔÍ×
 				$find = find + 1$
 			$END$
 		$END$
-$		// CanIfCtrlId¤¬0¤«¤é¤ÎÏ¢ÈÖ¤Ç¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
+$		// CanIfCtrlIdãŒ0ã‹ã‚‰ã®é€£ç•ªã§ãªã„å ´åˆã¯ã‚¨ãƒ©ãƒ¼
 		$IF find == 0$
 			$ERROR$$FORMAT(_("CanIfCtrlId(%1%\) is not found. CanIfCtrlId should be sequential from 0."), index)$$END$$DIE()$
 		$END$
@@ -172,8 +174,8 @@ $		// CanIfCtrlId¤¬0¤«¤é¤ÎÏ¢ÈÖ¤Ç¤Ê¤¤¾ì¹ç¤Ï¥¨¥é¡¼
 	$END$
 	$CanIfCtrlCfg.ID_LIST = new_list$
 
-$	// CanIfTxPduId CanIfRxPduId ½ç¤Ë¥½¡¼¥È
-$	// [NCANIF003] CanIfTxPduId¤ÈCanIfRxPduId¤Ï¶¦ÄÌÈÖ¹æÎÎ°è¤Ç´ÉÍı¤·¡¤0¤«¤é¤ÎÏ¢ÈÖ¤È¤¹¤ë
+$	// CanIfTxPduId CanIfRxPduId é †ã«ã‚½ãƒ¼ãƒˆ
+$	// [NCANIF003] CanIfTxPduIdã¨CanIfRxPduIdã¯å…±é€šç•ªå·é ˜åŸŸã§ç®¡ç†ã—ï¼Œ0ã‹ã‚‰ã®é€£ç•ªã¨ã™ã‚‹
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
 		$new_list = {}$
 		$FOREACH index RANGE(0, LENGTH(CanIfInitCfg.pdu_list[init_id]) - 1)$
@@ -200,18 +202,18 @@ $	// [NCANIF003] CanIfTxPduId¤ÈCanIfRxPduId¤Ï¶¦ÄÌÈÖ¹æÎÎ°è¤Ç´ÉÍı¤·¡¤0¤«¤é¤ÎÏ¢ÈÖ¤È
 		$CanIfInitCfg.pdu_list[init_id] = new_list$
 	$END$
 
-$	// CanObjectId ½ç¤Ë¥½¡¼¥È
-$	// [CANIF115] HTH¤ÈHRH¤Ï¶¦ÄÌÈÖ¹æÎÎ°è¤Ç´ÉÍı¤·¡¤0¤«¤é¤ÎÏ¢ÈÖ¤È¤¹¤ë
-$	// [CANIF467] HTH¤ÈHRH¤Î½çÈÖ¤ò¹½À®¤·¡¤ÊİÂ¸¤¹¤ë
+$	// CanObjectId é †ã«ã‚½ãƒ¼ãƒˆ
+$	// [CANIF115] HTHã¨HRHã¯å…±é€šç•ªå·é ˜åŸŸã§ç®¡ç†ã—ï¼Œ0ã‹ã‚‰ã®é€£ç•ªã¨ã™ã‚‹
+$	// [CANIF467] HTHã¨HRHã®é †ç•ªã‚’æ§‹æˆã—ï¼Œä¿å­˜ã™ã‚‹
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
 		$FOREACH tx_pdu_id CanIfInitCfg.tx_pdu_list[init_id]$
 $			// [CANIF833_Conf] CanIfBufferHthRef
 $			// [CANIF831_Conf] CanIfTxPduBufferRef
-$			// [CANIF466] Á÷¿®LPDU¤Ï1¤Ä¤ÎCanTxPduBuffer¤¬ÀÅÅª¤Ë³ä¤êÅö¤Æ¤é¤ì¤ë
+$			// [CANIF466] é€ä¿¡LPDUã¯1ã¤ã®CanTxPduBufferãŒé™çš„ã«å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã‚‹
 			$CanIfTxPduCfg.hth_id_ref[tx_pdu_id] = CanIfBufferCfg.CanIfBufferHthRef[CanIfTxPduCfg.CanIfTxPduBufferRef[tx_pdu_id]]$
 $			// [CANIF625_Conf] CanIfHthCanCtrlIdRef
 			$FOREACH hth_id_ref CanIfTxPduCfg.hth_id_ref[tx_pdu_id]$
-$				// [CANIF046] LPDU¤ÏÊ£¿ô¤ÎCAN¥³¥ó¥È¥í¡¼¥é¤ËÂ°¤·¤Æ¤Ï¤¤¤±¤Ê¤¤
+$				// [CANIF046] LPDUã¯è¤‡æ•°ã®CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã«å±ã—ã¦ã¯ã„ã‘ãªã„
 				$IF LENGTH(CanIfTxPduCfg.ctrl_id_ref[tx_pdu_id])$
 					$IF !EQ(CanIfTxPduCfg.ctrl_id_ref[tx_pdu_id], CanIfHthCfg.CanIfHthCanCtrlIdRef[hth_id_ref])$
 						$ERROR$$FORMAT(_("`%1%\' should be assign to only one CAN controller."), tx_pdu_id)$$END$$DIE()$
@@ -226,16 +228,23 @@ $			// [CANIF603_Conf] CanIfTxPduRef
 			$CanIfTxPduCfg.pdu_length[tx_pdu_id] = Pdu.PduLength[CanIfTxPduCfg.CanIfTxPduRef[tx_pdu_id]]$
 			$FOREACH dest_pdu_id PduRDestPdu.ID_LIST$
 				$IF EQ(CanIfTxPduCfg.CanIfTxPduRef[tx_pdu_id], PduRDestPdu.PduRDestPduRef[dest_pdu_id])$
-					$CanIfTxPduCfg.pdu_handle_id[tx_pdu_id] = PduRDestPdu.PduRDestPduHandleId[dest_pdu_id]$
+					$IF LENGTH(PduRDestPdu.PduRDestPduHandleId[dest_pdu_id])$
+						$CanIfTxPduCfg.pdu_handle_id[tx_pdu_id] = PduRDestPdu.PduRDestPduHandleId[dest_pdu_id]$
+					$ELSE$
+						$ERROR$$FORMAT(_("PduRDestPduHandleId(%1%\) is not found."), dest_pdu_id)$$END$$DIE()$	
+					$END$
 				$END$
+			$END$
+			$IF !LENGTH(CanIfTxPduCfg.pdu_handle_id[tx_pdu_id])$
+				$ERROR$$FORMAT(_("CanIfTxPduCfg.CanIfTxPduRef(%1%\) cannot be found in PduRConfiguration."), tx_pdu_id)$$END$$DIE()$	
 			$END$
 		$END$
 		$FOREACH rx_pdu_id CanIfInitCfg.rx_pdu_list[init_id]$
 $			// [CANIF631_Conf] CanIfHrhCanCtrlIdRef
 $			// [CANIF602_Conf] CanIfRxPduHrhIdRef
-$			// [CANIF465] CanIfRxPduId¤Ï1¤Ä°Ê¾å¤ÎHRH¤Ë³ä¤êÅö¤Æ¤ë¤³¤È¤¬¤Ç¤­¤ë¤¿¤á¡¤Ã±°ì¤ÎCAN-ID¤òÊ£¿ô¤ÎHRH¤Ë³ä¤êÅö¤Æ¤ë¤³¤È¤¬¤Ç¤­¤ë
+$			// [CANIF465] CanIfRxPduIdã¯1ã¤ä»¥ä¸Šã®HRHã«å‰²ã‚Šå½“ã¦ã‚‹ã“ã¨ãŒã§ãã‚‹ãŸã‚ï¼Œå˜ä¸€ã®CAN-IDã‚’è¤‡æ•°ã®HRHã«å‰²ã‚Šå½“ã¦ã‚‹ã“ã¨ãŒã§ãã‚‹
 			$FOREACH hrh_id_ref CanIfRxPduCfg.CanIfRxPduHrhIdRef[rx_pdu_id]$
-$				// [CANIF046] LPDU¤ÏÊ£¿ô¤ÎCAN¥³¥ó¥È¥í¡¼¥é¤ËÂ°¤·¤Æ¤Ï¤¤¤±¤Ê¤¤
+$				// [CANIF046] LPDUã¯è¤‡æ•°ã®CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ã«å±ã—ã¦ã¯ã„ã‘ãªã„
 				$IF LENGTH(CanIfRxPduCfg.ctrl_id_ref[rx_pdu_id])$
 					$IF !EQ(CanIfRxPduCfg.ctrl_id_ref[rx_pdu_id], CanIfHrhCfg.CanIfHrhCanCtrlIdRef[hrh_id_ref])$
 						$ERROR$$FORMAT(_("`%1%\' should be assign to only one CAN controller."), rx_pdu_id)$$END$$DIE()$
@@ -281,10 +290,10 @@ $			// [CANIF601_Conf] CanIfRxPduRef
 $END$
 
 $ ====================================================================
-$  [CANIF131] ¥¨¥é¡¼¥Á¥§¥Ã¥¯´Ø¿ô
+$  [CANIF131] ã‚¨ãƒ©ãƒ¼ãƒã‚§ãƒƒã‚¯é–¢æ•°
 $ ====================================================================
 $FUNCTION ERROR_CHECK$
-$ [CANIF131] CanIf»ÅÍÍ¤Ë±è¤Ã¤¿ÀßÄêÃÍ¥Á¥§¥Ã¥¯¤ò¼Â»Ü
+$ [CANIF131] CanIfä»•æ§˜ã«æ²¿ã£ãŸè¨­å®šå€¤ãƒã‚§ãƒƒã‚¯ã‚’å®Ÿæ–½
 
 $ [CANIF244_Conf] CanIf
 $	/*
@@ -294,7 +303,7 @@ $	// [CANIF522_Conf] CanIfPublicCancelTransmitSupport
 	$ret = IS_TRUE(CanIfPublicCfg.CanIfPublicCancelTransmitSupport[1])$
 
 $	// [CANIF671_Conf] CanIfPublicCddHeaderFile
-$	// ¥Á¥§¥Ã¥¯»ö¹à¤Ê¤·
+$	// ãƒã‚§ãƒƒã‚¯äº‹é …ãªã—
 
 $	// [CANIF785_Conf] CanIfPublicChangeBaudrateSupport
 	$ret = IS_TRUE(CanIfPublicCfg.CanIfPublicChangeBaudrateSupport[1])$
@@ -308,19 +317,19 @@ $	// [CANIF742_Conf] CanIfPublicHandleTypeEnum
 
 $	// [CANIF612_Conf] CanIfPublicMultipleDrvSupport
 	$IF IS_TRUE(CanIfPublicCfg.CanIfPublicMultipleDrvSupport[1])$
-$		// [NCANIF010] Ã±°ì¤ÎCAN¥É¥é¥¤¥Ğ¤Î¤ß¥µ¥İ¡¼¥È
+$		// [NCANIF010] å˜ä¸€ã®CANãƒ‰ãƒ©ã‚¤ãƒã®ã¿ã‚µãƒãƒ¼ãƒˆ
 		$ERROR$$FORMAT(_("CanIfPublicMultipleDrvSupport(%1%\) should be `FALSE'."), CanIfPublicCfg.CanIfPublicMultipleDrvSupport[1])$$END$$DIE()$
 	$END$
 
 $	// [CANIF615_Conf] CanIfPublicNumberOfCanHwUnits 
 	$IF (CanIfPublicCfg.CanIfPublicNumberOfCanHwUnits[1] != 1)$
-$		// [NCANIF011] Ã±°ì¤ÎCAN¥É¥é¥¤¥Ğ¤Î¤ß¥µ¥İ¡¼¥È
+$		// [NCANIF011] å˜ä¸€ã®CANãƒ‰ãƒ©ã‚¤ãƒã®ã¿ã‚µãƒãƒ¼ãƒˆ
 		$ERROR$$FORMAT(_("CanIfPublicNumberOfCanHwUnits(%1%\) should be `1'."), CanIfPublicCfg.CanIfPublicNumberOfCanHwUnits[1])$$END$$DIE()$
 	$END$
 
 $	// [CANIF772_Conf] CanIfPublicPnSupport
 	$IF IS_TRUE(CanIfPublicCfg.CanIfPublicPnSupport[1])$
-$		// [NCANIF012] PNÈó¥µ¥İ¡¼¥È
+$		// [NCANIF012] PNéã‚µãƒãƒ¼ãƒˆ
 		$ERROR$$FORMAT(_("CanIfPublicPnSupport(%1%\) should be `FALSE'."), CanIfPublicCfg.CanIfPublicPnSupport[1])$$END$$DIE()$
 	$END$
 
@@ -333,13 +342,13 @@ $	// [CANIF609_Conf] CanIfPublicReadTxPduNotifyStatusApi
 
 $	// [CANIF610_Conf] CanIfPublicSetDynamicTxIdApi
 	$IF IS_TRUE(CanIfPublicCfg.CanIfPublicSetDynamicTxIdApi[1])$
-$		// [NCANIF013] Æ°ÅªCAN-IDÀßÄê¤ÏÈó¥µ¥İ¡¼¥È
+$		// [NCANIF013] å‹•çš„CAN-IDè¨­å®šã¯éã‚µãƒãƒ¼ãƒˆ
 		$ERROR$$FORMAT(_("CanIfPublicSetDynamicTxIdApi(%1%\) should be `FALSE'."), CanIfPublicCfg.CanIfPublicSetDynamicTxIdApi[1])$$END$$DIE()$
 	$END$
 
 $	// [CANIF618_Conf] CanIfPublicTxBuffering
 	$IF IS_TRUE(CanIfPublicCfg.CanIfPublicTxBuffering[1])$
-$		// [NCANIF014] Á÷¿®¥Ğ¥Ã¥Õ¥¡¥ê¥ó¥°Èó¥µ¥İ¡¼¥È
+$		// [NCANIF014] é€ä¿¡ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°éã‚µãƒãƒ¼ãƒˆ
 		$ERROR$$FORMAT(_("CanIfPublicTxBuffering(%1%\) should be `FALSE'."), CanIfPublicCfg.CanIfPublicTxBuffering[1])$$END$$DIE()$
 	$END$
 
@@ -359,7 +368,7 @@ $	// [CANIF617_Conf] CanIfPrivateDlcCheck
 
 $	// [CANIF675_Conf] CanIfSupportTTCAN
 	$IF IS_TRUE(CanIfPrivateCfg.CanIfSupportTTCAN[1])$
-$		// [NCANIF009] TTCANÈó¥µ¥İ¡¼¥È
+$		// [NCANIF009] TTCANéã‚µãƒãƒ¼ãƒˆ
 		$ERROR$$FORMAT(_("CanIfSupportTTCAN(%1%\) should be `FALSE'."), CanIfPrivateCfg.CanIfSupportTTCAN[1])$$END$$DIE()$
 	$END$
 
@@ -369,9 +378,9 @@ $	 *  [CANIF250_Conf] CanIfDispatchCfg
 $	 */
 $	// [CANIF547_Conf] CanIfDispatchUserCtrlBusOffUL
 $	// [CANIF525_Conf] CanIfDispatchUserCtrlBusOffName
-$	// [CANIF450] <User_ControllerBusOff>¤òÄó¶¡¤¹¤ë¾å°Ì¥ì¥¤¥ä¥â¥¸¥å¡¼¥ë¤ÏCanIfDispatchUserCtrlBusOffUL¤Ç»ØÄê¤µ¤ì¤ë
+$	// [CANIF450] <User_ControllerBusOff>ã‚’æä¾›ã™ã‚‹ä¸Šä½ãƒ¬ã‚¤ãƒ¤ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯CanIfDispatchUserCtrlBusOffULã§æŒ‡å®šã•ã‚Œã‚‹
 	$IF EQ(CanIfDispatchCfg.CanIfDispatchUserCtrlBusOffUL[1], "CAN_SM")$
-$		// [CANIF450][CANIF559] CanIfDispatchUserCtrlBusOffUL¤¬`CAN_SM'¤Î¾ì¹ç¡¤CanIfDispatchUserCtrlBusOffName¤Ï`CanSM_ControllerBusOff'
+$		// [CANIF450][CANIF559] CanIfDispatchUserCtrlBusOffULãŒ`CAN_SM'ã®å ´åˆï¼ŒCanIfDispatchUserCtrlBusOffNameã¯`CanSM_ControllerBusOff'
 		$IF LENGTH(CanIfDispatchCfg.CanIfDispatchUserCtrlBusOffName[1])$
 			$IF !EQ(CanIfDispatchCfg.CanIfDispatchUserCtrlBusOffName[1], "CanSM_ControllerBusOff")$
 				$ERROR$$FORMAT(_("CanIfDispatchUserCtrlBusOffName(%1%\) should be `CanSM_ControllerBusOff'. CanIfDispatchUserCtrlBusOffUL is `CAN_SM'"), CanIfDispatchCfg.CanIfDispatchUserCtrlBusOffName[1])$$END$$DIE()$
@@ -380,7 +389,7 @@ $		// [CANIF450][CANIF559] CanIfDispatchUserCtrlBusOffUL¤¬`CAN_SM'¤Î¾ì¹ç¡¤CanIfD
 			$CanIfDispatchCfg.CanIfDispatchUserCtrlBusOffName[1] = "CanSM_ControllerBusOff"$
 		$END$
 	$ELIF EQ(CanIfDispatchCfg.CanIfDispatchUserCtrlBusOffUL[1], "CDD")$
-$		// [CANIF450][CANIF560] CanIfDispatchUserCtrlBusOffUL¤¬`CDD'¤Î¾ì¹ç¡¤CanIfDispatchUserCtrlBusOffName¤Î»ØÄê¤ÏÉ¬¿Ü
+$		// [CANIF450][CANIF560] CanIfDispatchUserCtrlBusOffULãŒ`CDD'ã®å ´åˆï¼ŒCanIfDispatchUserCtrlBusOffNameã®æŒ‡å®šã¯å¿…é ˆ
 		$IF !LENGTH(CanIfDispatchCfg.CanIfDispatchUserCtrlBusOffName[1])$
 			$ERROR$$FORMAT(_("CanIfDispatchUserCtrlBusOffName should be set value. CanIfDispatchUserCtrlBusOffUL is `CDD'"))$$END$$DIE()$
 		$END$
@@ -390,9 +399,9 @@ $		// [CANIF450][CANIF560] CanIfDispatchUserCtrlBusOffUL¤¬`CDD'¤Î¾ì¹ç¡¤CanIfDisp
 
 $	// [CANIF684_Conf] CanIfDispatchUserCtrlModeIndicationUL
 $	// [CANIF683_Conf] CanIfDispatchUserCtrlModeIndicationName
-$	// [CANIF689] <User_ControllerModeIndication>¤òÄó¶¡¤¹¤ë¾å°Ì¥ì¥¤¥ä¥â¥¸¥å¡¼¥ë¤ÏCanIfDispatchUserCtrlModeIndicationUL¤Ç»ØÄê¤µ¤ì¤ë
+$	// [CANIF689] <User_ControllerModeIndication>ã‚’æä¾›ã™ã‚‹ä¸Šä½ãƒ¬ã‚¤ãƒ¤ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯CanIfDispatchUserCtrlModeIndicationULã§æŒ‡å®šã•ã‚Œã‚‹
 	$IF EQ(CanIfDispatchCfg.CanIfDispatchUserCtrlModeIndicationUL[1], "CAN_SM")$
-$		// [CANIF690][CANIF691] CanIfDispatchUserCtrlModeIndicationUL¤¬`CAN_SM'¤Î¾ì¹ç¡¤CanIfDispatchUserCtrlModeIndicationName¤Ï`CanSM_ControllerModeIndication'
+$		// [CANIF690][CANIF691] CanIfDispatchUserCtrlModeIndicationULãŒ`CAN_SM'ã®å ´åˆï¼ŒCanIfDispatchUserCtrlModeIndicationNameã¯`CanSM_ControllerModeIndication'
 		$IF LENGTH(CanIfDispatchCfg.CanIfDispatchUserCtrlModeIndicationName[1])$
 			$IF !EQ(CanIfDispatchCfg.CanIfDispatchUserCtrlModeIndicationName[1], "CanSM_ControllerModeIndication")$
 				$ERROR$$FORMAT(_("CanIfDispatchUserCtrlModeIndicationName(%1%\) should be `CanSM_ControllerModeIndication'. CanIfDispatchUserCtrlModeIndicationUL is `CAN_SM'"), CanIfDispatchCfg.CanIfDispatchUserCtrlModeIndicationName[1])$$END$$DIE()$
@@ -401,7 +410,7 @@ $		// [CANIF690][CANIF691] CanIfDispatchUserCtrlModeIndicationUL¤¬`CAN_SM'¤Î¾ì¹ç
 			$CanIfDispatchCfg.CanIfDispatchUserCtrlModeIndicationName[1] = "CanSM_ControllerModeIndication"$
 		$END$
 	$ELIF EQ(CanIfDispatchCfg.CanIfDispatchUserCtrlModeIndicationUL[1], "CDD")$
-$		// [CANIF690][CANIF692] CanIfDispatchUserCtrlModeIndicationUL¤¬`CDD'¤Î¾ì¹ç¡¤CanIfDispatchUserCtrlModeIndicationName¤Î»ØÄê¤ÏÉ¬¿Ü
+$		// [CANIF690][CANIF692] CanIfDispatchUserCtrlModeIndicationULãŒ`CDD'ã®å ´åˆï¼ŒCanIfDispatchUserCtrlModeIndicationNameã®æŒ‡å®šã¯å¿…é ˆ
 		$IF !LENGTH(CanIfDispatchCfg.CanIfDispatchUserCtrlModeIndicationName[1])$
 			$ERROR$$FORMAT(_("CanIfDispatchUserCtrlModeIndicationName should be set value. CanIfDispatchUserCtrlModeIndicationUL is `CDD'"))$$END$$DIE()$
 		$END$
@@ -412,7 +421,7 @@ $		// [CANIF690][CANIF692] CanIfDispatchUserCtrlModeIndicationUL¤¬`CDD'¤Î¾ì¹ç¡¤C
 $	// [CANIF549_Conf] CanIfDispatchUserValidateWakeupEventUL
 $	// [CANIF531_Conf] CanIfDispatchUserValidateWakeupEventName
 	$IF LENGTH(CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventUL[1])$
-$		// [CANIF456][CANIF637_Conf] CanIfCtrlWakeupSupport¤¬FALSE¤Î¾ì¹ç¡¤CanIfDispatchUserValidateWakeupEventUL¤ÏÀßÄêÉÔ²Ä
+$		// [CANIF456][CANIF637_Conf] CanIfCtrlWakeupSupportãŒFALSEã®å ´åˆï¼ŒCanIfDispatchUserValidateWakeupEventULã¯è¨­å®šä¸å¯
 		$wakeup_support_flg = "FALSE"$
 		$FOREACH ctrl_id CanIfCtrlCfg.ID_LIST$
 			$IF IS_TRUE(CanIfCtrlCfg.CanIfCtrlWakeupSupport[ctrl_id])$
@@ -423,9 +432,9 @@ $		// [CANIF456][CANIF637_Conf] CanIfCtrlWakeupSupport¤¬FALSE¤Î¾ì¹ç¡¤CanIfDispat
 			$ERROR$$FORMAT(_("CanIfDispatchUserValidateWakeupEventUL should not be set value. All of CanIfCtrlWakeupSupport is FALSE."))$$END$$DIE()$
 		$END$
 
-$		// [CANIF456] <User_ValidateWakeupEvent>¤òÄó¶¡¤¹¤ë¾å°Ì¥ì¥¤¥ä¥â¥¸¥å¡¼¥ë¤ÏCanIfDispatchUserValidateWakeupEventUL¤Ç»ØÄê¤µ¤ì¤ë
+$		// [CANIF456] <User_ValidateWakeupEvent>ã‚’æä¾›ã™ã‚‹ä¸Šä½ãƒ¬ã‚¤ãƒ¤ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯CanIfDispatchUserValidateWakeupEventULã§æŒ‡å®šã•ã‚Œã‚‹
 		$IF EQ(CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventUL[1], "ECUM")$
-$			// [CANIF563] CanIfDispatchUserValidateWakeupEventUL¤¬`ECUM'¤Î¾ì¹ç¡¤CanIfDispatchUserValidateWakeupEventName¤Ï`EcuM_ValidateWakeupEvent'
+$			// [CANIF563] CanIfDispatchUserValidateWakeupEventULãŒ`ECUM'ã®å ´åˆï¼ŒCanIfDispatchUserValidateWakeupEventNameã¯`EcuM_ValidateWakeupEvent'
 			$IF LENGTH(CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventName[1])$
 				$IF !EQ(CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventName[1], "EcuM_ValidateWakeupEvent")$
 					$ERROR$$FORMAT(_("CanIfDispatchUserValidateWakeupEventName(%1%\) should be `EcuM_ValidateWakeupEvent'. CanIfDispatchUserValidateWakeupEventUL is `ECUM'"), CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventName[1])$$END$$DIE()$
@@ -434,7 +443,7 @@ $			// [CANIF563] CanIfDispatchUserValidateWakeupEventUL¤¬`ECUM'¤Î¾ì¹ç¡¤CanIfDis
 				$CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventName[1] = "EcuM_ValidateWakeupEvent"$
 			$END$
 		$ELIF EQ(CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventUL[1], "CDD")$
-$			// [CANIF564] CanIfDispatchUserValidateWakeupEventUL¤¬`CDD'¤Î¾ì¹ç¡¤CanIfDispatchUserValidateWakeupEventName¤Î»ØÄê¤ÏÉ¬¿Ü
+$			// [CANIF564] CanIfDispatchUserValidateWakeupEventULãŒ`CDD'ã®å ´åˆï¼ŒCanIfDispatchUserValidateWakeupEventNameã®æŒ‡å®šã¯å¿…é ˆ
 			$IF !LENGTH(CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventName[1])$
 				$ERROR$$FORMAT(_("CanIfDispatchUserValidateWakeupEventName should be set value. CanIfDispatchUserValidateWakeupEventUL is `CDD'"))$$END$$DIE()$
 			$END$
@@ -443,10 +452,10 @@ $			// [CANIF564] CanIfDispatchUserValidateWakeupEventUL¤¬`CDD'¤Î¾ì¹ç¡¤CanIfDisp
 		$END$
 	$ELSE$
 		$IF LENGTH(CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventName[1])$
-$			// CanIfDispatchUserValidateWakeupEventUL¤¬¾ÊÎ¬¤µ¤ì¡¤¤«¤Ä¡¤CanIfDispatchUserValidateWakeupEventName¤ËÃÍ¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤ë¾ì¹ç¤Ï·Ù¹ğ
+$			// CanIfDispatchUserValidateWakeupEventULãŒçœç•¥ã•ã‚Œï¼Œã‹ã¤ï¼ŒCanIfDispatchUserValidateWakeupEventNameã«å€¤ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯è­¦å‘Š
 			$ERROR$$FORMAT(_("CanIfDispatchUserValidateWakeupEventUL would be set value."))$$END$$DIE()$
 		$ELSE$
-$			// CanIfDispatchUserValidateWakeupEventUL¤¬¾ÊÎ¬¤µ¤ì¡¤¤«¤Ä¡¤CanIfDispatchUserValidateWakeupEventName¤¬¾ÊÎ¬¤µ¤ì¤¿¾ì¹ç¤ÏNULL_PTR¤òÊä´°
+$			// CanIfDispatchUserValidateWakeupEventULãŒçœç•¥ã•ã‚Œï¼Œã‹ã¤ï¼ŒCanIfDispatchUserValidateWakeupEventNameãŒçœç•¥ã•ã‚ŒãŸå ´åˆã¯NULL_PTRã‚’è£œå®Œ
 			$CanIfDispatchCfg.CanIfDispatchUserValidateWakeupEventName[1] = "NULL_PTR"$
 		$END$
 	$END$
@@ -454,20 +463,20 @@ $			// CanIfDispatchUserValidateWakeupEventUL¤¬¾ÊÎ¬¤µ¤ì¡¤¤«¤Ä¡¤CanIfDispatchUser
 
 $	/*
 $	 *  [CANIF253_Conf] CanIfCtrlDrvCfg
-$	 *  [NCANIF015] CanIfCtrlDrvCfg¤ÎÂ¿½ÅÅÙ¤Ï1
+$	 *  [NCANIF015] CanIfCtrlDrvCfgã®å¤šé‡åº¦ã¯1
 $	 */
 $	// [CANIF640_Conf] CanIfCtrlDrvTxCancellation
 	$IF IS_TRUE(CanIfCtrlDrvCfg.CanIfCtrlDrvTxCancellation[1])$
-$		// [NCANIF004] Á÷¿®¥­¥ã¥ó¥»¥ëÄÌÃÎ¤ÏÈó¥µ¥İ¡¼¥È
+$		// [NCANIF004] é€ä¿¡ã‚­ãƒ£ãƒ³ã‚»ãƒ«é€šçŸ¥ã¯éã‚µãƒãƒ¼ãƒˆ
 		$ERROR$$FORMAT(_("CanIfCtrlDrvTxCancellation(%1%\) should be `FALSE'."), CanIfCtrlDrvCfg.CanIfCtrlDrvTxCancellation[1])$$END$$DIE()$
 	$END$
 
 $	// [CANIF642_Conf] CanIfCtrlDrvInitHohConfigRef
-$	// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$	// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 
 
 $	// [CANIF638_Conf] CanIfCtrlDrvNameRef
-$	// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$	// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 
 
 
@@ -476,7 +485,7 @@ $	 *  [CANIF546_Conf] CanIfCtrlCfg
 $	 */
 	$FOREACH ctrl_id CanIfCtrlCfg.ID_LIST$
 $	// [CANIF647_Conf] CanIfCtrlId
-		$IF (CanIfCtrlCfg.CanIfCtrlId[ctrl_id] < 0) || (CanIfCtrlCfg.CanIfCtrlId[ctrl_id] > 65535)$
+		$IF (CanIfCtrlCfg.CanIfCtrlId[ctrl_id] > 65535)$
 			$ERROR$$FORMAT(_("CanIfCtrlId(%1%\) should be in the range from 0 to 65535."), CanIfCtrlCfg.CanIfCtrlId[ctrl_id])$$END$$DIE()$
 		$END$
 
@@ -495,10 +504,10 @@ $	// [CANIF636_Conf] CanIfCtrlCanCtrlRef
 
 $	/*
 $	 *  [CANIF247_Conf] CanIfInitCfg
-$	 *  [NCANIF001] CanIfInitCfg¤ÎÂ¿½ÅÅÙ¤Ï1..*
+$	 *  [NCANIF001] CanIfInitCfgã®å¤šé‡åº¦ã¯1..*
 $	 */
 $	// [CANIF623_Conf] CanIfInitCfgSet
-$	// ToDo: ÀßÄê¤µ¤ì¤¿Ê¸»úÎó¤¬32Ê¸»ú°Ê²¼¤«¤É¤¦¤«¤ò¥Á¥§¥Ã¥¯
+$	// ToDo: è¨­å®šã•ã‚ŒãŸæ–‡å­—åˆ—ãŒ32æ–‡å­—ä»¥ä¸‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯
 
 
 $	/*
@@ -506,31 +515,31 @@ $	 *  [CANIF832_Conf] CanIfBufferCfg
 $	 */
 $	// [CANIF834_Conf] CanIfBufferSize
 	$FOREACH buffer_id CanIfBufferCfg.ID_LIST$
-$		// [NCANIF005] Á÷¿®¥Ğ¥Ã¥Õ¥¡¥ê¥ó¥°Èó¥µ¥İ¡¼¥È
+$		// [NCANIF005] é€ä¿¡ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°éã‚µãƒãƒ¼ãƒˆ
 		$IF CanIfBufferCfg.CanIfBufferSize[buffer_id] != 0$
 			$ERROR$$FORMAT(_("CanIfBufferSize(%1%\) should be `0'."), CanIfBufferCfg.CanIfBufferSize[buffer_id])$$END$$DIE()$
 		$END$
 
 $		// [CANIF833_Conf] CanIfBufferHthRef
-$		// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$		// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 	$END$
 
 
 $	/*
 $	 *  [CANIF257_Conf] CanIfInitHohCfg
-$	 *  [CANIF662] 2¼ïÎà¤ÎHOH(HTH/HRH)¤ò»ÈÍÑ¤·¤ÆCAN¥É¥é¥¤¥Ğ¤Ø¥¢¥¯¥»¥¹
+$	 *  [CANIF662] 2ç¨®é¡ã®HOH(HTH/HRH)ã‚’ä½¿ç”¨ã—ã¦CANãƒ‰ãƒ©ã‚¤ãƒã¸ã‚¢ã‚¯ã‚»ã‚¹
 $	 */
 $	// [CANIF620_Conf] CanIfInitRefCfgSet
-$	// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$	// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 
 
 $	/*
 $	 *  [CANIF258_Conf] CanIfHthCfg
-$	 *  [CANIF666] HTH¤Ï¡¤BasicCAN¤Ş¤¿¤ÏFullCAN¤ÎÄÌ¿®ÊıË¡¤ò»ÈÍÑ¤·¤ÆÁ÷¿®¤Ç¤­¤ë¤è¤¦¤Ë¤¹¤ë
-$	 *  [CANIF292] HTH¤ÏCAN¥³¥ó¥È¥í¡¼¥é¥á¡¼¥ë¥Ü¥Ã¥¯¥¹¤ÎÏÀÍı¥Ï¡¼¥É¥¦¥§¥¢Á÷¿®¥ª¥Ö¥¸¥§¥¯¥È¤ò»²¾È¤¹¤ë¥Ï¥ó¥É¥ë
+$	 *  [CANIF666] HTHã¯ï¼ŒBasicCANã¾ãŸã¯FullCANã®é€šä¿¡æ–¹æ³•ã‚’ä½¿ç”¨ã—ã¦é€ä¿¡ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
+$	 *  [CANIF292] HTHã¯CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¡ãƒ¼ãƒ«ãƒœãƒƒã‚¯ã‚¹ã®è«–ç†ãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢é€ä¿¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‚ç…§ã™ã‚‹ãƒãƒ³ãƒ‰ãƒ«
 $	 */
 	$FOREACH hth_id CanIfHthCfg.ID_LIST$
-$		// [CANIF667] Ê£¿ô¤ÎHTH¤ò»ÈÍÑ¤¹¤ë¾ì¹ç¡¤³ÆHTH¤Ï1¤Ä¤ÎÁ÷¿®LPDU¤ËÂ°¤¹¤ëÉ¬Í×¤¬¤¢¤ë
+$		// [CANIF667] è¤‡æ•°ã®HTHã‚’ä½¿ç”¨ã™ã‚‹å ´åˆï¼Œå„HTHã¯1ã¤ã®é€ä¿¡LPDUã«å±ã™ã‚‹å¿…è¦ãŒã‚ã‚‹
 		$FOREACH tx_pdu_id CanIfTxPduCfg.ID_LIST$
 			$IF EQ(hth_id, CanIfTxPduCfg.hth_id_ref[tx_pdu_id])$
 				$IF LENGTH(CanIfHthCfg.tx_pdu_id_ref[hth_id])$
@@ -545,40 +554,40 @@ $		// [CANIF667] Ê£¿ô¤ÎHTH¤ò»ÈÍÑ¤¹¤ë¾ì¹ç¡¤³ÆHTH¤Ï1¤Ä¤ÎÁ÷¿®LPDU¤ËÂ°¤¹¤ëÉ¬Í×¤¬¤¢¤ë
 		$END$
 
 $		// [CANIF625_Conf] CanIfHthCanCtrlIdRef
-$		// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$		// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 
 $		// [CANIF627_Conf] CanIfHthIdSymRef
-$		// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$		// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 	$END$
 
 
 $	/*
 $	 *  [CANIF259_Conf] CanIfHrhCfg
-$	 *  [CANIF665] HRH¤Ï¡¤BasicCAN¤Ş¤¿¤ÏFullCAN¤ÎÄÌ¿®ÊıË¡¤ò»ÈÍÑ¤·¤Æ¼õ¿®¤Ç¤­¤ë¤è¤¦¤Ë¤¹¤ë
-$	 *  [CANIF291] HRH¤ÏCAN¥³¥ó¥È¥í¡¼¥é¥á¡¼¥ë¥Ü¥Ã¥¯¥¹¤ÎÏÀÍı¥Ï¡¼¥É¥¦¥§¥¢¼õ¿®¥ª¥Ö¥¸¥§¥¯¥È¤ò»²¾È¤¹¤ë¥Ï¥ó¥É¥ë
+$	 *  [CANIF665] HRHã¯ï¼ŒBasicCANã¾ãŸã¯FullCANã®é€šä¿¡æ–¹æ³•ã‚’ä½¿ç”¨ã—ã¦å—ä¿¡ã§ãã‚‹ã‚ˆã†ã«ã™ã‚‹
+$	 *  [CANIF291] HRHã¯CANã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¡ãƒ¼ãƒ«ãƒœãƒƒã‚¯ã‚¹ã®è«–ç†ãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢å—ä¿¡ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å‚ç…§ã™ã‚‹ãƒãƒ³ãƒ‰ãƒ«
 $	 */
 	$FOREACH hrh_id CanIfHrhCfg.ID_LIST$
-$		// [CANIF664] Ê£¿ô¤ÎHRH¤¬»ÈÍÑ¤µ¤ì¤ë¾ì¹ç¡¤³ÆHRH¤Ï¾¯¤Ê¤¯¤È¤â1¤Ä¤Î¼õ¿®LPDU¤ËÂ°¤¹¤ëÉ¬Í×¤¬¤¢¤ë
+$		// [CANIF664] è¤‡æ•°ã®HRHãŒä½¿ç”¨ã•ã‚Œã‚‹å ´åˆï¼Œå„HRHã¯å°‘ãªãã¨ã‚‚1ã¤ã®å—ä¿¡LPDUã«å±ã™ã‚‹å¿…è¦ãŒã‚ã‚‹
 		$FOREACH rx_pdu_id CanIfRxPduCfg.ID_LIST$
 			$IF EQ(hrh_id, CanIfRxPduCfg.CanIfRxPduHrhIdRef[rx_pdu_id])$
 				$CanIfHrhCfg.rx_pdu_id_ref[hrh_id] = rx_pdu_id$
 			$END$
 		$END$
 		$IF !LENGTH(CanIfHrhCfg.rx_pdu_id_ref[hrh_id])$
-			$ERROR$$FORMAT(_("%1%\ should belong to at least to a single or fixed group of Tx LPDU."), hrh_id)$$END$$DIE()$
+			$ERROR$$FORMAT(_("%1%\ should belong to at least to a single or fixed group of Rx LPDU."), hrh_id)$$END$$DIE()$
 		$END$
 
 $		[CANIF632_Conf] CanIfHrhSoftwareFilter
 		$IF IS_TRUE(CanIfHrhCfg.CanIfHrhSoftwareFilter[hrh_id])$
-$			// [NCANIF006] ¥½¥Õ¥È¥¦¥§¥¢¥Õ¥£¥ë¥¿¥ê¥ó¥°¤ÏÈó¥µ¥İ¡¼¥È
+$			// [NCANIF006] ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°ã¯éã‚µãƒãƒ¼ãƒˆ
 			$ERROR$$FORMAT(_("CanIfHrhSoftwareFilter(%1%\) should be `FALSE'."), CanIfHrhCfg.CanIfHrhSoftwareFilter[hrh_id])$$END$$DIE()$
 		$END$
 
 $		// [CANIF631_Conf] CanIfHrhCanCtrlIdRef
-$		// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$		// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 
 $		// [CANIF634_Conf] CanIfHrhIdSymRef 
-$		// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$		// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 	$END$
 
 
@@ -587,7 +596,7 @@ $	 *  [CANIF248_Conf] CanIfTxPduCfg
 $	 */
 	$FOREACH tx_pdu_id CanIfTxPduCfg.ID_LIST$
 $		// [CANIF590_Conf] CanIfTxPduCanIdType
-$		// [CANIF243] Can_Write()¤ò¸Æ¤Ó½Ğ¤¹Á°¤ËCAN-ID¤Î¥¿¥¤¥×¤òÀßÄê¤¹¤ë
+$		// [CANIF243] Can_Write()ã‚’å‘¼ã³å‡ºã™å‰ã«CAN-IDã®ã‚¿ã‚¤ãƒ—ã‚’è¨­å®šã™ã‚‹
 		$IF !EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "EXTENDED_CAN") && !EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "STANDARD_CAN")$
 			$ERROR$$FORMAT(_("CanIfTxPduCanIdType(%1%\) should be `EXTENDED_CAN' or `STANDARD_CAN'."), CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id])$$END$$DIE()$
 		$END$
@@ -604,7 +613,7 @@ $		// [CANIF594_Conf] CanIfTxPduDlc
 		$IF (CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] < 0) || (CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] > 8)$
 			$ERROR$$FORMAT(_("CanIfTxPduDlc(%1%\) should be in the range from 0 to 8."), CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id])$$END$$DIE()$
 		$END$
-$		// [NCANIF015] ¥°¥í¡¼¥Ğ¥ëPDU¤ÎÄ¹¤µ¤è¤êDLC¤¬Ã»¤¤¾ì¹ç¡¤¥¨¥é¡¼
+$		// [NCANIF015] ã‚°ãƒ­ãƒ¼ãƒãƒ«PDUã®é•·ã•ã‚ˆã‚ŠDLCãŒçŸ­ã„å ´åˆï¼Œã‚¨ãƒ©ãƒ¼
 		$IF CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] < CanIfTxPduCfg.pdu_length[tx_pdu_id]$
 			$ERROR$$FORMAT(_("CanIfTxPduDlc(%1%\) should be equal or larger than PduLength(%2%\). [%3%\]"), CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id], CanIfTxPduCfg.pdu_length[tx_pdu_id], tx_pdu_id)$$END$$DIE()$
 		$END$
@@ -616,22 +625,22 @@ $		// [CANIF591_Conf] CanIfTxPduId
 
 $		// [CANIF589_Conf] CanIfTxPduReadNotifyStatus
 		$IF IS_TRUE(CanIfTxPduCfg.CanIfTxPduReadNotifyStatus[tx_pdu_id]) && !IS_TRUE(CanIfPublicCfg.CanIfPublicReadTxPduNotifyStatusApi[1])$
-			$ERROR$$FORMAT(_("CanIfTxPduReadNotifyStatus(%1%\) should not be set value. CanIfPublicReadTxPduNotifyStatusApi is FALSE."), CanIfTxPduCfg.CanIfTxPduReadNotifyStatus[tx_pdu_id])$$END$$DIE()$
+			$ERROR$$FORMAT(_("CanIfTxPduReadNotifyStatus(%1%\) should not be set TRUE. CanIfPublicReadTxPduNotifyStatusApi is FALSE."), CanIfTxPduCfg.CanIfTxPduReadNotifyStatus[tx_pdu_id])$$END$$DIE()$
 		$END$
 
 $		// [CANIF593_Conf] CanIfTxPduType
-$		// [NCANIF016] Æ°ÅªCAN-IDÀßÄê¤ÏÈó¥µ¥İ¡¼¥È
+$		// [NCANIF016] å‹•çš„CAN-IDè¨­å®šã¯éã‚µãƒãƒ¼ãƒˆ
 		$IF !EQ(CanIfTxPduCfg.CanIfTxPduType[tx_pdu_id], "STATIC")$
 			$ERROR$$FORMAT(_("CanIfTxPduType(%1%\) should be `STATIC'."), CanIfTxPduCfg.CanIfTxPduType[tx_pdu_id])$$END$$DIE()$
 		$END$
 		
 $		// [CANIF527_Conf] CanIfTxPduUserTxConfirmationUL
 $		// [CANIF528_Conf] CanIfTxPduUserTxConfirmationName
-$		// [CANIF438] <User_TxConfirmation>¤òÄó¶¡¤¹¤ë¾å°Ì¥ì¥¤¥ä¥â¥¸¥å¡¼¥ë¤ÏCanIfTxPduUserTxConfirmationUL¤Ç»ØÄê¤µ¤ì¤ë
-$		// [CANIF542] <User_TxConfirmation>()¤ÎÌ¾Á°¤ÏCanIfTxPduUserTxConfirmationName¤ËÄêµÁ¤¹¤ë
+$		// [CANIF438] <User_TxConfirmation>ã‚’æä¾›ã™ã‚‹ä¸Šä½ãƒ¬ã‚¤ãƒ¤ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯CanIfTxPduUserTxConfirmationULã§æŒ‡å®šã•ã‚Œã‚‹
+$		// [CANIF542] <User_TxConfirmation>()ã®åå‰ã¯CanIfTxPduUserTxConfirmationNameã«å®šç¾©ã™ã‚‹
 		$IF LENGTH(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id])$
 			$IF EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id], "CAN_NM")$
-$				// [CANIF543] CanIfTxPduUserTxConfirmationUL¤¬CAN_NM¤Î¾ì¹ç¡¤CanIfTxPduUserTxConfirmationName¤ÏCanNm_TxConfirmation
+$				// [CANIF543] CanIfTxPduUserTxConfirmationULãŒCAN_NMã®å ´åˆï¼ŒCanIfTxPduUserTxConfirmationNameã¯CanNm_TxConfirmation
 				$IF LENGTH(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id])$
 					$IF !EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id], "CanNm_TxConfirmation")$
 						$ERROR$$FORMAT(_("CanIfTxPduUserTxConfirmationName should be `CanNm_TxConfirmation'. CanIfTxPduUserTxConfirmationUL is `CAN_NM'. (%1%\)"), tx_pdu_id)$$END$$DIE()$
@@ -640,7 +649,7 @@ $				// [CANIF543] CanIfTxPduUserTxConfirmationUL¤¬CAN_NM¤Î¾ì¹ç¡¤CanIfTxPduUserT
 					$CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id] = "CanNm_TxConfirmation"$
 				$END$
 			$ELIF EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id], "CAN_TP")$
-$				// [CANIF550] CanIfTxPduUserTxConfirmationUL¤¬CAN_TP¤Î¾ì¹ç¡¤CanIfTxPduUserTxConfirmationName¤ÏCanTp_TxConfirmation
+$				// [CANIF550] CanIfTxPduUserTxConfirmationULãŒCAN_TPã®å ´åˆï¼ŒCanIfTxPduUserTxConfirmationNameã¯CanTp_TxConfirmation
 				$IF LENGTH(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id])$
 					$IF !EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id], "CanTp_TxConfirmation")$
 						$ERROR$$FORMAT(_("CanIfTxPduUserTxConfirmationName should be `CanTp_TxConfirmation'. CanIfTxPduUserTxConfirmationUL is `CAN_TP'. (%1%\)"), tx_pdu_id)$$END$$DIE()$
@@ -649,12 +658,12 @@ $				// [CANIF550] CanIfTxPduUserTxConfirmationUL¤¬CAN_TP¤Î¾ì¹ç¡¤CanIfTxPduUserT
 					$CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id] = "CanTp_TxConfirmation"$
 				$END$
 			$ELIF EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id], "CDD")$
-$				// [CANIF551] CanIfTxPduUserTxConfirmationUL¤¬CDD¤Î¾ì¹ç¡¤<User_TxConfirmation>¤ÎÌ¾Á°¤ÏCanIfTxPduUserTxConfirmationName¤Ç»ØÄê¤µ¤ì¤ë
+$				// [CANIF551] CanIfTxPduUserTxConfirmationULãŒCDDã®å ´åˆï¼Œ<User_TxConfirmation>ã®åå‰ã¯CanIfTxPduUserTxConfirmationNameã§æŒ‡å®šã•ã‚Œã‚‹
 				$IF !LENGTH(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id])$
 					$ERROR$$FORMAT(_("CanIfTxPduUserTxConfirmationName should be set value. CanIfTxPduUserTxConfirmationUL is `CDD'. (%1%\)"), tx_pdu_id)$$END$$DIE()$
 				$END$
 			$ELIF EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id], "J1939TP")$
-$				// [CANIF544] CanIfTxPduUserTxConfirmationUL¤¬J1939TP¤Î¾ì¹ç¡¤CanIfTxPduUserTxConfirmationName¤ÏJ1939Tp_TxConfirmation
+$				// [CANIF544] CanIfTxPduUserTxConfirmationULãŒJ1939TPã®å ´åˆï¼ŒCanIfTxPduUserTxConfirmationNameã¯J1939Tp_TxConfirmation
 				$IF LENGTH(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id])$
 					$IF !EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id], "J1939Tp_TxConfirmation")$
 						$ERROR$$FORMAT(_("CanIfTxPduUserTxConfirmationName should be `J1939Tp_TxConfirmation'. CanIfTxPduUserTxConfirmationUL is `J1939TP'. (%1%\)"), tx_pdu_id)$$END$$DIE()$
@@ -663,7 +672,7 @@ $				// [CANIF544] CanIfTxPduUserTxConfirmationUL¤¬J1939TP¤Î¾ì¹ç¡¤CanIfTxPduUser
 					$CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id] = "J1939Tp_TxConfirmation"$
 				$END$
 			$ELIF EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id], "PDUR")$
-$				// [CANIF439] CanIfTxPduUserTxConfirmationUL¤¬PDUR¤Î¾ì¹ç¡¤CanIfTxPduUserTxConfirmationName¤ÏPduR_CanIfTxConfirmation
+$				// [CANIF439] CanIfTxPduUserTxConfirmationULãŒPDURã®å ´åˆï¼ŒCanIfTxPduUserTxConfirmationNameã¯PduR_CanIfTxConfirmation
 				$IF LENGTH(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id])$
 					$IF !EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id], "PduR_CanIfTxConfirmation")$
 						$ERROR$$FORMAT(_("CanIfTxPduUserTxConfirmationName should be `PduR_CanIfTxConfirmation'. CanIfTxPduUserTxConfirmationUL is `PDUR'. (%1%\)"), tx_pdu_id)$$END$$DIE()$
@@ -672,7 +681,7 @@ $				// [CANIF439] CanIfTxPduUserTxConfirmationUL¤¬PDUR¤Î¾ì¹ç¡¤CanIfTxPduUserTxC
 					$CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id] = "PduR_CanIfTxConfirmation"$
 				$END$
 			$ELIF EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id], "XCP")$
-$				// [CANIF556] CanIfTxPduUserTxConfirmationUL¤¬XCP¤Î¾ì¹ç¡¤CanIfTxPduUserTxConfirmationName¤ÏXcp_CanIfTxConfirmation
+$				// [CANIF556] CanIfTxPduUserTxConfirmationULãŒXCPã®å ´åˆï¼ŒCanIfTxPduUserTxConfirmationNameã¯Xcp_CanIfTxConfirmation
 				$IF LENGTH(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id])$
 					$IF !EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id], "Xcp_CanIfTxConfirmation")$
 						$ERROR$$FORMAT(_("CanIfTxPduUserTxConfirmationName should be `Xcp_CanIfTxConfirmation'. CanIfTxPduUserTxConfirmationUL is `XCP'. (%1%\)"), tx_pdu_id)$$END$$DIE()$
@@ -685,19 +694,19 @@ $				// [CANIF556] CanIfTxPduUserTxConfirmationUL¤¬XCP¤Î¾ì¹ç¡¤CanIfTxPduUserTxCo
 			$END$
 		$ELSE$
 			$IF LENGTH(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id])$
-$				// CanIfTxPduUserTxConfirmationUL¤¬¾ÊÎ¬¤µ¤ì¡¤CanIfTxPduUserTxConfirmationName¤ËÃÍ¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤ë¾ì¹ç¡¤¥¨¥é¡¼
+$				// CanIfTxPduUserTxConfirmationULãŒçœç•¥ã•ã‚Œï¼ŒCanIfTxPduUserTxConfirmationNameã«å€¤ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆï¼Œã‚¨ãƒ©ãƒ¼
 				$ERROR$$FORMAT(_("CanIfTxPduUserTxConfirmationUL should be set value. (%1%\)"), tx_pdu_id)$$END$$DIE()$
 			$ELSE$
-$				// CanIfTxPduUserTxConfirmationUL¤¬¾ÊÎ¬¤µ¤ì¡¤¤«¤Ä¡¤CanIfTxPduUserTxConfirmationName¤¬¾ÊÎ¬¤µ¤ì¤¿¾ì¹ç¡¤NULL_PTR¤ÇÊä´°
+$				// CanIfTxPduUserTxConfirmationULãŒçœç•¥ã•ã‚Œï¼Œã‹ã¤ï¼ŒCanIfTxPduUserTxConfirmationNameãŒçœç•¥ã•ã‚ŒãŸå ´åˆï¼ŒNULL_PTRã§è£œå®Œ
 				$CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[tx_pdu_id] = "NULL_PTR"$
 			$END$
 		$END$
 
 $		// [CANIF831_Conf] CanIfTxPduBufferRef
-$		// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$		// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 
 $		// [CANIF603_Conf] CanIfTxPduRef
-$		// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$		// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 	$END$
 
 
@@ -724,9 +733,6 @@ $		// [CANIF599_Conf] CanIfRxPduDlc
 		$IF (CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] < 0) || (CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] > 8)$
 			$ERROR$$FORMAT(_("CanIfRxPduDlc(%1%\) should be in the range from 0 to 8."), CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id])$$END$$DIE()$
 		$END$
-		$IF CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] < CanIfRxPduCfg.pdu_length[rx_pdu_id]$
-			$ERROR$$FORMAT(_("CanIfRxPduDlc(%1%\) should be equal or larger than PduLength(%2%\). [%3%\]"), CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id], CanIfRxPduCfg.pdu_length[rx_pdu_id], rx_pdu_id)$$END$$DIE()$
-		$END$
 
 $		// [CANIF597_Conf] CanIfRxPduId
 		$IF (CanIfRxPduCfg.CanIfRxPduId[rx_pdu_id] < 0) || (CanIfRxPduCfg.CanIfRxPduId[rx_pdu_id] > 4294967295)$
@@ -740,16 +746,16 @@ $		// [CANIF600_Conf] CanIfRxPduReadData
 
 $		// [CANIF595_Conf] CanIfRxPduReadNotifyStatus
 		$IF IS_TRUE(CanIfRxPduCfg.CanIfRxPduReadNotifyStatus[rx_pdu_id]) && !IS_TRUE(CanIfPublicCfg.CanIfPublicReadRxPduNotifyStatusApi[1])$
-			$ERROR$$FORMAT(_("CanIfRxPduReadNotifyStatus(%1%\) should not be set value. CanIfPublicReadRxPduNotifyStatusApi is FALSE."), CanIfRxPduCfg.CanIfRxPduReadNotifyStatus[rx_pdu_id])$$END$$DIE()$
+			$ERROR$$FORMAT(_("CanIfRxPduReadNotifyStatus(%1%\) should not be set TRUE. CanIfPublicReadRxPduNotifyStatusApi is FALSE."), CanIfRxPduCfg.CanIfRxPduReadNotifyStatus[rx_pdu_id])$$END$$DIE()$
 		$END$
 
 $		// [CANIF529_Conf] CanIfRxPduUserRxIndicationUL
 $		// [CANIF530_Conf] CanIfRxPduUserRxIndicationName
-$		// [CANIF441] <User_RxIndication>¤òÄó¶¡¤¹¤ë¾å°Ì¥ì¥¤¥ä¥â¥¸¥å¡¼¥ë¤ÏCanIfRxPduUserRxIndicationUL¤Ç»ØÄê¤µ¤ì¤ë
-$		// [CANIF552] <User_RxIndication>¤ÎÌ¾Á°¤ÏCanIfRxPduUserRxIndicationName¤ËÄêµÁ¤¹¤ë
+$		// [CANIF441] <User_RxIndication>ã‚’æä¾›ã™ã‚‹ä¸Šä½ãƒ¬ã‚¤ãƒ¤ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¯CanIfRxPduUserRxIndicationULã§æŒ‡å®šã•ã‚Œã‚‹
+$		// [CANIF552] <User_RxIndication>ã®åå‰ã¯CanIfRxPduUserRxIndicationNameã«å®šç¾©ã™ã‚‹
 		$IF LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id])$
 			$IF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id], "CAN_NM")$
-$				// [CANIF445] CanIfRxPduUserRxIndicationUL¤¬CAN_NM¤Î¾ì¹ç¡¤CanIfRxPduUserRxIndicationName¤ÏCanNm_RxIndication
+$				// [CANIF445] CanIfRxPduUserRxIndicationULãŒCAN_NMã®å ´åˆï¼ŒCanIfRxPduUserRxIndicationNameã¯CanNm_RxIndication
 				$IF LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id])$
 					$IF !EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id], "CanNm_RxIndication")$
 						$ERROR$$FORMAT(_("CanIfRxPduUserRxIndicationName should be `CanNm_RxIndication'. CanIfRxPduUserRxIndicationUL is `CAN_NM'. (%1%\)"), rx_pdu_id)$$END$$DIE()$
@@ -758,7 +764,7 @@ $				// [CANIF445] CanIfRxPduUserRxIndicationUL¤¬CAN_NM¤Î¾ì¹ç¡¤CanIfRxPduUserRxI
 					$CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id] = "CanNm_RxIndication"$
 				$END$
 			$ELIF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id], "CAN_TP")$
-$				// [CANIF448] CanIfRxPduUserRxIndicationUL¤¬CAN_TP¤Î¾ì¹ç¡¤CanIfRxPduUserRxIndicationName¤ÏCanTp_RxIndication
+$				// [CANIF448] CanIfRxPduUserRxIndicationULãŒCAN_TPã®å ´åˆï¼ŒCanIfRxPduUserRxIndicationNameã¯CanTp_RxIndication
 				$IF LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id])$
 					$IF !EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id], "CanTp_RxIndication")$
 						$ERROR$$FORMAT(_("CanIfRxPduUserRxIndicationName should be `CanTp_RxIndication'. CanIfRxPduUserRxIndicationUL is `CAN_TP'. (%1%\)"), rx_pdu_id)$$END$$DIE()$
@@ -767,12 +773,12 @@ $				// [CANIF448] CanIfRxPduUserRxIndicationUL¤¬CAN_TP¤Î¾ì¹ç¡¤CanIfRxPduUserRxI
 					$CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id] = "CanTp_RxIndication"$
 				$END$
 			$ELIF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id], "CDD")$
-$				// [CANIF557] CanIfRxPduUserRxIndicationUL¤¬CDD¤Î¾ì¹ç¡¤<User_TxConfirmation>¤ÎÌ¾Á°¤ÏCanIfTxPduUserTxConfirmationName¤Ç»ØÄê¤µ¤ì¤ë
+$				// [CANIF557] CanIfRxPduUserRxIndicationULãŒCDDã®å ´åˆï¼Œ<User_RxIndication>ã®åå‰ã¯CanIfRxPduUserRxIndicationNameã§æŒ‡å®šã•ã‚Œã‚‹
 				$IF !LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id])$
 					$ERROR$$FORMAT(_("CanIfRxPduUserRxIndicationName should be set value. CanIfRxPduUserRxIndicationUL is `CDD'. (%1%\)"), rx_pdu_id)$$END$$DIE()$
 				$END$
 			$ELIF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id], "J1939TP")$
-$				// [CANIF554] CanIfRxPduUserRxIndicationUL¤¬J1939TP¤Î¾ì¹ç¡¤CanIfRxPduUserRxIndicationName¤ÏJ1939Tp_RxIndication
+$				// [CANIF554] CanIfRxPduUserRxIndicationULãŒJ1939TPã®å ´åˆï¼ŒCanIfRxPduUserRxIndicationNameã¯J1939Tp_RxIndication
 				$IF LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id])$
 					$IF !EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id], "J1939Tp_RxIndication")$
 						$ERROR$$FORMAT(_("CanIfRxPduUserRxIndicationName should be `J1939Tp_RxIndication'. CanIfRxPduUserRxIndicationUL is `J1939TP'. (%1%\)"), rx_pdu_id)$$END$$DIE()$
@@ -781,7 +787,7 @@ $				// [CANIF554] CanIfRxPduUserRxIndicationUL¤¬J1939TP¤Î¾ì¹ç¡¤CanIfRxPduUserRx
 					$CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id] = "J1939Tp_RxIndication"$
 				$END$
 			$ELIF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id], "PDUR")$
-$				// [CANIF442] CanIfRxPduUserRxIndicationUL¤¬PDUR¤Î¾ì¹ç¡¤CanIfRxPduUserRxIndicationName¤ÏPduR_CanIfRxIndication 
+$				// [CANIF442] CanIfRxPduUserRxIndicationULãŒPDURã®å ´åˆï¼ŒCanIfRxPduUserRxIndicationNameã¯PduR_CanIfRxIndication 
 				$IF LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id])$
 					$IF !EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id], "PduR_CanIfRxIndication")$
 						$ERROR$$FORMAT(_("CanIfRxPduUserRxIndicationName should be `PduR_CanIfRxIndication'. CanIfRxPduUserRxIndicationUL is `PDUR'. (%1%\)"), rx_pdu_id)$$END$$DIE()$
@@ -790,7 +796,7 @@ $				// [CANIF442] CanIfRxPduUserRxIndicationUL¤¬PDUR¤Î¾ì¹ç¡¤CanIfRxPduUserRxInd
 					$CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id] = "PduR_CanIfRxIndication"$
 				$END$
 			$ELIF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id], "XCP")$
-$				// [CANIF555] CanIfRxPduUserRxIndicationUL¤¬XCP¤Î¾ì¹ç¡¤CanIfRxPduUserRxIndicationName¤ÏXcp_CanIfRxIndication
+$				// [CANIF555] CanIfRxPduUserRxIndicationULãŒXCPã®å ´åˆï¼ŒCanIfRxPduUserRxIndicationNameã¯Xcp_CanIfRxIndication
 				$IF LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id])$
 					$IF !EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id], "Xcp_CanIfRxIndication")$
 						$ERROR$$FORMAT(_("CanIfRxPduUserRxIndicationName should be `Xcp_CanIfRxIndication'. CanIfRxPduUserRxIndicationUL is `XCP'. (%1%\)"), rx_pdu_id)$$END$$DIE()$
@@ -803,24 +809,24 @@ $				// [CANIF555] CanIfRxPduUserRxIndicationUL¤¬XCP¤Î¾ì¹ç¡¤CanIfRxPduUserRxIndi
 			$END$
 		$ELSE$
 			$IF LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id])$
-$				// CanIfRxPduUserRxIndicationUL¤¬¾ÊÎ¬¤µ¤ì¡¤¤«¤Ä¡¤CanIfRxPduUserRxIndicationName¤ËÃÍ¤¬ÀßÄê¤µ¤ì¤Æ¤¤¤ë¾ì¹ç¡¤¥¨¥é¡¼
+$				// CanIfRxPduUserRxIndicationULãŒçœç•¥ã•ã‚Œï¼Œã‹ã¤ï¼ŒCanIfRxPduUserRxIndicationNameã«å€¤ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆï¼Œã‚¨ãƒ©ãƒ¼
 				$ERROR$$FORMAT(_("CanIfRxPduUserRxIndicationUL should be set value. (%1%\)"), rx_pdu_id)$$END$$DIE()$
 			$ELSE$
-$				// CanIfRxPduUserRxIndicationUL¤¬¾ÊÎ¬¤µ¤ì¡¤¤«¤Ä¡¤CanIfRxPduUserRxIndicationName¤¬¾ÊÎ¬¤µ¤ì¤¿¾ì¹ç¡¤NULL_PTR¤ÇÊä´°
+$				// CanIfRxPduUserRxIndicationULãŒçœç•¥ã•ã‚Œï¼Œã‹ã¤ï¼ŒCanIfRxPduUserRxIndicationNameãŒçœç•¥ã•ã‚ŒãŸå ´åˆï¼ŒNULL_PTRã§è£œå®Œ
 				$CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id] = "NULL_PTR"$
 			$END$
 		$END$
 
 $		// [CANIF602_Conf] CanIfRxPduHrhIdRef
-$		// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$		// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 
 $		// [CANIF601_Conf] CanIfRxPduRef
-$		// »ØÄê¤·¤¿»²¾ÈÀè¤ÎÂÅÅöÀ­¤Ï»öÁ°¤Ë³ÎÇ§ºÑ¤ß
+$		// æŒ‡å®šã—ãŸå‚ç…§å…ˆã®å¦¥å½“æ€§ã¯äº‹å‰ã«ç¢ºèªæ¸ˆã¿
 	$END$
 $END$
 
 $ ====================================================================
-$  [CANIF460] ¥×¥ê¥³¥ó¥Ñ¥¤¥ëÍÑ¥Ø¥Ã¥ÀÀ¸À®´Ø¿ô
+$  [CANIF460] ãƒ—ãƒªã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ç”¨ãƒ˜ãƒƒãƒ€ç”Ÿæˆé–¢æ•°
 $ ====================================================================
 $FUNCTION GEN_CANIF_CFG_H$
 	$FILE "CanIf_Cfg.h"$
@@ -831,10 +837,10 @@ $FUNCTION GEN_CANIF_CFG_H$
 	$NL$
 
 $	/*
-$	 *  ¥Ş¥¯¥íÄêµÁ
+$	 *  ãƒã‚¯ãƒ­å®šç¾©
 $	 */
 $	// [CANIF614_Conf] CanIfPublicDevErrorDetect
-$	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏTRUE
+$	// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯TRUE
 	#define CANIF_PUBLIC_DEV_ERROR_DETECT$TAB$
 	$IF LENGTH(CanIfPublicCfg.CanIfPublicDevErrorDetect[1]) && !IS_TRUE(CanIfPublicCfg.CanIfPublicDevErrorDetect[1])$
 		STD_OFF
@@ -844,7 +850,7 @@ $	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏTRUE
 	$NL$
 
 $	// [CANIF613_Conf] CanIfPublicVersionInfoApi
-$	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏTRUE
+$	// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯TRUE
 	#define CANIF_PUBLIC_VERSION_INFO_API$TAB$
 	$IF LENGTH(CanIfPublicCfg.CanIfPublicVersionInfoApi[1]) && !IS_TRUE(CanIfPublicCfg.CanIfPublicVersionInfoApi[1])$
 		STD_OFF
@@ -854,7 +860,7 @@ $	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏTRUE
 	$NL$$NL$
 
 $	// [CANIF607_Conf] CanIfPublicReadRxPduDataApi 
-$	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏFALSE
+$	// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯FALSE
 	#define CANIF_PUBLIC_READRXPDU_DATA_API$TAB$$TAB$$TAB$$TAB$
 	$IF LENGTH(CanIfPublicCfg.CanIfPublicReadRxPduDataApi[1]) && IS_TRUE(CanIfPublicCfg.CanIfPublicReadRxPduDataApi[1])$
 		STD_ON
@@ -864,7 +870,7 @@ $	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏFALSE
 	$NL$
 
 $	// [CANIF608_Conf] CanIfPublicReadRxPduNotifyStatusApi 
-$	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏFALSE
+$	// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯FALSE
 	#define CANIF_PUBLIC_READRXPDU_NOTIFY_STATUS_API$TAB$
 	$IF LENGTH(CanIfPublicCfg.CanIfPublicReadRxPduNotifyStatusApi[1]) && IS_TRUE(CanIfPublicCfg.CanIfPublicReadRxPduNotifyStatusApi[1])$
 		STD_ON
@@ -874,7 +880,7 @@ $	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏFALSE
 	$NL$
 
 $	// [CANIF609_Conf] CanIfPublicReadTxPduNotifyStatusApi  
-$	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏFALSE
+$	// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯FALSE
 	#define CANIF_PUBLIC_READTXPDU_NOTIFY_STATUS_API$TAB$
 	$IF LENGTH(CanIfPublicCfg.CanIfPublicReadTxPduNotifyStatusApi[1]) && IS_TRUE(CanIfPublicCfg.CanIfPublicReadTxPduNotifyStatusApi[1])$
 		STD_ON
@@ -884,7 +890,7 @@ $	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏFALSE
 	$NL$$NL$
 
 $	// [CANIF785_Conf] CanIfPublicChangeBaudrateSupport
-$	// ¥Ç¥Õ¥©¥ë¥ÈÃÍ¤ÏFALSE
+$	// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆå€¤ã¯FALSE
 	#define CANIF_PUBLIC_CHANGE_BAUDRATE_SUPPORT$TAB$$TAB$$TAB$
 	$IF LENGTH(CanIfPublicCfg.CanIfPublicChangeBaudrateSupport[1]) && IS_TRUE(CanIfPublicCfg.CanIfPublicChangeBaudrateSupport[1])$
 		STD_ON
@@ -940,7 +946,7 @@ $	// SUPPORT_READ_PDU_NOTYFY_STATUS
 $END$
 
 $ ====================================================================
-$  ¥ê¥ó¥¯¥¿¥¤¥àÍÑ¥Ø¥Ã¥ÀÀ¸À®´Ø¿ô
+$  ãƒªãƒ³ã‚¯ã‚¿ã‚¤ãƒ ç”¨ãƒ˜ãƒƒãƒ€ç”Ÿæˆé–¢æ•°
 $ ====================================================================
 $FUNCTION GEN_CANIF_L_CFG_H$
 	$FILE "CanIf_Lcfg.h"$
@@ -951,7 +957,7 @@ $FUNCTION GEN_CANIF_L_CFG_H$
 	#define TOPPERS_A_CANIF_L_CFG_H$NL$
 	$NL$
 
-$	// [CANIF546_Conf] CanIf¥³¥ó¥È¥í¡¼¥é´ØÏ¢¤Ï¥ê¥ó¥¯¥¿¥¤¥à¥Ñ¥é¥á¡¼¥¿
+$	// [CANIF546_Conf] CanIfã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©é–¢é€£ã¯ãƒªãƒ³ã‚¯ã‚¿ã‚¤ãƒ ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 	$FOREACH ctrl_id CanIfCtrlCfg.ID_LIST$
 		extern CANIF_CTRL_CB canif_ctrl_cb_$ctrl_id$;$NL$
 	$END$
@@ -961,10 +967,10 @@ $	// [CANIF546_Conf] CanIf¥³¥ó¥È¥í¡¼¥é´ØÏ¢¤Ï¥ê¥ó¥¯¥¿¥¤¥à¥Ñ¥é¥á¡¼¥¿
 $END$
 
 $ ====================================================================
-$  [CANIF461] ¥ê¥ó¥¯¥¿¥¤¥àÍÑ¼ÂÂÎÀ¸À®´Ø¿ô
+$  [CANIF461] ãƒªãƒ³ã‚¯ã‚¿ã‚¤ãƒ ç”¨å®Ÿä½“ç”Ÿæˆé–¢æ•°
 $ ====================================================================
 $FUNCTION GEN_CANIF_L_CFG_C$
-$ 	// [CANIF374] ¥ê¥ó¥¯»ş¤Ë¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó²ÄÇ½¤Ê¥Ñ¥é¥á¡¼¥¿ÍÑ
+$ 	// [CANIF374] ãƒªãƒ³ã‚¯æ™‚ã«ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å¯èƒ½ãªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ç”¨
 	$FILE "CanIf_Lcfg.c"$
 	/* CanIf_Lcfg.c */$NL$
 	$NL$
@@ -972,19 +978,19 @@ $ 	// [CANIF374] ¥ê¥ó¥¯»ş¤Ë¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó²ÄÇ½¤Ê¥Ñ¥é¥á¡¼¥¿ÍÑ
 	#include "CanIf.h"$NL$
 	#include "CanIf_Lcfg.h"$NL$
 
-$	// [CANIF233] °Ê²¼¤Î¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤ò¥¤¥ó¥¯¥ë¡¼¥É¤¹¤ë
+$	// [CANIF233] ä»¥ä¸‹ã®ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã™ã‚‹
 	#include "CanSM_Cbk.h"$NL$
 	#include "EcuM_Cbk.h"$NL$
 
 $	// [CANIF671_Conf] CanIfPublicCddHeaderFile
-$	// [CANIF233] CDD¤Î¾ì¹ç¤Ë¥¤¥ó¥¯¥ë¡¼¥É¤¹¤ë¥³¡¼¥ë¥Ğ¥Ã¥¯´Ø¿ô¥Ø¥Ã¥À¥Õ¥¡¥¤¥ëÌ¾¤ÏCanIfPublicCddHeaderFile¤ÇÄêµÁ¤¹¤ë
-	$IF LENGTH(CanIfPublicCfg.CanIfPublicCddHeaderFile[1])$
-		#include "$CanIfPublicCfg.CanIfPublicCddHeaderFile[1]$.h"$NL$
+$	// [CANIF233] CDDã®å ´åˆã«ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã™ã‚‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«åã¯CanIfPublicCddHeaderFileã§å®šç¾©ã™ã‚‹
+	$FOREACH chf_name CanIfPublicCfg.CanIfPublicCddHeaderFile[1]$
+		#include "$chf_name$_Cbk.h"$NL$
 	$END$
 	$NL$
 
-$	// [CANIF525_Conf][CANIF558] <User_ControllerBusOff>¤ÎÌ¾Á°¤ÏCanIfDispatchUserCtrlBusOffName¤Ë»ØÄê¤µ¤ì¤ë
-$	// [CANIF524] <User_ControllerBusOff>¤ÎÄêµÁ¤ÏÉ¬¿Ü
+$	// [CANIF525_Conf][CANIF558] <User_ControllerBusOff>ã®åå‰ã¯CanIfDispatchUserCtrlBusOffNameã«æŒ‡å®šã•ã‚Œã‚‹
+$	// [CANIF524] <User_ControllerBusOff>ã®å®šç¾©ã¯å¿…é ˆ
 	$IF LENGTH(CanIfDispatchCfg.CanIfDispatchUserCtrlBusOffName[1])$
 		User_ControllerBusOff$TAB$$TAB$$TAB$CanIfDispatchUserCtrlBusOffName$TAB$$TAB$$TAB$ = &$CanIfDispatchCfg.CanIfDispatchUserCtrlBusOffName[1]$;$NL$
 	$END$
@@ -1000,16 +1006,16 @@ $	// [CANIF531_Conf] CanIfDispatchUserValidateWakeupEventName
 	$END$
 	$NL$
 
-	const uint16 tnum_canif_controller = $LENGTH(CanIfCtrlCfg.ID_LIST)$U; /* CanIf¥³¥ó¥È¥í¡¼¥é¿ô */$NL$
+	const uint16 tnum_canif_controller = $LENGTH(CanIfCtrlCfg.ID_LIST)$U; /* CanIfã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©æ•° */$NL$
 	$NL$
 
-	/* CanIf¥³¥ó¥È¥í¡¼¥é´ÉÍı¥Ö¥í¥Ã¥¯ : canif_ctrl_cb_<CanIfCtrlCfg> */$NL$
+	/* CanIfã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ç®¡ç†ãƒ–ãƒ­ãƒƒã‚¯ : canif_ctrl_cb_<CanIfCtrlCfg> */$NL$
 	$FOREACH ctrl_id CanIfCtrlCfg.ID_LIST$
 		CANIF_CTRL_CB canif_ctrl_cb_$ctrl_id$;$NL$
 	$END$
 	$NL$
 
-	/* CanIf¥³¥ó¥È¥í¡¼¥é½é´ü²½¥Ö¥í¥Ã¥¯ÇÛÎó : canif_ctrl_inib_table */$NL$
+	/* CanIfã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©åˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯é…åˆ— : canif_ctrl_inib_table */$NL$
 	const CANIF_CTRL_INIB canif_ctrl_inib_table[$LENGTH(CanIfCtrlCfg.ID_LIST)$] = {$NL$
 	$JOINEACH ctrl_id CanIfCtrlCfg.ID_LIST ",\n"$
 		$TAB$/* $ctrl_id$ (CanIfCtrlId: $CanIfCtrlCfg.CanIfCtrlId[ctrl_id]$) */$NL$
@@ -1024,10 +1030,10 @@ $	// [CANIF531_Conf] CanIfDispatchUserValidateWakeupEventName
 $END$
 
 $ ====================================================================
-$  [CANIF462] ¥İ¥¹¥È¥Ó¥ë¥ÉÍÑ¼ÂÂÎÀ¸À®´Ø¿ô
+$  [CANIF462] ãƒã‚¹ãƒˆãƒ“ãƒ«ãƒ‰ç”¨å®Ÿä½“ç”Ÿæˆé–¢æ•°
 $ ====================================================================
 $FUNCTION GEN_CANIF_PB_CFG_C$
-$ 	// [CANIF374] ¥Ó¥ë¥É¸å¤Ë¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó²ÄÇ½¤Ê¥Ñ¥é¥á¡¼¥¿ÍÑ
+$ 	// [CANIF374] ãƒ“ãƒ«ãƒ‰å¾Œã«ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å¯èƒ½ãªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ç”¨
 	$FILE "CanIf_PBcfg.c"$
 
 	/* CanIf_PBcfg.c */$NL$
@@ -1037,25 +1043,25 @@ $ 	// [CANIF374] ¥Ó¥ë¥É¸å¤Ë¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó²ÄÇ½¤Ê¥Ñ¥é¥á¡¼¥¿ÍÑ
 	#include "CanIf.h"$NL$
 	#include "CanIf_Lcfg.h"$NL$
 
-$	// [CANIF208] ¾å°Ì¥ì¥¤¥ä¤Î¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤ò¥¤¥ó¥¯¥ë¡¼¥É
+$	// [CANIF208] ä¸Šä½ãƒ¬ã‚¤ãƒ¤ã®ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰
 	#include "PduR_CanIf.h"$NL$
 	#include "SchM_CanIf.h"$NL$
 	$NL$
 
-$	// [CANIF233] °Ê²¼¤Î¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤ò¥¤¥ó¥¯¥ë¡¼¥É
+$	// [CANIF233] ä»¥ä¸‹ã®ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰
 	#include "CanNm_Cbk.h"$NL$
 	#include "CanTp_Cbk.h"$NL$
 	#include "J1939Tp_Cbk.h"$NL$
 	#include "XcpOnCan_Cbk.h"$NL$
 	
 $	// [CANIF671_Conf] CanIfPublicCddHeaderFile
-$	// [CANIF233] CDD¤Î¾ì¹ç¤Ë¥¤¥ó¥¯¥ë¡¼¥É¤¹¤ë¥³¡¼¥ë¥Ğ¥Ã¥¯´Ø¿ô¥Ø¥Ã¥À¥Õ¥¡¥¤¥ëÌ¾¤ÏCanIfPublicCddHeaderFile¤ÇÄêµÁ¤¹¤ë
-	$IF LENGTH(CanIfPublicCfg.CanIfPublicCddHeaderFile[1])$
-		#include "$CanIfPublicCfg.CanIfPublicCddHeaderFile[1]$.h"$NL$
+$	// [CANIF233] CDDã®å ´åˆã«ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã™ã‚‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯é–¢æ•°ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«åã¯CanIfPublicCddHeaderFileã§å®šç¾©ã™ã‚‹
+	$FOREACH chf1_name CanIfPublicCfg.CanIfPublicCddHeaderFile[1]$
+		#include "$chf1_name$_Cbk.h"$NL$
 	$END$
 	$NL$
 
-	/* ¼õ¿®´°Î»ÄÌÃÎ¥Õ¥é¥° : rx_indication_flg_<CanIfInitCfg>_<CanIfRxPduCfg> */$NL$
+	/* å—ä¿¡å®Œäº†é€šçŸ¥ãƒ•ãƒ©ã‚° : rx_indication_flg_<CanIfInitCfg>_<CanIfRxPduCfg> */$NL$
 	#if CANIF_PUBLIC_READRXPDU_DATA_API == STD_ON$NL$
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
 		$FOREACH rx_pdu_id CanIfInitCfg.rx_pdu_list[init_id]$
@@ -1065,11 +1071,11 @@ $	// [CANIF233] CDD¤Î¾ì¹ç¤Ë¥¤¥ó¥¯¥ë¡¼¥É¤¹¤ë¥³¡¼¥ë¥Ğ¥Ã¥¯´Ø¿ô¥Ø¥Ã¥À¥Õ¥¡¥¤¥ëÌ¾¤ÏCan
 	#endif /* CANIF_PUBLIC_READRXPDU_DATA_API == STD_ON */$NL$
 	$NL$
 
-	/* PDUÄÌÃÎ¾õÂÖ : read_notify_status_<CanIfInitCfg>_<CanIf[Tx|Rx]PduCfg> */$NL$
+	/* PDUé€šçŸ¥çŠ¶æ…‹ : read_notify_status_<CanIfInitCfg>_<CanIf[Tx|Rx]PduCfg> */$NL$
 	#ifdef SUPPORT_READ_PDU_NOTYFY_STATUS$NL$
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
 		$FOREACH pdu_id CanIfInitCfg.pdu_list[init_id]$
-$			// Á÷¿®¤Î¾ì¹ç¤ÏCanIfTxPduReadNotifyStatus¡¤¼õ¿®¤Î¾ì¹ç¤ÏCanIfRxPduReadNotifyStatus ¤ÎÃÍ¤ò¼èÆÀ
+$			// é€ä¿¡ã®å ´åˆã¯CanIfTxPduReadNotifyStatusï¼Œå—ä¿¡ã®å ´åˆã¯CanIfRxPduReadNotifyStatus ã®å€¤ã‚’å–å¾—
 			$read_notify_status = ""$
 			$FOREACH tx_pdu_id CanIfInitCfg.tx_pdu_list[init_id]$
 				$IF EQ(pdu_id, tx_pdu_id)$
@@ -1081,7 +1087,7 @@ $			// Á÷¿®¤Î¾ì¹ç¤ÏCanIfTxPduReadNotifyStatus¡¤¼õ¿®¤Î¾ì¹ç¤ÏCanIfRxPduReadNotifyS
 					$read_notify_status = CanIfRxPduCfg.CanIfRxPduReadNotifyStatus[pdu_id]$
 				$END$
 			$END$
-$			// CanIfTxPduReadNotifyStatus ¤Ş¤¿¤Ï CanIfRxPduReadNotifyStatus ¤¬TRUE¤Î¾ì¹ç¤Î¤ßÀ¸À®
+$			// CanIfTxPduReadNotifyStatus ã¾ãŸã¯ CanIfRxPduReadNotifyStatus ãŒTRUEã®å ´åˆã®ã¿ç”Ÿæˆ
 			$IF IS_TRUE(read_notify_status)$
 				static CanIf_NotifStatusType read_notify_status_$init_id$_$pdu_id$;$NL$
 			$END$
@@ -1090,7 +1096,7 @@ $			// CanIfTxPduReadNotifyStatus ¤Ş¤¿¤Ï CanIfRxPduReadNotifyStatus ¤¬TRUE¤Î¾ì¹ç
 	#endif /* SUPPORT_READ_PDU_NOTYFY_STATUS */$NL$
 	$NL$
 
-	/* ¼õ¿®LPDU¥Ğ¥Ã¥Õ¥¡ : rx_lpdu_buffer_<CanIfInitCfg>_<CanIfRxPduCfg> */$NL$
+	/* å—ä¿¡LPDUãƒãƒƒãƒ•ã‚¡ : rx_lpdu_buffer_<CanIfInitCfg>_<CanIfRxPduCfg> */$NL$
 	#if CANIF_PUBLIC_READRXPDU_DATA_API == STD_ON$NL$
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
 		$FOREACH rx_pdu_id CanIfInitCfg.rx_pdu_list[init_id]$
@@ -1102,7 +1108,7 @@ $			// CanIfTxPduReadNotifyStatus ¤Ş¤¿¤Ï CanIfRxPduReadNotifyStatus ¤¬TRUE¤Î¾ì¹ç
 	#endif /* CANIF_PUBLIC_READRXPDU_DATA_API == STD_ON */$NL$
 	$NL$
 
-	/* LPDU½é´ü²½¥Ö¥í¥Ã¥¯ÇÛÎó : lpdu_inib_table_<CanIfInitCfg> */$NL$
+	/* LPDUåˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯é…åˆ— : lpdu_inib_table_<CanIfInitCfg> */$NL$
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
 		$IF CanIfInitCfg.pdu_num[init_id] > 0$
 			static const LPDU_INIB lpdu_inib_table_$init_id$[$CanIfInitCfg.pdu_num[init_id]$] = {$NL$
@@ -1186,7 +1192,7 @@ $			// CanIfTxPduReadNotifyStatus ¤Ş¤¿¤Ï CanIfRxPduReadNotifyStatus ¤¬TRUE¤Î¾ì¹ç
 	$END$
 	$NL$
 
-	/* LPDU½é´ü²½¥Ö¥í¥Ã¥¯ÇÛÎó¤òCanObjectId¤Ç¥½¡¼¥È¤·¤¿¥ê¥¹¥È : lpdu_inib_hoh_list_<CanIfInitCfg> */$NL$
+	/* LPDUåˆæœŸåŒ–ãƒ–ãƒ­ãƒƒã‚¯é…åˆ—ã‚’CanObjectIdã§ã‚½ãƒ¼ãƒˆã—ãŸãƒªã‚¹ãƒˆ : lpdu_inib_hoh_list_<CanIfInitCfg> */$NL$
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
 		$IF CanIfInitCfg.pdu_num[init_id] > 0$
 			static const LPDU_INIB * const lpdu_inib_hoh_list_$init_id$[$CanIfInitCfg.pdu_num[init_id]$] = {$NL$
@@ -1213,8 +1219,8 @@ $			// CanIfTxPduReadNotifyStatus ¤Ş¤¿¤Ï CanIfRxPduReadNotifyStatus ¤¬TRUE¤Î¾ì¹ç
 		$NL$
 	$END$
 
-	/* CanIf¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¥Æ¡¼¥Ö¥ë : <CanIfInitCfgSet> */$NL$
-$	// [CANIF523] CanIf_ConfigType¤Î½é´ü²½¥Ç¡¼¥¿¹½Â¤¤Ë¤Ï¡¤CanIf¥Ñ¥Ö¥ê¥Ã¥¯¥Ñ¥é¥á¡¼¥¿¤ÎÄêµÁ¤È³ÆLPDU¤ÎÄêµÁ¤¬´Ş¤Ş¤ì¤ë
+	/* CanIfã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ãƒ†ãƒ¼ãƒ–ãƒ« : <CanIfInitCfgSet> */$NL$
+$	// [CANIF523] CanIf_ConfigTypeã®åˆæœŸåŒ–ãƒ‡ãƒ¼ã‚¿æ§‹é€ ã«ã¯ï¼ŒCanIfãƒ‘ãƒ–ãƒªãƒƒã‚¯ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å®šç¾©ã¨å„LPDUã®å®šç¾©ãŒå«ã¾ã‚Œã‚‹
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
 		const CanIf_ConfigType $CanIfInitCfg.CanIfInitCfgSet[init_id]$ = {$NL$
 		$TAB$$CanIfInitCfg.pdu_num[init_id]$U,$TAB$/* tnum_lpdu */$NL$
@@ -1224,45 +1230,45 @@ $	// [CANIF523] CanIf_ConfigType¤Î½é´ü²½¥Ç¡¼¥¿¹½Â¤¤Ë¤Ï¡¤CanIf¥Ñ¥Ö¥ê¥Ã¥¯¥Ñ¥é¥á¡¼¥
 		$NL$
 	$END$
 
-	/* ¥Ç¥Õ¥©¥ë¥È¤ÎCanIf¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó */$NL$
+	/* ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®CanIfã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ± */$NL$
 	const CanIf_ConfigType * const p_default_canif_config = &$CanIfInitCfg.CanIfInitCfgSet[1]$;$NL$
 $END$
 
 
 $ ====================================================================
-$  ¥á¥¤¥ó½èÍı
+$  ãƒ¡ã‚¤ãƒ³å‡¦ç†
 $ ====================================================================
 $ /*
-$  *  [CANIF104] CanIf¤ò¹½À®¤¹¤ë¤¿¤á¤Î¤¹¤Ù¤Æ¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¾ğÊó¤ò¼èÆÀ¤¹¤ë
-$  *  [CANIF066] CanIf¤ÏCan¤Î¥³¥ó¥Æ¥Ê¥Ñ¥é¥á¡¼¥¿¤ò»²¾È¤¹¤ë
-$  *  [CANIF132] CanIf¤ÈCan¤Î´Ö¤Î½¾Â°À­¤Ï¥¸¥§¥Í¥ì¡¼¥¿¤¬Äó¶¡¤¹¤ë
+$  *  [CANIF104] CanIfã‚’æ§‹æˆã™ã‚‹ãŸã‚ã®ã™ã¹ã¦ã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’å–å¾—ã™ã‚‹
+$  *  [CANIF066] CanIfã¯Canã®ã‚³ãƒ³ãƒ†ãƒŠãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚’å‚ç…§ã™ã‚‹
+$  *  [CANIF132] CanIfã¨Canã®é–“ã®å¾“å±æ€§ã¯ã‚¸ã‚§ãƒãƒ¬ãƒ¼ã‚¿ãŒæä¾›ã™ã‚‹
 $  */
 
 $	DUMP()$
 
-$ ¥ê¥¹¥ÈºîÀ®
+$ ãƒªã‚¹ãƒˆä½œæˆ
 $MAKE_CFG_LIST()$
 
-$ ID¥½¡¼¥È
+$ IDã‚½ãƒ¼ãƒˆ
 $ID_SORT()$
 
-$ ¥¨¥é¡¼¥Á¥§¥Ã¥¯
+$ ã‚¨ãƒ©ãƒ¼ãƒã‚§ãƒƒã‚¯
 $ERROR_CHECK()$
 
-$ ¥×¥ê¥³¥ó¥Ñ¥¤¥ëÍÑ¥Ø¥Ã¥À
+$ ãƒ—ãƒªã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ç”¨ãƒ˜ãƒƒãƒ€
 $GEN_CANIF_CFG_H()$
 
-$ ¥ê¥ó¥¯¥¿¥¤¥àÍÑ
+$ ãƒªãƒ³ã‚¯ã‚¿ã‚¤ãƒ ç”¨
 $GEN_CANIF_L_CFG_H()$
 $GEN_CANIF_L_CFG_C()$
 
-$ ¥İ¥¹¥È¥Ó¥ë¥ÉÍÑ¥×¥í¥°¥é¥à
+$ ãƒã‚¹ãƒˆãƒ“ãƒ«ãƒ‰ç”¨ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
 $GEN_CANIF_PB_CFG_C()$
 
 
-$	TOPPERS/A-CANIF ¤Ç¤ÏÂĞ±ş¤·¤Ê¤¤»ÅÍÍ¥¿¥°°ìÍ÷
+$	TOPPERS/A-CANIF ã§ã¯å¯¾å¿œã—ãªã„ä»•æ§˜ã‚¿ã‚°ä¸€è¦§
 $
-$	- CAN¥È¥é¥ó¥·¡¼¥Ğ
+$	- CANãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒ
 $		<CANIF791_Conf> CanIfDispatchCfg/CanIfDispatchUserCheckTrcvWakeFlagIndicationName
 $		<CANIF792_Conf> CanIfDispatchCfg/CanIfDispatchUserCheckTrcvWakeFlagIndicationUL
 $		<CANIF789_Conf> CanIfDispatchCfg/CanIfDispatchUserClearTrcvWufFlagIndicationName
@@ -1274,9 +1280,9 @@ $		<CANIF587_Conf> CanIfTrcvDrvCfg/CanIfTrcvCfg
 $		<CANIF654_Conf> CanIfTrcvDrvCfg/CanIfTrcvCfg/CanIfTrcvId
 $		<CANIF606_Conf> CanIfTrcvDrvCfg/CanIfTrcvCfg/CanIfTrcvWakeupSupport
 $		<CANIF605_Conf> CanIfTrcvDrvCfg/CanIfTrcvCfg/CanIfTrcvCanTrcvRef
-$		[CANIF456][CANIF637_Conf]<CANIF606_Conf> CanIfCtrlWakeupSupport ¤ª¤è¤ÓCanIfTrcvWakeupSupport ¤¬FALSE¤Î¾ì¹ç¡¤CanIfDispatchUserValidateWakeupEventUL¤ÏÀßÄêÉÔ²Ä
-$		<CANIF655> CanIfTrcvId¤Ï0¤«¤é³«»Ï¤¹¤ë
-$		<CANIF695> CanIfTrcvDrvCfg¤¬¹½À®¤µ¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç¡¤CanIfDispatchUserTrcvModeIndicationUL¤ÏÄêµÁÉÔ²Ä
+$		[CANIF456][CANIF637_Conf]<CANIF606_Conf> CanIfCtrlWakeupSupport ãŠã‚ˆã³CanIfTrcvWakeupSupport ãŒFALSEã®å ´åˆï¼ŒCanIfDispatchUserValidateWakeupEventULã¯è¨­å®šä¸å¯
+$		<CANIF655> CanIfTrcvIdã¯0ã‹ã‚‰é–‹å§‹ã™ã‚‹
+$		<CANIF695> CanIfTrcvDrvCfgãŒæ§‹æˆã•ã‚Œã¦ã„ãªã„å ´åˆï¼ŒCanIfDispatchUserTrcvModeIndicationULã¯å®šç¾©ä¸å¯
 $	- PN
 $		<CANIF819_Conf> CanIfDispatchCfg/CanIfDispatchUserConfirmPnAvailabilityName
 $		<CANIF820_Conf> CanIfDispatchCfg/CanIfDispatchUserConfirmPnAvailabilityUL
@@ -1289,51 +1295,51 @@ $		<CANIF644_Conf> CanIfInitHohCfg/CanIfHrhCfg/CanIfHrhRangeCfg/CanIfHrhRangeRxP
 $		<CANIF743_Conf> CanIfRxPduCfg/CanIfRxPduCanIdRange
 $		<CANIF745_Conf> CanIfRxPduCfg/CanIfRxPduCanIdRange/CanIfRxPduCanIdRangeLowerCanId
 $		<CANIF744_Conf> CanIfRxPduCfg/CanIfRxPduCanIdRange/CanIfRxPduCanIdRangeUpperCanId
-$	- ¥½¥Õ¥È¥¦¥§¥¢¥Õ¥£¥ë¥¿¥ê¥ó¥°
+$	- ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°
 $		<CANIF619_Conf> CanIfPrivateCfg/CanIfPrivateSoftwareFilterType
-$	- BSW¥¹¥±¥¸¥å¡¼¥é
+$	- BSWã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ©
 $		<CANIF669_Conf> CanIfRxPduCfg/CanIfRxPduBswSchExclAreaIdRef
 $		<CANIF670_Conf> CanIfTxPduCfg/CanIfTxPduBswSchExclAreaIdRef
 $	- NM
 $		<CANIF741_Conf> CanIfPublicCfg/CanIfPublicWakeupCheckValidByNM
-$	- ¼¡¥ê¥ê¡¼¥¹¤Çºï½ü¤µ¤ì¤ëÍ½Äê¤Î¥Ñ¥é¥á¡¼¥¿
+$	- æ¬¡ãƒªãƒªãƒ¼ã‚¹ã§å‰Šé™¤ã•ã‚Œã‚‹äºˆå®šã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 $		<CANIF633_Conf> CanIfHrhCfg/CanIfHrhCanHandleTypeRef
 $		<CANIF626_Conf> CanIfHthCfg/CanIfHthCanHandleTypeRef
-$	- ¤½¤ÎÂ¾
-$		<CANIF468> CanIfHthIdSymRef¤ÈCanIfHrhIdSymRef¤Î»²¾ÈÀè¤«¤é³ÆHOH¤ËÂĞ¤¹¤ë¥Ï¡¼¥É¥¦¥§¥¢¼õÍÆ¥Õ¥£¥ë¥¿¤ò»²¾È¤¹¤ë
-$		<CANIF696> <User_TrcvModeIndication>¤ÎÌ¾Á°¤ÏCanIfDispatchUserTrcvModeIndicationName¤ÇÄêµÁ¤¹¤ë
-$		           ¤¿¤À¤·¡¤CanIfDispatchUserTrcvModeIndicationUL¤¬¹½À®¤µ¤ì¤Æ¤¤¤Ê¤¤¾ì¹ç¤ÏÄêµÁÉÔ²Ä¤È¤Ê¤ë
-$		<CANIF697> CanIfDispatchUserTrcvModeIndicationUL¤¬CAN_SM¤Î¾ì¹ç¡¤CanIfDispatchUserTrcvModeIndicationName¤Ï
-$		           CanSM_TransceiverModeIndication¤Ç¤¢¤ê¡¤uint8·¿¤Î´Ø¿ô¥Ñ¥é¥á¡¼¥¿¤ÎÌ¾Á°¤ÏTransceiverId¤È¤¹¤ë
-$		<CANIF698> CanIfDispatchUserTrcvModeIndicationUL¤¬CDD¤Î¾ì¹ç¡¤<User_TransceiverModeIndication>¤ÎÌ¾Á°¤ò
-$		           CanIfDispatchUserTrcvModeIndicationName¤ÇÄêµÁ¤·¡¤´Ø¿ô¥Ñ¥é¥á¡¼¥¿¤Î·¿¤Ïuint8·¿¤È¤¹¤ë
-$		<CANIF794> CanIfPublicPnSupport¤¬TRUE¤Î¾ì¹ç¡¤<User_ClearTrcvWufFlagIndication>¤òÄó¶¡¤¹¤ë¾å°Ì¥ì¥¤¥ä¥â¥¸¥å¡¼¥ë¤òÄêµÁ¤¹¤ë
-$		<CANIF795> CanIfPublicPnSupport¤¬TRUE¤Î¾ì¹ç¡¤<User_ClearTrcvWufFlagIndication>¤ÎÌ¾Á°¤ò
-$		           CanIfDispatchUserClearTrcvWufFlagIndicationName¤ÇÄêµÁ¤¹¤ë¤³¤È¤¬²ÄÇ½¤È¤Ê¤ë
-$		<CANIF796> <User_ClearTrcvWufFlagIndication>¤ÏCanIfPublicPnSupport¤ÎÀßÄê¤Ë¤è¤Ã¤ÆON/OFF¤Ç¤­¤ë
-$		<CANIF797> CanIfDispatchUserClearTrcvWufFlagIndicationUL¤¬CAN_SM¤Î¾ì¹ç¡¤CanIfDispatchUserClearTrcvWufFlagIndicationName¤Ï
-$		           CanSM_ClearTrcvWufFlagIndication¤Ç¤¢¤ê¡¤uint8·¿¤Î´Ø¿ô¥Ñ¥é¥á¡¼¥¿¤ÎÌ¾Á°¤ÏTransceiverId¤È¤¹¤ë
-$		<CANIF798> CanIfDispatchUserClearTrcvWufFlagIndicationUL¤¬CDD¤Î¾ì¹ç¡¤<User_ClearTrcvWufFlagIndication>¤ÎÌ¾Á°¤Ï
-$		           CanIfDispatchUserClearTrcvWufFlagIndicationName¤ÇÄêµÁ¤µ¤ì¡¤´Ø¿ô¥Ñ¥é¥á¡¼¥¿¤Ïuint8·¿¤È¤¹¤ë
-$		<CANIF800> CanIfPublicPnSupport¤¬TRUE¤Î¾ì¹ç¡¤CanIfDispatchUserCheckTrcvWakeFlagIndicationUL¤Î»ØÄê¤¬²ÄÇ½¤È¤Ê¤ë
-$		<CANIF801> <User_CheckTrcvWakeFlagIndication>¤ÎÌ¾Á°¤ÏCanIfDispatchUserCheckTrcvWakeFlagIndicationName¤ÇÄêµÁ¤¹¤ë
-$		<CANIF802> <User_CheckTrcvWakeFlagIndication>¤ÏCanIfPublicPnSupport¤ÎÀßÄê¤Ë¤è¤Ã¤ÆON/OFF¤Ç¤­¤ë
-$		<CANIF803> CanIfDispatchUserCheckTrcvWakeFlagIndicationUL¤¬CAN_SM¤Î¾ì¹ç¡¤CanIfDispatchUserCheckTrcvWakeFlagIndicationName¤Ï
-$		           CanSM_CheckTrcvWakeFlagIndication¤Ç¤¢¤ê¡¤uint8·¿¤Î´Ø¿ô¥Ñ¥é¥á¡¼¥¿¤ÎÌ¾Á°¤ÏTransceiverId¤È¤¹¤ë
-$		<CANIF804> CanIfDispatchUserCheckTrcvWakeFlagIndicationUL¤¬CDD¤Î¾ì¹ç¡¤<User_CheckTrcvWakeFlagIndication>¤ÎÌ¾Á°¤Ï
-$		           CanIfDispatchUserCheckTrcvWakeFlagIndicationName¤Ç»ØÄê¤µ¤ì¡¤´Ø¿ô¥Ñ¥é¥á¡¼¥¿¤Î·¿¤Ïuint8¤È¤¹¤ë
-$		<CANIF823> <User_ConfirmPnAvailability>¤òÄÌÃÎ¤¹¤ë¾å°Ì¥ì¥¤¥ä¤ÏCanIfDispatchUserConfirmPnAvailabilityUL¤ÇÄêµÁ¤¹¤ë
-$		<CANIF824> <Uset_ConfirmPnAvailability>¤ÎÌ¾Á°¤ÏCanIfDispatchUserConfirmPnAvailabilityName¤ÇÄêµÁ¤¹¤ë
-$		<CANIF825> <Uset_ConfirmPnAvailability>¤ÏCANIF_PUBLIC_PN_SUPPORT¤ÎÀßÄê¤Ë¤è¤Ã¤ÆON/OFF¤Ç¤­¤ë
-$		<CANIF826> CanIfDispatchUserConfirmPnAvailabilityUL¤¬CAN_SM¤Î¾ì¹ç¡¤CanIfDispatchUserConfirmPnAvailabilityName¤Ï
-$		           CanSM_ConfirmPnAvailability¤Ç¤¢¤ê¡¤uint8·¿¤Î´Ø¿ô¥Ñ¥é¥á¡¼¥¿¤ÎÌ¾Á°¤ÏTransceiverId¤È¤¹¤ë
-$		<CANIF280> °Ê²¼¤Î¥Ø¥Ã¥À¥Õ¥¡¥¤¥ë¤ò¥¤¥ó¥¯¥ë¡¼¥É¤¹¤ë
-$		           ¡¦Can_<vendorID>_<Vendor specific name><driver abbreviation>_Cfg.h
-$		           ¡¦CanTrcv_<Vendor Id>_<Vendor specific name><driver abbreviation>_Cfg.h
-$		           ¡¦PduR_Cfg.h
-$		           ¡¦CanNm_Cfg.h
-$		           ¡¦CanTp_Cfg.h
-$		           ¡¦Xcp_Cfg.h
-$		<CANIF375> Äó¶¡¤µ¤ì¤Æ¤¤¤ëµ¡Ç½¤ò¼Â¹Ô¤¹¤ë¤¿¤á¤Ë¡¤¥³¡¼¥É¥Õ¥¡¥¤¥ë¥¹¥È¥é¥¯¥Á¥ã¤Ë¤ÏCanIf_<X>.c ¤¬´Ş¤Ş¤ì¡¤
-$		           ³ÈÄ¥µ¡Ç½<X>¤Ï¡¤Ê£¿ô¤ÎC-¥Õ¥¡¥¤¥ë¤ò»ÈÍÑ¤¹¤ë¾ì¹ç¤Î¥ª¥×¥·¥ç¥ó¤Ç¤¢¤ë
-$		<CANIF376> ¥³¥ó¥Ñ¥¤¥ëÁ°¤Ë¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó²ÄÇ½¤Ê¥Ñ¥é¥á¡¼¥¿ÍÑ¤ÎCanIf_Cfg.c¤ò´Ş¤à
+$	- ãã®ä»–
+$		<CANIF468> CanIfHthIdSymRefã¨CanIfHrhIdSymRefã®å‚ç…§å…ˆã‹ã‚‰å„HOHã«å¯¾ã™ã‚‹ãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢å—å®¹ãƒ•ã‚£ãƒ«ã‚¿ã‚’å‚ç…§ã™ã‚‹
+$		<CANIF696> <User_TrcvModeIndication>ã®åå‰ã¯CanIfDispatchUserTrcvModeIndicationNameã§å®šç¾©ã™ã‚‹
+$		           ãŸã ã—ï¼ŒCanIfDispatchUserTrcvModeIndicationULãŒæ§‹æˆã•ã‚Œã¦ã„ãªã„å ´åˆã¯å®šç¾©ä¸å¯ã¨ãªã‚‹
+$		<CANIF697> CanIfDispatchUserTrcvModeIndicationULãŒCAN_SMã®å ´åˆï¼ŒCanIfDispatchUserTrcvModeIndicationNameã¯
+$		           CanSM_TransceiverModeIndicationã§ã‚ã‚Šï¼Œuint8å‹ã®é–¢æ•°ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®åå‰ã¯TransceiverIdã¨ã™ã‚‹
+$		<CANIF698> CanIfDispatchUserTrcvModeIndicationULãŒCDDã®å ´åˆï¼Œ<User_TransceiverModeIndication>ã®åå‰ã‚’
+$		           CanIfDispatchUserTrcvModeIndicationNameã§å®šç¾©ã—ï¼Œé–¢æ•°ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å‹ã¯uint8å‹ã¨ã™ã‚‹
+$		<CANIF794> CanIfPublicPnSupportãŒTRUEã®å ´åˆï¼Œ<User_ClearTrcvWufFlagIndication>ã‚’æä¾›ã™ã‚‹ä¸Šä½ãƒ¬ã‚¤ãƒ¤ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å®šç¾©ã™ã‚‹
+$		<CANIF795> CanIfPublicPnSupportãŒTRUEã®å ´åˆï¼Œ<User_ClearTrcvWufFlagIndication>ã®åå‰ã‚’
+$		           CanIfDispatchUserClearTrcvWufFlagIndicationNameã§å®šç¾©ã™ã‚‹ã“ã¨ãŒå¯èƒ½ã¨ãªã‚‹
+$		<CANIF796> <User_ClearTrcvWufFlagIndication>ã¯CanIfPublicPnSupportã®è¨­å®šã«ã‚ˆã£ã¦ON/OFFã§ãã‚‹
+$		<CANIF797> CanIfDispatchUserClearTrcvWufFlagIndicationULãŒCAN_SMã®å ´åˆï¼ŒCanIfDispatchUserClearTrcvWufFlagIndicationNameã¯
+$		           CanSM_ClearTrcvWufFlagIndicationã§ã‚ã‚Šï¼Œuint8å‹ã®é–¢æ•°ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®åå‰ã¯TransceiverIdã¨ã™ã‚‹
+$		<CANIF798> CanIfDispatchUserClearTrcvWufFlagIndicationULãŒCDDã®å ´åˆï¼Œ<User_ClearTrcvWufFlagIndication>ã®åå‰ã¯
+$		           CanIfDispatchUserClearTrcvWufFlagIndicationNameã§å®šç¾©ã•ã‚Œï¼Œé–¢æ•°ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã¯uint8å‹ã¨ã™ã‚‹
+$		<CANIF800> CanIfPublicPnSupportãŒTRUEã®å ´åˆï¼ŒCanIfDispatchUserCheckTrcvWakeFlagIndicationULã®æŒ‡å®šãŒå¯èƒ½ã¨ãªã‚‹
+$		<CANIF801> <User_CheckTrcvWakeFlagIndication>ã®åå‰ã¯CanIfDispatchUserCheckTrcvWakeFlagIndicationNameã§å®šç¾©ã™ã‚‹
+$		<CANIF802> <User_CheckTrcvWakeFlagIndication>ã¯CanIfPublicPnSupportã®è¨­å®šã«ã‚ˆã£ã¦ON/OFFã§ãã‚‹
+$		<CANIF803> CanIfDispatchUserCheckTrcvWakeFlagIndicationULãŒCAN_SMã®å ´åˆï¼ŒCanIfDispatchUserCheckTrcvWakeFlagIndicationNameã¯
+$		           CanSM_CheckTrcvWakeFlagIndicationã§ã‚ã‚Šï¼Œuint8å‹ã®é–¢æ•°ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®åå‰ã¯TransceiverIdã¨ã™ã‚‹
+$		<CANIF804> CanIfDispatchUserCheckTrcvWakeFlagIndicationULãŒCDDã®å ´åˆï¼Œ<User_CheckTrcvWakeFlagIndication>ã®åå‰ã¯
+$		           CanIfDispatchUserCheckTrcvWakeFlagIndicationNameã§æŒ‡å®šã•ã‚Œï¼Œé–¢æ•°ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®å‹ã¯uint8ã¨ã™ã‚‹
+$		<CANIF823> <User_ConfirmPnAvailability>ã‚’é€šçŸ¥ã™ã‚‹ä¸Šä½ãƒ¬ã‚¤ãƒ¤ã¯CanIfDispatchUserConfirmPnAvailabilityULã§å®šç¾©ã™ã‚‹
+$		<CANIF824> <Uset_ConfirmPnAvailability>ã®åå‰ã¯CanIfDispatchUserConfirmPnAvailabilityNameã§å®šç¾©ã™ã‚‹
+$		<CANIF825> <Uset_ConfirmPnAvailability>ã¯CANIF_PUBLIC_PN_SUPPORTã®è¨­å®šã«ã‚ˆã£ã¦ON/OFFã§ãã‚‹
+$		<CANIF826> CanIfDispatchUserConfirmPnAvailabilityULãŒCAN_SMã®å ´åˆï¼ŒCanIfDispatchUserConfirmPnAvailabilityNameã¯
+$		           CanSM_ConfirmPnAvailabilityã§ã‚ã‚Šï¼Œuint8å‹ã®é–¢æ•°ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®åå‰ã¯TransceiverIdã¨ã™ã‚‹
+$		<CANIF280> ä»¥ä¸‹ã®ãƒ˜ãƒƒãƒ€ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ã™ã‚‹
+$		           ãƒ»Can_<vendorID>_<Vendor specific name><driver abbreviation>_Cfg.h
+$		           ãƒ»CanTrcv_<Vendor Id>_<Vendor specific name><driver abbreviation>_Cfg.h
+$		           ãƒ»PduR_Cfg.h
+$		           ãƒ»CanNm_Cfg.h
+$		           ãƒ»CanTp_Cfg.h
+$		           ãƒ»Xcp_Cfg.h
+$		<CANIF375> æä¾›ã•ã‚Œã¦ã„ã‚‹æ©Ÿèƒ½ã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã«ï¼Œã‚³ãƒ¼ãƒ‰ãƒ•ã‚¡ã‚¤ãƒ«ã‚¹ãƒˆãƒ©ã‚¯ãƒãƒ£ã«ã¯CanIf_<X>.c ãŒå«ã¾ã‚Œï¼Œ
+$		           æ‹¡å¼µæ©Ÿèƒ½<X>ã¯ï¼Œè¤‡æ•°ã®C-ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã§ã‚ã‚‹
+$		<CANIF376> ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«å‰ã«ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³å¯èƒ½ãªãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ç”¨ã®CanIf_Cfg.cã‚’å«ã‚€

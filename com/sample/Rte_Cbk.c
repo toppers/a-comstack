@@ -1,6 +1,6 @@
 /*
- *  TOPPERS/A-COMSTACK
- *      Automotive COMSTACK
+ *  TOPPERS/A-COM
+ *      Automotive COM
  *
  *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
  *                             Graduate School of Information Science, Nagoya Univ., JAPAN
@@ -16,7 +16,7 @@
  *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
  *  Copyright (C) 2013-2016 by Witz Corporation
  *
- *  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
+ *  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
  *  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
  *  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
@@ -50,21 +50,29 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Det.h 2995 2016-03-02 02:05:09Z fsi-kaitori $
+ *  $Id: Rte_Cbk.c 3128 2016-03-15 05:16:52Z fsi-kaitori $
  */
 
-#ifndef DET_H
-#define DET_H
-
-#include "Os.h"
-#include "t_syslog.h"
-
-LOCAL_INLINE Std_ReturnType
-Det_ReportError(uint16 ModuleId, uint8 InstanceId, uint8 ApiId, uint8 ErrorId)
+void
+Rte_COMCbkTxTOut_sn0()
 {
-	syslog(LOG_NOTICE, "## Det_ReportError(0x%x, 0x%x, 0x%x, 0x%x)", ModuleId, InstanceId, ApiId, ErrorId);
-	while(1);
-	return(E_OK);
+	return;
 }
 
-#endif /* DET_H */
+void
+Rte_COMCbkTxTOut_sn1()
+{
+	return;
+}
+
+void
+Rte_COMCbkRxTOut_sn0()
+{
+	return;
+}
+
+void
+Rte_COMCbkRxTOut_sn1()
+{
+	return;
+}

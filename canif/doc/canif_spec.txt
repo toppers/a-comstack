@@ -1,81 +1,83 @@
 
-	TOPPERS/A-CANIF ³°Éô»ÅÍÍ½ñ
+	TOPPERS/A-CANIF å¤–éƒ¨ä»•æ§˜æ›¸
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤AUTOSAR»ÅÍÍ¤ò¥Ù¡¼¥¹¤È¤·¤¿A-CANIF¤Î³°Éô»ÅÍÍ¤òÀâÌÀ¤¹¤ë
-¤â¤Î¤Ç¤¢¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒAUTOSARä»•æ§˜ã‚’ãƒ™ãƒ¼ã‚¹ã¨ã—ãŸA-CANIFã®å¤–éƒ¨ä»•æ§˜ã‚’èª¬æ˜Žã™ã‚‹
+ã‚‚ã®ã§ã‚ã‚‹ï¼Ž
 
 ----------------------------------------------------------------------
 TOPPERS/A-CANIF
     Automotive CANIF
 
-Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+Copyright (C) 2013-2016 by Center for Embedded Computing Systems
                            Graduate School of Information Science, Nagoya Univ., JAPAN
-Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
-Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
-Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
-Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
-Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2015 by Witz Corporation
+Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2016 by Witz Corporation
 
-¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î (1)¡Á(3)¤Î¾ò·ï¤òËþ¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥É¥­¥å¥á
-¥ó¥È¡ÊËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿¤â¤Î¤ò´Þ¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²þ
-ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½þ¤ÇµöÂú¤¹¤ë¡¥
-(1) ËÜ¥É¥­¥å¥á¥ó¥È¤òÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï
-    ¤ª¤è¤Ó²¼µ­¤ÎÌµÊÝ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Þ¤Þ¤Î·Á¤Ç¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤Þ¤ì¤Æ
-    ¤¤¤ë¤³¤È¡¥
-(2) ËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿»Ý¤Îµ­½Ò
-    ¤ò¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤á¤ë¤³¤È¡¥¤¿¤À¤·¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á
-    ¥ó¥È¤¬¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È»ØÄê¤Î³«È¯À®²ÌÊª¤Ç¤¢¤ë¾ì¹ç¤Ë¤Ï¡¤¤³¤Î¸Â
-    ¤ê¤Ç¤Ï¤Ê¤¤¡¥
-(3) ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»³²
-    ¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥¤Þ¤¿¡¤
-    ËÜ¥É¥­¥å¥á¥ó¥È¤Î¥æ¡¼¥¶¤Þ¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍýÍ³¤Ë´ð¤Å
-    ¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
+ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã® (1)ï½ž(3)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡
+ãƒ³ãƒˆï¼ˆæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼Žä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼Ž
+(1) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶
+    ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã¾ã‚Œã¦
+    ã„ã‚‹ã“ã¨ï¼Ž
+(2) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã™ã‚‹å ´åˆã«ã¯ï¼Œãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸæ—¨ã®è¨˜è¿°
+    ã‚’ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã‚ã‚‹ã“ã¨ï¼ŽãŸã ã—ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡
+    ãƒ³ãƒˆãŒï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å®šã®é–‹ç™ºæˆæžœç‰©ã§ã‚ã‚‹å ´åˆã«ã¯ï¼Œã“ã®é™
+    ã‚Šã§ã¯ãªã„ï¼Ž
+(3) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æå®³
+    ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Žã¾ãŸï¼Œ
+    æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†ç”±ã«åŸºã¥
+    ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»ÅÍÍ
-¤Ë´ð¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç¤Ï¤Ê
-¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ð¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍøÍÑ¤¹¤ë
-¼Ô¤ËÂÐ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•æ§˜
+ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼Žä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§ã¯ãª
+ã„ï¼ŽAUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©ç”¨ã™ã‚‹
+è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤ÌµÊÝ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª¤è
-¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª¤ËÂÐ¤¹
-¤ëÅ¬¹çÀ­¤â´Þ¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊÝ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Þ¤¿¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ
-¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½¤ÎÀÕÇ¤¤òÉé
-¤ï¤Ê¤¤¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼Žä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆ
+ã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„ã«å¯¾ã™
+ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼Žã¾ãŸï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨
+ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œãã®è²¬ä»»ã‚’è² 
+ã‚ãªã„ï¼Ž
 
-$Id: canif_spec.txt 1241 2015-03-25 07:26:02Z panasonic-ayane $
+$Id: canif_spec.txt 2995 2016-03-02 02:05:09Z fsi-kaitori $
 ----------------------------------------------------------------------
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(1) ³µÍ×
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(1) æ¦‚è¦
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 
-A-CANIF¤Ï¡¤AUTOSAR¤Î°Ê²¼¤Î»ÅÍÍ¤Ë½àµò¤·¤Æ³«È¯¤¹¤ë¡¥
+A-CANIFã¯ï¼ŒAUTOSARã®ä»¥ä¸‹ã®ä»•æ§˜ã«æº–æ‹ ã—ã¦é–‹ç™ºã™ã‚‹ï¼Ž
 Specification of CAN Interface V5.0.0 R4.0 Rev 3
 
-¤·¤«¤·¡¤Í×µá»ÅÍÍ¤¬ËÄÂç¤Ç¤¢¤ë¤Î¤Ç¡¤ÂÐ±þ¤¹¤ëÍ×µá»ÅÍÍ¤ò¸ÂÄê¤·¤Æ³«È¯¤ò¹Ô¤¦¡¥
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ç¤Ï¡¤AUTOSAR»ÅÍÍ¤ÎÃæ¤Ç¡¤A-CANIF¤¬¥µ¥Ý¡¼¥È¤¹¤ë»ÅÍÍ¡¤¥µ¥Ý
-¡¼¥È¤·¤Ê¤¤»ÅÍÍ¡¤Û£Ëæ¤Ê»ÅÍÍ¤Î²ò¼á¤òÀâÌÀ¤¹¤ë¡¥¤Þ¤¿¡¤¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹¤È¥Ñ
-¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê¤Ë´Ø¤¹¤ë¾ÜºÙ¤Ê»ÅÍÍ¤Ï¡¤canif_system_service.txt¡¤¤ª¤è¤Ó
-canif_container.txt¤Ë¡¤¤½¤ì¤¾¤ìµ¬Äê¤¹¤ë¡¥
+ã—ã‹ã—ï¼Œè¦æ±‚ä»•æ§˜ãŒè†¨å¤§ã§ã‚ã‚‹ã®ã§ï¼Œå¯¾å¿œã™ã‚‹è¦æ±‚ä»•æ§˜ã‚’é™å®šã—ã¦é–‹ç™ºã‚’è¡Œã†ï¼Ž
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã§ã¯ï¼ŒAUTOSARä»•æ§˜ã®ä¸­ã§ï¼ŒA-CANIFãŒã‚µãƒãƒ¼ãƒˆã™ã‚‹ä»•æ§˜ï¼Œã‚µãƒ
+ãƒ¼ãƒˆã—ãªã„ä»•æ§˜ï¼Œæ›–æ˜§ãªä»•æ§˜ã®è§£é‡ˆã‚’èª¬æ˜Žã™ã‚‹ï¼Žã¾ãŸï¼Œã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹ã¨ãƒ‘
+ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã«é–¢ã™ã‚‹è©³ç´°ãªä»•æ§˜ã¯ï¼Œcanif_system_service.txtï¼ŒãŠã‚ˆã³
+canif_container.txtã«ï¼Œãã‚Œãžã‚Œè¦å®šã™ã‚‹ï¼Ž
 
-¤³¤ì¤é¤Î¥É¥­¥å¥á¥ó¥È¤Ç¸ÀµÚ¤Î¤Ê¤¤Í×µá»ÅÍÍ¤Ë´Ø¤·¤Æ¤Ï¡¤¾åµ­»ÅÍÍ¤Ë½àµò¤·¤Æ
-³«È¯¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤È¤¹¤ë¡¥
+ã“ã‚Œã‚‰ã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã§è¨€åŠã®ãªã„è¦æ±‚ä»•æ§˜ã«é–¢ã—ã¦ã¯ï¼Œä¸Šè¨˜ä»•æ§˜ã«æº–æ‹ ã—ã¦
+é–‹ç™ºã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã¨ã™ã‚‹ï¼Ž
 
-¡ú¡ú¡ú È¯¹ÔºÑ¤ß»ÅÍÍÈÖ¹æ ¡ú¡ú¡ú
+â˜…â˜…â˜… ç™ºè¡Œæ¸ˆã¿ä»•æ§˜ç•ªå· â˜…â˜…â˜…
 NCANIF017
 CANIFa001
 
-¡ú¡ú¡ú ¶õ¤­»ÅÍÍÈÖ¹æ ¡ú¡ú¡ú
+â˜…â˜…â˜… ç©ºãä»•æ§˜ç•ªå· â˜…â˜…â˜…
 NCANIF007
 NCANIF008
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(1.1) Î¬¸ì°ìÍ÷
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(1.1) ç•¥èªžä¸€è¦§
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
 CCMSM : CAN interface Controller Mode State Machine 
 HOH   : Hardware Object Handle
 HTH   : Hardware Receive Handle
@@ -85,267 +87,267 @@ PDU   : Protocol Data Unit
 IPDU  : Interaction layer Protocol Data Unit
 LPDU  : Data Link Layer Protocol Data Unit
 
-[*] ¡§¥Ü¥Ç¥£·Ï¥µ¥Ö¥»¥Ã¥ÈÂÐ¾Ý
+[*] ï¼šãƒœãƒ‡ã‚£ç³»ã‚µãƒ–ã‚»ãƒƒãƒˆå¯¾è±¡
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(2) ¥µ¥Ý¡¼¥È¤¹¤ëµ¡Ç½
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.1) µ¡Ç½
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¡ãµ¡Ç½°ìÍ÷¡ä
-¢£½é´ü²½ [*]
-¢£Á÷¿®
-  ¡¦Á÷¿®Í×µá [*]
-  ¡¦Á÷¿®¥³¥ó¥Õ¥¡¥á¡¼¥·¥ç¥ó [*]
-  ¡¦Á÷¿®¥­¥ã¥ó¥»¥ë [*]
-¢£¼õ¿®
-  ¡¦¼õ¿®¥¤¥ó¥Ç¥£¥±¡¼¥·¥ç¥ó [*]
-  ¡¦¼õ¿®LPDU¥Ç¡¼¥¿ÆÉ¹þ¤ß [*]
-  ¡¦¼õ¿®DLC¥Á¥§¥Ã¥¯ [*]
-¢£ÄÌÃÎ¾õÂÖ¼èÆÀ
-  ¡¦Á÷¿®¥³¥ó¥Õ¥¡¥á¡¼¥·¥ç¥ó¾õÂÖ¼èÆÀ [*]
-  ¡¦Á÷¿®ÄÌÃÎ¾õÂÖÆÉ¹þ¤ß [*]
-  ¡¦¼õ¿®ÄÌÃÎ¾õÂÖÆÉ¹þ¤ß [*]
-¢£¥³¥ó¥È¥í¡¼¥é¥â¡¼¥ÉÀ©¸æ
-  ¡¦¥³¥ó¥È¥í¡¼¥é¥â¡¼¥ÉÀßÄê [*]
-  ¡¦¥³¥ó¥È¥í¡¼¥é¥â¡¼¥É¼èÆÀ [*]
-  ¡¦¥³¥ó¥È¥í¡¼¥é¥â¡¼¥ÉÄÌÃÎ [*]
-  ¡¦¥³¥ó¥È¥í¡¼¥é¥Ð¥¹OFF [*]
-¢£PDU¥â¡¼¥ÉÀ©¸æ
-  ¡¦PDU¥â¡¼¥ÉÀßÄê [*]
-  ¡¦PDU¥â¡¼¥É¼èÆÀ [*]
-¢£CAN¥É¥é¥¤¥ÐÀ©¸æ
-  ¡¦CAN¥É¥é¥¤¥Ðµ¯Æ°¸¡½Ð [*]
-¢£¥Ü¡¼¥ì¡¼¥ÈÀ©¸æ
-  ¡¦¥Ü¡¼¥ì¡¼¥È³ÎÇ§ [*]
-  ¡¦¥Ü¡¼¥ì¡¼¥ÈÊÑ¹¹ [*]
-¢£ÂÅÅöÀ­³ÎÇ§ [*]
-¢£¥á¥Ã¥»¡¼¥¸¥Ü¥Ã¥¯¥¹¼ïÊÌ
-  ¡¦FullCAN [*]
-  ¡¦¥Ï¡¼¥É¥¦¥§¥¢¥ª¥Ö¥¸¥§¥¯¥È¥Ï¥ó¥É¥ë [*]
-¢£¥Ð¡¼¥¸¥ç¥ó¾ðÊó¼èÆÀ [*]
-¢£DET¥¨¥é¡¼ÄÌÃÎ [*]
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(2) ã‚µãƒãƒ¼ãƒˆã™ã‚‹æ©Ÿèƒ½
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.1) æ©Ÿèƒ½
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+ï¼œæ©Ÿèƒ½ä¸€è¦§ï¼ž
+â– åˆæœŸåŒ– [*]
+â– é€ä¿¡
+  ãƒ»é€ä¿¡è¦æ±‚ [*]
+  ãƒ»é€ä¿¡ã‚³ãƒ³ãƒ•ã‚¡ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ [*]
+  ãƒ»é€ä¿¡ã‚­ãƒ£ãƒ³ã‚»ãƒ« [*]
+â– å—ä¿¡
+  ãƒ»å—ä¿¡ã‚¤ãƒ³ãƒ‡ã‚£ã‚±ãƒ¼ã‚·ãƒ§ãƒ³ [*]
+  ãƒ»å—ä¿¡LPDUãƒ‡ãƒ¼ã‚¿èª­è¾¼ã¿ [*]
+  ãƒ»å—ä¿¡DLCãƒã‚§ãƒƒã‚¯ [*]
+â– é€šçŸ¥çŠ¶æ…‹å–å¾—
+  ãƒ»é€ä¿¡ã‚³ãƒ³ãƒ•ã‚¡ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³çŠ¶æ…‹å–å¾— [*]
+  ãƒ»é€ä¿¡é€šçŸ¥çŠ¶æ…‹èª­è¾¼ã¿ [*]
+  ãƒ»å—ä¿¡é€šçŸ¥çŠ¶æ…‹èª­è¾¼ã¿ [*]
+â– ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¢ãƒ¼ãƒ‰åˆ¶å¾¡
+  ãƒ»ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¢ãƒ¼ãƒ‰è¨­å®š [*]
+  ãƒ»ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¢ãƒ¼ãƒ‰å–å¾— [*]
+  ãƒ»ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¢ãƒ¼ãƒ‰é€šçŸ¥ [*]
+  ãƒ»ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒã‚¹OFF [*]
+â– PDUãƒ¢ãƒ¼ãƒ‰åˆ¶å¾¡
+  ãƒ»PDUãƒ¢ãƒ¼ãƒ‰è¨­å®š [*]
+  ãƒ»PDUãƒ¢ãƒ¼ãƒ‰å–å¾— [*]
+â– CANãƒ‰ãƒ©ã‚¤ãƒåˆ¶å¾¡
+  ãƒ»CANãƒ‰ãƒ©ã‚¤ãƒèµ·å‹•æ¤œå‡º [*]
+â– ãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆåˆ¶å¾¡
+  ãƒ»ãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆç¢ºèª [*]
+  ãƒ»ãƒœãƒ¼ãƒ¬ãƒ¼ãƒˆå¤‰æ›´ [*]
+â– å¦¥å½“æ€§ç¢ºèª [*]
+â– ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ç¨®åˆ¥
+  ãƒ»FullCAN [*]
+  ãƒ»ãƒãƒ¼ãƒ‰ã‚¦ã‚§ã‚¢ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒãƒ³ãƒ‰ãƒ« [*]
+â– ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±å–å¾— [*]
+â– DETã‚¨ãƒ©ãƒ¼é€šçŸ¥ [*]
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.2) ¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¢£CanIfCtrlDrvCfg
-  ¡¦CanIfCtrlDrvTxCancellation
-  ¡¦CanIfCtrlDrvInitHohConfigRef [*]
-  ¡¦CanIfCtrlDrvNameRef [*]
-  ¢§CanIfCtrlCfg
-    ¡¦CanIfCtrlId [*]
-    ¡¦CanIfCtrlWakeupSupport [*]
-    ¡¦CanIfCtrlCanCtrlRef [*]
-¢£CanIfDispatchCfg
-  ¡¦CanIfDispatchUserCtrlBusOffName [*]
-  ¡¦CanIfDispatchUserCtrlBusOffUL [*]
-  ¡¦CanIfDispatchUserCtrlModeIndicationName [*]
-  ¡¦CanIfDispatchUserCtrlModeIndicationUL [*]
-  ¡¦CanIfDispatchUserValidateWakeupEventName [*]
-  ¡¦CanIfDispatchUserValidateWakeupEventUL [*]
-¢£CanIfInitCfg
-  ¡¦CanIfInitCfgSet
-  ¢§CanIfInitHohCfg
-    ¡¦CanIfInitRefCfgSet
-    ¢§CanIfHrhCfg
-      ¡¦CanIfHrhSoftwareFilter
-      ¡¦CanIfHrhCanCtrlIdRef [*]
-      ¡¦CanIfHrhIdSymRef [*]
-      ¢§CanIfHrhRangeCfg
-        ¡¦CanIfHrhRangeRxPduRangeCanIdType
-    ¢§CanIfHthCfg
-      ¡¦CanIfHthCanCtrlIdRef [*]
-      ¡¦CanIfHthIdSymRef [*]
-  ¢§CanIfTxPduCfg
-    ¡¦CanIfTxPduCanId [*]
-    ¡¦CanIfTxPduCanIdType [*]
-    ¡¦CanIfTxPduDlc [*]
-    ¡¦CanIfTxPduId [*]
-    ¡¦CanIfTxPduReadNotifyStatus [*]
-    ¡¦CanIfTxPduType [*]
-    ¡¦CanIfTxPduUserTxConfirmationName [*]
-    ¡¦CanIfTxPduUserTxConfirmationUL [*]
-    ¡¦CanIfTxPduBufferRef [*]
-    ¡¦CanIfTxPduRef [*]
-  ¢§CanIfRxPduCfg
-    ¡¦CanIfRxPduCanId [*]
-    ¡¦CanIfRxPduCanIdType [*]
-    ¡¦CanIfRxPduDlc [*]
-    ¡¦CanIfRxPduId [*]
-    ¡¦CanIfRxPduReadData [*]
-    ¡¦CanIfRxPduReadNotifyStatus [*]
-    ¡¦CanIfRxPduUserRxIndicationName [*]
-    ¡¦CanIfRxPduUserRxIndicationUL [*]
-    ¡¦CanIfRxPduHrhIdRef [*]
-    ¡¦CanIfRxPduRef [*]
-  ¢§CanIfBufferCfg
-    ¡¦CanIfBufferSize [*]
-    ¡¦CanIfBufferHthRef [*]
-¢£CanIfPrivateCfg
-  ¡¦CanIfPrivateDlcCheck
-  ¡¦CanIfSupportTTCAN
-¢£CanIfPublicCfg
-  ¡¦CanIfPublicCancelTransmitSupport [*]
-  ¡¦CanIfPublicCddHeaderFile [*]
-  ¡¦CanIfPublicChangeBaudrateSupport [*]
-  ¡¦CanIfPublicDevErrorDetect [*]
-  ¡¦CanIfPublicHandleTypeEnum [*]
-  ¡¦CanIfPublicMultipleDrvSupport
-  ¡¦CanIfPublicNumberOfCanHwUnits [*]
-  ¡¦CanIfPublicPnSupport
-  ¡¦CanIfPublicReadRxPduDataApi [*]
-  ¡¦CanIfPublicReadRxPduNotifyStatusApi [*]
-  ¡¦CanIfPublicReadTxPduNotifyStatusApi [*]
-  ¡¦CanIfPublicSetDynamicTxIdApi
-  ¡¦CanIfPublicTxBuffering
-  ¡¦CanIfPublicTxConfirmPollingSupport [*]
-  ¡¦CanIfPublicVersionInfoApi
-  ¡¦CanIfPublicWakeupCheckValidSupport [*]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.2) ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠ
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+â– CanIfCtrlDrvCfg
+  ãƒ»CanIfCtrlDrvTxCancellation
+  ãƒ»CanIfCtrlDrvInitHohConfigRef [*]
+  ãƒ»CanIfCtrlDrvNameRef [*]
+  â–¼CanIfCtrlCfg
+    ãƒ»CanIfCtrlId [*]
+    ãƒ»CanIfCtrlWakeupSupport [*]
+    ãƒ»CanIfCtrlCanCtrlRef [*]
+â– CanIfDispatchCfg
+  ãƒ»CanIfDispatchUserCtrlBusOffName [*]
+  ãƒ»CanIfDispatchUserCtrlBusOffUL [*]
+  ãƒ»CanIfDispatchUserCtrlModeIndicationName [*]
+  ãƒ»CanIfDispatchUserCtrlModeIndicationUL [*]
+  ãƒ»CanIfDispatchUserValidateWakeupEventName [*]
+  ãƒ»CanIfDispatchUserValidateWakeupEventUL [*]
+â– CanIfInitCfg
+  ãƒ»CanIfInitCfgSet
+  â–¼CanIfInitHohCfg
+    ãƒ»CanIfInitRefCfgSet
+    â–¼CanIfHrhCfg
+      ãƒ»CanIfHrhSoftwareFilter
+      ãƒ»CanIfHrhCanCtrlIdRef [*]
+      ãƒ»CanIfHrhIdSymRef [*]
+      â–¼CanIfHrhRangeCfg
+        ãƒ»CanIfHrhRangeRxPduRangeCanIdType
+    â–¼CanIfHthCfg
+      ãƒ»CanIfHthCanCtrlIdRef [*]
+      ãƒ»CanIfHthIdSymRef [*]
+  â–¼CanIfTxPduCfg
+    ãƒ»CanIfTxPduCanId [*]
+    ãƒ»CanIfTxPduCanIdType [*]
+    ãƒ»CanIfTxPduDlc [*]
+    ãƒ»CanIfTxPduId [*]
+    ãƒ»CanIfTxPduReadNotifyStatus [*]
+    ãƒ»CanIfTxPduType [*]
+    ãƒ»CanIfTxPduUserTxConfirmationName [*]
+    ãƒ»CanIfTxPduUserTxConfirmationUL [*]
+    ãƒ»CanIfTxPduBufferRef [*]
+    ãƒ»CanIfTxPduRef [*]
+  â–¼CanIfRxPduCfg
+    ãƒ»CanIfRxPduCanId [*]
+    ãƒ»CanIfRxPduCanIdType [*]
+    ãƒ»CanIfRxPduDlc [*]
+    ãƒ»CanIfRxPduId [*]
+    ãƒ»CanIfRxPduReadData [*]
+    ãƒ»CanIfRxPduReadNotifyStatus [*]
+    ãƒ»CanIfRxPduUserRxIndicationName [*]
+    ãƒ»CanIfRxPduUserRxIndicationUL [*]
+    ãƒ»CanIfRxPduHrhIdRef [*]
+    ãƒ»CanIfRxPduRef [*]
+  â–¼CanIfBufferCfg
+    ãƒ»CanIfBufferSize [*]
+    ãƒ»CanIfBufferHthRef [*]
+â– CanIfPrivateCfg
+  ãƒ»CanIfPrivateDlcCheck
+  ãƒ»CanIfSupportTTCAN
+â– CanIfPublicCfg
+  ãƒ»CanIfPublicCancelTransmitSupport [*]
+  ãƒ»CanIfPublicCddHeaderFile [*]
+  ãƒ»CanIfPublicChangeBaudrateSupport [*]
+  ãƒ»CanIfPublicDevErrorDetect [*]
+  ãƒ»CanIfPublicHandleTypeEnum [*]
+  ãƒ»CanIfPublicMultipleDrvSupport
+  ãƒ»CanIfPublicNumberOfCanHwUnits [*]
+  ãƒ»CanIfPublicPnSupport
+  ãƒ»CanIfPublicReadRxPduDataApi [*]
+  ãƒ»CanIfPublicReadRxPduNotifyStatusApi [*]
+  ãƒ»CanIfPublicReadTxPduNotifyStatusApi [*]
+  ãƒ»CanIfPublicSetDynamicTxIdApi
+  ãƒ»CanIfPublicTxBuffering
+  ãƒ»CanIfPublicTxConfirmPollingSupport [*]
+  ãƒ»CanIfPublicVersionInfoApi
+  ãƒ»CanIfPublicWakeupCheckValidSupport [*]
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.3) ¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¡¦CanIf_Init [*]
-¡¦CanIf_SetControllerMode [*]
-¡¦CanIf_GetControllerMode [*]
-¡¦CanIf_Transmit [*]
-¡¦CanIf_CancelTransmit [*]
-¡¦CanIf_ReadRxPduData [*]
-¡¦CanIf_ReadTxNotifStatus [*]
-¡¦CanIf_ReadRxNotifStatus [*]
-¡¦CanIf_SetPduMode [*]
-¡¦CanIf_GetPduMode [*]
-¡¦CanIf_GetVersionInfo
-¡¦CanIf_CheckWakeup [*]
-¡¦CanIf_CheckValidation [*]
-¡¦CanIf_GetTxConfirmationState [*]
-¡¦CanIf_CheckBaudrate [*]
-¡¦CanIf_ChangeBaudrate [*]
-¡¦CanIf_TxConfirmation [*]
-¡¦CanIf_RxIndication [*]
-¡¦CanIf_ControllerBusOff [*]
-¡¦CanIf_ControllerModeIndication [*]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.3) ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+ãƒ»CanIf_Init [*]
+ãƒ»CanIf_SetControllerMode [*]
+ãƒ»CanIf_GetControllerMode [*]
+ãƒ»CanIf_Transmit [*]
+ãƒ»CanIf_CancelTransmit [*]
+ãƒ»CanIf_ReadRxPduData [*]
+ãƒ»CanIf_ReadTxNotifStatus [*]
+ãƒ»CanIf_ReadRxNotifStatus [*]
+ãƒ»CanIf_SetPduMode [*]
+ãƒ»CanIf_GetPduMode [*]
+ãƒ»CanIf_GetVersionInfo
+ãƒ»CanIf_CheckWakeup [*]
+ãƒ»CanIf_CheckValidation [*]
+ãƒ»CanIf_GetTxConfirmationState [*]
+ãƒ»CanIf_CheckBaudrate [*]
+ãƒ»CanIf_ChangeBaudrate [*]
+ãƒ»CanIf_TxConfirmation [*]
+ãƒ»CanIf_RxIndication [*]
+ãƒ»CanIf_ControllerBusOff [*]
+ãƒ»CanIf_ControllerModeIndication [*]
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.4) ¥³¡¼¥ë¥Ð¥Ã¥¯
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¡¦<User_TxConfirmation>(PduIdType TxPduId) [*]
-¡¦<User_RxIndication>(PduIdType RxPduId, PduInfoType* PduInfoPtr) [*]
-¡¦<User_ValidateWakeupEvent>(EcuM_WakeupSourceType sources) [*]
-¡¦<User_ControllerBusOff>(uint8 ControllerId) [*]
-¡¦<User_ControllerModeIndication>(uint8 ControllerId, CanIf_ControllerModeType ControllerMode) [*]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(2.4) ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+ãƒ»<User_TxConfirmation>(PduIdType TxPduId) [*]
+ãƒ»<User_RxIndication>(PduIdType RxPduId, PduInfoType* PduInfoPtr) [*]
+ãƒ»<User_ValidateWakeupEvent>(EcuM_WakeupSourceType sources) [*]
+ãƒ»<User_ControllerBusOff>(uint8 ControllerId) [*]
+ãƒ»<User_ControllerModeIndication>(uint8 ControllerId, CanIf_ControllerModeType ControllerMode) [*]
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(3) ¥µ¥Ý¡¼¥È¤·¤Ê¤¤µ¡Ç½
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-¡ãµ¡Ç½°ìÍ÷¡ä
-¢£Á÷¿®
-  ¡¦Á÷¿®¥­¥ã¥ó¥»¥ë¥³¥ó¥Õ¥¡¥á¡¼¥·¥ç¥ó
-  ¡¦Á÷¿®¥Ð¥Ã¥Õ¥¡¥ê¥ó¥°
-  ¡¦Æ°ÅªÁ÷¿®IDÀßÄê
-¢£¼õ¿®
-  ¡¦¼õ¿®¥Õ¥£¥ë¥¿¥ê¥ó¥°
-¢£¥Þ¥ë¥ÁCAN¥É¥é¥¤¥Ð¥µ¥Ý¡¼¥È
-¢£CAN¥È¥é¥ó¥·¡¼¥ÐÀ©¸æ
-  ¡¦¥È¥é¥ó¥·¡¼¥Ð¥â¡¼¥ÉÀßÄê
-  ¡¦¥È¥é¥ó¥·¡¼¥Ð¥â¡¼¥É¼èÆÀ
-  ¡¦¥È¥é¥ó¥·¡¼¥Ð¥â¡¼¥ÉÄÌÃÎ
-  ¡¦¥È¥é¥ó¥·¡¼¥Ðµ¯Æ°ÍýÍ³¼èÆÀ
-  ¡¦¥È¥é¥ó¥·¡¼¥Ðµ¯Æ°¥â¡¼¥ÉÀßÄê
-  ¡¦¥È¥é¥ó¥·¡¼¥Ðµ¯Æ°³ÎÇ§
-  ¡¦¥È¥é¥ó¥·¡¼¥ÐWUF¥Õ¥é¥°¥¯¥ê¥¢
-  ¡¦¥È¥é¥ó¥·¡¼¥ÐWUF¥Õ¥é¥°¥¯¥ê¥¢ÄÌÃÎ
-  ¡¦¥È¥é¥ó¥·¡¼¥ÐWAKE¥Õ¥é¥°³ÎÇ§
-  ¡¦¥È¥é¥ó¥·¡¼¥ÐWAKE¥Õ¥é¥°ÄÌÃÎ
-¢£¥Ñ¡¼¥·¥ã¥ë¥Í¥Ã¥È¥ï¡¼¥­¥ó¥°
-¢£¥á¥Ã¥»¡¼¥¸¥Ü¥Ã¥¯¥¹¼ïÊÌ
-  ¡¦BasicCAN
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(3) ã‚µãƒãƒ¼ãƒˆã—ãªã„æ©Ÿèƒ½
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+ï¼œæ©Ÿèƒ½ä¸€è¦§ï¼ž
+â– é€ä¿¡
+  ãƒ»é€ä¿¡ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã‚³ãƒ³ãƒ•ã‚¡ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
+  ãƒ»é€ä¿¡ãƒãƒƒãƒ•ã‚¡ãƒªãƒ³ã‚°
+  ãƒ»å‹•çš„é€ä¿¡IDè¨­å®š
+â– å—ä¿¡
+  ãƒ»å—ä¿¡ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°
+â– ãƒžãƒ«ãƒCANãƒ‰ãƒ©ã‚¤ãƒã‚µãƒãƒ¼ãƒˆ
+â– CANãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒåˆ¶å¾¡
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰è¨­å®š
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰å–å¾—
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒãƒ¢ãƒ¼ãƒ‰é€šçŸ¥
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒèµ·å‹•ç†ç”±å–å¾—
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒèµ·å‹•ãƒ¢ãƒ¼ãƒ‰è¨­å®š
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒèµ·å‹•ç¢ºèª
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒWUFãƒ•ãƒ©ã‚°ã‚¯ãƒªã‚¢
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒWUFãƒ•ãƒ©ã‚°ã‚¯ãƒªã‚¢é€šçŸ¥
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒWAKEãƒ•ãƒ©ã‚°ç¢ºèª
+  ãƒ»ãƒˆãƒ©ãƒ³ã‚·ãƒ¼ãƒWAKEãƒ•ãƒ©ã‚°é€šçŸ¥
+â– ãƒ‘ãƒ¼ã‚·ãƒ£ãƒ«ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚­ãƒ³ã‚°
+â– ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãƒœãƒƒã‚¯ã‚¹ç¨®åˆ¥
+  ãƒ»BasicCAN
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(3.1) ¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¢£CanIfDispatchCfg
-    ¡¦CanIfDispatchUserCheckTrcvWakeFlagIndicationName [*]
-    ¡¦CanIfDispatchUserCheckTrcvWakeFlagIndicationUL [*]
-    ¡¦CanIfDispatchUserClearTrcvWufFlagIndicationName [*]
-    ¡¦CanIfDispatchUserClearTrcvWufFlagIndicationUL [*]
-    ¡¦CanIfDispatchUserConfirmPnAvailabilityName
-    ¡¦CanIfDispatchUserConfirmPnAvailabilityUL
-    ¡¦CanIfDispatchUserTrcvModeIndicationName [*]
-    ¡¦CanIfDispatchUserTrcvModeIndicationUL [*]
-¢£CanIfInitCfg
-  ¢§CanIfInitHohCfg
-    ¢§CanIfHrhCfg
-      ¡¦CanIfHrhCanHandleTypeRef
-      ¢§CanIfHrhRangeCfg
-        ¡¦CanIfHrhRangeRxPduLowerCanId
-        ¡¦CanIfHrhRangeRxPduUpperCanId
-    ¢§CanIfHthCfg
-      ¡¦CanIfHthCanHandleTypeRef
-  ¢§CanIfTxPduCfg
-    ¡¦CanIfTxPduPnFilterPdu
-    ¡¦CanIfTxPduBswSchExclAreaIdRef
-    ¢§CanIfTTTxFrameTriggering
-  ¢§CanIfRxPduCfg
-    ¡¦CanIfRxPduBswSchExclAreaIdRef
-    ¢§CanIfRxPduCanIdRange
-      ¡¦CanIfRxPduCanIdRangeLowerCanId
-      ¡¦CanIfRxPduCanIdRangeUpperCanId
-    ¢§CanIfTTRxFrameTriggering
-¢£CanIfPrivateCfg
-    ¡¦CanIfPrivateSoftwareFilterType
-  ¢§CanIfTTGeneral
-¢£CanIfPublicCfg
-    ¡¦CanIfPublicWakeupCheckValidByNM
-¢£CanIfTrcvDrvCfg
-  ¢§CanIfTrcvCfg
-    ¡¦CanIfTrcvId [*]
-    ¡¦CanIfTrcvWakeupSupport [*]
-    ¡¦CanIfTrcvCanTrcvRef [*]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(3.1) ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠ
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+â– CanIfDispatchCfg
+    ãƒ»CanIfDispatchUserCheckTrcvWakeFlagIndicationName [*]
+    ãƒ»CanIfDispatchUserCheckTrcvWakeFlagIndicationUL [*]
+    ãƒ»CanIfDispatchUserClearTrcvWufFlagIndicationName [*]
+    ãƒ»CanIfDispatchUserClearTrcvWufFlagIndicationUL [*]
+    ãƒ»CanIfDispatchUserConfirmPnAvailabilityName
+    ãƒ»CanIfDispatchUserConfirmPnAvailabilityUL
+    ãƒ»CanIfDispatchUserTrcvModeIndicationName [*]
+    ãƒ»CanIfDispatchUserTrcvModeIndicationUL [*]
+â– CanIfInitCfg
+  â–¼CanIfInitHohCfg
+    â–¼CanIfHrhCfg
+      ãƒ»CanIfHrhCanHandleTypeRef
+      â–¼CanIfHrhRangeCfg
+        ãƒ»CanIfHrhRangeRxPduLowerCanId
+        ãƒ»CanIfHrhRangeRxPduUpperCanId
+    â–¼CanIfHthCfg
+      ãƒ»CanIfHthCanHandleTypeRef
+  â–¼CanIfTxPduCfg
+    ãƒ»CanIfTxPduPnFilterPdu
+    ãƒ»CanIfTxPduBswSchExclAreaIdRef
+    â–¼CanIfTTTxFrameTriggering
+  â–¼CanIfRxPduCfg
+    ãƒ»CanIfRxPduBswSchExclAreaIdRef
+    â–¼CanIfRxPduCanIdRange
+      ãƒ»CanIfRxPduCanIdRangeLowerCanId
+      ãƒ»CanIfRxPduCanIdRangeUpperCanId
+    â–¼CanIfTTRxFrameTriggering
+â– CanIfPrivateCfg
+    ãƒ»CanIfPrivateSoftwareFilterType
+  â–¼CanIfTTGeneral
+â– CanIfPublicCfg
+    ãƒ»CanIfPublicWakeupCheckValidByNM
+â– CanIfTrcvDrvCfg
+  â–¼CanIfTrcvCfg
+    ãƒ»CanIfTrcvId [*]
+    ãƒ»CanIfTrcvWakeupSupport [*]
+    ãƒ»CanIfTrcvCanTrcvRef [*]
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(3.2) ¥·¥¹¥Æ¥à¥µ¡¼¥Ó¥¹
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¡¦CanIf_SetDynamicTxId
-¡¦CanIf_SetTrcvMode [*]
-¡¦CanIf_GetTrcvMode [*]
-¡¦CanIf_GetTrcvWakeupReason [*]
-¡¦CanIf_SetTrcvWakeupMode [*]
-¡¦CanIf_ClearTrcvWufFlag [*]
-¡¦CanIf_CheckTrcvWakeFlag [*]
-¡¦CanIf_CancelTxConfirmation
-¡¦CanIf_ConfirmPnAvailability
-¡¦CanIf_ClearTrcvWufFlagIndication [*]
-¡¦CanIf_CheckTrcvWakeFlagIndication [*]
-¡¦CanIf_TrcvModeIndication [*]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(3.2) ã‚·ã‚¹ãƒ†ãƒ ã‚µãƒ¼ãƒ“ã‚¹
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+ãƒ»CanIf_SetDynamicTxId
+ãƒ»CanIf_SetTrcvMode [*]
+ãƒ»CanIf_GetTrcvMode [*]
+ãƒ»CanIf_GetTrcvWakeupReason [*]
+ãƒ»CanIf_SetTrcvWakeupMode [*]
+ãƒ»CanIf_ClearTrcvWufFlag [*]
+ãƒ»CanIf_CheckTrcvWakeFlag [*]
+ãƒ»CanIf_CancelTxConfirmation
+ãƒ»CanIf_ConfirmPnAvailability
+ãƒ»CanIf_ClearTrcvWufFlagIndication [*]
+ãƒ»CanIf_CheckTrcvWakeFlagIndication [*]
+ãƒ»CanIf_TrcvModeIndication [*]
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(3.3) ¥³¡¼¥ë¥Ð¥Ã¥¯
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¡¦<User_ConfirmPnAvailability>(uint8 TransceiverId)
-¡¦<User_ClearTrcvWufFlagIndication>(uint8 TransceiverId) [*]
-¡¦<User_CheckTrcvWakeFlagIndication>(uint8 TransceiverId) [*]
-¡¦<User_TrcvModeIndication>(uint8 TransceiverId, CanTrcv_TrcvModeType TransceiverMode) [*]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(3.3) ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+ãƒ»<User_ConfirmPnAvailability>(uint8 TransceiverId)
+ãƒ»<User_ClearTrcvWufFlagIndication>(uint8 TransceiverId) [*]
+ãƒ»<User_CheckTrcvWakeFlagIndication>(uint8 TransceiverId) [*]
+ãƒ»<User_TrcvModeIndication>(uint8 TransceiverId, CanTrcv_TrcvModeType TransceiverMode) [*]
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(4) ÄÉ²Ã¡¤²þÊÑ»ÅÍÍ
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(4) è¿½åŠ ï¼Œæ”¹å¤‰ä»•æ§˜
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(5) AUTOSAR»ÅÍÍ¤ÎÊäÂ­ÀâÌÀ
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(5) AUTOSARä»•æ§˜ã®è£œè¶³èª¬æ˜Ž
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(5.1) CanIf_ReadRxPduData¤Î¼Â»Ü¾ò·ï
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-CanIf_ReadRxPduData¤Ï°ú¿ô¤Ç»ØÄê¤µ¤ì¤¿CanRxPduId¤Î¼õ¿®¥Ç¡¼¥¿¤ò¸Æ¤Ó½Ð¤·¸µ
-¾å°Ì¥ì¥¤¥ä¤ËÄó¶¡¤¹¤ë¤â¤Î¤Ç¤¢¤ë¤¬¡¤ÂÐ¾Ý¤ÎCanRxPduId¤Î¼õ¿®¥Ç¡¼¥¿¤ò°ìÅÙ¤â
-¼õ¿®¤·¤Æ¤Ê¤¤¾ì¹ç(CanIf_RxIndication¤Ë¤è¤Ã¤ÆÂÐ¾Ý¤ÎCanRxPduId¤Î¼õ¿®¥Ç¡¼¥¿
-¤ò°ìÅÙ¤â¼õ¿®¤·¤Æ¤Ê¤¤)¤Ï¡¤ÉÔÄêÃÍ¤ò¾å°Ì¥ì¥¤¥ä¤ËÄó¶¡¤·¤Æ¤·¤Þ¤¦¡¥¤³¤ì¤òÈò¤±
-¤ë¤¿¤á¡¤ÂÐ¾Ý¤ÎCanRxPduId¤Î¼õ¿®¥Ç¡¼¥¿¤ò°ìÅÙ¤â¼õ¿®¤·¤Æ¤Ê¤¤¾ì¹ç¤Ï¡¤½èÍý¤ò
-¼Â»Ü¤»¤º¤Ë¡¤E_NOT_OK¤òÊÖ¤¹[CANIFa001]
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+(5.1) CanIf_ReadRxPduDataã®å®Ÿæ–½æ¡ä»¶
+â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•â€•
+CanIf_ReadRxPduDataã¯å¼•æ•°ã§æŒ‡å®šã•ã‚ŒãŸCanRxPduIdã®å—ä¿¡ãƒ‡ãƒ¼ã‚¿ã‚’å‘¼ã³å‡ºã—å…ƒ
+ä¸Šä½ãƒ¬ã‚¤ãƒ¤ã«æä¾›ã™ã‚‹ã‚‚ã®ã§ã‚ã‚‹ãŒï¼Œå¯¾è±¡ã®CanRxPduIdã®å—ä¿¡ãƒ‡ãƒ¼ã‚¿ã‚’ä¸€åº¦ã‚‚
+å—ä¿¡ã—ã¦ãªã„å ´åˆ(CanIf_RxIndicationã«ã‚ˆã£ã¦å¯¾è±¡ã®CanRxPduIdã®å—ä¿¡ãƒ‡ãƒ¼ã‚¿
+ã‚’ä¸€åº¦ã‚‚å—ä¿¡ã—ã¦ãªã„)ã¯ï¼Œä¸å®šå€¤ã‚’ä¸Šä½ãƒ¬ã‚¤ãƒ¤ã«æä¾›ã—ã¦ã—ã¾ã†ï¼Žã“ã‚Œã‚’é¿ã‘
+ã‚‹ãŸã‚ï¼Œå¯¾è±¡ã®CanRxPduIdã®å—ä¿¡ãƒ‡ãƒ¼ã‚¿ã‚’ä¸€åº¦ã‚‚å—ä¿¡ã—ã¦ãªã„å ´åˆã¯ï¼Œå‡¦ç†ã‚’
+å®Ÿæ–½ã›ãšã«ï¼ŒE_NOT_OKã‚’è¿”ã™[CANIFa001]
 
 
-°Ê¾å
+ä»¥ä¸Š

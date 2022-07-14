@@ -18,7 +18,7 @@
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfInitCfgSet,CanIfInitCfgSet,STRING,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfBufferCfg,CanIfBufferCfg,,0,*
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfBufferCfg/CanIfBufferSize,CanIfBufferSize,INT,1
-/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfBufferCfg/CanIfBufferHthRef,CanIfBufferHthRef,REF,1,*
+/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfBufferCfg/CanIfBufferHthRef,CanIfBufferHthRef,REF,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfInitHohCfg,CanIfInitHohCfg,,0,*
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfInitHohCfg/CanIfInitRefCfgSet,CanIfInitRefCfgSet,REF,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfInitHohCfg/CanIfHrhCfg,CanIfHrhCfg,,0,*
@@ -37,7 +37,7 @@
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduReadNotifyStatus,CanIfRxPduReadNotifyStatus,BOOLEAN,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduUserRxIndicationName,CanIfRxPduUserRxIndicationName,FUNCTION,0,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduUserRxIndicationUL,CanIfRxPduUserRxIndicationUL,ENUM,0,1
-/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduHrhIdRef,CanIfRxPduHrhIdRef,REF,1,*
+/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduHrhIdRef,CanIfRxPduHrhIdRef,REF,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduRef,CanIfRxPduRef,REF,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfTTRxFrameTriggering,CanIfTTRxFrameTriggering,,0,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfTTRxFrameTriggering/CanTTRxJoblistTimeMark,CanTTRxJoblistTimeMark,INT,0,1

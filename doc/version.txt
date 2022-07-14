@@ -1,206 +1,224 @@
 
 	TOPPERS/A-COMSTACK
-        ���ѹ������
+        ＜変更履歴＞
 
-���Υɥ�����Ȥϡ�TOPPERS/A-COMSTACK��Release 1.0.0�ʹߤ��ѹ������
-�������������˵��Ҥ�����ΤǤ��롥
+このドキュメントは，TOPPERS/A-COMSTACKのRelease 1.0.0以降の変更履歴を，
+新しい方から順に記述したものである．
 
 ----------------------------------------------------------------------
 TOPPERS/A-COMSTACK
     Automotive COMSTACK
 
-Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+Copyright (C) 2013-2016 by Center for Embedded Computing Systems
                            Graduate School of Information Science, Nagoya Univ., JAPAN
-Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
-Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
-Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
-Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
-Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2015 by Witz Corporation
+Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2016 by Witz Corporation
 
-�嵭����Ԥϡ��ʲ��� (1)��(3)�ξ������������˸¤ꡤ�ܥɥ����
-��ȡ��ܥɥ�����Ȥ���Ѥ�����Τ�ޤࡥ�ʲ�Ʊ���ˤ���ѡ�ʣ������
-�ѡ������ۡʰʲ������ѤȸƤ֡ˤ��뤳�Ȥ�̵���ǵ������롥
-(1) �ܥɥ�����Ȥ����Ѥ�����ˤϡ��嵭�����ɽ�����������Ѿ��
-    ����Ӳ�����̵�ݾڵ��꤬�����Τޤޤη��ǥɥ��������˴ޤޤ��
-    ���뤳�ȡ�
-(2) �ܥɥ�����Ȥ���Ѥ�����ˤϡ��ɥ�����Ȥ���Ѥ����ݤε���
-    �򡤲��Ѹ�Υɥ��������˴ޤ�뤳�ȡ������������Ѹ�Υɥ����
-    ��Ȥ���TOPPERS�ץ��������Ȼ���γ�ȯ����ʪ�Ǥ�����ˤϡ����θ�
-    ��ǤϤʤ���
-(3) �ܥɥ�����Ȥ����Ѥˤ��ľ��Ū�ޤ��ϴ���Ū�������뤤���ʤ�»��
-    ����⡤�嵭����Ԥ����TOPPERS�ץ��������Ȥ����դ��뤳�ȡ��ޤ���
-    �ܥɥ�����ȤΥ桼���ޤ��ϥ���ɥ桼������Τ����ʤ���ͳ�˴��
-    �����ᤫ��⡤�嵭����Ԥ����TOPPERS�ץ��������Ȥ����դ��뤳�ȡ�
+上記著作権者は，以下の (1)～(3)の条件を満たす場合に限り，本ドキュメ
+ント（本ドキュメントを改変したものを含む．以下同じ）を使用・複製・改
+変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
+(1) 本ドキュメントを利用する場合には，上記の著作権表示，この利用条件
+    および下記の無保証規定が，そのままの形でドキュメント中に含まれて
+    いること．
+(2) 本ドキュメントを改変する場合には，ドキュメントを改変した旨の記述
+    を，改変後のドキュメント中に含めること．ただし，改変後のドキュメ
+    ントが，TOPPERSプロジェクト指定の開発成果物である場合には，この限
+    りではない．
+(3) 本ドキュメントの利用により直接的または間接的に生じるいかなる損害
+    からも，上記著作権者およびTOPPERSプロジェクトを免責すること．また，
+    本ドキュメントのユーザまたはエンドユーザからのいかなる理由に基づ
+    く請求からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
 
-�ܥɥ�����Ȥϡ�AUTOSAR��AUTomotive Open System ARchitecture�˻���
-�˴�Ť��Ƥ��롥�嵭�ε����ϡ�AUTOSAR����Ū�⻺������������ΤǤϤ�
-����AUTOSAR�ϡ�AUTOSAR���ͤ˴�Ť������եȥ�����������Ū�����Ѥ���
-�Ԥ��Ф��ơ�AUTOSAR�ѡ��ȥʡ��ˤʤ뤳�Ȥ���Ƥ��롥
+本ドキュメントは，AUTOSAR（AUTomotive Open System ARchitecture）仕様
+に基づいている．上記の許諾は，AUTOSARの知的財産権を許諾するものではな
+い．AUTOSARは，AUTOSAR仕様に基づいたソフトウェアを商用目的で利用する
+者に対して，AUTOSARパートナーになることを求めている．
 
-�ܥɥ�����Ȥϡ�̵�ݾڤ��󶡤���Ƥ����ΤǤ��롥�嵭����Ԥ���
-��TOPPERS�ץ��������Ȥϡ��ܥɥ�����Ȥ˴ؤ��ơ�����λ�����Ū���Ф�
-��Ŭ������ޤ�ơ������ʤ��ݾڤ�Ԥ�ʤ����ޤ����ܥɥ�����Ȥ�����
-�ˤ��ľ��Ū�ޤ��ϴ���Ū�������������ʤ�»���˴ؤ��Ƥ⡤������Ǥ����
-��ʤ���
+本ドキュメントは，無保証で提供されているものである．上記著作権者およ
+びTOPPERSプロジェクトは，本ドキュメントに関して，特定の使用目的に対す
+る適合性も含めて，いかなる保証も行わない．また，本ドキュメントの利用
+により直接的または間接的に生じたいかなる損害に関しても，その責任を負
+わない．
 
-$Id: version.txt 1540 2015-07-07 01:58:08Z fsi-kaitori $
+$Id: version.txt 2995 2016-03-02 02:05:09Z fsi-kaitori $
 ----------------------------------------------------------------------
 		TOPPERS/A-COMSTACK
-		Release 1.2.0 ���� 1.2.1 �ؤ��ѹ���
-		��꡼���� 2015-07-10
+		Release 1.2.1 から 1.3.0 への変更点
+		リリース日 2016-03-31
 
-���ѹ����Υꥹ��
+○変更点のリスト
 
-��TOPPERS/A-COM��
-��GET_TX_IPDU_INIB�θ����Ѥ���
-��DET���顼��ȯ��������硤̵�¥롼�פ���褦�˽���
+＜TOPPERS/A-COM＞
+・シグナルグループ仕様を追加
 
-��TOPPERS/A-CANIF��
-��CanConfigSet��¿�����������
+・コピーライト修正
 
-��TOPPERS/A-CAN��
-�����¸�������������ؤ�hth���Τ��ɲ�
+・バージョン番号の更新
 
-������¾�٤�������
-
-----------------------------------------------------------------------
-		TOPPERS/A-COMSTACK
-		Release 1.1.0 ���� 1.2.0 �ؤ��ѹ���
-		��꡼���� 2015-03-31
-
-���ѹ����Υꥹ��
-
-��TOPPERS/A-COM��
-��FLOAT64�����Ѥβ�����ǽ�Ȥ�����Ȥߤ�Ƴ��
-	��INT64_MAX̤�������FLOAT64�������������Բ�ǽ�Ȥʤ��б���»�
-
-��ComBitPosition��ὤ��
-	��ComSignalEndianness��BIG_ENDIAN�ξ�硤ComBitPosition��MSB�Ȥ���
-	  ��᤹��褦�˽���
-
-����侩�ʥ����ƥॵ���ӥ�����
-	��AUTOSAR���ͤ���侩�Ȥ���Ƥ��롤�ʲ��Υ����ƥॵ���ӥ�����
-		��Com_UpdateShadowSignal
-		��Com_ReceiveShadowSignal
-		��Com_InvalidateShadowSignal
-
-�����ԡ��饤�Ƚ���
-
-���С�������ֹ�ι���
-
-������¾�٤�������
-
-��TOPPERS/A-PDUR��
-�����ԡ��饤�Ƚ���
-
-���С�������ֹ�ι���
-
-��TOPPERS/A-CANIF��
-�����ԡ��饤�Ƚ���
-
-���С�������ֹ�ι���
-
-��TOPPERS/A-CAN��
-��RH850��¸�����ɲ�
-	��fl850f1l_ccrh ��¸���ǻ��Ѥ���ܡ���FL-850/F1L��CAN����ȥ�����
-	  ���б�
-
-��V850��¸�����ĥ
-	��rczbasev850_cx ��¸���ǻ��Ѥ���RocoCar��CAN����ȥ�������б�
-	��hsbv850e2fg4_cx ��¸���ǻ��Ѥ���ܡ���HSBV850E2FG4-L��CAN�����
-	  ��������б�
-
-�����ԡ��饤�Ƚ���
-
-���С���������ι���
-
-������¾�٤�������
+・その他細かい修正
 
 ----------------------------------------------------------------------
 		TOPPERS/A-COMSTACK
-		Release 1.0.1 ���� 1.1.0 �ؤ��ѹ���
-		��꡼���� 2014-11-28
+		Release 1.2.0 から 1.2.1 への変更点
+		リリース日 2015-07-10
 
-���ѹ����Υꥹ��
+○変更点のリスト
 
-��TOPPERS/A-COM��
-���ǡ�����¤����
-	- ���פʥ����ѿ�����
+＜TOPPERS/A-COM＞
+・GET_TX_IPDU_INIBの誤使用を修正
+・DETエラーが発生した場合，無限ループするように修正
 
-����¾���ꥢ�ɲ�
-	- �ͥ��Ȥ��ƸƤӽФ�����ǽ���Τ��륷���ƥॵ���ӥ��Τ������¾��
-	  �ꥢ���ɲ�
+＜TOPPERS/A-CANIF＞
+・CanConfigSetの多重度設定を修正
 
-������¾�٤�������
+＜TOPPERS/A-CAN＞
+・非依存部の送信処理へのhth通知を追加
 
-���С�������ֹ�ι���
-
-��TOPPERS/A-PDUR��
-���С�������ֹ�ι���
-
-��TOPPERS/A-CANIF��
-����¾���ꥢ�ɲ�
-	- �ͥ��Ȥ��ƸƤӽФ�����ǽ���Τ��륷���ƥॵ���ӥ��Τ������¾��
-	  �ꥢ���ɲ�
-
-���С�������ֹ�ι���
-
-��TOPPERS/A-CAN��
-�����¸������¸�����ڤ�ʬ��
-	- ATK2��Ʊ�ͤˡ������������ɤΥϡ��ɥ������˰�¸���ʤ������ȡ���¸
-	  ����������ڤ�ʬ���������������åȤؤΥݡ��ƥ��󥰤��פ�����
-
-��V850��¸�����ɲ�
-	- ATK2-SC1�ǥ��ݡ��Ȥ��Ƥ��� hsbv850e2fg4_cx ��¸���ǻ��Ѥ���ܡ���
-	  HSBV850E2FG4��CAN����ȥ�������б�
-
-���ݡ���󥰤��б�
-	- Can�Ѥγ���ߤ�¸�ߤ��ʤ��ޥ�������б��Ǥ���褦���ݡ���󥰤��
-	  �Ѥ��륷���ƥॵ���ӥ����ɲ�
+・その他細かい修正
 
 ----------------------------------------------------------------------
 		TOPPERS/A-COMSTACK
-		Release 1.0.0 ���� 1.0.1 �ؤ��ѹ���
-		��꡼���� 2014-09-30
+		Release 1.1.0 から 1.2.0 への変更点
+		リリース日 2015-03-31
 
-���ѹ����Υꥹ��
+○変更点のリスト
 
-��TOPPERS/A-COM��
-��TMSȽ���������
-	- �ե��륿������ʤ������ʥ��TMC��TMSȽ����Ѥ��ʤ��褦�˽���
-	- �ե��륿��󥰽������TMC������������
+＜TOPPERS/A-COM＞
+・FLOAT64型使用の回避を可能とする仕組みを導入
+	‐INT64_MAX未定義時はFLOAT64型の送受信が不可能となる対応を実施
 
-���ǡ�����¤����
-	- �ǡ�����¤�����������ѹ�
-	- ����ѿ��Υץ��ȥ������������
+・ComBitPosition解釈修正
+	‐ComSignalEndiannessがBIG_ENDIANの場合，ComBitPositionをMSBとして
+	  解釈するように修正
 
-�����ԡ��饤�Ȥθ�������
+・非推奨なシステムサービスを削除
+	‐AUTOSAR仕様で非推奨とされている，以下のシステムサービスを削除
+		＋Com_UpdateShadowSignal
+		＋Com_ReceiveShadowSignal
+		＋Com_InvalidateShadowSignal
 
-������¾�٤�������
+・コピーライト修正
 
-���С�������ֹ�ι���
+・バージョン番号の更新
 
-��TOPPERS/A-PDUR��
-�����ԡ��饤�Ȥθ�������
+・その他細かい修正
 
-���С�������ֹ�ι���
+＜TOPPERS/A-PDUR＞
+・コピーライト修正
 
-��TOPPERS/A-CANIF��
-�����ԡ��饤�Ȥθ�������
+・バージョン番号の更新
 
-������¾�٤�������
+＜TOPPERS/A-CANIF＞
+・コピーライト修正
 
-���С�������ֹ�ι���
+・バージョン番号の更新
 
-��TOPPERS/A-CAN��
-�����ԡ��饤�Ȥθ�������
+＜TOPPERS/A-CAN＞
+・RH850依存部を追加
+	‐fl850f1l_ccrh 依存部で使用するボードFL-850/F1LのCANコントローラ
+	  に対応
 
-������¾�٤�������
+・V850依存部を拡張
+	‐rczbasev850_cx 依存部で使用するRocoCarのCANコントローラに対応
+	‐hsbv850e2fg4_cx 依存部で使用するボードHSBV850E2FG4-LのCANコント
+	  ローラに対応
 
-���С�������ֹ�ι���
+・コピーライト修正
+
+・バージョン情報の更新
+
+・その他細かい修正
+
+----------------------------------------------------------------------
+		TOPPERS/A-COMSTACK
+		Release 1.0.1 から 1.1.0 への変更点
+		リリース日 2014-11-28
+
+○変更点のリスト
+
+＜TOPPERS/A-COM＞
+・データ構造修正
+	- 不要なメンバ変数を削除
+
+・排他エリア追加
+	- ネストして呼び出される可能性のあるシステムサービスのための排他エ
+	  リアを追加
+
+・その他細かい修正
+
+・バージョン番号の更新
+
+＜TOPPERS/A-PDUR＞
+・バージョン番号の更新
+
+＜TOPPERS/A-CANIF＞
+・排他エリア追加
+	- ネストして呼び出される可能性のあるシステムサービスのための排他エ
+	  リアを追加
+
+・バージョン番号の更新
+
+＜TOPPERS/A-CAN＞
+・非依存部，依存部の切り分け
+	- ATK2と同様に，ソースコードのハードウェアに依存しない実装と，依存
+	  する実装を切り分け，新規ターゲットへのポーティングし易くした
+
+・V850依存部を追加
+	- ATK2-SC1でサポートしている hsbv850e2fg4_cx 依存部で使用するボード
+	  HSBV850E2FG4のCANコントローラに対応
+
+・ポーリングに対応
+	- Can用の割込みが存在しないマイコンに対応できるよう，ポーリングを使
+	  用するシステムサービスを追加
+
+----------------------------------------------------------------------
+		TOPPERS/A-COMSTACK
+		Release 1.0.0 から 1.0.1 への変更点
+		リリース日 2014-09-30
+
+○変更点のリスト
+
+＜TOPPERS/A-COM＞
+・TMS判定処理修正
+	- フィルタを持たないシグナルのTMCをTMS判定に用いないように修正
+	- フィルタリング処理内のTMC更新処理を削除
+
+・データ構造修正
+	- データ構造の定義順序を変更
+	- 大域変数のプロトタイプ宣言を削除
+
+・コピーライトの誤記修正
+
+・その他細かい修正
+
+・バージョン番号の更新
+
+＜TOPPERS/A-PDUR＞
+・コピーライトの誤記修正
+
+・バージョン番号の更新
+
+＜TOPPERS/A-CANIF＞
+・コピーライトの誤記修正
+
+・その他細かい修正
+
+・バージョン番号の更新
+
+＜TOPPERS/A-CAN＞
+・コピーライトの誤記修正
+
+・その他細かい修正
+
+・バージョン番号の更新
 
 ----------------------------------------------------------------------

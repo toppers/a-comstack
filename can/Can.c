@@ -2,47 +2,59 @@
  *  TOPPERS/A-CAN
  *      Automotive CAN
  *
- *  Copyright (C) 2014 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+ *                             Graduate School of Information Science, Nagoya Univ., JAPAN
+ *  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+ *  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+ *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
+ *  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+ *  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+ *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2016 by Witz Corporation
  *
- *  �嵭����Ԥϡ��ʲ���(1)��(4)�ξ������������˸¤ꡤ�ܥ��եȥ���
- *  �����ܥ��եȥ���������Ѥ�����Τ�ޤࡥ�ʲ�Ʊ���ˤ���ѡ�ʣ������
- *  �ѡ������ۡʰʲ������ѤȸƤ֡ˤ��뤳�Ȥ�̵���ǵ������롥
- *  (1) �ܥ��եȥ������򥽡��������ɤη������Ѥ�����ˤϡ��嵭������
- *      ��ɽ�����������Ѿ�浪��Ӳ�����̵�ݾڵ��꤬�����Τޤޤη��ǥ���
- *      ����������˴ޤޤ�Ƥ��뤳�ȡ�
- *  (2) �ܥ��եȥ������򡤥饤�֥������ʤɡ�¾�Υ��եȥ�������ȯ�˻�
- *      �ѤǤ�����Ǻ����ۤ�����ˤϡ������ۤ�ȼ���ɥ�����ȡ�����
- *      �ԥޥ˥奢��ʤɡˤˡ��嵭�����ɽ�����������Ѿ�浪��Ӳ���
- *      ��̵�ݾڵ����Ǻܤ��뤳�ȡ�
- *  (3) �ܥ��եȥ������򡤵�����Ȥ߹���ʤɡ�¾�Υ��եȥ�������ȯ�˻�
- *      �ѤǤ��ʤ����Ǻ����ۤ�����ˤϡ����Τ����줫�ξ�����������
- *      �ȡ�
- *    (a) �����ۤ�ȼ���ɥ�����ȡ����Ѽԥޥ˥奢��ʤɡˤˡ��嵭����
- *        �ɽ�����������Ѿ�浪��Ӳ�����̵�ݾڵ����Ǻܤ��뤳�ȡ�
- *    (b) �����ۤη��֤��̤�������ˡ�ˤ�äơ�TOPPERS�ץ��������Ȥ�
- *        ��𤹤뤳�ȡ�
- *  (4) �ܥ��եȥ����������Ѥˤ��ľ��Ū�ޤ��ϴ���Ū�������뤤���ʤ�»
- *      ������⡤�嵭����Ԥ����TOPPERS�ץ��������Ȥ����դ��뤳�ȡ�
- *      �ޤ����ܥ��եȥ������Υ桼���ޤ��ϥ���ɥ桼������Τ����ʤ���
- *      ͳ�˴�Ť����ᤫ��⡤�嵭����Ԥ����TOPPERS�ץ��������Ȥ�
- *      ���դ��뤳�ȡ�
+ *  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
+ *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
+ *  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
+ *  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
+ *      権表示，この利用条件および下記の無保証規定が，そのままの形でソー
+ *      スコード中に含まれていること．
+ *  (2) 本ソフトウェアを，ライブラリ形式など，他のソフトウェア開発に使
+ *      用できる形で再配布する場合には，再配布に伴うドキュメント（利用
+ *      者マニュアルなど）に，上記の著作権表示，この利用条件および下記
+ *      の無保証規定を掲載すること．
+ *  (3) 本ソフトウェアを，機器に組み込むなど，他のソフトウェア開発に使
+ *      用できない形で再配布する場合には，次のいずれかの条件を満たすこ
+ *      と．
+ *    (a) 再配布に伴うドキュメント（利用者マニュアルなど）に，上記の著
+ *        作権表示，この利用条件および下記の無保証規定を掲載すること．
+ *    (b) 再配布の形態を，別に定める方法によって，TOPPERSプロジェクトに
+ *        報告すること．
+ *  (4) 本ソフトウェアの利用により直接的または間接的に生じるいかなる損
+ *      害からも，上記著作権者およびTOPPERSプロジェクトを免責すること．
+ *      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
+ *      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
+ *      免責すること．
  *
- *  �ܥ��եȥ������ϡ�AUTOSAR��AUTomotive Open System ARchitecture�˻�
- *  �ͤ˴�Ť��Ƥ��롥�嵭�ε����ϡ�AUTOSAR����Ū�⻺������������Τ�
- *  �Ϥʤ���AUTOSAR�ϡ�AUTOSAR���ͤ˴�Ť������եȥ�����������Ū����
- *  �Ѥ���Ԥ��Ф��ơ�AUTOSAR�ѡ��ȥʡ��ˤʤ뤳�Ȥ���Ƥ��롥
+ *  本ソフトウェアは，AUTOSAR（AUTomotive Open System ARchitecture）仕
+ *  様に基づいている．上記の許諾は，AUTOSARの知的財産権を許諾するもので
+ *  はない．AUTOSARは，AUTOSAR仕様に基づいたソフトウェアを商用目的で利
+ *  用する者に対して，AUTOSARパートナーになることを求めている．
  *
- *  �ܥ��եȥ������ϡ�̵�ݾڤ��󶡤���Ƥ����ΤǤ��롥�嵭����Ԥ�
- *  ���TOPPERS�ץ��������Ȥϡ��ܥ��եȥ������˴ؤ��ơ�����λ�����Ū
- *  ���Ф���Ŭ������ޤ�ơ������ʤ��ݾڤ�Ԥ�ʤ����ޤ����ܥ��եȥ���
- *  �������Ѥˤ��ľ��Ū�ޤ��ϴ���Ū�������������ʤ�»���˴ؤ��Ƥ⡤��
- *  ����Ǥ�����ʤ���
+ *  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
+ *  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
+ *  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
+ *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
+ *  の責任を負わない．
  *
- *  $Id: Can.c 1388 2015-06-04 05:48:42Z fsi-kaitori $
+ *  $Id: Can.c 2995 2016-03-02 02:05:09Z fsi-kaitori $
  */
 
 /* [CAN034][CAN036][CAN394][CAN397][CAN390] */
-/* [CAN222] Can�⥸�塼���ɬ�פʥǡ�������������줿�إå��ե����� */
+/* [CAN222] Canモジュールで必要なデータ型が定義されたヘッダファイル */
 #include "Os.h"
 #include "ComStack_Types.h"
 #include "Can.h"
@@ -51,20 +63,20 @@
 #include "EcuM_Cbk.h"
 
 /*
- * (CAN077) CAN����ȥ�������ͤ˰�¸����������Ԥ�
- * (CAN284) 1��ECU��ʣ���ΰۤʤ�CAN����ȥ��������Ѥ�����⡤1�Ĥΰ�¸�����б�����
- * (CAN385) 1��ECU��ʣ���ΰۤʤ�CAN����ȥ��������Ѥ����硤AUTOSAR����Υ͡��ߥ󥰥���٥󥷥��˽���
- * (CAN386) 1�����CAN����ȥ�����Τߤ���Ѥ����硤�ȼ��Υ͡��ߥ󥰥���٥󥷥��Ǥ褤
- * (CAN238) ������åפ�CAN����ȥ��������Ѥ����硤¾�Υɥ饤�ФΥ����ӥ�����Ѥ��ʤ�
- * (CAN242) ���ե��åפ�CAN����ȥ��������Ѥ����硤MCAL�Υ����ӥ�����Ѥ���
- * (CAN244) MCAL����ƤӽФ����褦�ʥ�����Хå����󶡤��ʤ�
- * (CAN391) ���ե��åפ�CAN����ȥ��������Ѥ����硤Spi.h��include����
- * (CAN204) ��¸���γƴؿ���ǳ���߶ػߵ��Ĥ�Ԥ���硤
- *          �ͥ��ȸƽФ���������˽���������������߶ػ߾��֤�ݻ�����
+ * (CAN077) CANコントローラ仕様に依存した実装を行う
+ * (CAN284) 1つECUで複数の異なるCANコントローラを使用する場合も，1つの依存部で対応する
+ * (CAN385) 1つECUで複数の異なるCANコントローラを使用する場合，AUTOSAR規定のネーミングコンベンションに従う
+ * (CAN386) 1種類のCANコントローラのみを使用する場合，独自のネーミングコンベンションでよい
+ * (CAN238) オンチップのCANコントローラを使用する場合，他のドライバのサービスを使用しない
+ * (CAN242) オフチップのCANコントローラを使用する場合，MCALのサービスを使用する
+ * (CAN244) MCALから呼び出されるようなコールバックは提供しない
+ * (CAN391) オフチップのCANコントローラを使用する場合，Spi.hをincludeする
+ * (CAN204) 依存部の各関数内で割込み禁止許可を行う場合，
+ *          ネスト呼出し回数管理に従い，正しい割込み禁止状態を維持する
  */
 #include "Can_Target.h"
 
-/* SchM_Can.h��RTE�����ͥ졼���ˤ����������� */
+/* SchM_Can.hはRTEジェネレータにより生成される */
 /* [CAN034][CAN406] */
 #include "SchM_Can.h"
 
@@ -75,31 +87,31 @@
 
 
 /*
- *  ���߼¹����Can����ե�����졼��������
+ *  現在実行中のCanコンフィギュレーション情報
  */
 const Can_ConfigType			*p_cur_can_config;
 const Can_HohBoxType			*p_cur_hoh_box_table;
 const CAN_CTRL_INIB				*p_cur_can_ctrl_inib_table;
 
-/* [CAN103] Can�ν��������(CAN_UNINIT�ǽ����) */
+/* [CAN103] Canの初期化状態(CAN_UNINITで初期化) */
 static uint8					can_init_flg = CAN_UNINIT;
 
-/* ����߶ػߥͥ��ȥ������ */
+/* 割込み禁止ネストカウント */
 extern uint8					can_interrupt_nested_cnt[];
 
-/* �����륢���ȴؿ� */
+/* コールアウト関数 */
 #ifdef USE_CAN_LPDU_RECEIVE_CALLOUT_FUNCTION
 extern const Can_LpduCallout	CanLpduCalloutFunction;
 #endif /* USE_CAN_LPDU_RECEIVE_CALLOUT_FUNCTION */
 
-/* Can_SetControllerModeư����֥ե饰 */
+/* Can_SetControllerMode動作状態フラグ */
 extern boolean					can_set_controller_mode_flg[];
 
-/* CAN����ȥ�������־��� */
+/* CANコントローラ状態情報 */
 extern Can_StateTransitionType	can_current_state[];
 
 /*
- *  �����ؿ��ץ��ȥ��������
+ *  内部関数プロトタイプ宣言
  */
 static boolean can_check_timeout_duration(uint8 Controller, Can_StateTransitionType Transition);
 
@@ -114,28 +126,28 @@ Can_Init(const Can_ConfigType *Config)
 	uint8				ctrl_id;
 	const CAN_CTRL_INIB	*p_ctrl_inib;
 
-	/* [CAN026] ���˽�����Ѥߤξ��ϥ��顼 */
+	/* [CAN026] 既に初期化済みの場合はエラー */
 	if (can_init_flg == CAN_READY) {
 		goto error_exit;
 	}
 
-	/* [CAN175] NULL�����å� */
+	/* [CAN175] NULLチェック */
 	if (Config == NULL_PTR) {
-		/* [NCAN003] NULL_PTR�ξ�硤��Ƭ�Υ���ե�����졼�����������Ѥ��� */
+		/* [NCAN003] NULL_PTRの場合，先頭のコンフィギュレーション情報を使用する */
 		Config = &can_config[0];
 	}
 
-	/* [CAN056] ��������¹Ԥ��륳��ե����졼������������ */
+	/* [CAN056] 引数から実行するコンフィグレーション情報を取得 */
 	p_cur_can_config = Config;
 	p_cur_hoh_box_table = Config->p_hoh_box_table;
 	p_cur_can_ctrl_inib_table = Config->p_can_ctrl_inib_table;
 
 	/*
-	 * (CAN407) �ʲ����ư�¸���ؿ���ɬ�פʥ쥸�����ν������Ԥ�
-	 * (CAN419) ���Ѥ��ʤ����Ƥ�CAN����ߤ�̵���ˤ���
-	 * (CAN236)(CAN237) ��⡼�������׵��̵�뤹��褦�˽������Ԥ�
-	 * (CAN239) CAN����ȥ�����ǻ��Ѥ������ƤΥϡ��ɥ������꥽��������������
-	 * (CAN259) ����ȥ������STOPPED���֤ˤ���
+	 * (CAN407) 以下，各依存部関数で必要なレジスタの初期化を行う
+	 * (CAN419) 使用しない全てのCAN割込みは無効にする
+	 * (CAN236)(CAN237) リモート送信要求を無視するように初期化を行う
+	 * (CAN239) CANコントローラで使用する全てのハードウェアリソースを初期化する
+	 * (CAN259) コントローラをSTOPPED状態にする
 	 */
 
 	/* [CAN245][CAN250] unit_phase1 */
@@ -143,9 +155,9 @@ Can_Init(const Can_ConfigType *Config)
 		goto error_exit;
 	}
 
-	/* [CAN245][CAN250][CAN053] ���Ѥ������ƤΥ���ȥ�������Ф����������� */
+	/* [CAN245][CAN250][CAN053] 使用する全てのコントローラに対する初期化処理 */
 	for (ctrl_id = 0U; ctrl_id < GET_CONTROLLER_NUM(); ctrl_id++) {
-		/* CAN����ȥ���������֥��å����� */
+		/* CANコントローラ管理ブロック取得 */
 		p_ctrl_inib = GET_CAN_CTRL_INIB(ctrl_id);
 
 		/* controller_phase1 */
@@ -153,7 +165,7 @@ Can_Init(const Can_ConfigType *Config)
 			goto error_exit;
 		}
 
-		/* �ǥե���ȥܡ��졼�Ȥ����ꤹ�� */
+		/* デフォルトボーレートを設定する */
 		can_target_change_baudrate(ctrl_id, p_ctrl_inib->p_default_baudrate);
 
 		/* controller_phase2 */
@@ -161,20 +173,20 @@ Can_Init(const Can_ConfigType *Config)
 			goto error_exit;
 		}
 
-		/* �����᡼��ܥå�������� */
+		/* 受信メールボックス初期化 */
 		for (hrh_idx = 0U; hrh_idx < GET_HRH_NUM(ctrl_id); hrh_idx++) {
 			if (can_target_rbox_initialize(ctrl_id, p_ctrl_inib, hrh_idx) == FALSE) {
 				goto error_exit;
 			}
 		}
 
-		/* �����᡼��ܥå�������� */
+		/* 送信メールボックス初期化 */
 		for (hth_idx = 0U; hth_idx < GET_HTH_NUM(ctrl_id); hth_idx++) {
 			if (can_target_tbox_initialize(ctrl_id, p_ctrl_inib, hth_idx) == FALSE) {
 				goto error_exit;
 			}
 
-			/* HTH�Υߥ塼�ƥå�������� */
+			/* HTHのミューテックス初期化 */
 			p_ctrl_inib->p_can_hth_cb_table[hth_idx].mutex = FALSE;
 		}
 
@@ -183,13 +195,13 @@ Can_Init(const Can_ConfigType *Config)
 			goto error_exit;
 		}
 
-		/* ����߶ػߥͥ��ȥ�����Ƚ���� */
+		/* 割込み禁止ネストカウント初期化 */
 		can_interrupt_nested_cnt[ctrl_id] = 0U;
 
-		/*  Can_SetControllerModeư����֥ե饰����� */
+		/*  Can_SetControllerMode動作状態フラグ初期化 */
 		can_set_controller_mode_flg[ctrl_id] = FALSE;
 
-		/* CAN����ȥ�������־������� */
+		/* CANコントローラ状態情報初期化 */
 		can_current_state[ctrl_id] = CAN_T_STOP;
 	}
 
@@ -198,7 +210,7 @@ Can_Init(const Can_ConfigType *Config)
 		goto error_exit;
 	}
 
-	/* [CAN246] ���Ƥν�����λ��ˡ�Can�ν�������֤����ꤹ�� */
+	/* [CAN246] 全ての処理完了後に，Canの初期化状態を設定する */
 	can_init_flg = CAN_READY;
 
   normal_exit:
@@ -215,9 +227,9 @@ Can_Init(const Can_ConfigType *Config)
 /*
  *  [CAN224] Can_GetVersionInfo
  */
-/* [CAN252] Can_GetVersionInfo��̵ͭ�ϥ���ե�����졼�������ڤ��ؤ� */
+/* [CAN252] Can_GetVersionInfoの有無はコンフィギュレーションで切り替え */
 #if CAN_VERSION_INFO_API == STD_ON
-/* [CAN251] �ޥ����Ǽ������Ƥ�褤��NULL�ݥ��󥿥����å��Τ���ؿ��Ȥ��� */
+/* [CAN251] マクロで実装してもよいがNULLポインタチェックのため関数とする */
 void
 Can_GetVersionInfo(Std_VersionInfoType *versioninfo)
 {
@@ -226,7 +238,7 @@ Can_GetVersionInfo(Std_VersionInfoType *versioninfo)
 		CAN_DET_REPORT_ERROR(CANServiceId_GetVersionInfo, CAN_E_PARAM_POINTER);
 	}
 
-	/* [CAN105] �ƥС��������֤� */
+	/* [CAN105] 各バージョンを返す */
 	versioninfo->vendorID = CAN_VENDOR_ID;
 	versioninfo->moduleID = CAN_MODULE_ID;
 	versioninfo->sw_major_version = CAN_SW_MAJOR_VERSION;
@@ -235,7 +247,7 @@ Can_GetVersionInfo(Std_VersionInfoType *versioninfo)
 }
 #endif /* CAN_VERSION_INFO_API */
 
-/* [CAN460] Can_CheckBaudrate��̵ͭ�ϥ���ե�����졼�������ڤ��ؤ� */
+/* [CAN460] Can_CheckBaudrateの有無はコンフィギュレーションで切り替え */
 #if CAN_CHANGE_BAUDRATE_API == STD_ON
 /*
  *  [CAN454] Can_CheckBaudrate
@@ -253,10 +265,10 @@ Can_CheckBaudrate(uint8 Controller, const uint16 Baudrate)
 	/* [CAN104][CAN457] */
 	CAN_CHECK_CONTROLLER_ERCD_STD_RETERN_TYPE((Controller < GET_CONTROLLER_NUM()), CANServiceId_CheckBaudrate);
 
-	/* CAN����ȥ���������֥��å����� */
+	/* CANコントローラ管理ブロック取得 */
 	p_ctrl_inib = GET_CAN_CTRL_INIB(Controller);
 
-	/* ���ݡ��ȥܡ��졼�Ȥ�Ƚ�� */
+	/* サポートボーレートの判定 */
 	for (i = 0U; i < p_ctrl_inib->tnum_baudrate; i++) {
 		if (p_ctrl_inib->p_baudrate_table[i].CanControllerBaudRate == Baudrate) {
 			ercd = E_OK;
@@ -264,7 +276,7 @@ Can_CheckBaudrate(uint8 Controller, const uint16 Baudrate)
 		}
 	}
 
-	/* [CAN458] ̤���ݡ��ȤΥܡ��졼�Ȥ����ꤵ�줿��硤DET���顼 */
+	/* [CAN458] 未サポートのボーレートが指定された場合，DETエラー */
 	if (ercd == E_NOT_OK) {
 		CAN_DET_REPORT_ERROR(CANServiceId_CheckBaudrate, CAN_E_PARAM_BAUDRATE);
 	}
@@ -291,36 +303,36 @@ Can_ChangeBaudrate(uint8 Controller, const uint16 Baudrate)
 	/* [CAN104][CAN452] */
 	CAN_CHECK_CONTROLLER_ERCD_STD_RETERN_TYPE((Controller < GET_CONTROLLER_NUM()), CANServiceId_ChangeBaudrate);
 
-	/* CAN����ȥ���������֥��å����� */
+	/* CANコントローラ管理ブロック取得 */
 	p_ctrl_inib = GET_CAN_CTRL_INIB(Controller);
 
-	/* ���ݡ��ȥܡ��졼�Ȥ�Ƚ�� */
+	/* サポートボーレートの判定 */
 	for (i = 0U; i < p_ctrl_inib->tnum_baudrate; i++) {
 		if (p_ctrl_inib->p_baudrate_table[i].CanControllerBaudRate == Baudrate) {
 			ercd = E_OK;
 
-			/* �оݤΥܡ��졼�ȥꥹ�ȼ��� */
+			/* 対象のボーレートリスト取得 */
 			p_baudrate_config = &p_ctrl_inib->p_baudrate_table[i];
 			break;
 		}
 	}
 
 	if (ercd == E_OK) {
-		/* �ܡ��졼�Ȥ�������� */
-		/* (CAN062) ɬ�פ˱����ơ�����ȥ�����κƽ������Ԥ� */
-		/* (CAN461) �������˥����������åץ��٥�Ȥ�ȯ��������硤EcuM�⥸�塼������Τ��� */
-		/* (CAN255) �оݤΥ���ȥ�����˴ؤ���쥸�����Τ����� */
-		/* (CAN256) �оݤΥ���ȥ����餬STOPPED���֤ξ��Τߡ��ܡ��졼�Ȥ��ѹ����� */
-		/* (CAN260) �ܡ��졼���ѹ��桤�оݤΥ���ȥ������STOPPED���֤�ݻ����� */
-		/* (CAN422) �ܡ��졼���ѹ��ˤ�äơ��оݤΥ���ȥ����餬�ͥåȥ���˻��ä��뤳�ȤϤʤ� */
+		/* ボーレートの設定処理 */
+		/* (CAN062) 必要に応じて，コントローラの再初期化を行う */
+		/* (CAN461) 初期化中にウェイクアップイベントが発生した場合，EcuMモジュールへ通知する */
+		/* (CAN255) 対象のコントローラに関するレジスタのみ操作する */
+		/* (CAN256) 対象のコントローラがSTOPPED状態の場合のみ，ボーレートを変更する */
+		/* (CAN260) ボーレート変更中，対象のコントローラのSTOPPED状態を維持する */
+		/* (CAN422) ボーレート変更によって，対象のコントローラがネットワークに参加することはない */
 		if (can_target_change_baudrate(Controller, p_baudrate_config) == FALSE) {
 			ercd = E_NOT_OK;
-			/* (CAN453) CAN����ȥ����餬�ܡ��졼�Ȥ��ѹ��Ǥ��ʤ����֤ξ�硤DET���顼 */
+			/* (CAN453) CANコントローラがボーレートを変更できない状態の場合，DETエラー */
 			CAN_DET_REPORT_ERROR(CANServiceId_ChangeBaudrate, CAN_E_TRANSITION);
 		}
 	}
 	else {
-		/* [CAN451] ̤���ݡ��ȤΥܡ��졼�Ȥ����ꤵ�줿��硤DET���顼 */
+		/* [CAN451] 未サポートのボーレートが指定された場合，DETエラー */
 		CAN_DET_REPORT_ERROR(CANServiceId_ChangeBaudrate, CAN_E_PARAM_BAUDRATE);
 	}
 
@@ -339,43 +351,43 @@ Can_SetControllerMode(uint8 Controller, Can_StateTransitionType Transition)
 	Can_ReturnType		ercd = CAN_OK;
 	const CAN_CTRL_INIB	*p_ctrl_inib;
 
-	/* [CAN104][CAN026][CAN198] ����������å� */
+	/* [CAN104][CAN026][CAN198] 初期化チェック */
 	CAN_CHECK_INITIALIZED_ERCD_CAN_RETERN_TYPE(CANServiceId_SetControllerMode);
 
-	/* [CAN104][CAN199] ����ȥ�����ID�����å� */
+	/* [CAN104][CAN199] コントローラIDチェック */
 	CAN_CHECK_CONTROLLER_ERCD_CAN_RETERN_TYPE((Controller < GET_CONTROLLER_NUM()), CANServiceId_SetControllerMode);
 
-	/* Can_SetControllerModeư��ե饰��ư����(TRUE)������ */
+	/* Can_SetControllerMode動作フラグを動作中(TRUE)に設定 */
 	can_set_controller_mode_flg[Controller] = TRUE;
 
-	/* CAN����ȥ���������֥��å����� */
+	/* CANコントローラ管理ブロック取得 */
 	p_ctrl_inib = GET_CAN_CTRL_INIB(Controller);
 
-	/* [CAN017] ���ꤵ�줿CAN����ȥ�������֤ذܹ� */
-	/* [CAN398] �֥��å����ɻߤΤ���ˡ�GetCounterValue����Ѥ����⡼���ѹ���λ��Ƚ�̤��� */
-	/* [CAN371] CanTimeoutDuration�ǻ��ꤵ�줿���֤����ͤȤ��ơ��ݡ���󥰤�Ԥ� */
-	/* [CAN372] CanTimeoutDuration���вᤷ�Ƥ�⡼�ɤ��ڤ��ؤ��ʤ��ä���硤 */
-	/*          Can_SetControllerMode�ϳ������졤Can_Mainfunction_Mode�ˤ��ݡ���󥰤�³���� */
-	/* (CAN196) ɬ�פ˱����Ƴ���߶ػ�/���ľ��֤��ѹ����� */
-	/* (CAN197) �ܹԸ�ξ��֤ǵ��Ĥ���ʤ�����ߤ�ػߤ��� */
-	/* (CAN425) Can_DisableControllerInterrupts���ƤФ�Ƥ����硤����ߤ���Ĥ��ʤ� */
-	/* (CAN426) ����Can_DisableControllerInterrupts���ƤФ�Ƥ����硤���ٳ���ߤ�ػߤ��ʤ� */
+	/* [CAN017] 指定されたCANコントローラ状態へ移行 */
+	/* [CAN398] ブロッキング防止のために，GetCounterValueを使用し，モード変更完了を判別する */
+	/* [CAN371] CanTimeoutDurationで指定された時間を上限値として，ポーリングを行う */
+	/* [CAN372] CanTimeoutDurationが経過してもモードが切り替わらなかった場合， */
+	/*          Can_SetControllerModeは開放され，Can_Mainfunction_Modeによるポーリングを続ける */
+	/* (CAN196) 必要に応じて割込み禁止/許可状態を変更する */
+	/* (CAN197) 移行後の状態で許可されない割込みを禁止する */
+	/* (CAN425) Can_DisableControllerInterruptsが呼ばれている場合，割込みを許可しない */
+	/* (CAN426) 既にCan_DisableControllerInterruptsが呼ばれている場合，再度割込みを禁止しない */
 	switch (Transition) {
 	case CAN_T_START:
 		/*
 		 * STOPPED -> STARTED
-		 * (CAN261) CAN����ȥ������ͥåȥ���˻��ä�����
-		 * (CAN409) CAN����ȥ����餬STOPPED���֤Ǥʤ����ˡ�CAN_T_START��
-		 *          ���ꤵ�줿��硤DET���顼�Ȥ���
-		 * (CAN384) ������Can_Init��Can_ChangeBaudrate�ǽ�������줿���ƤǺƽ��������
+		 * (CAN261) CANコントローラをネットワークに参加させる
+		 * (CAN409) CANコントローラがSTOPPED状態でない場合に，CAN_T_STARTを
+		 *          指定された場合，DETエラーとする
+		 * (CAN384) 事前にCan_InitやCan_ChangeBaudrateで初期化された内容で再初期化する
 		 */
 		if (can_target_start_controller_and_change_interrupt(Controller, p_ctrl_inib) != FALSE) {
-			/* [CAN281] CAN����ȥ�����ξ��֤δƻ� */
+			/* [CAN281] CANコントローラの状態の監視 */
 			if (can_check_timeout_duration(Controller, CAN_T_START) == TRUE) {
-				/* [CAN373] ��̥쥤��ؤ����� */
+				/* [CAN373] 上位レイヤへの通知 */
 				CanIf_ControllerModeIndication(p_ctrl_inib->CanIfCtrlId, CANIF_CS_STARTED);
 
-				/* �оݤΥ���ȥ�����ξ��֤򹹿����� */
+				/* 対象のコントローラの状態を更新する */
 				can_current_state[Controller] = CAN_T_START;
 			}
 		}
@@ -387,19 +399,19 @@ Can_SetControllerMode(uint8 Controller, Can_StateTransitionType Transition)
 	case CAN_T_STOP:
 		/*
 		 * STARTED -> STOPPED
-		 * (CAN263) CAN����ȥ������ͥåȥ���ؤλ��ä�λ����
-		 * (CAN282) �ڥ�ǥ�����Υ�å�������¸�ߤ����硤����󥻥뤹��
-		 * (CAN283) �ڥ�ǥ�����Υ�å��������Ф��륭��󥻥����ΤϹԤ�ʤ�
-		 * (CAN410) CAN����ȥ����餬START�Ǥ�STOPPED���֤Ǥ�ʤ����ˡ�
-		 *          CAN_T_STOP����ꤵ�줿��硤DET���顼�Ȥ���
+		 * (CAN263) CANコントローラをネットワークへの参加を終了する
+		 * (CAN282) ペンディング中のメッセージが存在する場合，キャンセルする
+		 * (CAN283) ペンディング中のメッセージに対するキャンセル通知は行わない
+		 * (CAN410) CANコントローラがSTARTでもSTOPPED状態でもない場合に，
+		 *          CAN_T_STOPを指定された場合，DETエラーとする
 		 */
 		if (can_target_stop_controller_and_change_interrupt(Controller, p_ctrl_inib) != FALSE) {
-			/* [CAN281] CAN����ȥ�����ξ��֤δƻ� */
+			/* [CAN281] CANコントローラの状態の監視 */
 			if (can_check_timeout_duration(Controller, CAN_T_STOP) == TRUE) {
-				/* [CAN373] ��̥쥤��ؤ����� */
+				/* [CAN373] 上位レイヤへの通知 */
 				CanIf_ControllerModeIndication(p_ctrl_inib->CanIfCtrlId, CANIF_CS_STOPPED);
 
-				/* �оݤΥ���ȥ�����ξ��֤򹹿����� */
+				/* 対象のコントローラの状態を更新する */
 				can_current_state[Controller] = CAN_T_STOP;
 			}
 		}
@@ -411,19 +423,19 @@ Can_SetControllerMode(uint8 Controller, Can_StateTransitionType Transition)
 	case CAN_T_SLEEP:
 		/*
 		 * STOPPED -> SLEEP
-		 * (CAN265) CAN����ȥ������SLEEP���֤��ڤ��ؤ���
-		 * (CAN290) �ϡ��ɥ�������SLEEP�⡼�ɤ򥵥ݡ��Ȥ��ʤ���硤����Ū��SLEEP���֤Ȥ���
-		 * (CAN405) ����Ū��SLEEP���֤ϡ�Can_SetControllerMode(CAN_T_WAKEUP)�ƽФ��ˤ�곫�������
-		 * (CAN411) CAN����ȥ����餬STOPPED�Ǥ�SLEEP���֤Ǥ�ʤ����ˡ�
-		 *          CAN_T_SLEEP����ꤵ�줿��硤DET���顼�Ȥ���
+		 * (CAN265) CANコントローラをSLEEP状態に切り替える
+		 * (CAN290) ハードウェアがSLEEPモードをサポートしない場合，論理的なSLEEP状態とする
+		 * (CAN405) 論理的なSLEEP状態は，Can_SetControllerMode(CAN_T_WAKEUP)呼出しにより開放される
+		 * (CAN411) CANコントローラがSTOPPEDでもSLEEP状態でもない場合に，
+		 *          CAN_T_SLEEPを指定された場合，DETエラーとする
 		 */
 		if (can_target_sleep_controller_and_change_interrupt(Controller, p_ctrl_inib) != FALSE) {
-			/* [CAN281] CAN����ȥ�����ξ��֤δƻ� */
+			/* [CAN281] CANコントローラの状態の監視 */
 			if (can_check_timeout_duration(Controller, CAN_T_SLEEP) == TRUE) {
-				/* [CAN373] ��̥쥤��ؤ����� */
+				/* [CAN373] 上位レイヤへの通知 */
 				CanIf_ControllerModeIndication(p_ctrl_inib->CanIfCtrlId, CANIF_CS_SLEEP);
 
-				/* �оݤΥ���ȥ�����ξ��֤򹹿����� */
+				/* 対象のコントローラの状態を更新する */
 				can_current_state[Controller] = CAN_T_SLEEP;
 			}
 		}
@@ -435,20 +447,20 @@ Can_SetControllerMode(uint8 Controller, Can_StateTransitionType Transition)
 	case CAN_T_WAKEUP:
 		/*
 		 * SLEEP -> STOPPED
-		 * (CAN267) �ϡ��ɥ�������SLEEP�⡼�ɤ򥵥ݡ��Ȥ��ʤ���硤����Ū��
-		 *          SLEEP���֤�����������ȥ�����ؤν����ϲ���Ԥ�ʤ�
-		 * (CAN412) CAN����ȥ����餬SLEEP�Ǥ�STOPPED���֤Ǥ�ʤ����ˡ�
-		 *          CAN_T_SLEEP����ꤵ�줿��硤DET���顼�Ȥ���
+		 * (CAN267) ハードウェアがSLEEPモードをサポートしない場合，論理的な
+		 *          SLEEP状態を開放し，コントローラへの処理は何も行わない
+		 * (CAN412) CANコントローラがSLEEPでもSTOPPED状態でもない場合に，
+		 *          CAN_T_SLEEPを指定された場合，DETエラーとする
 		 */
-		/* (CAN294) �����������å׾��֤�����å�����ݤϡ������������å׳���ߤ�ػߤ��� */
-		/* (CAN048) SLEEP��˥����������åפ�����硤�ܥ����ƥॵ���ӥ���CAN_T_WAKEUP����ꤵ��Ƥ�CAN_NOT_OK���֤� */
+		/* (CAN294) ウェイクアップ状態をチェックする際は，ウェイクアップ割込みを禁止する */
+		/* (CAN048) SLEEP中にウェイクアップした場合，本システムサービスでCAN_T_WAKEUPを指定されてもCAN_NOT_OKを返す */
 		if (can_target_wakeup_controller_and_change_interrupt(Controller, p_ctrl_inib) != FALSE) {
-			/* [CAN281] CAN����ȥ�����ξ��֤δƻ� */
+			/* [CAN281] CANコントローラの状態の監視 */
 			if (can_check_timeout_duration(Controller, CAN_T_WAKEUP) == TRUE) {
-				/* [CAN373] ��̥쥤��ؤ����� */
+				/* [CAN373] 上位レイヤへの通知 */
 				CanIf_ControllerModeIndication(p_ctrl_inib->CanIfCtrlId, CANIF_CS_STOPPED);
 
-				/* �оݤΥ���ȥ�����ξ��֤򹹿����� */
+				/* 対象のコントローラの状態を更新する */
 				can_current_state[Controller] = CAN_T_WAKEUP;
 			}
 		}
@@ -458,7 +470,7 @@ Can_SetControllerMode(uint8 Controller, Can_StateTransitionType Transition)
 		}
 		break;
 	default:
-		/* [CAN200] �������۾�ξ�� */
+		/* [CAN200] 引数が異常の場合 */
 		ercd = CAN_NOT_OK;
 		CAN_DET_REPORT_ERROR(CANServiceId_SetControllerMode, CAN_E_TRANSITION);
 		break;
@@ -467,7 +479,7 @@ Can_SetControllerMode(uint8 Controller, Can_StateTransitionType Transition)
   error_exit:
 	/* [CAN091] */
 
-	/* Can_SetControllerModeư��ե饰�������(FALSE)������ */
+	/* Can_SetControllerMode動作フラグを停止中(FALSE)に設定 */
 	can_set_controller_mode_flg[Controller] = FALSE;
 
 	return(ercd);
@@ -485,16 +497,16 @@ Can_DisableControllerInterrupts(uint8 Controller)
 	/* [CAN104][CAN206] */
 	CAN_CHECK_CONTROLLER((Controller < GET_CONTROLLER_NUM()), CANServiceId_DisableControllerInterrupts);
 
-	/* �ͥ��ȥ������Ƚ�� */
+	/* ネストカウント判定 */
 	if (can_interrupt_nested_cnt[Controller] == CAN_INTERRUPT_NESTED_CNT_MAX) {
-		/*�����Ķ�� */
+		/*上限値超過 */
 		CAN_DET_REPORT_ERROR(CANServiceId_DisableControllerInterrupts, CAN_E_FATAL);
 		goto error_exit;
 	}
 
 	/*
-	 * ����߶ػ߽���
-	 * [CAN049] ����ߵ��ľ��֤Υ���ȥ�����ξ��Τ߽�������
+	 * 割込み禁止処理
+	 * [CAN049] 割込み許可状態のコントローラの場合のみ処理する
 	 */
 	if (can_interrupt_nested_cnt[Controller] == 0U) {
 		if (can_target_disable_controller_interrupts(Controller) == FALSE) {
@@ -502,7 +514,7 @@ Can_DisableControllerInterrupts(uint8 Controller)
 		}
 	}
 
-	/* [CAN202] �ͥ��ȸƽФ����������Ԥäơ��տޤ�������ߵ��Ĥˤʤ�ʤ��褦�ˤ��� */
+	/* [CAN202] ネスト呼出し回数管理を行って，意図せず割込み許可にならないようにする */
 	can_interrupt_nested_cnt[Controller]++;
 
   error_exit:
@@ -523,18 +535,18 @@ Can_EnableControllerInterrupts(uint8 Controller)
 	CAN_CHECK_CONTROLLER((Controller < GET_CONTROLLER_NUM()), CANServiceId_EnableControllerInterrupts);
 
 	/*
-	 * �ͥ��ȥ������Ƚ��
-	 * [CAN208] Disable���ƤФ�Ƥ��ʤ����Ϥʤˤ⤷�ʤ�
+	 * ネストカウント判定
+	 * [CAN208] Disableが呼ばれていない場合はなにもしない
 	 */
 	if (can_interrupt_nested_cnt[Controller] != 0U) {
 		/*
-		 * �ͥ��ȥ�����ȥǥ������
-		 * [CAN050] �ͥ��ȸƽФ����������Ԥäơ��տޤ�������ߵ��Ĥˤʤ�ʤ��褦�ˤ���
+		 * ネストカウントデクリメント
+		 * [CAN050] ネスト呼出し回数管理を行って，意図せず割込み許可にならないようにする
 		 */
 		can_interrupt_nested_cnt[Controller]--;
 
 		if (can_interrupt_nested_cnt[Controller] == 0U) {
-			/* ����ߵ��Ľ��� */
+			/* 割込み許可処理 */
 			if (can_target_enable_controller_interrupts(Controller) == FALSE) {
 				CAN_DET_REPORT_ERROR(CANServiceId_EnableControllerInterrupts, CAN_E_FATAL);
 			}
@@ -560,7 +572,7 @@ Can_CheckWakeup(uint8 Controller)
 	/* [CAN104][CAN363] */
 	CAN_CHECK_CONTROLLER_ERCD_CAN_RETERN_TYPE((Controller < GET_CONTROLLER_NUM()), CANServiceId_CheckWakeup);
 
-	/* (CAN361) ����SLEEP���֤ذܹԤ��Ƥ��饦���������åפ򸡽Ф������ɤ������֤� */
+	/* (CAN361) 前回SLEEP状態へ移行してからウェイクアップを検出したかどうかを返す */
 	if (can_target_check_wakeup(Controller) != FALSE) {
 		ercd = CAN_OK;
 	}
@@ -595,44 +607,44 @@ Can_Write(Can_HwHandleType Hth, const Can_PduType *PduInfo)
 	/* [CAN104][CAN219] */
 	CAN_CHECK_SDU_ERCD_CAN_RETERN_TYPE((PduInfo->sdu != NULL_PTR), CANServiceId_Write);
 
-	/* ����ȥ�����ID���� */
+	/* コントローラID取得 */
 	ctrl_id = GET_CONTROLLER_ID(Hth);
 
-	/* �����᡼��ܥå����Υ���ǥå������� */
+	/* 送信メールボックスのインデックス取得 */
 	tbox_index = GET_BOX_IDX(Hth);
 
-	/* [CAN011] �ǡ�����������ݻ����뤿��˽񤭹��������¾���� */
-	/* ��¾���� */
+	/* [CAN011] データ一貫性を保持するために書き込み中は排他する */
+	/* 排他開始 */
 	SchM_Enter_Can_Reentrant();
 
-	/* [CAN212] HTH�Υߥ塼�ƥå���Ƚ�� */
+	/* [CAN212] HTHのミューテックス判定 */
 	if (GET_HTH_MUTEX(ctrl_id, tbox_index) == FALSE) {
-		/* HTH�Υߥ塼�ƥå������� */
+		/* HTHのミューテックス獲得 */
 		SET_HTH_MUTEX(ctrl_id, tbox_index, TRUE);
 
 		ercd = CAN_OK;
 	}
 	else {
-		/* [CAN213][CAN214][CAN215][CAN434] �ߥ塼�ƥå����������Ѥߤξ��ϡ�CAN_BUSY���֤� */
+		/* [CAN213][CAN214][CAN215][CAN434] ミューテックスが獲得済みの場合は，CAN_BUSYを返す */
 		ercd = CAN_BUSY;
 	}
 
-	/* ��¾��λ */
+	/* 排他終了 */
 	SchM_Exit_Can_Reentrant();
 
 	if (ercd == CAN_OK) {
-		/* [CAN276] �������������λ�����Ѥ�PDU-ID���ݻ����� */
+		/* [CAN276] 正常時は送信完了通知用にPDU-IDを保持する */
 		SET_SAVED_PDU_ID(ctrl_id, tbox_index, PduInfo->swPduHandle);
 
 		/*
-		 * �����ǡ����ڤ������׵�����
-		 * [CAN275] �����������Τ���¾������»ܤ��ʤ�
-		 * (CAN059) �ǡ��������0���ܤ����Ǥ�����������7���ܤ����Ǥ�Ǹ����������
-		 * (CAN427) �ϡ��ɥ�������ΥХåե�ɽ���˴ؤ�餺��Can_PduType���˴ޤޤ��ǡ����������Ѥ���
+		 * 送信データ及び送信要求設定
+		 * [CAN275] 送信処理自体は排他処理を実施しない
+		 * (CAN059) データ配列の0番目の要素から送信し，7番目の要素を最後に送信する
+		 * (CAN427) ハードウェア上のバッファ表現に関わらず，Can_PduType型に含まれるデータ配列を使用する
 		 */
 		ercd = can_target_transmit(ctrl_id, Hth, tbox_index, PduInfo);
 
-		/* HTH�Υߥ塼�ƥå������� */
+		/* HTHのミューテックス解放 */
 		SET_HTH_MUTEX(ctrl_id, tbox_index, FALSE);
 	}
 
@@ -644,7 +656,7 @@ Can_Write(Can_HwHandleType Hth, const Can_PduType *PduInfo)
 /*
  *  [CAN007][CAN099][CAN280][CAN225][NCAN002] Can_MainFunction_Write
  */
-/* [CAN178] �ݡ���󥰤ˤ����������Ѥ��ʤ���硤�ܴؿ���������ʤ� */
+/* [CAN178] ポーリングによる送信を使用しない場合，本関数は定義しない */
 #ifdef USE_CAN_TX_POLLING
 void
 Can_MainFunction_Write(void)
@@ -655,9 +667,9 @@ Can_MainFunction_Write(void)
 	/* [CAN104][CAN026][CAN179] */
 	CAN_CHECK_INITIALIZED_MF(CANServiceId_MainFunction_Write);
 
-	/* [CAN031] ������λ���ΤΥݡ���󥰤�Ԥ� */
+	/* [CAN031] 送信完了通知のポーリングを行う */
 	for (ctrl_id = 0U; ctrl_id < GET_CONTROLLER_NUM(); ctrl_id++) {
-		/* �оݥ���ȥ����餬�ݡ���󥰤ξ��ˤΤ߼¹� */
+		/* 対象コントローラがポーリングの場合にのみ実行 */
 		p_ctrl_inib = GET_CAN_CTRL_INIB(ctrl_id);
 		if ((p_ctrl_inib->use_polling & CAN_USE_POLLING_TX) != 0x00U) {
 			if (can_target_polling_tx(ctrl_id) != FALSE) {
@@ -675,7 +687,7 @@ Can_MainFunction_Write(void)
 /*
  *  [CAN007][CAN099][CAN280][CAN226][NCAN001] Can_MainFunction_Read
  */
-/* [CAN180] �ݡ���󥰤ˤ���������Ѥ��ʤ���硤�ܴؿ���������ʤ� */
+/* [CAN180] ポーリングによる受信を使用しない場合，本関数は定義しない */
 #ifdef USE_CAN_RX_POLLING
 void
 Can_MainFunction_Read(void)
@@ -686,13 +698,13 @@ Can_MainFunction_Read(void)
 	/* [CAN104][CAN026][CAN181] */
 	CAN_CHECK_INITIALIZED_MF(CANServiceId_MainFunction_Read);
 
-	/* [CAN108] ������λ���ΤΥݡ���󥰤�Ԥ� */
+	/* [CAN108] 受信完了通知のポーリングを行う */
 	for (ctrl_id = 0U; ctrl_id < GET_CONTROLLER_NUM(); ctrl_id++) {
-		/* �оݥ���ȥ����餬�ݡ���󥰤ξ��ˤΤ߼¹� */
+		/* 対象コントローラがポーリングの場合にのみ実行 */
 		p_ctrl_inib = GET_CAN_CTRL_INIB(ctrl_id);
 		if ((p_ctrl_inib->use_polling & CAN_USE_POLLING_RX) != 0x00U) {
 			if (can_target_polling_rx(ctrl_id) != FALSE) {
-				/* [CAN396] ���̼������� */
+				/* [CAN396] 共通受信処理 */
 				Can_IsrRx(ctrl_id);
 			}
 		}
@@ -707,7 +719,7 @@ Can_MainFunction_Read(void)
 /*
  *  [CAN007][CAN099][CAN280][CAN227] Can_MainFunction_BusOff
  */
-/* [CAN183] �ݡ���󥰤ˤ��Х��������Τ���Ѥ��ʤ���硤�ܴؿ���������ʤ� */
+/* [CAN183] ポーリングによるバスオフ通知を使用しない場合，本関数は定義しない */
 #ifdef USE_CAN_BUSOFF_POLLING
 void
 Can_MainFunction_BusOff(void)
@@ -718,9 +730,9 @@ Can_MainFunction_BusOff(void)
 	/* [CAN104][CAN026][CAN184] */
 	CAN_CHECK_INITIALIZED_MF(CANServiceId_MainFunction_BusOff);
 
-	/* [CAN109] �Х��������ΤΥݡ���󥰤�Ԥ� */
+	/* [CAN109] バスオフ通知のポーリングを行う */
 	for (ctrl_id = 0U; ctrl_id < GET_CONTROLLER_NUM(); ctrl_id++) {
-		/* �оݥ���ȥ����餬�ݡ���󥰤ξ��ˤΤ߼¹� */
+		/* 対象コントローラがポーリングの場合にのみ実行 */
 		p_ctrl_inib = GET_CAN_CTRL_INIB(ctrl_id);
 		if ((p_ctrl_inib->use_polling & CAN_USE_POLLING_BUSOFF) != 0x00U) {
 			if (can_target_polling_busoff(ctrl_id) != FALSE) {
@@ -738,7 +750,7 @@ Can_MainFunction_BusOff(void)
 /*
  *  [CAN007][CAN099][CAN280][CAN228] Can_MainFunction_Wakeup
  */
-/* [CAN185] �ݡ���󥰤ˤ�륦���������å����Τ���Ѥ��ʤ���硤�ܴؿ���������ʤ� */
+/* [CAN185] ポーリングによるウェイクアップ通知を使用しない場合，本関数は定義しない */
 #ifdef USE_CAN_WAKEUP_POLLING
 void
 Can_MainFunction_Wakeup(void)
@@ -749,9 +761,9 @@ Can_MainFunction_Wakeup(void)
 	/* [CAN104][CAN026][CAN186] */
 	CAN_CHECK_INITIALIZED_MF(CANServiceId_MainFunction_Wakeup);
 
-	/* [CAN112] �����������å����ΤΥݡ���󥰤�Ԥ� */
+	/* [CAN112] ウェイクアップ通知のポーリングを行う */
 	for (ctrl_id = 0U; ctrl_id < GET_CONTROLLER_NUM(); ctrl_id++) {
-		/* �оݥ���ȥ����餬�ݡ���󥰤ξ��ˤΤ߼¹� */
+		/* 対象コントローラがポーリングの場合にのみ実行 */
 		p_ctrl_inib = GET_CAN_CTRL_INIB(ctrl_id);
 		if ((p_ctrl_inib->use_polling & CAN_USE_POLLING_WAKEUP) != 0x00U) {
 			if (can_target_polling_wakeup(ctrl_id) != FALSE) {
@@ -779,22 +791,22 @@ Can_MainFunction_Mode(void)
 	/* [CAN104][CAN026][CAN379] */
 	CAN_CHECK_INITIALIZED_MF(CANServiceId_MainFunction_Mode);
 
-	/* [CAN369] �⡼���ڤ��ؤ�긡�ФΥݡ���󥰤�Ԥ� */
+	/* [CAN369] モード切り替わり検出のポーリングを行う */
 	for (ctrl_id = 0U; ctrl_id < GET_CONTROLLER_NUM(); ctrl_id++) {
-		/* Can_SetControllerModeư����֥ե饰Ƚ�� */
+		/* Can_SetControllerMode動作状態フラグ判定 */
 		if (can_set_controller_mode_flg[ctrl_id] == FALSE) {
 			/*
-			 * [CAN370] CAN����ȥ�����ξ��֤��Ѳ��������Ȥ�����å�����
-			 *          �������ѹ����줿�顤CanIf_ControllerModeIndication�����Τ���
-			 *          CAN����ȥ�����ξ��֤򹹿�����
+			 * [CAN370] CANコントローラの状態が変化したことをチェックし，
+			 *          正しく変更されたら，CanIf_ControllerModeIndicationで通知して
+			 *          CANコントローラの状態を更新する
 			 */
 			ret_state = can_target_get_mode(ctrl_id);
 
 			if (ret_state != can_current_state[ctrl_id]) {
-				/* CAN����ȥ���������֥��å����� */
+				/* CANコントローラ管理ブロック取得 */
 				p_ctrl_inib = GET_CAN_CTRL_INIB(ctrl_id);
 
-				/* CAN����ȥ��������Ƚ�� */
+				/* CANコントローラ状態判定 */
 				switch (ret_state) {
 				case CAN_T_START:
 					CanIf_ControllerModeIndication(p_ctrl_inib->CanIfCtrlId, CANIF_CS_STARTED);
@@ -830,7 +842,7 @@ Can_MainFunction_Mode(void)
 }
 
 /*
- *  [CAN099][CAN035][CAN033] CAN������λ���γ���ߥ����ӥ��롼����
+ *  [CAN099][CAN035][CAN033] CAN受信完了通知割込みサービスルーチン
  */
 void
 Can_IsrRx(uint8 Controller)
@@ -841,33 +853,33 @@ Can_IsrRx(uint8 Controller)
 	Can_HwHandleType	rbox_idx;
 	boolean				ret = TRUE;
 
-	/* (CAN420) ������׵�Υ��ꥢ�ϡ�ɬ�פ˱�����C2ISR¦���б����� */
+	/* (CAN420) 割込み要求のクリアは，必要に応じてC2ISR側で対応する */
 
 	while (1) {
-		/* �����᡼��ܥå������� */
+		/* 受信メールボックス取得 */
 		if (can_target_check_and_get_rbox(Controller, &rbox_idx) == FALSE) {
-			/* ������å�����̵�� */
+			/* 受信メッセージ無し */
 			break;
 		}
 
-		/* �����᡼��ܥå����Υ���ǥå���������å� */
+		/* 受信メールボックスのインデックスをチェック */
 		CAN_CHECK_MAILBOX_INDEX_NUM((rbox_idx <= GET_HRH_NUM(Controller)), CANServiceId_IsrRx);
 
 		/*
-		 * ����ID�Υǡ�������
-		 * (CAN012) �����ǡ����ΰ�������ݾڤ���
-		 * (CAN060) ��Ƭ�μ����ǡ�����ǡ��������0���ܤ����Ǥ˳�Ǽ����
-		 *          �����μ����ǡ�����7���ܤ����Ǥ˳�Ǽ����
-		 * (CAN299)(CAN300) ��Χ���������ǡ�������������ѿ�(can_sdu)�˥��ԡ�����
+		 * 受信IDのデータ取得
+		 * (CAN012) 受信データの一貫性を保証する
+		 * (CAN060) 先頭の受信データをデータ配列の0番目の要素に格納し，
+		 *          末尾の受信データを7番目の要素に格納する
+		 * (CAN299)(CAN300) 一律受信したデータをローカル変数(can_sdu)にコピーする
 		 */
 		if (can_target_get_rdata(Controller, rbox_idx, &can_id, &can_dlc, &can_sdu[0]) == TRUE) {
 #ifdef USE_CAN_LPDU_RECEIVE_CALLOUT_FUNCTION
-			/* [CAN443] �����륢���Ƚ��� */
+			/* [CAN443] コールアウト処理 */
 			ret = CanLpduCalloutFunction(rbox_idx, can_id, can_dlc, can_sdu);
 #endif /* USE_CAN_LPDU_RECEIVE_CALLOUT_FUNCTION */
-			/* [CAN444] �����륢���Ƚ�����FALSE�ξ�硤�����������³���ʤ� */
+			/* [CAN444] コールアウト処理がFALSEの場合，受信処理を継続しない */
 			if (ret == TRUE) {
-				/* [CAN279][CAN396] ������� */
+				/* [CAN279][CAN396] 上位通知 */
 				CanIf_RxIndication(GET_RBOX_CAN_OBJ_ID(Controller, rbox_idx), can_id, can_dlc, &can_sdu[0]);
 			}
 		}
@@ -879,26 +891,26 @@ Can_IsrRx(uint8 Controller)
 }
 
 /*
- *  [CAN099][CAN035][CAN033] CAN������λ���γ���ߥ����ӥ��롼����
+ *  [CAN099][CAN035][CAN033] CAN送信完了通知割込みサービスルーチン
  */
 void
 Can_IsrTx(uint8 Controller)
 {
 	Can_HwHandleType tbox_idx;
 
-	/* (CAN420) ������׵�Υ��ꥢ�ϡ�ɬ�פ˱�����C2ISR¦���б����� */
+	/* (CAN420) 割込み要求のクリアは，必要に応じてC2ISR側で対応する */
 
 	while (1) {
-		/* �����᡼��ܥå������� */
+		/* 送信メールボックス取得 */
 		if (can_target_check_and_get_tbox(Controller, &tbox_idx) == FALSE) {
-			/* ������å�����̵�� */
+			/* 送信メッセージ無し */
 			break;
 		}
 
-		/* �����᡼��ܥå����Υ���ǥå���������å� */
+		/* 送信メールボックスのインデックスをチェック */
 		CAN_CHECK_MAILBOX_INDEX_NUM((tbox_idx <= GET_HTH_NUM(Controller)), CANServiceId_IsrTx);
 
-		/* [CAN016] ��̥쥤��ؤ����� */
+		/* [CAN016] 上位レイヤへの通知 */
 		CanIf_TxConfirmation(GET_SAVED_PDU_ID(Controller, tbox_idx));
 	}
 
@@ -908,22 +920,22 @@ Can_IsrTx(uint8 Controller)
 }
 
 /*
- *  [CAN099][CAN035][CAN033] CAN�Х��������γ���ߥ����ӥ��롼����
+ *  [CAN099][CAN035][CAN033] CANバスオフ通知割込みサービスルーチン
  */
 void
 Can_IsrBusoff(uint8 Controller)
 {
 	const CAN_CTRL_INIB	*p_ctrl_inib;
 
-	/* (CAN420) ������׵�Υ��ꥢ�ϡ�ɬ�פ˱�����C2ISR¦���б����� */
+	/* (CAN420) 割込み要求のクリアは，必要に応じてC2ISR側で対応する */
 
-	/* CAN����ȥ���������֥��å����� */
+	/* CANコントローラ管理ブロック取得 */
 	p_ctrl_inib = GET_CAN_CTRL_INIB(Controller);
 
-	/* [CAN020] ���֤�STOPPED�ذܹԤ�����̥쥤������� */
-	/* (CAN272) STOPPED�ذܹԸ���оݥ���ȥ����餬CAN�ͥåȥ���˴�Ϳ���ʤ����Ȥ��ݾڤ��� */
-	/* (CAN273) �����Ԥ���å������������硤��̥쥤��إ���󥻥����Τ򤻤��ˡ������򥭥�󥻥뤹�� */
-	/* (CAN274) �ϡ��ɥ������ˤ�뼫ư�Х�����������̵���ˤ��� */
+	/* [CAN020] 状態をSTOPPEDへ移行し，上位レイヤへ通知 */
+	/* (CAN272) STOPPEDへ移行後は対象コントローラがCANネットワークに関与しないことを保証する */
+	/* (CAN273) 送信待ちメッセージがある場合，上位レイヤへキャンセル通知をせずに，送信をキャンセルする */
+	/* (CAN274) ハードウェアによる自動バスオフ復帰は無効にする */
 	if (can_target_stop_controller_and_change_interrupt(Controller, p_ctrl_inib) != FALSE) {
 		CanIf_ControllerBusOff(Controller);
 	}
@@ -933,21 +945,21 @@ Can_IsrBusoff(uint8 Controller)
 }
 
 /*
- *  [CAN099][CAN035][CAN033] CAN�����������å����γ���ߥ����ӥ��롼����
+ *  [CAN099][CAN035][CAN033] CANウェイクアップ通知割込みサービスルーチン
  */
 void
 Can_IsrWakeup(uint8 Controller)
 {
 	const CAN_CTRL_INIB	*p_ctrl_inib;
 
-	/* (CAN420) ������׵�Υ��ꥢ�ϡ�ɬ�פ˱�����C2ISR¦���б����� */
+	/* (CAN420) 割込み要求のクリアは，必要に応じてC2ISR側で対応する */
 
-	/* CAN����ȥ���������֥��å����� */
+	/* CANコントローラ管理ブロック取得 */
 	p_ctrl_inib = GET_CAN_CTRL_INIB(Controller);
 
-	/* [CAN270] ���֤�STOPPED�ذܹԤ��� */
+	/* [CAN270] 状態をSTOPPEDへ移行する */
 	if (can_target_stop_controller_and_change_interrupt(Controller, p_ctrl_inib) != FALSE) {
-		/* [CAN271][CAN364] EcuM������ */
+		/* [CAN271][CAN364] EcuMへ通知 */
 		if (p_ctrl_inib->CanWakeupSupport != FALSE) {
 			EcuM_CheckWakeup(p_ctrl_inib->EcuMWakeupSourceId);
 		}
@@ -956,11 +968,11 @@ Can_IsrWakeup(uint8 Controller)
 		CAN_DET_REPORT_ERROR(CANServiceId_IsrWakeup, CAN_E_FATAL);
 	}
 
-	/* [CAN269] �����������å��оݤΥ���ȥ�������Ф��ơ�����ʾ岿�⤷�ʤ� */
+	/* [CAN269] ウェイクアップ対象のコントローラに対して，これ以上何もしない */
 }
 
 /*
- *  CAN����ȥ�����ξ��ִƻ����
+ *  CANコントローラの状態監視処理
  */
 boolean
 can_check_timeout_duration(uint8 Controller, Can_StateTransitionType Transition)
@@ -971,35 +983,35 @@ can_check_timeout_duration(uint8 Controller, Can_StateTransitionType Transition)
 	TickType	total_eval_time = 0U;
 	StatusType	ercd;
 
-	/* ��������ͼ��� */
+	/* カウント値取得 */
 	ercd = GetCounterValue(CAN_COUNTER, &start_time);
 
-	/* ��������ͼ���Ƚ�� */
+	/* カウント値取得判定 */
 	if (ercd != E_OK) {
 		ret = FALSE;
 		CAN_DET_REPORT_ERROR(CANServiceId_SetControllerMode, CAN_E_FATAL);
 		goto error_exit;
 	}
 
-	/* CAN����ȥ�����Υ⡼�ɼ��� */
+	/* CANコントローラのモード取得 */
 	while (can_target_get_mode(Controller) != Transition) {
-		/* �������Ƚ��� */
+		/* ウェイト処理 */
 		can_target_busy_wait();
 
-		/* �вᥫ������ͼ��� */
+		/* 経過カウント値取得 */
 		ercd = GetElapsedValue(CAN_COUNTER, &start_time, &eval_time);
 
-		/* �вᥫ������ͼ���Ƚ�� */
+		/* 経過カウント値取得判定 */
 		if (ercd != E_OK) {
 			ret = FALSE;
 			CAN_DET_REPORT_ERROR(CANServiceId_SetControllerMode, CAN_E_FATAL);
 			goto error_exit;
 		}
 
-		/* �вᥫ������ͤκ�ʬ�û� */
+		/* 経過カウント値の差分加算 */
 		total_eval_time += eval_time;
 
-		/* [CAN262][CAN264][CAN266][CAN268] CAN����ȥ�����Υ⡼�ɼ�����������λ����Τ��»��֤ޤ��Ԥ� */
+		/* [CAN262][CAN264][CAN266][CAN268] CANコントローラのモード取得処理が完了するのを上限時間まで待つ */
 		if ((CAN_COUNTER_TICKS2SEC(total_eval_time)) > CAN_TIMEOUT_DURATION) {
 			ret = FALSE;
 			break;
@@ -1012,33 +1024,33 @@ can_check_timeout_duration(uint8 Controller, Can_StateTransitionType Transition)
 
 
 /*
- *  �����¸���Ǥ�̤���ݡ��ȵ�ǽ
- *    <CAN395> ���顼���Х����ߥ󥰤ϥ������åȰ�¸�Τ����¸�����б�����
- *    <CAN365><CAN366><CAN367> R4.1�Ǻ�����줿���ᡤ�ǥХå��˴ؤ����׵���б����ʤ�
- *    <CAN079> R4.1��C��������롼�뤬������줿���ᡤ�б����ʤ�
- *    <CAN423> ��ĥ�ե����ޥåȤˤ�̤�б�
- *    <CAN277><CAN401><CAN402><CAN403><CAN076> �ޥ��������̤���ݡ���
- *    <CAN278><CAN432><CAN285><CAN286><CAN433><CAN399><CAN400><CAN287><CAN288> ��������󥻥��̤���ݡ���
- *    <CAN441><CAN442> ��å������ܥå�����Υݡ������MainFunction��̤���ݡ���
- *    <CAN445><CAN446><CAN447> Icu�⥸�塼��˴ؤ�����ͤ�̤���ݡ���
- *    <CAN392> Dem���������륨�顼������¸�ߤ��ʤ����ᡤ̤���ݡ���
+ *  ■非依存部での未サポート機能
+ *    <CAN395> エラー検出タイミングはターゲット依存のため依存部で対応する
+ *    <CAN365><CAN366><CAN367> R4.1で削除されたため，デバッグに関する要求は対応しない
+ *    <CAN079> R4.1でC言語実装ルールが削除されたため，対応しない
+ *    <CAN423> 拡張フォーマットには未対応
+ *    <CAN277><CAN401><CAN402><CAN403><CAN076> マルチ送信は未サポート
+ *    <CAN278><CAN432><CAN285><CAN286><CAN433><CAN399><CAN400><CAN287><CAN288> 送信キャンセルは未サポート
+ *    <CAN441><CAN442> メッセージボックス毎のポーリング用MainFunctionは未サポート
+ *    <CAN445><CAN446><CAN447> Icuモジュールに関する仕様は未サポート
+ *    <CAN392> Demへ送信するエラー処理は存在しないため，未サポート
  *
- *  ���ϡ��ɥ�������ȥꥬ���Ȥ���SLEEP���ְܹԽ������Ф����׵�
- *    (CAN257) �ϡ��ɥ�������SLEEP�⡼�ɤ򥵥ݡ��Ȥ����硤����ȥ������SLEEP���֤��ڤ��ؤ���
- *    (CAN258) �ϡ��ɥ�������SLEEP�⡼�ɤ򥵥ݡ��Ȥ��ʤ���硤����Ū��SLEEP���֤�
- *             ���ߥ�졼�Ȥ�������ȥ������STOPPED���֤ˤ���
- *    (CAN404) ����Ū��SLEEP�⡼�ɤδ֤ϡ�����ȥ������STOPPED���֤�ݻ�����
+ *  ■ハードウェアをトリガーとするSLEEP状態移行処理に対する要求
+ *    (CAN257) ハードウェアがSLEEPモードをサポートする場合，コントローラをSLEEP状態に切り替える
+ *    (CAN258) ハードウェアがSLEEPモードをサポートしない場合，論理的にSLEEP状態を
+ *             エミュレートし，コントローラをSTOPPED状態にする
+ *    (CAN404) 論理的なSLEEPモードの間は，コントローラはSTOPPED状態を維持する
  *
- *  ������¾�λ�������
- *    [CAN240] Mcu�⥸�塼��ؤ��׵����Ǥ���
- *    [CAN455] CanIf�⥸�塼��ؤ��׵����Ǥ���
- *    [CAN058][CAN234][CAN235] ��Ϣ���볰��I/F�ؤ��׵����Ǥ���
- *    [CAN459] �桼���ؤ����ջ���Ǥ���
- *    [CAN110] MainFunction�μ¹Խ���ؤ��׵᤬�ʤ����ᡤ��������б�������
- *    (CAN239) I/O�ݡ��Ȥν������Port�⥸�塼��ǹԤ��ȵ��ꤵ��Ƥ��뤬��
- *             Port�⥸�塼����ά���ơ�OS���뤤�ϳư�¸���ǽ������ǽ�Ȥ���
- *    <CAN418> Can�⥸�塼��Τߤǻ��Ѥ�������䥰�����Х��ѿ����ؿ����ܥե�����ǤΤ�
- *             �������ȵ��ꤵ��Ƥ��뤬���������åȰ�¸��/���¸���ڤ�ʬ���Τ��ᡤ
- *             �̥ե�����Ǥ������ǽ�Ȥ���
- *    [CAN448][CAN999] �׵���ͤǤϤʤ�
+ *  ■その他の仕様説明
+ *    [CAN240] Mcuモジュールへの要求事項である
+ *    [CAN455] CanIfモジュールへの要求事項である
+ *    [CAN058][CAN234][CAN235] 関連する外部I/Fへの要求事項である
+ *    [CAN459] ユーザへの注意事項である
+ *    [CAN110] MainFunctionの実行順序への要求がないため，実装上の対応は不要
+ *    (CAN239) I/Oポートの初期化はPortモジュールで行うと規定されているが，
+ *             Portモジュールを省略して，OSあるいは各依存部で初期化可能とする
+ *    <CAN418> Canモジュールのみで使用する定数やグローバル変数，関数は本ファイルでのみ
+ *             定義すると規定されているが，ターゲット依存部/非依存部切り分けのため，
+ *             別ファイルでも定義可能とする
+ *    [CAN448][CAN999] 要求仕様ではない
  */

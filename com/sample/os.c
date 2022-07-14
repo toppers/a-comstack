@@ -2,73 +2,177 @@
  *  TOPPERS/A-COM
  *      Automotive COM
  *
- *  Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+ *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
  *                             Graduate School of Information Science, Nagoya Univ., JAPAN
- *  Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
- *  Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
- *  Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
- *  Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+ *  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+ *  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
  *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
- *  Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
- *  Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
- *  Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
- *  Copyright (C) 2013-2015 by Witz Corporation
+ *  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+ *  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+ *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2016 by Witz Corporation
  *
- *  æÂµ≠√¯∫Ó∏¢º‘§œ°§∞ ≤º§Œ(1)°¡(4)§ŒæÚ∑Ô§ÚÀ˛§ø§πæÏπÁ§À∏¬§Í°§À‹•Ω•’•»•¶•ß
- *  •¢° À‹•Ω•’•»•¶•ß•¢§Ú≤˛ —§∑§ø§‚§Œ§Ú¥ﬁ§‡°•∞ ≤º∆±§∏°À§Úª»Õ—°¶ £¿Ω°¶≤˛
- *   —°¶∫∆«€…€° ∞ ≤º°§Õ¯Õ—§»∏∆§÷°À§π§Î§≥§»§ÚÃµΩ˛§«µˆ¬˙§π§Î°•
- *  (1) À‹•Ω•’•»•¶•ß•¢§Ú•Ω°º•π•≥°º•…§Œ∑¡§«Õ¯Õ—§π§ÎæÏπÁ§À§œ°§æÂµ≠§Œ√¯∫Ó
- *      ∏¢…Ωº®°§§≥§ŒÕ¯Õ—æÚ∑Ô§™§Ë§”≤ºµ≠§ŒÃµ ›æ⁄µ¨ƒÍ§¨°§§Ω§Œ§ﬁ§ﬁ§Œ∑¡§«•Ω°º
- *      •π•≥°º•…√Ê§À¥ﬁ§ﬁ§Ï§∆§§§Î§≥§»°•
- *  (2) À‹•Ω•’•»•¶•ß•¢§Ú°§•È•§•÷•È•Í∑¡º∞§ §…°§¬æ§Œ•Ω•’•»•¶•ß•¢≥´»Ø§Àª»
- *      Õ—§«§≠§Î∑¡§«∫∆«€…€§π§ÎæÏπÁ§À§œ°§∫∆«€…€§À»º§¶•…•≠•Â•·•Û•»° Õ¯Õ—
- *      º‘•ﬁ•À•Â•¢•Î§ §…°À§À°§æÂµ≠§Œ√¯∫Ó∏¢…Ωº®°§§≥§ŒÕ¯Õ—æÚ∑Ô§™§Ë§”≤ºµ≠
- *      §ŒÃµ ›æ⁄µ¨ƒÍ§Ú∑«∫‹§π§Î§≥§»°•
- *  (3) À‹•Ω•’•»•¶•ß•¢§Ú°§µ°¥Ô§À¡»§ﬂπ˛§‡§ §…°§¬æ§Œ•Ω•’•»•¶•ß•¢≥´»Ø§Àª»
- *      Õ—§«§≠§ §§∑¡§«∫∆«€…€§π§ÎæÏπÁ§À§œ°§º°§Œ§§§∫§Ï§´§ŒæÚ∑Ô§ÚÀ˛§ø§π§≥
- *      §»°•
- *    (a) ∫∆«€…€§À»º§¶•…•≠•Â•·•Û•»° Õ¯Õ—º‘•ﬁ•À•Â•¢•Î§ §…°À§À°§æÂµ≠§Œ√¯
- *        ∫Ó∏¢…Ωº®°§§≥§ŒÕ¯Õ—æÚ∑Ô§™§Ë§”≤ºµ≠§ŒÃµ ›æ⁄µ¨ƒÍ§Ú∑«∫‹§π§Î§≥§»°•
- *    (b) ∫∆«€…€§Œ∑¡¬÷§Ú°§ Ã§ÀƒÍ§·§Î ˝À°§À§Ë§√§∆°§TOPPERS•◊•Ì•∏•ß•Ø•»§À
- *         Ûπ§π§Î§≥§»°•
- *  (4) À‹•Ω•’•»•¶•ß•¢§ŒÕ¯Õ—§À§Ë§Íƒæ¿‹≈™§ﬁ§ø§œ¥÷¿‹≈™§À¿∏§∏§Î§§§´§ §Î¬ª
- *      ≥≤§´§È§‚°§æÂµ≠√¯∫Ó∏¢º‘§™§Ë§”TOPPERS•◊•Ì•∏•ß•Ø•»§ÚÃ»¿’§π§Î§≥§»°•
- *      §ﬁ§ø°§À‹•Ω•’•»•¶•ß•¢§Œ•Ê°º•∂§ﬁ§ø§œ•®•Û•…•Ê°º•∂§´§È§Œ§§§´§ §ÎÕ˝
- *      Õ≥§À¥§≈§Ø¿¡µ·§´§È§‚°§æÂµ≠√¯∫Ó∏¢º‘§™§Ë§”TOPPERS•◊•Ì•∏•ß•Ø•»§Ú
- *      Ã»¿’§π§Î§≥§»°•
+ *  ‰∏äË®òËëó‰ΩúÊ®©ËÄÖ„ÅØÔºå‰ª•‰∏ã„ÅÆ(1)„Äú(4)„ÅÆÊù°‰ª∂„ÇíÊ∫Ä„Åü„ÅôÂ†¥Âêà„Å´Èôê„ÇäÔºåÊú¨„ÇΩ„Éï„Éà„Ç¶„Çß
+ *  „Ç¢ÔºàÊú¨„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„ÇíÊîπÂ§â„Åó„Åü„ÇÇ„ÅÆ„ÇíÂê´„ÇÄÔºé‰ª•‰∏ãÂêå„ÅòÔºâ„Çí‰ΩøÁî®„ÉªË§áË£Ω„ÉªÊîπ
+ *  Â§â„ÉªÂÜçÈÖçÂ∏ÉÔºà‰ª•‰∏ãÔºåÂà©Áî®„Å®Âëº„Å∂Ôºâ„Åô„Çã„Åì„Å®„ÇíÁÑ°ÂÑü„ÅßË®±Ë´æ„Åô„ÇãÔºé
+ *  (1) Êú¨„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„Çí„ÇΩ„Éº„Çπ„Ç≥„Éº„Éâ„ÅÆÂΩ¢„ÅßÂà©Áî®„Åô„ÇãÂ†¥Âêà„Å´„ÅØÔºå‰∏äË®ò„ÅÆËëó‰Ωú
+ *      Ê®©Ë°®Á§∫Ôºå„Åì„ÅÆÂà©Áî®Êù°‰ª∂„Åä„Çà„Å≥‰∏ãË®ò„ÅÆÁÑ°‰øùË®ºË¶èÂÆö„ÅåÔºå„Åù„ÅÆ„Åæ„Åæ„ÅÆÂΩ¢„Åß„ÇΩ„Éº
+ *      „Çπ„Ç≥„Éº„Éâ‰∏≠„Å´Âê´„Åæ„Çå„Å¶„ÅÑ„Çã„Åì„Å®Ôºé
+ *  (2) Êú¨„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„ÇíÔºå„É©„Ç§„Éñ„É©„É™ÂΩ¢Âºè„Å™„Å©Ôºå‰ªñ„ÅÆ„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢ÈñãÁô∫„Å´‰Ωø
+ *      Áî®„Åß„Åç„ÇãÂΩ¢„ÅßÂÜçÈÖçÂ∏É„Åô„ÇãÂ†¥Âêà„Å´„ÅØÔºåÂÜçÈÖçÂ∏É„Å´‰º¥„ÅÜ„Éâ„Ç≠„É•„É°„É≥„ÉàÔºàÂà©Áî®
+ *      ËÄÖ„Éû„Éã„É•„Ç¢„É´„Å™„Å©Ôºâ„Å´Ôºå‰∏äË®ò„ÅÆËëó‰ΩúÊ®©Ë°®Á§∫Ôºå„Åì„ÅÆÂà©Áî®Êù°‰ª∂„Åä„Çà„Å≥‰∏ãË®ò
+ *      „ÅÆÁÑ°‰øùË®ºË¶èÂÆö„ÇíÊé≤Ëºâ„Åô„Çã„Åì„Å®Ôºé
+ *  (3) Êú¨„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„ÇíÔºåÊ©üÂô®„Å´ÁµÑ„ÅøËæº„ÇÄ„Å™„Å©Ôºå‰ªñ„ÅÆ„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢ÈñãÁô∫„Å´‰Ωø
+ *      Áî®„Åß„Åç„Å™„ÅÑÂΩ¢„ÅßÂÜçÈÖçÂ∏É„Åô„ÇãÂ†¥Âêà„Å´„ÅØÔºåÊ¨°„ÅÆ„ÅÑ„Åö„Çå„Åã„ÅÆÊù°‰ª∂„ÇíÊ∫Ä„Åü„Åô„Åì
+ *      „Å®Ôºé
+ *    (a) ÂÜçÈÖçÂ∏É„Å´‰º¥„ÅÜ„Éâ„Ç≠„É•„É°„É≥„ÉàÔºàÂà©Áî®ËÄÖ„Éû„Éã„É•„Ç¢„É´„Å™„Å©Ôºâ„Å´Ôºå‰∏äË®ò„ÅÆËëó
+ *        ‰ΩúÊ®©Ë°®Á§∫Ôºå„Åì„ÅÆÂà©Áî®Êù°‰ª∂„Åä„Çà„Å≥‰∏ãË®ò„ÅÆÁÑ°‰øùË®ºË¶èÂÆö„ÇíÊé≤Ëºâ„Åô„Çã„Åì„Å®Ôºé
+ *    (b) ÂÜçÈÖçÂ∏É„ÅÆÂΩ¢ÊÖã„ÇíÔºåÂà•„Å´ÂÆö„ÇÅ„ÇãÊñπÊ≥ï„Å´„Çà„Å£„Å¶ÔºåTOPPERS„Éó„É≠„Ç∏„Çß„ÇØ„Éà„Å´
+ *        Â†±Âëä„Åô„Çã„Åì„Å®Ôºé
+ *  (4) Êú¨„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„ÅÆÂà©Áî®„Å´„Çà„ÇäÁõ¥Êé•ÁöÑ„Åæ„Åü„ÅØÈñìÊé•ÁöÑ„Å´Áîü„Åò„Çã„ÅÑ„Åã„Å™„ÇãÊêç
+ *      ÂÆ≥„Åã„Çâ„ÇÇÔºå‰∏äË®òËëó‰ΩúÊ®©ËÄÖ„Åä„Çà„Å≥TOPPERS„Éó„É≠„Ç∏„Çß„ÇØ„Éà„ÇíÂÖçË≤¨„Åô„Çã„Åì„Å®Ôºé
+ *      „Åæ„ÅüÔºåÊú¨„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„ÅÆ„É¶„Éº„Ç∂„Åæ„Åü„ÅØ„Ç®„É≥„Éâ„É¶„Éº„Ç∂„Åã„Çâ„ÅÆ„ÅÑ„Åã„Å™„ÇãÁêÜ
+ *      Áî±„Å´Âü∫„Å•„ÅèË´ãÊ±Ç„Åã„Çâ„ÇÇÔºå‰∏äË®òËëó‰ΩúÊ®©ËÄÖ„Åä„Çà„Å≥TOPPERS„Éó„É≠„Ç∏„Çß„ÇØ„Éà„Çí
+ *      ÂÖçË≤¨„Åô„Çã„Åì„Å®Ôºé
  *
- *  À‹•Ω•’•»•¶•ß•¢§œ°§AUTOSAR° AUTomotive Open System ARchitecture°Àª≈
- *  ÕÕ§À¥§≈§§§∆§§§Î°•æÂµ≠§Œµˆ¬˙§œ°§AUTOSAR§Œ√Œ≈™∫‚ª∫∏¢§Úµˆ¬˙§π§Î§‚§Œ§«
- *  §œ§ §§°•AUTOSAR§œ°§AUTOSARª≈ÕÕ§À¥§≈§§§ø•Ω•’•»•¶•ß•¢§Úæ¶Õ—Ã‹≈™§«Õ¯
- *  Õ—§π§Îº‘§À¬–§∑§∆°§AUTOSAR•—°º•»• °º§À§ §Î§≥§»§Úµ·§·§∆§§§Î°•
+ *  Êú¨„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„ÅØÔºåAUTOSARÔºàAUTomotive Open System ARchitectureÔºâ‰ªï
+ *  Êßò„Å´Âü∫„Å•„ÅÑ„Å¶„ÅÑ„ÇãÔºé‰∏äË®ò„ÅÆË®±Ë´æ„ÅØÔºåAUTOSAR„ÅÆÁü•ÁöÑË≤°Áî£Ê®©„ÇíË®±Ë´æ„Åô„Çã„ÇÇ„ÅÆ„Åß
+ *  „ÅØ„Å™„ÅÑÔºéAUTOSAR„ÅØÔºåAUTOSAR‰ªïÊßò„Å´Âü∫„Å•„ÅÑ„Åü„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„ÇíÂïÜÁî®ÁõÆÁöÑ„ÅßÂà©
+ *  Áî®„Åô„ÇãËÄÖ„Å´ÂØæ„Åó„Å¶ÔºåAUTOSAR„Éë„Éº„Éà„Éä„Éº„Å´„Å™„Çã„Åì„Å®„ÇíÊ±Ç„ÇÅ„Å¶„ÅÑ„ÇãÔºé
  *
- *  À‹•Ω•’•»•¶•ß•¢§œ°§Ãµ ›æ⁄§«ƒÛ∂°§µ§Ï§∆§§§Î§‚§Œ§«§¢§Î°•æÂµ≠√¯∫Ó∏¢º‘§™
- *  §Ë§”TOPPERS•◊•Ì•∏•ß•Ø•»§œ°§À‹•Ω•’•»•¶•ß•¢§À¥ÿ§∑§∆°§∆√ƒÍ§Œª»Õ—Ã‹≈™
- *  §À¬–§π§Î≈¨πÁ¿≠§‚¥ﬁ§·§∆°§§§§´§ §Î ›æ⁄§‚π‘§Ô§ §§°•§ﬁ§ø°§À‹•Ω•’•»•¶•ß
- *  •¢§ŒÕ¯Õ—§À§Ë§Íƒæ¿‹≈™§ﬁ§ø§œ¥÷¿‹≈™§À¿∏§∏§ø§§§´§ §Î¬ª≥≤§À¥ÿ§∑§∆§‚°§§Ω
- *  §Œ¿’«§§Ú…È§Ô§ §§°•
+ *  Êú¨„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„ÅØÔºåÁÑ°‰øùË®º„ÅßÊèê‰æõ„Åï„Çå„Å¶„ÅÑ„Çã„ÇÇ„ÅÆ„Åß„ÅÇ„ÇãÔºé‰∏äË®òËëó‰ΩúÊ®©ËÄÖ„Åä
+ *  „Çà„Å≥TOPPERS„Éó„É≠„Ç∏„Çß„ÇØ„Éà„ÅØÔºåÊú¨„ÇΩ„Éï„Éà„Ç¶„Çß„Ç¢„Å´Èñ¢„Åó„Å¶ÔºåÁâπÂÆö„ÅÆ‰ΩøÁî®ÁõÆÁöÑ
+ *  „Å´ÂØæ„Åô„ÇãÈÅ©ÂêàÊÄß„ÇÇÂê´„ÇÅ„Å¶Ôºå„ÅÑ„Åã„Å™„Çã‰øùË®º„ÇÇË°å„Çè„Å™„ÅÑÔºé„Åæ„ÅüÔºåÊú¨„ÇΩ„Éï„Éà„Ç¶„Çß
+ *  „Ç¢„ÅÆÂà©Áî®„Å´„Çà„ÇäÁõ¥Êé•ÁöÑ„Åæ„Åü„ÅØÈñìÊé•ÁöÑ„Å´Áîü„Åò„Åü„ÅÑ„Åã„Å™„ÇãÊêçÂÆ≥„Å´Èñ¢„Åó„Å¶„ÇÇÔºå„Åù
+ *  „ÅÆË≤¨‰ªª„ÇíË≤†„Çè„Å™„ÅÑÔºé
  *
- *  $Id: os.c 1241 2015-03-25 07:26:02Z panasonic-ayane $
+ *  $Id: os.c 3128 2016-03-15 05:16:52Z fsi-kaitori $
  */
 
 #include "Os.h"
 #include "Com.h"
 #include "t_syslog.h"
 
-TASK(MainTask){
-	Com_IpduGroupVector vector_on;
-	sint16				test_sint16;
+static const uint8			pdur_data[3] = {
+	(uint8) 001U,   /*data0*/
+	(uint8) 127U,   /*data1*/
+	(uint8) 254U    /*data2*/
+};
 
+static const PduInfoType	pdu_info_type_table = {
+	(uint8 *) pdur_data,
+	(PduLengthType) 3U
+};
+
+
+TASK(MainTask)
+{
+	Com_IpduGroupVector vector_on;
+	Com_StatusType		st;
+	Std_VersionInfoType vi;
+	Std_VersionInfoType *versioninfo = &vi;
+	uint32				id;
+	uint8				data0 = 123;
+	uint8				data1 = 146;
+	uint8				data2 = 245;
+	uint8				data3;
+	uint8				data4;
+	uint8				data5;
+
+	syslog(LOG_NOTICE, "== Com_Init ==");
 	Com_Init(&com_config[0]);
 
+	syslog(LOG_NOTICE, "== Com_GetStatus ==");
+	st = Com_GetStatus();
+	syslog(LOG_NOTICE, "** Status = %d **", st);
+
+	syslog(LOG_NOTICE, "== Com_GetConfigurationId ==");
+	id = Com_GetConfigurationId();
+	syslog(LOG_NOTICE, "** id = %d **", id);
+
+	syslog(LOG_NOTICE, "== Com_GetVersionInfo ==");
+	Com_GetVersionInfo(versioninfo);
+	syslog(LOG_NOTICE, "** versioninfo->vendorID = %d **", versioninfo->vendorID);
+	syslog(LOG_NOTICE, "** versioninfo->moduleID = %d **", versioninfo->moduleID);
+	syslog(LOG_NOTICE, "** versioninfo->sw_major_version = %d **", versioninfo->sw_major_version);
+	syslog(LOG_NOTICE, "** versioninfo->sw_minor_version = %d **", versioninfo->sw_minor_version);
+	syslog(LOG_NOTICE, "** versioninfo->sw_patch_version = %d **", versioninfo->sw_patch_version);
+
+	syslog(LOG_NOTICE, "== Com_ClearIpduGroupVector(0) ==");
+	Com_ClearIpduGroupVector(vector_on);
+
+	syslog(LOG_NOTICE, "== Com_SetIpduGroup(0) ==");
 	Com_SetIpduGroup(vector_on, 0, TRUE);
+
+	syslog(LOG_NOTICE, "== Com_IpduGroupControl ==");
 	Com_IpduGroupControl(vector_on, TRUE);
 
-	/* SIGNAL_C§ŒΩÈ¥¸√Õ§ÚºË∆¿§∑§∆…Ωº® */
-	Com_ReceiveSignal(ComConf_ComSignal_SIGNAL_C, &test_sint16);
-	syslog(LOG_NOTICE, "test_sint16: %d", test_sint16);
+	//ÈÄÅ‰ø°Á¢∫Ë™ç
+	syslog(LOG_NOTICE, "== Com_SendSignal(0) ==");
+	(void) Com_SendSignal(0U, &data0);
 
+	syslog(LOG_NOTICE, "== Com_SendSignal(1) ==");
+	(void) Com_SendSignal(1U, &data1);
+
+	syslog(LOG_NOTICE, "== Com_SendSignal(2) ==");
+	(void) Com_SendSignal(2U, &data2);
+
+	syslog(LOG_NOTICE, "== Com_SwitchIpduTxMode(0) ==");
+	Com_SwitchIpduTxMode(0U, FALSE);
+
+	syslog(LOG_NOTICE, "== Com_SendSignalGroup(0) ==");
+	(void) Com_SendSignalGroup(0U);
+
+	syslog(LOG_NOTICE, "== Com_TriggerIPDUSend(0) ==");
+	Com_TriggerIPDUSend(0U);
+
+	syslog(LOG_NOTICE, "== Com_MainFunctionTx ==");
+	Com_MainFunctionTx();
+
+	syslog(LOG_NOTICE, "== Com_InvalidateSignal(0) ==");
+	(void) Com_InvalidateSignal(0U);
+
+	syslog(LOG_NOTICE, "== Com_InvalidateSignalGroup(0) ==");
+	(void) Com_InvalidateSignalGroup(0U);
+
+	syslog(LOG_NOTICE, "== Com_MainFunctionTx ==");
+	Com_MainFunctionTx();
+
+	syslog(LOG_NOTICE, "== Com_TxConfirmation ==");
+	Com_TxConfirmation(0U);
+
+	//Âèó‰ø°Á¢∫Ë™ç
+	syslog(LOG_NOTICE, "== Com_RxIndication ==");
+	Com_RxIndication(1, (PduInfoType *) &pdu_info_type_table);
+
+	syslog(LOG_NOTICE, "== Com_MainFunctionRx ==");
+	Com_MainFunctionRx();
+
+	syslog(LOG_NOTICE, "== Com_ReceiveSignalGroup(1) ==");
+	(void) Com_ReceiveSignalGroup(1U);
+
+	syslog(LOG_NOTICE, "== Com_ReceiveSignal(3) ==");
+	(void) Com_ReceiveSignal(3U, &data3);
+
+	syslog(LOG_NOTICE, "** data3 = %d **", data3);
+
+	syslog(LOG_NOTICE, "== Com_ReceiveSignal(4) ==");
+	(void) Com_ReceiveSignal(4U, &data4);
+
+	syslog(LOG_NOTICE, "** data4 = %d **", data4);
+
+	syslog(LOG_NOTICE, "== Com_ReceiveSignal(5) ==");
+	(void) Com_ReceiveSignal(5U, &data5);
+
+	syslog(LOG_NOTICE, "** data5 = %d **", data5);
+
+	syslog(LOG_NOTICE, "== Com_DeInit ==");
 	Com_DeInit();
+
 	ShutdownOS(E_OK);
 }
 

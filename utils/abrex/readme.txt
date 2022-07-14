@@ -1,102 +1,104 @@
 
 	ABREX - AUTOSAR BSW and RTE XML Generator -
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤ABREX¤ò»ÈÍÑ¤¹¤ë¤¿¤á¤ËÉ¬Í×¤Ê»ö¹à¤òÀâÌÀ¤¹¤ë¤â¤Î¤Ç¤¢¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒABREXã‚’ä½¿ç”¨ã™ã‚‹ãŸã‚ã«å¿…è¦ãªäº‹é …ã‚’èª¬æ˜Žã™ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼Ž
 
 ----------------------------------------------------------------------
 ABREX
     AUTOSAR BSW and RTE XML Generator
 
-Copyright (C) 2013-2015 by Center for Embedded Computing Systems
+Copyright (C) 2013-2016 by Center for Embedded Computing Systems
             Graduate School of Information Science, Nagoya Univ., JAPAN
-Copyright (C) 2014-2015 by AISIN COMCRUISE Co., Ltd., JAPAN
-Copyright (C) 2013-2015 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2014-2015 by NEC Communication Systems, Ltd., JAPAN
-Copyright (C) 2013-2015 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
+Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
+Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2016 by eSOL Co.,Ltd., JAPAN
+Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2014-2015 by SCSK Corporation, JAPAN
-Copyright (C) 2013-2015 by Sunny Giken Inc., JAPAN
-Copyright (C) 2013-2015 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2015 by Witz Corporation
+Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
+Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
+Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2016 by Witz Corporation
 
-¾åµ­Ãøºî¸¢¼Ô¤Ï¡¤°Ê²¼¤Î (1)¡Á(3)¤Î¾ò·ï¤òËþ¤¿¤¹¾ì¹ç¤Ë¸Â¤ê¡¤ËÜ¥É¥­¥å¥á
-¥ó¥È¡ÊËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿¤â¤Î¤ò´Þ¤à¡¥°Ê²¼Æ±¤¸¡Ë¤ò»ÈÍÑ¡¦Ê£À½¡¦²þ
-ÊÑ¡¦ºÆÇÛÉÛ¡Ê°Ê²¼¡¤ÍøÍÑ¤È¸Æ¤Ö¡Ë¤¹¤ë¤³¤È¤òÌµ½þ¤ÇµöÂú¤¹¤ë¡¥
-(1) ËÜ¥É¥­¥å¥á¥ó¥È¤òÍøÍÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¾åµ­¤ÎÃøºî¸¢É½¼¨¡¤¤³¤ÎÍøÍÑ¾ò·ï
-    ¤ª¤è¤Ó²¼µ­¤ÎÌµÊÝ¾Úµ¬Äê¤¬¡¤¤½¤Î¤Þ¤Þ¤Î·Á¤Ç¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤Þ¤ì¤Æ
-    ¤¤¤ë¤³¤È¡¥
-(2) ËÜ¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤¹¤ë¾ì¹ç¤Ë¤Ï¡¤¥É¥­¥å¥á¥ó¥È¤ò²þÊÑ¤·¤¿»Ý¤Îµ­½Ò
-    ¤ò¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á¥ó¥ÈÃæ¤Ë´Þ¤á¤ë¤³¤È¡¥¤¿¤À¤·¡¤²þÊÑ¸å¤Î¥É¥­¥å¥á
-    ¥ó¥È¤¬¡¤TOPPERS¥×¥í¥¸¥§¥¯¥È»ØÄê¤Î³«È¯À®²ÌÊª¤Ç¤¢¤ë¾ì¹ç¤Ë¤Ï¡¤¤³¤Î¸Â
-    ¤ê¤Ç¤Ï¤Ê¤¤¡¥
-(3) ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤ë¤¤¤«¤Ê¤ëÂ»³²
-    ¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥¤Þ¤¿¡¤
-    ËÜ¥É¥­¥å¥á¥ó¥È¤Î¥æ¡¼¥¶¤Þ¤¿¤Ï¥¨¥ó¥É¥æ¡¼¥¶¤«¤é¤Î¤¤¤«¤Ê¤ëÍýÍ³¤Ë´ð¤Å
-    ¤¯ÀÁµá¤«¤é¤â¡¤¾åµ­Ãøºî¸¢¼Ô¤ª¤è¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤òÌÈÀÕ¤¹¤ë¤³¤È¡¥
+ä¸Šè¨˜è‘—ä½œæ¨©è€…ã¯ï¼Œä»¥ä¸‹ã® (1)ã€œ(3)ã®æ¡ä»¶ã‚’æº€ãŸã™å ´åˆã«é™ã‚Šï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡
+ãƒ³ãƒˆï¼ˆæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸã‚‚ã®ã‚’å«ã‚€ï¼Žä»¥ä¸‹åŒã˜ï¼‰ã‚’ä½¿ç”¨ãƒ»è¤‡è£½ãƒ»æ”¹
+å¤‰ãƒ»å†é…å¸ƒï¼ˆä»¥ä¸‹ï¼Œåˆ©ç”¨ã¨å‘¼ã¶ï¼‰ã™ã‚‹ã“ã¨ã‚’ç„¡å„Ÿã§è¨±è«¾ã™ã‚‹ï¼Ž
+(1) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’åˆ©ç”¨ã™ã‚‹å ´åˆã«ã¯ï¼Œä¸Šè¨˜ã®è‘—ä½œæ¨©è¡¨ç¤ºï¼Œã“ã®åˆ©ç”¨æ¡ä»¶
+    ãŠã‚ˆã³ä¸‹è¨˜ã®ç„¡ä¿è¨¼è¦å®šãŒï¼Œãã®ã¾ã¾ã®å½¢ã§ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã¾ã‚Œã¦
+    ã„ã‚‹ã“ã¨ï¼Ž
+(2) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã™ã‚‹å ´åˆã«ã¯ï¼Œãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’æ”¹å¤‰ã—ãŸæ—¨ã®è¨˜è¿°
+    ã‚’ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆä¸­ã«å«ã‚ã‚‹ã“ã¨ï¼ŽãŸã ã—ï¼Œæ”¹å¤‰å¾Œã®ãƒ‰ã‚­ãƒ¥ãƒ¡
+    ãƒ³ãƒˆãŒï¼ŒTOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å®šã®é–‹ç™ºæˆæžœç‰©ã§ã‚ã‚‹å ´åˆã«ã¯ï¼Œã“ã®é™
+    ã‚Šã§ã¯ãªã„ï¼Ž
+(3) æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ã‚‹ã„ã‹ãªã‚‹æå®³
+    ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Žã¾ãŸï¼Œ
+    æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®ãƒ¦ãƒ¼ã‚¶ã¾ãŸã¯ã‚¨ãƒ³ãƒ‰ãƒ¦ãƒ¼ã‚¶ã‹ã‚‰ã®ã„ã‹ãªã‚‹ç†ç”±ã«åŸºã¥
+    ãè«‹æ±‚ã‹ã‚‰ã‚‚ï¼Œä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’å…è²¬ã™ã‚‹ã“ã¨ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤AUTOSAR¡ÊAUTomotive Open System ARchitecture¡Ë»ÅÍÍ
-¤Ë´ð¤Å¤¤¤Æ¤¤¤ë¡¥¾åµ­¤ÎµöÂú¤Ï¡¤AUTOSAR¤ÎÃÎÅªºâ»º¸¢¤òµöÂú¤¹¤ë¤â¤Î¤Ç¤Ï¤Ê
-¤¤¡¥AUTOSAR¤Ï¡¤AUTOSAR»ÅÍÍ¤Ë´ð¤Å¤¤¤¿¥½¥Õ¥È¥¦¥§¥¢¤ò¾¦ÍÑÌÜÅª¤ÇÍøÍÑ¤¹¤ë
-¼Ô¤ËÂÐ¤·¤Æ¡¤AUTOSAR¥Ñ¡¼¥È¥Ê¡¼¤Ë¤Ê¤ë¤³¤È¤òµá¤á¤Æ¤¤¤ë¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼ŒAUTOSARï¼ˆAUTomotive Open System ARchitectureï¼‰ä»•æ§˜
+ã«åŸºã¥ã„ã¦ã„ã‚‹ï¼Žä¸Šè¨˜ã®è¨±è«¾ã¯ï¼ŒAUTOSARã®çŸ¥çš„è²¡ç”£æ¨©ã‚’è¨±è«¾ã™ã‚‹ã‚‚ã®ã§ã¯ãª
+ã„ï¼ŽAUTOSARã¯ï¼ŒAUTOSARä»•æ§˜ã«åŸºã¥ã„ãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã‚’å•†ç”¨ç›®çš„ã§åˆ©ç”¨ã™ã‚‹
+è€…ã«å¯¾ã—ã¦ï¼ŒAUTOSARãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ã«ãªã‚‹ã“ã¨ã‚’æ±‚ã‚ã¦ã„ã‚‹ï¼Ž
 
-ËÜ¥É¥­¥å¥á¥ó¥È¤Ï¡¤ÌµÊÝ¾Ú¤ÇÄó¶¡¤µ¤ì¤Æ¤¤¤ë¤â¤Î¤Ç¤¢¤ë¡¥¾åµ­Ãøºî¸¢¼Ô¤ª¤è
-¤ÓTOPPERS¥×¥í¥¸¥§¥¯¥È¤Ï¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤Ë´Ø¤·¤Æ¡¤ÆÃÄê¤Î»ÈÍÑÌÜÅª¤ËÂÐ¤¹
-¤ëÅ¬¹çÀ­¤â´Þ¤á¤Æ¡¤¤¤¤«¤Ê¤ëÊÝ¾Ú¤â¹Ô¤ï¤Ê¤¤¡¥¤Þ¤¿¡¤ËÜ¥É¥­¥å¥á¥ó¥È¤ÎÍøÍÑ
-¤Ë¤è¤êÄ¾ÀÜÅª¤Þ¤¿¤Ï´ÖÀÜÅª¤ËÀ¸¤¸¤¿¤¤¤«¤Ê¤ëÂ»³²¤Ë´Ø¤·¤Æ¤â¡¤¤½¤ÎÀÕÇ¤¤òÉé
-¤ï¤Ê¤¤¡¥
+æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã¯ï¼Œç„¡ä¿è¨¼ã§æä¾›ã•ã‚Œã¦ã„ã‚‹ã‚‚ã®ã§ã‚ã‚‹ï¼Žä¸Šè¨˜è‘—ä½œæ¨©è€…ãŠã‚ˆ
+ã³TOPPERSãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã«é–¢ã—ã¦ï¼Œç‰¹å®šã®ä½¿ç”¨ç›®çš„ã«å¯¾ã™
+ã‚‹é©åˆæ€§ã‚‚å«ã‚ã¦ï¼Œã„ã‹ãªã‚‹ä¿è¨¼ã‚‚è¡Œã‚ãªã„ï¼Žã¾ãŸï¼Œæœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®åˆ©ç”¨
+ã«ã‚ˆã‚Šç›´æŽ¥çš„ã¾ãŸã¯é–“æŽ¥çš„ã«ç”Ÿã˜ãŸã„ã‹ãªã‚‹æå®³ã«é–¢ã—ã¦ã‚‚ï¼Œãã®è²¬ä»»ã‚’è² 
+ã‚ãªã„ï¼Ž
 
-$Id: readme.txt 8495 2014-03-10 03:25:35Z shigihara $
+$Id: readme.txt 632 2016-03-22 03:34:19Z mtakada $
 ----------------------------------------------------------------------
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(1) ABREX³µÍ×
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(1) ABREXæ¦‚è¦
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 
-ABREX¤Ï¡¤OS¡¤COM¤ò»Ï¤á¤È¤¹¤ëBSW¤È¡¤RTE¤Î¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¥Õ¥¡¥¤¥ë
-(XML)¤òÀ¸À®¤¹¤ë¥Ä¡¼¥ë¤Ç¤¢¤ë¡¥YAML¥Õ¥©¡¼¥Þ¥Ã¥È¤Çµ­½Ò¤·¤¿¥³¥ó¥Õ¥£¥®¥å¥ì¡¼
-¥·¥ç¥ó¾ðÊó¤òÆþÎÏ¤È¤·¤Æ¡¤ÂÐ±þ¤¹¤ëXML¤òÀ¸À®¤¹¤ë¡¥
+ABREXã¯ï¼ŒOSï¼ŒCOMã‚’å§‹ã‚ã¨ã™ã‚‹BSWã¨ï¼ŒRTEã®ã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«
+(XML)ã‚’ç”Ÿæˆã™ã‚‹ãƒ„ãƒ¼ãƒ«ã§ã‚ã‚‹ï¼ŽYAMLãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆã§è¨˜è¿°ã—ãŸã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼
+ã‚·ãƒ§ãƒ³æƒ…å ±ã‚’å…¥åŠ›ã¨ã—ã¦ï¼Œå¯¾å¿œã™ã‚‹XMLã‚’ç”Ÿæˆã™ã‚‹ï¼Ž
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(2) »È¤¤Êý
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.1) Æ°ºî´Ä¶­
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(2) ä½¿ã„æ–¹
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+(2.1) å‹•ä½œç’°å¢ƒ
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
-ABREX¤ÏRuby¤Ë¤è¤Ã¤Æµ­½Ò¤µ¤ì¤Æ¤¤¤ë¤¿¤á¡¤Ruby¤Î¼Â¹Ô´Ä¶­¤¬É¬Í×¤Ç¤¢¤ë¡¥
-Cygwin¤Ë´Þ¤Þ¤ì¤ë°Ê²¼¤Î¥Ð¡¼¥¸¥ç¥ó¤ÎRuby¤ÇÆ°ºî³ÎÇ§ºÑ¤ß¤Ç¤¢¤ë¡¥
+ABREXã¯Rubyã«ã‚ˆã£ã¦è¨˜è¿°ã•ã‚Œã¦ã„ã‚‹ãŸã‚ï¼ŒRubyã®å®Ÿè¡Œç’°å¢ƒãŒå¿…è¦ã§ã‚ã‚‹ï¼Ž
+Cygwinã«å«ã¾ã‚Œã‚‹ä»¥ä¸‹ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®Rubyã§å‹•ä½œç¢ºèªæ¸ˆã¿ã§ã‚ã‚‹ï¼Ž
 
 ruby 1.9.3p327 (2012-11-10 revision 37606) [i386-cygwin]
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.2) ¥³¥ó¥Æ¥Ê¾ðÊó¤ÎÀ¸À®
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¢¨ËÜ¼ê½ç¤Ï´û¤Ëparam_info.yaml¤¬Â¸ºß¤¹¤ë¾ì¹ç¡¤ÉÔÍ×¤Ç¤¢¤ë
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+(2.2) ã‚³ãƒ³ãƒ†ãƒŠæƒ…å ±ã®ç”Ÿæˆ
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+â€»æœ¬æ‰‹é †ã¯æ—¢ã«param_info.yamlãŒå­˜åœ¨ã™ã‚‹å ´åˆï¼Œä¸è¦ã§ã‚ã‚‹
 
--p¥ª¥×¥·¥ç¥ó¤Ë¡¤AUTOSAR¤«¤é¸ø³«¤µ¤ì¤Æ¤¤¤ëECU¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¥Ñ¥é
-¥á¡¼¥¿¥³¥ó¥Æ¥Ê¾ðÊó¥Õ¥¡¥¤¥ë(*)¤ò°ú¿ô¤È¤·¤ÆÍ¿¤¨¡¤¼Â¹Ô¤¹¤ë¡¥
+-pã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«ï¼ŒAUTOSARã‹ã‚‰å…¬é–‹ã•ã‚Œã¦ã„ã‚‹ECUã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‘ãƒ©
+ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠæƒ…å ±ãƒ•ã‚¡ã‚¤ãƒ«(*)ã‚’å¼•æ•°ã¨ã—ã¦ä¸Žãˆï¼Œå®Ÿè¡Œã™ã‚‹ï¼Ž
 (*)http://www.autosar.org
    Methodology and Templates -> Templates -> Standard Specifications
     -> AUTOSAR_MOD_ECUConfigurationParameters.zip
-   ²òÅà¤¹¤ë¤È"AUTOSAR_MOD_ECUConfigurationParameters.arxml"¤È¤Ê¤ë
+   è§£å‡ã™ã‚‹ã¨"AUTOSAR_MOD_ECUConfigurationParameters.arxml"ã¨ãªã‚‹
 
 $ ruby abrex.rb -p AUTOSAR_MOD_ECUConfigurationParameters.arxml
 
-³Æ¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê¤Î¥Ç¡¼¥¿·¿¡¤³°Éô»²¾È·¿¤Î»²¾ÈÀè¾ðÊó¤Ê¤É¤¬¡¤
-param_info.yaml¤Ë½ÐÎÏ¤µ¤ì¤ë¡¥
+å„ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã®ãƒ‡ãƒ¼ã‚¿åž‹ï¼Œå¤–éƒ¨å‚ç…§åž‹ã®å‚ç…§å…ˆæƒ…å ±ãªã©ãŒï¼Œ
+param_info.yamlã«å‡ºåŠ›ã•ã‚Œã‚‹ï¼Ž
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.3) YAML¥Õ¥¡¥¤¥ë¤ÎºîÀ®
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-À¸À®¤·¤¿¤¤XML¥Õ¥¡¥¤¥ë¤Î¾ðÊó¤òYAML¥Õ¥©¡¼¥Þ¥Ã¥È¤Çµ­½Ò¤¹¤ë¡¥
-¡¦ºÇ¾å°Ì¤Î¥ì¥¤¥ä¤¬¥Ñ¥Ã¥±¡¼¥¸Ì¾¡¤¤½¤Î¼¡¤¬ECU¥â¥¸¥å¡¼¥ëÌ¾¤È¤Ê¤ë¡¥
-¡¦ECU¥â¥¸¥å¡¼¥ëÌ¾¤Î²¼¤Ë³ºÅö¥â¥¸¥å¡¼¥ë¤Ë´Þ¤Þ¤ì¤ë¥Ñ¥é¥á¡¼¥¿Ì¾¤ò¥­¡¼¤È¤·¤Æ¡¤
-  ¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê¤ÈÃÍ¤ò¥Ï¥Ã¥·¥å·Á¼°¤Çµ­½Ò¤¹¤ë¡¥
-¡¦¥µ¥Ö¥³¥ó¥Æ¥Ê¤Ï¡¤¥Ï¥Ã¥·¥å¤ò¥Í¥¹¥È¤¹¤ë¤³¤È¤ÇÉ½¸½¤¹¤ë¡¥
-¡¦¥³¥ó¥Æ¥Ê¤Ø¤Î»²¾È¤Ï¡¤YAML¥Õ¥¡¥¤¥ë¤ËÄêµÁ¤·¤¿¥Ñ¥Ã¥±¡¼¥¸Ì¾¤Ë½¾¤Ã¤Æ¥Ñ¥¹¤ò
-  µ­½Ò¤¹¤ë¡¥
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+(2.3) YAMLãƒ•ã‚¡ã‚¤ãƒ«ã®ä½œæˆ
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+ç”Ÿæˆã—ãŸã„XMLãƒ•ã‚¡ã‚¤ãƒ«ã®æƒ…å ±ã‚’YAMLãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆã§è¨˜è¿°ã™ã‚‹ï¼Ž
+ãƒ»æœ€ä¸Šä½ã®ãƒ¬ã‚¤ãƒ¤ãŒãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åï¼Œãã®æ¬¡ãŒECUãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åã¨ãªã‚‹ï¼Ž
+ãƒ»ECUãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åã®ä¸‹ã«è©²å½“ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã«å«ã¾ã‚Œã‚‹ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿åã‚’ã‚­ãƒ¼ã¨ã—ã¦ï¼Œ
+  ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠã¨å€¤ã‚’ãƒãƒƒã‚·ãƒ¥å½¢å¼ã§è¨˜è¿°ã™ã‚‹ï¼Ž
+ãƒ»ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠã¯ï¼Œãƒãƒƒã‚·ãƒ¥ã‚’ãƒã‚¹ãƒˆã™ã‚‹ã“ã¨ã§è¡¨ç¾ã™ã‚‹ï¼Ž
+ãƒ»ã‚³ãƒ³ãƒ†ãƒŠã¸ã®å‚ç…§ã¯ï¼ŒYAMLãƒ•ã‚¡ã‚¤ãƒ«ã«å®šç¾©ã—ãŸãƒ‘ãƒƒã‚±ãƒ¼ã‚¸åã«å¾“ã£ã¦ãƒ‘ã‚¹ã‚’
+  è¨˜è¿°ã™ã‚‹ï¼Ž
 
-¢£OS¤ÎÎã
+â– OSã®ä¾‹
 
 Os:
   Os:
@@ -131,30 +133,30 @@ Os:
     EVENT1:
       DefinitionRef: OsEvent
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(2.4) XML¥Õ¥¡¥¤¥ë¤ÎÀ¸À®
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-ºîÀ®¤·¤¿YAML¥Õ¥¡¥¤¥ë¤ò°ú¿ô¤È¤·¤Æ¡¤abrex.rb¤ò¼Â¹Ô¤¹¤ë¡¥
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+(2.4) XMLãƒ•ã‚¡ã‚¤ãƒ«ã®ç”Ÿæˆ
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+ä½œæˆã—ãŸYAMLãƒ•ã‚¡ã‚¤ãƒ«ã‚’å¼•æ•°ã¨ã—ã¦ï¼Œabrex.rbã‚’å®Ÿè¡Œã™ã‚‹ï¼Ž
 
 $ ruby abrex.rb ./sample.yaml
 
-ÆþÎÏ¤·¤¿YAML¥Õ¥¡¥¤¥ë¤Î¾ðÊó¤ËÂÐ±þ¤¹¤ëXML¥Õ¥¡¥¤¥ë¤¬¡¤ÆþÎÏ¥Õ¥¡¥¤¥ëÌ¾¤Î³ÈÄ¥
-»Ò¤òarxml¤ËÊÑ¹¹¤·¤¿¥Õ¥¡¥¤¥ë¤Ë½ÐÎÏ¤µ¤ì¤ë¡¥
-¢¨¾åµ­Îã¤Î¾ì¹ç¡¤sample.arxml
+å…¥åŠ›ã—ãŸYAMLãƒ•ã‚¡ã‚¤ãƒ«ã®æƒ…å ±ã«å¯¾å¿œã™ã‚‹XMLãƒ•ã‚¡ã‚¤ãƒ«ãŒï¼Œå…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«åã®æ‹¡å¼µ
+å­ã‚’arxmlã«å¤‰æ›´ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ï¼Ž
+â€»ä¸Šè¨˜ä¾‹ã®å ´åˆï¼Œsample.arxml
 
-¡¦(2.1)¤ÇÀ¸À®¤·¤¿param_info.yaml¤Ë´Þ¤Þ¤ì¤Ê¤¤¥­¡¼Ì¾¤¬ÅÐ¾ì¤·¤¿¾ì¹ç¡¤¥¨¥é
-  ¡¼½ªÎ»¤¹¤ë¡¥
-¡¦¥µ¥Ö¥³¥ó¥Æ¥ÊÌ¾¤Ïparam_info.yaml¤Ë´Þ¤Þ¤ì¤º¡¤YAML¥Õ¥¡¥¤¥ë¤Ëµ­½Ò¤·¤¿Ì¾¾Î
-  ¤¬Àµ¤·¤¤¤â¤Î¤È¤·¤Æ¡¤¥µ¥Ö¥³¥ó¥Æ¥Ê¤òÀ¸À®¤¹¤ë¡¥
-¡¦ÀßÄêÃÍ¤ÎÂÅÅöÀ­Åù¤Î¥Á¥§¥Ã¥¯¤Ï°ìÀÚ¹Ô¤ï¤Ê¤¤¡¥
+ãƒ»(2.1)ã§ç”Ÿæˆã—ãŸparam_info.yamlã«å«ã¾ã‚Œãªã„ã‚­ãƒ¼åãŒç™»å ´ã—ãŸå ´åˆï¼Œã‚¨ãƒ©
+  ãƒ¼çµ‚äº†ã™ã‚‹ï¼Ž
+ãƒ»ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠåã¯param_info.yamlã«å«ã¾ã‚Œãšï¼ŒYAMLãƒ•ã‚¡ã‚¤ãƒ«ã«è¨˜è¿°ã—ãŸåç§°
+  ãŒæ­£ã—ã„ã‚‚ã®ã¨ã—ã¦ï¼Œã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠã‚’ç”Ÿæˆã™ã‚‹ï¼Ž
+ãƒ»è¨­å®šå€¤ã®å¦¥å½“æ€§ç­‰ã®ãƒã‚§ãƒƒã‚¯ã¯ä¸€åˆ‡è¡Œã‚ãªã„ï¼Ž
 
-°ú¿ô¤ÎYAML¥Õ¥¡¥¤¥ë¤ÏÊ£¿ô»ØÄê¤¹¤ë¤³¤È¤¬¤Ç¤­¡¤¤¹¤Ù¤Æ¤ÎYAML¥Õ¥¡¥¤¥ë¤Î¾ðÊó
-¤ò¥Þ¡¼¥¸¤·¤¿XML¥Õ¥¡¥¤¥ë¤òÀ¸À®¤¹¤ë¡¥Æ±¤¸¥Ñ¥¹¤Î¥³¥ó¥Æ¥Ê¤¬°Û¤Ê¤ë¥Õ¥¡¥¤¥ë¤Ë
-Â¸ºß¤¹¤ë¾ì¹ç¡¤1¤Ä¤Î¥³¥ó¥Æ¥Ê¤Ë¥Þ¡¼¥¸¤¹¤ë¡¥Îã¤¨¤Ð¡¤°Ê²¼¤Îa.yaml¤Èb.yaml¤ò
-ÆþÎÏ¤·¤¿¾ì¹ç¡¤MAIN_HW_COUNTER¤Ë¤ÏÎ¾Êý¤Î¥Õ¥¡¥¤¥ë¤Ë»ØÄê¤µ¤ì¤¿¤¹¤Ù¤Æ¤Î¥Ñ¥é
-¥á¡¼¥¿¤¬ÀßÄê¤µ¤ì¤¿XML¥Õ¥¡¥¤¥ë¤È¤Ê¤ë¡¥
+å¼•æ•°ã®YAMLãƒ•ã‚¡ã‚¤ãƒ«ã¯è¤‡æ•°æŒ‡å®šã™ã‚‹ã“ã¨ãŒã§ãï¼Œã™ã¹ã¦ã®YAMLãƒ•ã‚¡ã‚¤ãƒ«ã®æƒ…å ±
+ã‚’ãƒžãƒ¼ã‚¸ã—ãŸXMLãƒ•ã‚¡ã‚¤ãƒ«ã‚’ç”Ÿæˆã™ã‚‹ï¼ŽåŒã˜ãƒ‘ã‚¹ã®ã‚³ãƒ³ãƒ†ãƒŠãŒç•°ãªã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã«
+å­˜åœ¨ã™ã‚‹å ´åˆï¼Œ1ã¤ã®ã‚³ãƒ³ãƒ†ãƒŠã«ãƒžãƒ¼ã‚¸ã™ã‚‹ï¼Žä¾‹ãˆã°ï¼Œä»¥ä¸‹ã®a.yamlã¨b.yamlã‚’
+å…¥åŠ›ã—ãŸå ´åˆï¼ŒMAIN_HW_COUNTERã«ã¯ä¸¡æ–¹ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«æŒ‡å®šã•ã‚ŒãŸã™ã¹ã¦ã®ãƒ‘ãƒ©
+ãƒ¡ãƒ¼ã‚¿ãŒè¨­å®šã•ã‚ŒãŸXMLãƒ•ã‚¡ã‚¤ãƒ«ã¨ãªã‚‹ï¼Ž
 
-¡ãa.yaml¡ä
+ï¼œa.yamlï¼ž
 Os:
   Os:
     MAIN_HW_COUNTER:
@@ -166,72 +168,72 @@ Os:
       OsSecondsPerTick: 1.666666e-08
       OsCounterIsrRef: /Os/Os/ISR1
 
-¡ãb.yaml¡ä
+ï¼œb.yamlï¼ž
 Os:
   Os:
     MAIN_HW_COUNTER:
       OsCounterAccessingApplication: OSAP1
 
-¢¨Æ±¤¸¥Ñ¥¹¤Î¥Ñ¥é¥á¡¼¥¿¤¬Ê£¿ô¤Î¥Õ¥¡¥¤¥ë¤Ë´Þ¤Þ¤ì¤ë¾ì¹ç¤Ï¡¤Â¿½ÅÅÙ¤¬*¤ÈÈ½ÃÇ
-  ¤·¤Æ¡¤Ê£¿ô¤Î¥³¥ó¥Æ¥Ê¤òÀ¸À®¤¹¤ë¡¥(¥Ñ¥é¥á¡¼¥¿Ëè¤ÎÂ¿½ÅÅÙ¾ðÊó¤ÏÊÝ»ý¤·¤Ê¤¤)
+â€»åŒã˜ãƒ‘ã‚¹ã®ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãŒè¤‡æ•°ã®ãƒ•ã‚¡ã‚¤ãƒ«ã«å«ã¾ã‚Œã‚‹å ´åˆã¯ï¼Œå¤šé‡åº¦ãŒ*ã¨åˆ¤æ–­
+  ã—ã¦ï¼Œè¤‡æ•°ã®ã‚³ãƒ³ãƒ†ãƒŠã‚’ç”Ÿæˆã™ã‚‹ï¼Ž(ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿æ¯Žã®å¤šé‡åº¦æƒ…å ±ã¯ä¿æŒã—ãªã„)
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(3) ¤½¤ÎÂ¾¤Îµ¡Ç½
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(3.1) XML¤«¤éYAML¤òºîÀ®¤¹¤ë(µÕÊÑ´¹)
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-ABREX¤Ç¤Ï¡¤ºîÀ®ºÑ¤ß¤ÎXML¥Õ¥¡¥¤¥ë¤«¤é¡¤YAML¥Õ¥¡¥¤¥ë¤òºîÀ®¤¹¤ë¤³¤È¤¬½ÐÍè
-¤ë¡¥-i¥ª¥×¥·¥ç¥ó¤Ë¡¤AUTOSAR½àµò¤ÎXML¤ò°ú¿ô¤È¤·¤ÆÍ¿¤¨¡¤¼Â¹Ô¤¹¤ë¡¥
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(3) ãã®ä»–ã®æ©Ÿèƒ½
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+(3.1) XMLã‹ã‚‰YAMLã‚’ä½œæˆã™ã‚‹(é€†å¤‰æ›)
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+ABREXã§ã¯ï¼Œä½œæˆæ¸ˆã¿ã®XMLãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ï¼ŒYAMLãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹ã“ã¨ãŒå‡ºæ¥
+ã‚‹ï¼Ž-iã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«ï¼ŒAUTOSARæº–æ‹ ã®XMLã‚’å¼•æ•°ã¨ã—ã¦ä¸Žãˆï¼Œå®Ÿè¡Œã™ã‚‹ï¼Ž
 
 $ ruby abrex.rb -i sample.arxml
 
-ÆþÎÏ¤·¤¿XML¥Õ¥¡¥¤¥ë¤Î¾ðÊó¤ËÂÐ±þ¤¹¤ëYAML¥Õ¥¡¥¤¥ë¤¬¡¤ÆþÎÏ¥Õ¥¡¥¤¥ëÌ¾¤Î³ÈÄ¥
-»Ò¤òyaml¤ËÊÑ¹¹¤·¤¿¥Õ¥¡¥¤¥ë¤Ë½ÐÎÏ¤µ¤ì¤ë¡¥
-¢¨¾åµ­Îã¤Î¾ì¹ç¡¤sample.yaml
+å…¥åŠ›ã—ãŸXMLãƒ•ã‚¡ã‚¤ãƒ«ã®æƒ…å ±ã«å¯¾å¿œã™ã‚‹YAMLãƒ•ã‚¡ã‚¤ãƒ«ãŒï¼Œå…¥åŠ›ãƒ•ã‚¡ã‚¤ãƒ«åã®æ‹¡å¼µ
+å­ã‚’yamlã«å¤‰æ›´ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ï¼Ž
+â€»ä¸Šè¨˜ä¾‹ã®å ´åˆï¼Œsample.yaml
 
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(3.2) ¥¸¥§¥Í¥ì¡¼¥¿ÍÑcsv¥Õ¥¡¥¤¥ë¤ÎÀ¸À®
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-TOPPERS/ATK2¤Ç»ÈÍÑ¤¹¤ë¥¸¥§¥Í¥ì¡¼¥¿(cfg.exe)¤ÏXML¥³¥ó¥Æ¥Ê¾ðÊó¤òCSV¥Õ¥¡¥¤
-¥ë¤ÇÍ¿¤¨¤ëÉ¬Í×¤¬¤¢¤ë¤¬¡¤ECU¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê¾ðÊó
-¥Õ¥¡¥¤¥ë¤«¤éÀ¸À®¤¹¤ë¤³¤È¤¬²ÄÇ½¤Ç¤¢¤ë¡¥-c¥ª¥×¥·¥ç¥ó¤Ë¡¤ECU¥³¥ó¥Õ¥£¥®¥å¥ì
-¡¼¥·¥ç¥ó¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê¾ðÊó¥Õ¥¡¥¤¥ë¤ò°ú¿ô¤È¤·¤ÆÍ¿¤¨¡¤-b¥ª¥×¥·¥ç¥ó¤Ë¡¤
-À¸À®¤¹¤ëÂÐ¾Ý¤Î¥â¥¸¥å¡¼¥ëÌ¾(*)¤ò°ú¿ô¤È¤·¤ÆÍ¿¤¨¡¤¼Â¹Ô¤¹¤ë¡¥
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+(3.2) ã‚¸ã‚§ãƒãƒ¬ãƒ¼ã‚¿ç”¨csvãƒ•ã‚¡ã‚¤ãƒ«ã®ç”Ÿæˆ
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+TOPPERS/ATK2ã§ä½¿ç”¨ã™ã‚‹ã‚¸ã‚§ãƒãƒ¬ãƒ¼ã‚¿(cfg.exe)ã¯XMLã‚³ãƒ³ãƒ†ãƒŠæƒ…å ±ã‚’CSVãƒ•ã‚¡ã‚¤
+ãƒ«ã§ä¸Žãˆã‚‹å¿…è¦ãŒã‚ã‚‹ãŒï¼ŒECUã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠæƒ…å ±
+ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰ç”Ÿæˆã™ã‚‹ã“ã¨ãŒå¯èƒ½ã§ã‚ã‚‹ï¼Ž-cã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«ï¼ŒECUã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬
+ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠæƒ…å ±ãƒ•ã‚¡ã‚¤ãƒ«ã‚’å¼•æ•°ã¨ã—ã¦ä¸Žãˆï¼Œ-bã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«ï¼Œ
+ç”Ÿæˆã™ã‚‹å¯¾è±¡ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«å(*)ã‚’å¼•æ•°ã¨ã—ã¦ä¸Žãˆï¼Œå®Ÿè¡Œã™ã‚‹ï¼Ž
 
 (*)http://www.autosar.org
    Software Architecture -> General -> AUTOSAR_TR_BSWModuleList.pdf
-   ¾åµ­¥Õ¥¡¥¤¥ë¤Ëµ¬Äê¤µ¤ì¤Æ¤¤¤ëModule abbreviation¤Ç»ØÄê¤¹¤ë¡¥
+   ä¸Šè¨˜ãƒ•ã‚¡ã‚¤ãƒ«ã«è¦å®šã•ã‚Œã¦ã„ã‚‹Module abbreviationã§æŒ‡å®šã™ã‚‹ï¼Ž
 
 $ ruby abrex.rb -b Com -c AUTOSAR_MOD_ECUConfigurationParameters.arxml
 
-»ØÄê¤·¤¿ÂÐ¾Ý¤Î¥â¥¸¥å¡¼¥ëÌ¾¤ÎCSV¥Õ¥¡¥¤¥ë¤Ë½ÐÎÏ¤µ¤ì¤ë¡¥
-¢¨¾åµ­Îã¤Î¾ì¹ç¡¤Com.csv
+æŒ‡å®šã—ãŸå¯¾è±¡ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«åã®CSVãƒ•ã‚¡ã‚¤ãƒ«ã«å‡ºåŠ›ã•ã‚Œã‚‹ï¼Ž
+â€»ä¸Šè¨˜ä¾‹ã®å ´åˆï¼ŒCom.csv
 
-¡ãÃí°Õ»ö¹à¡ä
-À¸À®¤¹¤ëCSV¥Õ¥¡¥¤¥ë¤Î¥³¥ó¥Æ¥Ê¤ÎÃ»½ÌÌ¾¤Ï¡¤¥³¥ó¥Æ¥ÊÌ¾¤ò¤½¤Î¤Þ¤Þ»ÈÍÑ¤¹¤ë¡¥
-½¾¤Ã¤Æ¡¤Æ±¤¸Ì¾¾Î¤Î¥³¥ó¥Æ¥Ê¤¬°Û¤Ê¤ë¥³¥ó¥Æ¥Ê¤Î¥µ¥Ö¥³¥ó¥Æ¥Ê¤È¤·¤ÆÂ¸ºß¤¹¤ë
-¾ì¹ç¤Ï¡¤¥¸¥§¥Í¥ì¡¼¥¿¼Â¹Ô»þ¤Ë¶èÊÌ¤Ç¤­¤Ê¤¯¤Ê¤ë¡¥¤³¤Î¾ì¹ç¡¤¼êÆ°¤Ç¶èÊÌ¤Ç¤­
-¤ë¤è¤¦¤Ë½¤Àµ¤¹¤ëÉ¬Í×¤¬¤¢¤ë¡¥
+ï¼œæ³¨æ„äº‹é …ï¼ž
+ç”Ÿæˆã™ã‚‹CSVãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚³ãƒ³ãƒ†ãƒŠã®çŸ­ç¸®åã¯ï¼Œã‚³ãƒ³ãƒ†ãƒŠåã‚’ãã®ã¾ã¾ä½¿ç”¨ã™ã‚‹ï¼Ž
+å¾“ã£ã¦ï¼ŒåŒã˜åç§°ã®ã‚³ãƒ³ãƒ†ãƒŠãŒç•°ãªã‚‹ã‚³ãƒ³ãƒ†ãƒŠã®ã‚µãƒ–ã‚³ãƒ³ãƒ†ãƒŠã¨ã—ã¦å­˜åœ¨ã™ã‚‹
+å ´åˆã¯ï¼Œã‚¸ã‚§ãƒãƒ¬ãƒ¼ã‚¿å®Ÿè¡Œæ™‚ã«åŒºåˆ¥ã§ããªããªã‚‹ï¼Žã“ã®å ´åˆï¼Œæ‰‹å‹•ã§åŒºåˆ¥ã§ã
+ã‚‹ã‚ˆã†ã«ä¿®æ­£ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ï¼Ž
 
-(Îã)Com¤ÎComTxModeFalse¤ÈComTxModeTrue¤Ë´Þ¤Þ¤ì¤ëComTxMode¥³¥ó¥Æ¥Ê
+(ä¾‹)Comã®ComTxModeFalseã¨ComTxModeTrueã«å«ã¾ã‚Œã‚‹ComTxModeã‚³ãƒ³ãƒ†ãƒŠ
 /AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ComTxModeFalse/ComTxMode,ComTxMode,,1
 /AUTOSAR/EcucDefs/Com/ComConfig/ComIPdu/ComTxIPdu/ComTxModeTrue/ComTxMode,ComTxMode,,1
 
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-(4) Ãí°Õ»ö¹à
-¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬¨¬
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-(4.1) ECU¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê¾ðÊó¥Õ¥¡¥¤¥ë¤Î¸íµ­½¤Àµ
-¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½¡½
-¥³¥ó¥Æ¥Ê¾ðÊó¤ÎÀ¸À®(ËÜ¥É¥­¥å¥á¥ó¥È¤Î2.2¾Ï¤ò»²¾È)¤Ë¤ª¤¤¤Æ»ÈÍÑ¤·¤Æ¤¤¤ë¡¤
-ECU¥³¥ó¥Õ¥£¥®¥å¥ì¡¼¥·¥ç¥ó¥Ñ¥é¥á¡¼¥¿¥³¥ó¥Æ¥Ê¾ðÊó¥Õ¥¡¥¤¥ë¤Ç¤¢¤ë
-AUTOSAR_MOD_ECUConfigurationParameters.arxml¤Î¸íµ­¤ò½¤Àµ¤¹¤ëÉ¬Í×¤¬¤¢¤ë¡¥
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+(4) æ³¨æ„äº‹é …
+â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+(4.1) ECUã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠæƒ…å ±ãƒ•ã‚¡ã‚¤ãƒ«ã®èª¤è¨˜ä¿®æ­£
+â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
+ã‚³ãƒ³ãƒ†ãƒŠæƒ…å ±ã®ç”Ÿæˆ(æœ¬ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã®2.2ç« ã‚’å‚ç…§)ã«ãŠã„ã¦ä½¿ç”¨ã—ã¦ã„ã‚‹ï¼Œ
+ECUã‚³ãƒ³ãƒ•ã‚£ã‚®ãƒ¥ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã‚³ãƒ³ãƒ†ãƒŠæƒ…å ±ãƒ•ã‚¡ã‚¤ãƒ«ã§ã‚ã‚‹
+AUTOSAR_MOD_ECUConfigurationParameters.arxmlã®èª¤è¨˜ã‚’ä¿®æ­£ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ï¼Ž
 
-¸½ºßÈ½ÌÀ¤·¤Æ¤¤¤ë¸íµ­¤ò°Ê²¼¤Ë¼¨¤¹¡¥
+ç¾åœ¨åˆ¤æ˜Žã—ã¦ã„ã‚‹èª¤è¨˜ã‚’ä»¥ä¸‹ã«ç¤ºã™ï¼Ž
 
-¡¦(¸í)WdgMInternallCheckpointFinalRef
-  (Àµ)WdgMInternalCheckpointFinalRef
+ãƒ»(èª¤)WdgMInternallCheckpointFinalRef
+  (æ­£)WdgMInternalCheckpointFinalRef
 
 
-°Ê¾å
+ä»¥ä¸Š
