@@ -18,7 +18,7 @@
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfInitCfgSet,CanIfInitCfgSet,STRING,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfBufferCfg,CanIfBufferCfg,,0,*
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfBufferCfg/CanIfBufferSize,CanIfBufferSize,INT,1
-/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfBufferCfg/CanIfBufferHthRef,CanIfBufferHthRef,REF,1
+/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfBufferCfg/CanIfBufferHthRef,CanIfBufferHthRef,REF,1,*
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfInitHohCfg,CanIfInitHohCfg,,0,*
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfInitHohCfg/CanIfInitRefCfgSet,CanIfInitRefCfgSet,REF,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfInitHohCfg/CanIfHrhCfg,CanIfHrhCfg,,0,*
@@ -37,7 +37,7 @@
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduReadNotifyStatus,CanIfRxPduReadNotifyStatus,BOOLEAN,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduUserRxIndicationName,CanIfRxPduUserRxIndicationName,FUNCTION,0,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduUserRxIndicationUL,CanIfRxPduUserRxIndicationUL,ENUM,0,1
-/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduHrhIdRef,CanIfRxPduHrhIdRef,REF,1
+/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduHrhIdRef,CanIfRxPduHrhIdRef,REF,1,*
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduRef,CanIfRxPduRef,REF,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfTTRxFrameTriggering,CanIfTTRxFrameTriggering,,0,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfTTRxFrameTriggering/CanTTRxJoblistTimeMark,CanTTRxJoblistTimeMark,INT,0,1
@@ -105,7 +105,7 @@
 /AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource,EcuMWakeupSource,,1,*
 /AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource/EcuMWakeupSourceId,EcuMWakeupSourceId,INT,1
 /AUTOSAR/EcucDefs/Can,,,1
-/AUTOSAR/EcucDefs/Can/CanConfigSet,CanConfigSet,,1,*
+/AUTOSAR/EcucDefs/Can/CanConfigSet,CanConfigSet,,1
 /AUTOSAR/EcucDefs/Can/CanConfigSet/CanController,CanController,,1,*
 /AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanControllerId,CanControllerId,INT,1
 /AUTOSAR/EcucDefs/Can/CanConfigSet/CanController/CanWakeupSourceRef,CanWakeupSourceRef,REF,0,1
@@ -113,3 +113,20 @@
 /AUTOSAR/EcucDefs/Can/CanConfigSet/CanHardwareObject/CanObjectId,CanObjectId,INT,1
 /AUTOSAR/EcucDefs/Can/CanGeneral,CanGeneral,,1
 /AUTOSAR/EcucDefs/Can/CanGeneral/CanIndex,CanIndex,INT,1
+/AUTOSAR/EcucDefs/CanTp,,,0,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig,CanTpConfig,,1,*
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel,CanTpChannel,,1,*
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpRxNSdu,CanTpRxNSdu,,0,*
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpRxNSdu/CanTpRxNPdu,CanTpRxNPdu,,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpRxNSdu/CanTpRxNPdu/CanTpRxNPduId,CanTpRxNPduId,INT,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpRxNSdu/CanTpRxNPdu/CanTpRxNPduRef,CanTpRxNPduRef,REF,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpRxNSdu/CanTpTxFcNPdu,CanTpTxFcNPdu,,0,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpRxNSdu/CanTpTxFcNPdu/CanTpTxFcNPduConfirmationPduId,CanTpTxFcNPduConfirmationPduId,INT,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpRxNSdu/CanTpTxFcNPdu/CanTpTxFcNPduRef,CanTpTxFcNPduRef,REF,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpTxNSdu,CanTpTxNSdu,,0,*
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpTxNSdu/CanTpRxFcNPdu,CanTpRxFcNPdu,,0,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpTxNSdu/CanTpRxFcNPdu/CanTpRxFcNPduId,CanTpRxFcNPduId,INT,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpTxNSdu/CanTpRxFcNPdu/CanTpRxFcNPduRef,CanTpRxFcNPduRef,REF,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpTxNSdu/CanTpTxNPdu,CanTpTxNPdu,,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpTxNSdu/CanTpTxNPdu/CanTpTxNPduConfirmationPduId,CanTpTxNPduConfirmationPduId,INT,1
+/AUTOSAR/EcucDefs/CanTp/CanTpConfig/CanTpChannel/CanTpTxNSdu/CanTpTxNPdu/CanTpTxNPduRef,CanTpTxNPduRef,REF,1

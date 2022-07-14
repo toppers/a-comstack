@@ -9,19 +9,19 @@
 TOPPERS/A-COMSTACK
     Automotive COMSTACK
 
-Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+Copyright (C) 2013-2017 by Center for Embedded Computing Systems
                            Graduate School of Information Science, Nagoya Univ., JAPAN
 Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
 Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
-Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
-Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
+Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
 Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
 Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
-Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
-Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
-Copyright (C) 2013-2016 by Witz Corporation
+Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
+Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
+Copyright (C) 2013-2017 by Witz Corporation
 
 上記著作権者は，以下の (1)～(3)の条件を満たす場合に限り，本ドキュメ
 ント（本ドキュメントを改変したものを含む．以下同じ）を使用・複製・改
@@ -49,7 +49,23 @@ Copyright (C) 2013-2016 by Witz Corporation
 により直接的または間接的に生じたいかなる損害に関しても，その責任を負
 わない．
 
-$Id: version.txt 2995 2016-03-02 02:05:09Z fsi-kaitori $
+$Id: version.txt 3502 2017-03-27 08:27:13Z suzuki-kawaguchi $
+----------------------------------------------------------------------
+		TOPPERS/A-COMSTACK
+		Release 1.3.0 から 1.4.0 への変更点
+		リリース日 2017-03-31
+
+○変更点のリスト
+
+＜TOPPERS/A-PDUR＞
+・TP機能対応
+
+＜TOPPERS/A-CANTP＞
+・新規追加
+
+＜TOPPERS/A-CANIF＞
+・TP機能対応
+
 ----------------------------------------------------------------------
 		TOPPERS/A-COMSTACK
 		Release 1.2.1 から 1.3.0 への変更点

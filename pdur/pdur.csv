@@ -59,9 +59,11 @@
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg,CanIfRxPduCfg,,0,*
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduId,CanIfRxPduId,INT,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduRef,CanIfRxPduRef,REF,1
+/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfRxPduCfg/CanIfRxPduUserRxIndicationUL,CanIfRxPduUserRxIndicationUL,ENUM,0,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfTxPduCfg,CanIfTxPduCfg,,0,*
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfTxPduCfg/CanIfTxPduId,CanIfTxPduId,INT,1
 /AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfTxPduCfg/CanIfTxPduRef,CanIfTxPduRef,REF,1
+/AUTOSAR/EcucDefs/CanIf/CanIfInitCfg/CanIfTxPduCfg/CanIfTxPduUserTxConfirmationUL,CanIfTxPduUserTxConfirmationUL,ENUM,0,1
 /AUTOSAR/EcucDefs/EcuC,,,1
 /AUTOSAR/EcucDefs/EcuC/EcucPduCollection,EcucPduCollection,,0,1
 /AUTOSAR/EcucDefs/EcuC/EcucPduCollection/PduIdTypeEnum,PduIdTypeEnum,ENUM,1

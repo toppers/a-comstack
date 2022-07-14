@@ -16,6 +16,7 @@ sample/PduR_CanIf.h
 sample/SchM_CanIf.h
 sample/EcuM.h
 sample/EcuM_Cbk.h
+sample/CanTp_Cbk.h
 sample/canif.arxml
 sample/canif.yaml
 sample/canif_debug.h

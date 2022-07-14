@@ -2,19 +2,19 @@
  *  TOPPERS/A-CANIF
  *      Automotive CANIF
  *
- *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+ *  Copyright (C) 2013-2017 by Center for Embedded Computing Systems
  *                             Graduate School of Information Science, Nagoya Univ., JAPAN
  *  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
  *  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
- *  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
- *  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
  *  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
  *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
- *  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
  *  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
- *  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
- *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
- *  Copyright (C) 2013-2016 by Witz Corporation
+ *  Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
+ *  Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2017 by Witz Corporation
  *
  *  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -50,7 +50,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: CanIf.c 2995 2016-03-02 02:05:09Z fsi-kaitori $
+ *  $Id: CanIf.c 3480 2017-03-08 11:51:15Z suzuki-kawaguchi $
  */
 
 /* CanIf.c */
@@ -270,6 +270,15 @@ CanIf_Transmit(PduIdType CanTxPduId, const PduInfoType *PduInfoPtr)
 
 	/* [CANIF319] */
 	CANIF_CHECK_PARAM_ERCD(p_lpdu_inib->lpdu_direction == CANIF_SEND, CanIfServiceId_Transmit, CANIF_E_INVALID_TXPDUID);
+/*↓↓ 16.10.21 ADD ↓↓*/
+	/* [SWS_CANIF_00893] */
+	if (p_lpdu_inib->CanIfPduCanIdType == CANIF_STANDARD_FD_CAN){
+		CANIF_CHECK_PARAM_ERCD((uint8) PduInfoPtr->SduLength <= CANFD_DLC_MAX, CanIfServiceId_Transmit, CANIF_E_DATA_LENGTH_MISMATCH);
+	}
+	else {
+		CANIF_CHECK_PARAM_ERCD((uint8) PduInfoPtr->SduLength <= DLC_MAX, CanIfServiceId_Transmit, CANIF_E_DATA_LENGTH_MISMATCH);
+	}
+/*↑↑ 16.10.21 ADD ↑↑*/
 
 	p_canif_ctrl_cb = p_lpdu_inib->p_canif_ctrl_cb;
 
@@ -285,10 +294,31 @@ CanIf_Transmit(PduIdType CanTxPduId, const PduInfoType *PduInfoPtr)
 	/* [CANIF075][CANIF491] PDUチャネルモードがCANIF_GET_ONLINE，CANIF_GET_TX_ONLINEの場合 */
 	if ((p_canif_ctrl_cb->pdu_mode == CANIF_GET_ONLINE) || (p_canif_ctrl_cb->pdu_mode == CANIF_GET_TX_ONLINE)) {
 		/* CAN PDU構造体設定 */
-		PduInfo.id = p_lpdu_inib->CanIfPduCanId;
 		PduInfo.swPduHandle = CanTxPduId;
 		PduInfo.sdu = PduInfoPtr->SduDataPtr;
-		PduInfo.length = ((uint8) PduInfoPtr->SduLength);
+/*↓↓ 16.10.26 CHANGE ↓↓*/
+		/* [SWS_CANIF_00894] */
+		if(p_lpdu_inib->CanIfPduCanIdType == CANIF_STANDARD_FD_CAN){
+			PduInfo.id = p_lpdu_inib->CanIfPduCanId | CANIF_FDTYPE ;
+
+			if((uint8) PduInfoPtr->SduLength > CANFD_DLC_MAX){
+				PduInfo.length = CANFD_DLC_MAX;
+			}
+			else {
+				PduInfo.length = ((uint8) PduInfoPtr->SduLength);
+			}
+		}
+		else {
+			PduInfo.id = p_lpdu_inib->CanIfPduCanId;
+
+			if((uint8) PduInfoPtr->SduLength > DLC_MAX){
+				PduInfo.length = DLC_MAX;
+			}
+			else {
+				PduInfo.length = ((uint8) PduInfoPtr->SduLength);
+			}
+		}
+/*↑↑ 16.10.26 CHANGE ↑↑*/
 
 		/* [CANIF318] メッセージ書き込み */
 		if (Can_Write(p_lpdu_inib->CanObjectId, &PduInfo) == CAN_OK) {
@@ -386,7 +416,7 @@ CanIf_ReadRxPduData(PduIdType CanRxPduId, PduInfoType *PduInfoPtr)
 	/* [CANIF325] */
 	CANIF_CHECK_PARAM_ERCD(p_lpdu_inib->lpdu_direction == CANIF_RECEIVE, CanIfServiceId_ReadRxPduData, CANIF_E_INVALID_RXPDUID);
 
-	/* [CANIF325] 受信バッファが構成されてない */
+	/* [CANIF325] 受信バッファが構成されてない*/
 	CANIF_CHECK_PARAM_ERCD((p_lpdu_inib->p_rx_lpdu_buffer != NULL_PTR), CanIfServiceId_ReadRxPduData, CANIF_E_INVALID_RXPDUID);
 
 	/* [CANIFa001] 対象のPDUを一度も受信してない場合は何も処理せず，E_NOT_OKを返す */
@@ -823,7 +853,7 @@ CanIf_TxConfirmation(PduIdType CanTxPduId)
 	CANIF_CHECK_PARAM(p_lpdu_inib->lpdu_direction == CANIF_SEND, CanIfServiceId_TxConfirmation, CANIF_E_PARAM_LPDU);
 
 #if CANIF_PUBLIC_READTXPDU_NOTIFY_STATUS_API == STD_ON
-	/* [CANIF391][CANIF472] LPDUの通知ステータスを設定する */
+	/* [CANIF391][CANIF472] LPDUの通知ステータスを設定する*/
 	if (p_lpdu_inib->p_notify_status != NULL_PTR) {
 		*(p_lpdu_inib->p_notify_status) = CANIF_TX_RX_NOTIFICATION;
 	}
@@ -852,7 +882,7 @@ CanIf_TxConfirmation(PduIdType CanTxPduId)
 		/* 再初期化チェック用に現在のコンフィギュレーション情報を保持 */
 		p_saved_config = p_cur_canif_config;
 
-		/* [CANIF383][CANIF414] 送信コンファメーションコールバック */
+		/* [CANIF383][CANIF414] 送信コンファメーションコールバック*/
 		SchM_Exit_CanIf_Reentrant_1();
 		TxConfirmation(pduid);
 		SchM_Enter_CanIf_Reentrant_1();
@@ -889,8 +919,10 @@ CanIf_RxIndication(Can_HwHandleType Hrh, Can_IdType CanId, uint8 CanDlc, uint8 *
 	CANIF_CHECK_INITIALIZED(CanIfServiceId_RxIndication);
 	/* [CANIF416] */
 	CANIF_CHECK_PARAM((Hrh < GET_LPDU_NUM()), CanIfServiceId_RxIndication, CANIF_E_PARAM_HRH);
+#if 0
 	/* [CANIF418] */
 	CANIF_CHECK_PARAM((CanDlc <= DLC_MAX), CanIfServiceId_RxIndication, CANIF_E_PARAM_DLC);
+#endif
 	/* [CANIF419] */
 	CANIF_CHECK_NULL_POINTER((CanSduPtr != NULL_PTR), CanIfServiceId_RxIndication);
 

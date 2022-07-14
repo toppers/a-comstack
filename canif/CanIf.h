@@ -2,19 +2,19 @@
  *  TOPPERS/A-CANIF
  *      Automotive CANIF
  *
- *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+ *  Copyright (C) 2013-2017 by Center for Embedded Computing Systems
  *                             Graduate School of Information Science, Nagoya Univ., JAPAN
  *  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
  *  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
- *  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
- *  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
  *  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
  *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
- *  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
  *  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
- *  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
- *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
- *  Copyright (C) 2013-2016 by Witz Corporation
+ *  Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
+ *  Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2017 by Witz Corporation
  *
  *  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -50,7 +50,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: CanIf.h 3005 2016-03-02 06:52:34Z fsi-kaitori $
+ *  $Id: CanIf.h 3480 2017-03-08 11:51:15Z suzuki-kawaguchi $
  */
 
 /* [CANIF116] CanIf.h */
@@ -95,6 +95,7 @@
 #define CANIF_E_PARAM_POINTER			20U         /* [CANIF154] */
 #define CANIF_E_UNINIT					30U         /* [CANIF154] */
 #define CANIF_E_INVALID_TXPDUID			50U         /* [CANIF154] */
+#define CANIF_E_DATA_LENGTH_MISMATCH	51U
 #define CANIF_E_INVALID_RXPDUID			60U         /* [CANIF154] */
 #define CANIF_E_INVALID_DLC				61U         /* [CANIF154] */
 #define CANIF_E_STOPPED					70U         /* [CANIF154] */
@@ -106,8 +107,12 @@
 
 #define CANIF_SEND		0x03U
 #define CANIF_RECEIVE	0x04U
+#define CANIF_STANDARD_CAN		0x05U
+#define CANIF_STANDARD_FD_CAN	0x06U
+#define CANIF_FDTYPE			0x4000U
 
 #define DLC_MAX	8U
+#define CANFD_DLC_MAX	64U
 
 
 /*
@@ -302,12 +307,13 @@ typedef struct canif_controller_initialization_block {
  *  LPDU初期化ブロック
  */
 typedef struct lpdu_initialization_block {
-	Can_IdType					CanIfPduCanId;                          /* [CANIF281] 送信:CanIfTxPduCanId，受信:CanIfRxPduCanId */
-	uint8						CanIfPduDlc;                            /* 送信:CanIfTxPduDlc，受信:CanIfRxPduDlc */
-	uint8						CanObjectId;                            /* 参照先のCanHardWareObjectから取得 */
-	PduIdType					PduRPduHandleId;                        /* 送信:PduRDestPduHandleId，受信:PduRSourcePduHandleId */
+	Can_IdType		CanIfPduCanId;                          /* [CANIF281] 送信:CanIfTxPduCanId，受信:CanIfRxPduCanId */
+	uint8			CanIfPduCanIdType;                       /* 送信:CanIfTxPduCanIdType，受信:CanIfRxPduCanIdType */
+	uint8			CanIfPduDlc;                            /* 送信:CanIfTxPduDlc，受信:CanIfRxPduDlc */
+	uint8			CanObjectId;                            /* 参照先のCanHardWareObjectから取得 */
+	PduIdType		PduRPduHandleId;                        /* 送信:PduRDestPduHandleId，受信:PduRSourcePduHandleId */
 	CanIf_PduUserConfirmation	CanIfPduUserConfirmationName;           /* 送信:CanIfTxPduUserTxConfirmationName，受信:CanIfRxPduUserRxIndicationName */
-	CANIF_CTRL_CB				*p_canif_ctrl_cb;                       /* CANIFコントローラ管理ブロック */
+	CANIF_CTRL_CB	*p_canif_ctrl_cb;                       /* CANIFコントローラ管理ブロック */
 
 #ifdef SUPPORT_READ_PDU_NOTYFY_STATUS
 	/*
@@ -345,7 +351,7 @@ typedef struct canif_config_type {
 	const LPDU_INIB	* const *pp_lpdu_inib_hoh_list; /* LPDU初期化ブロックポインタをCanObjectIdでソートしたリスト */
 } CanIf_ConfigType;
 
-extern const CanIf_ConfigType			* const p_default_canif_config;
+extern const CanIf_ConfigType			* p_default_canif_config;
 
 extern User_ControllerBusOff			CanIfDispatchUserCtrlBusOffName;
 extern User_ControllerModeIndication	CanIfDispatchUserCtrlModeIndicationName;

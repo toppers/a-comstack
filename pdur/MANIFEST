@@ -4,6 +4,7 @@ pdur.csv
 pdur.ini
 pdur.tf
 doc/pdur_spec.txt
+doc/pdur_container.txt
 sample/Makefile
 sample/readme.txt
 sample/sample.arxml

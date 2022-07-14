@@ -2,19 +2,19 @@
  *  TOPPERS/A-COMSTACK
  *      Automotive COMSTACK
  *
- *  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+ *  Copyright (C) 2013-2017 by Center for Embedded Computing Systems
  *                             Graduate School of Information Science, Nagoya Univ., JAPAN
  *  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
- *  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
- *  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
- *  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+ *  Copyright (C) 2015-2016 by eSOL Co., Ltd., JAPAN
+ *  Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
+ *  Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
  *  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
  *  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
- *  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+ *  Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
  *  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
- *  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
- *  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
- *  Copyright (C) 2013-2016 by Witz Corporation
+ *  Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
+ *  Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
+ *  Copyright (C) 2013-2017 by Witz Corporation
  *
  *  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -50,7 +50,7 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: ComStack_Types.h 2995 2016-03-02 02:05:09Z fsi-kaitori $
+ *  $Id: ComStack_Types.h 3480 2017-03-08 11:51:15Z suzuki-kawaguchi $
  */
 
 #ifndef COMSTACK_TYPES_H
@@ -75,11 +75,18 @@ typedef enum
 	BUFREQ_E_OVFL
 } BufReq_ReturnType;
 
+typedef enum
+{
+	TP_STMIN,
+	TP_BS,
+	TP_BC
+} TPParameterType;
+
 typedef uint8 NotifResultType;
 
 /* [NCOM025] */
 typedef uint16	PduIdType;
-typedef uint16	PduLengthType;
+typedef uint32	PduLengthType;
 
 typedef struct {
 	uint8			*SduDataPtr;

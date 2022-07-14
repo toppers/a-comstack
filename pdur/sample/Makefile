@@ -50,7 +50,7 @@
 #  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 #  の責任を負わない．
 #
-#  $Id: Makefile 2995 2016-03-02 02:05:09Z fsi-kaitori $
+#  $Id: Makefile 3480 2017-03-08 11:51:15Z suzuki-kawaguchi $
 #
 
 #
@@ -66,7 +66,7 @@ CFG = $(SRCDIR)/cfg/cfg/cfg
 PDUR_PATH = ..
 PDUR_CFGNAME = sample
 PDUR_CFG_TABS = --kernel atk2 --ini-file $(PDUR_PATH)/pdur.ini --api-table $(PDUR_PATH)/pdur.csv
-PDUR_CFG_OUT = PduR_Cfg.h PduR_Com.h PduR_CanIf.h
+PDUR_CFG_OUT = PduR_Cfg.h PduR_Com.h PduR_CanIf.h PduR_CanTp.h PduR_Dcm.h
 
 .PHONY: pdur
 pdur: $(PDUR_CFG_OUT)

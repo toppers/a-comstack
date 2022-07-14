@@ -2,19 +2,19 @@ $
 $  TOPPERS/A-PDUR
 $      AuTomotive PDUR
 $
-$  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+$  Copyright (C) 2013-2017 by Center for Embedded Computing Systems
 $                             Graduate School of Information Science, Nagoya Univ., JAPAN
 $  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
 $  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
-$  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
-$  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+$  Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
+$  Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
 $  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 $  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-$  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+$  Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
 $  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
-$  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
-$  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
-$  Copyright (C) 2013-2016 by Witz Corporation
+$  Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
+$  Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
+$  Copyright (C) 2013-2017 by Witz Corporation
 $
 $  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
 $  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -50,7 +50,7 @@ $  に対する適合性も含めて，いかなる保証も行わない．ま�
 $  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 $  の責任を負わない．
 $
-$  $Id: pdur.tf 3187 2016-03-22 06:29:07Z aisincom-ishikawa $
+$  $Id: pdur.tf 3480 2017-03-08 11:51:15Z suzuki-kawaguchi $
 $
 
 $ =====================================================================
@@ -223,4 +223,57 @@ $NL$
 #define PduR_CanIfTxConfirmation	Com_TxConfirmation$NL$
 $NL$
 #endif /* TOPPERS_PDUR_CANIF_H */$NL$
+
+
+$	// Dcm用ヘッダ
+$FILE "PduR_Dcm.h"$
+/* PduR_Dcm.h */$NL$
+#ifndef TOPPERS_PDUR_DCM_H$NL$
+#define TOPPERS_PDUR_DCM_H$NL$
+$NL$
+#include "CanTp.h"$NL$
+$NL$
+$	// CanTpはDcmで使用する
+$	// PduRのIDはCom-CanIf、Dcm-CanTpの順でコンフィグするため、IDを置き換える
+$	// Com-CanIfのPDUの数を数える
+$pdur_cnt = 0$
+$FOREACH tx_pdu_id CanIfTxPduCfg.ID_LIST$
+	$IF LENGTH(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id])$
+		$IF EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id], "PDUR")$
+			$pdur_cnt = pdur_cnt + 1$
+		$END$
+	$END$
+$END$
+$FOREACH rx_pdu_id CanIfRxPduCfg.ID_LIST$
+	$IF LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id])$
+		$IF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id], "PDUR")$
+			$pdur_cnt = pdur_cnt + 1$
+		$END$
+	$END$
+$END$
+#define PduR_DcmTransmit(id, info)						CanTp_Transmit(((id) - $pdur_cnt$), (info))$NL$
+#define PduR_DcmChangeparameter(id, param_id, value)	CanTp_Changeparameter(((id) - $pdur_cnt$), (param_id), (value))$NL$
+#define PduR_DcmCancelTransmit(id)						CanTp_CancelTransmit(((id) - $pdur_cnt$))$NL$
+#define PduR_DcmCancelReceive(id)						CanTp_CancelReceive(((id) - $pdur_cnt$))$NL$
+$NL$
+#endif /* TOPPERS_PDUR_DCM_H */$NL$
+
+
+$	// CanTp用ヘッダ
+$FILE "PduR_CanTp.h"$
+/* PduR_CanTp.h */$NL$
+#ifndef TOPPERS_PDUR_CANTP_H$NL$
+#define TOPPERS_PDUR_CANTP_H$NL$
+$NL$
+#include "Dcm.h"$NL$
+$NL$
+$	// CanTpはDcmで使用する
+$	// PduRのIDはCom-CanIf、Dcm-CanTpの順でコンフィグするため、IDを置き換える
+#define PduR_CanTpRxIndication(PduId, Result)										Dcm_TpRxIndication(((PduId) - $pdur_cnt$), (Result))$NL$
+#define PduR_CanTpTxConfirmation(PduId, Result)										Dcm_TpTxConfirmation(((PduId) - $pdur_cnt$), (Result))$NL$
+#define PduR_CanTpStartOfReception(PduId, PduInfoPtr, TpSduLength, RxBufferSizePtr)	Dcm_StartOfReception(((PduId) - $pdur_cnt$), PduInfoPtr, TpSduLength, RxBufferSizePtr)$NL$
+#define PduR_CanTpCopyRxData(PduId, PduInfoPtr, RxBufferSizePtr)					Dcm_CopyRxData(((PduId) - $pdur_cnt$), PduInfoPtr, RxBufferSizePtr)$NL$
+#define PduR_CanTpCopyTxData(PduId, PduInfoPtr, RetryInfoPtr, TxDataCntPtr)			Dcm_CopyTxData(((PduId) - $pdur_cnt$), PduInfoPtr, RetryInfoPtr, TxDataCntPtr)$NL$
+$NL$
+#endif /* TOPPERS_PDUR_CANTP_H */$NL$
 

@@ -2,19 +2,19 @@ $
 $  TOPPERS/A-CANIF
 $      AuTomotive CANIF
 $
-$  Copyright (C) 2013-2016 by Center for Embedded Computing Systems
+$  Copyright (C) 2013-2017 by Center for Embedded Computing Systems
 $                             Graduate School of Information Science, Nagoya Univ., JAPAN
 $  Copyright (C) 2014-2016 by AISIN COMCRUISE Co., Ltd., JAPAN
 $  Copyright (C) 2015-2016 by eSOL Co.,Ltd., JAPAN
-$  Copyright (C) 2013-2016 by FUJI SOFT INCORPORATED, JAPAN
-$  Copyright (C) 2014-2016 by NEC Communication Systems, Ltd., JAPAN
+$  Copyright (C) 2013-2017 by FUJI SOFT INCORPORATED, JAPAN
+$  Copyright (C) 2014-2017 by NEC Communication Systems, Ltd., JAPAN
 $  Copyright (C) 2013-2016 by Panasonic Advanced Technology Development Co., Ltd., JAPAN
 $  Copyright (C) 2013-2014 by Renesas Electronics Corporation, JAPAN
-$  Copyright (C) 2014-2016 by SCSK Corporation, JAPAN
+$  Copyright (C) 2014-2017 by SCSK Corporation, JAPAN
 $  Copyright (C) 2013-2016 by Sunny Giken Inc., JAPAN
-$  Copyright (C) 2015-2016 by SUZUKI MOTOR CORPORATION
-$  Copyright (C) 2013-2016 by TOSHIBA CORPORATION, JAPAN
-$  Copyright (C) 2013-2016 by Witz Corporation
+$  Copyright (C) 2015-2017 by SUZUKI MOTOR CORPORATION
+$  Copyright (C) 2013-2017 by TOSHIBA CORPORATION, JAPAN
+$  Copyright (C) 2013-2017 by Witz Corporation
 $
 $  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
 $  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
@@ -50,7 +50,7 @@ $  に対する適合性も含めて，いかなる保証も行わない．ま�
 $  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
 $  の責任を負わない．
 $
-$  $Id: canif.tf 3189 2016-03-22 09:49:19Z aisincom-ishikawa $
+$  $Id: canif.tf 3480 2017-03-08 11:51:15Z suzuki-kawaguchi $
 $
 
 $ ====================================================================
@@ -228,15 +228,21 @@ $			// [CANIF603_Conf] CanIfTxPduRef
 			$CanIfTxPduCfg.pdu_length[tx_pdu_id] = Pdu.PduLength[CanIfTxPduCfg.CanIfTxPduRef[tx_pdu_id]]$
 			$FOREACH dest_pdu_id PduRDestPdu.ID_LIST$
 				$IF EQ(CanIfTxPduCfg.CanIfTxPduRef[tx_pdu_id], PduRDestPdu.PduRDestPduRef[dest_pdu_id])$
-					$IF LENGTH(PduRDestPdu.PduRDestPduHandleId[dest_pdu_id])$
-						$CanIfTxPduCfg.pdu_handle_id[tx_pdu_id] = PduRDestPdu.PduRDestPduHandleId[dest_pdu_id]$
-					$ELSE$
-						$ERROR$$FORMAT(_("PduRDestPduHandleId(%1%\) is not found."), dest_pdu_id)$$END$$DIE()$	
-					$END$
+					$CanIfTxPduCfg.pdu_handle_id[tx_pdu_id] = PduRDestPdu.PduRDestPduHandleId[dest_pdu_id]$
 				$END$
 			$END$
-			$IF !LENGTH(CanIfTxPduCfg.pdu_handle_id[tx_pdu_id])$
-				$ERROR$$FORMAT(_("CanIfTxPduCfg.CanIfTxPduRef(%1%\) cannot be found in PduRConfiguration."), tx_pdu_id)$$END$$DIE()$	
+$			//CANTPのときの対応
+			$IF EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationUL[tx_pdu_id], "CAN_TP")$
+				$FOREACH cantp_pdu_id CanTpTxNPdu.ID_LIST$
+					$IF EQ(CanIfTxPduCfg.CanIfTxPduRef[tx_pdu_id], CanTpTxNPdu.CanTpTxNPduRef[cantp_pdu_id])$
+						$CanIfTxPduCfg.pdu_handle_id[tx_pdu_id] = CanTpTxNPdu.CanTpTxNPduConfirmationPduId[cantp_pdu_id]$
+					$END$
+				$END$
+				$FOREACH cantp_pdu_id CanTpTxFcNPdu.ID_LIST$
+					$IF EQ(CanIfTxPduCfg.CanIfTxPduRef[tx_pdu_id], CanTpTxFcNPdu.CanTpTxFcNPduRef[cantp_pdu_id])$
+						$CanIfTxPduCfg.pdu_handle_id[tx_pdu_id] = CanTpTxFcNPdu.CanTpTxFcNPduConfirmationPduId[cantp_pdu_id]$
+					$END$
+				$END$
 			$END$
 		$END$
 		$FOREACH rx_pdu_id CanIfInitCfg.rx_pdu_list[init_id]$
@@ -260,6 +266,19 @@ $			// [CANIF601_Conf] CanIfRxPduRef
 			$FOREACH src_pdu_id PduRSrcPdu.ID_LIST$
 				$IF EQ(CanIfRxPduCfg.CanIfRxPduRef[rx_pdu_id], PduRSrcPdu.PduRSrcPduRef[src_pdu_id])$
 					$CanIfRxPduCfg.pdu_handle_id[rx_pdu_id] = PduRSrcPdu.PduRSourcePduHandleId[src_pdu_id]$
+				$END$
+			$END$
+$			//CANTPのときの対応
+			$IF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id], "CAN_TP")$
+				$FOREACH cantp_pdu_id CanTpRxNPdu.ID_LIST$
+					$IF EQ(CanIfRxPduCfg.CanIfRxPduRef[rx_pdu_id], CanTpRxNPdu.CanTpRxNPduRef[cantp_pdu_id])$
+						$CanIfRxPduCfg.pdu_handle_id[rx_pdu_id] = CanTpRxNPdu.CanTpRxNPduId[cantp_pdu_id]$
+					$END$
+				$END$
+				$FOREACH cantp_pdu_id CanTpRxFcNPdu.ID_LIST$
+					$IF EQ(CanIfRxPduCfg.CanIfRxPduRef[rx_pdu_id], CanTpRxFcNPdu.CanTpRxFcNPduRef[cantp_pdu_id])$
+						$CanIfRxPduCfg.pdu_handle_id[rx_pdu_id] = CanTpRxFcNPdu.CanTpRxFcNPduId[cantp_pdu_id]$
+					$END$
 				$END$
 			$END$
 		$END$
@@ -485,7 +504,7 @@ $	 *  [CANIF546_Conf] CanIfCtrlCfg
 $	 */
 	$FOREACH ctrl_id CanIfCtrlCfg.ID_LIST$
 $	// [CANIF647_Conf] CanIfCtrlId
-		$IF (CanIfCtrlCfg.CanIfCtrlId[ctrl_id] > 65535)$
+		$IF (CanIfCtrlCfg.CanIfCtrlId[ctrl_id] < 0) || (CanIfCtrlCfg.CanIfCtrlId[ctrl_id] > 65535)$
 			$ERROR$$FORMAT(_("CanIfCtrlId(%1%\) should be in the range from 0 to 65535."), CanIfCtrlCfg.CanIfCtrlId[ctrl_id])$$END$$DIE()$
 		$END$
 
@@ -574,7 +593,7 @@ $		// [CANIF664] 複数のHRHが使用される場合，各HRHは少なくとも
 			$END$
 		$END$
 		$IF !LENGTH(CanIfHrhCfg.rx_pdu_id_ref[hrh_id])$
-			$ERROR$$FORMAT(_("%1%\ should belong to at least to a single or fixed group of Rx LPDU."), hrh_id)$$END$$DIE()$
+			$ERROR$$FORMAT(_("%1%\ should belong to at least to a single or fixed group of Tx LPDU."), hrh_id)$$END$$DIE()$
 		$END$
 
 $		[CANIF632_Conf] CanIfHrhSoftwareFilter
@@ -597,21 +616,26 @@ $	 */
 	$FOREACH tx_pdu_id CanIfTxPduCfg.ID_LIST$
 $		// [CANIF590_Conf] CanIfTxPduCanIdType
 $		// [CANIF243] Can_Write()を呼び出す前にCAN-IDのタイプを設定する
-		$IF !EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "EXTENDED_CAN") && !EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "STANDARD_CAN")$
-			$ERROR$$FORMAT(_("CanIfTxPduCanIdType(%1%\) should be `EXTENDED_CAN' or `STANDARD_CAN'."), CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id])$$END$$DIE()$
+$		// [NCANIFxxx] CAN FD対応追加、EXTENDED_FD_CAN,STANDARD_FD_CAN
+		$IF !EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "EXTENDED_CAN") && !EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "STANDARD_CAN") && !EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "EXTENDED_FD_CAN") && !EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "STANDARD_FD_CAN")$
+			$ERROR$$FORMAT(_("CanIfTxPduCanIdType(%1%\) should be `EXTENDED_CAN' or `STANDARD_CAN' or `EXTENDED_FD_CAN' or `STANDARD_FD_CAN'."), CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id])$$END$$DIE()$
 		$END$
 
 $		// [CANIF592_Conf] CanIfTxPduCanId
-		$IF EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "EXTENDED_CAN") && ((CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id] < 0) || (CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id] > 536870911))$
-			$ERROR$$FORMAT(_("CanIfTxPduCanId(%1%\) should be in the range from 0 to 536870911. CanIfTxPduCanIdType is EXTENDED_CAN."), CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id])$$END$$DIE()$
+		$IF (EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "EXTENDED_CAN") || EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "EXTENDED_FD_CAN")) && ((CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id] < 0) || (CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id] > 536870911))$
+			$ERROR$$FORMAT(_("CanIfTxPduCanId(%1%\) should be in the range from 0 to 536870911. CanIfTxPduCanIdType is EXTENDED_CAN or EXTENDED_FD_CAN."), CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id])$$END$$DIE()$
 		$END$
-		$IF EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "STANDARD_CAN") && ((CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id] < 0) || (CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id] > 2047))$
-			$ERROR$$FORMAT(_("CanIfTxPduCanId(%1%\) should be in the range from 0 to 2047. CanIfTxPduCanIdType is STANDARD_CAN."), CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id])$$END$$DIE()$
+		$IF (EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "STANDARD_CAN") || EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "STANDARD_FD_CAN")) && ((CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id] < 0) || (CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id] > 2047))$
+			$ERROR$$FORMAT(_("CanIfTxPduCanId(%1%\) should be in the range from 0 to 2047. CanIfTxPduCanIdType is STANDARD_CAN or STANDARD_FD_CAN."), CanIfTxPduCfg.CanIfTxPduCanId[tx_pdu_id])$$END$$DIE()$
 		$END$
 
 $		// [CANIF594_Conf] CanIfTxPduDlc
-		$IF (CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] < 0) || (CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] > 8)$
+$		// [NCANIFxxx] CAN FD対応でCAN FDの場合はサイズを64まで拡張
+		$IF ((EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "STANDARD_CAN") || EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "EXTENDED_CAN")) && ((CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] < 0) || (CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] > 8)))$
 			$ERROR$$FORMAT(_("CanIfTxPduDlc(%1%\) should be in the range from 0 to 8."), CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id])$$END$$DIE()$
+		$END$
+		$IF ((EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "STANDARD_FD_CAN") || EQ(CanIfTxPduCfg.CanIfTxPduCanIdType[tx_pdu_id], "EXTENDED_FD_CAN")) && ((CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] < 0) || (CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] > 64)))$
+			$ERROR$$FORMAT(_("CanIfTxPduDlc(%1%\) should be in the range from 0 to 64."), CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id])$$END$$DIE()$
 		$END$
 $		// [NCANIF015] グローバルPDUの長さよりDLCが短い場合，エラー
 		$IF CanIfTxPduCfg.CanIfTxPduDlc[tx_pdu_id] < CanIfTxPduCfg.pdu_length[tx_pdu_id]$
@@ -625,7 +649,7 @@ $		// [CANIF591_Conf] CanIfTxPduId
 
 $		// [CANIF589_Conf] CanIfTxPduReadNotifyStatus
 		$IF IS_TRUE(CanIfTxPduCfg.CanIfTxPduReadNotifyStatus[tx_pdu_id]) && !IS_TRUE(CanIfPublicCfg.CanIfPublicReadTxPduNotifyStatusApi[1])$
-			$ERROR$$FORMAT(_("CanIfTxPduReadNotifyStatus(%1%\) should not be set TRUE. CanIfPublicReadTxPduNotifyStatusApi is FALSE."), CanIfTxPduCfg.CanIfTxPduReadNotifyStatus[tx_pdu_id])$$END$$DIE()$
+			$ERROR$$FORMAT(_("CanIfTxPduReadNotifyStatus(%1%\) should not be set value. CanIfPublicReadTxPduNotifyStatusApi is FALSE."), CanIfTxPduCfg.CanIfTxPduReadNotifyStatus[tx_pdu_id])$$END$$DIE()$
 		$END$
 
 $		// [CANIF593_Conf] CanIfTxPduType
@@ -715,23 +739,31 @@ $	 *  [CANIF249_Conf] CanIfRxPduCfg
 $	 */
 	$FOREACH rx_pdu_id CanIfRxPduCfg.ID_LIST$
 $		// [CANIF596_Conf] CanIfRxPduCanIdType
-		$IF !EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "EXTENDED_CAN") && !EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "STANDARD_CAN")$
-			$ERROR$$FORMAT(_("CanIfRxPduCanIdType(%1%\) should be `EXTENDED_CAN' or `STANDARD_CAN'."), CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id])$$END$$DIE()$
+$		// [NCANIFxxx] CAN FD対応追加、EXTENDED_FD_CAN,STANDARD_FD_CAN
+		$IF !EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "EXTENDED_CAN") && !EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "STANDARD_CAN") && !EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "EXTENDED_FD_CAN") && !EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "STANDARD_FD_CAN")$
+			$ERROR$$FORMAT(_("CanIfRxPduCanIdType(%1%\) should be `EXTENDED_CAN' or `STANDARD_CAN' or `EXTEND_FD_CAN' or `STANDARD_FD_CAN'."), CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id])$$END$$DIE()$
 		$END$
 
 $		// [CANIF598_Conf] CanIfRxPduCanId
 		$IF LENGTH(CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id])$
-			$IF EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "EXTENDED_CAN") && ((CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id] < 0) || (CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id] > 536870911))$
-				$ERROR$$FORMAT(_("CanIfRxPduCanId(%1%\) should be in the range from 0 to 536870911. CanIfRxPduCanIdType is EXTENDED_CAN."), CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id])$$END$$DIE()$
+			$IF (EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "EXTENDED_CAN") || EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "EXTENDED_FD_CAN")) && ((CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id] < 0) || (CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id] > 536870911))$
+				$ERROR$$FORMAT(_("CanIfRxPduCanId(%1%\) should be in the range from 0 to 536870911. CanIfRxPduCanIdType is EXTENDED_CAN or EXTENDED_FD_CAN."), CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id])$$END$$DIE()$
 			$END$
-			$IF EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "STANDARD_CAN") && ((CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id] < 0) || (CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id] > 2047))$
-				$ERROR$$FORMAT(_("CanIfRxPduCanId(%1%\) should be in the range from 0 to 2047. CanIfRxPduCanIdType is STANDARD_CAN."), CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id])$$END$$DIE()$
+			$IF (EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "STANDARD_CAN") || EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "STANDARD_FD_CAN")) && ((CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id] < 0) || (CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id] > 2047))$
+				$ERROR$$FORMAT(_("CanIfRxPduCanId(%1%\) should be in the range from 0 to 2047. CanIfRxPduCanIdType is STANDARD_CAN or STANDARD_FD_CAN."), CanIfRxPduCfg.CanIfRxPduCanId[rx_pdu_id])$$END$$DIE()$
 			$END$
 		$END$
 
 $		// [CANIF599_Conf] CanIfRxPduDlc
-		$IF (CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] < 0) || (CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] > 8)$
+$		// [NCANIFxxx] CAN FD対応でCAN FDの場合はサイズを64まで拡張
+		$IF ((EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "STANDARD_CAN") || EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "EXTENDED_CAN")) && ((CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] < 0) || (CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] > 8)))$
 			$ERROR$$FORMAT(_("CanIfRxPduDlc(%1%\) should be in the range from 0 to 8."), CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id])$$END$$DIE()$
+		$END$
+		$IF ((EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "STANDARD_FD_CAN") || EQ(CanIfRxPduCfg.CanIfRxPduCanIdType[rx_pdu_id], "EXTENDED_FD_CAN")) && ((CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] < 0) || (CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] > 64)))$
+			$ERROR$$FORMAT(_("CanIfRxPduDlc(%1%\) should be in the range from 0 to 64."), CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id])$$END$$DIE()$
+		$END$
+		$IF CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id] < CanIfRxPduCfg.pdu_length[rx_pdu_id]$
+			$ERROR$$FORMAT(_("CanIfRxPduDlc(%1%\) should be equal or larger than PduLength(%2%\). [%3%\]"), CanIfRxPduCfg.CanIfRxPduDlc[rx_pdu_id], CanIfRxPduCfg.pdu_length[rx_pdu_id], rx_pdu_id)$$END$$DIE()$
 		$END$
 
 $		// [CANIF597_Conf] CanIfRxPduId
@@ -746,7 +778,7 @@ $		// [CANIF600_Conf] CanIfRxPduReadData
 
 $		// [CANIF595_Conf] CanIfRxPduReadNotifyStatus
 		$IF IS_TRUE(CanIfRxPduCfg.CanIfRxPduReadNotifyStatus[rx_pdu_id]) && !IS_TRUE(CanIfPublicCfg.CanIfPublicReadRxPduNotifyStatusApi[1])$
-			$ERROR$$FORMAT(_("CanIfRxPduReadNotifyStatus(%1%\) should not be set TRUE. CanIfPublicReadRxPduNotifyStatusApi is FALSE."), CanIfRxPduCfg.CanIfRxPduReadNotifyStatus[rx_pdu_id])$$END$$DIE()$
+			$ERROR$$FORMAT(_("CanIfRxPduReadNotifyStatus(%1%\) should not be set value. CanIfPublicReadRxPduNotifyStatusApi is FALSE."), CanIfRxPduCfg.CanIfRxPduReadNotifyStatus[rx_pdu_id])$$END$$DIE()$
 		$END$
 
 $		// [CANIF529_Conf] CanIfRxPduUserRxIndicationUL
@@ -773,7 +805,7 @@ $				// [CANIF448] CanIfRxPduUserRxIndicationULがCAN_TPの場合，CanIfRxPduUs
 					$CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id] = "CanTp_RxIndication"$
 				$END$
 			$ELIF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationUL[rx_pdu_id], "CDD")$
-$				// [CANIF557] CanIfRxPduUserRxIndicationULがCDDの場合，<User_RxIndication>の名前はCanIfRxPduUserRxIndicationNameで指定される
+$				// [CANIF557] CanIfRxPduUserRxIndicationULがCDDの場合，<User_TxConfirmation>の名前はCanIfTxPduUserTxConfirmationNameで指定される
 				$IF !LENGTH(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[rx_pdu_id])$
 					$ERROR$$FORMAT(_("CanIfRxPduUserRxIndicationName should be set value. CanIfRxPduUserRxIndicationUL is `CDD'. (%1%\)"), rx_pdu_id)$$END$$DIE()$
 				$END$
@@ -984,8 +1016,8 @@ $	// [CANIF233] 以下のヘッダファイルをインクルードする
 
 $	// [CANIF671_Conf] CanIfPublicCddHeaderFile
 $	// [CANIF233] CDDの場合にインクルードするコールバック関数ヘッダファイル名はCanIfPublicCddHeaderFileで定義する
-	$FOREACH chf_name CanIfPublicCfg.CanIfPublicCddHeaderFile[1]$
-		#include "$chf_name$_Cbk.h"$NL$
+	$IF LENGTH(CanIfPublicCfg.CanIfPublicCddHeaderFile[1])$
+		#include "$CanIfPublicCfg.CanIfPublicCddHeaderFile[1]$.h"$NL$
 	$END$
 	$NL$
 
@@ -1056,8 +1088,8 @@ $	// [CANIF233] 以下のヘッダファイルをインクルード
 	
 $	// [CANIF671_Conf] CanIfPublicCddHeaderFile
 $	// [CANIF233] CDDの場合にインクルードするコールバック関数ヘッダファイル名はCanIfPublicCddHeaderFileで定義する
-	$FOREACH chf1_name CanIfPublicCfg.CanIfPublicCddHeaderFile[1]$
-		#include "$chf1_name$_Cbk.h"$NL$
+	$IF LENGTH(CanIfPublicCfg.CanIfPublicCddHeaderFile[1])$
+		#include "$CanIfPublicCfg.CanIfPublicCddHeaderFile[1]$.h"$NL$
 	$END$
 	$NL$
 
@@ -1128,13 +1160,14 @@ $			// CanIfTxPduReadNotifyStatus または CanIfRxPduReadNotifyStatus がTRUE�
 					$TAB$/* $CanIfTxPduCfg.CanIfTxPduRef[pdu_id]$: $pdu_id$ (CanIfTxPduId: $CanIfTxPduCfg.CanIfTxPduId[pdu_id]$) */$NL$
 					$TAB${$NL$
 					$TAB$$TAB$$CanIfTxPduCfg.CanIfTxPduCanId[pdu_id]$U,$TAB$/* CanIfPduCanId */$NL$
+					$TAB$$TAB$CANIF_$CanIfTxPduCfg.CanIfTxPduCanIdType[pdu_id]$,$TAB$/* CanIfPduCanIdType */$NL$
 					$TAB$$TAB$$CanIfTxPduCfg.CanIfTxPduDlc[pdu_id]$U,$TAB$/* CanIfPduDlc */$NL$
 					$TAB$$TAB$$CanIfTxPduCfg.can_hw_obj_id[pdu_id]$U,$TAB$/* CanObjectId */$NL$
 					$TAB$$TAB$$CanIfTxPduCfg.pdu_handle_id[pdu_id]$U,$TAB$/* PduRPduHandleId */$NL$
 					$IF EQ(CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[pdu_id], "NULL_PTR")$
 						$TAB$$TAB$$CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[pdu_id]$,$TAB$/* CanIfPduUserConfirmationName */$NL$
 					$ELSE$
-						$TAB$$TAB$(CanIf_PduUserConfirmation)&$CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[pdu_id]$,$TAB$/* CanIfPduUserConfirmationName */$NL$
+						$TAB$$TAB$(void *)&$CanIfTxPduCfg.CanIfTxPduUserTxConfirmationName[pdu_id]$,$TAB$/* CanIfPduUserConfirmationName */$NL$
 					$END$
 					$TAB$$TAB$&canif_ctrl_cb_$CanIfTxPduCfg.ctrl_id_ref[pdu_id]$,$TAB$/* p_canif_ctrl_cb */$NL$
 					#ifdef SUPPORT_READ_PDU_NOTYFY_STATUS$NL$
@@ -1156,13 +1189,14 @@ $			// CanIfTxPduReadNotifyStatus または CanIfRxPduReadNotifyStatus がTRUE�
 					$TAB$/* $CanIfRxPduCfg.CanIfRxPduRef[pdu_id]$: $pdu_id$ (CanIfRxPduId: $CanIfRxPduCfg.CanIfRxPduId[pdu_id]$) */$NL$
 					$TAB${$NL$
 					$TAB$$TAB$$CanIfRxPduCfg.CanIfRxPduCanId[pdu_id]$U,$TAB$/* CanIfPduCanId */$NL$
+					$TAB$$TAB$CANIF_$CanIfRxPduCfg.CanIfRxPduCanIdType[pdu_id]$,$TAB$/* CanIfPduCanIdType */$NL$
 					$TAB$$TAB$$CanIfRxPduCfg.CanIfRxPduDlc[pdu_id]$U,$TAB$/* CanIfPduDlc */$NL$
 					$TAB$$TAB$$CanIfRxPduCfg.can_hw_obj_id[pdu_id]$U,$TAB$/* CanObjectId */$NL$
 					$TAB$$TAB$$CanIfRxPduCfg.pdu_handle_id[pdu_id]$U,$TAB$/* PduRPduHandleId */$NL$
 					$IF EQ(CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[pdu_id], "NULL_PTR")$
 						$TAB$$TAB$$CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[pdu_id]$,$TAB$/* CanIfPduUserConfirmationName */$NL$
 					$ELSE$
-						$TAB$$TAB$(CanIf_PduUserConfirmation)&$CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[pdu_id]$,$TAB$/* CanIfPduUserConfirmationName */$NL$
+						$TAB$$TAB$(void *)&$CanIfRxPduCfg.CanIfRxPduUserRxIndicationName[pdu_id]$,$TAB$/* CanIfPduUserConfirmationName */$NL$
 					$END$
 					$TAB$$TAB$&canif_ctrl_cb_$CanIfRxPduCfg.ctrl_id_ref[pdu_id]$,$TAB$/* p_canif_ctrl_cb */$NL$
 					#ifdef SUPPORT_READ_PDU_NOTYFY_STATUS$NL$
@@ -1195,7 +1229,7 @@ $			// CanIfTxPduReadNotifyStatus または CanIfRxPduReadNotifyStatus がTRUE�
 	/* LPDU初期化ブロック配列をCanObjectIdでソートしたリスト : lpdu_inib_hoh_list_<CanIfInitCfg> */$NL$
 	$FOREACH init_id CanIfInitCfg.ID_LIST$
 		$IF CanIfInitCfg.pdu_num[init_id] > 0$
-			static const LPDU_INIB * const lpdu_inib_hoh_list_$init_id$[$CanIfInitCfg.pdu_num[init_id]$] = {$NL$
+			static const LPDU_INIB *lpdu_inib_hoh_list_$init_id$[$CanIfInitCfg.pdu_num[init_id]$] = {$NL$
 			$JOINEACH pdu_id CanIfInitCfg.pdu_list_by_can_object_id[init_id] ",\n"$
 				$index = 0$
 				$pdu_ref = ""$
@@ -1231,7 +1265,7 @@ $	// [CANIF523] CanIf_ConfigTypeの初期化データ構造には，CanIfパブ�
 	$END$
 
 	/* デフォルトのCanIfコンフィギュレーション情報 */$NL$
-	const CanIf_ConfigType * const p_default_canif_config = &$CanIfInitCfg.CanIfInitCfgSet[1]$;$NL$
+	const CanIf_ConfigType *p_default_canif_config = &$CanIfInitCfg.CanIfInitCfgSet[1]$;$NL$
 $END$
 
 
