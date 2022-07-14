@@ -1,0 +1,11 @@
+BLOCK		START ADDRESS		END ADDRESS
+
+hw_sw.hex		0x00000000		0x0016E7D4
+
+
+
+Notes:
+
+- Data checksum for this conversion is 0x6DBE2986
+
+- All the addresses in this file are byte addresses

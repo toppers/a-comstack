@@ -1,0 +1,6 @@
+MANIFEST
+
+readme.xlsx
+
+INCLUDE sample_node1/MANIFEST
+INCLUDE sample_node2/MANIFEST
