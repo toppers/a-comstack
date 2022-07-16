@@ -4,7 +4,7 @@
  *
  *  Copyright (C) 2014 by FUJI SOFT INCORPORATED, JAPAN
  *
- *  上記著作権者は，以下の(1)〜(4)の条件を満たす場合に限り，本ソフトウェ
+ *  上記著作権者は，以下の(1)~(4)の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
  *  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
  *  (1) 本ソフトウェアをソースコードの形で利用する場合には，上記の著作
@@ -38,34 +38,60 @@
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
  *
- *  $Id: Can_Prc.c 13 2015-07-15 08:58:53Z fujisft-kaitori $
+ *  $Id$
  */
 
 #include "Can.h"
 
 
+// /*
+//  *  割込みコントローラアドレステーブル(F1L)
+//  */
+
+// /* 送受信FIFO受信完了割込み用 */
+// uint16 * const	p_irc_can_rec_addr[6] =
+// {
+// 	(uint16 *) 0xFFFF9022U,
+// 	(uint16 *) 0xFFFFA0D4U,
+// 	(uint16 *) 0xFFFFA1A4U,
+// 	(uint16 *) 0xFFFFA1AAU,
+// 	(uint16 *) 0xFFFFA212U,
+// 	(uint16 *) 0xFFFFA230U
+// };
+
+// /* 送信割込み完了用 */
+// uint16 * const	p_irc_can_trx_addr[6] =
+// {
+// 	(uint16 *) 0xFFFF9024U,
+// 	(uint16 *) 0xFFFFA0D6U,
+// 	(uint16 *) 0xFFFFA1A6U,
+// 	(uint16 *) 0xFFFFA1ACU,
+// 	(uint16 *) 0xFFFFA214U,
+// 	(uint16 *) 0xFFFFA232U
+// };
+
 /*
- *  割込みコントローラアドレステーブル
+ *  割込みコントローラアドレステーブル(F1K)
  */
 
 /* 送受信FIFO受信完了割込み用 */
 uint16 * const	p_irc_can_rec_addr[6] =
 {
-	(uint16 *) 0xFFFF9022U,
-	(uint16 *) 0xFFFFA0D4U,
-	(uint16 *) 0xFFFFA1A4U,
-	(uint16 *) 0xFFFFA1AAU,
-	(uint16 *) 0xFFFFA212U,
-	(uint16 *) 0xFFFFA230U
+	(uint16 *) 0xFFFEEA32U,
+	(uint16 *) 0xFFFFB0E4U,
+	(uint16 *) 0xFFFFB1B4U,
+	(uint16 *) 0xFFFFB1BAU,
+	(uint16 *) 0xFFFFB222U,
+	(uint16 *) 0xFFFFB240U
 };
 
 /* 送信割込み完了用 */
 uint16 * const	p_irc_can_trx_addr[6] =
 {
-	(uint16 *) 0xFFFF9024U,
-	(uint16 *) 0xFFFFA0D6U,
-	(uint16 *) 0xFFFFA1A6U,
-	(uint16 *) 0xFFFFA1ACU,
-	(uint16 *) 0xFFFFA214U,
-	(uint16 *) 0xFFFFA232U
+	(uint16 *) 0xFFFEEA34U,
+	(uint16 *) 0xFFFFB0E6U,
+	(uint16 *) 0xFFFFB1B6U,
+	(uint16 *) 0xFFFFB1BCU,
+	(uint16 *) 0xFFFFB224U,
+	(uint16 *) 0xFFFFB242U
 };
