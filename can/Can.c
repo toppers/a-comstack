@@ -917,7 +917,7 @@ Can_IsrTx(uint8 Controller)
 	}
 
 	/* 送信バッファの割り込みクリア */
-	can_target_release_interrupt(Controller);
+	// can_target_release_interrupt(Controller);
 
   error_exit:
 	/* [CAN091] */
