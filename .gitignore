@@ -1,0 +1,11 @@
+.DS_Store
+RELEASE/
+*.o
+*.a
+*.bak
+cfg?_out.*
+Os_*.*
+Can_*.*
+offset.h
+atk2-sc?.*
+libkernel.a
